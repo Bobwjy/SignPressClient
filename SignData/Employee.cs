@@ -23,7 +23,7 @@ namespace SignPressServer.SignData
         public String Name
         {
             get { return this.m_name; }
-            set { this.m_name = value;}
+            set { this.m_name = value; }
         }
 
         private String m_positon;   //  签字人的职位位置
@@ -40,28 +40,44 @@ namespace SignPressServer.SignData
             set { this.m_department = value; }
         }
 
-        private String m_username;      // 登录系统的用户名
-        public String Username
+
+        private bool m_canSubmit;     //  是否可以提交签单
+        public bool CanSubmit
         {
-            get { return this.m_username; }
-            set { this.m_username = value; }
+            get { return this.m_canSubmit; }
+            set { this.m_canSubmit = value; }
         }
 
-        private String m_password;      // 登录系统的密码
-        public String Password
+        private bool m_canSign;     //  是否可以提交签单
+        public bool CanSign
         {
-            get { return this.m_password; }
-            set { this.m_password = value; }
+            get { return this.m_canSign; }
+            set { this.m_canSign = value; }
         }
 
-        public void Show( )
+
+        private bool m_isAdmin;     //  是否可以提交签单
+        public bool IsAdmin
+        {
+            get { return this.m_isAdmin; }
+            set { this.m_isAdmin = value; }
+        }
+
+        private User m_user;
+        public User User
+        {
+            get { return this.m_user; }
+            set { this.m_user = value; }
+        }
+
+        public void Show()
         {
             Console.WriteLine("输出员工的信息");
-            Console.WriteLine("ID :" + this.Id.ToString( ));
+            Console.WriteLine("ID :" + this.Id.ToString());
             Console.WriteLine("NAME : " + this.Name);
             Console.WriteLine("DEPARTMENT : " + this.Department.Id.ToString() + ", " + this.Department.Name);
-            Console.WriteLine("USERNAME : " + this.Username);
-            Console.WriteLine("PASSWORD : " + this.Password);
+            Console.WriteLine("USERNAME : " + this.User.Username);
+            Console.WriteLine("PASSWORD : " + this.User.Password);
         }
     }
 }

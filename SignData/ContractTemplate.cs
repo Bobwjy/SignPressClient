@@ -14,14 +14,16 @@ namespace SignPressServer.SignData
      */
     class ContractTemplate
     {
-        private int m_id;   //  会签单模版的编号
-        public  int Id
+
+
+        protected int m_tempId;   //  会签单模版的编号
+        public  int TempId
         {
-            get{ return this.m_id;  }
-            set{ this.m_id = value; }
+            get{ return this.m_tempId;  }
+            set{ this.m_tempId = value; }
         }
 
-        private String m_name;     //  会签单名称
+        protected String m_name;     //  会签单名称
         public String Name
         {
             get{ return this.m_name;}
@@ -30,14 +32,14 @@ namespace SignPressServer.SignData
 
         #region   column栏目信息[5个栏目]
         
-        private int m_columnCount;      // 目前此接口无用，因为数据栏目定死是5个
+        protected int m_columnCount;      // 目前此接口无用，因为数据栏目定死是5个
         public int ColumnCount
         {
             get{ return this.m_columnCount; }
             set{ this.m_columnCount = value; }
         }
 
-        private List<String> m_columnData;     //  存储5个栏目项的信息
+        protected List<String> m_columnData;     //  存储5个栏目项的信息
         public List<String> ColumnData
         {
             get { return this.m_columnData; }
@@ -50,7 +52,7 @@ namespace SignPressServer.SignData
         #region  signinfo签字人信息[8个签字人]
         
         
-        private int m_signCount;            //  签字人人数  此接口暂时无用，供扩展哟个，因为暂时签字人就是6+2=8个
+        protected int m_signCount;            //  签字人人数  此接口暂时无用，供扩展哟个，因为暂时签字人就是6+2=8个
         public int SignCount
         {
             get { return this.m_signCount; }
@@ -58,7 +60,7 @@ namespace SignPressServer.SignData
         }
 
 
-        private List<SignatureTemplate> m_signData;     //  签字人信息
+        protected List<SignatureTemplate> m_signData;     //  签字人信息
         public List<SignatureTemplate> SignData
         {
             get { return this.m_signData; }

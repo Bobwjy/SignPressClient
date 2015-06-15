@@ -48,18 +48,26 @@ using Microsoft.Office.Interop.Word;
 /// JProperty用来生成一个JSON数据，格式为key/value的值，
 /// 而JValue则直接生成一个JSON值。下面我们就 用LINQ to JSON返回上面分页格式的数据。代码如下：
 /// http://www.cnblogs.com/QLJ1314/p/3862583.html
-/*// Java用Json序列化对象方法：
-
-Gson gson = new Gson();
-
-te是需要序列化的对象
-
-String s = gson.toJson(te);
-
+//// Java用Json序列化对象方法：
+//
+// 序列化： 
+//　　JsonConvert.SerializeObject（string）； 
+//　　反序列化： 
+//　　JsonConvert.DeserializeObject（obj）； 
+/*
+ * Java可以用开源项目google-gson，
+ * 在项目中导入这个项目的第三方jar包，
+ * 然后添加引用：import com.google.gson.Gson；
+ * 就可使用以下方法： 
 Java用Json反序列化对象方法：
 
 Gson gson = new Gson();
-
+序列化： 
+　　Gson gson=new Gson（）； 
+　　String s=gson.toJson（obj）； 
+反序列化： 
+　　Gson gson=new Gson（）； 
+　　Object obj=gson.fromJson（s，Object.class）； 
 s是经过Json序列化的对象，字符串类型；TestEntity是目标类型
 注意：使用fromJson方法反序列化一个对象时，该对象的类型必须显示的声明一个不带参数的构造方法
 TestEntity te = gson.fromJson(s,TestEntity.class);*/
@@ -68,10 +76,16 @@ using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Converters;
 
 
-/// 本项目的命名空间引用
-using SignPressServer.SignData;
-using SignPressServer.SignTools;
+///  本项目的命名空间引用
+using SignPressServer.SignData;     //  数据存储
+using SignPressServer.SignTools;    //  处理工具
+using SignPressServer.SignDAL;      //  数据库处理
 
+/// 通信方案
+/// webservice + json/xml
+/// socket + json
+using SignPressServer.SignSocket.AsyncSocket;   //  套接字信息
+using SignPressServer.SignSocket.AsyncTcpListener;  //  
 
 /*
  * SignPress程序的服务器程序
@@ -89,13 +103,32 @@ namespace SignPressServer
 
             #region 测试数据库连接
 
-            DBTools dbtools = new DBTools();
+            /*DBTools dbtools = new DBTools();
             MySqlDataReader mysqlread = dbtools.getmysqlread("SELECT * FROM department;");
             while (mysqlread.Read( ))   // 一次读一条记录
             {
                 Console.WriteLine(mysqlread["id"].ToString( ) + "  " + mysqlread["name"].ToString( ));
-            }
+            }*/
+            
+            // 测试添加员工
+            /*Employee em = new Employee
+            {
+                Id = 9,
+                Name = "王盼盼",
+                Position = "局长",
+                Department = new Department { Id = 5, Name = "行政科" },
+                Username = "wangpanpan",
+                Password = "wangpanpan"
+            };
+            
+            DALEmployee.InsertEmployee(em);
+            */
 
+            //  测试删除用户
+            //Console.WriteLine(DALEmployee.DeleteEmployee(25));
+            
+            //  测试用户登录
+            DALEmployee.LoginEmployee("chengjian", "chengjian");
             #endregion
 
 
@@ -147,48 +180,73 @@ namespace SignPressServer
             //wordTools.AddWordTable(@"G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressServer\测试文档.doc");
             
             //  将一个创建的WORD保存为PDF
-            MSWordTools.WordConvertToPdf(@"G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressServer\测试文档.doc",
-                @"G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressServer\测试文档.pdf");
+            //MSWordTools.WordConvertToPdf(@"G:\[B]CodeRuntimeLibrary\[E]GitHub\\测试文档.doc",
+            //    @"G:\[B]CodeRuntimeLibrary\[E]GitHub\测试文档.pdf");
             #endregion
 
 
             #region 测试JSON数据
-
-            Action<object> log = o => Console.WriteLine(o);
-            Func<int, int, int> add = (x, y) => x + y;
-
-            var p1 = new Employee
+            //Action<object> log = o => Console.WriteLine(o);
+            
+            /*
+            var e1 = new Employee
             {
                 Id = 1,
                 Name = "成坚",
                 Position = "科长",
-                Department = new Department { Id = 1, Name = "申请科"},
-                Username = "gatieme",
-                Password = "gatieme"
+                Department = new Department { Id = 1, Name = "申请科" },
+                CanSubmit = true,
+                CanSign = true,
+                IsAdmin = true,
+                User = new User { Username = "chengjian", Password = "chengjian" },
+
             };
-            var p2 = new Employee
+            var e2 = new Employee
             {
                 Id = 1,
                 Name = "吴佳怡",
                 Position = "局长",
-                Department = new Department { Id = 5, Name = "行政科"},
-                Username = "wujiayi",
-                Password = "wujiayi"
+                Department = new Department { Id = 5, Name = "行政科" },
+                CanSubmit = true,
+                CanSign = true,
+                IsAdmin = true,
+                User = new User{ Username = "wujiayi", Password = "wyujiayi"},
             };
-            p1.Show();
+            e1.Show();
+            e2.Show();
             //序列化 参数是要序列化的对象;json是对象序列化后的字符串
-            String json = JsonConvert.SerializeObject(new[] { p1, p2 });
-            log(json);
+            String json = JsonConvert.SerializeObject(new Employee[] { e1, e2 });
+            Console.WriteLine(json);
             //Employee是目标类型；json是经过Json序列化的对象，字符串形式
             List<Employee> employList = JsonConvert.DeserializeObject<List<Employee>>(json);
             JArray ja = JArray.Parse(json);
-            log(ja);	//注意，格式化过的输出
+            Console.WriteLine(ja);	//注意，格式化过的输出
             foreach (Employee employ in employList)
             {
                 employ.Show();
             }
+            */
+            #endregion
 
 
+            #region 服务器的处理程序AsyncSocketServer
+            Console.WriteLine("服务器准备中...");
+            
+            // System.Net.IPEndPoint ep = new System.Net.IPEndPoint(System.Net.IPAddress.Parse("10.0.209.144"), 6666);
+            AsyncSocketServer server = new AsyncSocketServer(6666);
+            while (true)
+            {
+                server.Start( );
+            }
+            
+
+            //Console.WriteLine("服务器准备中...");
+            /*
+            AsyncTcpServer server = new AsyncTcpServer(6666);
+            while (true)
+            {
+                server.Start();
+            }*/
             #endregion
         }
     }

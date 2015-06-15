@@ -1,10 +1,10 @@
 G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressServer\SignPressServer\bin\Debug\SignPressServer.exe.config
 G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressServer\bin\Debug\SignPressServer.exe.config
-G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressServer\obj\Debug\SignPressServer.csproj.ResolveComReference.cache
 G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressServer\bin\Debug\SignPressServer.exe
 G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressServer\bin\Debug\SignPressServer.pdb
 G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressServer\bin\Debug\Newtonsoft.Json.dll
 G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressServer\bin\Debug\Newtonsoft.Json.xml
-G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressServer\obj\Debug\SignPressServer.csprojResolveAssemblyReference.cache
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressServer\obj\Debug\SignPressServer.csproj.ResolveComReference.cache
 G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressServer\obj\Debug\SignPressServer.exe
 G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressServer\obj\Debug\SignPressServer.pdb
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressServer\obj\Debug\SignPressServer.csprojResolveAssemblyReference.cache

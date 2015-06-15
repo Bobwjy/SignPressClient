@@ -46,12 +46,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="SignContract\YHJLHXMBKContract.cs" />
     <Compile Include="SignData\ContractTemplate.cs" />
     <Compile Include="SignData\Department.cs" />
     <Compile Include="SignData\Employee.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SignData\SignatureTemplate.cs" />
+    <Compile Include="SignData\DALEmployee.cs" />
+    <Compile Include="SignData\User.cs" />
+    <Compile Include="SignSocket\AsyncSocket\AsyncSocketEventArgs.cs" />
+    <Compile Include="SignSocket\AsyncSocket\AsyncSocketState.cs" />
+    <Compile Include="SignSocket\AsyncSocket\AsyncSocketServer.cs" />
+    <Compile Include="SignSocket\AsyncTcpListener\AsyncEventArgs.cs" />
+    <Compile Include="SignSocket\AsyncTcpListener\AsyncTcpServer.cs" />
+    <Compile Include="SignSocket\AsyncTcpListener\TcpClientState.cs" />
     <Compile Include="SignTools\DBTools.cs" />
     <Compile Include="SignTools\MSWordTools.cs" />
   </ItemGroup>
@@ -106,7 +115,9 @@
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="SignDAL\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
