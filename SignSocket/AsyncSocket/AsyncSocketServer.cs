@@ -8,6 +8,41 @@ using System.Text;
 using System.Net.Sockets;  
 using System.Net;
 
+/*
+ *  在同步模式中，
+ *  在服务器上使用Accept方法接入连接请求，
+ *  而在客户端则使用Connect方法来连接服务器。
+ *  
+ *  相对地，在异步模式下，
+ *  服务器可以使用BeginAccept方法和EndAccept方法来完成连接到客户端的任务，
+ *  在客户端则通过BeginConnect方法和EndConnect方法来实现与服务器的连接。
+ *  
+ *  BeginAccept在异步方式下传入的连接尝试，它允许其他动作而不必等待连接建立才继续执行后面程序。
+ *  在调用BeginAccept之前，必须使用Listen方法来侦听是否有连接请求，
+ *  
+ *  BeginAccept的函数原型为
+ *  BeginAccept(AsyncCallback AsyncCallback, Ojbect state)
+ *  参数：
+ *  AsyncCallBack：代表回调函数
+ *  state：表示状态信息，必须保证state中包含socket的句柄
+ *  
+ *  使用BeginAccept的基本流程是：
+ *  (1)创建本地终节点，并新建套接字与本地终节点进行绑定；
+ *  (2)在端口上侦听是否有新的连接请求；
+ *  (3)请求开始接入新的连接，传入Socket的实例或者StateOjbect的实例。
+ *  
+ *  当BeginAccept()方法调用结束后，一旦新的连接发生，将调用回调函数，
+ *  而该回调函数必须包括用来结束接入连接操作的EndAccept()方法。
+ *  该方法参数列表为 Socket EndAccept(IAsyncResult iar)
+ *  
+ *  如何获取连接的客户端的IP和端口
+ *  Accpet和BeginAccept获取到来自客户端的连接
+ *  然后创建并返回新的 Socket。
+ *  不能使用返回的这个 Socket 接受连接队列中的任何附加连接。
+ *  然而，可以调用返回的 Socket 的 RemoteEndPoint 方法来标识远程主机的网络地址和端口号
+ * 
+ */
+
 namespace SignPressServer.SignSocket.AsyncSocket
 {
     /// <summary>
@@ -120,7 +155,26 @@ namespace SignPressServer.SignSocket.AsyncSocket
                 this.IsRunning = true;
                 this.m_serverSocket.Bind(new IPEndPoint(this.Address, this.Port));  //  绑定服务器和端口
                 this.m_serverSocket.Listen(1024);
+
+                /**
+                BeginAccept在异步方式下传入的连接尝试，它允许其他动作而不必等待连接建立才继续执行后面程序。在调用BeginAccept之前，必须使用Listen方法来侦听是否有连接请求，BeginAccept的函数原型为：
+
+                BeginAccept(AsyncCallback AsyncCallback, Ojbect state)
+                参数:
+                AsyncCallBack：代表回调函数
+                state：表示状态信息，必须保证state中包含socket的句柄
+
+                使用BeginAccept的基本流程是：
+                (1)创建本地终节点，并新建套接字与本地终节点进行绑定；
+                (2)在端口上侦听是否有新的连接请求；
+                (3)请求开始接入新的连接，传入Socket的实例或者StateOjbect的实例。
+                 */
                 this.m_serverSocket.BeginAccept(new AsyncCallback(HandleAcceptConnected), this.m_serverSocket);
+                /*
+                 当BeginAccept()方法调用结束后，一旦新的连接发生，将调用回调函数，
+                 而该回调函数必须包括用来结束接入连接操作的EndAccept()方法。
+                 该方法参数列表为 Socket EndAccept(IAsyncResult iar)
+                 * **/
             }
         }
 
@@ -158,6 +212,10 @@ namespace SignPressServer.SignSocket.AsyncSocket
 
         /// <summary>
         /// 处理客户端连接
+        /// BeginAccept的回调函数
+        /// 当BeginAccept()方法调用结束后，一旦新的连接发生，将调用回调函数，
+        /// 而该回调函数必须包括用来结束接入连接操作的EndAccept()方法。
+        /// 该方法参数列表为 Socket EndAccept(IAsyncResult iar)
         /// </summary>
         /// <param name="ar"></param>
         private void HandleAcceptConnected(IAsyncResult ar)
@@ -165,8 +223,8 @@ namespace SignPressServer.SignSocket.AsyncSocket
             if (IsRunning)
             {
                 Socket server = (Socket)ar.AsyncState;
-                Socket client = server.EndAccept(ar);
-
+                Socket client = server.EndAccept(ar);   //  EndAccept后，就可以进行正常的通信了
+               
                 //  检查是否达到最大的允许的客户端数目
                 if (this.m_currClientCount >= this.m_maxClientCount)
                 {
@@ -175,14 +233,7 @@ namespace SignPressServer.SignSocket.AsyncSocket
                 }
                 else    // 处理客户端的连接
                 {
-                    /*
-                     * 
-                     * Accept 以同步方式从侦听套接字的连接请求队列中提取第一个挂起的连接请求，
-                     * 然后创建并返回新的 Socket。
-                     * 不能使用返回的这个 Socket 接受连接队列中的任何附加连接。
-                     * 然而，可以调用返回的 Socket 的 RemoteEndPoint 方法来标识远程主机的网络地址和端口号
-                     * 
-                     */
+
                     IPEndPoint ip = (IPEndPoint)client.RemoteEndPoint;
                     Console.WriteLine("获取到一个来自" + ip.Address + " : " + ip.Port + "的连接...");
 
@@ -196,11 +247,11 @@ namespace SignPressServer.SignSocket.AsyncSocket
                     //  设置与客户端的通信的缓冲区
                     state.RecvDataBuffer = new byte[client.ReceiveBufferSize];
                     
-                    //  开始接受来自该客户端的数据
+                    ///  开始接受来自该客户端的数据
                     ///
-                    ///
-                    ///
-                    ///
+                    /// 接收数据自BeginRecive开始，
+                    /// 调用回调函数函数HandleDataReceived
+                    /// 在回调函数中以EndReceive结束
                     client.BeginReceive(state.RecvDataBuffer, 0, state.RecvDataBuffer.Length, SocketFlags.None,
                      new AsyncCallback(HandleDataReceived), state);
                 }
@@ -228,7 +279,7 @@ namespace SignPressServer.SignSocket.AsyncSocket
 
                     //  如果两次开始了异步的接收,所以当客户端退出的时候
                     //  会两次执行EndReceive
-                    int recv = client.EndReceive(ar);
+                    int recv = client.EndReceive(ar);   //  异步接收数据结束
                     if (recv == 0)
                     {
                         //  C - TODO 触发事件 (关闭客户端)

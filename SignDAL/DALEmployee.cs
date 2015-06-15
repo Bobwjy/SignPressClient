@@ -5,7 +5,10 @@ using System.Text;
 
 
 
+
 using SignPressServer.SignData;
+
+
 
 using System.Data;
 using MySql.Data.MySqlClient;
@@ -47,6 +50,12 @@ namespace SignPressServer.SignDAL
         /// 判断用户名密码是否正确
         /// </summary>
         private const String LOGIN_EMPLOYEE_STR = @"SELECT * FROM `employee` WHERE(`username` = @Username and `password` = @Password)";
+        
+        
+        /// <summary>
+        /// 修改密码的信息串
+        /// </summary>
+        private const String MODIFY_EMPLOYEE_PASSWORD_STR = @"UPDATE `employee` SET `password`=@Password WHERE (`id`=@Id)";
         #endregion
 
         #region  插入员工信息
@@ -79,10 +88,12 @@ namespace SignPressServer.SignDAL
                 con.Dispose();
                 if (count == 1)     //  插入成功后的受影响行数为1
                 {
+                    Console.WriteLine("用户插入成功");
                     return true;
                 }
                 else
                 {
+                    Console.WriteLine("用户插入失败");
                     return false;
                 }
             }
@@ -110,7 +121,7 @@ namespace SignPressServer.SignDAL
         /// </summary>
         /// <param name="id">员工的员工号</param>
         /// <returns></returns>
-        public static bool DeleteEmployee(int employeeID)
+        public static bool DeleteEmployee(int employeeId)
         {
             MySqlConnection con = new MySqlConnection(MYSQL_SQLCON_STR);
             MySqlCommand cmd;
@@ -122,7 +133,7 @@ namespace SignPressServer.SignDAL
                 cmd = con.CreateCommand();
 
                 cmd.CommandText = DELETE_EMPLOYEE_STR;
-                cmd.Parameters.AddWithValue("@Id", employeeID);                        // 员工姓名
+                cmd.Parameters.AddWithValue("@Id", employeeId);                        // 员工姓名
 
 
                 count = cmd.ExecuteNonQuery();
@@ -133,10 +144,12 @@ namespace SignPressServer.SignDAL
 
                 if (count == 1)
                 {
+                    Console.WriteLine("删除用户" + employeeId.ToString( ) + "成功");
                     return true;
                 }
                 else
                 {
+                    Console.WriteLine("删除用户" + employeeId.ToString() + "失败");
                     return false;
                 }
             }
@@ -160,6 +173,7 @@ namespace SignPressServer.SignDAL
         {
             MySqlConnection con = new MySqlConnection(MYSQL_SQLCON_STR);
             MySqlCommand cmd;
+            bool result = false; ;        
             try
             {
                 con.Open();
@@ -176,9 +190,17 @@ namespace SignPressServer.SignDAL
 
 
                 /*while (sqlRead.Read( ))
+                {}*/
+                if (sqlRead.Read())
                 {
                     Console.WriteLine(sqlRead["id"].ToString() + "  " + sqlRead["name"].ToString());
-                }*/
+
+                    result = true;
+                }
+                else
+                {
+                    result = false;
+                }
                 con.Close();
                 con.Dispose();
 
@@ -195,12 +217,116 @@ namespace SignPressServer.SignDAL
                     con.Close();
                 }
             }
-            return true;
+            return result;
+        }
+
+        public static bool LoginEmployee(User user)
+        {
+            MySqlConnection con = new MySqlConnection(MYSQL_SQLCON_STR);
+            MySqlCommand cmd;
+            bool result = false; ;
+            try
+            {
+                con.Open();
+
+                cmd = con.CreateCommand();
+
+                cmd.CommandText = LOGIN_EMPLOYEE_STR;
+                cmd.Parameters.AddWithValue("@Username", user.Username);                         // 员工登录用户名
+                cmd.Parameters.AddWithValue("@Password", user.Password);                         // 员工登录密码
+
+                MySqlDataReader sqlRead = cmd.ExecuteReader();
+
+                cmd.Dispose();
+
+
+                /*while (sqlRead.Read( ))
+                {}*/
+                if (sqlRead.Read())
+                {
+                    Console.WriteLine(sqlRead["id"].ToString() + "  " + sqlRead["name"].ToString());
+
+                    result = true;
+                }
+                else
+                {
+                    result = false;
+                }
+                con.Close();
+                con.Dispose();
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+
+                if (con.State == ConnectionState.Open)
+                {
+                    con.Close();
+                }
+            }
+            return result;
+        }
+        #endregion
+
+
+
+        #region 修改密码信息
+        public static bool ModifyEmployeePassword(int employeeId, String password)
+        { 
+            MySqlConnection con = new MySqlConnection(MYSQL_SQLCON_STR);
+            MySqlCommand cmd;
+            int count = -1;
+            try
+            {
+                con.Open();
+
+                cmd = con.CreateCommand();
+
+                cmd.CommandText = MODIFY_EMPLOYEE_PASSWORD_STR;
+                cmd.Parameters.AddWithValue("@Password", password);
+                cmd.Parameters.AddWithValue("@Id", employeeId);                        // 员工姓名
+
+
+                count = cmd.ExecuteNonQuery();
+                cmd.Dispose();
+
+                con.Close();
+                con.Dispose();
+
+                if (count == 1)
+                {
+                    Console.WriteLine("修改密码" + employeeId.ToString( ) + "成功");
+
+                    return true;
+                }
+                else
+                {
+                    Console.WriteLine("修改密码" + employeeId.ToString() + "失败");
+
+                    return false;
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+
+                if (con.State == ConnectionState.Open)
+                {
+                    con.Close();
+                }
+            }
         }
         #endregion
 
         #region 测试增加用户
-        public void TestInsertEmployee()
+        public static void  TestInsertEmployee()
         {
             Employee em = new Employee
             {
@@ -210,11 +336,9 @@ namespace SignPressServer.SignDAL
                 Department = new Department { Id = 5, Name = "行政科" },
                 User = new User { Username = "wangpanpan", Password = "wangpanpan" }
             };
-            DALEmployee.InsertEmployee(em);
+            InsertEmployee(em);
         }
         #endregion
-
-
-
+        
     }
 }

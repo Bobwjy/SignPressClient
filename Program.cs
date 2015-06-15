@@ -111,7 +111,8 @@ namespace SignPressServer
             }*/
             
             // 测试添加员工
-            /*Employee em = new Employee
+            /*
+            Employee em = new Employee
             {
                 Id = 9,
                 Name = "王盼盼",
@@ -128,7 +129,9 @@ namespace SignPressServer
             //Console.WriteLine(DALEmployee.DeleteEmployee(25));
             
             //  测试用户登录
+            
             DALEmployee.LoginEmployee("chengjian", "chengjian");
+            DALEmployee.ModifyEmployeePassword(8, "wujiayi");
             #endregion
 
 
