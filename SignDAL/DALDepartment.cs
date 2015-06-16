@@ -22,12 +22,13 @@ namespace SignPressServer.SignDAL
         /// <summary>
         /// 插入数据库的信息串
         /// </summary>
-        private const String INSERT_DEPARTMENT_STR = @"INSERT INTO `department` (`id`, `name`) VALUES (@Id, @Name)";
+        private const String INSERT_DEPARTMENT_STR = @"INSERT INTO `department` (`name`) VALUES (@Name)";
 
         /// <summary>
         /// 删除数据库的信息串
         /// </summary>
-        private const String DELETE_DEPARTMENT_STR = @"DELETE FROM `department` WHERE (`id`=@Id)";
+        private const String DELETE_DEPARTMENT_ID_STR = @"DELETE FROM `department` WHERE (`id`=@Id)";
+        private const String DELETE_DEPARTMENT_NAME_STR = @"DELETE FROM `department` WHERE (`name`=@Name)";
         
 
         private const String MODIFY_DEPARTMENT_NAME_STR = @"UPDATE `department` SET `name`=@Name WHERE (`id`=@Id)";
@@ -39,7 +40,7 @@ namespace SignPressServer.SignDAL
         /// </summary>
         /// <param name="employee"></param>
         /// <returns></returns>
-        public static bool InsertDepartment(Department depart)
+        public static bool InsertDepartment(String departmengName)
         {
             MySqlConnection con = DBTools.GetMySqlConnection();
           
@@ -51,8 +52,7 @@ namespace SignPressServer.SignDAL
 
                 cmd = con.CreateCommand();
                 cmd.CommandText = INSERT_DEPARTMENT_STR;
-                cmd.Parameters.AddWithValue("@Id", depart.Id);                        // 部门姓名
-                cmd.Parameters.AddWithValue("@Name", depart.Name);                  // 部门职位
+                cmd.Parameters.AddWithValue("@Name", departmengName);                  // 部门职位
                 count = cmd.ExecuteNonQuery();
                 cmd.Dispose();
 
@@ -104,7 +104,7 @@ namespace SignPressServer.SignDAL
 
                 cmd = con.CreateCommand();
 
-                cmd.CommandText = DELETE_DEPARTMENT_STR;
+                cmd.CommandText = DELETE_DEPARTMENT_ID_STR;
                 cmd.Parameters.AddWithValue("@Id", departmentId);                        // 部门姓名
 
 
@@ -122,6 +122,52 @@ namespace SignPressServer.SignDAL
                 else
                 {
                     Console.WriteLine("删除部门" + departmentId.ToString() + "失败");
+                    return false;
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+
+                if (con.State == ConnectionState.Open)
+                {
+                    con.Close();
+                }
+            }
+        }
+
+        public static bool DeleteDepartment(String departmentName)
+        {
+            MySqlConnection con = DBTools.GetMySqlConnection();
+            MySqlCommand cmd;
+            int count = -1;
+            try
+            {
+                con.Open();
+
+                cmd = con.CreateCommand();
+
+                cmd.CommandText = DELETE_DEPARTMENT_NAME_STR;
+                cmd.Parameters.AddWithValue("@Name", departmentName);                        // 部门姓名
+
+
+                count = cmd.ExecuteNonQuery();
+                cmd.Dispose();
+
+                con.Close();
+                con.Dispose();
+
+                if (count == 1)
+                {
+                    Console.WriteLine("删除部门" + departmentName + "成功");
+                    return true;
+                }
+                else
+                {
+                    Console.WriteLine("删除部门" + departmentName + "失败");
                     return false;
                 }
             }

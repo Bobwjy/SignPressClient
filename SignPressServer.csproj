@@ -57,6 +57,10 @@
     <Compile Include="SignData\SignatureTemplate.cs" />
     <Compile Include="SignDAL\DALEmployee.cs" />
     <Compile Include="SignData\User.cs" />
+    <Compile Include="SignLog\LogerHelper.cs" />
+    <Compile Include="SignLog\LogMessage.cs" />
+    <Compile Include="SignLog\LogMessageType.cs" />
+    <Compile Include="SignLog\LogType.cs" />
     <Compile Include="SignSocket\AsyncSocket\AsyncSocketEventArgs.cs" />
     <Compile Include="SignSocket\AsyncSocket\AsyncSocketState.cs" />
     <Compile Include="SignSocket\AsyncSocket\AsyncSocketServer.cs" />
@@ -68,6 +72,7 @@
     <Compile Include="SignSocket\SyncSocket\SocketTcpServer.cs" />
     <Compile Include="SignTools\ClientRequest.cs" />
     <Compile Include="SignTools\DBTools.cs" />
+    <Compile Include="SignTools\LogTools.cs" />
     <Compile Include="SignTools\MSWordTools.cs" />
     <Compile Include="SignTools\ServerResponse.cs" />
   </ItemGroup>

@@ -63,6 +63,7 @@ namespace SignPressServer.SignContract
             this.Name = "养护及例会项目拨款会签审批单";
             
             /// 5个基本项
+            this.ColumnCount = 5;
             this.ColumnData.Add("工程名称");
             this.ColumnData.Add("项目名称");
             this.ColumnData.Add("主要项目及工程量");
@@ -70,6 +71,8 @@ namespace SignPressServer.SignContract
             this.ColumnData.Add("累计申请资金额度（元）");
             
             /// 8个签字信息项
+            this.SignCount = 8;
+            //this.SignData.Add();
         }
         
         private String m_id;            //  审批会签单编号

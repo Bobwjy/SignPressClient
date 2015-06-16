@@ -47,6 +47,8 @@ using Newtonsoft.Json;
 using SignPressServer.SignDAL;
 using SignPressServer.SignData;
 using SignPressServer.SignTools;
+using SignPressServer.SignLog;
+
 
 namespace SignPressServer.SignSocket.AsyncSocket
 {
@@ -108,6 +110,16 @@ namespace SignPressServer.SignSocket.AsyncSocket
 
         #endregion
 
+
+
+        #region 扩展信息域
+        LogerHelper m_log;
+        LogerHelper Log
+        {
+            get { return this.m_log;}
+        }
+        #endregion
+
         #region 构造函数
 
         /// <summary>
@@ -143,6 +155,10 @@ namespace SignPressServer.SignSocket.AsyncSocket
             this.m_maxClientCount = maxClientCount;
             this.m_clientList = new List<AsyncSocketState>();
             this.m_serverSocket = new Socket(localIPAddress.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
+        
+            // 创建日志文件[2015-6-16 21:10]
+            this.m_log = new LogerHelper();
+        
         }
 
         #endregion
@@ -240,7 +256,8 @@ namespace SignPressServer.SignSocket.AsyncSocket
                 {
 
                     IPEndPoint ip = (IPEndPoint)client.RemoteEndPoint;
-                    Console.WriteLine("获取到一个来自" + ip.Address + " : " + ip.Port + "的连接...");
+                    Console.WriteLine("获取到一个来自{0}{1}的连接", ip.Address, ip.Port);
+                    this.Log.Write(new LogMessage("获取到一个来自" + ip.Address + " : " + ip.Port + "的连接...", LogMessageType.Information));
 
                     AsyncSocketState state = new AsyncSocketState(client);
                     lock (this.m_clientList)        //  将连接的客户端的信息添加到客户端列表
@@ -281,6 +298,7 @@ namespace SignPressServer.SignSocket.AsyncSocket
                 {
                     IPEndPoint ip = (IPEndPoint)client.RemoteEndPoint;
                     Console.WriteLine("正在与" + ip.Address + " : " + ip.Port + "进行数据传输...");
+                    this.Log.Write(new LogMessage("正在与" + ip.Address + " : " + ip.Port + "进行数据传输...", LogMessageType.Information));
 
                     //  如果两次开始了异步的接收,所以当客户端退出的时候
                     //  会两次执行EndReceive
@@ -295,7 +313,8 @@ namespace SignPressServer.SignSocket.AsyncSocket
                     }
                     //TODO 处理已经读取的数据 ps:数据在state的RecvDataBuffer中
                     Console.WriteLine("接收了" + state.RecvLength + "个数据单元");
-        
+                    this.Log.Write(new LogMessage("接收了" + state.RecvLength + "个数据单元", LogMessageType.Information));
+
                     // 处理客户端的数据请求
                     DealClientRequest(state);
                     
@@ -596,15 +615,28 @@ namespace SignPressServer.SignSocket.AsyncSocket
             string recvMsg = Encoding.UTF8.GetString(state.RecvDataBuffer, 0, state.RecvLength);
 
             Console.WriteLine("接收到的数据{0}, 大小{1}", recvMsg, recvMsg.Length);
-            Console.WriteLine(recvMsg.Equals("LOGIN_REQUEST") == true);
+            this.Log.Write(new LogMessage("接收到的数据 " + recvMsg + ", 大小" + recvMsg.Length.ToString(), LogMessageType.Information));
+            
             switch (recvMsg)
             { 
-            
+                /// 用户操作
                 case "LOGIN_REQUEST" :       //  用户登录信息
                     // 开始接收用户登录的用户名和密码
                     //在[回调函数]HandleLoginRequestDataReceived中接收完成后, 进行登录验证
                     state.ClientSocket.BeginReceive(state.RecvDataBuffer, 0, state.RecvDataBuffer.Length, SocketFlags.None,
                         new AsyncCallback(HandleLoginRequestDataReceived), state);
+                    break;
+                
+                /// 部门操作
+                case "INSERT_DEPARTMENT_REQUEST" :  //  添加部门请求
+                    // 开始接收期望添加进入数据的库的部门的信息
+                    state.ClientSocket.BeginReceive(state.RecvDataBuffer, 0, state.RecvDataBuffer.Length, SocketFlags.None,
+                        new AsyncCallback(HandleInsertDepartmentRequestDataReceived), state);
+                    break;
+                case "DELETE_DEPARTMENT_REQUEST" :
+                    state.ClientSocket.BeginReceive(state.RecvDataBuffer, 0, state.RecvDataBuffer.Length, SocketFlags.None,
+                        new AsyncCallback(HandleDeleteDepartmentRequestDataReceived), state);
+                    
                     break;
             }
         }
@@ -643,6 +675,9 @@ namespace SignPressServer.SignSocket.AsyncSocket
                     Console.WriteLine("正在与" + ip.Address + " : " + ip.Port + "进行登录验证...");
                     Console.WriteLine("接收了{0}个数据单元[登录信息]", state.RecvLength);
 
+                    this.Log.Write(new LogMessage("正在与" + ip.Address + " : " + ip.Port + "进行登录验证...", LogMessageType.Information));
+                    this.Log.Write(new LogMessage("接收了" +  state.RecvLength.ToString( ) +"个数据单元[登录信息]", LogMessageType.Information));
+                    
                     //C- TODO 触发用户登录的事件
                     RaiseLoginRequestEvent(state);
                 }
@@ -680,11 +715,14 @@ namespace SignPressServer.SignSocket.AsyncSocket
             if(employee.Id != -1)
             {
                 Console.WriteLine(user + "用户名密码均正确，可以登录");
+                this.Log.Write(new LogMessage(user + "用户名密码均正确，可以登录", LogMessageType.Success));
                 LOGIN_RESPONSE = "LOGIN_SUCCESS";               //  用户登录成功信号   
             }
             else
             {
                 Console.WriteLine(user + "用户名密码验证失败，无法正常登录");
+                this.Log.Write(new LogMessage(user + "用户名密码验证失败，无法正常登录", LogMessageType.Error));
+
                 LOGIN_RESPONSE = "LOGIN_FAILED";                //  用户登录失败信号
             }
             
@@ -699,5 +737,195 @@ namespace SignPressServer.SignSocket.AsyncSocket
         }
 
         #endregion
+
+
+        #region 处理客户端的插入部门请求
+        /// <summary>
+        /// 处理客户端登录请求数据
+        /// </summary>
+        /// <param name="ar"></param>
+        private void HandleInsertDepartmentRequestDataReceived(IAsyncResult ar)
+        {
+            if (IsRunning)
+            {
+                AsyncSocketState state = (AsyncSocketState)ar.AsyncState;
+                Socket client = state.ClientSocket;
+                try
+                {
+
+
+                    //  如果两次开始了异步的接收,所以当客户端退出的时候
+                    //  会两次执行EndReceive
+                    state.RecvLength = client.EndReceive(ar);   //  异步接收数据结束
+                    if (state.RecvLength == 0)
+                    {
+                        //  C - TODO 触发事件 (关闭客户端)
+                        Close(state);
+                        RaiseNetError(state);
+                        return;
+                    }
+
+                    //TODO 处理已经读取的数据 ps:数据在state的RecvDataBuffer中
+                    IPEndPoint ip = (IPEndPoint)client.RemoteEndPoint;
+                    Console.WriteLine("正在与" + ip.Address + " : " + ip.Port + "进行插入部门...");
+                    Console.WriteLine("接收了{0}个数据单元[部门信息]", state.RecvLength);
+                    
+                    this.Log.Write(new LogMessage("正在与" + ip.Address + " : " + ip.Port + "进行插入部门...", LogMessageType.Information));
+                    this.Log.Write(new LogMessage("接收了" + state.RecvLength + "个数据单元[部门信息]", LogMessageType.Information));
+                    //C- TODO 触发用户登录的事件
+                    RaiseInsertDepartmentRequestEvent(state);
+                }
+                catch (SocketException e)
+                {
+                    //  C- TODO 异常处理
+                    Console.WriteLine(e.ToString());
+                    RaiseNetError(state);
+                }
+                //finally
+                //{
+                //    //  继续接收来自来客户端的数据
+                //    client.BeginReceive(state.RecvDataBuffer, 0, state.RecvDataBuffer.Length, SocketFlags.None,
+                //     new AsyncCallback(HandleDataReceived), state);
+                //}
+            }
+        }
+
+        /// <summary>
+        /// 用户登录请求的事件的具体信息
+        /// </summary>
+        /// <param name="state"></param>
+        private void RaiseInsertDepartmentRequestEvent(AsyncSocketState state)
+        {
+
+            string recvMsg = Encoding.UTF8.GetString(state.RecvDataBuffer, 0, state.RecvLength);
+            Console.WriteLine(recvMsg);
+            string INSERT_DEPARTMENT_RESPONSE;
+
+
+            // json数据解包
+            String departmentName = JsonConvert.DeserializeObject<String>(recvMsg);
+            bool result = DALDepartment.InsertDepartment(departmentName);
+            if (result == true)
+            {
+                Console.WriteLine("部门{0}插入成功", departmentName);
+                this.Log.Write(new LogMessage("部门" + departmentName + "插入成功", LogMessageType.Success));
+                
+                INSERT_DEPARTMENT_RESPONSE = "INSERT_DEPARTMENT_SUCCESS";               //  用户登录成功信号   
+            }
+            else
+            {
+                Console.WriteLine("部门{0}插入成功", departmentName);
+                this.Log.Write(new LogMessage("部门" + departmentName + "插入失败", LogMessageType.Error));
+                
+                INSERT_DEPARTMENT_RESPONSE = "INSERT_DEPARTMENT_FAILED";                //  用户登录失败信号
+            }
+
+            // 将响应信息发送回客户端，先发响应信息头，再发响应信息域
+            //  响应信息头LOGIN_RESPONSE
+            this.Send(state.ClientSocket, Encoding.UTF8.GetBytes(INSERT_DEPARTMENT_RESPONSE));      //  将响应信号发送至客户端
+            //if (INSERT_DEPARTMENT_RESPONSE.Equals("INSERT_DEPARTMENT_SUCCESS"))
+            //{
+            //    String json = JsonConvert.SerializeObject(employee);
+            //    this.Send(state.ClientSocket, Encoding.UTF8.GetBytes(json));                    //  将
+            //}
+        }
+
+        #endregion
+
+
+        #region 处理客户端的删除部门请求
+        /// <summary>
+        /// 处理客户端的删除部门请求
+        /// </summary>
+        /// <param name="ar"></param>
+        private void HandleDeleteDepartmentRequestDataReceived(IAsyncResult ar)
+        {
+            if (IsRunning)
+            {
+                AsyncSocketState state = (AsyncSocketState)ar.AsyncState;
+                Socket client = state.ClientSocket;
+                try
+                {
+
+
+                    //  如果两次开始了异步的接收,所以当客户端退出的时候
+                    //  会两次执行EndReceive
+                    state.RecvLength = client.EndReceive(ar);   //  异步接收数据结束
+                    if (state.RecvLength == 0)
+                    {
+                        //  C - TODO 触发事件 (关闭客户端)
+                        Close(state);
+                        RaiseNetError(state);
+                        return;
+                    }
+
+                    //TODO 处理已经读取的数据 ps:数据在state的RecvDataBuffer中
+                    IPEndPoint ip = (IPEndPoint)client.RemoteEndPoint;
+                    Console.WriteLine("正在与" + ip.Address + " : " + ip.Port + "进行删除部门...");
+                    Console.WriteLine("接收了{0}个数据单元[部门信息]", state.RecvLength);
+
+                    this.Log.Write(new LogMessage("正在与" + ip.Address + " : " + ip.Port + "进行删除部门...", LogMessageType.Information));
+                    this.Log.Write(new LogMessage("接收了" + state.RecvLength.ToString( ) + "个数据单元[部门信息]", LogMessageType.Information));
+                        //C- TODO 触发用户登录的事件
+                    RaiseDeleteDepartmentRequestEvent(state);
+                }
+                catch (SocketException e)
+                {
+                    //  C- TODO 异常处理
+                    Console.WriteLine(e.ToString());
+                    RaiseNetError(state);
+                }
+                //finally
+                //{
+                //    //  继续接收来自来客户端的数据
+                //    client.BeginReceive(state.RecvDataBuffer, 0, state.RecvDataBuffer.Length, SocketFlags.None,
+                //     new AsyncCallback(HandleDataReceived), state);
+                //}
+            }
+        }
+
+        /// <summary>
+        /// 用户删除部门请求的事件的具体信息
+        /// </summary>
+        /// <param name="state"></param>
+        private void RaiseDeleteDepartmentRequestEvent(AsyncSocketState state)
+        {
+
+            string recvMsg = Encoding.UTF8.GetString(state.RecvDataBuffer, 0, state.RecvLength);
+            Console.WriteLine(recvMsg);
+            string DELETE_DEPARTMENT_RESPONSE;
+
+
+            // json数据解包
+            String departmentName = JsonConvert.DeserializeObject<String>(recvMsg);
+            bool result = DALDepartment.DeleteDepartment(departmentName);
+
+            if (result == true)
+            {
+                Console.WriteLine("部门{0}插入成功", departmentName);
+                this.Log.Write(new LogMessage("部门" + departmentName + "删除成功", LogMessageType.Success));
+
+                DELETE_DEPARTMENT_RESPONSE = "DELETE_DEPARTMENT_SUCCESS";               //  用户登录成功信号   
+            }
+            else
+            {
+                Console.WriteLine("部门{0}插入成功", departmentName);
+                this.Log.Write(new LogMessage("部门" + departmentName + "删除失败", LogMessageType.Error));
+
+                DELETE_DEPARTMENT_RESPONSE = "DELETE_DEPARTMENT_FAILED";                //  用户登录失败信号
+            }
+            // 将响应信息发送回客户端，先发响应信息头，再发响应信息域
+            //  响应信息头LOGIN_RESPONSE
+            this.Send(state.ClientSocket, Encoding.UTF8.GetBytes(DELETE_DEPARTMENT_RESPONSE));      //  将响应信号发送至客户端
+            //if (INSERT_DEPARTMENT_RESPONSE.Equals("INSERT_DEPARTMENT_SUCCESS"))
+            //{
+            //    String json = JsonConvert.SerializeObject(employee);
+            //    this.Send(state.ClientSocket, Encoding.UTF8.GetBytes(json));                    //  将
+            //}
+        }
+
+        #endregion
+    
     }
 }
+
