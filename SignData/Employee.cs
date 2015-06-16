@@ -41,23 +41,23 @@ namespace SignPressServer.SignData
         }
 
 
-        private bool m_canSubmit;     //  是否可以提交签单
-        public bool CanSubmit
+        private int m_canSubmit;     //  是否可以提交签单
+        public int CanSubmit
         {
             get { return this.m_canSubmit; }
             set { this.m_canSubmit = value; }
         }
 
-        private bool m_canSign;     //  是否可以提交签单
-        public bool CanSign
+        private int m_canSign;     //  是否可以提交签单
+        public int CanSign
         {
             get { return this.m_canSign; }
             set { this.m_canSign = value; }
         }
 
 
-        private bool m_isAdmin;     //  是否可以提交签单
-        public bool IsAdmin
+        private int m_isAdmin;     //  是否可以提交签单
+        public int IsAdmin
         {
             get { return this.m_isAdmin; }
             set { this.m_isAdmin = value; }
@@ -70,14 +70,13 @@ namespace SignPressServer.SignData
             set { this.m_user = value; }
         }
 
-        public void Show()
+        public override String ToString( )
         {
-            Console.WriteLine("输出员工的信息");
-            Console.WriteLine("ID :" + this.Id.ToString());
-            Console.WriteLine("NAME : " + this.Name);
-            Console.WriteLine("DEPARTMENT : " + this.Department.Id.ToString() + ", " + this.Department.Name);
-            Console.WriteLine("USERNAME : " + this.User.Username);
-            Console.WriteLine("PASSWORD : " + this.User.Password);
+            return "Id = " + this.Id.ToString() + "\n" 
+                + "Name = " + this.Name.ToString( ) + "\n"
+                + "Deaprtment = " + this.Department.ToString( ) + "\n"
+                + "User = " + this.User.ToString() + "\n";
+
         }
     }
 }

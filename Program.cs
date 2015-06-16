@@ -130,8 +130,14 @@ namespace SignPressServer
             
             //  测试用户登录
             
-            DALEmployee.LoginEmployee("chengjian", "chengjian");
-            DALEmployee.ModifyEmployeePassword(8, "wujiayi");
+            //DALEmployee.LoginEmployee("chengjian", "chengjian");
+            //DALEmployee.ModifyEmployeePassword(8, "wujiayi");
+            /*Department depart = new Department { Id = 7, Name = "赵强科" };
+            DALDepartment.InsertDepartment(depart);
+            DALDepartment.ModifyDepartmentName(depart.Id, "强哥科");
+            DALDepartment.DeleteDepartment(depart.Id);
+            Employee employee = DALEmployee.GetEmployee(1);
+            employee.Show();*/
             #endregion
 
 
@@ -241,7 +247,6 @@ namespace SignPressServer
             {
                 server.Start( );
             }
-            
 
             //Console.WriteLine("服务器准备中...");
             /*

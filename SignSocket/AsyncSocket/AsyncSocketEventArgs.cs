@@ -28,22 +28,32 @@ namespace SignPressServer.SignSocket.AsyncSocket
         /// </summary>
         public bool IsHandled { get; set; }
 
-
+        //  事件信息
         public AsyncSocketEventArgs(string message)
         {
             this.m_message = message;
             IsHandled = false;
         }
+
+        // 套接字信息事件
         public AsyncSocketEventArgs(AsyncSocketState state)
         {
             this.m_state = state;
             IsHandled = false;
+
+            //System.Net.IPEndPoint ip = (System.Net.IPEndPoint)state.ClientSocket.RemoteEndPoint;
+            //Console.WriteLine("获取到一个来自" + ip.Address + " : " + ip.Port + "的连接...");
+
         }
+
+        //  套接字 + 信息
         public AsyncSocketEventArgs(string message, AsyncSocketState state)
         {
             this.m_message = message;
             this.m_state = state;
             IsHandled = false;
         }
+        
+
     }
 }

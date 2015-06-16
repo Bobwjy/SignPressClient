@@ -3,21 +3,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
+using System.Data;
 using MySql.Data.MySqlClient;
 
-
+ 
 namespace SignPressServer.SignTools
 {
     class DBTools
     {
+
+        public static readonly string M_str_sqlcon = "server=localhost;user id=root;password=root;database=signature";
+             
         #region  建立MySql数据库连接
         /// <summary>
         /// 建立数据库连接.
         /// </summary>
         /// <returns>返回MySqlConnection对象</returns>
-        public MySqlConnection getmysqlcon()
+        public static MySqlConnection GetMySqlConnection()
         {
-            String M_str_sqlcon = "server=localhost;user id=root;password=root;database=signature"; //根据自己的设置
+            //String M_str_sqlcon = "server=localhost;user id=root;password=root;database=signature"; //根据自己的设置
             MySqlConnection myCon = new MySqlConnection(M_str_sqlcon);
             return myCon;
         }
@@ -30,7 +35,7 @@ namespace SignPressServer.SignTools
         /// <param name="M_str_sqlstr">SQL语句</param>
         public void getmysqlcom(String M_str_sqlstr)
         {
-            MySqlConnection mysqlcon = this.getmysqlcon();///  先获取一个MySql的
+            MySqlConnection mysqlcon = GetMySqlConnection();///  先获取一个MySql的
             try
             {
                 mysqlcon.Open();
@@ -55,7 +60,7 @@ namespace SignPressServer.SignTools
         /// <returns>返回MySqlDataReader对象</returns>
         public MySqlDataReader getmysqlread(String M_str_sqlstr)
         {
-            MySqlConnection mysqlcon = this.getmysqlcon();
+            MySqlConnection mysqlcon = GetMySqlConnection();
             MySqlCommand mysqlcom = new MySqlCommand(M_str_sqlstr, mysqlcon);
             try
             {

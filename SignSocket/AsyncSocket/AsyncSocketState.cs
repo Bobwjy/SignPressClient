@@ -23,6 +23,11 @@ namespace SignPressServer.SignSocket.AsyncSocket
         private byte[] m_recvBuffer;
 
         /// <summary>
+        /// 本次通信中接收到的数据的大小
+        /// </summary>
+        private int m_recvLength;
+       
+        /// <summary>
         /// 客户端发送到服务器的报文
         /// 注意:在有些情况下报文可能只是报文的片断而不完整
         /// </summary>
@@ -49,6 +54,11 @@ namespace SignPressServer.SignSocket.AsyncSocket
             }
         }
 
+        public int RecvLength
+        {
+            get { return this.m_recvLength; }
+            set { this.m_recvLength = value; }
+        }
         /// <summary>
         /// 存取会话的报文
         /// </summary>

@@ -7,7 +7,7 @@ using System.Text;
 ///  SOKCET 
 using System.Net.Sockets;  
 using System.Net;
-
+using Newtonsoft.Json;
 /*
  *  在同步模式中，
  *  在服务器上使用Accept方法接入连接请求，
@@ -42,6 +42,11 @@ using System.Net;
  *  然而，可以调用返回的 Socket 的 RemoteEndPoint 方法来标识远程主机的网络地址和端口号
  * 
  */
+
+
+using SignPressServer.SignDAL;
+using SignPressServer.SignData;
+using SignPressServer.SignTools;
 
 namespace SignPressServer.SignSocket.AsyncSocket
 {
@@ -119,7 +124,7 @@ namespace SignPressServer.SignSocket.AsyncSocket
         /// </summary>
         /// <param name="localEP">监听的终结点</param>
         public AsyncSocketServer(IPEndPoint localEP)
-            : this(localEP.Address, localEP.Port,1024)
+            : this(localEP.Address, localEP.Port, 1024)
         {
         }
 
@@ -279,8 +284,9 @@ namespace SignPressServer.SignSocket.AsyncSocket
 
                     //  如果两次开始了异步的接收,所以当客户端退出的时候
                     //  会两次执行EndReceive
-                    int recv = client.EndReceive(ar);   //  异步接收数据结束
-                    if (recv == 0)
+
+                    state.RecvLength = client.EndReceive(ar);   //  异步接收数据结束
+                    if (state.RecvLength == 0)
                     {
                         //  C - TODO 触发事件 (关闭客户端)
                         Close(state);
@@ -288,10 +294,21 @@ namespace SignPressServer.SignSocket.AsyncSocket
                         return;
                     }
                     //TODO 处理已经读取的数据 ps:数据在state的RecvDataBuffer中
-                    Console.WriteLine("接收了" + recv + "个数据单元");
-                    Console.WriteLine(state.RecvDataBuffer);
+                    Console.WriteLine("接收了" + state.RecvLength + "个数据单元");
+        
+                    // 处理客户端的数据请求
+                    DealClientRequest(state);
+                    
                     //C- TODO 触发数据接收事件
-                    RaiseDataReceived(state);
+                    //RaiseDataReceived(state);
+                    /// [服务器异步接收来自客户端的数据]
+                    /// 
+                    /// 首先是服务器通过BeginReceive开始异步接收客户端的数据
+                    /// 在BeginReceive的回调函数HandleDataReceived中，当接收完毕后，服务器调用EndReceive
+                    /// 至此异步接收来自服务器的数据完毕
+                    Console.WriteLine("前一个处理信息已经结束, 正在准备等待下一个接收");
+                    client.BeginReceive(state.RecvDataBuffer, 0, state.RecvDataBuffer.Length, SocketFlags.None,
+                     new AsyncCallback(HandleDataReceived), state);
                 }
                 catch (SocketException e)
                 {
@@ -301,9 +318,14 @@ namespace SignPressServer.SignSocket.AsyncSocket
                 }
                 finally
                 {
-                    //  继续接收来自来客户端的数据
-                    client.BeginReceive(state.RecvDataBuffer, 0, state.RecvDataBuffer.Length, SocketFlags.None,
-                     new AsyncCallback(HandleDataReceived), state);
+                    ///// [服务器异步接收来自客户端的数据]
+                    ///// 
+                    ///// 首先是服务器通过BeginReceive开始异步接收客户端的数据
+                    ///// 在BeginReceive的回调函数HandleDataReceived中，当接收完毕后，服务器调用EndReceive
+                    ///// 至此异步接收来自服务器的数据完毕
+                    //Console.WriteLine("前一个处理信息已经结束, 正在准备等待下一个接收");
+                    //client.BeginReceive(state.RecvDataBuffer, 0, state.RecvDataBuffer.Length, SocketFlags.None,
+                    // new AsyncCallback(HandleDataReceived), state);
                 }
             }
         }
@@ -368,6 +390,9 @@ namespace SignPressServer.SignSocket.AsyncSocket
         {
             if (ClientConnected != null)
             {
+                IPEndPoint ip = (IPEndPoint)state.ClientSocket.RemoteEndPoint;
+                Console.WriteLine("获取到一个来自" + ip.Address + " : " + ip.Port + "的连接...");
+           
                 ClientConnected(this, new AsyncSocketEventArgs(state));
             }
         }
@@ -392,7 +417,6 @@ namespace SignPressServer.SignSocket.AsyncSocket
         {
             if (DataReceived != null)
             {
-                
                 this.DataReceived(this, new AsyncSocketEventArgs(state));
             }
         }
@@ -540,6 +564,140 @@ namespace SignPressServer.SignSocket.AsyncSocket
                 disposed = true;
             }
         }
+        #endregion
+
+        /// 前面我们提到了服务器异步接收客户端请求的过程
+        /// 
+        /// 首先是服务器通过BeginReceive开始异步接收客户端的数据
+        /// 在BeginReceive的回调函数HandleDataReceived中，当接收完毕后，服务器调用EndReceive
+        /// 至此异步接收来自服务器的数据完毕
+        /// 
+        /// 而我们客户端默认发送数据是先发一个信息请求头，再发请求数据
+        /// 因此我们可以这样处理，在BeginReceive回调函数中，异步接收[信息请求头]完毕后，
+        /// 枚举信息头，来进行下面的处理，接收进一步的请求数据
+        /// 
+        /// 因此每增加一项客户端和服务器的通信过程，就可以这样实现，
+        /// 在DealClientRequest增加一个枚举头（信息请求头），然后开始异步接收进一步的信息数据
+        /// 在其回调函数中接收我们的信息，并将信息进行处理后，将事件处理函数中反馈信息发送至客户端
+        /// 
+        ///
+        /// 例如处理客户端的登录请求
+        /// 对应客户端会先发登录请求头LOGIN_REQUEST，然后接着发登录信息User
+        /// 在DealClientRequest中增加相应的信息头，然后服务器BeginReceive异步接收登录信息User，
+        /// 设置的接收登录信息User的回调函数HandleLoginRequestDataReceived等待接收信息完毕后
+        /// 在函数RaiseLoginRequestEvent事件处理函数中处理，进行查询数据库完毕后，将数据发送至客户端
+        #region 处理客户端的所有请求
+        /// <summary>
+        /// 处理客户端的所有请求
+        /// </summary>
+        /// <param name="ar"></param>
+        public void DealClientRequest(AsyncSocketState state)
+        {
+            string recvMsg = Encoding.UTF8.GetString(state.RecvDataBuffer, 0, state.RecvLength);
+
+            Console.WriteLine("接收到的数据{0}, 大小{1}", recvMsg, recvMsg.Length);
+            Console.WriteLine(recvMsg.Equals("LOGIN_REQUEST") == true);
+            switch (recvMsg)
+            { 
+            
+                case "LOGIN_REQUEST" :       //  用户登录信息
+                    // 开始接收用户登录的用户名和密码
+                    //在[回调函数]HandleLoginRequestDataReceived中接收完成后, 进行登录验证
+                    state.ClientSocket.BeginReceive(state.RecvDataBuffer, 0, state.RecvDataBuffer.Length, SocketFlags.None,
+                        new AsyncCallback(HandleLoginRequestDataReceived), state);
+                    break;
+            }
+        }
+        #endregion
+
+        
+
+        #region 处理客户端的登录请求
+        /// <summary>
+        /// 处理客户端登录请求数据
+        /// </summary>
+        /// <param name="ar"></param>
+        private void HandleLoginRequestDataReceived(IAsyncResult ar)
+        {
+            if (IsRunning)
+            {
+                AsyncSocketState state = (AsyncSocketState)ar.AsyncState;
+                Socket client = state.ClientSocket;
+                try
+                {
+
+
+                    //  如果两次开始了异步的接收,所以当客户端退出的时候
+                    //  会两次执行EndReceive
+                    state.RecvLength = client.EndReceive(ar);   //  异步接收数据结束
+                    if (state.RecvLength == 0)
+                    {
+                        //  C - TODO 触发事件 (关闭客户端)
+                        Close(state);
+                        RaiseNetError(state);
+                        return;
+                    }
+
+                    //TODO 处理已经读取的数据 ps:数据在state的RecvDataBuffer中
+                    IPEndPoint ip = (IPEndPoint)client.RemoteEndPoint;
+                    Console.WriteLine("正在与" + ip.Address + " : " + ip.Port + "进行登录验证...");
+                    Console.WriteLine("接收了{0}个数据单元[登录信息]", state.RecvLength);
+
+                    //C- TODO 触发用户登录的事件
+                    RaiseLoginRequestEvent(state);
+                }
+                catch (SocketException e)
+                {
+                    //  C- TODO 异常处理
+                    Console.WriteLine(e.ToString());
+                    RaiseNetError(state);
+                }
+                //finally
+                //{
+                //    //  继续接收来自来客户端的数据
+                //    client.BeginReceive(state.RecvDataBuffer, 0, state.RecvDataBuffer.Length, SocketFlags.None,
+                //     new AsyncCallback(HandleDataReceived), state);
+                //}
+            }
+        }
+
+        /// <summary>
+        /// 用户登录请求的事件的具体信息
+        /// </summary>
+        /// <param name="state"></param>
+        private void RaiseLoginRequestEvent(AsyncSocketState state)
+        {
+            
+            string recvMsg = Encoding.UTF8.GetString(state.RecvDataBuffer, 0, state.RecvLength);
+            Console.WriteLine(recvMsg);
+            string LOGIN_RESPONSE;
+
+
+            // json数据解包
+            User user = JsonConvert.DeserializeObject<User>(recvMsg);
+            Employee employee = new Employee();
+            employee = DALEmployee.LoginEmployee(user);        //  如果用户名和密码验证成功
+            if(employee.Id != -1)
+            {
+                Console.WriteLine(user + "用户名密码均正确，可以登录");
+                LOGIN_RESPONSE = "LOGIN_SUCCESS";               //  用户登录成功信号   
+            }
+            else
+            {
+                Console.WriteLine(user + "用户名密码验证失败，无法正常登录");
+                LOGIN_RESPONSE = "LOGIN_FAILED";                //  用户登录失败信号
+            }
+            
+            // 将响应信息发送回客户端，先发响应信息头，再发响应信息域
+            //  响应信息头LOGIN_RESPONSE
+            this.Send(state.ClientSocket, Encoding.UTF8.GetBytes(LOGIN_RESPONSE));      //  将响应信号发送至客户端
+            if(LOGIN_RESPONSE.Equals("LOGIN_SUCCESS"))
+            {
+                String json = JsonConvert.SerializeObject(employee);
+                this.Send(state.ClientSocket, Encoding.UTF8.GetBytes(json));                    //  将
+            }
+        }
+
         #endregion
     }
 }

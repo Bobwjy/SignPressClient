@@ -21,5 +21,9 @@ namespace SignPressServer.SignData
             get { return this.m_password; }
             set { this.m_password = value; }
         }
+        public override String ToString()
+        {
+            return "USERNAME : " + this.m_username + "PASSWORD : " + this.m_password;
+        }
     }
 }
