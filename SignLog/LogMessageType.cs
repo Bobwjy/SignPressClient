@@ -33,6 +33,12 @@ namespace SignPressServer.SignLog
         /// <summary>
         /// 指示成功信息类型的日志记录
         /// </summary>
-        Success
+        Success,
+        
+            
+        /// <summary>
+        /// 指示异常信息的日志记录
+        /// </summary>
+        Exception
     }
 }

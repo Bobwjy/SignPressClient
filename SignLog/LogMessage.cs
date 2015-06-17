@@ -9,12 +9,16 @@ namespace SignPressServer.SignLog
     /// 表示一个日志记录的对象
     /// </summary>
     public class LogMessage
-    {        //日志记录的时间
-        private DateTime datetime;
+    {        
+        
+        //日志记录的时间
+        private DateTime m_datetime;
+        
         //日志记录的内容
-        private string text;
-        //日志记录的类型
-        private LogMessageType type;
+        private string m_text;
+        
+//日志记录的类型
+        private LogMessageType m_type;
 
         /// <summary>
         /// 创建新的日志记录实例;日志记录的内容为空,消息类型为LogMessageType.Unknown,日志时间为当前时间
@@ -42,9 +46,9 @@ namespace SignPressServer.SignLog
         /// <param name="p">日志记录的消息类型</param>
         public LogMessage(DateTime dt, string t, LogMessageType p)
         {
-            datetime = dt;
-            type = p;
-            text = t;
+            m_datetime = dt;
+            m_type = p;
+            m_text = t;
         }
 
         /// <summary>
@@ -52,8 +56,8 @@ namespace SignPressServer.SignLog
         /// </summary>
         public DateTime Datetime
         {
-            get { return datetime; }
-            set { datetime = value; }
+            get { return m_datetime; }
+            set { m_datetime = value; }
         }
 
         /// <summary>
@@ -61,8 +65,8 @@ namespace SignPressServer.SignLog
         /// </summary>
         public string Text
         {
-            get { return text; }
-            set { text = value; }
+            get { return m_text; }
+            set { m_text = value; }
         }
 
         /// <summary>
@@ -70,13 +74,13 @@ namespace SignPressServer.SignLog
         /// </summary>
         public LogMessageType Type
         {
-            get { return type; }
-            set { type = value; }
+            get { return m_type; }
+            set { m_type = value; }
         }
 
         public new string ToString()
         {
-            return datetime.ToString() + "\t" + text + "\n";
+            return m_datetime.ToString() + "\t" + m_text + "\n\n";
         }
     }
 }

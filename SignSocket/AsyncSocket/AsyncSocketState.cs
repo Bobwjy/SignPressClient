@@ -6,7 +6,7 @@ using System.Text;
 
 /// SOCKET
 using System.Net.Sockets;
-
+using System.Net;
 
 namespace SignPressServer.SignSocket.AsyncSocket
 {
@@ -38,6 +38,10 @@ namespace SignPressServer.SignSocket.AsyncSocket
         /// </summary>
         private Socket m_clientSocket;
 
+        /// <summary>
+        /// 客户端的IP地址信息
+        /// </summary>
+        private  IPEndPoint m_clientIp;     // 客户端的IP地址
         #endregion
 
         #region 属性
@@ -77,6 +81,15 @@ namespace SignPressServer.SignSocket.AsyncSocket
         }
 
 
+        /// <summary>
+        /// 客户端的IP地址信息
+        /// </summary>
+        public IPEndPoint ClientIp     // 客户端的IP地址
+        {
+            get{ return this.m_clientIp; }
+            private set{ this.m_clientIp = value;}            
+        }
+        
         #endregion
 
         /// <summary>
@@ -86,6 +99,7 @@ namespace SignPressServer.SignSocket.AsyncSocket
         public AsyncSocketState(Socket clientSocket)
         {
             this.m_clientSocket = clientSocket;
+            this.m_clientIp = (IPEndPoint)clientSocket.RemoteEndPoint;  // 保存服务器的信息
         }
 
         /// <summary>

@@ -32,18 +32,18 @@ namespace SignPressServer.SignData
 
         #region   column栏目信息[5个栏目]
         
-        protected int m_columnCount;      // 目前此接口无用，因为数据栏目定死是5个
+        protected int m_columnCount = 5;      // 目前此接口无用，因为数据栏目定死是5个
         public int ColumnCount
         {
             get{ return this.m_columnCount; }
             set{ this.m_columnCount = value; }
         }
 
-        protected List<String> m_columnData;     //  存储5个栏目项的信息
-        public List<String> ColumnData
+        protected List<String> m_columnNames;     //  存储5个栏目项的信息
+        public List<String> ColumnNames
         {
-            get { return this.m_columnData; }
-            set { this.m_columnData = value; }
+            get { return this.m_columnNames; }
+            set { this.m_columnNames = value; }
         }
         
         #endregion
@@ -52,7 +52,7 @@ namespace SignPressServer.SignData
         #region  signinfo签字人信息[8个签字人]
         
         
-        protected int m_signCount;            //  签字人人数  此接口暂时无用，供扩展哟个，因为暂时签字人就是6+2=8个
+        protected int m_signCount = 8;            //  签字人人数  此接口暂时无用，供扩展哟个，因为暂时签字人就是6+2=8个
         public int SignCount
         {
             get { return this.m_signCount; }
@@ -60,11 +60,11 @@ namespace SignPressServer.SignData
         }
 
 
-        protected List<SignatureTemplate> m_signData;     //  签字人信息
-        public List<SignatureTemplate> SignData
+        protected List<SignatureTemplate> m_signDatas;     //  签字人信息
+        public List<SignatureTemplate> SignDatas
         {
-            get { return this.m_signData; }
-            set { this.m_signData = value; }
+            get { return this.m_signDatas; }
+            set { this.m_signDatas = value; }
         }
         
         

@@ -31,6 +31,13 @@ namespace SignPressServer.SignData
             set { this.m_signId = value; }
         }
 
+        private int m_signlevel;        //  签字人签字顺序级别
+        public int SIGN_LEVEL
+        {
+            get { return this.m_signlevel; }
+            set { this.m_signlevel = value; }
+        }
+
         private int m_signPosX;         // 签字人坐标X
         public int SignPosX
         {
@@ -45,12 +52,7 @@ namespace SignPressServer.SignData
             set { this.m_signposY = value; }
         }
 
-        private int m_signlevel;        //  签字人签字顺序级别
-        public int SIGN_LEVEL
-        {
-            get { return this.m_signlevel; }
-            set { this.m_signlevel = value; }
-        }
+
     
     }
 }

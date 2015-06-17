@@ -16,15 +16,15 @@ namespace SignPressServer.SignLog
         //日志对象的缓存队列
         private static Queue<LogMessage> LogMessages;
         //日志文件保存的路径
-        private static string path;
+        private static string m_path;
         //日志写入线程的控制标记
-        private static bool state;
+        private static bool m_state;
         //日志记录的类型
-        private static LogType type;
+        private static LogType m_type;
         //日志文件生命周期的时间标记
         private static DateTime TimeSign;
         //日志文件写入流对象
-        private static StreamWriter writer;
+        private static StreamWriter m_writer;
 
         /// <summary>
         /// 创建日志对象的新实例，采用默认当前程序位置作为日志路径和默认的每日日志文件类型记录日志
@@ -52,17 +52,17 @@ namespace SignPressServer.SignLog
         {
             if (LogMessages == null)
             {
-                state = true;
-                path = p;
-                type = t;
+                m_state = true;
+                m_path = p;
+                m_type = t;
                 LogMessages = new Queue<LogMessage>();
-                Thread thread = new Thread(work);
+                Thread thread = new Thread(Work);
                 thread.Start();
             }
         }
 
         //日志文件写入线程执行的方法
-        private void work()
+        private void Work()
         {
             while (true)
             {
@@ -82,7 +82,7 @@ namespace SignPressServer.SignLog
                 else
                 {
                     //判断是否已经发出终止日志并关闭的消息
-                    if (state)
+                    if (m_state)
                     {
                         Thread.Sleep(1);
                     }
@@ -100,7 +100,7 @@ namespace SignPressServer.SignLog
         {
             DateTime now = DateTime.Now;
             string format = "";
-            switch (type)
+            switch (m_type)
             {
                 case LogType.Daily:
                     TimeSign = new DateTime(now.Year, now.Month, now.Day);
@@ -131,7 +131,7 @@ namespace SignPressServer.SignLog
         {
             try
             {
-                if (writer == null)
+                if (m_writer == null)
                 {
                     FileOpen();
                 }
@@ -143,12 +143,12 @@ namespace SignPressServer.SignLog
                         FileClose();
                         FileOpen();
                     }
-                    writer.Write(LogMessage.Datetime);
-                    writer.Write('\t');
-                    writer.Write(LogMessage.Type);
-                    writer.Write('\t');
-                    writer.WriteLine(LogMessage.Text);
-                    writer.Flush();
+                    m_writer.Write(LogMessage.Datetime);
+                    m_writer.Write('\t');
+                    m_writer.Write(LogMessage.Type);
+                    m_writer.Write('\t');
+                    m_writer.WriteLine(LogMessage.Text);
+                    m_writer.Flush();
                 }
             }
             catch (Exception e)
@@ -160,18 +160,18 @@ namespace SignPressServer.SignLog
         //打开文件准备写入
         private void FileOpen()
         {
-            writer = new StreamWriter(path + GetFilename(), true, Encoding.UTF8);
+            m_writer = new StreamWriter(m_path + GetFilename(), true, Encoding.UTF8);
         }
 
         //关闭打开的日志文件
         private void FileClose()
         {
-            if (writer != null)
+            if (m_writer != null)
             {
-                writer.Flush();
-                writer.Close();
-                writer.Dispose();
-                writer = null;
+                m_writer.Flush();
+                m_writer.Close();
+                m_writer.Dispose();
+                m_writer = null;
             }
         }
 
@@ -228,7 +228,7 @@ namespace SignPressServer.SignLog
         /// </summary>
         public void Dispose()
         {
-            state = false;
+            m_state = false;
         }
 
         #endregion

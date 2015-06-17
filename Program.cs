@@ -86,7 +86,7 @@ using SignPressServer.SignDAL;      //  数据库处理
 /// socket + json
 using SignPressServer.SignSocket.AsyncSocket;   //  套接字信息
 using SignPressServer.SignSocket.AsyncTcpListener;  //  
-
+using SignPressServer.SignSocket.SyncSocket;
 /*
  * SignPress程序的服务器程序
  * 
@@ -138,6 +138,20 @@ namespace SignPressServer
             DALDepartment.DeleteDepartment(depart.Id);
             Employee employee = DALEmployee.GetEmployee(1);
             employee.Show();*/
+
+            // 向数据库中查询部门的信息
+
+            /*List<Department> departments = DALDepartment.QueryDepartment();
+            foreach (Department department in departments)
+            {
+                Console.WriteLine(department);
+            }*/
+            /*
+            Employee em1 = DALEmployee.GetEmployee(1);
+            Console.WriteLine(em1);
+            Employee em2 = DALEmployee.GetEmployee("che1ngjian");
+            Console.WriteLine(em2);
+            */
             #endregion
 
 
@@ -176,7 +190,7 @@ namespace SignPressServer
             ref oMissing, ref oMissing, ref oMissing, ref oMissing, ref oMissing,
             ref oMissing, ref oMissing, ref oMissing, ref oMissing, ref oMissing);*/
 
-            MSWordTools wordTools = new MSWordTools();
+            //MSWordTools wordTools = new MSWordTools();
             
             //  创建一个WORD文档
             //wordTools.CreateWord(@"G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressServer\1111.doc");
@@ -237,8 +251,18 @@ namespace SignPressServer
             */
             #endregion
 
+            #region 获取本机的IP
+            
+            string hostName = System.Net.Dns.GetHostName();//本机名   
+            System.Net.IPAddress[] addressList = System.Net.Dns.GetHostAddresses(hostName);//会返回所有地址，包括IPv4和IPv6   
+            foreach (System.Net.IPAddress ip in addressList)  
+            {  
+                Console.WriteLine(ip.ToString());
+            }
+            #endregion
 
             #region 服务器的处理程序AsyncSocketServer
+            
             Console.WriteLine("服务器准备中...");
             
             // System.Net.IPEndPoint ep = new System.Net.IPEndPoint(System.Net.IPAddress.Parse("10.0.209.144"), 6666);
@@ -247,14 +271,10 @@ namespace SignPressServer
             {
                 server.Start( );
             }
+            //SocketTCPServer server = new SocketTCPServer(6666);
+            //server.Start();
 
-            //Console.WriteLine("服务器准备中...");
-            /*
-            AsyncTcpServer server = new AsyncTcpServer(6666);
-            while (true)
-            {
-                server.Start();
-            }*/
+
             #endregion
         }
     }

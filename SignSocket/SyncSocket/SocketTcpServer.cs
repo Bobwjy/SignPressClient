@@ -132,8 +132,11 @@ namespace SignPressServer.SignSocket.SyncSocket
                 }
                 else
                 {
+                    
                     Socket clientSock = _serverSock.Accept();
                     _clientCount++;
+                    IPEndPoint ip = (IPEndPoint)clientSock.RemoteEndPoint;
+                    Console.WriteLine("获取到来自{0} : {1}的连接", ip.Address, ip.Port);
                     //TODO 创建一个处理客户端的线程并启动
                     handle = new SocketClientHandle(clientSock);
                     _clients.Add(handle);

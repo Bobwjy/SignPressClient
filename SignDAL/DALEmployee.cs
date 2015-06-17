@@ -46,35 +46,65 @@ namespace SignPressServer.SignDAL
         /// <summary>
         /// 判断用户名密码是否正确
         /// </summary>
-        private const String LOGIN_EMPLOYEE_SIM_STR = @"SELECT id FROM `employee` WHERE(`username` = @Username and `password` = @Password)";
+        private const String LOGIN_EMPLOYEE_SIM_STR = @"SELECT id FROM `employee` WHERE(`username` = @Username and `password` = @Password) ORDER BY id";
         private const String LOGIN_EMPLOYEE_COM_STR = @"SELECT e.id id, e.name name, e.position position, e.cansubmit cansubmit, e.cansign cansign, e.isadmin isadmin,
                                                                d.id departid, d.name departname, 
                                                                e.username username, e.password password
                                                         FROM `employee`  e, `department` d 
-                                                        WHERE (`username` = @Username and `password` = @Password and e.departmentid = d.id)";
-        
+                                                        WHERE (`username` = @Username and `password` = @Password and e.departmentid = d.id)
+                                                        ORDER BY id";
+
         /// <summary>
         /// 修改密码的信息串
         /// </summary>
         private const String MODIFY_EMPLOYEE_PASSWORD_STR = @"UPDATE `employee` SET `password`=@Password WHERE (`id`=@Id)";
 
-
+        private const String MODIFY_EMPLOYEE_ID_STR = @"UPDATE `employee` 
+                                                        SET `name` = @Name, `position` = @Position, `departmentid` = @DepartmentId, 
+                                                            `cansubmit` = CanSubmit, `cansign` = @CanSign, `isadmin` = IsAdmin, 
+                                                            `username` = @Username, `password` = @Password 
+                                                        WHERE (`id` = @Id)";
         /// <summary>
-        /// 修改密码的信息串
+        /// 获取员工信息的信息串
         /// </summary>
-        /*
-SELECT e.id, e.name, e.depart, e.username, e.password 
-FROM `employee`  e, 'department' d 
- WHERE (e.id = 1 and e.depart == d.id);         
-         */
-        private const String GET_EMPLOYEE_STR = @"SELECT e.id id, e.name name, e.position position, e.cansubmit cansubmit, e.cansign cansign, e.isadmin isadmin,
+
+        private const String GET_EMPLOYEE_ID_STR = @"SELECT e.id id, e.name name, e.position position, e.cansubmit cansubmit, e.cansign cansign, e.isadmin isadmin,
                                                          d.id departid, d.name departname, 
                                                          e.username username, e.password password
                                                   FROM `employee`  e, `department` d 
                                                   WHERE (e.id = @Id and e.departmentid = d.id)";
-        /*private const String GET_EMPLOYEE_STR = @"SELECT *
-                                                  FROM `employee` 
-                                                  WHERE (id = 1)";*/
+
+        private const String GET_EMPLOYEE_USERNAME_STR = @"SELECT e.id id, e.name name, e.position position, e.cansubmit cansubmit, e.cansign cansign, e.isadmin isadmin,
+                                                         d.id departid, d.name departname, 
+                                                         e.username username, e.password password
+                                                  FROM `employee`  e, `department` d 
+                                                  WHERE (e.username = @Username and e.departmentid = d.id)";
+
+
+        /// <summary>
+        /// 查询所有员工的信息串
+        /// </summary>
+        private const String QUERY_ALL_EMPLOYEE_STR = @"SELECT e.id id, e.name name, e.position position, e.cansubmit cansubmit, e.cansign cansign, e.isadmin isadmin,
+                                                         d.id departid, d.name departname, 
+                                                         e.username username, e.password password
+                                                  FROM `employee`  e, `department` d 
+                                                  WHERE (e.departmentid = d.id)
+                                                  ORDER BY e.id";
+
+        private const String QUERY_DEPARTMENT_EMPLOYEE_ID_STR = @"SELECT e.id id, e.name name, e.position position, e.cansubmit cansubmit, e.cansign cansign, e.isadmin isadmin,
+                                                                      d.id departid, d.name departname, 
+                                                                      e.username username, e.password password
+                                                               FROM `employee`  e, `department` d 
+                                                               WHERE (e.departmentid = d.id and d.id = @DepartmentId)
+                                                               ORDER BY e.id";
+
+        private const String QUERY_DEPARTMENT_EMPLOYEE_NAME_STR = @"SELECT e.id id, e.name name, e.position position, e.cansubmit cansubmit, e.cansign cansign, e.isadmin isadmin,
+                                                                      d.id departid, d.name departname, 
+                                                                      e.username username, e.password password
+                                                               FROM `employee`  e, `department` d 
+                                                               WHERE (e.departmentid = d.id and d.name = @DepartmentName)
+                                                               ORDER BY e.id";
+
         #endregion
 
         #region  插入员工信息
@@ -163,7 +193,7 @@ FROM `employee`  e, 'department' d
 
                 if (count == 1)
                 {
-                    Console.WriteLine("删除用户" + employeeId.ToString( ) + "成功");
+                    Console.WriteLine("删除用户" + employeeId.ToString() + "成功");
                     return true;
                 }
                 else
@@ -203,8 +233,8 @@ FROM `employee`  e, 'department' d
                 cmd.Parameters.AddWithValue("@Username", username);                         // 员工登录用户名
                 cmd.Parameters.AddWithValue("@Password", password);                         // 员工登录密码
 
-                MySqlDataReader sqlRead = cmd.ExecuteReader( );
-                
+                MySqlDataReader sqlRead = cmd.ExecuteReader();
+
                 cmd.Dispose();
 
 
@@ -213,7 +243,7 @@ FROM `employee`  e, 'department' d
                 if (sqlRead.Read())
                 {
                     Console.WriteLine(sqlRead["id"].ToString() + "  " + sqlRead["name"].ToString());
-                    result = int.Parse(sqlRead["id"].ToString( ));
+                    result = int.Parse(sqlRead["id"].ToString());
                 }
                 else
                 {
@@ -363,25 +393,23 @@ FROM `employee`  e, 'department' d
             MySqlConnection con = DBTools.GetMySqlConnection();
             MySqlCommand cmd;
             Employee employee = new Employee(); ;          //  待返回的员工信息
-            
+
             try
             {
                 con.Open();
 
-                cmd = con.CreateCommand( );
+                cmd = con.CreateCommand();
 
-                cmd.CommandText = GET_EMPLOYEE_STR;
+                cmd.CommandText = GET_EMPLOYEE_ID_STR;
                 cmd.Parameters.AddWithValue("@Id", employeeId);                         // 员工编号
 
-                MySqlDataReader sqlRead = cmd.ExecuteReader( );
-                
+                MySqlDataReader sqlRead = cmd.ExecuteReader();
+
                 cmd.Dispose();
 
 
                 if (sqlRead.Read())
                 {
-
-                    // Console.WriteLine(sqlRead["id"].ToString() + "  " + sqlRead["name"].ToString());
 
                     employee.Id = int.Parse(sqlRead["id"].ToString());
                     employee.Name = sqlRead["name"].ToString();
@@ -390,13 +418,13 @@ FROM `employee`  e, 'department' d
                     employee.CanSubmit = int.Parse(sqlRead["cansubmit"].ToString());
                     employee.CanSign = int.Parse(sqlRead["cansign"].ToString());
                     employee.IsAdmin = int.Parse(sqlRead["isadmin"].ToString());
-                    
+
                     Department depart = new Department();
                     depart.Id = int.Parse(sqlRead["departid"].ToString());
                     depart.Name = sqlRead["departname"].ToString();
                     employee.Department = depart;
 
-                    User user = new User( );
+                    User user = new User();
                     user.Username = sqlRead["username"].ToString();
                     user.Password = sqlRead["password"].ToString();
                     employee.User = user;
@@ -420,11 +448,353 @@ FROM `employee`  e, 'department' d
             }
             return employee;
         }
+
+        public static Employee GetEmployee(String employeeUsername)
+        {
+            MySqlConnection con = DBTools.GetMySqlConnection();
+            MySqlCommand cmd;
+            Employee employee = null;          //  待返回的员工信息
+
+            try
+            {
+                con.Open();
+
+                cmd = con.CreateCommand();
+
+                cmd.CommandText = GET_EMPLOYEE_USERNAME_STR;
+                cmd.Parameters.AddWithValue("@Username", employeeUsername);                         // 员工编号
+
+                MySqlDataReader sqlRead = cmd.ExecuteReader();
+
+                cmd.Dispose();
+
+                if (sqlRead.Read())
+                {
+                    employee = new Employee();
+                    employee.Id = int.Parse(sqlRead["id"].ToString());
+                    employee.Name = sqlRead["name"].ToString();
+                    employee.Position = sqlRead["position"].ToString();
+
+                    employee.CanSubmit = int.Parse(sqlRead["cansubmit"].ToString());
+                    employee.CanSign = int.Parse(sqlRead["cansign"].ToString());
+                    employee.IsAdmin = int.Parse(sqlRead["isadmin"].ToString());
+
+                    Department depart = new Department();
+                    depart.Id = int.Parse(sqlRead["departid"].ToString());
+                    depart.Name = sqlRead["departname"].ToString();
+                    employee.Department = depart;
+
+                    User user = new User();
+                    user.Username = sqlRead["username"].ToString();
+                    user.Password = sqlRead["password"].ToString();
+                    employee.User = user;
+                    Console.WriteLine(employee);
+                }
+
+                con.Close();
+                con.Dispose();
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+
+                if (con.State == ConnectionState.Open)
+                {
+                    con.Close();
+                }
+            }
+            return employee;
+        }
         #endregion
 
 
+
+        #region 修改用户的基本信息
+        public static bool ModifyEmployee(Employee employee)
+        {
+            MySqlConnection con = DBTools.GetMySqlConnection();
+            MySqlCommand cmd;
+            int count = -1;
+            try
+            {
+                con.Open();
+
+                cmd = con.CreateCommand();
+
+                cmd.CommandText = MODIFY_EMPLOYEE_ID_STR;
+
+                cmd.Parameters.AddWithValue("@Name", employee.Name);
+                cmd.Parameters.AddWithValue("@Position", employee.Position);                        // 员工姓名
+                cmd.Parameters.AddWithValue("@DepartmentId", employee.Department.Id);
+
+                cmd.Parameters.AddWithValue("@CanSubmit", employee.CanSubmit);
+                cmd.Parameters.AddWithValue("@CanSign", employee.CanSign);
+                cmd.Parameters.AddWithValue("@IsAdmin", employee.IsAdmin);
+
+                cmd.Parameters.AddWithValue("@Username", employee.User.Username);
+                cmd.Parameters.AddWithValue("@Password", employee.User.Password);
+
+                count = cmd.ExecuteNonQuery();
+                cmd.Dispose();
+
+                con.Close();
+                con.Dispose();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+
+                if (con.State == ConnectionState.Open)
+                {
+                    con.Close();
+                }
+            }
+            if (count == 1)
+            {
+                Console.WriteLine("修改员工信息" + employee.Id.ToString() + "成功");
+
+                return true;
+            }
+            else
+            {
+                Console.WriteLine("修改员工信息" + employee.Id.ToString() + "失败");
+
+                return false;
+            }
+        }
+        #endregion
+
+
+
+
+
+        #region 查询员工的信息
+        /// <summary>
+        /// 查询所有的员工信息
+        /// </summary>
+        /// <returns></returns>
+        public static List<Employee> QueryEmployee()
+        {
+            MySqlConnection con = DBTools.GetMySqlConnection();
+            MySqlCommand cmd;
+
+            List<Employee> employees = new List<Employee>();
+
+            try
+            {
+                con.Open();
+
+                cmd = con.CreateCommand();
+
+                cmd.CommandText = QUERY_ALL_EMPLOYEE_STR;
+
+
+                MySqlDataReader sqlRead = cmd.ExecuteReader();
+                cmd.Dispose();
+
+                while (sqlRead.Read())
+                {
+                    Employee employee = new Employee();
+
+                    employee.Id = int.Parse(sqlRead["id"].ToString());
+                    employee.Name = sqlRead["name"].ToString();
+                    employee.Position = sqlRead["position"].ToString();
+
+                    employee.CanSubmit = int.Parse(sqlRead["cansubmit"].ToString());
+                    employee.CanSign = int.Parse(sqlRead["cansign"].ToString());
+                    employee.IsAdmin = int.Parse(sqlRead["isadmin"].ToString());
+
+                    Department depart = new Department();
+                    depart.Id = int.Parse(sqlRead["departid"].ToString());
+                    depart.Name = sqlRead["departname"].ToString();
+                    employee.Department = depart;
+
+                    User user = new User();
+                    user.Username = sqlRead["username"].ToString();
+                    user.Password = sqlRead["password"].ToString();
+                    employee.User = user;
+
+                    employees.Add(employee);        // 将查询出来的员工信息插入链表中
+                }
+
+
+                con.Close();
+                con.Dispose();
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+
+                if (con.State == ConnectionState.Open)
+                {
+                    con.Close();
+                }
+            }
+            return employees;
+        }
+
+        /// <summary>
+        /// 查询部门编号为departmentId的所有员工信息
+        /// </summary>
+        /// <param name="departmendId">部门的编号，当编号为0时返回所有员工的信息， > 0时返回所在部门员工的信息</param>
+        /// <returns></returns>
+        public static List<Employee> QueryEmployee(int departmendId)
+        {
+            MySqlConnection con = DBTools.GetMySqlConnection();
+            MySqlCommand cmd;
+
+            List<Employee> employees = new List<Employee>();
+
+            try
+            {
+                con.Open();
+
+                cmd = con.CreateCommand();
+                if (departmendId == 0)
+                {
+                    cmd.CommandText = QUERY_ALL_EMPLOYEE_STR;
+
+                }
+                else
+                {
+                    cmd.CommandText = QUERY_DEPARTMENT_EMPLOYEE_ID_STR;
+                    cmd.Parameters.AddWithValue("@DepartmentId", departmendId);
+
+                }
+
+                MySqlDataReader sqlRead = cmd.ExecuteReader();
+                cmd.Dispose();
+
+                while (sqlRead.Read())
+                {
+                    Employee employee = new Employee();
+
+                    employee.Id = int.Parse(sqlRead["id"].ToString());
+                    employee.Name = sqlRead["name"].ToString();
+                    employee.Position = sqlRead["position"].ToString();
+
+                    employee.CanSubmit = int.Parse(sqlRead["cansubmit"].ToString());
+                    employee.CanSign = int.Parse(sqlRead["cansign"].ToString());
+                    employee.IsAdmin = int.Parse(sqlRead["isadmin"].ToString());
+
+                    Department depart = new Department();
+                    depart.Id = int.Parse(sqlRead["departid"].ToString());
+                    depart.Name = sqlRead["departname"].ToString();
+                    employee.Department = depart;
+
+                    User user = new User();
+                    user.Username = sqlRead["username"].ToString();
+                    user.Password = sqlRead["password"].ToString();
+                    employee.User = user;
+
+                    employees.Add(employee);        // 将查询出来的员工信息插入链表中
+                }
+
+
+                con.Close();
+                con.Dispose();
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+
+                if (con.State == ConnectionState.Open)
+                {
+                    con.Close();
+                }
+            }
+            return employees;
+        }
+
+        /// <summary>
+        /// 查询部门名称为departmentName的所有员工信息
+        /// </summary>
+        /// <param name="departmendId"></param>
+        /// <returns></returns>
+        public static List<Employee> QueryEmployee(String departmentName)
+        {
+            MySqlConnection con = DBTools.GetMySqlConnection();
+            MySqlCommand cmd;
+
+            List<Employee> employees = new List<Employee>();
+
+            try
+            {
+                con.Open();
+
+                cmd = con.CreateCommand();
+
+                cmd.CommandText = QUERY_DEPARTMENT_EMPLOYEE_NAME_STR;
+                cmd.Parameters.AddWithValue("@DepartmentName", departmentName);
+
+                MySqlDataReader sqlRead = cmd.ExecuteReader();
+                cmd.Dispose();
+
+                while (sqlRead.Read())
+                {
+                    Employee employee = new Employee();
+
+                    employee.Id = int.Parse(sqlRead["id"].ToString());
+                    employee.Name = sqlRead["name"].ToString();
+                    employee.Position = sqlRead["position"].ToString();
+
+                    employee.CanSubmit = int.Parse(sqlRead["cansubmit"].ToString());
+                    employee.CanSign = int.Parse(sqlRead["cansign"].ToString());
+                    employee.IsAdmin = int.Parse(sqlRead["isadmin"].ToString());
+
+                    Department depart = new Department();
+                    depart.Id = int.Parse(sqlRead["departid"].ToString());
+                    depart.Name = sqlRead["departname"].ToString();
+                    employee.Department = depart;
+
+                    User user = new User();
+                    user.Username = sqlRead["username"].ToString();
+                    user.Password = sqlRead["password"].ToString();
+                    employee.User = user;
+
+                    employees.Add(employee);        // 将查询出来的员工信息插入链表中
+                }
+
+
+                con.Close();
+                con.Dispose();
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+
+                if (con.State == ConnectionState.Open)
+                {
+                    con.Close();
+                }
+            }
+            return employees;
+        }
+        #endregion
+
+
+
         #region 测试增加用户
-        public static void  TestInsertEmployee()
+        public static void TestInsertEmployee()
         {
             Employee em = new Employee
             {
@@ -437,6 +807,5 @@ FROM `employee`  e, 'department' d
             InsertEmployee(em);
         }
         #endregion
-        
     }
 }

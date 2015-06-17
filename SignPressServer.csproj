@@ -47,8 +47,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="SignContract\YHJLHXMBKContract.cs" />
+    <Compile Include="SignDAL\DALContractTemplate.cs" />
     <Compile Include="SignDAL\DALDepartment.cs" />
     <Compile Include="SignDAL\DALYHJLHXMBKContract.cs" />
+    <Compile Include="SignData\ColumnTemplate.cs" />
     <Compile Include="SignData\ContractTemplate.cs" />
     <Compile Include="SignData\Department.cs" />
     <Compile Include="SignData\Employee.cs" />
@@ -127,7 +129,9 @@
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="SignFile\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

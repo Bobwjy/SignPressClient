@@ -27,5 +27,10 @@ namespace SignPressServer.SignData
             get { return this.m_name; }
             set { this.m_name = value; }
         }
+
+        public override string ToString()
+        {
+            return "Id = " + this.m_id.ToString() + ", Name = " + this.m_name.ToString(); 
+        }
     }
 }

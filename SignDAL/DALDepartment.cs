@@ -27,11 +27,20 @@ namespace SignPressServer.SignDAL
         /// <summary>
         /// 删除数据库的信息串
         /// </summary>
+        //  按照部门ID删除部门
         private const String DELETE_DEPARTMENT_ID_STR = @"DELETE FROM `department` WHERE (`id`=@Id)";
+        //  按照部门Name删除部门
         private const String DELETE_DEPARTMENT_NAME_STR = @"DELETE FROM `department` WHERE (`name`=@Name)";
-        
 
-        private const String MODIFY_DEPARTMENT_NAME_STR = @"UPDATE `department` SET `name`=@Name WHERE (`id`=@Id)";
+        /// <summary>
+        /// 修改部门名称的信息串
+        /// </summary>
+        private const String MODIFY_DEPARTMENT_ID_STR = @"UPDATE `department` SET `name`=@Name WHERE (`id`=@Id)";
+        /// <summary>
+        /// 查询部门信息的信息串
+        /// </summary>
+        private const String QUERY_DEPARTMENT_STR = @"SELECT id, name FROM `department` ORDER BY id"; 
+        
         #endregion
 
         #region  插入部门信息
@@ -188,7 +197,7 @@ namespace SignPressServer.SignDAL
 
 
         #region 修改部门名称信息
-        public static bool ModifyDepartmentName(int departmentId, String departmentName)
+        public static bool ModifyDepartment(int departmentId, String departmentName)
         {
             MySqlConnection con = DBTools.GetMySqlConnection();
             MySqlCommand cmd;
@@ -199,7 +208,7 @@ namespace SignPressServer.SignDAL
 
                 cmd = con.CreateCommand();
 
-                cmd.CommandText = MODIFY_DEPARTMENT_NAME_STR;
+                cmd.CommandText = MODIFY_DEPARTMENT_ID_STR;
                 cmd.Parameters.AddWithValue("@Id", departmentId);
                 cmd.Parameters.AddWithValue("@Name", departmentName);                        // 员工姓名
 
@@ -236,6 +245,108 @@ namespace SignPressServer.SignDAL
                 }
             }
         }
+
+        public static bool ModifyDepartment(Department department)
+        {
+            MySqlConnection con = DBTools.GetMySqlConnection();
+            MySqlCommand cmd;
+            int count = -1;
+            try
+            {
+                con.Open();
+
+                cmd = con.CreateCommand();
+
+                cmd.CommandText = MODIFY_DEPARTMENT_ID_STR;
+                cmd.Parameters.AddWithValue("@Id", department.Id);
+                cmd.Parameters.AddWithValue("@Name", department.Name);                        // 员工姓名
+
+
+                count = cmd.ExecuteNonQuery();
+                cmd.Dispose();
+
+                con.Close();
+                con.Dispose();
+
+                if (count == 1)
+                {
+                    Console.WriteLine("修改部门名称" + department.Id.ToString() + "成功");
+
+                    return true;
+                }
+                else
+                {
+                    Console.WriteLine("修改部门名称" + department.Id.ToString() + "失败");
+
+                    return false;
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+
+                if (con.State == ConnectionState.Open)
+                {
+                    con.Close();
+                }
+            }
+        }
         #endregion
+
+
+        #region 查询部门的信息
+        public static List<Department> QueryDepartment( )
+        {
+            MySqlConnection con = DBTools.GetMySqlConnection();
+            MySqlCommand cmd;
+            
+            List<Department> departments = new List<Department>();
+            
+            try
+            {
+                con.Open();
+
+                cmd = con.CreateCommand();
+
+                cmd.CommandText = QUERY_DEPARTMENT_STR;
+
+
+                MySqlDataReader sqlRead = cmd.ExecuteReader();
+                cmd.Dispose();
+
+                while (sqlRead.Read())          
+                {
+                    Department department = new Department();
+
+                    department.Id = int.Parse(sqlRead["id"].ToString());
+                    department.Name = sqlRead["name"].ToString();
+                    
+                    departments.Add(department);
+                }
+
+
+                con.Close();
+                con.Dispose();
+                
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+
+                if (con.State == ConnectionState.Open)
+                {
+                    con.Close();
+                }
+            }
+            return departments;
+        }
+        #endregion
+
     }
 }

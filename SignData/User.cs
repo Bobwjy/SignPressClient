@@ -23,7 +23,7 @@ namespace SignPressServer.SignData
         }
         public override String ToString()
         {
-            return "USERNAME : " + this.m_username + "PASSWORD : " + this.m_password;
+            return "USERNAME : " + this.m_username + ", PASSWORD : " + this.m_password;
         }
     }
 }

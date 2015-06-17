@@ -48,31 +48,17 @@ namespace SignPressServer.SignContract
      *  目前暂时采用第一种方案，因为麻烦点，麻烦点，但是可以排除提交人员不是签字人的情况出现的大BUG
 
      ****/
-    class YHJLHXMBKContract :  ContractTemplate
+    class YHJLHXMBKContract /*  :  ContractTemplate  */
     {
+
         /// <summary>
         ///  构造函数
         /// </summary>
-        public YHJLHXMBKContract()
-            :base()
-        { 
-            ///this.m_tempId = ///
-            ///this.TempId = 
-            
-            ///  会签单名称
-            this.Name = "养护及例会项目拨款会签审批单";
-            
-            /// 5个基本项
-            this.ColumnCount = 5;
-            this.ColumnData.Add("工程名称");
-            this.ColumnData.Add("项目名称");
-            this.ColumnData.Add("主要项目及工程量");
-            this.ColumnData.Add("本次申请资金额度（元）");
-            this.ColumnData.Add("累计申请资金额度（元）");
-            
-            /// 8个签字信息项
-            this.SignCount = 8;
-            //this.SignData.Add();
+        private ContractTemplate m_conTemp;       // 会签单的模版信息
+        public ContractTemplate ConTemp
+        {
+            get { return this.m_conTemp; }
+            set { this.m_conTemp = value; }
         }
         
         private String m_id;            //  审批会签单编号
@@ -82,6 +68,14 @@ namespace SignPressServer.SignContract
             set { this.m_id = value; }
         }
 
+        private List<String> m_columnDatas;     //  存储会签单
+        public List<String> ColumnDatas
+        {
+            get { return this.ColumnDatas; }
+            set { this.m_columnDatas = value; }
+        }
+        
+        
         private String m_proName;      //  工程名称
         public String ProName
         {
@@ -124,6 +118,8 @@ namespace SignPressServer.SignContract
             get { return this.m_submitId; }
             set { this.m_submitId = value; }
         }
+
+
         /*  以下字段考虑是用员工数类表示还是用员工表的主键来表示
         private int m_reqDepartProId;           // 申请单位项目负责人的员工编号
         public int ReqDepartProId
@@ -171,5 +167,147 @@ namespace SignPressServer.SignContract
         private int m_                      ·//  副局长
         private int m_director               //  局长
         */
+
+        /// <summary>
+        ///  构造函数
+        /// </summary>
+        /*public YHJLHXMBKContract()
+        :this()
+        { 
+        }*/
+
+        /// <summary>
+        /// 构造函数
+        /// </summary>
+        /// <param name="conTemp"></param>
+        public YHJLHXMBKContract(ContractTemplate conTemp)
+        {
+            this.m_conTemp = conTemp;       //  模版类信息
+        }
+        
+
+        /// <summary>
+        /// 依照当前的会签单信息生成PDF文件
+        /// </summary>
+        /// <returns>返回生成的PDF文件的路劲信息</returns>
+        public String CreateContractFile()
+        {
+            return null;
+            //MSWord._Application wordApp;             //Word应用程序变量
+            //MSWord._Document wordDoc;                //Word文档变量
+            //wordApp = new MSWord.Application();     //初始化
+
+            //if (File.Exists((String)filePath))
+            //{
+            //    File.Delete((String)filePath);
+            //}
+            //Object Missing = System.Reflection.Missing.Value;
+            //wordDoc = wordApp.Documents.Add(ref Missing, ref Missing, ref Missing, ref Missing);
+
+            //int tableRow = 6;
+            //int tableColumn = 6;
+
+            ////定义一个word中的表格对象
+            //MSWord.Table table = wordDoc.Tables.Add(wordApp.Selection.Range, tableRow, tableColumn, ref Missing, ref Missing);
+
+
+            //wordDoc.Tables[1].Cell(1, 1).Range.Text = "列\n行";
+            //for (int i = 1; i < tableRow; i++)
+            //{
+            //    for (int j = 1; j < tableColumn; j++)
+            //    {
+            //        if (i == 1)
+            //        {
+            //            table.Cell(i, j + 1).Range.Text = "Column " + j;
+            //        }
+            //        if (j == 1)
+            //        {
+            //            table.Cell(i + 1, j).Range.Text = "Row " + i;
+            //        }
+            //        table.Cell(i + 1, j + 1).Range.Text = i + "行 " + j + "列";
+            //    }
+            //}
+
+
+            ////添加行
+            //table.Rows.Add(ref Missing);
+            //table.Rows[tableRow + 1].Height = 45;
+            ////向新添加的行的单元格中添加图片
+            //String fileName = @"G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressServer\测试图片.jpg";   //图片所在路径
+            //Object LinkToFile = false;
+            //Object SaveWithDocument = true;
+            //Object Anchor = table.Cell(tableRow + 1, tableColumn).Range;//选中要添加图片的单元格
+
+            //wordDoc.Application.ActiveDocument.InlineShapes.AddPicture((String)fileName, ref LinkToFile, ref SaveWithDocument, ref Anchor);
+            //wordDoc.Application.ActiveDocument.InlineShapes[1].Width = 75;//图片宽度
+            //wordDoc.Application.ActiveDocument.InlineShapes[1].Height = 45;//图片高度
+            //// 将图片设置为四周环绕型
+            //MSWord.Shape s = wordDoc.Application.ActiveDocument.InlineShapes[1].ConvertToShape();
+            //s.WrapFormat.Type = MSWord.WdWrapType.wdWrapSquare;
+
+
+            ////设置table样式
+            //table.Rows.HeightRule = MSWord.WdRowHeightRule.wdRowHeightAtLeast;
+            //table.Rows.Height = wordApp.CentimetersToPoints(float.Parse("0.8"));
+
+            //table.Range.Font.Size = 10.5F;
+            //table.Range.Font.Bold = 0;
+
+            //table.Range.ParagraphFormat.Alignment = MSWord.WdParagraphAlignment.wdAlignParagraphCenter;
+            //table.Range.Cells.VerticalAlignment = MSWord.WdCellVerticalAlignment.wdCellAlignVerticalBottom;
+            ////设置table边框样式
+            //table.Borders.OutsideLineStyle = MSWord.WdLineStyle.wdLineStyleDouble;
+            //table.Borders.InsideLineStyle = MSWord.WdLineStyle.wdLineStyleSingle;
+
+            //table.Rows[1].Range.Font.Bold = 1;
+            //table.Rows[1].Range.Font.Size = 12F;
+            //table.Cell(1, 1).Range.Font.Size = 10.5F;
+            //wordApp.Selection.Cells.Height = 40;//所有单元格的高度
+            //for (int i = 2; i <= tableRow; i++)
+            //{
+            //    table.Rows[i].Height = 20;
+            //}
+            //table.Cell(1, 1).Range.ParagraphFormat.Alignment = Microsoft.Office.Interop.Word.WdParagraphAlignment.wdAlignParagraphRight;
+            //table.Cell(1, 1).Range.Paragraphs[2].Format.Alignment = Microsoft.Office.Interop.Word.WdParagraphAlignment.wdAlignParagraphLeft;
+
+            //table.Columns[1].Width = 50;
+            //for (int i = 2; i <= tableColumn; i++)
+            //{
+            //    table.Columns[i].Width = 75;
+            //}
+
+
+            ////添加表头斜线,并设置表头的样式
+            //table.Cell(1, 1).Borders[Microsoft.Office.Interop.Word.WdBorderType.wdBorderDiagonalDown].Visible = true;
+            //table.Cell(1, 1).Borders[Microsoft.Office.Interop.Word.WdBorderType.wdBorderDiagonalDown].Color = Microsoft.Office.Interop.Word.WdColor.wdColorGray60;
+            //table.Cell(1, 1).Borders[Microsoft.Office.Interop.Word.WdBorderType.wdBorderDiagonalDown].LineWidth = Microsoft.Office.Interop.Word.WdLineWidth.wdLineWidth050pt;
+
+            ////表格边框
+            ///*//表格内容行边框
+            //table.SetTableBorderStyle(table, Microsoft.Office.Interop.Word.WdBorderType.wdBorderHorizontal, Microsoft.Office.Interop.Word.WdColor.wdColorGray20, Microsoft.Office.Interop.Word.WdLineWidth.wdLineWidth025pt);
+            ////表格内容列边框
+            //table.SetTableBorderStyle(table, Microsoft.Office.Interop.Word.WdBorderType.wdBorderVertical, Microsoft.Office.Interop.Word.WdColor.wdColorGray20, Microsoft.Office.Interop.Word.WdLineWidth.wdLineWidth025pt);
+
+            //SetTableBorderStyle(table, Microsoft.Office.Interop.Word.WdBorderType.wdBorderLeft, Microsoft.Office.Interop.Word.WdColor.wdColorGray50, Microsoft.Office.Interop.Word.WdLineWidth.wdLineWidth050pt);
+
+            //SetTableBorderStyle(table, Microsoft.Office.Interop.Word.WdBorderType.wdBorderRight, Microsoft.Office.Interop.Word.WdColor.wdColorGray50, Microsoft.Office.Interop.Word.WdLineWidth.wdLineWidth050pt);
+
+            //SetTableBorderStyle(table, Microsoft.Office.Interop.Word.WdBorderType.wdBorderTop, Microsoft.Office.Interop.Word.WdColor.wdColorGray50, Microsoft.Office.Interop.Word.WdLineWidth.wdLineWidth050pt);
+
+            //SetTableBorderStyle(table, Microsoft.Office.Interop.Word.WdBorderType.wdBorderBottom, Microsoft.Office.Interop.Word.WdColor.wdColorGray50, Microsoft.Office.Interop.Word.WdLineWidth.wdLineWidth050pt);
+            //*/
+            ////合并单元格
+            //table.Cell(4, 4).Merge(table.Cell(4, 5));//横向合并
+
+            //table.Cell(2, 3).Merge(table.Cell(4, 3));//纵向合并
+
+
+            //Object format = MSWord.WdSaveFormat.wdFormatDocument;
+            //wordDoc.SaveAs(ref filePath, ref format, ref Missing, ref Missing, ref Missing, ref Missing, ref Missing, ref Missing, ref Missing, ref Missing, ref Missing, ref Missing, ref Missing, ref Missing, ref Missing, ref Missing);
+            //wordDoc.Close(ref Missing, ref Missing, ref Missing);
+            //wordApp.Quit(ref Missing, ref Missing, ref Missing);
+            //Console.Write(filePath + ": Word文档创建表格完毕!");
+
+        }
     }
 }
