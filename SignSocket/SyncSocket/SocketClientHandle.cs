@@ -52,7 +52,10 @@ namespace SignPressServer.SignSocket.SyncSocket
             {
                 try
                 {
-                    len = _client.Receive(_recvBuffer);
+                    // 在这里填写服务器处理数据的逻辑
+                    //////////////////////////////////////
+                    len = _client.Receive(_recvBuffer);///
+                    //////////////////////////////////////
                 }
                 catch (Exception)
                 {

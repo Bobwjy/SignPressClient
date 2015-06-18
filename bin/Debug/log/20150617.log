@@ -564,3 +564,365 @@
 2015/6/17 22:04:10	Information	正在与192.168.191.2 : 26574进行查询部门的员工信息...
 2015/6/17 22:04:10	Information	接收了11个数据单元[部门的编号信息]
 2015/6/17 22:04:10	Information	接收到的数据"计划科"
+2015/6/17 22:11:17	Information	正在与192.168.191.2 : 28864进行数据传输...
+2015/6/17 22:11:17	Information	接收了13个数据单元
+2015/6/17 22:11:17	Information	接收到的数据 LOGIN_REQUEST, 大小13
+2015/6/17 22:11:17	Information	正在与192.168.191.2 : 28864进行登录验证...
+2015/6/17 22:11:17	Information	接收了43个数据单元[登录信息]
+2015/6/17 22:11:22	Success	USERNAME : wujiayi, PASSWORD : wujiayi用户名密码均正确，可以登录
+2015/6/17 22:11:22	Information	获取到一个来自192.168.191.2 : 28892的连接...
+2015/6/17 22:11:43	Information	正在与192.168.191.2 : 28892进行数据传输...
+2015/6/17 22:11:43	Information	接收了24个数据单元
+2015/6/17 22:11:43	Information	接收到的数据 QUERY_DEPARTMENT_REQUEST, 大小24
+2015/6/17 22:11:43	Success	部门信息查询成功
+2015/6/17 22:11:44	Information	正在与192.168.191.2 : 28892进行数据传输...
+2015/6/17 22:11:44	Information	接收了33个数据单元
+2015/6/17 22:11:44	Information	接收到的数据 QUERY_DEPARTMENT_EMPLOYEE_REQUEST, 大小33
+2015/6/17 22:11:45	Information	正在与192.168.191.2 : 28892进行查询部门的员工信息...
+2015/6/17 22:11:45	Information	接收了11个数据单元[部门的编号信息]
+2015/6/17 22:11:45	Information	接收到的数据"计划科"
+2015/6/17 22:14:57	Information	正在与192.168.191.2 : 29736进行数据传输...
+2015/6/17 22:14:57	Information	接收了13个数据单元
+2015/6/17 22:14:57	Information	接收到的数据 LOGIN_REQUEST, 大小13
+2015/6/17 22:14:57	Information	正在与192.168.191.2 : 29736进行登录验证...
+2015/6/17 22:14:57	Information	接收了43个数据单元[登录信息]
+2015/6/17 22:15:02	Success	USERNAME : wujiayi, PASSWORD : wujiayi用户名密码均正确，可以登录
+2015/6/17 22:15:02	Information	获取到一个来自192.168.191.2 : 29764的连接...
+2015/6/17 22:15:05	Information	正在与192.168.191.2 : 29764进行数据传输...
+2015/6/17 22:15:05	Information	接收了24个数据单元
+2015/6/17 22:15:05	Information	接收到的数据 QUERY_DEPARTMENT_REQUEST, 大小24
+2015/6/17 22:15:05	Success	部门信息查询成功
+2015/6/17 22:15:05	Information	正在与192.168.191.2 : 29764进行数据传输...
+2015/6/17 22:15:05	Information	接收了33个数据单元
+2015/6/17 22:15:05	Information	接收到的数据 QUERY_DEPARTMENT_EMPLOYEE_REQUEST, 大小33
+2015/6/17 22:15:06	Information	正在与192.168.191.2 : 29764进行查询部门的员工信息...
+2015/6/17 22:15:06	Information	接收了11个数据单元[部门的编号信息]
+2015/6/17 22:15:06	Information	接收到的数据"计划科"
+2015/6/17 22:27:29	Information	正在与127.0.0.1 : 4063进行数据传输...
+2015/6/17 22:27:29	Information	接收了13个数据单元
+2015/6/17 22:27:29	Information	接收到的数据 LOGIN_REQUEST, 大小13
+2015/6/17 22:27:29	Information	正在与127.0.0.1 : 4063进行登录验证...
+2015/6/17 22:27:29	Information	接收了43个数据单元[登录信息]
+2015/6/17 22:27:33	Success	USERNAME : wujiayi, PASSWORD : wujiayi用户名密码均正确，可以登录
+2015/6/17 22:27:33	Information	获取到一个来自127.0.0.1 : 4066的连接...
+2015/6/17 22:27:40	Information	正在与127.0.0.1 : 4066进行数据传输...
+2015/6/17 22:27:40	Information	接收了24个数据单元
+2015/6/17 22:27:40	Information	接收到的数据 QUERY_DEPARTMENT_REQUEST, 大小24
+2015/6/17 22:27:40	Success	部门信息查询成功
+2015/6/17 22:27:41	Information	正在与127.0.0.1 : 4066进行数据传输...
+2015/6/17 22:27:41	Information	接收了33个数据单元
+2015/6/17 22:27:41	Information	接收到的数据 QUERY_DEPARTMENT_EMPLOYEE_REQUEST, 大小33
+2015/6/17 22:27:41	Information	正在与127.0.0.1 : 4066进行查询部门的员工信息...
+2015/6/17 22:27:41	Information	接收了24个数据单元[部门的编号信息]
+2015/6/17 22:27:41	Information	正在与127.0.0.1 : 4066进行数据传输...
+2015/6/17 22:27:41	Information	接收了33个数据单元
+2015/6/17 22:27:41	Information	接收到的数据QUERY_DEPARTMENT_EMPLOYEE_REQUEST
+2015/6/17 22:27:41	Information	接收到的数据 QUERY_DEPARTMENT_EMPLOYEE_REQUEST, 大小33
+2015/6/17 22:27:41	Information	正在与127.0.0.1 : 4063进行数据传输...
+2015/6/17 22:27:41	Exception	System.Net.Sockets.SocketException (0x80004005): 远程主机强迫关闭了一个现有的连接。
+   在 System.Net.Sockets.Socket.EndReceive(IAsyncResult asyncResult)
+   在 SignPressServer.SignSocket.AsyncSocket.AsyncSocketServer.HandleDataReceived(IAsyncResult ar) 位置 g:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressServer\SignSocket\AsyncSocket\AsyncSocketServer.cs:行号 307
+2015/6/17 22:27:41	Information	正在与127.0.0.1 : 4066进行查询部门的员工信息...
+2015/6/17 22:27:41	Information	接收了33个数据单元[部门的编号信息]
+2015/6/17 22:27:41	Information	接收到的数据QUERY_DEPARTMENT_EMPLOYEE_REQUEST
+2015/6/17 22:27:42	Information	正在与127.0.0.1 : 4066进行数据传输...
+2015/6/17 22:27:42	Information	接收了11个数据单元
+2015/6/17 22:27:42	Information	接收到的数据 "计划科", 大小5
+2015/6/17 22:27:42	Information	正在与127.0.0.1 : 4066进行数据传输...
+2015/6/17 22:27:42	Information	接收了11个数据单元
+2015/6/17 22:27:42	Information	接收到的数据 "计划科", 大小5
+2015/6/17 22:27:55	Information	正在与127.0.0.1 : 4066进行数据传输...
+2015/6/17 22:27:55	Information	接收了11个数据单元
+2015/6/17 22:27:55	Information	接收到的数据 "计划科", 大小5
+2015/6/17 22:27:55	Information	正在与127.0.0.1 : 4066进行数据传输...
+2015/6/17 22:27:55	Information	接收了44个数据单元
+2015/6/17 22:27:56	Information	接收到的数据 QUERY_DEPARTMENT_EMPLOYEE_REQUEST"计划科", 大小38
+2015/6/17 22:46:06	Information	正在与127.0.0.1 : 4069进行数据传输...
+2015/6/17 22:46:06	Information	接收了13个数据单元
+2015/6/17 22:46:06	Information	接收到的数据 LOGIN_REQUEST, 大小13
+2015/6/17 22:46:06	Information	正在与127.0.0.1 : 4069进行登录验证...
+2015/6/17 22:46:06	Information	接收了43个数据单元[登录信息]
+2015/6/17 22:46:10	Success	USERNAME : wujiayi, PASSWORD : wujiayi用户名密码均正确，可以登录
+2015/6/17 22:46:11	Information	获取到一个来自127.0.0.1 : 4072的连接...
+2015/6/17 22:46:14	Information	正在与127.0.0.1 : 4072进行数据传输...
+2015/6/17 22:46:14	Information	接收了24个数据单元
+2015/6/17 22:46:14	Information	接收到的数据 QUERY_DEPARTMENT_REQUEST, 大小24
+2015/6/17 22:46:14	Success	部门信息查询成功
+2015/6/17 22:46:14	Information	正在与127.0.0.1 : 4072进行数据传输...
+2015/6/17 22:46:14	Information	接收了33个数据单元
+2015/6/17 22:46:14	Information	接收到的数据 QUERY_DEPARTMENT_EMPLOYEE_REQUEST, 大小33
+2015/6/17 22:46:15	Information	正在与127.0.0.1 : 4072进行查询部门的员工信息...
+2015/6/17 22:46:15	Information	接收了11个数据单元[部门的编号信息]
+2015/6/17 22:46:15	Information	接收到的数据"计划科"
+2015/6/17 22:49:56	Information	正在与127.0.0.1 : 4074进行数据传输...
+2015/6/17 22:49:56	Information	接收了13个数据单元
+2015/6/17 22:49:56	Information	接收到的数据 LOGIN_REQUEST, 大小13
+2015/6/17 22:49:56	Information	正在与127.0.0.1 : 4074进行登录验证...
+2015/6/17 22:49:56	Information	接收了43个数据单元[登录信息]
+2015/6/17 22:50:00	Success	USERNAME : wujiayi, PASSWORD : wujiayi用户名密码均正确，可以登录
+2015/6/17 22:50:00	Information	获取到一个来自127.0.0.1 : 4077的连接...
+2015/6/17 22:50:04	Information	正在与127.0.0.1 : 4077进行数据传输...
+2015/6/17 22:50:04	Information	接收了24个数据单元
+2015/6/17 22:50:04	Information	接收到的数据 QUERY_DEPARTMENT_REQUEST, 大小24
+2015/6/17 22:50:04	Success	部门信息查询成功
+2015/6/17 22:50:04	Information	正在与127.0.0.1 : 4077进行数据传输...
+2015/6/17 22:50:04	Information	接收了33个数据单元
+2015/6/17 22:50:04	Information	接收到的数据 QUERY_DEPARTMENT_EMPLOYEE_REQUEST, 大小33
+2015/6/17 22:50:04	Information	正在与127.0.0.1 : 4074进行数据传输...
+2015/6/17 22:50:04	Exception	System.Net.Sockets.SocketException (0x80004005): 远程主机强迫关闭了一个现有的连接。
+   在 System.Net.Sockets.Socket.EndReceive(IAsyncResult asyncResult)
+   在 SignPressServer.SignSocket.AsyncSocket.AsyncSocketServer.HandleDataReceived(IAsyncResult ar) 位置 g:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressServer\SignSocket\AsyncSocket\AsyncSocketServer.cs:行号 307
+2015/6/17 22:50:05	Information	正在与127.0.0.1 : 4077进行查询部门的员工信息...
+2015/6/17 22:50:05	Information	接收了11个数据单元[部门的编号信息]
+2015/6/17 22:50:05	Information	接收到的数据"计划科"
+2015/6/17 22:51:34	Information	正在与127.0.0.1 : 4078进行数据传输...
+2015/6/17 22:51:34	Information	接收了13个数据单元
+2015/6/17 22:51:34	Information	接收到的数据 LOGIN_REQUEST, 大小13
+2015/6/17 22:51:34	Information	正在与127.0.0.1 : 4078进行登录验证...
+2015/6/17 22:51:34	Information	接收了43个数据单元[登录信息]
+2015/6/17 22:51:38	Success	USERNAME : wujiayi, PASSWORD : wujiayi用户名密码均正确，可以登录
+2015/6/17 22:51:38	Information	获取到一个来自127.0.0.1 : 4081的连接...
+2015/6/17 22:51:41	Information	正在与127.0.0.1 : 4081进行数据传输...
+2015/6/17 22:51:41	Information	接收了24个数据单元
+2015/6/17 22:51:41	Information	接收到的数据 QUERY_DEPARTMENT_REQUEST, 大小24
+2015/6/17 22:51:41	Success	部门信息查询成功
+2015/6/17 22:51:41	Information	正在与127.0.0.1 : 4081进行数据传输...
+2015/6/17 22:51:41	Information	接收了33个数据单元
+2015/6/17 22:51:41	Information	接收到的数据 QUERY_DEPARTMENT_EMPLOYEE_REQUEST, 大小33
+2015/6/17 22:51:42	Information	正在与127.0.0.1 : 4081进行查询部门的员工信息...
+2015/6/17 22:51:42	Information	接收了11个数据单元[部门的编号信息]
+2015/6/17 22:51:42	Information	接收到的数据"计划科"
+2015/6/17 22:51:42	Information	查询到的部门编号为"计划科"的所有员工
+2015/6/17 22:51:42	Success	部门"计划科"的员工信息查询成功
+2015/6/17 22:51:48	Information	正在与127.0.0.1 : 4081进行数据传输...
+2015/6/17 22:51:48	Information	接收了33个数据单元
+2015/6/17 22:51:48	Information	接收到的数据 QUERY_DEPARTMENT_EMPLOYEE_REQUEST, 大小33
+2015/6/17 22:51:49	Information	正在与127.0.0.1 : 4081进行查询部门的员工信息...
+2015/6/17 22:51:49	Information	接收了11个数据单元[部门的编号信息]
+2015/6/17 22:51:49	Information	接收到的数据"计划科"
+2015/6/17 22:51:49	Information	查询到的部门编号为"计划科"的所有员工
+2015/6/17 22:51:49	Success	部门"计划科"的员工信息查询成功
+2015/6/17 22:51:50	Information	正在与127.0.0.1 : 4081进行数据传输...
+2015/6/17 22:51:50	Information	接收了33个数据单元
+2015/6/17 22:51:50	Information	接收到的数据 QUERY_DEPARTMENT_EMPLOYEE_REQUEST, 大小33
+2015/6/17 22:51:51	Information	正在与127.0.0.1 : 4081进行查询部门的员工信息...
+2015/6/17 22:51:51	Information	接收了11个数据单元[部门的编号信息]
+2015/6/17 22:51:51	Information	接收到的数据"计划科"
+2015/6/17 22:51:51	Information	查询到的部门编号为"计划科"的所有员工
+2015/6/17 22:51:51	Success	部门"计划科"的员工信息查询成功
+2015/6/17 22:52:32	Information	正在与127.0.0.1 : 4082进行数据传输...
+2015/6/17 22:52:32	Information	接收了13个数据单元
+2015/6/17 22:52:33	Information	接收到的数据 LOGIN_REQUEST, 大小13
+2015/6/17 22:52:33	Information	正在与127.0.0.1 : 4082进行登录验证...
+2015/6/17 22:52:33	Information	接收了43个数据单元[登录信息]
+2015/6/17 22:52:36	Success	USERNAME : wujiayi, PASSWORD : wujiayi用户名密码均正确，可以登录
+2015/6/17 22:52:37	Information	获取到一个来自127.0.0.1 : 4085的连接...
+2015/6/17 22:52:40	Information	正在与127.0.0.1 : 4085进行数据传输...
+2015/6/17 22:52:40	Information	接收了24个数据单元
+2015/6/17 22:52:40	Information	接收到的数据 QUERY_DEPARTMENT_REQUEST, 大小24
+2015/6/17 22:52:40	Success	部门信息查询成功
+2015/6/17 22:52:40	Information	正在与127.0.0.1 : 4085进行数据传输...
+2015/6/17 22:52:40	Information	接收了33个数据单元
+2015/6/17 22:52:40	Information	接收到的数据 QUERY_DEPARTMENT_EMPLOYEE_REQUEST, 大小33
+2015/6/17 22:52:41	Information	正在与127.0.0.1 : 4085进行查询部门的员工信息...
+2015/6/17 22:52:41	Information	接收了33个数据单元[部门的编号信息]
+2015/6/17 22:52:41	Information	接收到的数据QUERY_DEPARTMENT_EMPLOYEE_REQUEST
+2015/6/17 22:52:41	Information	查询到的部门编号为QUERY_DEPARTMENT_EMPLOYEE_REQUEST的所有员工
+2015/6/17 22:52:41	Success	部门QUERY_DEPARTMENT_EMPLOYEE_REQUEST的员工信息查询成功
+2015/6/17 22:52:41	Information	正在与127.0.0.1 : 4085进行数据传输...
+2015/6/17 22:52:41	Information	接收了11个数据单元
+2015/6/17 22:52:41	Information	接收到的数据 "计划科", 大小5
+2015/6/17 22:52:42	Information	正在与127.0.0.1 : 4085进行数据传输...
+2015/6/17 22:52:42	Information	接收了33个数据单元
+2015/6/17 22:52:42	Information	接收到的数据 QUERY_DEPARTMENT_EMPLOYEE_REQUEST, 大小33
+2015/6/17 22:52:42	Information	正在与127.0.0.1 : 4085进行查询部门的员工信息...
+2015/6/17 22:52:42	Information	接收了11个数据单元[部门的编号信息]
+2015/6/17 22:52:42	Information	接收到的数据"计划科"
+2015/6/17 22:52:42	Information	查询到的部门编号为"计划科"的所有员工
+2015/6/17 22:52:42	Success	部门"计划科"的员工信息查询成功
+2015/6/17 22:52:43	Information	正在与127.0.0.1 : 4085进行数据传输...
+2015/6/17 22:52:43	Information	接收了11个数据单元
+2015/6/17 22:52:43	Information	接收到的数据 "计划科", 大小5
+2015/6/17 22:52:43	Information	正在与127.0.0.1 : 4085进行数据传输...
+2015/6/17 22:52:43	Information	接收了33个数据单元
+2015/6/17 22:52:43	Information	接收到的数据 QUERY_DEPARTMENT_EMPLOYEE_REQUEST, 大小33
+2015/6/17 22:52:43	Information	正在与127.0.0.1 : 4085进行查询部门的员工信息...
+2015/6/17 22:52:43	Information	接收了33个数据单元[部门的编号信息]
+2015/6/17 22:52:43	Information	接收到的数据QUERY_DEPARTMENT_EMPLOYEE_REQUEST
+2015/6/17 22:52:43	Information	查询到的部门编号为QUERY_DEPARTMENT_EMPLOYEE_REQUEST的所有员工
+2015/6/17 22:52:43	Success	部门QUERY_DEPARTMENT_EMPLOYEE_REQUEST的员工信息查询成功
+2015/6/17 22:52:44	Information	正在与127.0.0.1 : 4085进行数据传输...
+2015/6/17 22:52:44	Information	接收了11个数据单元
+2015/6/17 22:52:44	Information	接收到的数据 "计划科", 大小5
+2015/6/17 22:52:44	Information	正在与127.0.0.1 : 4085进行数据传输...
+2015/6/17 22:52:44	Information	接收了11个数据单元
+2015/6/17 22:52:44	Information	接收到的数据 "计划科", 大小5
+2015/6/17 22:52:45	Information	正在与127.0.0.1 : 4085进行数据传输...
+2015/6/17 22:52:45	Information	接收了33个数据单元
+2015/6/17 22:52:45	Information	接收到的数据 QUERY_DEPARTMENT_EMPLOYEE_REQUEST, 大小33
+2015/6/17 22:52:46	Information	正在与127.0.0.1 : 4085进行查询部门的员工信息...
+2015/6/17 22:52:46	Information	接收了11个数据单元[部门的编号信息]
+2015/6/17 22:52:46	Information	接收到的数据"计划科"
+2015/6/17 22:52:46	Information	查询到的部门编号为"计划科"的所有员工
+2015/6/17 22:52:46	Success	部门"计划科"的员工信息查询成功
+2015/6/17 22:52:47	Information	正在与127.0.0.1 : 4085进行数据传输...
+2015/6/17 22:52:47	Information	接收了33个数据单元
+2015/6/17 22:52:47	Information	接收到的数据 QUERY_DEPARTMENT_EMPLOYEE_REQUEST, 大小33
+2015/6/17 22:52:48	Information	正在与127.0.0.1 : 4085进行查询部门的员工信息...
+2015/6/17 22:52:48	Information	接收了33个数据单元[部门的编号信息]
+2015/6/17 22:52:48	Information	接收到的数据QUERY_DEPARTMENT_EMPLOYEE_REQUEST
+2015/6/17 22:52:48	Information	查询到的部门编号为QUERY_DEPARTMENT_EMPLOYEE_REQUEST的所有员工
+2015/6/17 22:52:48	Success	部门QUERY_DEPARTMENT_EMPLOYEE_REQUEST的员工信息查询成功
+2015/6/17 22:52:48	Information	正在与127.0.0.1 : 4085进行数据传输...
+2015/6/17 22:52:48	Information	接收了11个数据单元
+2015/6/17 22:52:48	Information	接收到的数据 "计划科", 大小5
+2015/6/17 22:52:49	Information	正在与127.0.0.1 : 4085进行数据传输...
+2015/6/17 22:52:49	Information	接收了33个数据单元
+2015/6/17 22:52:49	Information	接收到的数据 QUERY_DEPARTMENT_EMPLOYEE_REQUEST, 大小33
+2015/6/17 22:52:49	Information	正在与127.0.0.1 : 4085进行查询部门的员工信息...
+2015/6/17 22:52:49	Information	接收了11个数据单元[部门的编号信息]
+2015/6/17 22:52:49	Information	接收到的数据"计划科"
+2015/6/17 22:52:49	Information	查询到的部门编号为"计划科"的所有员工
+2015/6/17 22:52:49	Success	部门"计划科"的员工信息查询成功
+2015/6/17 22:52:49	Information	正在与127.0.0.1 : 4085进行数据传输...
+2015/6/17 22:52:49	Information	接收了33个数据单元
+2015/6/17 22:52:49	Information	接收到的数据 QUERY_DEPARTMENT_EMPLOYEE_REQUEST, 大小33
+2015/6/17 22:52:49	Information	正在与127.0.0.1 : 4082进行数据传输...
+2015/6/17 22:52:49	Exception	System.Net.Sockets.SocketException (0x80004005): 远程主机强迫关闭了一个现有的连接。
+   在 System.Net.Sockets.Socket.EndReceive(IAsyncResult asyncResult)
+   在 SignPressServer.SignSocket.AsyncSocket.AsyncSocketServer.HandleDataReceived(IAsyncResult ar) 位置 g:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressServer\SignSocket\AsyncSocket\AsyncSocketServer.cs:行号 307
+2015/6/17 22:52:50	Information	正在与127.0.0.1 : 4085进行查询部门的员工信息...
+2015/6/17 22:52:50	Information	接收了11个数据单元[部门的编号信息]
+2015/6/17 22:52:50	Information	接收到的数据"计划科"
+2015/6/17 22:52:50	Information	查询到的部门编号为"计划科"的所有员工
+2015/6/17 22:52:50	Success	部门"计划科"的员工信息查询成功
+2015/6/17 22:52:50	Information	正在与127.0.0.1 : 4085进行数据传输...
+2015/6/17 22:52:50	Information	接收了11个数据单元
+2015/6/17 22:52:50	Information	接收到的数据 "计划科", 大小5
+2015/6/17 22:52:56	Information	正在与127.0.0.1 : 4085进行数据传输...
+2015/6/17 22:52:56	Information	接收了33个数据单元
+2015/6/17 22:52:56	Information	接收到的数据 QUERY_DEPARTMENT_EMPLOYEE_REQUEST, 大小33
+2015/6/17 22:52:57	Information	正在与127.0.0.1 : 4085进行查询部门的员工信息...
+2015/6/17 22:52:57	Information	接收了11个数据单元[部门的编号信息]
+2015/6/17 22:52:57	Information	接收到的数据"计划科"
+2015/6/17 22:52:57	Information	查询到的部门编号为"计划科"的所有员工
+2015/6/17 22:52:57	Success	部门"计划科"的员工信息查询成功
+2015/6/17 22:53:00	Information	正在与127.0.0.1 : 4085进行数据传输...
+2015/6/17 22:53:00	Information	接收了33个数据单元
+2015/6/17 22:53:00	Information	接收到的数据 QUERY_DEPARTMENT_EMPLOYEE_REQUEST, 大小33
+2015/6/17 22:53:00	Information	正在与127.0.0.1 : 4085进行查询部门的员工信息...
+2015/6/17 22:53:00	Information	接收了33个数据单元[部门的编号信息]
+2015/6/17 22:53:00	Information	接收到的数据QUERY_DEPARTMENT_EMPLOYEE_REQUEST
+2015/6/17 22:53:00	Information	查询到的部门编号为QUERY_DEPARTMENT_EMPLOYEE_REQUEST的所有员工
+2015/6/17 22:53:00	Success	部门QUERY_DEPARTMENT_EMPLOYEE_REQUEST的员工信息查询成功
+2015/6/17 22:53:01	Information	正在与127.0.0.1 : 4085进行数据传输...
+2015/6/17 22:53:01	Information	接收了11个数据单元
+2015/6/17 22:53:01	Information	接收到的数据 "计划科", 大小5
+2015/6/17 22:53:01	Information	正在与127.0.0.1 : 4085进行数据传输...
+2015/6/17 22:53:01	Information	接收了33个数据单元
+2015/6/17 22:53:01	Information	接收到的数据 QUERY_DEPARTMENT_EMPLOYEE_REQUEST, 大小33
+2015/6/17 22:53:01	Information	正在与127.0.0.1 : 4085进行查询部门的员工信息...
+2015/6/17 22:53:01	Information	接收了11个数据单元[部门的编号信息]
+2015/6/17 22:53:01	Information	接收到的数据"计划科"
+2015/6/17 22:53:01	Information	查询到的部门编号为"计划科"的所有员工
+2015/6/17 22:53:01	Success	部门"计划科"的员工信息查询成功
+2015/6/17 22:53:02	Information	正在与127.0.0.1 : 4085进行数据传输...
+2015/6/17 22:53:02	Information	接收了11个数据单元
+2015/6/17 22:53:02	Information	接收到的数据 "计划科", 大小5
+2015/6/17 22:53:21	Information	正在与127.0.0.1 : 4085进行数据传输...
+2015/6/17 22:53:21	Information	接收了33个数据单元
+2015/6/17 22:53:21	Information	接收到的数据 QUERY_DEPARTMENT_EMPLOYEE_REQUEST, 大小33
+2015/6/17 22:53:21	Information	正在与127.0.0.1 : 4085进行查询部门的员工信息...
+2015/6/17 22:53:21	Information	接收了792个数据单元[部门的编号信息]
+2015/6/17 22:53:21	Information	接收到的数据QUERY_DEPARTMENT_EMPLOYEE_REQUEST"计划科"QUERY_DEPARTMENT_EMPLOYEE_REQUEST"计划科"QUERY_DEPARTMENT_EMPLOYEE_REQUEST"计划科"QUERY_DEPARTMENT_EMPLOYEE_REQUEST"计划科"QUERY_DEPARTMENT_EMPLOYEE_REQUEST"计划科"QUERY_DEPARTMENT_EMPLOYEE_REQUEST"计划科"QUERY_DEPARTMENT_EMPLOYEE_REQUEST"计划科""计划科"QUERY_DEPARTMENT_EMPLOYEE_REQUESTQUERY_DEPARTMENT_EMPLOYEE_REQUEST"计划科"QUERY_DEPARTMENT_EMPLOYEE_REQUEST"计划科"QUERY_DEPARTMENT_EMPLOYEE_REQUEST"计划科"QUERY_DEPARTMENT_EMPLOYEE_REQUEST"计划科""计划科"QUERY_DEPARTMENT_EMPLOYEE_REQUESTQUERY_DEPARTMENT_EMPLOYEE_REQUEST"计划科"QUERY_DEPARTMENT_EMPLOYEE_REQUEST"计划科""计划科"QUERY_DEPARTMENT_EMPLOYEE_REQUESTQUERY_DEPARTMENT_EMPLOYEE_REQUEST"计划科""计划科"QUERY_DEPARTMENT_EMPLOYEE_REQUEST
+2015/6/17 22:53:21	Information	查询到的部门编号为QUERY_DEPARTMENT_EMPLOYEE_REQUEST"计划科"QUERY_DEPARTMENT_EMPLOYEE_REQUEST"计划科"QUERY_DEPARTMENT_EMPLOYEE_REQUEST"计划科"QUERY_DEPARTMENT_EMPLOYEE_REQUEST"计划科"QUERY_DEPARTMENT_EMPLOYEE_REQUEST"计划科"QUERY_DEPARTMENT_EMPLOYEE_REQUEST"计划科"QUERY_DEPARTMENT_EMPLOYEE_REQUEST"计划科""计划科"QUERY_DEPARTMENT_EMPLOYEE_REQUESTQUERY_DEPARTMENT_EMPLOYEE_REQUEST"计划科"QUERY_DEPARTMENT_EMPLOYEE_REQUEST"计划科"QUERY_DEPARTMENT_EMPLOYEE_REQUEST"计划科"QUERY_DEPARTMENT_EMPLOYEE_REQUEST"计划科""计划科"QUERY_DEPARTMENT_EMPLOYEE_REQUESTQUERY_DEPARTMENT_EMPLOYEE_REQUEST"计划科"QUERY_DEPARTMENT_EMPLOYEE_REQUEST"计划科""计划科"QUERY_DEPARTMENT_EMPLOYEE_REQUESTQUERY_DEPARTMENT_EMPLOYEE_REQUEST"计划科""计划科"QUERY_DEPARTMENT_EMPLOYEE_REQUEST的所有员工
+2015/6/17 22:53:21	Success	部门QUERY_DEPARTMENT_EMPLOYEE_REQUEST"计划科"QUERY_DEPARTMENT_EMPLOYEE_REQUEST"计划科"QUERY_DEPARTMENT_EMPLOYEE_REQUEST"计划科"QUERY_DEPARTMENT_EMPLOYEE_REQUEST"计划科"QUERY_DEPARTMENT_EMPLOYEE_REQUEST"计划科"QUERY_DEPARTMENT_EMPLOYEE_REQUEST"计划科"QUERY_DEPARTMENT_EMPLOYEE_REQUEST"计划科""计划科"QUERY_DEPARTMENT_EMPLOYEE_REQUESTQUERY_DEPARTMENT_EMPLOYEE_REQUEST"计划科"QUERY_DEPARTMENT_EMPLOYEE_REQUEST"计划科"QUERY_DEPARTMENT_EMPLOYEE_REQUEST"计划科"QUERY_DEPARTMENT_EMPLOYEE_REQUEST"计划科""计划科"QUERY_DEPARTMENT_EMPLOYEE_REQUESTQUERY_DEPARTMENT_EMPLOYEE_REQUEST"计划科"QUERY_DEPARTMENT_EMPLOYEE_REQUEST"计划科""计划科"QUERY_DEPARTMENT_EMPLOYEE_REQUESTQUERY_DEPARTMENT_EMPLOYEE_REQUEST"计划科""计划科"QUERY_DEPARTMENT_EMPLOYEE_REQUEST的员工信息查询成功
+2015/6/17 22:53:21	Information	正在与127.0.0.1 : 4085进行数据传输...
+2015/6/17 22:53:21	Information	接收了33个数据单元
+2015/6/17 22:53:21	Information	接收到的数据 QUERY_DEPARTMENT_EMPLOYEE_REQUEST, 大小33
+2015/6/17 22:53:21	Information	正在与127.0.0.1 : 4085进行查询部门的员工信息...
+2015/6/17 22:53:21	Information	接收了33个数据单元[部门的编号信息]
+2015/6/17 22:53:21	Information	接收到的数据QUERY_DEPARTMENT_EMPLOYEE_REQUEST
+2015/6/17 22:53:21	Information	查询到的部门编号为QUERY_DEPARTMENT_EMPLOYEE_REQUEST的所有员工
+2015/6/17 22:53:21	Success	部门QUERY_DEPARTMENT_EMPLOYEE_REQUEST的员工信息查询成功
+2015/6/17 22:53:21	Information	正在与127.0.0.1 : 4085进行数据传输...
+2015/6/17 22:53:21	Information	接收了33个数据单元
+2015/6/17 22:53:21	Information	接收到的数据 QUERY_DEPARTMENT_EMPLOYEE_REQUEST, 大小33
+2015/6/17 22:53:21	Information	正在与127.0.0.1 : 4085进行查询部门的员工信息...
+2015/6/17 22:53:21	Information	接收了11个数据单元[部门的编号信息]
+2015/6/17 22:53:21	Information	接收到的数据"计划科"
+2015/6/17 22:53:21	Information	查询到的部门编号为"计划科"的所有员工
+2015/6/17 22:53:21	Success	部门"计划科"的员工信息查询成功
+2015/6/17 22:53:21	Information	正在与127.0.0.1 : 4085进行数据传输...
+2015/6/17 22:53:21	Information	接收了33个数据单元
+2015/6/17 22:53:21	Information	接收到的数据 QUERY_DEPARTMENT_EMPLOYEE_REQUEST, 大小33
+2015/6/17 22:53:21	Information	正在与127.0.0.1 : 4085进行查询部门的员工信息...
+2015/6/17 22:53:21	Information	接收了33个数据单元[部门的编号信息]
+2015/6/17 22:53:21	Information	接收到的数据QUERY_DEPARTMENT_EMPLOYEE_REQUEST
+2015/6/17 22:53:21	Information	查询到的部门编号为QUERY_DEPARTMENT_EMPLOYEE_REQUEST的所有员工
+2015/6/17 22:53:21	Success	部门QUERY_DEPARTMENT_EMPLOYEE_REQUEST的员工信息查询成功
+2015/6/17 22:53:21	Information	正在与127.0.0.1 : 4085进行数据传输...
+2015/6/17 22:53:21	Information	接收了33个数据单元
+2015/6/17 22:53:21	Information	接收到的数据 QUERY_DEPARTMENT_EMPLOYEE_REQUEST, 大小33
+2015/6/17 22:53:22	Information	正在与127.0.0.1 : 4085进行查询部门的员工信息...
+2015/6/17 22:53:22	Information	接收了11个数据单元[部门的编号信息]
+2015/6/17 22:53:22	Information	接收到的数据"计划科"
+2015/6/17 22:53:22	Information	正在与127.0.0.1 : 4085进行数据传输...
+2015/6/17 22:53:22	Information	查询到的部门编号为"计划科"的所有员工
+2015/6/17 22:53:22	Information	接收了11个数据单元
+2015/6/17 22:53:22	Success	部门"计划科"的员工信息查询成功
+2015/6/17 22:53:22	Information	接收到的数据 "计划科", 大小5
+2015/6/17 22:53:22	Information	正在与127.0.0.1 : 4085进行数据传输...
+2015/6/17 22:53:22	Information	接收了11个数据单元
+2015/6/17 22:53:22	Information	接收到的数据 "计划科", 大小5
+2015/6/17 22:53:22	Information	正在与127.0.0.1 : 4085进行数据传输...
+2015/6/17 22:53:22	Information	接收了11个数据单元
+2015/6/17 22:53:22	Information	接收到的数据 "计划科", 大小5
+2015/6/17 22:53:22	Information	正在与127.0.0.1 : 4085进行数据传输...
+2015/6/17 22:53:22	Information	接收了11个数据单元
+2015/6/17 22:53:22	Information	接收到的数据 "计划科", 大小5
+2015/6/17 22:53:22	Information	正在与127.0.0.1 : 4085进行数据传输...
+2015/6/17 22:53:22	Information	接收了11个数据单元
+2015/6/17 22:53:22	Information	接收到的数据 "计划科", 大小5
+2015/6/17 22:53:28	Information	正在与127.0.0.1 : 4085进行数据传输...
+2015/6/17 22:53:28	Information	接收了33个数据单元
+2015/6/17 22:53:28	Information	接收到的数据 QUERY_DEPARTMENT_EMPLOYEE_REQUEST, 大小33
+2015/6/17 22:53:28	Information	正在与127.0.0.1 : 4085进行查询部门的员工信息...
+2015/6/17 22:53:28	Information	接收了33个数据单元[部门的编号信息]
+2015/6/17 22:53:28	Information	接收到的数据QUERY_DEPARTMENT_EMPLOYEE_REQUEST
+2015/6/17 22:53:28	Information	查询到的部门编号为QUERY_DEPARTMENT_EMPLOYEE_REQUEST的所有员工
+2015/6/17 22:53:28	Success	部门QUERY_DEPARTMENT_EMPLOYEE_REQUEST的员工信息查询成功
+2015/6/17 22:53:29	Information	正在与127.0.0.1 : 4085进行数据传输...
+2015/6/17 22:53:29	Information	接收了33个数据单元
+2015/6/17 22:53:29	Information	接收到的数据 QUERY_DEPARTMENT_EMPLOYEE_REQUEST, 大小33
+2015/6/17 22:53:29	Information	正在与127.0.0.1 : 4085进行查询部门的员工信息...
+2015/6/17 22:53:29	Information	接收了11个数据单元[部门的编号信息]
+2015/6/17 22:53:29	Information	接收到的数据"计划科"
+2015/6/17 22:53:29	Information	查询到的部门编号为"计划科"的所有员工
+2015/6/17 22:53:29	Success	部门"计划科"的员工信息查询成功
+2015/6/17 22:53:29	Information	正在与127.0.0.1 : 4085进行数据传输...
+2015/6/17 22:53:29	Information	接收了33个数据单元
+2015/6/17 22:53:29	Information	接收到的数据 QUERY_DEPARTMENT_EMPLOYEE_REQUEST, 大小33
+2015/6/17 22:53:29	Information	正在与127.0.0.1 : 4085进行查询部门的员工信息...
+2015/6/17 22:53:29	Information	接收了11个数据单元[部门的编号信息]
+2015/6/17 22:53:29	Information	接收到的数据"计划科"
+2015/6/17 22:53:29	Information	查询到的部门编号为"计划科"的所有员工
+2015/6/17 22:53:29	Success	部门"计划科"的员工信息查询成功
+2015/6/17 22:53:30	Information	正在与127.0.0.1 : 4085进行数据传输...
+2015/6/17 22:53:30	Information	接收了33个数据单元
+2015/6/17 22:53:30	Information	接收到的数据 QUERY_DEPARTMENT_EMPLOYEE_REQUEST, 大小33
+2015/6/17 22:53:30	Information	正在与127.0.0.1 : 4085进行查询部门的员工信息...
+2015/6/17 22:53:30	Information	接收了11个数据单元[部门的编号信息]
+2015/6/17 22:53:30	Information	接收到的数据"计划科"
+2015/6/17 22:53:30	Information	查询到的部门编号为"计划科"的所有员工
+2015/6/17 22:53:30	Success	部门"计划科"的员工信息查询成功
+2015/6/17 22:53:30	Information	正在与127.0.0.1 : 4085进行数据传输...
+2015/6/17 22:53:30	Information	接收了11个数据单元
+2015/6/17 22:53:30	Information	接收到的数据 "计划科", 大小5
+2015/6/17 22:53:31	Information	正在与127.0.0.1 : 4085进行数据传输...
+2015/6/17 22:53:31	Information	接收了11个数据单元
+2015/6/17 22:53:31	Information	接收到的数据 "计划科", 大小5
+2015/6/17 22:53:31	Information	正在与127.0.0.1 : 4085进行数据传输...
+2015/6/17 22:53:31	Exception	System.Net.Sockets.SocketException (0x80004005): 远程主机强迫关闭了一个现有的连接。
+   在 System.Net.Sockets.Socket.EndReceive(IAsyncResult asyncResult)
+   在 SignPressServer.SignSocket.AsyncSocket.AsyncSocketServer.HandleDataReceived(IAsyncResult ar) 位置 g:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressServer\SignSocket\AsyncSocket\AsyncSocketServer.cs:行号 307

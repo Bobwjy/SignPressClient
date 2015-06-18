@@ -261,6 +261,17 @@ namespace SignPressServer
             }
             #endregion
 
+
+            for (int row = 6, cnt = 0; row < 8; row++, cnt++)    // 填写表格的签字人表头
+            {
+                static int cnt = 0;
+                for (int col = 1; col <= 3; col += 2, cnt++)
+                {
+
+                    Console.WriteLine("签字人信息位置{0}, {1} ==== 签字人序号{2} ==== 签字位置{3},{4}", row, col, cnt, row, col + 1);
+
+                }
+            }
             #region 服务器的处理程序AsyncSocketServer
             
             Console.WriteLine("服务器准备中...");

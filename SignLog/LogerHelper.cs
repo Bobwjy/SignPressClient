@@ -13,6 +13,9 @@ namespace SignPressServer.SignLog
     /// 当调用Write方法时不会造成线程阻塞,而是立即完成方法调用,因此调用线程不用等待日志写入文件之后才返回。</remarks>
     public class LogerHelper : IDisposable
     {
+        // 默认的LOG日志目录
+        private const String DEFAULT_LOG_PATH = @".\\log\";
+
         //日志对象的缓存队列
         private static Queue<LogMessage> LogMessages;
         //日志文件保存的路径
@@ -30,7 +33,7 @@ namespace SignPressServer.SignLog
         /// 创建日志对象的新实例，采用默认当前程序位置作为日志路径和默认的每日日志文件类型记录日志
         /// </summary>
         public LogerHelper()
-            : this(".\\log\\", LogType.Daily)
+            : this(DEFAULT_LOG_PATH, LogType.Daily)
         {
         }
 
@@ -39,7 +42,7 @@ namespace SignPressServer.SignLog
         /// </summary>
         /// <param name="t">日志文件创建方式的枚举</param>
         public LogerHelper(LogType t)
-            : this(".\\log\\", t)
+            : this(DEFAULT_LOG_PATH, t)
         {
         }
 

@@ -105,6 +105,10 @@ namespace SignPressServer.SignDAL
                                                                WHERE (e.departmentid = d.id and d.name = @DepartmentName)
                                                                ORDER BY e.id";
 
+        /// <summary>
+        /// 查询所有员工的签名图片存放地址的信息串
+        /// </summary>
+
         #endregion
 
         #region  插入员工信息
@@ -792,7 +796,27 @@ namespace SignPressServer.SignDAL
         #endregion
 
 
-
+        #region 获取员工签字图片的地址
+        /// <summary>
+        /// 获取编号为employeeId的员工签字的图片的地址
+        /// </summary>
+        /// <param name="employeeId"></param>
+        /// <returns></returns>
+        public static String GetSignatureUrl(int employeeId)
+        {
+            return null;
+        }
+        
+        /// <summary>
+        /// 获取编号为employeeId的员工签字的图片的地址
+        /// </summary>
+        /// <param name="employeeId"></param>
+        /// <returns></returns>
+        public static String GetSignatureUrl(String employeeName)
+        {
+            return null;
+        }
+        #endregion
         #region 测试增加用户
         public static void TestInsertEmployee()
         {
