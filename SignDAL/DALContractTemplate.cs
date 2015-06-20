@@ -33,7 +33,7 @@ namespace SignPressServer.SignDAL
                                                                                      `signid1`, `signid2`, `signid3`, `signid4`, `signid5`, `signid6`, `signid7`, `signid8`) 
                                                               VALUES (@Name, 
                                                                       @Column_1, @Column_2, @Column_3, @Column_4, @Column_5, 
-                                                                      @SignInfo_1, @SignInfo_2, @SignInfo_3, @SignInfo4, @SignInfo5, @SignInfo6, @SignInfo7, @SignInfo8, 
+                                                                      @SignInfo_1, @SignInfo_2, @SignInfo_3, @SignInfo_4, @SignInfo_5, @SignInfo_6, @SignInfo_7, @SignInfo_8, 
                                                                       @SignId_1, @SignId_2, @SignId_3, @SignId_4, @SignId_5, @SignId_6, @SignId_7, @SignId_8)";
 
         /// <summary>
@@ -51,7 +51,8 @@ namespace SignPressServer.SignDAL
                                                         SET (`name` = @Name, 
                                                              `column1` = @Column_1, `column2` = @Column_2, `column3` = @Column_3, `column4` = @Column_4, `column5` = @Column_5, 
                                                              `signinfo1` = @SignInfo_1, `signinfo2` = @SignInfo_2, `signinfo3` = @SignInfo_3, `signinfo4` = @SignInfo_4, `signinfo5` = @SignInfo_5, `signinfo6` = @SignInfo_6, `signinfo7` = @SignInfo_7, `signinfo8` = @SignInfo_8, 
-                                                             `signid1` = @SignId_1, `signid2` = @SignId_2, `signid3` = @SignId_3, `signid4` = @SignId_4, `signid5` = @SignId_5, `signid6` = @SignId_6, `signid7` = @SignId_7, `signid8` = @SignId_8) 
+                                                             `signid1` = @SignId_1, `signid2` = @SignId_2, `signid3` = @SignId_3, `signid4` = @SignId_4, `signid5` = @SignId_5, `signid6` = @SignId_6, `signid7` = @SignId_7, `signid8` = @SignId_8,
+                                                             `signlevel1` = @SignLevel_1, `signlevel2` = @SignLevel_2, `signlevel3` = @SignLevel_3, `signlevel4` = @SignLevel_4, `signlevel5` = @SignLevel_5, `signlevel6` = @SignLevel_6, `signlevel7` = @SignLevel_7, `signlevel8` = @SignLevel_8,) 
                                                         WHERE (`id` = @Id)";
 
 
@@ -61,7 +62,8 @@ namespace SignPressServer.SignDAL
         private const String GET_CONTRACT_TEMPLATE_ID_STR = @"SELECT `name`, 
                                                                   `column1`, `column2`, `column3`, `column4`, `column5`, 
                                                                   `signinfo1`, `signinfo2`, `signinfo3`, `signinfo4`, `signinfo5`, `signinfo6`, `signinfo7`, `signinfo8`, 
-                                                                  `signid1`, `signid2`, `signid3`, `signid4`, `signid5`, `signid6`, `signid7`, `signid8`
+                                                                  `signid1`, `signid2`, `signid3`, `signid4`, `signid5`, `signid6`, `signid7`, `signid8`,
+                                                                  `signlevel1`, `signlevel2`, `signlevel3`, `signlevel4`, `signlevel5`, `signlevel6`, `signlevel7`, `signlevel8`
                                                               FROM `contemp`
                                                               WHERE (`id` = @Id)";
 
@@ -69,10 +71,16 @@ namespace SignPressServer.SignDAL
                                                                   `column1`, `column2`, `column3`, `column4`, `column5`, 
                                                                   `signinfo1`, `signinfo2`, `signinfo3`, `signinfo4`, `signinfo5`, `signinfo6`, `signinfo7`, `signinfo8`, 
                                                                   `signid1`, `signid2`, `signid3`, `signid4`, `signid5`, `signid6`, `signid7`, `signid8`
+                                                                  `signlevel1`, `signlevel2`, `signlevel3`, `signlevel4`, `signlevel5`, `signlevel6`, `signlevel7`, `signlevel8`
                                                               FROM `contemp`
                                                               WHERE (`name` = @Name)"; 
 
 
+
+        /// <summary>
+        /// 查询会签单模版的信息串
+        /// </summary>
+        private const String QUERY_CONTRACT_TEMPLATE_STR = @"SELECT * FROM `contemp` ORDER BY id"; 
         #endregion
 
 
@@ -202,7 +210,7 @@ namespace SignPressServer.SignDAL
                 cmd = con.CreateCommand();
 
                 cmd.CommandText = DELETE_CONTRACT_TEMPLATE_ID_STR;
-                cmd.Parameters.AddWithValue("@Id", conTempId);                        // 部门姓名
+                cmd.Parameters.AddWithValue("@Id", conTempId);                        // 会签单模版姓名
 
 
                 count = cmd.ExecuteNonQuery();
@@ -256,7 +264,7 @@ namespace SignPressServer.SignDAL
                 cmd = con.CreateCommand();
 
                 cmd.CommandText = DELETE_CONTRACT_TEMPLATE_ID_STR;
-                cmd.Parameters.AddWithValue("@name", conTempName);                        // 部门姓名
+                cmd.Parameters.AddWithValue("@name", conTempName);                        // 会签单模版姓名
 
 
                 count = cmd.ExecuteNonQuery();
@@ -405,6 +413,90 @@ namespace SignPressServer.SignDAL
             }
         }
         #endregion
+
+
+        #region 查询会签单模版的信息
+        public static List<ContractTemplate> QueryContractTemplate()
+        {
+            MySqlConnection con = DBTools.GetMySqlConnection();
+            MySqlCommand cmd;
+
+            List<ContractTemplate> conTemps = new List<ContractTemplate>();
+
+            try
+            {
+                con.Open();
+
+                cmd = con.CreateCommand();
+
+                cmd.CommandText = QUERY_CONTRACT_TEMPLATE_STR;
+
+
+                MySqlDataReader sqlRead = cmd.ExecuteReader();
+                cmd.Dispose();
+
+                while (sqlRead.Read())
+                {
+                    ContractTemplate conTemp = new ContractTemplate();
+
+
+                    conTemp.TempId = int.Parse(sqlRead["id"].ToString());
+                    conTemp.Name = sqlRead["name"].ToString();
+                    // 5个栏目信息
+                    // conTemp.ColumnCount = 5;
+                    List<String> columns = new List<String>();
+                    /*
+                    columns.Add(sqlRead["column1"].ToString());
+                    columns.Add(sqlRead["column2"].ToString());
+                    columns.Add(sqlRead["column3"].ToString());
+                    columns.Add(sqlRead["column4"].ToString());
+                    columns.Add(sqlRead["column5"].ToString());
+                   */
+                    for (int cnt = 1; cnt <= 5; cnt++)
+                    {
+                        String strColumn = "column" + cnt.ToString();
+                        columns.Add(sqlRead[strColumn].ToString());
+                    }
+                    conTemp.ColumnNames = columns;
+
+                    // 8个签字人信息
+                    // conTemp.SignCount = 8;
+                    List<SignatureTemplate> signatures = new List<SignatureTemplate>();
+                    for (int cnt = 1; cnt <= 8; cnt++)
+                    {
+                        String strSignInfo = "signinfo" + cnt.ToString();
+                        String strSignId = "signId" + cnt.ToString();
+
+                        SignatureTemplate signDatas = new SignatureTemplate();
+                        signDatas.SignInfo = sqlRead[strSignInfo].ToString();
+
+                        signDatas.SignId = int.Parse(sqlRead[strSignId].ToString());
+                    }
+                    conTemp.SignDatas = signatures;
+
+                    conTemps.Add(conTemp);
+                }
+
+                con.Close();
+                con.Dispose();
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+
+                if (con.State == ConnectionState.Open)
+                {
+                    con.Close();
+                }
+            }
+            return conTemps;
+        }
+        #endregion
+
 
         #region 获取会签单模版的信息
         /// <summary>
@@ -555,7 +647,6 @@ namespace SignPressServer.SignDAL
 
                     }
                     conTemp.SignDatas = signatures;
-
                 }
 
 
@@ -578,5 +669,8 @@ namespace SignPressServer.SignDAL
             return conTemp;
         }
         #endregion
+
+
+
     }
 }

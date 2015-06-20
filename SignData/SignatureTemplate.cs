@@ -15,7 +15,7 @@ namespace SignPressServer.SignData
      *  签字人的签字位置X坐标和Y坐标，m_signPosX和m_signPosY
      *  
      */
-    class SignatureTemplate
+    public class SignatureTemplate
     {
         private String  m_signInfo;      // 签字人职位信息
         public String   SignInfo
@@ -32,7 +32,7 @@ namespace SignPressServer.SignData
         }
 
         private int m_signlevel;        //  签字人签字顺序级别
-        public int SIGN_LEVEL
+        public int SignLevel
         {
             get { return this.m_signlevel; }
             set { this.m_signlevel = value; }

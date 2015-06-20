@@ -341,165 +341,136 @@ namespace SignPressServer.SignTools
         #endregion
 
 
-        //#region 生成拨款会签单
+        #region 生成拨款会签单
 
-        //public static bool CreateYHJLHXMBOContractWord(YHJLHXMBKContract contract, Object saveFilePath)
-        //{
-        //    Console.WriteLine("开始生成养护及例会项目拨款会签单");
+        public static bool CreateYHJLHXMBOContractWord(YHJLHXMBKContract contract, Object saveFilePath)
+        {
+            Console.WriteLine("开始生成养护及例会项目拨款会签单");
             
-        //    MSWord._Application wordApp;             // Word应用程序变量
-        //    MSWord._Document wordDoc;                // Word文档变量
-        //    wordApp = new MSWord.Application();      //  初始化
-        //    Object Missing = System.Reflection.Missing.Value;
+            MSWord._Application wordApp;             // Word应用程序变量
+            MSWord._Document wordDoc;                // Word文档变量
+            wordApp = new MSWord.Application();      //  初始化
+            Object Missing = System.Reflection.Missing.Value;
 
 
-        //    if (File.Exists((String)saveFilePath))
-        //    {
-        //        File.Delete((String)saveFilePath);
-        //    }
-        //    wordDoc = wordApp.Documents.Add(ref Missing, ref Missing, ref Missing, ref Missing);
+            if (File.Exists((String)saveFilePath))
+            {
+                File.Delete((String)saveFilePath);
+            }
+            wordDoc = wordApp.Documents.Add(ref Missing, ref Missing, ref Missing, ref Missing);
 
-        //    int tableRow = 10;          //  表格的行数
-        //    int tableColumn = 6;        //  表格的列数
+            int tableRow = 10;          //  表格的行数
+            int tableColumn = 6;        //  表格的列数
 
-        //    //  定义一个word中的表格对象
-        //    MSWord.Table table = wordDoc.Tables.Add(wordApp.Selection.Range, tableRow, tableColumn, ref Missing, ref Missing);
+            //  定义一个word中的表格对象
+            MSWord.Table table = wordDoc.Tables.Add(wordApp.Selection.Range, tableRow, tableColumn, ref Missing, ref Missing);
 
-        //    // 添加表头信息，同时合并单元格的信息
-        //    Console.WriteLine("开始生成前5行基本栏目的信息");
-        //    for (int row = 1; row < 5/*contract.conTemp.ColumnCount*/; row++)              // 循环每行
-        //    {
-        //        table.Cell(row, 1).Range.Text = contract.ConTemp.ColumnNames[0];    //  添加表头信息
-        //        table.Cell(row, 2).Merge(table.Cell(row, 4));                       //  横向合并
-        //        table.Cell(row, 2).Range.Text = contract.ColumnDatas[row];
-        //    }
+            // 添加表头信息，同时合并单元格的信息
+            Console.WriteLine("开始生成前5行基本栏目的信息");
+            for (int row = 1; row < 5/*contract.conTemp.ColumnCount*/; row++)              // 循环每行
+            {
+                table.Cell(row, 1).Range.Text = contract.ConTemp.ColumnNames[0];    //  添加表头信息
+                table.Cell(row, 2).Merge(table.Cell(row, 4));                       //  横向合并
+                table.Cell(row, 2).Range.Text = contract.ColumnDatas[row];
+            }
 
-        //    //  开始添加审核人的签名图片信息和备注信息
-        //    Console.WriteLine("开始生成后8行签字栏目的信息"); 
-        //    for (int row = 6, cnt = 0; row < 8; row++, cnt++)    // 填写表格的签字人表头
-        //    {
-        //        for (int col = 1,static int cnt = 0; col <= 3; col += 2, cnt++);
-        //        {
-        //            ///////
-        //            // 填写第row行第一个签字人的签字信息[表头 + 签字信息 + 备注]
-        //            ///////
-        //            /// 填写第row行第一个签字人的表头
-        //            table.Cell(row, 1).Range.Text = contract.ConTemp.SignDatas[cnt].SignInfo;
+            //  开始添加审核人的签名图片信息和备注信息
+            Console.WriteLine("开始生成后8行签字栏目的信息");
+            for (int row = 6, cnt = 0; row < 8; row++)    // 填写表格的签字人表头
+            {
+                for (int col = 1; col <= 3; col += 2, cnt++)
+                {
+                    Console.WriteLine("签字人信息位置{0}, {1} ==== 签字人序号{2} ==== 签字位置{3},{4}", row, col, cnt, row, col + 1);
 
-        //            // 插入第row行第一个人签字人的签字图片
-        //            //table.Cell(row, 2) 
-        //            String signFileName = DEFAULT_SIGNATURE_PATH + contract.ConTemp.SignDatas[cnt].SignId + ".jpg";   //图片所在路径
-        //            Object LinkToFile = false;
-        //            Object SaveWithDocument = true;
-        //            Object Anchor = table.Cell(row, 2).Range;//选中要添加图片的单元格
+                    ///////
+                    // 填写第row行第一个签字人的签字信息[表头 + 签字信息 + 备注]
+                    ///////
+                    /// 填写第row行第一个签字人的表头
+                    /// [签字人表头坐标(row, col), 签字人序号cnt]
+                    table.Cell(row, col).Range.Text = contract.ConTemp.SignDatas[cnt].SignInfo;
 
-        //            wordDoc.Application.ActiveDocument.InlineShapes.AddPicture((String)signFileName, ref LinkToFile, ref SaveWithDocument, ref Anchor);
-        //            wordDoc.Application.ActiveDocument.InlineShapes[1].Width = 75;//图片宽度
-        //            wordDoc.Application.ActiveDocument.InlineShapes[1].Height = 45;//图片高度
+                    // 插入第row行第一个人签字人的签字图片
+                    //[签字人签字位置坐标(row, col + 1)] 
+                    String signFileName = DEFAULT_SIGNATURE_PATH + contract.ConTemp.SignDatas[cnt].SignId + ".jpg";   //图片所在路径
+                    Object LinkToFile = false;
+                    Object SaveWithDocument = true;
+                    Object Anchor = table.Cell(row, col + 1).Range;//选中要添加图片的单元格
 
-        //            // 将图片设置为四周环绕型
-        //            MSWord.Shape s = wordDoc.Application.ActiveDocument.InlineShapes[1].ConvertToShape();
-        //            s.WrapFormat.Type = MSWord.WdWrapType.wdWrapSquare;
-        //        }
-        //        ///////
-        //        // 填写第row行第二个签字人的签字信息[表头 + 签字信息 + 备注]
-        //        ///////
-        //        // 填写第row行第二个签字人的表头
-        //        table.Cell(row, 3).Range.Text = contract.ConTemp.SignDatas[cnt + 1].SignInfo;
+                    wordDoc.Application.ActiveDocument.InlineShapes.AddPicture((String)signFileName, ref LinkToFile, ref SaveWithDocument, ref Anchor);
+                    wordDoc.Application.ActiveDocument.InlineShapes[1].Width = 75;//图片宽度
+                    wordDoc.Application.ActiveDocument.InlineShapes[1].Height = 45;//图片高度
 
-        //        // 插入第row行第二个人签字人的签字图片
-        //        String fileName = @"G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressServer\测试图片.jpg";   //图片所在路径
-        //        Object LinkToFile = false;
-        //        Object SaveWithDocument = true;
-        //        Object Anchor = table.Cell(row, 4).Range;//选中要添加图片的单元格
+                    // 将图片设置为四周环绕型
+                    MSWord.Shape s = wordDoc.Application.ActiveDocument.InlineShapes[1].ConvertToShape();
+                    s.WrapFormat.Type = MSWord.WdWrapType.wdWrapSquare;
+                }
+            }
 
-        //        wordDoc.Application.ActiveDocument.InlineShapes.AddPicture((String)fileName, ref LinkToFile, ref SaveWithDocument, ref Anchor);
-        //        wordDoc.Application.ActiveDocument.InlineShapes[1].Width = 75;//图片宽度
-        //        wordDoc.Application.ActiveDocument.InlineShapes[1].Height = 45;//图片高度
+            //设置table样式
+            table.Rows.HeightRule = MSWord.WdRowHeightRule.wdRowHeightAtLeast;
+            table.Rows.Height = wordApp.CentimetersToPoints(float.Parse("0.8"));
 
-        //        // 将图片设置为四周环绕型
-        //        MSWord.Shape s = wordDoc.Application.ActiveDocument.InlineShapes[1].ConvertToShape();
-        //        s.WrapFormat.Type = MSWord.WdWrapType.wdWrapSquare;
-        //    }
-        //    //  向新添加的行的单元格中添加图片
-        //    String fileName = @"G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressServer\测试图片.jpg";   //图片所在路径
-        //    Object LinkToFile = false;
-        //    Object SaveWithDocument = true;
-        //    Object Anchor = table.Cell(tableRow + 1, tableColumn).Range;//选中要添加图片的单元格
+            table.Range.Font.Size = 10.5F;
+            table.Range.Font.Bold = 0;
 
-        //    wordDoc.Application.ActiveDocument.InlineShapes.AddPicture((String)fileName, ref LinkToFile, ref SaveWithDocument, ref Anchor);
-        //    wordDoc.Application.ActiveDocument.InlineShapes[1].Width = 75;//图片宽度
-        //    wordDoc.Application.ActiveDocument.InlineShapes[1].Height = 45;//图片高度
-        //    // 将图片设置为四周环绕型
-        //    MSWord.Shape s = wordDoc.Application.ActiveDocument.InlineShapes[1].ConvertToShape();
-        //    s.WrapFormat.Type = MSWord.WdWrapType.wdWrapSquare;
+            table.Range.ParagraphFormat.Alignment = MSWord.WdParagraphAlignment.wdAlignParagraphCenter;
+            table.Range.Cells.VerticalAlignment = MSWord.WdCellVerticalAlignment.wdCellAlignVerticalBottom;
+            //设置table边框样式
+            table.Borders.OutsideLineStyle = MSWord.WdLineStyle.wdLineStyleDouble;
+            table.Borders.InsideLineStyle = MSWord.WdLineStyle.wdLineStyleSingle;
 
+            table.Rows[1].Range.Font.Bold = 1;
+            table.Rows[1].Range.Font.Size = 12F;
+            table.Cell(1, 1).Range.Font.Size = 10.5F;
+            wordApp.Selection.Cells.Height = 40;//所有单元格的高度
+            for (int i = 2; i <= tableRow; i++)
+            {
+                table.Rows[i].Height = 20;
+            }
+            table.Cell(1, 1).Range.ParagraphFormat.Alignment = Microsoft.Office.Interop.Word.WdParagraphAlignment.wdAlignParagraphRight;
+            table.Cell(1, 1).Range.Paragraphs[2].Format.Alignment = Microsoft.Office.Interop.Word.WdParagraphAlignment.wdAlignParagraphLeft;
 
-        //    //设置table样式
-        //    table.Rows.HeightRule = MSWord.WdRowHeightRule.wdRowHeightAtLeast;
-        //    table.Rows.Height = wordApp.CentimetersToPoints(float.Parse("0.8"));
-
-        //    table.Range.Font.Size = 10.5F;
-        //    table.Range.Font.Bold = 0;
-
-        //    table.Range.ParagraphFormat.Alignment = MSWord.WdParagraphAlignment.wdAlignParagraphCenter;
-        //    table.Range.Cells.VerticalAlignment = MSWord.WdCellVerticalAlignment.wdCellAlignVerticalBottom;
-        //    //设置table边框样式
-        //    table.Borders.OutsideLineStyle = MSWord.WdLineStyle.wdLineStyleDouble;
-        //    table.Borders.InsideLineStyle = MSWord.WdLineStyle.wdLineStyleSingle;
-
-        //    table.Rows[1].Range.Font.Bold = 1;
-        //    table.Rows[1].Range.Font.Size = 12F;
-        //    table.Cell(1, 1).Range.Font.Size = 10.5F;
-        //    wordApp.Selection.Cells.Height = 40;//所有单元格的高度
-        //    for (int i = 2; i <= tableRow; i++)
-        //    {
-        //        table.Rows[i].Height = 20;
-        //    }
-        //    table.Cell(1, 1).Range.ParagraphFormat.Alignment = Microsoft.Office.Interop.Word.WdParagraphAlignment.wdAlignParagraphRight;
-        //    table.Cell(1, 1).Range.Paragraphs[2].Format.Alignment = Microsoft.Office.Interop.Word.WdParagraphAlignment.wdAlignParagraphLeft;
-
-        //    table.Columns[1].Width = 50;
-        //    for (int i = 2; i <= tableColumn; i++)
-        //    {
-        //        table.Columns[i].Width = 75;
-        //    }
+            table.Columns[1].Width = 50;
+            for (int i = 2; i <= tableColumn; i++)
+            {
+                table.Columns[i].Width = 75;
+            }
 
 
-        //    //添加表头斜线,并设置表头的样式
-        //    table.Cell(1, 1).Borders[Microsoft.Office.Interop.Word.WdBorderType.wdBorderDiagonalDown].Visible = true;
-        //    table.Cell(1, 1).Borders[Microsoft.Office.Interop.Word.WdBorderType.wdBorderDiagonalDown].Color = Microsoft.Office.Interop.Word.WdColor.wdColorGray60;
-        //    table.Cell(1, 1).Borders[Microsoft.Office.Interop.Word.WdBorderType.wdBorderDiagonalDown].LineWidth = Microsoft.Office.Interop.Word.WdLineWidth.wdLineWidth050pt;
+            // 添加表头斜线,并设置表头的样式
+            table.Cell(1, 1).Borders[Microsoft.Office.Interop.Word.WdBorderType.wdBorderDiagonalDown].Visible = true;
+            table.Cell(1, 1).Borders[Microsoft.Office.Interop.Word.WdBorderType.wdBorderDiagonalDown].Color = Microsoft.Office.Interop.Word.WdColor.wdColorGray60;
+            table.Cell(1, 1).Borders[Microsoft.Office.Interop.Word.WdBorderType.wdBorderDiagonalDown].LineWidth = Microsoft.Office.Interop.Word.WdLineWidth.wdLineWidth050pt;
 
-        //    //表格边框
-        //    /*//表格内容行边框
-        //    table.SetTableBorderStyle(table, Microsoft.Office.Interop.Word.WdBorderType.wdBorderHorizontal, Microsoft.Office.Interop.Word.WdColor.wdColorGray20, Microsoft.Office.Interop.Word.WdLineWidth.wdLineWidth025pt);
-        //    //表格内容列边框
-        //    table.SetTableBorderStyle(table, Microsoft.Office.Interop.Word.WdBorderType.wdBorderVertical, Microsoft.Office.Interop.Word.WdColor.wdColorGray20, Microsoft.Office.Interop.Word.WdLineWidth.wdLineWidth025pt);
+            //表格边框
+            /*//表格内容行边框
+            table.SetTableBorderStyle(table, Microsoft.Office.Interop.Word.WdBorderType.wdBorderHorizontal, Microsoft.Office.Interop.Word.WdColor.wdColorGray20, Microsoft.Office.Interop.Word.WdLineWidth.wdLineWidth025pt);
+            //表格内容列边框
+            table.SetTableBorderStyle(table, Microsoft.Office.Interop.Word.WdBorderType.wdBorderVertical, Microsoft.Office.Interop.Word.WdColor.wdColorGray20, Microsoft.Office.Interop.Word.WdLineWidth.wdLineWidth025pt);
 
-        //    SetTableBorderStyle(table, Microsoft.Office.Interop.Word.WdBorderType.wdBorderLeft, Microsoft.Office.Interop.Word.WdColor.wdColorGray50, Microsoft.Office.Interop.Word.WdLineWidth.wdLineWidth050pt);
+            SetTableBorderStyle(table, Microsoft.Office.Interop.Word.WdBorderType.wdBorderLeft, Microsoft.Office.Interop.Word.WdColor.wdColorGray50, Microsoft.Office.Interop.Word.WdLineWidth.wdLineWidth050pt);
 
-        //    SetTableBorderStyle(table, Microsoft.Office.Interop.Word.WdBorderType.wdBorderRight, Microsoft.Office.Interop.Word.WdColor.wdColorGray50, Microsoft.Office.Interop.Word.WdLineWidth.wdLineWidth050pt);
+            SetTableBorderStyle(table, Microsoft.Office.Interop.Word.WdBorderType.wdBorderRight, Microsoft.Office.Interop.Word.WdColor.wdColorGray50, Microsoft.Office.Interop.Word.WdLineWidth.wdLineWidth050pt);
 
-        //    SetTableBorderStyle(table, Microsoft.Office.Interop.Word.WdBorderType.wdBorderTop, Microsoft.Office.Interop.Word.WdColor.wdColorGray50, Microsoft.Office.Interop.Word.WdLineWidth.wdLineWidth050pt);
+            SetTableBorderStyle(table, Microsoft.Office.Interop.Word.WdBorderType.wdBorderTop, Microsoft.Office.Interop.Word.WdColor.wdColorGray50, Microsoft.Office.Interop.Word.WdLineWidth.wdLineWidth050pt);
 
-        //    SetTableBorderStyle(table, Microsoft.Office.Interop.Word.WdBorderType.wdBorderBottom, Microsoft.Office.Interop.Word.WdColor.wdColorGray50, Microsoft.Office.Interop.Word.WdLineWidth.wdLineWidth050pt);
-        //    */
-        //    //合并单元格
-        //    table.Cell(4, 4).Merge(table.Cell(4, 5));//横向合并
+            SetTableBorderStyle(table, Microsoft.Office.Interop.Word.WdBorderType.wdBorderBottom, Microsoft.Office.Interop.Word.WdColor.wdColorGray50, Microsoft.Office.Interop.Word.WdLineWidth.wdLineWidth050pt);
+            */
+            //合并单元格
+            table.Cell(4, 4).Merge(table.Cell(4, 5));//横向合并
 
-        //    table.Cell(2, 3).Merge(table.Cell(4, 3));//纵向合并
+            table.Cell(2, 3).Merge(table.Cell(4, 3));//纵向合并
 
 
-        //    Object format = MSWord.WdSaveFormat.wdFormatDocument;
-        //    wordDoc.SaveAs(ref saveFilePath, ref format, ref Missing, ref Missing, ref Missing, ref Missing, ref Missing, ref Missing, ref Missing, ref Missing, ref Missing, ref Missing, ref Missing, ref Missing, ref Missing, ref Missing);
-        //    wordDoc.Close(ref Missing, ref Missing, ref Missing);
-        //    wordApp.Quit(ref Missing, ref Missing, ref Missing);
-        //    Console.Write(saveFilePath + ": Word文档创建表格完毕!");
+            Object format = MSWord.WdSaveFormat.wdFormatDocument;
+            wordDoc.SaveAs(ref saveFilePath, ref format, ref Missing, ref Missing, ref Missing, ref Missing, ref Missing, ref Missing, ref Missing, ref Missing, ref Missing, ref Missing, ref Missing, ref Missing, ref Missing, ref Missing);
+            wordDoc.Close(ref Missing, ref Missing, ref Missing);
+            wordApp.Quit(ref Missing, ref Missing, ref Missing);
+            Console.Write(saveFilePath + ": Word文档创建表格完毕!");
 
-        //    return true;
-        //}
-        //#endregion
+            return true;
+        }
+        #endregion
     }       // end of MSWordTools Class
 
 }   // end of NameSpace

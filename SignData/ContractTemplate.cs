@@ -12,7 +12,7 @@ namespace SignPressServer.SignData
      *  会签单模版类ContractTemplate
      *  对用数据库中的ConTemp
      */
-    class ContractTemplate
+    public class ContractTemplate
     {
 
 

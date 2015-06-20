@@ -22,11 +22,19 @@ namespace SignPressServer.SignSocket.AsyncSocket
         /// </summary>
         private byte[] m_recvBuffer;
 
+        private AsyncSocketMessage m_socketMessage;    // 发送缓冲区
+        public AsyncSocketMessage SocketMessage
+        {
+            get { return this.m_socketMessage; }
+            set { this.m_socketMessage = value; }
+        }
+        
+        //AsyncSokcetMessage m_socketMessage;
         /// <summary>
         /// 本次通信中接收到的数据的大小
         /// </summary>
         private int m_recvLength;
-       
+        //private int  
         /// <summary>
         /// 客户端发送到服务器的报文
         /// 注意:在有些情况下报文可能只是报文的片断而不完整
@@ -100,6 +108,7 @@ namespace SignPressServer.SignSocket.AsyncSocket
         {
             this.m_clientSocket = clientSocket;
             this.m_clientIp = (IPEndPoint)clientSocket.RemoteEndPoint;  // 保存服务器的信息
+            this.m_socketMessage = new AsyncSocketMessage();
         }
 
         /// <summary>

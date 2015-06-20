@@ -252,7 +252,14 @@ namespace SignPressServer
             #endregion
 
             #region 获取本机的IP
-            
+            string s1 = "所属机构名称;教师姓名;课程类型;课程名称";
+
+            string[] split = s1.Split(';');    //返回由'/'分隔的子字符串数组
+            foreach (string s in split)
+            {
+                Console.WriteLine(s);
+            }
+            Console.WriteLine();
             string hostName = System.Net.Dns.GetHostName();//本机名   
             System.Net.IPAddress[] addressList = System.Net.Dns.GetHostAddresses(hostName);//会返回所有地址，包括IPv4和IPv6   
             foreach (System.Net.IPAddress ip in addressList)  
@@ -261,17 +268,17 @@ namespace SignPressServer
             }
             #endregion
 
+            
+            //for (int row = 6, cnt = 0; row <= 8; row++)    // 填写表格的签字人表头
+            //{
 
-            for (int row = 6, cnt = 0; row < 8; row++, cnt++)    // 填写表格的签字人表头
-            {
-                static int cnt = 0;
-                for (int col = 1; col <= 3; col += 2, cnt++)
-                {
+            //    for (int col = 1; col <= 3; col += 2, cnt++)
+            //    {
 
-                    Console.WriteLine("签字人信息位置{0}, {1} ==== 签字人序号{2} ==== 签字位置{3},{4}", row, col, cnt, row, col + 1);
+            //        Console.WriteLine("签字人信息位置{0}, {1} ==== 签字人序号{2} ==== 签字位置{3},{4}", row, col, cnt, row, col + 1);
 
-                }
-            }
+            //    }
+            //}
             #region 服务器的处理程序AsyncSocketServer
             
             Console.WriteLine("服务器准备中...");

@@ -47,10 +47,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="SignContract\YHJLHXMBKContract.cs" />
+    <Compile Include="SignDAL\DALHDJContract.cs" />
     <Compile Include="SignDAL\DALContractTemplate.cs" />
     <Compile Include="SignDAL\DALDepartment.cs" />
     <Compile Include="SignDAL\DALYHJLHXMBKContract.cs" />
     <Compile Include="SignData\ColumnTemplate.cs" />
+    <Compile Include="SignData\HDJContract.cs" />
     <Compile Include="SignData\ContractTemplate.cs" />
     <Compile Include="SignData\Department.cs" />
     <Compile Include="SignData\Employee.cs" />
@@ -66,6 +68,7 @@
     <Compile Include="SignSocket\AsyncSocket\AsyncSocketEventArgs.cs" />
     <Compile Include="SignSocket\AsyncSocket\AsyncSocketState.cs" />
     <Compile Include="SignSocket\AsyncSocket\AsyncSocketServer.cs" />
+    <Compile Include="SignSocket\AsyncSocket\AsyncSocketMessage.cs" />
     <Compile Include="SignSocket\AsyncTcpListener\AsyncEventArgs.cs" />
     <Compile Include="SignSocket\AsyncTcpListener\AsyncTcpServer.cs" />
     <Compile Include="SignSocket\AsyncTcpListener\TcpClientState.cs" />

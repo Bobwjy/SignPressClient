@@ -12,7 +12,7 @@ namespace SignPressServer.SignSocket.SyncSocket
     /// <summary>
     /// Socket 服务器用于处理客户端连接封装的客户端处理类
     /// </summary>
-    public class SocketClientHandle:IDisposable
+    public class SocketClientHandle : IDisposable
     {
         /// <summary>
         /// 与客户端相关联的socket
@@ -33,7 +33,7 @@ namespace SignPressServer.SignSocket.SyncSocket
         /// 数据接受缓冲区
         /// </summary>
         private byte[] _recvBuffer;
-
+        private int m_recvLength;
         public SocketClientHandle(Socket client)
         {
             this._client = client;
@@ -47,15 +47,16 @@ namespace SignPressServer.SignSocket.SyncSocket
         /// </summary>
         public void RecevieData(Object state)
         {
-            int len = -1;
+            m_recvLength = -1;
             while (_is_connect)
             {
                 try
                 {
                     // 在这里填写服务器处理数据的逻辑
                     //////////////////////////////////////
-                    len = _client.Receive(_recvBuffer);///
+                    m_recvLength = _client.Receive(_recvBuffer);///
                     //////////////////////////////////////
+                   // DealClientRequest();
                 }
                 catch (Exception)
                 {
@@ -110,5 +111,6 @@ namespace SignPressServer.SignSocket.SyncSocket
         }
 
         #endregion
+
     }
 }
