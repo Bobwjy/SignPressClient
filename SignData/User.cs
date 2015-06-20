@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SignPressServer.SignData
 {
-    class User
+    public class User
     {
         private String m_username;      //  用户名
         public String Username

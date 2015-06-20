@@ -59,13 +59,14 @@ namespace SignPressServer.SignDAL
         /// <summary>
         /// 获取会签单模版信息串
         /// </summary>
-        private const String GET_CONTRACT_TEMPLATE_ID_STR = @"SELECT `name`, 
-                                                                  `column1`, `column2`, `column3`, `column4`, `column5`, 
-                                                                  `signinfo1`, `signinfo2`, `signinfo3`, `signinfo4`, `signinfo5`, `signinfo6`, `signinfo7`, `signinfo8`, 
-                                                                  `signid1`, `signid2`, `signid3`, `signid4`, `signid5`, `signid6`, `signid7`, `signid8`,
-                                                                  `signlevel1`, `signlevel2`, `signlevel3`, `signlevel4`, `signlevel5`, `signlevel6`, `signlevel7`, `signlevel8`
-                                                              FROM `contemp`
-                                                              WHERE (`id` = @Id)";
+        private const String GET_CONTRACT_TEMPLATE_ID_STR = @"SELECT c.id id, c.name name,
+                                                                  c.column1 column1, c.column2 column2, c.column3 column3, c.column4 column4, c.column5 column5, 
+                                                                  c.signinfo1 signinfo1, c.signinfo2 signinfo2, c.signinfo3 signinfo3, c.signinfo4 signinfo4, c.signinfo5 signinfo5, c.signinfo6 signinfo6, c.signinfo7 signinfo7, c.signinfo8 signinfo8, 
+                                                                  e1.id signid1, e2.id signid2, e3.id signid3, e4.id signid4, e5.id signid5, e6.id signid6, e7.id signid7, e8.id signid8,
+                                                                  e1.name signname1, e2.name signname2, e3.name signname3, e4.name signname4, e5.name signname5, e6.name signname6, e7.name signname7, e8.name signname8,          
+                                                                  c.signlevel1 signlevel1, c.signlevel2, c.signlevel2, c.signlevel3, signlevel3, c.signlevel4 signlevel4, c.signlevel5 signlevel5, c.signlevel6 signlevel6, c.signlevel7 signlevel7, c.signlevel8 signlevel8
+                                                              FROM contemp c, employee e1, employee e2, employee e3, employee e4, employee e5, employee e6, employee e7, employee e8 
+                                                              WHERE (c.id = @Id and c.signid1 = e1.id  and c.signid2 = e2.id and c.signid3 = e3.id and c.signid4 = e4.id and c.signid5 = e5.id and c.signid6 = e6.id and c.signid7 = e7.id and c.signid8 = e8.id)";
 
         private const String GET_CONTRACT_TEMPLATE_NAME_STR = @"SELECT `name`, 
                                                                   `column1`, `column2`, `column3`, `column4`, `column5`, 
@@ -80,7 +81,7 @@ namespace SignPressServer.SignDAL
         /// <summary>
         /// 查询会签单模版的信息串
         /// </summary>
-        private const String QUERY_CONTRACT_TEMPLATE_STR = @"SELECT * FROM `contemp` ORDER BY id"; 
+        private const String QUERY_CONTRACT_TEMPLATE_STR = @"SELECT id, name, createdate FROM `contemp` ORDER BY id"; 
         #endregion
 
 
@@ -151,9 +152,11 @@ namespace SignPressServer.SignDAL
                 {
                     String strSignInfo = "@SignInfo_" + (cnt + 1).ToString();
                     String strSignId = "@SignId_" + (cnt + 1).ToString();
+                    String strSignLevel = @"SignLevel_" + (cnt + 1).ToString();
 
                     cmd.Parameters.AddWithValue(strSignInfo, conTemp.SignDatas[cnt].SignInfo);
-                    cmd.Parameters.AddWithValue(strSignId, conTemp.SignDatas[cnt].SignId);
+                    cmd.Parameters.AddWithValue(strSignId, conTemp.SignDatas[cnt].SignEmployee.Id);
+                    cmd.Parameters.AddWithValue(strSignLevel, conTemp.SignDatas[cnt].SignLevel);
 
                 }
 
@@ -365,10 +368,11 @@ namespace SignPressServer.SignDAL
                 {
                     String strSignInfo = "@SignInfo_" + (cnt + 1).ToString();
                     String strSignId = "@SignId_" + (cnt + 1).ToString();
+                    String strSignLevel = @"SignLevel_" + (cnt + 1).ToString();
 
                     cmd.Parameters.AddWithValue(strSignInfo, conTemp.SignDatas[cnt].SignInfo);
-                    cmd.Parameters.AddWithValue(strSignId, conTemp.SignDatas[cnt].SignId);
-
+                    cmd.Parameters.AddWithValue(strSignId, conTemp.SignDatas[cnt].SignEmployee.Id);
+                    cmd.Parameters.AddWithValue(strSignLevel, conTemp.SignDatas[cnt].SignLevel);
                 }
 
                 count = cmd.ExecuteNonQuery();
@@ -442,37 +446,40 @@ namespace SignPressServer.SignDAL
 
                     conTemp.TempId = int.Parse(sqlRead["id"].ToString());
                     conTemp.Name = sqlRead["name"].ToString();
-                    // 5个栏目信息
-                    // conTemp.ColumnCount = 5;
-                    List<String> columns = new List<String>();
-                    /*
-                    columns.Add(sqlRead["column1"].ToString());
-                    columns.Add(sqlRead["column2"].ToString());
-                    columns.Add(sqlRead["column3"].ToString());
-                    columns.Add(sqlRead["column4"].ToString());
-                    columns.Add(sqlRead["column5"].ToString());
-                   */
-                    for (int cnt = 1; cnt <= 5; cnt++)
-                    {
-                        String strColumn = "column" + cnt.ToString();
-                        columns.Add(sqlRead[strColumn].ToString());
-                    }
-                    conTemp.ColumnNames = columns;
+                    conTemp.CreateDate = sqlRead["createdate"].ToString();
+                   // // 5个栏目信息
+                   // // conTemp.ColumnCount = 5;
+                   // List<String> columns = new List<String>();
+                   // /*
+                   // columns.Add(sqlRead["column1"].ToString());
+                   // columns.Add(sqlRead["column2"].ToString());
+                   // columns.Add(sqlRead["column3"].ToString());
+                   // columns.Add(sqlRead["column4"].ToString());
+                   // columns.Add(sqlRead["column5"].ToString());
+                   //*/
+                   // for (int cnt = 1; cnt <= 5; cnt++)
+                   // {
+                   //     String strColumn = "column" + cnt.ToString();
+                   //     columns.Add(sqlRead[strColumn].ToString());
+                   // }
+                   // conTemp.ColumnNames = columns;
 
-                    // 8个签字人信息
-                    // conTemp.SignCount = 8;
-                    List<SignatureTemplate> signatures = new List<SignatureTemplate>();
-                    for (int cnt = 1; cnt <= 8; cnt++)
-                    {
-                        String strSignInfo = "signinfo" + cnt.ToString();
-                        String strSignId = "signId" + cnt.ToString();
+                   // // 8个签字人信息
+                   // // conTemp.SignCount = 8;
+                   // List<SignatureTemplate> signatures = new List<SignatureTemplate>();
+                   // for (int cnt = 1; cnt <= 8; cnt++)
+                   // {
+                   //     String strSignInfo = "signinfo" + cnt.ToString();
+                   //     String strSignId = "signId" + cnt.ToString();
 
-                        SignatureTemplate signDatas = new SignatureTemplate();
-                        signDatas.SignInfo = sqlRead[strSignInfo].ToString();
+                   //     SignatureTemplate signDatas = new SignatureTemplate();
+                   //     signDatas.SignInfo = sqlRead[strSignInfo].ToString();
 
-                        signDatas.SignId = int.Parse(sqlRead[strSignId].ToString());
-                    }
-                    conTemp.SignDatas = signatures;
+                   //     signDatas.SignId = int.Parse(sqlRead[strSignId].ToString());
+
+                   //     signatures.Add(signDatas);
+                   // }
+                   // conTemp.SignDatas = signatures;
 
                     conTemps.Add(conTemp);
                 }
@@ -555,12 +562,18 @@ namespace SignPressServer.SignDAL
                     for (int cnt = 1; cnt <= 8; cnt++)
                     {
                         String strSignInfo = "signinfo" + cnt.ToString();
-                        String strSignId = "signId" + cnt.ToString();
- 
+                        String strSignId = "signid" + cnt.ToString();
+                        String strSignName = "signname" + cnt.ToString();
+
                         SignatureTemplate signDatas = new SignatureTemplate();
                         signDatas.SignInfo = sqlRead[strSignInfo].ToString();
-                        signDatas.SignId = int.Parse(sqlRead[strSignId].ToString());
 
+                        Employee employee = new Employee();
+                        employee.Id = int.Parse(sqlRead[strSignId].ToString());
+                        employee.Name = sqlRead[strSignName].ToString();
+                        signDatas.SignEmployee = employee;
+
+                        signatures.Add(signDatas);
                     }
                     conTemp.SignDatas = signatures;
 
@@ -639,12 +652,18 @@ namespace SignPressServer.SignDAL
                     for (int cnt = 1; cnt <= 8; cnt++)
                     {
                         String strSignInfo = "signinfo" + cnt.ToString();
-                        String strSignId = "signId" + cnt.ToString();
+                        String strSignId = "signid" + cnt.ToString();
+                        String strSignName = "signname" + cnt.ToString();
 
                         SignatureTemplate signDatas = new SignatureTemplate();
                         signDatas.SignInfo = sqlRead[strSignInfo].ToString();
-                        signDatas.SignId = int.Parse(sqlRead[strSignId].ToString());
+                        
+                        Employee employee = new Employee();
+                        employee.Id = int.Parse(sqlRead[strSignId].ToString());
+                        employee.Name = sqlRead[strSignName].ToString();
+                        signDatas.SignEmployee = employee;
 
+                        signatures.Add(signDatas);
                     }
                     conTemp.SignDatas = signatures;
                 }

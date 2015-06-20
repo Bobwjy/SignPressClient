@@ -391,7 +391,7 @@ namespace SignPressServer.SignTools
 
                     // 插入第row行第一个人签字人的签字图片
                     //[签字人签字位置坐标(row, col + 1)] 
-                    String signFileName = DEFAULT_SIGNATURE_PATH + contract.ConTemp.SignDatas[cnt].SignId + ".jpg";   //图片所在路径
+                    String signFileName = DEFAULT_SIGNATURE_PATH + contract.ConTemp.SignDatas[cnt].SignEmployee.Id + ".jpg";   //图片所在路径
                     Object LinkToFile = false;
                     Object SaveWithDocument = true;
                     Object Anchor = table.Cell(row, col + 1).Range;//选中要添加图片的单元格

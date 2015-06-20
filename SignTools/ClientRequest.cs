@@ -46,7 +46,20 @@ namespace SignPressServer.SignTools
         DELETE_CONTRACT_TEMPLATE_REQUEST,
         MODIFY_CONTRACT_TEMPLATE_REQUEST,
         QUERY_CONTRACT_TEMPLATE_REQUEST,
-    
+        GET_CONTRACT_TEMPLATE_REQUEST,
+
+        /// <summary>
+        /// ==航道局会签单操作==
+        /// 增加会签单模版  INSERT_HDJCONTRACT_REQUEST
+        /// 删除会签单模版  DELETE_HDJCONTRACT_REQUEST
+        /// 修改会签单模版  MODIFY_HDJCONTRACT_REQUEST
+        /// 查询会签单模版  QUERY_HDJCONTRACT_REQUEST
+        /// </summary>
+        INSERT_HDJCONTRACT_REQUEST,
+        DELETE_HDJCONTRACT_REQUEST,
+        MODIFY_HDJCONTRACT_REQUEST,
+        QUERY_HDJCONTRACT_REQUEST,
+        GET_HDJCONTRACT_REQUEST,
     }
 
 }

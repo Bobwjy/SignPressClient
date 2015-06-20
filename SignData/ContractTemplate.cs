@@ -14,7 +14,12 @@ namespace SignPressServer.SignData
      */
     public class ContractTemplate
     {
-
+        private String m_createDate;        // 会签单模版的创建时间
+        public String CreateDate
+        {
+            get { return this.m_createDate; }
+            set { this.m_createDate = value;  }
+        }
 
         protected int m_tempId;   //  会签单模版的编号
         public  int TempId

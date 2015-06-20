@@ -10,6 +10,20 @@ namespace SignPressServer.SignData
      */
     public class HDJContract
     {
+
+        private String m_name;
+        public String Name
+        {
+            get { return this.m_name; }
+            set { this.m_name = value; }
+        }
+
+        private String m_submitDate;
+        public String SubmitDate
+        {
+            get { return this.SubmitDate; }
+            set { this.SubmitDate = value; }
+        }
         private ContractTemplate m_conTemp;     //  所对应的会签单模版的信息
         public ContractTemplate ConTemp
         {
@@ -29,6 +43,12 @@ namespace SignPressServer.SignData
         {
             get { return this.ColumnDatas; }
             set { this.m_columnDatas = value; }
+        }
+        private Employee m_submitEmployee;
+        public Employee SubmitEmployee
+        {
+            get { return this.m_submitEmployee; }
+            set { this.m_submitEmployee = value; }
         }
 
         private List<String> m_signRemark;      //  每一个人的评论信息

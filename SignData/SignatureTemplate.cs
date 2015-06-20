@@ -24,11 +24,18 @@ namespace SignPressServer.SignData
             set{ this.m_signInfo = value; }
         }
 
-        private int m_signId;           //  签字人编号
-        public int  SignId
-        {
-            get { return this.m_signId; }
-            set { this.m_signId = value; }
+        //private int m_signId;           //  签字人编号
+        //public int  SignId
+        //{
+        //    get { return this.m_signId; }
+        //    set { this.m_signId = value; }
+        //}
+
+        private Employee m_signEmployee;        //  签字人的信息
+        public Employee SignEmployee
+        { 
+            get{return this.m_signEmployee; }
+            set{this.m_signEmployee = value;}
         }
 
         private int m_signlevel;        //  签字人签字顺序级别

@@ -816,16 +816,36 @@ namespace SignPressServer.SignSocket.AsyncSocket
                 /// 查询会签单模版  QUERY_CONTRACT_TEMPLATE_REQUEST
                 /// </summary>
                 case "INSERT_CONTRACT_TEMPLATE_REQUEST" :
-                    state.ClientSocket.BeginReceive(state.RecvDataBuffer, 0, state.RecvDataBuffer.Length, SocketFlags.None,
-                        new AsyncCallback(HandleInsertContractTemplateRequestDataReceived), state);
+                    RaiseInsertContractTemplateRequest(state);
                     break;
                     
                 case "DELETE_CONTRACT_TEMPLATE_REQUEST" :
+                    RaiseDeleteContractTemplateRequest(state);
                     break;
                 case "MODIFY_CONTRACT_TEMPLATE_REQUEST" :
+                    RaiseModifyContractTemplateRequest(state);
                     break;
                 case "QUERY_CONTRACT_TEMPLATE_REQUEST"  :
-                    RaiseQueryContractTemplateRequestEvent(state);
+                    RaiseQueryContractTemplateRequest(state);
+                    break;
+                case "GET_CONTRACT_TEMPLATE_REQUEST" :
+                    RaiseGetContractTemplateRequest(state);
+                    break;
+                /// <summary>
+                /// ==航道局会签单操作==
+                /// 增加会签单模版  INSERT_HDJCONTRACT_REQUEST
+                /// 删除会签单模版  DELETE_HDJCONTRACT_REQUEST
+                /// 修改会签单模版  MODIFY_HDJCONTRACT_REQUEST
+                /// 查询会签单模版  QUERY_HDJCONTRACT_REQUEST
+                /// </summary>
+                case "INSERT_HDJCONTRACT_REQUEST" :
+                    RaiseInsertHDJContractRequest(state);
+                    break;
+                case "DELETE_HDJCONTRACT_REQUEST" :
+                    break;
+                case "MODIFY_HDJCONTRACT_REQUEST" :
+                    break;
+                case "QUERY_HDJCONTRACT_REQUEST" :
                     break;
             }
         }
@@ -840,7 +860,6 @@ namespace SignPressServer.SignSocket.AsyncSocket
         /// <param name="state"></param>
         private void RaiseLoginRequest(AsyncSocketState state)
         {
-            //string request = JsonConvert.
             Console.WriteLine("接收到来自{0}的登录信息{1}", state.ClientIp, state.SocketMessage.Message); // 输出真正的信息
             this.Log.Write(new LogMessage("接收到来自" + state.ClientIp + "的登录信息" + state.SocketMessage.Message, LogMessageType.Information));
             
@@ -864,10 +883,7 @@ namespace SignPressServer.SignSocket.AsyncSocket
 
                 response = ServerResponse.LOGIN_FAILED;               //  用户登录成功信号   
             }
-            
-            // 将响应信息发送回客户端，先发响应信息头，再发响应信息域
-            //  响应信息头LOGIN_RESPONSE
-            //this.Send(state.ClientSocket, Encoding.UTF8.GetBytes(response.ToString()));      //  将响应信号发送至客户端
+            //  将响应信号发送至客户端
             if (response.Equals(ServerResponse.LOGIN_SUCCESS))
             {
                 AsyncSocketMessage socketMessage = new AsyncSocketMessage(response, employee);
@@ -886,20 +902,20 @@ namespace SignPressServer.SignSocket.AsyncSocket
 
         #endregion
 
+
         #region 部门信息的处理（多个处理段[插入-删除-修改-查询]）
 
 
         #region 处理客户端的插入部门请求
-
         /// <summary>
         /// 用户登录请求的事件的具体信息
         /// </summary>
         /// <param name="state"></param>
         private void RaiseInsertDepartmentRequest(AsyncSocketState state)
         {
-
-            Console.WriteLine(state.SocketMessage.Message); // 输出真正的信息
-            //string INSERT_DEPARTMENT_RESPONSE;
+            Console.WriteLine("接收到来自{0}的待插入部门信息{1}", state.ClientIp, state.SocketMessage.Message); // 输出真正的信息
+            this.Log.Write(new LogMessage("接收到来自" + state.ClientIp + "的待插入的部门信息" + state.SocketMessage.Message, LogMessageType.Information));
+       
             ServerResponse response = new ServerResponse(); 
 
             // json数据解包
@@ -922,52 +938,49 @@ namespace SignPressServer.SignSocket.AsyncSocket
                 response = ServerResponse.INSERT_DEPARTMENT_FAILED;
             }
 
-
+            // 插入部门的相应，只是一个响应头
             AsyncSocketMessage socketMessage = new AsyncSocketMessage(response);
-            //String json = JsonConvert.SerializeObject(employee);
             this.Send(state.ClientSocket, Encoding.UTF8.GetBytes(socketMessage.Package));                    //  将
 
         }
         #endregion
 
 
-        #region 处理客户端的删除部门请求
-        
+        #region 处理客户端的删除部门请求    
         /// <summary>
         /// 用户删除部门请求的事件的具体信息
         /// </summary>
         /// <param name="state"></param>
         private void RaiseDeleteDepartmentRequest(AsyncSocketState state)
         {
-
-            Console.WriteLine(state.SocketMessage.Message); // 输出真正的信息
-            //string DELETE_DEPARTMENT_RESPONSE;
+            Console.WriteLine("接收到来自{0}的待删除部门编号{1}", state.ClientIp, state.SocketMessage.Message); // 输出真正的信息
+            this.Log.Write(new LogMessage("接收到来自" + state.ClientIp + "的待删除的部门编号" + state.SocketMessage.Message, LogMessageType.Information));
+      
             ServerResponse response = new ServerResponse(); 
 
             // json数据解包
-            String departmentName = JsonConvert.DeserializeObject<String>(state.SocketMessage.Message);
-            bool result = DALDepartment.DeleteDepartment(departmentName);
+            int departmentId = JsonConvert.DeserializeObject<int>(state.SocketMessage.Message);
+            bool result = DALDepartment.DeleteDepartment(departmentId);
 
             if (result == true)
             {
-                Console.WriteLine("部门{0}删除成功", departmentName);
-                this.Log.Write(new LogMessage("部门" + departmentName + "删除成功", LogMessageType.Success));
+                Console.WriteLine("部门{0}删除成功", departmentId);
+                this.Log.Write(new LogMessage("部门" + departmentId + "删除成功", LogMessageType.Success));
 
                 response = ServerResponse.DELETE_DEPARTMENT_SUCCESS;               //  用户登录成功信号   
             }
             else
             {
-                Console.WriteLine("部门{0}删除失败", departmentName);
-                this.Log.Write(new LogMessage("部门" + departmentName + "删除失败", LogMessageType.Error));
+                Console.WriteLine("部门{0}删除失败", departmentId);
+                this.Log.Write(new LogMessage("部门" + departmentId + "删除失败", LogMessageType.Error));
 
                 //DELETE_DEPARTMENT_RESPONSE = "DELETE_DEPARTMENT_FAILED";                //  用户登录失败信号
                 response = ServerResponse.DELETE_DEPARTMENT_FAILED;
             }
 
+            //  删除部门的响应信息只包含响应头
             AsyncSocketMessage socketMessage = new AsyncSocketMessage(response);
-            //String json = JsonConvert.SerializeObject(employee);
             this.Send(state.ClientSocket, Encoding.UTF8.GetBytes(socketMessage.Package));                    //  将
-
         }
 
         #endregion
@@ -980,8 +993,10 @@ namespace SignPressServer.SignSocket.AsyncSocket
         /// <param name="state"></param>
         private void RaiseModifyDepartmentRequest(AsyncSocketState state)
         {
-            Console.WriteLine(state.SocketMessage.Message);
-            //string MODIFY_DEPARTMENT_RESPONSE;
+            Console.WriteLine("接收到来自{0}的待修改部门信息{1}", state.ClientIp, state.SocketMessage.Message); // 输出真正的信息
+            this.Log.Write(new LogMessage("接收到来自" + state.ClientIp + "的待修改的部门信息" + state.SocketMessage.Message, LogMessageType.Information));
+  
+
             ServerResponse response = new ServerResponse();
 
             // json数据解包
@@ -1004,6 +1019,8 @@ namespace SignPressServer.SignSocket.AsyncSocket
                 //MODIFY_DEPARTMENT_RESPONSE = "MODIFY_DEPARTMENT_FAILED";                //  用户登录失败信号
                 response = ServerResponse.MODIFY_DEPARTMENT_FAILED;
             }
+
+            // 修改部门的响应信息只包含响应头
             AsyncSocketMessage socketMessage = new AsyncSocketMessage(response);
             this.Send(state.ClientSocket, Encoding.UTF8.GetBytes(socketMessage.Package)); 
         }
@@ -1019,7 +1036,6 @@ namespace SignPressServer.SignSocket.AsyncSocket
         private void RaiseQueryDepartmentRequest(AsyncSocketState state)
         {
             List<Department> departments = new List<Department>();
-            //String QUERY_DEPARTMENT_RESPONSE;
             ServerResponse response = new ServerResponse();
 
             // 向数据库中查询部门的信息
@@ -1059,20 +1075,20 @@ namespace SignPressServer.SignSocket.AsyncSocket
 
         #endregion // 部门信息的处理（多个处理段[插入-删除-修改-查询]）
 
+
         #region 员工信息的处理(多个处理端[插入-删除-修改-查询])
 
 
         #region 处理客户端的插入人员请求
-        
-
         /// <summary>
         /// 插入员工请求的事件的具体信息
         /// </summary>
         /// <param name="state"></param>
         private void RaiseInsertEmployeeRequest(AsyncSocketState state)
         {
-            Console.WriteLine(state.SocketMessage.Message);
-            //string INSERT_EMPLOYEE_RESPONSE;
+            Console.WriteLine("接收到的来自{0}的待插入员工信息{1}", state.ClientIp, state.SocketMessage.Message);
+            this.Log.Write(new LogMessage("接收到的来自" + state.ClientIp + "的待插入员工信息" + state.SocketMessage.Message, LogMessageType.Information));
+            
             ServerResponse response = new ServerResponse();
 
             // json数据解包
@@ -1093,7 +1109,8 @@ namespace SignPressServer.SignSocket.AsyncSocket
                 //INSERT_EMPLOYEE_RESPONSE = "INSERT_EMPLOYEE_FAILED";                //  用户登录失败信号
                 response = ServerResponse.INSERT_EMPLOYEE_FAILED;
             }
-
+            
+            //  插入员工的响应信息只包含头信息
             AsyncSocketMessage socketMessage = new AsyncSocketMessage(response);
             this.Send(state.ClientSocket, Encoding.UTF8.GetBytes(socketMessage.Package));  
         }
@@ -1108,8 +1125,9 @@ namespace SignPressServer.SignSocket.AsyncSocket
         /// <param name="state"></param>
         private void RaiseDeleteEmployeeRequest(AsyncSocketState state)
         {
-            Console.WriteLine(state.SocketMessage.Message);
-            //string DELETE_DEPARTMENT_RESPONSE;
+            Console.WriteLine("接收到来自{0}的待删除员工信息{1}", state.ClientIp, state.SocketMessage.Message);
+            this.Log.Write(new LogMessage("接收到来自" + state.ClientIp + "待删除员工信息" + state.SocketMessage.Message, LogMessageType.Information));
+
             ServerResponse response = new ServerResponse();
 
             // json数据解包
@@ -1133,8 +1151,8 @@ namespace SignPressServer.SignSocket.AsyncSocket
                 response = ServerResponse.DELETE_DEPARTMENT_FAILED;
             }
 
+            //  删除员工的响应信息只包含头信息
             AsyncSocketMessage socketMessage = new AsyncSocketMessage(response);
-            //String json = JsonConvert.SerializeObject(employee);
             this.Send(state.ClientSocket, Encoding.UTF8.GetBytes(socketMessage.Package));
         }
 
@@ -1149,8 +1167,9 @@ namespace SignPressServer.SignSocket.AsyncSocket
         private void RaiseModifyEmployeeRequest(AsyncSocketState state)
         {
 
-            Console.WriteLine(state.SocketMessage.Message);
-            //string MODIFY_EMPLOYEE_RESPONSE;
+            Console.WriteLine("接收到来自{0}的待修改员工信息{1}", state.ClientIp, state.SocketMessage.Message);
+            this.Log.Write(new LogMessage("接收到来自" + state.ClientIp + "待修改员工信息" + state.SocketMessage.Message, LogMessageType.Information));
+
             ServerResponse response = new ServerResponse();
 
             // json数据解包
@@ -1159,30 +1178,27 @@ namespace SignPressServer.SignSocket.AsyncSocket
 
             if (result == true)
             {
-                Console.WriteLine(state.ClientIp + "部门{0}, {1}修改成功", employee.Id, employee.Name);
-                this.Log.Write(new LogMessage(state.ClientIp + "部门" + employee.Id + ", " + employee.Name + "修改成功", LogMessageType.Success));
+                Console.WriteLine(state.ClientIp + "员工{0}, {1}修改成功", employee.Id, employee.Name);
+                this.Log.Write(new LogMessage(state.ClientIp + "员工" + employee.Id + ", " + employee.Name + "修改成功", LogMessageType.Success));
 
                 //MODIFY_EMPLOYEE_RESPONSE = "MODIFY_EMPLOYEE_SUCCESS";               //  用户登录成功信号   
                 response = ServerResponse.MODIFY_EMPLOYEE_SUCCESS;
             }
             else
             {
-                Console.WriteLine(state.ClientIp + "部门{0}修改失败", employee.Name);
-                this.Log.Write(new LogMessage(state.ClientIp + "部门" + employee.Name + "修改失败", LogMessageType.Error));
+                Console.WriteLine(state.ClientIp + "员工{0}修改失败", employee.Name);
+                this.Log.Write(new LogMessage(state.ClientIp + "员工" + employee.Name + "修改失败", LogMessageType.Error));
 
                 //MODIFY_EMPLOYEE_RESPONSE = "MODIFY_EMPLOYEE_FAILED";                //  用户登录失败信号
                 response = ServerResponse.MODIFY_EMPLOYEE_FAILED;
             }
 
+            // 修改员工额响应信息至包含响应头
             AsyncSocketMessage socketMessage = new AsyncSocketMessage(response);
-            //String json = JsonConvert.SerializeObject(employee);
             this.Send(state.ClientSocket, Encoding.UTF8.GetBytes(socketMessage.Package));
         }
-
         #endregion
-
-
-       
+   
 
         #region 查询部门员工的信息请求
         /// <summary>
@@ -1191,18 +1207,16 @@ namespace SignPressServer.SignSocket.AsyncSocket
         /// <param name="state"></param>
         private void RaiseQueryEmployeeRequest(AsyncSocketState state)
         {
-            Console.WriteLine(state.SocketMessage.Message);
-
             Console.WriteLine("客户端{0}待查询的部门的ID = {1}", state.ClientIp, state.SocketMessage.Message);
-            this.Log.Write(new LogMessage(state.ClientIp + "接收到的数据" + state.SocketMessage.Message, LogMessageType.Information));
-            this.Log.Write(new LogMessage(state.ClientIp + "待查询的员工的ID = " + state.SocketMessage.Message, LogMessageType.Information));
+            this.Log.Write(new LogMessage(state.ClientIp + "待查询的员工的编号 = " + state.SocketMessage.Message, LogMessageType.Information));
             
             
             //String QUERY_EMPLOYEE_RESPONSE;
             ServerResponse response = new ServerResponse();
 
-            List<Employee> employees = DALEmployee.QueryEmployee(int.Parse(state.SocketMessage.Message));
-            // List<Employee> employees = DALEmployee.QueryEmployee(int.Parse(recvMsg));
+            int departmentId = JsonConvert.DeserializeObject<int>(state.SocketMessage.Message);
+            Console.WriteLine(departmentId);
+            List<Employee> employees = DALEmployee.QueryEmployee(departmentId);
 
             this.Log.Write(new LogMessage(state.ClientIp + "查询到的部门编号为" + state.SocketMessage.Message + "的所有员工", LogMessageType.Information));
 
@@ -1210,7 +1224,7 @@ namespace SignPressServer.SignSocket.AsyncSocket
             {
                 Console.WriteLine("部门{0}的员工信息查询成功", state.SocketMessage.Message);
                 this.Log.Write(new LogMessage(state.ClientIp + "部门" + state.SocketMessage.Message + "的员工信息查询成功", LogMessageType.Success));
-
+                
                 //QUERY_EMPLOYEE_RESPONSE = "QUERY_EMPLOYEE_SUCCESS";               //  用户登录成功信号   
                 response = ServerResponse.QUERY_EMPLOYEE_SUCCESS;
             }
@@ -1224,7 +1238,7 @@ namespace SignPressServer.SignSocket.AsyncSocket
             }
            
             //  查询部门成功则同时发送[报头 + 部门信息] 
-            if (response.Equals(ServerResponse.QUERY_DEPARTMENT_SUCCESS))
+            if (response.Equals(ServerResponse.QUERY_EMPLOYEE_SUCCESS))
             {
                 AsyncSocketMessage socketMessage = new AsyncSocketMessage(response, employees);
                 this.Send(state.ClientSocket, Encoding.UTF8.GetBytes(socketMessage.Package));                    //  将
@@ -1241,6 +1255,7 @@ namespace SignPressServer.SignSocket.AsyncSocket
 
         #endregion // 员工信息的处理(多个处理端[插入-删除-修改-查询])
 
+
         #region 会签单模版的处理(多个处理段[插入-删除-修改-查询])
         
         
@@ -1248,59 +1263,16 @@ namespace SignPressServer.SignSocket.AsyncSocket
         /// <summary>
         /// 处理客户端的插入会签单模版的请求
         /// </summary>
-        /// <param name="ar"></param>
-        private void HandleInsertContractTemplateRequestDataReceived(IAsyncResult ar)
-        {
-            if (IsRunning)
-            {
-                AsyncSocketState state = (AsyncSocketState)ar.AsyncState;
-                Socket client = state.ClientSocket;
-                try
-                {
-                    state.RecvLength = client.EndReceive(ar);   //  异步接收数据结束
-                    if (state.RecvLength == 0)
-                    {
-                        //  C - TODO 触发事件 (关闭客户端)
-                        Close(state);
-                        RaiseNetError(state);
-                        return;
-                    }
-
-                    //TODO 处理已经读取的数据 ps:数据在state的RecvDataBuffer中
-                    IPEndPoint ip = (IPEndPoint)client.RemoteEndPoint;
-                    Console.WriteLine("正在与" + ip.Address + " : " + ip.Port + "进行插入会签单模版...");
-                    Console.WriteLine("接收了{0}个数据单元[会签单模版信息]", state.RecvLength);
-
-                    this.Log.Write(new LogMessage("正在与" + ip.Address + " : " + ip.Port + "进行插入会签单模版...", LogMessageType.Information));
-                    this.Log.Write(new LogMessage(state.ClientIp + "接收了" + state.RecvLength + "个数据单元[会签单模版信息]", LogMessageType.Information));
-                    //C- TODO 触发用户登录的事件
-                    RaiseInsertContractTemplateRequestEvent(state);
-                }
-                catch (SocketException e)
-                {
-                    //  C- TODO 异常处理
-                    Console.WriteLine(e.ToString());
-                    RaiseNetError(state);
-                }
-            }
-        }
-
-        /// <summary>
-        /// 插入员工请求的事件的具体信息
-        /// </summary>
         /// <param name="state"></param>
-        private void RaiseInsertContractTemplateRequestEvent(AsyncSocketState state)
+        private void RaiseInsertContractTemplateRequest(AsyncSocketState state)
         {
-
-            string recvMsg = Encoding.UTF8.GetString(state.RecvDataBuffer, 0, state.RecvLength);
-            Console.WriteLine("接收到的会签单模版的信息" + recvMsg);
-            this.Log.Write(new LogMessage("接收到的会签单模版的信息" + recvMsg, LogMessageType.Information));
+            Console.WriteLine("接收到来自" + state.ClientIp + "的待插入会签单模版" + state.SocketMessage.Message);
+            this.Log.Write(new LogMessage("接收到来自" + state.ClientIp + "待插入会签单模版" + state.SocketMessage.Message, LogMessageType.Information));
 
             ServerResponse response = new ServerResponse();
 
-
             // json数据解包
-            ContractTemplate conTemp = JsonConvert.DeserializeObject<ContractTemplate>(recvMsg);
+            ContractTemplate conTemp = JsonConvert.DeserializeObject<ContractTemplate>(state.SocketMessage.Message);
             bool result = DALContractTemplate.InsertContractTemplate(conTemp);
             
             if (result == true)
@@ -1320,10 +1292,9 @@ namespace SignPressServer.SignSocket.AsyncSocket
                 response = ServerResponse.INSERT_CONTRACT_TEMPLATE_FAILED;                //  用户登录失败信号
             }
 
-            // 将响应信息发送回客户端，先发响应信息头，再发响应信息域
-            //  响应信息头LOGIN_RESPONSE
-            this.Send(state.ClientSocket, Encoding.UTF8.GetBytes(response.ToString()));      //  将响应信号发送至客户端
-
+            //  插入会签单模版的响应数据只包含头
+            AsyncSocketMessage socketMessage = new AsyncSocketMessage(response);
+            this.Send(state.ClientSocket, Encoding.UTF8.GetBytes(socketMessage.Package));
         }
 
         #endregion
@@ -1331,62 +1302,19 @@ namespace SignPressServer.SignSocket.AsyncSocket
 
         #region 处理客户端的删除会签单模版的请求
         /// <summary>
-        /// 处理客户端的删除会签单模版的请求
-        /// </summary>
-        /// <param name="ar"></param>
-        private void HandleDeleteContractTemplateRequestDataReceived(IAsyncResult ar)
-        {
-            if (IsRunning)
-            {
-                AsyncSocketState state = (AsyncSocketState)ar.AsyncState;
-                Socket client = state.ClientSocket;
-                try
-                {
-                    state.RecvLength = client.EndReceive(ar);   //  异步接收数据结束
-                    if (state.RecvLength == 0)
-                    {
-                        //  C - TODO 触发事件 (关闭客户端)
-                        Close(state);
-                        RaiseNetError(state);
-                        return;
-                    }
-
-                    //TODO 处理已经读取的数据 ps:数据在state的RecvDataBuffer中
-                    IPEndPoint ip = (IPEndPoint)client.RemoteEndPoint;
-                    Console.WriteLine("正在与" + ip.Address + " : " + ip.Port + "进行删除会签单模版...");
-                    Console.WriteLine(state.ClientIp + "接收了{0}个数据单元[会签单模版信息]", state.RecvLength);
-
-                    this.Log.Write(new LogMessage("正在与" + ip.Address + " : " + ip.Port + "进行删除会签单模版...", LogMessageType.Information));
-                    this.Log.Write(new LogMessage(state.ClientIp + "接收了" + state.RecvLength.ToString() + "个数据单元[会签单模版信息]", LogMessageType.Information));
-                    
-                    //C- TODO 触发用户登录的事件
-                    RaiseDeleteContractTemplateRequestEvent(state);
-                }
-                catch (SocketException e)
-                {
-                    //  C- TODO 异常处理
-                    Console.WriteLine(e.ToString());
-                    this.Log.Write(new LogMessage("删除会签单模版信息时异常\n异常信息\n" + e.ToString(), LogMessageType.Exception));
-                    RaiseNetError(state);
-                }
-            }
-        }
-
-        /// <summary>
         /// 用户删除部门请求的事件的具体信息
         /// </summary>
         /// <param name="state"></param>
-        private void RaiseDeleteContractTemplateRequestEvent(AsyncSocketState state)
+        private void RaiseDeleteContractTemplateRequest(AsyncSocketState state)
         {
-
-            string recvMsg = Encoding.UTF8.GetString(state.RecvDataBuffer, 0, state.RecvLength);
-            Console.WriteLine(recvMsg);
-            this.Log.Write(new LogMessage("接收到的模版的名称或者编号" + recvMsg, LogMessageType.Information));
+            Console.WriteLine("接收到来自" + state.ClientIp + "的待删除会签单模版编号" + state.SocketMessage.Message);
+            this.Log.Write(new LogMessage("接收到来自" + state.ClientIp + "待插入会签单模版编号" + state.SocketMessage.Message, LogMessageType.Information));
+            
             //string DELETE_DEPARTMENT_RESPONSE;
             ServerResponse response = new ServerResponse();
 
             // json数据解包
-            String conTempId = JsonConvert.DeserializeObject<String>(recvMsg);
+            int conTempId = JsonConvert.DeserializeObject<int>(state.SocketMessage.Message);
             bool result = DALContractTemplate.DeleteContactTemplate(conTempId);//
            
             if (result == true)
@@ -1405,14 +1333,9 @@ namespace SignPressServer.SignSocket.AsyncSocket
                 //DELETE_DEPARTMENT_RESPONSE = "DELETE_DEPARTMENT_FAILED";                //  用户登录失败信号
                 response = ServerResponse.DELETE_CONTRACT_TEMPLATE_FAILED;
             }
-            // 将响应信息发送回客户端，先发响应信息头，再发响应信息域
-            //  响应信息头LOGIN_RESPONSE
-            this.Send(state.ClientSocket, Encoding.UTF8.GetBytes(response.ToString()));      //  将响应信号发送至客户端
-            //if (INSERT_DEPARTMENT_RESPONSE.Equals("INSERT_DEPARTMENT_SUCCESS"))
-            //{
-            //    String json = JsonConvert.SerializeObject(employee);
-            //    this.Send(state.ClientSocket, Encoding.UTF8.GetBytes(json));                    //  将
-            //}
+            //  删除会签单模版的响应数据只包含头
+            AsyncSocketMessage socketMessage = new AsyncSocketMessage(response);
+            this.Send(state.ClientSocket, Encoding.UTF8.GetBytes(socketMessage.Package));
         }
 
         #endregion
@@ -1420,60 +1343,19 @@ namespace SignPressServer.SignSocket.AsyncSocket
 
         #region 处理客户端的修改会签单模版请求
         /// <summary>
-        /// 处理客户端的修改会签单模版请求
-        /// </summary>
-        /// <param name="ar"></param>
-        private void HandleModifyContractTemplateRequestDataReceived(IAsyncResult ar)
-        {
-            if (IsRunning)
-            {
-                AsyncSocketState state = (AsyncSocketState)ar.AsyncState;
-                Socket client = state.ClientSocket;
-                try
-                {
-                    state.RecvLength = client.EndReceive(ar);   //  异步接收数据结束
-                    if (state.RecvLength == 0)
-                    {
-                        //  C - TODO 触发事件 (关闭客户端)
-                        Close(state);
-                        RaiseNetError(state);
-                        return;
-                    }
-
-                    //TODO 处理已经读取的数据 ps:数据在state的RecvDataBuffer中
-                    IPEndPoint ip = (IPEndPoint)client.RemoteEndPoint;
-                    Console.WriteLine("正在与" + ip.Address + " : " + ip.Port + "进行修改会签单模版...");
-                    Console.WriteLine(state.ClientIp + "接收了{0}个数据单元[会签单模版信息]", state.RecvLength);
-
-                    this.Log.Write(new LogMessage("正在与" + ip.Address + " : " + ip.Port + "进行修改会签单模版信息...", LogMessageType.Information));
-                    this.Log.Write(new LogMessage(state.ClientIp + "接收了" + state.RecvLength.ToString() + "个数据单元[会签单模版信息]", LogMessageType.Information));
-                    
-                    //C- TODO 触发用户登录的事件
-                    RaiseModifyContractTemplateRequestEvent(state);
-                }
-                catch (SocketException e)
-                {
-                    //  C- TODO 异常处理
-                    Console.WriteLine(e.ToString());
-                    RaiseNetError(state);
-                }
-            }
-        }
-
-        /// <summary>
         /// 用户修改部门请求的事件的具体信息
         /// </summary>
         /// <param name="state"></param>
-        private void RaiseModifyContractTemplateRequestEvent(AsyncSocketState state)
+        private void RaiseModifyContractTemplateRequest(AsyncSocketState state)
         {
-
-            string recvMsg = Encoding.UTF8.GetString(state.RecvDataBuffer, 0, state.RecvLength);
-            Console.WriteLine(recvMsg);
+            Console.WriteLine("接收到来自" + state.ClientIp + "的待修改会签单模版信息" + state.SocketMessage.Message);
+            this.Log.Write(new LogMessage("接收到来自" + state.ClientIp + "待插入会签单模版信息" + state.SocketMessage.Message, LogMessageType.Information));
+     
             //string MODIFY_EMPLOYEE_RESPONSE;
             ServerResponse response = new ServerResponse();
 
             // json数据解包
-            ContractTemplate conTemp = JsonConvert.DeserializeObject<ContractTemplate>(recvMsg);
+            ContractTemplate conTemp = JsonConvert.DeserializeObject<ContractTemplate>(state.SocketMessage.Message);
             bool result = DALContractTemplate.ModifyContractTemplate(conTemp);
 
             if (result == true)
@@ -1492,73 +1374,24 @@ namespace SignPressServer.SignSocket.AsyncSocket
                 // MODIFY_EMPLOYEE_RESPONSE = "MODIFY_EMPLOYEE_FAILED";                //  用户登录失败信号
                 response = ServerResponse.MODIFY_CONTRACT_TEMPLATE_FAILED;
             }
-
-            this.Send(state.ClientSocket, Encoding.UTF8.GetBytes(response.ToString()));      //  将响应信号发送至客户端
-            //if (INSERT_DEPARTMENT_RESPONSE.Equals("INSERT_DEPARTMENT_SUCCESS"))
-            //{
-            //    String json = JsonConvert.SerializeObject(employee);
-            //    this.Send(state.ClientSocket, Encoding.UTF8.GetBytes(json));                    //  将
-            //}
+            //  修改会签单模版的响应数据只包含头
+            AsyncSocketMessage socketMessage = new AsyncSocketMessage(response);
+            this.Send(state.ClientSocket, Encoding.UTF8.GetBytes(socketMessage.Package));
         }
 
         #endregion
 
 
         #region 查询会签单模版的信息请求
-        ///// <summary>
-        ///// 处理客户端的删除部门请求
-        ///// </summary>
-        ///// <param name="ar"></param>
-        //private void HandleQueryContractTemplateRequestEvent(IAsyncResult ar)
-        //{
-        //    if (IsRunning)
-        //    {
-        //        AsyncSocketState state = (AsyncSocketState)ar.AsyncState;
-        //        Socket client = state.ClientSocket;
-        //        try
-        //        {
-        //            state.RecvLength = client.EndReceive(ar);   //  异步接收数据结束
-        //            if (state.RecvLength == 0)
-        //            {
-        //                //  C - TODO 触发事件 (关闭客户端)
-        //                Close(state);
-        //                RaiseNetError(state);
-        //                return;
-        //            }
-
-        //            //TODO 处理已经读取的数据 ps:数据在state的RecvDataBuffer中
-        //            IPEndPoint ip = (IPEndPoint)client.RemoteEndPoint;
-        //            Console.WriteLine("正在与" + ip.Address + " : " + ip.Port + "进行查询部门的员工信息...");
-        //            Console.WriteLine(state.ClientIp + "接收了{0}个数据单元[部门的编号信息]", state.RecvLength);
-
-        //            this.Log.Write(new LogMessage("正在与" + ip.Address + " : " + ip.Port + "进行查询部门的员工信息...", LogMessageType.Information));
-        //            this.Log.Write(new LogMessage(state.ClientIp + "接收了" + state.RecvLength.ToString() + "个数据单元[部门的编号信息]", LogMessageType.Information));
-
-        //            //C- TODO 触发用户登录的事件
-        //            RaiseQueryContractTemplateRequestEvent(state);
-        //        }
-        //        catch (SocketException e)
-        //        {
-        //            //  C- TODO 异常处理
-        //            Console.WriteLine(e.ToString());
-        //            RaiseNetError(state);
-        //        }
-        //        //finally
-        //        //{
-        //        //    //  继续接收来自来客户端的数据
-        //        //    client.BeginReceive(state.RecvDataBuffer, 0, state.RecvDataBuffer.Length, SocketFlags.None,
-        //        //     new AsyncCallback(HandleDataReceived), state);
-        //        //}
-        //    }
-        //}
-
         /// <summary>
         /// 处理客户端的查询员工请求
         /// </summary>
         /// <param name="state"></param>
-        private void RaiseQueryContractTemplateRequestEvent(AsyncSocketState state)
+        private void RaiseQueryContractTemplateRequest(AsyncSocketState state)
         {
-            //String QUERY_EMPLOYEE_RESPONSE;
+            Console.WriteLine("接收到来自" + state.ClientIp + "的查询会签单模版信息" + state.SocketMessage.Message);
+            this.Log.Write(new LogMessage("接收到来自" + state.ClientIp + "查询会签单模版信息" + state.SocketMessage.Message, LogMessageType.Information));
+  
             ServerResponse response = new ServerResponse();
 
             List<ContractTemplate> conTemps = DALContractTemplate.QueryContractTemplate();
@@ -1581,14 +1414,240 @@ namespace SignPressServer.SignSocket.AsyncSocket
                 response = ServerResponse.QUERY_CONTRACT_TEMPLATE_FAILED;
             }
 
-            //  先发响应头
-            this.Send(state.ClientSocket, Encoding.UTF8.GetBytes(response.ToString()));      //  将响应信号发送至客户端
-            
-            // 再发查询到的员工信息
+            //  查询会签单成功则同时发送[报头 + 部门信息] 
             if (response.Equals(ServerResponse.QUERY_CONTRACT_TEMPLATE_SUCCESS))
             {
-                String json = JsonConvert.SerializeObject(conTemps);
-                this.Send(state.ClientSocket, Encoding.UTF8.GetBytes(json));                    //  将
+                AsyncSocketMessage socketMessage = new AsyncSocketMessage(response, conTemps);
+                this.Send(state.ClientSocket, Encoding.UTF8.GetBytes(socketMessage.Package));                    //  将
+            }
+            else      //  查询失败则只发报头
+            {
+                AsyncSocketMessage socketMessage = new AsyncSocketMessage(response);
+                this.Send(state.ClientSocket, Encoding.UTF8.GetBytes(socketMessage.Package));
+            }
+        }
+
+        #endregion
+
+        #region  获取会签单模版的信息
+        /// <summary>
+        /// 获取会签单模版的具体信息
+        /// </summary>
+        /// <param name="state"></param>
+        private void RaiseGetContractTemplateRequest(AsyncSocketState state)
+        {
+            Console.WriteLine("接收到来自" + state.ClientIp + "的待获取会签单模版编号" + state.SocketMessage.Message);
+            this.Log.Write(new LogMessage("接收到来自" + state.ClientIp + "待获取会签单模版编号" + state.SocketMessage.Message, LogMessageType.Information));
+
+            //string MODIFY_EMPLOYEE_RESPONSE;
+            ServerResponse response = new ServerResponse();
+
+            // json数据解包
+            int conTempId = JsonConvert.DeserializeObject<int>(state.SocketMessage.Message);
+            ContractTemplate conTemp = DALContractTemplate.GetContractTemplate(conTempId);
+
+            if (conTemp != null)
+            {
+                Console.WriteLine(state.ClientIp + "获取会签单模版{0}成功", conTempId);
+                this.Log.Write(new LogMessage(state.ClientIp + "获取会签单模版" + conTempId + "成功", LogMessageType.Success));
+
+                //MODIFY_EMPLOYEE_RESPONSE = "MODIFY_EMPLOYEE_SUCCESS";               //  用户登录成功信号   
+                response = ServerResponse.GET_CONTRACT_TEMPLATE_SUCCESS;
+            }
+            else
+            {
+                Console.WriteLine(state.ClientIp + "获取会签单模版{0}失败", conTempId.ToString());
+                this.Log.Write(new LogMessage(state.ClientIp + "获取会签单模版" + conTempId + "失败", LogMessageType.Error));
+
+                // MODIFY_EMPLOYEE_RESPONSE = "MODIFY_EMPLOYEE_FAILED";                //  用户登录失败信号
+                response = ServerResponse.GET_CONTRACT_TEMPLATE_FAILED;
+            }
+            
+            //  查询会签单成功则同时发送[报头 + 部门信息] 
+            if (response.Equals(ServerResponse.GET_CONTRACT_TEMPLATE_SUCCESS))
+            {
+                AsyncSocketMessage socketMessage = new AsyncSocketMessage(response, conTemp);
+                this.Send(state.ClientSocket, Encoding.UTF8.GetBytes(socketMessage.Package));                    //  将
+            }
+            else      //  查询失败则只发报头
+            {
+                AsyncSocketMessage socketMessage = new AsyncSocketMessage(response);
+                this.Send(state.ClientSocket, Encoding.UTF8.GetBytes(socketMessage.Package));
+            }
+        }
+        #endregion
+        
+        #endregion  //  处理会签单模版的信息 
+
+    
+        #region 会签单的处理(多个处理段[插入-删除-修改-查询])
+        
+
+        #region 处理客户端的插入会签单的请求
+        /// <summary>
+        /// 处理客户端的插入会签单的请求
+        /// </summary>
+        /// <param name="state"></param>
+        private void RaiseInsertHDJContractRequest(AsyncSocketState state)
+        {
+            Console.WriteLine("接收到来自" + state.ClientIp + "的待插入会签单信息" + state.SocketMessage.Message);
+            this.Log.Write(new LogMessage("接收到来自" + state.ClientIp + "待插入会签单信息" + state.SocketMessage.Message, LogMessageType.Information));
+
+            ServerResponse response = new ServerResponse();
+
+            // json数据解包
+            HDJContract contract = JsonConvert.DeserializeObject<HDJContract>(state.SocketMessage.Message);
+            bool result = DALHDJContract.InsertHDJContract(contract);
+            
+            if (result == true)
+            {
+                Console.WriteLine("会签单模版{0}插入成功", contract.Id);
+                this.Log.Write(new LogMessage("会签单模版" + contract.Id + "插入成功", LogMessageType.Success));
+                
+                //  用户登录成功信号
+                response = ServerResponse.INSERT_CONTRACT_TEMPLATE_SUCCESS;
+                   
+            }
+            else
+            {
+                Console.WriteLine("会签单模版{0}插入失败", contract.Id);
+                this.Log.Write(new LogMessage("会签单模版" + contract.Id + "插入失败", LogMessageType.Error));
+
+                response = ServerResponse.INSERT_CONTRACT_TEMPLATE_FAILED;                //  用户登录失败信号
+            }
+
+            //  插入会签单模版的响应数据只包含头
+            AsyncSocketMessage socketMessage = new AsyncSocketMessage(response);
+            this.Send(state.ClientSocket, Encoding.UTF8.GetBytes(socketMessage.Package));
+        }
+
+        #endregion
+
+
+        #region 处理客户端的删除会签单模版的请求
+        /// <summary>
+        /// 用户删除部门请求的事件的具体信息
+        /// </summary>
+        /// <param name="state"></param>
+        private void RaiseDeleteHDJContractRequest(AsyncSocketState state)
+        {
+            Console.WriteLine("接收到来自" + state.ClientIp + "的待删除会签单模版编号" + state.SocketMessage.Message);
+            this.Log.Write(new LogMessage("接收到来自" + state.ClientIp + "待插入会签单模版编号" + state.SocketMessage.Message, LogMessageType.Information));
+            
+            //string DELETE_DEPARTMENT_RESPONSE;
+            ServerResponse response = new ServerResponse();
+
+            // json数据解包
+            int conTempId = JsonConvert.DeserializeObject<int>(state.SocketMessage.Message);
+            bool result = DALContractTemplate.DeleteContactTemplate(conTempId);//
+           
+            if (result == true)
+            {
+                Console.WriteLine("会签单模版{0}删除成功", conTempId);
+                this.Log.Write(new LogMessage(state.ClientIp + "会签单模版" + conTempId.ToString() + "删除成功", LogMessageType.Success));
+
+                //DELETE_DEPARTMENT_RESPONSE = "DELETE_DEPARTMENT_SUCCESS";               //  用户登录成功信号   
+                response = ServerResponse.DELETE_CONTRACT_TEMPLATE_SUCCESS;
+            }
+            else
+            {
+                Console.WriteLine("会签单模版{0}删除失败", conTempId);
+                this.Log.Write(new LogMessage(state.ClientIp + "会签单模版" + conTempId + "删除失败", LogMessageType.Error));
+
+                //DELETE_DEPARTMENT_RESPONSE = "DELETE_DEPARTMENT_FAILED";                //  用户登录失败信号
+                response = ServerResponse.DELETE_CONTRACT_TEMPLATE_FAILED;
+            }
+            //  删除会签单模版的响应数据只包含头
+            AsyncSocketMessage socketMessage = new AsyncSocketMessage(response);
+            this.Send(state.ClientSocket, Encoding.UTF8.GetBytes(socketMessage.Package));
+        }
+
+        #endregion
+
+
+        #region 处理客户端的修改会签单模版请求
+        /// <summary>
+        /// 用户修改部门请求的事件的具体信息
+        /// </summary>
+        /// <param name="state"></param>
+        private void RaiseModifyHDJContractRequest(AsyncSocketState state)
+        {
+            Console.WriteLine("接收到来自" + state.ClientIp + "的待修改会签单模版信息" + state.SocketMessage.Message);
+            this.Log.Write(new LogMessage("接收到来自" + state.ClientIp + "待插入会签单模版信息" + state.SocketMessage.Message, LogMessageType.Information));
+     
+            //string MODIFY_EMPLOYEE_RESPONSE;
+            ServerResponse response = new ServerResponse();
+
+            // json数据解包
+            ContractTemplate conTemp = JsonConvert.DeserializeObject<ContractTemplate>(state.SocketMessage.Message);
+            bool result = DALContractTemplate.ModifyContractTemplate(conTemp);
+
+            if (result == true)
+            {
+                Console.WriteLine(state.ClientIp + "会前的那模版{0}, {1}修改成功", conTemp.TempId.ToString(), conTemp.Name);
+                this.Log.Write(new LogMessage(state.ClientIp + "会签单模版" + conTemp.TempId.ToString() + ", " + conTemp.Name + "修改成功", LogMessageType.Success));
+
+                //MODIFY_EMPLOYEE_RESPONSE = "MODIFY_EMPLOYEE_SUCCESS";               //  用户登录成功信号   
+                response = ServerResponse.MODIFY_CONTRACT_TEMPLATE_SUCCESS;
+            }
+            else
+            {
+                Console.WriteLine(state.ClientIp + "会签单模版{0}删除失败", conTemp.TempId.ToString());
+                this.Log.Write(new LogMessage(state.ClientIp + "会签单模版" + conTemp.Name + "修改失败", LogMessageType.Error));
+
+                // MODIFY_EMPLOYEE_RESPONSE = "MODIFY_EMPLOYEE_FAILED";                //  用户登录失败信号
+                response = ServerResponse.MODIFY_CONTRACT_TEMPLATE_FAILED;
+            }
+            //  修改会签单模版的响应数据只包含头
+            AsyncSocketMessage socketMessage = new AsyncSocketMessage(response);
+            this.Send(state.ClientSocket, Encoding.UTF8.GetBytes(socketMessage.Package));
+        }
+
+        #endregion
+
+
+        #region 查询会签单模版的信息请求
+        /// <summary>
+        /// 处理客户端的查询员工请求
+        /// </summary>
+        /// <param name="state"></param>
+        private void RaiseQueryHDJContractTemplate(AsyncSocketState state)
+        {
+            Console.WriteLine("接收到来自" + state.ClientIp + "的查询会签单模版信息" + state.SocketMessage.Message);
+            this.Log.Write(new LogMessage("接收到来自" + state.ClientIp + "查询会签单模版信息" + state.SocketMessage.Message, LogMessageType.Information));
+  
+            ServerResponse response = new ServerResponse();
+
+            List<ContractTemplate> conTemps = DALContractTemplate.QueryContractTemplate();
+            this.Log.Write(new LogMessage(state.ClientIp + "查询到的了所有的会签单", LogMessageType.Information));
+
+            if (conTemps != null)
+            {
+                Console.WriteLine("会签单模版信息查询成功");
+                this.Log.Write(new LogMessage(state.ClientIp + "会签单模版信息信息查询成功", LogMessageType.Success));
+
+                //QUERY_EMPLOYEE_RESPONSE = "QUERY_EMPLOYEE_SUCCESS";               //  用户登录成功信号   
+                response = ServerResponse.QUERY_CONTRACT_TEMPLATE_SUCCESS;
+            }
+            else
+            {
+                Console.WriteLine("会签单模版信息查询失败");
+                this.Log.Write(new LogMessage(state.ClientIp + "会签单模版信息查询失败", LogMessageType.Error));
+
+                //QUERY_EMPLOYEE_RESPONSE = "QUERY_EMPLOYEE_FAILED";                //  用户登录失败信号
+                response = ServerResponse.QUERY_CONTRACT_TEMPLATE_FAILED;
+            }
+
+            //  查询会签单成功则同时发送[报头 + 部门信息] 
+            if (response.Equals(ServerResponse.QUERY_CONTRACT_TEMPLATE_SUCCESS))
+            {
+                AsyncSocketMessage socketMessage = new AsyncSocketMessage(response, conTemps);
+                this.Send(state.ClientSocket, Encoding.UTF8.GetBytes(socketMessage.Package));                    //  将
+            }
+            else      //  查询失败则只发报头
+            {
+                AsyncSocketMessage socketMessage = new AsyncSocketMessage(response);
+                this.Send(state.ClientSocket, Encoding.UTF8.GetBytes(socketMessage.Package));
             }
         }
 

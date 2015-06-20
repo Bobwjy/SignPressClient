@@ -56,6 +56,7 @@ namespace SignPressServer.SignTools
         /// 删除会签单模版  DELETE_CONTRACT_TEMPLATE_REQUEST
         /// 修改会签单模版  MODIFY_CONTRACT_TEMPLATE_REQUEST
         /// 查询会签单模版  QUERY_CONTRACT_TEMPLATE_REQUEST
+        /// 获取会签单模版  GET_CONTRACT_TEMPLATE_REQUEST
         /// </summary>
         INSERT_CONTRACT_TEMPLATE_SUCCESS,
         INSERT_CONTRACT_TEMPLATE_FAILED,
@@ -68,5 +69,26 @@ namespace SignPressServer.SignTools
         
         QUERY_CONTRACT_TEMPLATE_SUCCESS,
         QUERY_CONTRACT_TEMPLATE_FAILED,
+
+        GET_CONTRACT_TEMPLATE_SUCCESS,
+        GET_CONTRACT_TEMPLATE_FAILED,
+                /// <summary>
+        /// ==航道局会签单操作==
+        /// 增加会签单模版  INSERT_HDJCONTRACT_REQUEST
+        /// 删除会签单模版  DELETE_HDJCONTRACT_REQUEST
+        /// 修改会签单模版  MODIFY_HDJCONTRACT_REQUEST
+        /// 查询会签单模版  QUERY_HDJCONTRACT_REQUEST
+        /// </summary>
+        INSERT_HDJCONTRACT_SUCCESS,
+        INSERT_HDJCONTRACT_FAILED,
+
+        DELETE_HDJCONTRACT_SUCCESS,
+        DELETE_HDJCONTRACT_FAILED,
+        
+        MODIFY_HDJCONTRACT_SUCCESS,
+        MODIFY_HDJCONTRACT_FAILED,
+
+        QUERY_HDJCONTRACT_SUCCESS,
+        QUERY_HDJCONTRACT_FAILED,
     }
 }

@@ -9,7 +9,7 @@ namespace SignPressServer.SignData
     /*
      *  人员信息
      */
-    class Employee
+    public class Employee
     {
         private int m_id;   //  签字人的ID
         public int Id

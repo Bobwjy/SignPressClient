@@ -12,7 +12,7 @@ namespace SignPressServer.SignData
      *  对应于数据库中的部门表department
      *  
      */
-    class Department
+    public class Department
     {
         private int m_id;           // 部门编号
         public int Id

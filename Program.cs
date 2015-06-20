@@ -210,56 +210,57 @@ namespace SignPressServer
 
             #region 测试JSON数据
             //Action<object> log = o => Console.WriteLine(o);
-            
-            /*
-            var e1 = new Employee
-            {
-                Id = 1,
-                Name = "成坚",
-                Position = "科长",
-                Department = new Department { Id = 1, Name = "申请科" },
-                CanSubmit = true,
-                CanSign = true,
-                IsAdmin = true,
-                User = new User { Username = "chengjian", Password = "chengjian" },
 
-            };
-            var e2 = new Employee
-            {
-                Id = 1,
-                Name = "吴佳怡",
-                Position = "局长",
-                Department = new Department { Id = 5, Name = "行政科" },
-                CanSubmit = true,
-                CanSign = true,
-                IsAdmin = true,
-                User = new User{ Username = "wujiayi", Password = "wyujiayi"},
-            };
-            e1.Show();
-            e2.Show();
-            //序列化 参数是要序列化的对象;json是对象序列化后的字符串
-            String json = JsonConvert.SerializeObject(new Employee[] { e1, e2 });
-            Console.WriteLine(json);
-            //Employee是目标类型；json是经过Json序列化的对象，字符串形式
-            List<Employee> employList = JsonConvert.DeserializeObject<List<Employee>>(json);
-            JArray ja = JArray.Parse(json);
-            Console.WriteLine(ja);	//注意，格式化过的输出
-            foreach (Employee employ in employList)
-            {
-                employ.Show();
-            }
-            */
+
+//            var e1 = new Employee
+//            {
+//                Id = 1,
+//                Name = "成坚",
+//                Position = "科长",
+//                Department = new Department { Id = 1, Name = "申请科" },
+//                CanSubmit = true,
+//                CanSign = true,
+//                IsAdmin = true,
+//                User = new User { Username = "chengjian", Password = "chengjian" },
+
+//            };
+//            var e2 = new Employee
+//            {
+//                Id = 1,
+//                Name = "吴佳怡",
+//                Position = "局长",
+//                Department = new Department { Id = 5, Name = "行政科" },
+//                CanSubmit = true,
+//                CanSign = true,
+//                IsAdmin = true,
+//                User = new User{ Username = "wujiayi", Password = "wyujiayi"},
+//            };
+//            e1.Show();
+//            e2.Show();
+//            //序列化 参数是要序列化的对象;json是对象序列化后的字符串
+//            String json = JsonConvert.SerializeObject(new Employee[] { e1, e2 });
+//            Console.WriteLine(json);
+//            //Employee是目标类型；json是经过Json序列化的对象，字符串形式
+//            List<Employee> employList = JsonConvert.DeserializeObject<List<Employee>>(json);
+//            JArray ja = JArray.Parse(json);
+//            Console.WriteLine(ja);	//注意，格式化过的输出
+//            foreach (Employee employ in employList)
+//            {
+//                employ.Show();
+//            }
+
+   
             #endregion
 
             #region 获取本机的IP
-            string s1 = "所属机构名称;教师姓名;课程类型;课程名称";
+            //string s1 = "所属机构名称;教师姓名;课程类型;课程名称";
 
-            string[] split = s1.Split(';');    //返回由'/'分隔的子字符串数组
-            foreach (string s in split)
-            {
-                Console.WriteLine(s);
-            }
-            Console.WriteLine();
+            //string[] split = s1.Split(';');    //返回由'/'分隔的子字符串数组
+            //foreach (string s in split)
+            //{
+            //    Console.WriteLine(s);
+            //}
+            //Console.WriteLine();
             string hostName = System.Net.Dns.GetHostName();//本机名   
             System.Net.IPAddress[] addressList = System.Net.Dns.GetHostAddresses(hostName);//会返回所有地址，包括IPv4和IPv6   
             foreach (System.Net.IPAddress ip in addressList)  
