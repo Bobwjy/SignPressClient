@@ -90,5 +90,26 @@ namespace SignPressServer.SignTools
 
         QUERY_HDJCONTRACT_SUCCESS,
         QUERY_HDJCONTRACT_FAILED,
+
+        GET_HDJCONTRACT_SUCCESS,
+        GET_HDJCONTRACT_FAILED,
+
+        /// <summary>
+        /// 提交人查询会签单状态操作
+        /// </summary>
+        QUERY_SIGN_PEND_SUCCESS,
+        QUERY_SIGN_PEND_FAILED,
+
+        QUERY_SIGN_AGREE_SUCCESS,
+        QUERY_SIGN_AGREE_FAILED,
+
+        QUERY_SIGN_REFUSE_SUCCESS,
+        QUERY_SIGN_REFUSE_FAILED,
+
+        /// <summary>
+        /// 签字人查询会签单状态操作
+        /// </summary>
+        QUERY_UNSIGN_CONTRACT_SUCCESS,
+        QUERY_UNSIGN_CONTRACT_FAILED,
     }
 }

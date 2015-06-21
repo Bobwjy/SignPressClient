@@ -95,7 +95,6 @@ namespace SignPressServer.SignDAL
         #endregion
 
 
-
         #region 删除部门信息
         /// <summary>
         /// 删除部门的信息DeleteEmployee

@@ -60,6 +60,20 @@ namespace SignPressServer.SignTools
         MODIFY_HDJCONTRACT_REQUEST,
         QUERY_HDJCONTRACT_REQUEST,
         GET_HDJCONTRACT_REQUEST,
+
+
+        /// <summary>
+        /// 查询会签单状态操作
+        /// </summary>
+        QUERY_SIGN_PEND_REQUEST,
+        QUERY_SIGN_AGREE_REQUEST,
+        QUERY_SIGN_REFUSE_REQUEST,
+
+        /// <summary>
+        /// 查询会签单状态操作
+        /// </summary>
+        QUERY_UNSIGN_CONTRACT_REQUEST,
+    
     }
 
 }

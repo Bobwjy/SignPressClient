@@ -57,7 +57,7 @@ namespace SignPressServer.SignDAL
         /// <summary>
         /// 修改密码的信息串
         /// </summary>
-        private const String MODIFY_EMPLOYEE_PASSWORD_STR = @"UPDATE `employee` SET `password`=@Password WHERE (`id`=@Id)";
+        private const String MODIFY_EMPLOYEE_PASSWORD_STR = @"UPDATE `employee` SET `password` = @Password WHERE (`id` = @Id)";
 
         private const String MODIFY_EMPLOYEE_ID_STR = @"UPDATE `employee` 
                                                         SET `name` = @Name, `position` = @Position, `departmentid` = @DepartmentId, 
@@ -576,9 +576,6 @@ namespace SignPressServer.SignDAL
         #endregion
 
 
-
-
-
         #region 查询员工的信息
         /// <summary>
         /// 查询所有的员工信息
@@ -817,6 +814,8 @@ namespace SignPressServer.SignDAL
             return null;
         }
         #endregion
+        
+        
         #region 测试增加用户
         public static void TestInsertEmployee()
         {

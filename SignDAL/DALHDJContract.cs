@@ -21,7 +21,7 @@ namespace SignPressServer.SignDAL
         /// 添加航道局会签单的信息串
         /// </summary>
         private const String INSERT_HDJCONTRACT_STR = @"INSERT INTO `hdjcontract` (`id`, `name`, `contempid`, `subempid`, `submitdate`, `columndata1`, `columndata2`, `columndata3`, `columndata4`, `columndata5`) 
-                                                        VALUES (@Id, @Name, @ConTempId, @SubmitDate, @ColumnData_1, @ColumnData_2, @ColumnData_3, @ColumnData_4, @ColumnData_5, @SubEmpId)";
+                                                        VALUES (@Id, @Name, @ConTempId, @SubEmpId, @SubmitDate, @ColumnData_1, @ColumnData_2, @ColumnData_3, @ColumnData_4, @ColumnData_5)";
 
         /// <summary>
         /// 删除航道局会签单的信息串
@@ -39,9 +39,14 @@ namespace SignPressServer.SignDAL
         /// <summary>
         /// 查询航道局会签单的信息串
         /// </summary>
-        private const String QUERY_HDJCONTRACT_STR = @"SELECT `id`, `name`, `subempid`, `subempname`, `submitdate` FROM `hdjcontract` WHERE";
+        private const String QUERY_HDJCONTRACT_STR = @"SELECT `id`, `name`, `subempid`, `subempname`, `submitdate` FROM `hdjcontract`";
 
 
+        private const String GET_HDJCONTRACT_STR = @"SELECT id, name, subempid subempname, submitdate, 
+                                                     FROM `hdjcontract`
+                                                     WHERE (id = @Id and sub)";
+
+        
         #region 插入会签单模版信息
 
         public static bool InsertHDJContract(HDJContract contract)
@@ -57,11 +62,17 @@ namespace SignPressServer.SignDAL
                 cmd = con.CreateCommand();
                 cmd.CommandText = INSERT_HDJCONTRACT_STR;
 
+
+                /// 修改编号的设置
+                //////////////////////////////////////////////////////////////////////
+                contract.Id = System.DateTime.Now.ToString("yyyyMMddHHmmss");/////////
+                //////////////////////////////////////////////////////////////////////
                 cmd.Parameters.AddWithValue("@Id", contract.Id);
                 cmd.Parameters.AddWithValue("@Name", contract.Name);
-                cmd.Parameters.AddWithValue("@TempId", contract.ConTemp.TempId);
+                cmd.Parameters.AddWithValue("@ConTempId", contract.ConTemp.TempId);
                 cmd.Parameters.AddWithValue("@SubEmpId", contract.SubmitEmployee.Id);
-                cmd.Parameters.AddWithValue("@SubmitDate", contract.SubmitDate);
+                cmd.Parameters.AddWithValue("@SubmitDate", System.DateTime.Now);
+
                 ///  5个栏目信息
                 for (int cnt = 0; cnt < 5; cnt++)
                 {
@@ -271,6 +282,55 @@ namespace SignPressServer.SignDAL
             return contracts;
         }
         #endregion
+
+
+        #region 查询会签单模版的信息
+        public static HDJContract GetHDJContract(int contractId)
+        {
+            MySqlConnection con = DBTools.GetMySqlConnection();
+            MySqlCommand cmd;
+
+            HDJContract contract = new HDJContract();
+
+            try
+            {
+                con.Open();
+
+                cmd = con.CreateCommand();
+
+                cmd.CommandText = QUERY_HDJCONTRACT_STR;
+
+
+                MySqlDataReader sqlRead = cmd.ExecuteReader();
+                cmd.Dispose();
+
+                while (sqlRead.Read())
+                {
+
+                }
+
+                con.Close();
+                con.Dispose();
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+
+                if (con.State == ConnectionState.Open)
+                {
+                    con.Close();
+                }
+            }
+            return contract;
+        }
+        #endregion
+
+
+
 
     }
 }

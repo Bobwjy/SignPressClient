@@ -98,7 +98,8 @@ namespace SignPressServer
         static void Main(string[] args)
         {
             Console.WriteLine("SignPress服务器程序");
-            
+            Console.WriteLine(System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
+            Console.WriteLine(System.DateTime.Now.ToString("yyyyMMddHHmmss"));
             /// 测试连接服务器以及查询测试
 
             #region 测试数据库连接
