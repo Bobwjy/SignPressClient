@@ -254,9 +254,9 @@ namespace SignPressServer
             #endregion
 
             #region 获取本机的IP
-            //string s1 = "所属机构名称;教师姓名;课程类型;课程名称";
+            //string s1 = "代办列表(4)";
 
-            //string[] split = s1.Split(';');    //返回由'/'分隔的子字符串数组
+            //string[] split = s1.Split('(');    //返回由'/'分隔的子字符串数组
             //foreach (string s in split)
             //{
             //    Console.WriteLine(s);

@@ -50,6 +50,7 @@ namespace SignPressServer.SignSocket.AsyncSocket
         /// 客户端的IP地址信息
         /// </summary>
         private  IPEndPoint m_clientIp;     // 客户端的IP地址
+
         #endregion
 
         #region 属性
@@ -100,6 +101,17 @@ namespace SignPressServer.SignSocket.AsyncSocket
         
         #endregion
 
+
+
+        #region  附加信息段
+        //private Employee m_clientEmployee;    // 当前客户端登录的员工的信息
+        //public Employee ClientEmployee
+        //{
+        //    get { return this.m_clientEmployee; }
+        //    set { this.m_clientEmployee = value; }
+        //}
+
+        #endregion
         /// <summary>
         /// 构造函数
         /// </summary>

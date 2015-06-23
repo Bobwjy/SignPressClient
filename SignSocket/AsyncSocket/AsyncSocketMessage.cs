@@ -46,10 +46,12 @@ namespace SignPressServer.SignSocket.AsyncSocket
         public AsyncSocketMessage()
         {
         }
+
         public AsyncSocketMessage(ClientRequest request)
         {
             this.m_package = request.ToString() + ";";
         }
+
         public AsyncSocketMessage(ClientRequest request, Object obj)
         {
             String message = JsonConvert.SerializeObject(obj);
@@ -63,6 +65,7 @@ namespace SignPressServer.SignSocket.AsyncSocket
             this.m_package = response.ToString() + ";" + message.Length + ";" + message;
             Console.WriteLine("将要发送的数据MESSAGE :{0}", this.m_package);
         }
+
         public AsyncSocketMessage(ServerResponse response)
         {
             this.m_package = response.ToString() + ";";

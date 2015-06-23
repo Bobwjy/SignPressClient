@@ -873,13 +873,33 @@ namespace SignPressServer.SignSocket.AsyncSocket
 
                 /// <summary>
                 /// ==签字人的会签单操作==
-                /// 查询待签字会签单    QUERY_UNSIGN_CONTRACT_REQUEST
-                /// 查询已经通过会签单  QUERY_SIGNED_CONTRACT_REQUEST
-                /// 查询被拒绝的会签单  QUERY_SIGN_REFUSE_REQUEST
+                /// 查询本人需要签字的会签单    QUERY_UNSIGN_CONTRACT_REQUEST
+                /// 查询本人已经签字会签单  QUERY_SIGNED_CONTRACT_REQUEST
+                /// 进行签字确认  QUERY_SIGN_REFUSE_REQUEST
                 /// </summary>
                 case "QUERY_UNSIGN_CONTRACT_REQUEST":
+                    RaiseQueryUnsignContractRequest(state);
                     break;
                 case "QUERY_SIGNED_CONTRACT_REQUEST":
+                    RaiseQuerySignedContractRequest(state);
+                    break;
+
+                /// <summary>
+                /// ==签字人的签字操作==
+                /// 用户对某个单子进行签字    INSERT_SIGN_DETAIL_REQUEST
+                /// 用户查询自己的签单明细  QUERY_SIGN_DETAIL_REQUEST
+                /// 签字人查询自己EMP对于会签单CON的请求  QUERY_SIGN_DETAIL_EMP_CON_REQUEST
+                /// </summary>
+                case "INSERT_SIGN_DETAIL_REQUEST":      // 用户对某个单子进行签字
+                    RaiseInsertSignDetailRequest(state);
+                    break;
+                case "QUERY_SIGN_DETAIL_REQUEST" :      // 用户查询自己的签单明细
+                    RaiseQuerySignDetailRequest(state);
+                    break;
+
+
+                case "QUERY_SIGN_DETAIL_CON_REQUEST":   // 签字人查询自己EMP对于会签单CON的请求
+                    RaiseQuerySignDetailContractRequest(state);
                     break;
             }
         }
@@ -1702,7 +1722,7 @@ namespace SignPressServer.SignSocket.AsyncSocket
             ServerResponse response = new ServerResponse();
 
             // json数据解包
-            int contractId = JsonConvert.DeserializeObject<int>(state.SocketMessage.Message);
+            String contractId = JsonConvert.DeserializeObject<String>(state.SocketMessage.Message);
             HDJContract contract = DALHDJContract.GetHDJContract(contractId);
 
             if (contract != null)
@@ -1725,7 +1745,7 @@ namespace SignPressServer.SignSocket.AsyncSocket
             //  查询会签单成功则同时发送[报头 + 部门信息] 
             if (response.Equals(ServerResponse.GET_HDJCONTRACT_SUCCESS))
             {
-                AsyncSocketMessage socketMessage = new AsyncSocketMessage(response, response);
+                AsyncSocketMessage socketMessage = new AsyncSocketMessage(response, contract);
                 this.Send(state.ClientSocket, Encoding.UTF8.GetBytes(socketMessage.Package));                    //  将
             }
             else      //  查询失败则只发报头
@@ -1739,7 +1759,8 @@ namespace SignPressServer.SignSocket.AsyncSocket
         
         #endregion  //  处理会签单模版的信息 
 
-        #region 查询正在审核，审核通过以及被拒绝的所有会签单的信息
+        
+        #region 提交人查询自己正在审核，审核通过以及被拒绝的所有会签单的信息
 
 
         #region 查询正在审核的所有会签单的信息
@@ -1756,7 +1777,7 @@ namespace SignPressServer.SignSocket.AsyncSocket
             ServerResponse response = new ServerResponse();
 
             int employeeId = JsonConvert.DeserializeObject<int>(state.SocketMessage.Message);
-            List<HDJContract> contracts = DALSignatureStatus.QuerySignatureStatusPendding(employeeId);
+            List<SHDJContract> contracts = DALSignatureStatus.QuerySignatureStatusPendding(employeeId);
             this.Log.Write(new LogMessage(state.ClientIp + "查询到的了所有正在审核中的会签单", LogMessageType.Information));
 
             if (contracts != null)
@@ -1792,8 +1813,6 @@ namespace SignPressServer.SignSocket.AsyncSocket
         #endregion
 
 
-
-
         #region 查询审核通过绝的所有会签单的信息
         /// <summary>
         /// 查询正在审核，审核通过以及被拒绝的所有会签单的信息
@@ -1807,7 +1826,7 @@ namespace SignPressServer.SignSocket.AsyncSocket
             ServerResponse response = new ServerResponse();
 
             int employeeId = JsonConvert.DeserializeObject<int>(state.SocketMessage.Message);
-            List<HDJContract> contracts = DALSignatureStatus.QuerySignatureStatusPendding(employeeId);
+            List<SHDJContract> contracts = DALSignatureStatus.QuerySignatureStatusAgree(employeeId);
             this.Log.Write(new LogMessage(state.ClientIp + "查询到的了所有已通过审核的会签单", LogMessageType.Information));
 
             if (contracts != null)
@@ -1856,7 +1875,7 @@ namespace SignPressServer.SignSocket.AsyncSocket
             ServerResponse response = new ServerResponse();
 
             int employeeId = JsonConvert.DeserializeObject<int>(state.SocketMessage.Message);
-            List<HDJContract> contracts = DALSignatureStatus.QuerySignatureStatusRefuse(employeeId);
+            List<SHDJContract> contracts = DALSignatureStatus.QuerySignatureStatusRefuse(employeeId);
             this.Log.Write(new LogMessage(state.ClientIp + "查询到的了所有被拒绝的会签单", LogMessageType.Information));
 
             if (contracts != null)
@@ -1891,43 +1910,45 @@ namespace SignPressServer.SignSocket.AsyncSocket
 
         #endregion
 
+        #endregion
+        
+        #region  签字人查询自己待签字的单子以及已经签过字的单子信息  
 
-
-        #region 查询被拒绝的所有会签单的信息
+        #region 签字人查询所有待签字的会签单信息
         /// <summary>
-        /// 查询正在审核，审核通过以及被拒绝的所有会签单的信息
+        /// 签字人查询所有待签字的会签单信息
         /// </summary>
         /// <param name="state"></param>
-        private void RaiseQuerySignContractRequest(AsyncSocketState state)
+        private void RaiseQueryUnsignContractRequest(AsyncSocketState state)
         {
             Console.WriteLine("接收到来自" + state.ClientIp + "的查询待签字的会签单信息" + state.SocketMessage.Message);
-            this.Log.Write(new LogMessage("接收到来自" + state.ClientIp + "查询待签字的会签单模版信息" + state.SocketMessage.Message, LogMessageType.Information));
+            this.Log.Write(new LogMessage("接收到来自" + state.ClientIp + "查询待签字的会签单信息" + state.SocketMessage.Message, LogMessageType.Information));
 
             ServerResponse response = new ServerResponse();
 
             int employeeId = JsonConvert.DeserializeObject<int>(state.SocketMessage.Message);
-            List<HDJContract> contracts = DALSignatureStatus.QueryUnsignContract(employeeId);
-            this.Log.Write(new LogMessage(state.ClientIp + "查询到的了所有被拒绝的会签单", LogMessageType.Information));
+            List<SHDJContract> contracts = DALSignatureStatus.QueryUnsignContract(employeeId);
+            this.Log.Write(new LogMessage(state.ClientIp + "查询到的了所有查询待签字的的会签单", LogMessageType.Information));
 
             if (contracts != null)
             {
-                Console.WriteLine("被拒绝会签单信息查询成功");
-                this.Log.Write(new LogMessage(state.ClientIp + "被拒绝会签单信息查询成功", LogMessageType.Success));
+                Console.WriteLine("查询待签字的签单信息查询成功");
+                this.Log.Write(new LogMessage(state.ClientIp + "查询待签字的会签单信息查询成功", LogMessageType.Success));
 
                 //QUERY_EMPLOYEE_RESPONSE = "QUERY_EMPLOYEE_SUCCESS";               //  用户登录成功信号   
                 response = ServerResponse.QUERY_UNSIGN_CONTRACT_SUCCESS;
             }
             else
             {
-                Console.WriteLine("被拒绝的会签单信息查询失败");
-                this.Log.Write(new LogMessage(state.ClientIp + "被拒绝的会签单信息查询失败", LogMessageType.Error));
+                Console.WriteLine("查询待签字的会签单信息查询失败");
+                this.Log.Write(new LogMessage(state.ClientIp + "查询待签字的会签单信息查询失败", LogMessageType.Error));
 
                 //QUERY_EMPLOYEE_RESPONSE = "QUERY_EMPLOYEE_FAILED";                //  用户登录失败信号
                 response = ServerResponse.QUERY_UNSIGN_CONTRACT_FAILED;
             }
 
             //  查询会签单成功则同时发送[报头 + 部门信息] 
-            if (response.Equals(ServerResponse.QUERY_SIGN_REFUSE_SUCCESS))
+            if (response.Equals(ServerResponse.QUERY_UNSIGN_CONTRACT_SUCCESS))
             {
                 AsyncSocketMessage socketMessage = new AsyncSocketMessage(response, contracts);
                 this.Send(state.ClientSocket, Encoding.UTF8.GetBytes(socketMessage.Package));                    //  将
@@ -1942,7 +1963,190 @@ namespace SignPressServer.SignSocket.AsyncSocket
         #endregion
 
 
+
+        #region 签字人查询自己已经签过字的单子信息
+        /// <summary>
+        /// 查询正在审核，审核通过以及被拒绝的所有会签单的信息
+        /// </summary>
+        /// <param name="state"></param>
+        private void RaiseQuerySignedContractRequest(AsyncSocketState state)
+        {
+            Console.WriteLine("接收到来自" + state.ClientIp + "的查询已完成签字的会签单请求" + state.SocketMessage.Message);
+            this.Log.Write(new LogMessage("接收到来自" + state.ClientIp + "查询已完成签字的会签单的请求" + state.SocketMessage.Message, LogMessageType.Information));
+
+            ServerResponse response = new ServerResponse();
+
+            int employeeId = JsonConvert.DeserializeObject<int>(state.SocketMessage.Message);
+            List<SHDJContract> contracts = DALSignatureStatus.QuerySignedContract(employeeId);
+            this.Log.Write(new LogMessage(state.ClientIp + "查询到的了所有查询已完成签字的会签单", LogMessageType.Information));
+
+            if (contracts != null)
+            {
+                Console.WriteLine("查询已完成签字的签单信息查询成功");
+                this.Log.Write(new LogMessage(state.ClientIp + "查询已完成签字的会签单信息查询成功", LogMessageType.Success));
+
+                //QUERY_EMPLOYEE_RESPONSE = "QUERY_EMPLOYEE_SUCCESS";               //  用户登录成功信号   
+                response = ServerResponse.QUERY_SIGNED_CONTRACT_SUCCESS;
+            }
+            else
+            {
+                Console.WriteLine("查询已完成签字的会签单信息查询失败");
+                this.Log.Write(new LogMessage(state.ClientIp + "查询已完成签字的会签单信息查询失败", LogMessageType.Error));
+
+                //QUERY_EMPLOYEE_RESPONSE = "QUERY_EMPLOYEE_FAILED";                //  用户登录失败信号
+                response = ServerResponse.QUERY_SIGNED_CONTRACT_FAILED;
+            }
+
+            //  查询会签单成功则同时发送[报头 + 部门信息] 
+            if (response.Equals(ServerResponse.QUERY_SIGNED_CONTRACT_SUCCESS))
+            {
+                AsyncSocketMessage socketMessage = new AsyncSocketMessage(response, contracts);
+                this.Send(state.ClientSocket, Encoding.UTF8.GetBytes(socketMessage.Package));                    //  将
+            }
+            else      //  查询失败则只发报头
+            {
+                AsyncSocketMessage socketMessage = new AsyncSocketMessage(response);
+                this.Send(state.ClientSocket, Encoding.UTF8.GetBytes(socketMessage.Package));
+            }
+        }
+
         #endregion
+
+
+        #endregion  签字人查询自己待签字的单子以及已经签过字的单子信息
+
+
+        #region  签字用户进行签字的流程
+
+        #region 用户签字确认信息
+        private void RaiseInsertSignDetailRequest(AsyncSocketState state)
+        {
+            Console.WriteLine("接收到来自" + state.ClientIp + "的进行签字确认的请求" + state.SocketMessage.Message);
+            this.Log.Write(new LogMessage("接收到来自" + state.ClientIp + "的进行签字确认的请求" + state.SocketMessage.Message, LogMessageType.Information));
+
+            ServerResponse response = new ServerResponse();
+
+            SignatureDetail detail = JsonConvert.DeserializeObject<SignatureDetail>(state.SocketMessage.Message);
+            bool result = DALSignatureDetail.InsertSignatureDetail(detail);
+
+            this.Log.Write(new LogMessage(state.ClientIp + "的进行签字确认的请求", LogMessageType.Information));
+
+            if (result == true)
+            {
+                Console.WriteLine("来自{0}的签字确认成功");
+                this.Log.Write(new LogMessage("来自" + state.ClientIp + "的签字确认成功", LogMessageType.Success));
+
+                //QUERY_EMPLOYEE_RESPONSE = "QUERY_EMPLOYEE_SUCCESS";               //  用户登录成功信号   
+                response = ServerResponse.INSERT_SIGN_DETAIL_SUCCESS;
+            }
+            else
+            {
+                Console.WriteLine("查询已完成签字的会签单信息查询失败");
+                this.Log.Write(new LogMessage(state.ClientIp + "查询已完成签字的会签单信息查询失败", LogMessageType.Error));
+
+                //QUERY_EMPLOYEE_RESPONSE = "QUERY_EMPLOYEE_FAILED";                //  用户登录失败信号
+                response = ServerResponse.INSERT_SIGN_DETAIL_FAILED;
+            }
+
+            //  查询会签单成功则同时发送[报头 + 部门信息] 
+  
+            AsyncSocketMessage socketMessage = new AsyncSocketMessage(response);
+            this.Send(state.ClientSocket, Encoding.UTF8.GetBytes(socketMessage.Package));                    //  将
+        }
+
+        #endregion
+
+        #region  签字人查询自己所有的签字信息
+        private void RaiseQuerySignDetailRequest(AsyncSocketState state)
+        {
+            Console.WriteLine("接收到来自" + state.ClientIp + "的进行查询签字的请求" + state.SocketMessage.Message);
+            this.Log.Write(new LogMessage("接收到来自" + state.ClientIp + "的查询签字信息的请求" + state.SocketMessage.Message, LogMessageType.Information));
+
+            ServerResponse response = new ServerResponse();
+
+            int employeeId = JsonConvert.DeserializeObject<int>(state.SocketMessage.Message);
+            List<SignatureDetail> details = DALSignatureDetail.QuerySignatureDetail(employeeId);
+
+            this.Log.Write(new LogMessage(state.ClientIp + "的进行签字确认的请求", LogMessageType.Information));
+
+            if (details != null)
+            {
+                Console.WriteLine("来自{0}的签字确认成功");
+                this.Log.Write(new LogMessage("来自" + state.ClientIp + "的签字确认成功", LogMessageType.Success));
+
+                //QUERY_EMPLOYEE_RESPONSE = "QUERY_EMPLOYEE_SUCCESS";               //  用户登录成功信号   
+                response = ServerResponse.QUERY_SIGN_DETAIL_SUCCESS;
+            }
+            else
+            {
+                Console.WriteLine("查询已完成签字的会签单信息查询失败");
+                this.Log.Write(new LogMessage(state.ClientIp + "查询已完成签字的会签单信息查询失败", LogMessageType.Error));
+
+                //QUERY_EMPLOYEE_RESPONSE = "QUERY_EMPLOYEE_FAILED";                //  用户登录失败信号
+                response = ServerResponse.QUERY_SIGN_DETAIL_FAILED;
+            }
+
+            //  查询会签单成功则同时发送[报头 + 部门信息] 
+            if (response.Equals(ServerResponse.QUERY_SIGN_DETAIL_SUCCESS))
+            {
+                AsyncSocketMessage socketMessage = new AsyncSocketMessage(response, details);
+                this.Send(state.ClientSocket, Encoding.UTF8.GetBytes(socketMessage.Package));                    //  将
+            }
+            else      //  查询失败则只发报头
+            {
+                AsyncSocketMessage socketMessage = new AsyncSocketMessage(response);
+                this.Send(state.ClientSocket, Encoding.UTF8.GetBytes(socketMessage.Package));
+            }
+        }
+        #endregion
+
+
+        #region  签字人查询自己针对某个单子con的签字信息
+        private void RaiseQuerySignDetailContractRequest(AsyncSocketState state)
+        {
+            Console.WriteLine("接收到来自" + state.ClientIp + "的进行签字确认的请求" + state.SocketMessage.Message);
+            this.Log.Write(new LogMessage("接收到来自" + state.ClientIp + "的进行签字确认的请求" + state.SocketMessage.Message, LogMessageType.Information));
+
+            ServerResponse response = new ServerResponse();
+
+            SignatureDetail detail = JsonConvert.DeserializeObject<SignatureDetail>(state.SocketMessage.Message);
+            bool result = DALSignatureDetail.InsertSignatureDetail(detail);
+
+            this.Log.Write(new LogMessage(state.ClientIp + "的进行签字确认的请求", LogMessageType.Information));
+
+            if (result == true)
+            {
+                Console.WriteLine("来自{0}的签字确认成功");
+                this.Log.Write(new LogMessage("来自" + state.ClientIp + "的签字确认成功", LogMessageType.Success));
+
+                //QUERY_EMPLOYEE_RESPONSE = "QUERY_EMPLOYEE_SUCCESS";               //  用户登录成功信号   
+                response = ServerResponse.QUERY_SIGN_DETAIL_CON_SUCCESS;
+            }
+            else
+            {
+                Console.WriteLine("查询已完成签字的会签单信息查询失败");
+                this.Log.Write(new LogMessage(state.ClientIp + "查询已完成签字的会签单信息查询失败", LogMessageType.Error));
+
+                //QUERY_EMPLOYEE_RESPONSE = "QUERY_EMPLOYEE_FAILED";                //  用户登录失败信号
+                response = ServerResponse.QUERY_SIGN_DETAIL_CON_FAILED;
+            }
+
+            //  查询会签单成功则同时发送[报头 + 部门信息] 
+            if (response.Equals(ServerResponse.QUERY_SIGN_DETAIL_CON_SUCCESS))
+            {
+                //AsyncSocketMessage socketMessage = new AsyncSocketMessage(response, contracts);
+                //this.Send(state.ClientSocket, Encoding.UTF8.GetBytes(socketMessage.Package));                    //  将
+            }
+            else      //  查询失败则只发报头
+            {
+                AsyncSocketMessage socketMessage = new AsyncSocketMessage(response);
+                this.Send(state.ClientSocket, Encoding.UTF8.GetBytes(socketMessage.Package));
+            }
+        }
+        #endregion
+
+
+        #endregion  签字用户进行签字的流程
 
     }
 }

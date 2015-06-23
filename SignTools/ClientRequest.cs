@@ -8,8 +8,10 @@ namespace SignPressServer.SignTools
     public enum ClientRequest
     {
         //  员工操作
-        LOGIN_REQUEST,  //  登录请求
-        QUIT_REQUEST,
+        LOGIN_REQUEST,          //  登录请求
+        QUIT_REQUEST,           //  退出请求
+        DOWNLOAD_HDJCONTRACT,   //  下载会签单的信息
+
 
         /// <summary>
         /// ==部门操作==
@@ -71,9 +73,19 @@ namespace SignPressServer.SignTools
 
         /// <summary>
         /// 查询会签单状态操作
+        /// QUERY_UNSIGN_CONTRACT_REQUEST 签字人查询自己需要签字中的会签单
+        /// QUERY_SIGNED_CONTRACT_REQUEST 签字人查询自己已经签完字的会签单
+        /// 
+        /// INSERT_SIGN_DETAIL_REQUEST    签字人进行签字
+        /// QUERY_SIGN_DETAIL_REQUEST     签字人查询自己的签字明细  
+        /// QUERY_SIGN_DETAIL_CON_REQUEST 签字人查询自己针对与某个单子的签字明细
         /// </summary>
         QUERY_UNSIGN_CONTRACT_REQUEST,
+        QUERY_SIGNED_CONTRACT_REQUEST,
     
+        INSERT_SIGN_DETAIL_REQUEST,
+        QUERY_SIGN_DETAIL_REQUEST,
+        QUERY_SIGN_DETAIL_CON_REQUEST,
     }
 
 }

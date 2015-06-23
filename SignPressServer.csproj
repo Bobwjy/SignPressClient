@@ -60,6 +60,7 @@
     <Compile Include="SignData\Employee.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SignData\SHDJContract.cs" />
     <Compile Include="SignData\SignatureDetail.cs" />
     <Compile Include="SignData\SignatureStatus.cs" />
     <Compile Include="SignData\SignatureTemplate.cs" />

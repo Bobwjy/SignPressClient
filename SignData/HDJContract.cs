@@ -74,5 +74,12 @@ namespace SignPressServer.SignData
             get { return this.m_maxLevel; }
             set { this.m_maxLevel = value; }
         }
+
+        private List<int> m_signResults;            // 每个人的信息
+        public List<int> SignResults
+        { 
+            get{ return this.m_signResults; }
+            set{ this.m_signResults = value;}
+        }
     }
 }

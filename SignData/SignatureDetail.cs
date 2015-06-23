@@ -18,12 +18,6 @@ namespace SignPressServer.SignData
      */
     public class SignatureDetail
     {
-        private String m_id;        // 签字明细表的编号
-        public String Id
-        {
-            get{return this.m_id; }
-            set{this.m_id = value; }
-        }
 
         private String m_date;      //  签字的日期
         public String Date
