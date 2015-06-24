@@ -18,6 +18,7 @@ using System.IO;
 //using Microsoft.Office.Interop.Word;
 
 using SignPressServer.SignContract;
+using SignPressServer.SignData;
 
 namespace SignPressServer.SignTools
 {
@@ -35,7 +36,10 @@ namespace SignPressServer.SignTools
     {
 
         // 系统默认的员工签名图片的存储路径
-        private const String DEFAULT_SIGNATURE_PATH = @".\\signature\\";
+        //private const String DEFAULT_SIGNATURE_PATH = @".\signature\";
+        private const String DEFAULT_SIGNATURE_PATH = @"G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressServer\bin\Debug\signature\";
+
+
 
         #region  创建一个WORD文档
         public void CreateWord(Object filePath)
@@ -262,46 +266,6 @@ namespace SignPressServer.SignTools
                             ref Missing, ref Missing, ref Missing, ref Missing, ref Missing, ref Missing,
                             ref Missing, ref Missing, ref isVisible, ref openAndRepair, ref Missing, ref Missing, ref Missing);
 
-           
-/*
-            if (wordDoc.ActiveWindow.ActivePane.View.Type != WdViewType.wdPrintView)
-            {
-                if (wordDoc.ActiveWindow.View.SplitSpecial == WdSpecialPane.wdPaneNone)
-                    wordDoc.ActiveWindow.ActivePane.View.Type = WdViewType.wdPrintView;
-                else
-                    wordDoc.ActiveWindow.View.Type = WdViewType.wdPrintView;
-            }
-            int FilePageCount = GetPageCount(wordDoc);//得到总页数
-            try
-            {
-                if (!System.IO.File.Exists(saveFilePath))
-                    wordDoc.ExportAsFixedFormat(saveFilePath, WdExportFormat.wdExportFormatPDF, false, WdExportOptimizeFor.wdExportOptimizeForPrint, WdExportRange.wdExportFromTo,
-                        1, FilePageCount, WdExportItem.wdExportDocumentContent, false, true, WdExportCreateBookmarks.wdExportCreateNoBookmarks, true, true, false, Missing);
-                result = String.Empty;
-            }
-            catch (Exception ex)
-            {
-                result = ex.ToString();
-            }
-            finally
-            {
-                if (wordDoc != null)
-                {
-                    wordDoc.Close(ref Missing, ref Missing, ref Missing);
-                    wordDoc = null;
-                }
-                if (wordApp != null)
-                {
-                    wordApp.Quit(ref Missing, ref Missing, ref Missing);
-                    wordApp = null;
-                }
-                GC.Collect();
-                GC.WaitForPendingFinalizers();
-                GC.Collect();
-                GC.WaitForPendingFinalizers();
-            }
-            return result;
-*/
 
                 //  设置保存的格式   
                 Object fileFarmat = Microsoft.Office.Interop.Word.WdSaveFormat.wdFormatPDF;
@@ -343,7 +307,7 @@ namespace SignPressServer.SignTools
 
         #region 生成拨款会签单
 
-        public static bool CreateYHJLHXMBOContractWord(YHJLHXMBKContract contract, Object saveFilePath)
+        public static bool CreateHDJContractWord(HDJContract contract, Object saveFilePath)
         {
             Console.WriteLine("开始生成养护及例会项目拨款会签单");
             
@@ -361,7 +325,7 @@ namespace SignPressServer.SignTools
 
             int tableRow = 10;          //  表格的行数
             int tableColumn = 6;        //  表格的列数
-
+            
             //  定义一个word中的表格对象
             MSWord.Table table = wordDoc.Tables.Add(wordApp.Selection.Range, tableRow, tableColumn, ref Missing, ref Missing);
 
@@ -376,7 +340,7 @@ namespace SignPressServer.SignTools
 
             //  开始添加审核人的签名图片信息和备注信息
             Console.WriteLine("开始生成后8行签字栏目的信息");
-            for (int row = 6, cnt = 0; row < 8; row++)    // 填写表格的签字人表头
+            for (int row = 6, cnt = 0; row <= 8; row++)    // 填写表格的签字人表头
             {
                 for (int col = 1; col <= 3; col += 2, cnt++)
                 {
@@ -391,12 +355,13 @@ namespace SignPressServer.SignTools
 
                     // 插入第row行第一个人签字人的签字图片
                     //[签字人签字位置坐标(row, col + 1)] 
-                    String signFileName = DEFAULT_SIGNATURE_PATH + contract.ConTemp.SignDatas[cnt].SignEmployee.Id + ".jpg";   //图片所在路径
+                    String signFileName = DEFAULT_SIGNATURE_PATH + contract.ConTemp.SignDatas[cnt].SignEmployee.Id.ToString() + ".jpg";   //图片所在路径
+                    //String signFileName = @"G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressServer\测试图片.jpg";
                     Object LinkToFile = false;
                     Object SaveWithDocument = true;
                     Object Anchor = table.Cell(row, col + 1).Range;//选中要添加图片的单元格
-
-                    wordDoc.Application.ActiveDocument.InlineShapes.AddPicture((String)signFileName, ref LinkToFile, ref SaveWithDocument, ref Anchor);
+                    Console.WriteLine("待添加的签名图片地址" + signFileName);
+                    wordDoc.Application.ActiveDocument.InlineShapes.AddPicture((string)signFileName, ref LinkToFile, ref SaveWithDocument, ref Anchor);
                     wordDoc.Application.ActiveDocument.InlineShapes[1].Width = 75;//图片宽度
                     wordDoc.Application.ActiveDocument.InlineShapes[1].Height = 45;//图片高度
 
@@ -406,8 +371,12 @@ namespace SignPressServer.SignTools
                 }
             }
 
-            //设置table样式
-            table.Rows.HeightRule = MSWord.WdRowHeightRule.wdRowHeightAtLeast;
+            for (int row = 9; row <= 10; row++)
+            { 
+                
+            }
+                //设置table样式
+                table.Rows.HeightRule = MSWord.WdRowHeightRule.wdRowHeightAtLeast;
             table.Rows.Height = wordApp.CentimetersToPoints(float.Parse("0.8"));
 
             table.Range.Font.Size = 10.5F;
@@ -427,6 +396,7 @@ namespace SignPressServer.SignTools
             {
                 table.Rows[i].Height = 20;
             }
+
             table.Cell(1, 1).Range.ParagraphFormat.Alignment = Microsoft.Office.Interop.Word.WdParagraphAlignment.wdAlignParagraphRight;
             table.Cell(1, 1).Range.Paragraphs[2].Format.Alignment = Microsoft.Office.Interop.Word.WdParagraphAlignment.wdAlignParagraphLeft;
 
@@ -444,6 +414,28 @@ namespace SignPressServer.SignTools
 
             return true;
         }
+
+        public static bool CreateHDJContractPdf(HDJContract contract, Object saveFilePath)
+        {
+            /////////////////////
+            ///
+            ///
+            ///
+            ////////////////////
+
+
+            //  设置保存的格式   
+            //Object fileFarmat = Microsoft.Office.Interop.Word.WdSaveFormat.wdFormatPDF;
+            ////   保存为PDF   
+            //wordDoc.SaveAs(ref saveFilePath, ref fileFarmat, ref Missing, ref Missing, ref Missing, ref Missing, ref Missing, ref Missing, ref Missing, ref Missing, ref Missing, ref Missing, ref Missing, ref Missing, ref Missing, ref Missing);
+            //result = true;
+
+            //Console.WriteLine("转换为PDF成功..." + saveFilePath);
+
+            //return result;
+            return true;
+        }
+
         #endregion
     }       // end of MSWordTools Class
 

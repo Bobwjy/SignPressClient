@@ -110,7 +110,7 @@ namespace SignPressServer
             {
                 Console.WriteLine(mysqlread["id"].ToString( ) + "  " + mysqlread["name"].ToString( ));
             }*/
-            
+
             // 测试添加员工
             /*
             Employee em = new Employee
@@ -128,9 +128,9 @@ namespace SignPressServer
 
             //  测试删除用户
             //Console.WriteLine(DALEmployee.DeleteEmployee(25));
-            
+
             //  测试用户登录
-            
+
             //DALEmployee.LoginEmployee("chengjian", "chengjian");
             //DALEmployee.ModifyEmployeePassword(8, "wujiayi");
             /*Department depart = new Department { Id = 7, Name = "赵强科" };
@@ -168,44 +168,15 @@ namespace SignPressServer
              * using Word = Microsoft.Office.Interop.Word;  
              */
             /// 对word的操作信息
-            
-            /// WPS
-            /*object missing = System.Reflection.Missing.Value;
-            string filename = @".\拨款会签单--航道局.doc";
-            
-            Word.Application oword = new Word.Application();
-            Word.Document oDoc = new Word.Document();
-            oword.set_Visible(true);
-            oDoc.Open(filename);*/
-
-            /// OFFICE
-            /*object oMissing = System.Reflection.Missing.Value;  
-            object oEndOfDoc = "//endofdoc"; //endofdoc is a predefined bookmark 
-            object fileName = @"G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressServer\拨款会签单--航道局.doc";
-            //Start Word and create a new document.  
-            MSWord.Application oWord = new MSWord.Application();
-            oWord.Visible = true;  
-            // MSWord.Document oDoc = oWord.Documents.Add(ref oMissing, ref oMissing, ref oMissing, ref oMissing);              
-            MSWord.Document oDoc = oWord.Documents.Open(ref fileName,
-            ref oMissing, ref oMissing, ref oMissing, ref oMissing, ref oMissing,
-            ref oMissing, ref oMissing, ref oMissing, ref oMissing, ref oMissing,
-            ref oMissing, ref oMissing, ref oMissing, ref oMissing, ref oMissing);*/
-
-            //MSWordTools wordTools = new MSWordTools();
-            
-            //  创建一个WORD文档
-            //wordTools.CreateWord(@"G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressServer\1111.doc");
-            
-            //  在一个创建的WORD文档中添加图片
-            //wordTools.AddWordPic(@"G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressServer\测试文档.doc",
-            //    @"G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressServer\测试图片.jpg");
-            
-            //  在一个创建的WORD文档中添加表格信息
-            //wordTools.AddWordTable(@"G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressServer\测试文档.doc");
-            
             //  将一个创建的WORD保存为PDF
             //MSWordTools.WordConvertToPdf(@"G:\[B]CodeRuntimeLibrary\[E]GitHub\\测试文档.doc",
-            //    @"G:\[B]CodeRuntimeLibrary\[E]GitHub\测试文档.pdf");
+            //    @"G:\[B]CodeRuntimeLibrary\[E]GitHub\测试文档.pdf");              将一个创建的WORD保存为PDF
+
+            HDJContract contract = DALHDJContract.GetHDJContactAgree("20150623164733");
+            MSWordTools.CreateHDJContractWord(contract, @".\\20150623164733.doc");
+
+            
+
             #endregion
 
 
@@ -213,44 +184,44 @@ namespace SignPressServer
             //Action<object> log = o => Console.WriteLine(o);
 
 
-//            var e1 = new Employee
-//            {
-//                Id = 1,
-//                Name = "成坚",
-//                Position = "科长",
-//                Department = new Department { Id = 1, Name = "申请科" },
-//                CanSubmit = true,
-//                CanSign = true,
-//                IsAdmin = true,
-//                User = new User { Username = "chengjian", Password = "chengjian" },
+            //            var e1 = new Employee
+            //            {
+            //                Id = 1,
+            //                Name = "成坚",
+            //                Position = "科长",
+            //                Department = new Department { Id = 1, Name = "申请科" },
+            //                CanSubmit = true,
+            //                CanSign = true,
+            //                IsAdmin = true,
+            //                User = new User { Username = "chengjian", Password = "chengjian" },
 
-//            };
-//            var e2 = new Employee
-//            {
-//                Id = 1,
-//                Name = "吴佳怡",
-//                Position = "局长",
-//                Department = new Department { Id = 5, Name = "行政科" },
-//                CanSubmit = true,
-//                CanSign = true,
-//                IsAdmin = true,
-//                User = new User{ Username = "wujiayi", Password = "wyujiayi"},
-//            };
-//            e1.Show();
-//            e2.Show();
-//            //序列化 参数是要序列化的对象;json是对象序列化后的字符串
-//            String json = JsonConvert.SerializeObject(new Employee[] { e1, e2 });
-//            Console.WriteLine(json);
-//            //Employee是目标类型；json是经过Json序列化的对象，字符串形式
-//            List<Employee> employList = JsonConvert.DeserializeObject<List<Employee>>(json);
-//            JArray ja = JArray.Parse(json);
-//            Console.WriteLine(ja);	//注意，格式化过的输出
-//            foreach (Employee employ in employList)
-//            {
-//                employ.Show();
-//            }
+            //            };
+            //            var e2 = new Employee
+            //            {
+            //                Id = 1,
+            //                Name = "吴佳怡",
+            //                Position = "局长",
+            //                Department = new Department { Id = 5, Name = "行政科" },
+            //                CanSubmit = true,
+            //                CanSign = true,
+            //                IsAdmin = true,
+            //                User = new User{ Username = "wujiayi", Password = "wyujiayi"},
+            //            };
+            //            e1.Show();
+            //            e2.Show();
+            //            //序列化 参数是要序列化的对象;json是对象序列化后的字符串
+            //            String json = JsonConvert.SerializeObject(new Employee[] { e1, e2 });
+            //            Console.WriteLine(json);
+            //            //Employee是目标类型；json是经过Json序列化的对象，字符串形式
+            //            List<Employee> employList = JsonConvert.DeserializeObject<List<Employee>>(json);
+            //            JArray ja = JArray.Parse(json);
+            //            Console.WriteLine(ja);	//注意，格式化过的输出
+            //            foreach (Employee employ in employList)
+            //            {
+            //                employ.Show();
+            //            }
 
-   
+
             #endregion
 
             #region 获取本机的IP
@@ -264,13 +235,13 @@ namespace SignPressServer
             //Console.WriteLine();
             string hostName = System.Net.Dns.GetHostName();//本机名   
             System.Net.IPAddress[] addressList = System.Net.Dns.GetHostAddresses(hostName);//会返回所有地址，包括IPv4和IPv6   
-            foreach (System.Net.IPAddress ip in addressList)  
-            {  
+            foreach (System.Net.IPAddress ip in addressList)
+            {
                 Console.WriteLine(ip.ToString());
             }
             #endregion
 
-            
+
             //for (int row = 6, cnt = 0; row <= 8; row++)    // 填写表格的签字人表头
             //{
 
@@ -282,14 +253,14 @@ namespace SignPressServer
             //    }
             //}
             #region 服务器的处理程序AsyncSocketServer
-            
+
             Console.WriteLine("服务器准备中...");
-            
+
             // System.Net.IPEndPoint ep = new System.Net.IPEndPoint(System.Net.IPAddress.Parse("10.0.209.144"), 6666);
             AsyncSocketServer server = new AsyncSocketServer(6666);
             while (true)
             {
-                server.Start( );
+                server.Start();
             }
             //SocketTCPServer server = new SocketTCPServer(6666);
             //server.Start();

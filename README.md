@@ -547,7 +547,7 @@ s.result1 result1, s.result2 result2, s.result3 result3, s.result4 result4, s.re
 FROM hdjcontract h, contemp c, signaturestatus s, 
 employee e1, employee e2, employee e3, employee e4, employee e5, employee e6, employee e7, employee e8,
 department d1, department d2, department d3, department d4, department d5, department d6, department d7, department d8
-WHERE (h.id = 20150623204604 and h.contempid = c.id  
+WHERE (h.id = 20150623164733 and h.contempid = c.id  
 and c.signid1 = e1.id  and c.signid2 = e2.id and c.signid3 = e3.id and c.signid4 = e4.id and c.signid5 = e5.id and c.signid6 = e6.id and c.signid7 = e7.id and c.signid8 = e8.id
 and d1.id = e1.departmentid and d2.id = e2.departmentid and d3.id = e3.departmentid and d4.id = e4.departmentid and d5.id = e5.departmentid and d6.id = e6.departmentid and d7.id = e7.departmentid and d8.id = e8.departmentid
 and h.id = s.conid);
@@ -571,6 +571,94 @@ and sd.result = -1);
 
 
 
+// 查询每个人的签字信息
+(SELECT sd.conid "会签单编号",sd.empid " 签字人", sd.result "签字信息", sd.remark "签字备注" FROM signaturestatus st, signaturedetail sd 
+WHERE (st.conid = sd.conid and st.updatecount = sd.updatecount))
+
+SELECT hc.id "会签单编号", sd.result "签字信息", sd.remark "签字备注", sl.signnum "签字位置",sd.updatecount "签字时间", sd.date
+FROM signaturedetail sd, hdjcontract hc, signaturelevel sl, signaturestatus st
+WHERE hc.id = 20150623164733 and hc.id = sd.conid and st.conid = hc.id
+  and sl.contempid = hc.contempid and sl.signnum = '1' and sd.empid = sl.empid
+  and sd.updatecount = st.updatecount;
+
+
+// 查询出会签单的整个详细信息（附加上每个人的签字备注）
+GET_CONTRACT_STR
+SELECT h.id id, h.name name, c.id contempid, c.name contempname, 
+c.column1 columnname1, c.column2 columnname2, c.column3 columnname3, c.column4 columnname4, c.column5 columnname5,
+h.columndata1 columndata1, h.columndata2 columndata2, h.columndata3 columndata3, h.columndata4 columndata4, h.columndata5 columndata5, 
+c.signinfo1 signinfo1, c.signinfo2 signinfo2, c.signinfo3 signinfo3, c.signinfo4 signinfo4, c.signinfo5 signinfo5, c.signinfo5 signinfo5, c.signinfo6 signinfo6, c.signinfo7 signinfo7, c.signinfo8 signinfo8,                                                                  
+e1.id signid1, e2.id signid2, e3.id signid3, e4.id signid4, e5.id signid5, e6.id signid6, e7.id signid7, e8.id signid8,
+e1.name signname1, e2.name signname2, e3.name signname3, e4.name signname4, e5.name signname5, e6.name signname6, e7.name signname7, e8.name signname8,          
+d1.id departmentid1, d2.id departmentid2, d3.id departmentid3, d4.id departmentid4, d5.id departmentid5, d6.id departmentid6, d7.id departmentid7, d8.id departmentid8,
+d1.name departmentname1, d2.name departmentname2, d3.name departmentname3, d4.name departmentname4, d5.name departmentname5, d6.name departmentname6, d7.name departmentname7, d8.name departmentname8,
+signlevel1 signlevel1, c.signlevel2, c.signlevel2, c.signlevel3, signlevel3, c.signlevel4 signlevel4, c.signlevel5 signlevel5, c.signlevel6 signlevel6, c.signlevel7 signlevel7, c.signlevel8 signlevel8,
+s.result1 result1, s.result2 result2, s.result3 result3, s.result4 result4, s.result5 result5, s.result6 result6, s.result7 result7, s.result8 result8,
+
+(SELECT sd.remark remark1
+FROM signaturedetail sd, hdjcontract hc, signaturelevel sl, signaturestatus st
+WHERE hc.id = 20150624175351 and hc.id = sd.conid and st.conid = hc.id
+  and sl.contempid = hc.contempid and sl.signnum = '1' and sd.empid = sl.empid
+  and sd.updatecount = st.updatecount) remark1,
+
+(SELECT sd.remark remark2
+FROM signaturedetail sd, hdjcontract hc, signaturelevel sl, signaturestatus st
+WHERE hc.id = 20150624175351 and hc.id = sd.conid and st.conid = hc.id
+  and sl.contempid = hc.contempid and sl.signnum = '2' and sd.empid = sl.empid
+  and sd.updatecount = st.updatecount) remark2,
+
+  (SELECT sd.remark remark3
+FROM signaturedetail sd, hdjcontract hc, signaturelevel sl, signaturestatus st
+WHERE hc.id = 20150624175351 and hc.id = sd.conid and st.conid = hc.id
+  and sl.contempid = hc.contempid and sl.signnum = '3' and sd.empid = sl.empid
+  and sd.updatecount = st.updatecount) remark3,
+  (SELECT sd.remark remark4
+FROM signaturedetail sd, hdjcontract hc, signaturelevel sl, signaturestatus st
+WHERE hc.id = 20150624175351 and hc.id = sd.conid and st.conid = hc.id
+  and sl.contempid = hc.contempid and sl.signnum = '4' and sd.empid = sl.empid
+  and sd.updatecount = st.updatecount) remark4,
+  (SELECT sd.remark remark5
+FROM signaturedetail sd, hdjcontract hc, signaturelevel sl, signaturestatus st
+WHERE hc.id = 20150624175351 and hc.id = sd.conid and st.conid = hc.id
+  and sl.contempid = hc.contempid and sl.signnum = '5' and sd.empid = sl.empid
+  and sd.updatecount = st.updatecount) remark5,
+  (SELECT sd.remark remark6
+FROM signaturedetail sd, hdjcontract hc, signaturelevel sl, signaturestatus st
+WHERE hc.id = 20150624175351 and hc.id = sd.conid and st.conid = hc.id
+  and sl.contempid = hc.contempid and sl.signnum = '6' and sd.empid = sl.empid
+  and sd.updatecount = st.updatecount) remark6,
+
+  (SELECT sd.remark remark7
+FROM signaturedetail sd, hdjcontract hc, signaturelevel sl, signaturestatus st
+WHERE hc.id = 20150624175351 and hc.id = sd.conid and st.conid = hc.id
+  and sl.contempid = hc.contempid and sl.signnum = '7' and sd.empid = sl.empid
+  and sd.updatecount = st.updatecount) remark7,
+    
+  (SELECT sd.remark remark8
+FROM signaturedetail sd, hdjcontract hc, signaturelevel sl, signaturestatus st
+WHERE hc.id = 20150624175351 and hc.id = sd.conid and st.conid = hc.id
+  and sl.contempid = hc.contempid and sl.signnum = '8' and sd.empid = sl.empid
+  and sd.updatecount = st.updatecount) remark3
+
+FROM 
+
+hdjcontract h, 
+contemp c, 
+signaturestatus s,
+employee e1, employee e2, employee e3, employee e4, employee e5, employee e6, employee e7, employee e8,
+department d1, department d2, department d3, department d4, department d5, department d6, department d7, department d8
+
+WHERE (h.id = 20150624175351 and h.contempid = c.id
+and c.signid1 = e1.id  and c.signid2 = e2.id and c.signid3 = e3.id and c.signid4 = e4.id and c.signid5 = e5.id and c.signid6 = e6.id and c.signid7 = e7.id and c.signid8 = e8.id
+and d1.id = e1.departmentid and d2.id = e2.departmentid and d3.id = e3.departmentid and d4.id = e4.departmentid and d5.id = e5.departmentid and d6.id = e6.departmentid and d7.id = e7.departmentid and d8.id = e8.departmentid
+and h.id = s.conid);
+
+
+
+
+
+
+
 // 查询出会签单的整个详细信息（附加上每个人的签字备注）
 SELECT h.id id, h.name name, c.id contempid, c.name contempname, 
 c.column1 columnname1, c.column2 columnname2, c.column3 columnname3, c.column4 columnname4, c.column5 columnname5,
@@ -581,19 +669,136 @@ e1.name signname1, e2.name signname2, e3.name signname3, e4.name signname4, e5.n
 d1.id departmentid1, d2.id departmentid2, d3.id departmentid3, d4.id departmentid4, d5.id departmentid5, d6.id departmentid6, d7.id departmentid7, d8.id departmentid8,
 d1.name departmentname1, d2.name departmentname2, d3.name departmentname3, d4.name departmentname4, d5.name departmentname5, d6.name departmentname6, d7.name departmentname7, d8.name departmentname8,
 signlevel1 signlevel1, c.signlevel2, c.signlevel2, c.signlevel3, signlevel3, c.signlevel4 signlevel4, c.signlevel5 signlevel5, c.signlevel6 signlevel6, c.signlevel7 signlevel7, c.signlevel8 signlevel8,
-s.result1 result1, s.result2 result2, s.result3 result3, s.result4 result4, s.result5 result5, s.result6 result6, s.result7 result7, s.result8 result8
-
+s.result1 result1, s.result2 result2, s.result3 result3, s.result4 result4, s.result5 result5, s.result6 result6, s.result7 result7, s.result8 result8,
+s1.remark remark1,s2.remark remark2,s3.remark remark3, s4.remark remark4, s5.remark remark5, s6.remark remark6, s7.remark remark7, s8.remark remark8
 
 FROM 
+
 hdjcontract h, 
 contemp c, 
-signaturestatus s, 
-(SELECT sd.conid "会签单编号",sd.empid " 签字人", sd.result "签字信息", sd.remark "签字备注" FROM signaturestatus st, signaturedetail sd 
-WHERE (st.conid = sd.conid and st.updatecount = sd.updatecount))
-
+signaturestatus s,
 employee e1, employee e2, employee e3, employee e4, employee e5, employee e6, employee e7, employee e8,
-department d1, department d2, department d3, department d4, department d5, department d6, department d7, department d8
-WHERE (h.id = 20150623204604 and h.contempid = c.id  
+department d1, department d2, department d3, department d4, department d5, department d6, department d7, department d8,
+
+(SELECT hc.id conid, sl.empid empid, sd.result, sd.remark remark
+FROM signaturedetail sd, hdjcontract hc, signaturelevel sl, signaturestatus st
+WHERE hc.id = 20150623164733 and hc.id = sd.conid and st.conid = hc.id
+  and sl.contempid = hc.contempid and sl.signnum = '1' and sd.empid = sl.empid
+  and sd.updatecount = st.updatecount) s1,
+
+(SELECT hc.id conid, sl.empid empid, sd.result, sd.remark remark
+FROM signaturedetail sd, hdjcontract hc, signaturelevel sl, signaturestatus st
+WHERE hc.id = 20150623164733 and hc.id = sd.conid and st.conid = hc.id
+  and sl.contempid = hc.contempid and sl.signnum = '1' and sd.empid = sl.empid
+  and sd.updatecount = st.updatecount) s2,
+
+  
+(SELECT hc.id conid, sl.empid empid, sd.result, sd.remark remark
+FROM signaturedetail sd, hdjcontract hc, signaturelevel sl, signaturestatus st
+WHERE hc.id = 20150623164733 and hc.id = sd.conid and st.conid = hc.id
+  and sl.contempid = hc.contempid and sl.signnum = '1' and sd.empid = sl.empid
+  and sd.updatecount = st.updatecount) s3,
+  
+(SELECT hc.id conid, sl.empid empid, sd.result, sd.remark remark
+FROM signaturedetail sd, hdjcontract hc, signaturelevel sl, signaturestatus st
+WHERE hc.id = 20150623164733 and hc.id = sd.conid and st.conid = hc.id
+  and sl.contempid = hc.contempid and sl.signnum = '1' and sd.empid = sl.empid
+  and sd.updatecount = st.updatecount) s4,
+
+  
+(SELECT hc.id conid, sl.empid empid, sd.result, sd.remark remark
+FROM signaturedetail sd, hdjcontract hc, signaturelevel sl, signaturestatus st
+WHERE hc.id = 20150623164733 and hc.id = sd.conid and st.conid = hc.id
+  and sl.contempid = hc.contempid and sl.signnum = '1' and sd.empid = sl.empid
+  and sd.updatecount = st.updatecount) s5,
+
+  
+(SELECT hc.id conid, sl.empid empid, sd.result, sd.remark remark
+FROM signaturedetail sd, hdjcontract hc, signaturelevel sl, signaturestatus st
+WHERE hc.id = 20150623164733 and hc.id = sd.conid and st.conid = hc.id
+  and sl.contempid = hc.contempid and sl.signnum = '1' and sd.empid = sl.empid
+  and sd.updatecount = st.updatecount) s6,
+
+  
+(SELECT hc.id conid, sl.empid empid, sd.result, sd.remark remark
+FROM signaturedetail sd, hdjcontract hc, signaturelevel sl, signaturestatus st
+WHERE hc.id = 20150623164733 and hc.id = sd.conid and st.conid = hc.id
+  and sl.contempid = hc.contempid and sl.signnum = '1' and sd.empid = sl.empid
+  and sd.updatecount = st.updatecount) s7,
+
+(SELECT hc.id conid, sl.empid empid, sd.result, sd.remark remark
+FROM signaturedetail sd, hdjcontract hc, signaturelevel sl, signaturestatus st
+WHERE hc.id = 20150623164733 and hc.id = sd.conid and st.conid = hc.id
+  and sl.contempid = hc.contempid and sl.signnum = '1' and sd.empid = sl.empid
+  and sd.updatecount = st.updatecount) s8
+
+WHERE (h.id = 20150623164733 and h.contempid = c.id and h.id = s.conid
 and c.signid1 = e1.id  and c.signid2 = e2.id and c.signid3 = e3.id and c.signid4 = e4.id and c.signid5 = e5.id and c.signid6 = e6.id and c.signid7 = e7.id and c.signid8 = e8.id
 and d1.id = e1.departmentid and d2.id = e2.departmentid and d3.id = e3.departmentid and d4.id = e4.departmentid and d5.id = e5.departmentid and d6.id = e6.departmentid and d7.id = e7.departmentid and d8.id = e8.departmentid
-and h.id = s.conid);
+ and s1.empid = e1.id
+ and s2.empid = e2.id
+ and s3.empid = e3.id
+ and s4.empid = e4.id
+and s5.empid = e5.id
+and s6.empid = e6.id
+ and s7.empid = e7.id
+and s8.empid = e8.id
+);
+
+
+
+
+
+
+
+
+
+
+
+
+// 生成是可以使用如下SQL语句，但是查询GET时候不可以
+// 因为如果单子被拒绝了，那么signaturedetail查询的结果可能为空
+SELECT h.id id, h.name name, c.id contempid, c.name contempname, 
+c.column1 columnname1, c.column2 columnname2, c.column3 columnname3, c.column4 columnname4, c.column5 columnname5,
+h.columndata1 columndata1, h.columndata2 columndata2, h.columndata3 columndata3, h.columndata4 columndata4, h.columndata5 columndata5, 
+c.signinfo1 signinfo1, c.signinfo2 signinfo2, c.signinfo3 signinfo3, c.signinfo4 signinfo4, c.signinfo5 signinfo5, c.signinfo5 signinfo5, c.signinfo6 signinfo6, c.signinfo7 signinfo7, c.signinfo8 signinfo8,                                                                  
+e1.id signid1, e2.id signid2, e3.id signid3, e4.id signid4, e5.id signid5, e6.id signid6, e7.id signid7, e8.id signid8,
+e1.name signname1, e2.name signname2, e3.name signname3, e4.name signname4, e5.name signname5, e6.name signname6, e7.name signname7, e8.name signname8,          
+d1.id departmentid1, d2.id departmentid2, d3.id departmentid3, d4.id departmentid4, d5.id departmentid5, d6.id departmentid6, d7.id departmentid7, d8.id departmentid8,
+d1.name departmentname1, d2.name departmentname2, d3.name departmentname3, d4.name departmentname4, d5.name departmentname5, d6.name departmentname6, d7.name departmentname7, d8.name departmentname8,
+signlevel1 signlevel1, c.signlevel2, c.signlevel2, c.signlevel3, signlevel3, c.signlevel4 signlevel4, c.signlevel5 signlevel5, c.signlevel6 signlevel6, c.signlevel7 signlevel7, c.signlevel8 signlevel8,
+s.result1 result1, s.result2 result2, s.result3 result3, s.result4 result4, s.result5 result5, s.result6 result6, s.result7 result7, s.result8 result8,
+s1.remark remark1,s2.remark remark2,s3.remark remark3, s4.remark remark4, s5.remark remark5, s6.remark remark6, s7.remark remark7, s8.remark remark8
+FROM 
+
+hdjcontract h, 
+contemp c, 
+signaturestatus s,
+employee e1, employee e2, employee e3, employee e4, employee e5, employee e6, employee e7, employee e8,
+department d1, department d2, department d3, department d4, department d5, department d6, department d7, department d8,
+signaturedetail s1, signaturedetail s2, signaturedetail s3, signaturedetail s4,
+signaturedetail s5, signaturedetail s6, signaturedetail s7, signaturedetail s8
+
+WHERE (h.id = 20150623164733 and h.contempid = c.id and h.id = s.conid
+and c.signid1 = e1.id  and c.signid2 = e2.id and c.signid3 = e3.id and c.signid4 = e4.id and c.signid5 = e5.id and c.signid6 = e6.id and c.signid7 = e7.id and c.signid8 = e8.id
+and d1.id = e1.departmentid and d2.id = e2.departmentid and d3.id = e3.departmentid and d4.id = e4.departmentid and d5.id = e5.departmentid and d6.id = e6.departmentid and d7.id = e7.departmentid and d8.id = e8.departmentid
+ and s1.empid = e1.id and s1.conid = h.id and s1.updatecount = s.updatecount
+ and s2.empid = e2.id and s2.conid = h.id and s2.updatecount = s.updatecount
+ and s3.empid = e3.id and s3.conid = h.id and s3.updatecount = s.updatecount
+ and s4.empid = e4.id and s4.conid = h.id and s4.updatecount = s.updatecount
+ and s5.empid = e5.id and s5.conid = h.id and s5.updatecount = s.updatecount
+ and s6.empid = e6.id and s6.conid = h.id and s6.updatecount = s.updatecount
+ and s7.empid = e7.id and s7.conid = h.id and s7.updatecount = s.updatecount
+ and s8.empid = e8.id and s8.conid = h.id and s8.updatecount = s.updatecount
+
+);
+
+
+
+
+报头 + id
+// tcpclient
+{
+
+    send(picture)
+}

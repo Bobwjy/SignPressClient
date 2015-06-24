@@ -66,6 +66,7 @@
     <Compile Include="SignData\SignatureTemplate.cs" />
     <Compile Include="SignDAL\DALEmployee.cs" />
     <Compile Include="SignData\User.cs" />
+    <Compile Include="SignFile\FileSocketServer.cs" />
     <Compile Include="SignLog\LogerHelper.cs" />
     <Compile Include="SignLog\LogMessage.cs" />
     <Compile Include="SignLog\LogMessageType.cs" />
@@ -137,9 +138,7 @@
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="SignFile\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

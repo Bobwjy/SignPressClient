@@ -81,5 +81,13 @@ namespace SignPressServer.SignData
             get{ return this.m_signResults; }
             set{ this.m_signResults = value;}
         }
+
+
+        private List<String> m_signRemarks;            // 每个人的信息备注信息
+        public List<String> SignRemarks
+        {
+            get { return this.m_signRemarks; }
+            set { this.m_signRemarks = value; }
+        }
     }
 }

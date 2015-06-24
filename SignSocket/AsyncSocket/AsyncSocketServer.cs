@@ -8,6 +8,9 @@ using System.IO;
 using System.Net.Sockets;  
 using System.Net;
 using Newtonsoft.Json;
+
+
+using SignPressServer.SignFile;
 /*
  *  在同步模式中，
  *  在服务器上使用Accept方法接入连接请求，
@@ -204,12 +207,23 @@ namespace SignPressServer.SignSocket.AsyncSocket
 
 
         #region 扩展信息域
-        LogerHelper m_log;
-        LogerHelper Log
+        private LogerHelper m_log;          // LOG日志文件
+        public LogerHelper Log
         {
             get { return this.m_log;}
         }
+
+        public FileSocketServer m_fileTcpServer;        // 进行文件传输的TCP服务器
+        public FileSocketServer FileTcpServer
+        {
+            get { return this.m_fileTcpServer; }
+            set { this.m_fileTcpServer = value; }
+        }
+        private const int FILE_TCP_SERVRT_PORT = 6060;
+
+        
         #endregion
+
 
         #region 构造函数
 
@@ -259,9 +273,15 @@ namespace SignPressServer.SignSocket.AsyncSocket
             this.m_serverSocket.IOControl(IOControlCode.DataToRead, null, BitConverter.GetBytes(0));
 
             this.m_serverSocket.SetSocketOption(SocketOptionLevel.Tcp, SocketOptionName.NoDelay, true);
+            
+            
+            
             // 创建日志文件[2015-6-16 21:10]
             this.m_log = new LogerHelper();     // 创建一个日志对象，默认设置每天更新一个日志文件
-        
+           
+            // 开启文件传输的TCP服务器
+            this.m_fileTcpServer = new FileSocketServer();
+            this.m_fileTcpServer.BeginListening(IPAddress.Any, FILE_TCP_SERVRT_PORT);
         }
 
         #endregion
@@ -755,6 +775,12 @@ namespace SignPressServer.SignSocket.AsyncSocket
                     ///   代码未实现
                     ///
                     break;
+                case"UPLOAD_PICTURE_REQUEST":          // 上传签字图片
+                    RaiseUploadSigaturePicture(state);
+                    break;
+                case "DOWNLOAD_HDJCONTRACT":         // 下载会签单
+                    RaiseDownloadHDJContract(state);
+                    break;
 
                 /// <summary>
                 /// ==部门操作==
@@ -815,6 +841,7 @@ namespace SignPressServer.SignSocket.AsyncSocket
                 /// 修改会签单模版  MODIFY_CONTRACT_TEMPLATE_REQUEST
                 /// 查询会签单模版  QUERY_CONTRACT_TEMPLATE_REQUEST
                 /// </summary>
+                #region  会签单模版操作
                 case "INSERT_CONTRACT_TEMPLATE_REQUEST" :
                     RaiseInsertContractTemplateRequest(state);
                     break;
@@ -831,6 +858,8 @@ namespace SignPressServer.SignSocket.AsyncSocket
                 case "GET_CONTRACT_TEMPLATE_REQUEST" :
                     RaiseGetContractTemplateRequest(state);
                     break;
+                #endregion
+                
                 /// <summary>
                 /// ==航道局会签单操作==
                 /// 增加会签单模版  INSERT_HDJCONTRACT_REQUEST
@@ -838,6 +867,8 @@ namespace SignPressServer.SignSocket.AsyncSocket
                 /// 修改会签单模版  MODIFY_HDJCONTRACT_REQUEST
                 /// 查询会签单模版  QUERY_HDJCONTRACT_REQUEST
                 /// </summary>
+                #region 航道局会签单操作
+
                 case "INSERT_HDJCONTRACT_REQUEST" :
                     RaiseInsertHDJContractRequest(state);
                     break;
@@ -853,7 +884,7 @@ namespace SignPressServer.SignSocket.AsyncSocket
                 case "GET_HDJCONTRACT_REQUEST"    :
                     RaiseGetHDJContractRequest(state);
                     break;
-
+                #endregion
 
                 /// <summary>
                 /// ==提交人的会签单状态操作==
@@ -861,6 +892,7 @@ namespace SignPressServer.SignSocket.AsyncSocket
                 /// 查询已经通过会签单  QUERY_SIGN_AGREE_REQUEST
                 /// 查询被拒绝的会签单  QUERY_SIGN_REFUSE_REQUEST
                 /// </summary>
+                #region 提交人的会签单状态操作
                 case "QUERY_SIGN_PEND_REQUEST":
                     RaiseQuerySignatureStatusPenddingRequest(state);
                     break;
@@ -870,7 +902,7 @@ namespace SignPressServer.SignSocket.AsyncSocket
                 case "QUERY_SIGN_REFUSE_REQUEST":
                     RaiseQuerySignatureStatusRefuseRequest(state);
                     break;
-
+                #endregion
                 /// <summary>
                 /// ==签字人的会签单操作==
                 /// 查询本人需要签字的会签单    QUERY_UNSIGN_CONTRACT_REQUEST
@@ -896,8 +928,6 @@ namespace SignPressServer.SignSocket.AsyncSocket
                 case "QUERY_SIGN_DETAIL_REQUEST" :      // 用户查询自己的签单明细
                     RaiseQuerySignDetailRequest(state);
                     break;
-
-
                 case "QUERY_SIGN_DETAIL_CON_REQUEST":   // 签字人查询自己EMP对于会签单CON的请求
                     RaiseQuerySignDetailContractRequest(state);
                     break;
@@ -955,7 +985,7 @@ namespace SignPressServer.SignSocket.AsyncSocket
 
 
         #endregion
-
+       
 
         #region 部门信息的处理（多个处理段[插入-删除-修改-查询]）
 
@@ -1142,7 +1172,7 @@ namespace SignPressServer.SignSocket.AsyncSocket
         {
             Console.WriteLine("接收到的来自{0}的待插入员工信息{1}", state.ClientIp, state.SocketMessage.Message);
             this.Log.Write(new LogMessage("接收到的来自" + state.ClientIp + "的待插入员工信息" + state.SocketMessage.Message, LogMessageType.Information));
-            
+
             ServerResponse response = new ServerResponse();
 
             // json数据解包
@@ -1153,7 +1183,7 @@ namespace SignPressServer.SignSocket.AsyncSocket
                 Console.WriteLine("员工{0}插入成功", employee.Name);
                 this.Log.Write(new LogMessage("员工" + employee.Name + "插入成功", LogMessageType.Success));
 
-                response = ServerResponse.INSERT_EMPLOYEE_SUCCESS;               //  用户登录成功信号   
+                response = ServerResponse.INSERT_EMPLOYEE_SUCCESS;               //  用户登录成功信号         
             }
             else
             {
@@ -1163,10 +1193,21 @@ namespace SignPressServer.SignSocket.AsyncSocket
                 //INSERT_EMPLOYEE_RESPONSE = "INSERT_EMPLOYEE_FAILED";                //  用户登录失败信号
                 response = ServerResponse.INSERT_EMPLOYEE_FAILED;
             }
-            
-            //  插入员工的响应信息只包含头信息
-            AsyncSocketMessage socketMessage = new AsyncSocketMessage(response);
-            this.Send(state.ClientSocket, Encoding.UTF8.GetBytes(socketMessage.Package));  
+
+            if (response.Equals(ServerResponse.INSERT_EMPLOYEE_SUCCESS))
+            {
+                //  插入员工的响应信息只包含头信息
+                employee = DALEmployee.GetEmployee(employee.User.Username);
+                AsyncSocketMessage socketMessage = new AsyncSocketMessage(response, employee.Id);
+                this.Send(state.ClientSocket, Encoding.UTF8.GetBytes(socketMessage.Package));
+            }
+            else
+            {
+                //  插入员工的响应信息只包含头信息
+                AsyncSocketMessage socketMessage = new AsyncSocketMessage(response);
+                this.Send(state.ClientSocket, Encoding.UTF8.GetBytes(socketMessage.Package));
+      
+            }
         }
 
         #endregion
@@ -1707,7 +1748,6 @@ namespace SignPressServer.SignSocket.AsyncSocket
         #endregion
 
 
-
         #region  获取会签单的信息
         /// <summary>
         /// 获取会签单的信息
@@ -2148,6 +2188,74 @@ namespace SignPressServer.SignSocket.AsyncSocket
 
         #endregion  签字用户进行签字的流程
 
+
+
+        #region 用户上传签字图片
+        private const String HDJCONTDACT_PATH = @".\\hdjcontract\\";
+        private void RaiseDownloadHDJContract(AsyncSocketState state)
+        {
+            Console.WriteLine("接收到来自" + state.ClientIp + "上床签字图片的请求" + state.SocketMessage.Message);
+            this.Log.Write(new LogMessage("接收到来自" + state.ClientIp + "的进行签字确认的请求" + state.SocketMessage.Message, LogMessageType.Information));
+
+
+            String contractId = JsonConvert.DeserializeObject<String>(state.SocketMessage.Message);
+
+            ServerResponse response = new ServerResponse();
+
+            String fileName = HDJCONTDACT_PATH + contractId + ".doc";
+            FileStream fs = new FileStream(fileName, FileMode.OpenOrCreate, FileAccess.Read);
+            byte[] fssize = new byte[fs.Length];
+            BinaryReader reader = new BinaryReader(fs);
+            reader.Read(fssize, 0, fssize.Length - 1);
+            state.ClientSocket.Send(fssize);
+            fs.Flush();
+        }
+        #endregion
+
+        #region 用户上传签字图片
+        private const String SIGNATURE_PICTURE_PATH = ".\\signature\\";
+
+        private void RaiseUploadSigaturePicture(AsyncSocketState state)
+        {
+            Console.WriteLine("接收到来自" + state.ClientIp + "上传签字图片的请求" + state.SocketMessage.Message);
+            this.Log.Write(new LogMessage("接收到来自" + state.ClientIp + "上传签字图片的请求" + state.SocketMessage.Message, LogMessageType.Information));
+
+
+            String employeeId = JsonConvert.DeserializeObject<String>(state.SocketMessage.Message);
+
+            ServerResponse response = new ServerResponse();
+            Console.WriteLine("开始上传签字图片");
+
+            //因为终端每次发送文件的最大缓冲区是512字节，所以每次接收也是定义为512字节
+            byte[] buffer = new byte[512];
+            int size = 0;
+            long len = 0;
+
+            string fileName = SIGNATURE_PICTURE_PATH + employeeId + ".jpg";//获得用户保存文件的路径
+            try
+            {
+                //创建文件流，然后让文件流来根据路径创建一个文件
+                FileStream fs = new FileStream(fileName, FileMode.Create);
+
+                //从终端不停的接受数据，然后写入文件里面，只到接受到的数据为0为止，则中断连接
+                while ((size = state.ClientSocket.Receive(buffer, 0, buffer.Length, SocketFlags.None)) > 0)
+                {
+                    // Console.WriteLine(Encoding.UTF8.GetString(buffer));
+                    fs.Write(buffer, 0, size);
+                    len += size;
+                }
+
+                fs.Flush();
+                Console.WriteLine("上传签字图片成功");
+
+            }
+            catch(Exception ex)
+            {
+                state.Close();
+                Console.WriteLine(ex.ToString());
+            }
+        }
+        #endregion
     }
 }
 

@@ -11,7 +11,7 @@ namespace SignPressServer.SignTools
         LOGIN_REQUEST,          //  登录请求
         QUIT_REQUEST,           //  退出请求
         DOWNLOAD_HDJCONTRACT,   //  下载会签单的信息
-
+        UPLOAD_SIGN_PIC,        //  上传签字图片
 
         /// <summary>
         /// ==部门操作==
@@ -86,6 +86,8 @@ namespace SignPressServer.SignTools
         INSERT_SIGN_DETAIL_REQUEST,
         QUERY_SIGN_DETAIL_REQUEST,
         QUERY_SIGN_DETAIL_CON_REQUEST,
+
+        
     }
 
 }

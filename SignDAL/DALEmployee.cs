@@ -35,8 +35,8 @@ namespace SignPressServer.SignDAL
         /// <summary>
         /// 插入员工信息的信息串
         /// </summary>
-        private const String INSERT_EMPLOYEE_STR = @"INSERT INTO `employee` (`name`, `position`, `departmentid`, `username`, `password`) 
-                                                VALUES (@Name, @Position, @Department, @Username, @Password)";
+        private const String INSERT_EMPLOYEE_STR = @"INSERT INTO `employee` (`name`, `position`, `departmentid`, `username`, `password`, `cansubmit`, `cansign`, `isadmin`) 
+                                                VALUES (@Name, @Position, @Department, @Username, @Password, @CanSubmit, @CanSign, @IsAdmin)";
 
         /// <summary>
         /// 插入员工信息的信息串
@@ -133,7 +133,9 @@ namespace SignPressServer.SignDAL
                 cmd.Parameters.AddWithValue("@Department", employee.Department.Id);         // 员工部门编号
                 cmd.Parameters.AddWithValue("@Username", employee.User.Username);                // 员工登录用户名
                 cmd.Parameters.AddWithValue("@Password", employee.User.Password);                // 员工密码
-
+                cmd.Parameters.AddWithValue("@CanSubmit", employee.CanSubmit);
+                cmd.Parameters.AddWithValue("@CanSign", employee.CanSign);
+                cmd.Parameters.AddWithValue("@IsAdmin", employee.IsAdmin);
                 count = cmd.ExecuteNonQuery();
                 cmd.Dispose();
 

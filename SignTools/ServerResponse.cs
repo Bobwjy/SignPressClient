@@ -10,7 +10,17 @@ namespace SignPressServer.SignTools
         LOGIN_SUCCESS,          //  登录成功响应
         LOGIN_FAILED,           //  登录失败响应
 
-        
+        QUIT_SUCCESS,           //  退出请求
+        QUIT_FAILED,           //  退出请求
+
+
+        // 用户文件操作
+        DOWNLOAD_HDJCONTRACT_SUCCESS,   //  下载会签单的信息
+        DOWNLOAD_HDJCONTRACT_FAILED,   //  下载会签单的信息
+
+        UPLOAD_SIGN_PIC_SUCCESS,        //  上传签字图片
+        UPLOAD_SIGN_PIC_FAILED,        //  上传签字图片
+
 
         /// <summary>
         /// ==部门操作==
