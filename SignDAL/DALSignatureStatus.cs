@@ -645,7 +645,190 @@ and (sd.conid = hc.id and sd.empid = sl.empid and sd.updatecount = st.updatecoun
         }
         #endregion
 
-       
+
+
+        #region
+        private const String SEARCH_SIGNED_CONTRACT_STR = @"SELECT  hc.id id, hc.name name, hc.columndata1 projectname, e.name subempname, hc.submitdate submitdate, sd.date signdate, sd.result signresult, sd.remark signremark 
+FROM `hdjcontract` hc, `signaturestatus` st, `signaturelevel` sl, `signaturedetail` sd, employee e
+WHERE hc.id = st.conid
+and sl.contempid = hc.contempid and sl.empid = @EmployeeId
+and st.currlevel >= sl.signlevel
+and hc.subempid = e.id
+and sd.conid = hc.id and sd.empid = sl.empid and sd.updatecount = st.updatecount";
+
+        /// <summary>
+        /// 查询编号为employeeId的人是否有未处理的签字单子
+        /// </summary>
+        /// <param name="employeeId"></param>
+        /// <returns></returns>
+        public static List<SHDJContract> SearchSignedHDJContract(Search search)
+        {
+            MySqlConnection con = DBTools.GetMySqlConnection();
+            MySqlCommand cmd;
+
+            List<SHDJContract> contracts = new List<SHDJContract>();
+
+            try
+            {
+                con.Open();
+
+                cmd = con.CreateCommand();
+                // SELECT  h.id id, h.name name, h.submitdate submitdate, h.columndata1 columndata1
+                cmd.CommandText = SEARCH_SIGNED_CONTRACT_STR;
+                cmd.Parameters.AddWithValue("@EmployeeId", search.EmployeeId);
+
+                // 日期查询信息
+                if (search.DateBegin != null && search.DateEnd != null)
+                {
+                    cmd.CommandText += " and hc.submitdate >= @DateBegin and hc.submitdate <= @DateEnd ";
+                    cmd.Parameters.AddWithValue("@DateBegin", search.DateBegin);
+                    cmd.Parameters.AddWithValue("@DateEnd", search.DateEnd);
+                }
+                else if (search.DateBegin != null && search.DateEnd == null)
+                {
+                    cmd.CommandText += " and hc.submitdate >= @DateBegin ";
+                    cmd.Parameters.AddWithValue("@DateBegin", search.DateBegin);
+                }
+                if(search.ConId != "")            //  会签单编号不为空
+                {
+                    cmd.CommandText += "and hc.id like @ConId ";
+                    cmd.Parameters.AddWithValue("@ConId", search.ConId);
+                }
+
+
+                MySqlDataReader sqlRead = cmd.ExecuteReader();
+                cmd.Dispose();
+
+                while (sqlRead.Read())
+                {
+                    SHDJContract contract = new SHDJContract();
+                    contract.Id = sqlRead["id"].ToString();
+                    contract.Name = sqlRead["name"].ToString();
+                    contract.ProjectName = sqlRead["projectname"].ToString();
+                    contract.SubmitEmployeeName = sqlRead["subempname"].ToString();
+                    contract.SubmitDate = sqlRead["submitdate"].ToString();
+                    contract.SignDate = sqlRead["signdate"].ToString();
+                    contract.SignRemark = sqlRead["signremark"].ToString();
+
+                    if (int.Parse(sqlRead["signresult"].ToString()) == 1)
+                    {
+                        contract.SignResult = "同意";
+                    }
+                    else
+                    {
+                        contract.SignResult = "拒绝";
+                    }
+
+                    contracts.Add(contract);
+
+                }
+
+                con.Close();
+                con.Dispose();
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+
+                if (con.State == ConnectionState.Open)
+                {
+                    con.Close();
+                }
+            }
+            return contracts;
+        }
+        #endregion
+
+
+
+        #region
+        private const String SEARCH_SIGNATURE_AGREE_STR = @"SELECT h.id id, h.name name, h.submitdate submitdate, h.columndata1 columndata1, s.currlevel currlevel, s.maxlevel maxlevel
+                                                                      FROM `signaturestatus` s, `hdjcontract` h
+                                                                      WHERE s.totalresult = 1 and h.id = s.conid and h.subempid = @EmployeeId";
+        /// <summary>
+        /// 查询编号为employeeId的人是否有未处理的签字单子
+        /// </summary>
+        /// <param name="employeeId"></param>
+        /// <returns></returns>
+        public static List<SHDJContract> SearchAgreeHDJContract(Search search)
+        {
+            MySqlConnection con = DBTools.GetMySqlConnection();
+            MySqlCommand cmd;
+
+            List<SHDJContract> contracts = new List<SHDJContract>();
+
+            try
+            {
+                con.Open();
+
+                cmd = con.CreateCommand();
+                // SELECT  h.id id, h.name name, h.submitdate submitdate, h.columndata1 columndata1
+                cmd.CommandText = SEARCH_SIGNATURE_AGREE_STR;
+                cmd.Parameters.AddWithValue("@EmployeeId", search.EmployeeId);
+
+                // 日期查询信息
+                if (search.DateBegin != null && search.DateEnd != null)
+                {
+                    cmd.CommandText += " and h.submitdate >= @DateBegin and h.submitdate <= @DateEnd ";
+                    cmd.Parameters.AddWithValue("@DateBegin", search.DateBegin);
+                    cmd.Parameters.AddWithValue("@DateEnd", search.DateEnd);
+                }
+                else if (search.DateBegin != null && search.DateEnd == null)
+                {
+                    cmd.CommandText += " and h.submitdate >= @DateBegin ";
+                    cmd.Parameters.AddWithValue("@DateBegin", search.DateBegin);
+                }
+                if (search.ConId != "")            //  会签单编号不为空
+                {
+                    cmd.CommandText += "and h.id like @ConId ";
+                    cmd.Parameters.AddWithValue("@ConId", search.ConId);
+                }
+
+
+                MySqlDataReader sqlRead = cmd.ExecuteReader();
+                cmd.Dispose();
+
+                while (sqlRead.Read())
+                {
+                    SHDJContract contract = new SHDJContract();
+                    contract.Id = sqlRead["id"].ToString();
+                    contract.Name = sqlRead["name"].ToString();
+                    contract.SubmitDate = sqlRead["submitdate"].ToString();
+
+                    //List<String> columnDatas = new List<String>();
+                    //String columnData1 = sqlRead["columndata1"].ToString();
+                    contract.ProjectName = sqlRead["columndata1"].ToString();
+
+                    contract.CurrLevel = int.Parse(sqlRead["currlevel"].ToString());
+                    contract.MaxLevel = int.Parse(sqlRead["maxlevel"].ToString());
+
+                    contracts.Add(contract);
+
+                }
+
+                con.Close();
+                con.Dispose();
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+
+                if (con.State == ConnectionState.Open)
+                {
+                    con.Close();
+                }
+            }
+            return contracts;
+        }
+        #endregion
     }
 
 

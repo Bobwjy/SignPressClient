@@ -82,7 +82,13 @@ namespace SignPressServer.SignTools
 
         GET_CONTRACT_TEMPLATE_SUCCESS,
         GET_CONTRACT_TEMPLATE_FAILED,
-                /// <summary>
+
+
+        SEARCH_AGREE_HDJCONTRACT_SUCCESS,
+        SEARCH_AGREE_HDJCONTRACT_FAILED,
+
+
+        /// <summary>
         /// ==航道局会签单操作==
         /// 增加会签单模版  INSERT_HDJCONTRACT_REQUEST
         /// 删除会签单模版  DELETE_HDJCONTRACT_REQUEST
@@ -100,6 +106,12 @@ namespace SignPressServer.SignTools
 
         QUERY_HDJCONTRACT_SUCCESS,
         QUERY_HDJCONTRACT_FAILED,
+
+
+        SEARCH_SIGNED_HDJCONTRACT_SUCCESS,
+        SEARCH_SIGNED_HDJCONTRACT_FAILED,
+
+
 
         GET_HDJCONTRACT_SUCCESS,
         GET_HDJCONTRACT_FAILED,

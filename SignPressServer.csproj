@@ -46,10 +46,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MyWord\MyWord.cs" />
+    <Compile Include="MyWord\MyWordCurrentStyle.cs" />
+    <Compile Include="MyWord\MyWordPageStyle.cs" />
+    <Compile Include="MyWord\MyWordTable\WordTable.cs" />
+    <Compile Include="MyWord\MyWordTable\WordTableCell.cs" />
+    <Compile Include="MyWord\MyWordTest.cs" />
+    <Compile Include="MyWord\MyWordWithTemplate.cs" />
     <Compile Include="SignContract\YHJLHXMBKContract.cs" />
     <Compile Include="SignDAL\DALHDJContract.cs" />
     <Compile Include="SignDAL\DALContractTemplate.cs" />
     <Compile Include="SignDAL\DALDepartment.cs" />
+    <Compile Include="SignDAL\DALSearch.cs" />
     <Compile Include="SignDAL\DALSignatureDetail.cs" />
     <Compile Include="SignDAL\DALSignatureStatus.cs" />
     <Compile Include="SignDAL\DALYHJLHXMBKContract.cs" />
@@ -60,6 +68,7 @@
     <Compile Include="SignData\Employee.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SignData\Search.cs" />
     <Compile Include="SignData\SHDJContract.cs" />
     <Compile Include="SignData\SignatureDetail.cs" />
     <Compile Include="SignData\SignatureStatus.cs" />
@@ -105,15 +114,6 @@
       <Guid>{00020905-0000-0000-C000-000000000046}</Guid>
       <VersionMajor>8</VersionMajor>
       <VersionMinor>5</VersionMinor>
-      <Lcid>0</Lcid>
-      <WrapperTool>primary</WrapperTool>
-      <Isolated>False</Isolated>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-    </COMReference>
-    <COMReference Include="Office">
-      <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
-      <VersionMajor>99</VersionMajor>
-      <VersionMinor>1</VersionMinor>
       <Lcid>0</Lcid>
       <WrapperTool>primary</WrapperTool>
       <Isolated>False</Isolated>

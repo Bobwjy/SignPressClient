@@ -8,7 +8,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.IO;
 
-
+using Newtonsoft.Json;
 /// <summary>
 /// BUG 2015/6/24 17:52
 /// 今天被一个BUG困扰了一天，是传输文件和图片的丢包和粘包问题
@@ -17,6 +17,10 @@ using System.IO;
 /// </summary>
 /// <param name="state"></param>
 
+
+using SignPressServer.SignData;
+using SignPressServer.SignDAL;
+using SignPressServer.SignTools;
 
 namespace SignPressServer.SignFile
 {
@@ -165,7 +169,9 @@ namespace SignPressServer.SignFile
                                 UploadFile(socketClient, id);
                                 break;
                             case "DOWNLOAD_HDJCONTRACT_REQUEST" :
-                                DownloadFile(socketClient, id);
+                                String conId = JsonConvert.DeserializeObject<String>(id);
+
+                                DownloadFile(socketClient, conId);
                                 break;
 
                         }
@@ -222,6 +228,7 @@ namespace SignPressServer.SignFile
 
             string fileName = SIGNATURE_PICTURE_PATH + employeeId + ".jpg";//获得用户保存文件的路径
             Console.WriteLine("文件的存储路径" + fileName);
+            
             //创建文件流，然后让文件流来根据路径创建一个文件
             FileStream fs = new FileStream(fileName, FileMode.Create);
 
@@ -252,13 +259,31 @@ namespace SignPressServer.SignFile
         /// </summary>
         private void DownloadFile(Socket socketClient, String contractId)
         {
-            String fileName = HDJCONTDACT_PATH + contractId + ".doc";
-            FileStream fs = new FileStream(fileName, FileMode.OpenOrCreate, FileAccess.Read);
+            //  首先生成会签单信息
+            String filePath = MSWordTools.DEFAULT_HDJCONTRACT_PATH + contractId + ".pdf";
+            if(!(File.Exists((String)filePath)))     // 首先检测文件是否存在
+            {
+                String wordPath = MSWordTools.DEFAULT_HDJCONTRACT_PATH + contractId + ".doc";
+                HDJContract contract = DALHDJContract.GetHDJContactAgree(contractId);       // 获取待生成的会签单信息
+                MSWordTools.CreateHDJContractWordWithReplace(contract, wordPath);
+                MSWordTools.WordConvertToPdf(wordPath, filePath);
+
+                File.Delete((String)wordPath);
+
+            }
+
+
+
+            FileStream fs = new FileStream(filePath, FileMode.OpenOrCreate, FileAccess.Read);
+            Console.WriteLine("开始下载文件{0}", filePath);
             byte[] fssize = new byte[fs.Length];
             BinaryReader reader = new BinaryReader(fs);
             reader.Read(fssize, 0, fssize.Length - 1);
             socketClient.Send(fssize);
             fs.Flush();
+            fs.Close();
+            Console.WriteLine("下载文件结束");
+
             //dict.Remove(socketClient.RemoteEndPoint.ToString());
             //socketClient.Close();
         }

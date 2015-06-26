@@ -289,6 +289,7 @@ namespace SignPressServer.SignDAL
             }
             catch (Exception)
             {
+                
                 throw;
             }
             finally

@@ -796,9 +796,5 @@ and d1.id = e1.departmentid and d2.id = e2.departmentid and d3.id = e3.departmen
 
 
 
-报头 + id
-// tcpclient
-{
 
-    send(picture)
-}
+[表头]

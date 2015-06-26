@@ -313,12 +313,22 @@ namespace SignPressServer.SignSocket.AsyncSocket
                 (2)在端口上侦听是否有新的连接请求；
                 (3)请求开始接入新的连接，传入Socket的实例或者StateOjbect的实例。
                  */
-                this.m_serverSocket.BeginAccept(new AsyncCallback(HandleAcceptConnected), this.m_serverSocket);
-                /*
-                 当BeginAccept()方法调用结束后，一旦新的连接发生，将调用回调函数，
-                 而该回调函数必须包括用来结束接入连接操作的EndAccept()方法。
-                 该方法参数列表为 Socket EndAccept(IAsyncResult iar)
-                 * **/
+                try
+                {
+                    this.m_serverSocket.BeginAccept(new AsyncCallback(HandleAcceptConnected), this.m_serverSocket);
+
+                    /*
+                    当BeginAccept()方法调用结束后，一旦新的连接发生，将调用回调函数，
+                    而该回调函数必须包括用来结束接入连接操作的EndAccept()方法。
+                    该方法参数列表为 Socket EndAccept(IAsyncResult iar)
+                    * **/
+                }
+                catch (Exception e)
+                {
+                    //  C- TODO 异常处理
+                    Console.WriteLine(e.ToString());
+                    this.Log.Write(new LogMessage(e.ToString(), LogMessageType.Exception));
+                }
             }
         }
 
@@ -364,46 +374,55 @@ namespace SignPressServer.SignSocket.AsyncSocket
         /// <param name="ar"></param>
         private void HandleAcceptConnected(IAsyncResult ar)
         {
-            if (IsRunning)
+            try
             {
-                Socket server = (Socket)ar.AsyncState;
-                Socket client = server.EndAccept(ar);   //  EndAccept后，就可以进行正常的通信了
-               
-                //  检查是否达到最大的允许的客户端数目
-                if (this.m_currClientCount >= this.m_maxClientCount)
+                if (IsRunning)
                 {
-                    //C-TODO 触发事件
-                    RaiseOtherException(null);
-                }
-                else    // 处理客户端的连接
-                {
+                    Socket server = (Socket)ar.AsyncState;
+                    Socket client = server.EndAccept(ar);   //  EndAccept后，就可以进行正常的通信了
 
-
-                    IPEndPoint ip = (IPEndPoint)client.RemoteEndPoint;
-                    Console.WriteLine("获取到一个来自{0} : {1}的连接", ip.Address, ip.Port);
-                    this.Log.Write(new LogMessage("获取到一个来自" + ip.Address + " : " + ip.Port + "的连接...", LogMessageType.Information));
-
-                    AsyncSocketState state = new AsyncSocketState(client);
-                    lock (this.m_clientList)        //  将连接的客户端的信息添加到客户端列表
+                    //  检查是否达到最大的允许的客户端数目
+                    if (this.m_currClientCount >= this.m_maxClientCount)
                     {
-                        this.m_clientList.Add(state);
-                        this.m_currClientCount++;
-                        RaiseClientConnected(state); //  触发客户端连接事件
+                        //C-TODO 触发事件
+                        RaiseOtherException(null);
                     }
-                    //  设置与客户端的通信的缓冲区
-                    state.RecvDataBuffer = new byte[client.ReceiveBufferSize];
-                    
-                    ///  开始接受来自该客户端的数据
-                    ///
-                    /// 接收数据自BeginRecive开始，
-                    /// 调用回调函数函数HandleDataReceived
-                    /// 在回调函数中以EndReceive结束
-                    client.BeginReceive(state.RecvDataBuffer, 0, state.RecvDataBuffer.Length, SocketFlags.None,
-                     new AsyncCallback(HandleDataReceived), state);
-                }
+                    else    // 处理客户端的连接
+                    {
 
-                //接受下一个请求
-                server.BeginAccept(new AsyncCallback(HandleAcceptConnected), ar.AsyncState);
+
+                        IPEndPoint ip = (IPEndPoint)client.RemoteEndPoint;
+                        Console.WriteLine("获取到一个来自{0} : {1}的连接", ip.Address, ip.Port);
+                        this.Log.Write(new LogMessage("获取到一个来自" + ip.Address + " : " + ip.Port + "的连接...", LogMessageType.Information));
+
+                        AsyncSocketState state = new AsyncSocketState(client);
+                        lock (this.m_clientList)        //  将连接的客户端的信息添加到客户端列表
+                        {
+                            this.m_clientList.Add(state);
+                            this.m_currClientCount++;
+                            RaiseClientConnected(state); //  触发客户端连接事件
+                        }
+                        //  设置与客户端的通信的缓冲区
+                        state.RecvDataBuffer = new byte[client.ReceiveBufferSize];
+
+                        ///  开始接受来自该客户端的数据
+                        ///
+                        /// 接收数据自BeginRecive开始，
+                        /// 调用回调函数函数HandleDataReceived
+                        /// 在回调函数中以EndReceive结束
+                        client.BeginReceive(state.RecvDataBuffer, 0, state.RecvDataBuffer.Length, SocketFlags.None,
+                         new AsyncCallback(HandleDataReceived), state);
+                    }
+
+                    //接受下一个请求
+                    server.BeginAccept(new AsyncCallback(HandleAcceptConnected), ar.AsyncState);
+                }
+            }
+            catch (Exception e)
+            {
+                //  C- TODO 异常处理
+                Console.WriteLine(e.ToString());
+                this.Log.Write(new LogMessage(e.ToString(), LogMessageType.Exception));
             }
         }
 
@@ -902,6 +921,10 @@ namespace SignPressServer.SignSocket.AsyncSocket
                 case "QUERY_SIGN_REFUSE_REQUEST":
                     RaiseQuerySignatureStatusRefuseRequest(state);
                     break;
+
+                case "SEARCH_AGREE_HDJCONTRACT_REQUEST":
+                    RaiseSearchAgreeHDJContractRequest(state);
+                    break;
                 #endregion
                 /// <summary>
                 /// ==签字人的会签单操作==
@@ -915,7 +938,9 @@ namespace SignPressServer.SignSocket.AsyncSocket
                 case "QUERY_SIGNED_CONTRACT_REQUEST":
                     RaiseQuerySignedContractRequest(state);
                     break;
-
+                case "SEARCH_SIGNED_HDJCONTRACT_REQUEST":
+                    RaiseSearchSignedHDJContractRequest(state);
+                    break;
                 /// <summary>
                 /// ==签字人的签字操作==
                 /// 用户对某个单子进行签字    INSERT_SIGN_DETAIL_REQUEST
@@ -1227,7 +1252,7 @@ namespace SignPressServer.SignSocket.AsyncSocket
 
             // json数据解包
             int employeeId = JsonConvert.DeserializeObject<int>(state.SocketMessage.Message);
-            bool result = DALDepartment.DeleteDepartment(employeeId);
+            bool result = DALEmployee.DeleteEmployee(employeeId);
 
             if (result == true)
             {
@@ -1235,7 +1260,7 @@ namespace SignPressServer.SignSocket.AsyncSocket
                 this.Log.Write(new LogMessage(state.ClientIp + "员工" + employeeId + "删除成功", LogMessageType.Success));
 
                 //DELETE_DEPARTMENT_RESPONSE = "DELETE_DEPARTMENT_SUCCESS";               //  用户登录成功信号   
-                response = ServerResponse.DELETE_DEPARTMENT_SUCCESS;
+                response = ServerResponse.DELETE_EMPLOYEE_SUCCESS;
             }
             else
             {
@@ -1243,7 +1268,7 @@ namespace SignPressServer.SignSocket.AsyncSocket
                 this.Log.Write(new LogMessage(state.ClientIp + "部门" + employeeId + "删除失败", LogMessageType.Error));
 
                 //DELETE_DEPARTMENT_RESPONSE = "DELETE_DEPARTMENT_FAILED";                //  用户登录失败信号
-                response = ServerResponse.DELETE_DEPARTMENT_FAILED;
+                response = ServerResponse.DELETE_EMPLOYEE_FAILED;
             }
 
             //  删除员工的响应信息只包含头信息
@@ -1666,31 +1691,31 @@ namespace SignPressServer.SignSocket.AsyncSocket
         /// <param name="state"></param>
         private void RaiseModifyHDJContractRequest(AsyncSocketState state)
         {
-            Console.WriteLine("接收到来自" + state.ClientIp + "的待修改会签单模版信息" + state.SocketMessage.Message);
-            this.Log.Write(new LogMessage("接收到来自" + state.ClientIp + "待插入会签单模版信息" + state.SocketMessage.Message, LogMessageType.Information));
+            Console.WriteLine("接收到来自" + state.ClientIp + "的待修改会签单信息" + state.SocketMessage.Message);
+            this.Log.Write(new LogMessage("接收到来自" + state.ClientIp + "的待修改会签单信息" + state.SocketMessage.Message, LogMessageType.Information));
      
             //string MODIFY_EMPLOYEE_RESPONSE;
             ServerResponse response = new ServerResponse();
 
             // json数据解包
-            ContractTemplate conTemp = JsonConvert.DeserializeObject<ContractTemplate>(state.SocketMessage.Message);
-            bool result = DALContractTemplate.ModifyContractTemplate(conTemp);
+            HDJContract contract = JsonConvert.DeserializeObject<HDJContract>(state.SocketMessage.Message);
+            bool result = DALHDJContract.ModifyHDJContract(contract);
 
             if (result == true)
             {
-                Console.WriteLine(state.ClientIp + "会前的那模版{0}, {1}修改成功", conTemp.TempId.ToString(), conTemp.Name);
-                this.Log.Write(new LogMessage(state.ClientIp + "会签单模版" + conTemp.TempId.ToString() + ", " + conTemp.Name + "修改成功", LogMessageType.Success));
+                Console.WriteLine(state.ClientIp + "会签单信息{0}, {1}修改成功", contract.Id.ToString(), contract.Name);
+                this.Log.Write(new LogMessage(state.ClientIp + "会签单模版" + contract.Id.ToString() + ", " + contract.Name + "修改成功", LogMessageType.Success));
 
                 //MODIFY_EMPLOYEE_RESPONSE = "MODIFY_EMPLOYEE_SUCCESS";               //  用户登录成功信号   
-                response = ServerResponse.MODIFY_CONTRACT_TEMPLATE_SUCCESS;
+                response = ServerResponse.MODIFY_HDJCONTRACT_SUCCESS;
             }
             else
             {
-                Console.WriteLine(state.ClientIp + "会签单模版{0}删除失败", conTemp.TempId.ToString());
-                this.Log.Write(new LogMessage(state.ClientIp + "会签单模版" + conTemp.Name + "修改失败", LogMessageType.Error));
+                Console.WriteLine(state.ClientIp + "会签单模版{0}删除失败", contract.Id.ToString());
+                this.Log.Write(new LogMessage(state.ClientIp + "会签单模版" + contract.Name + "修改失败", LogMessageType.Error));
 
                 // MODIFY_EMPLOYEE_RESPONSE = "MODIFY_EMPLOYEE_FAILED";                //  用户登录失败信号
-                response = ServerResponse.MODIFY_CONTRACT_TEMPLATE_FAILED;
+                response = ServerResponse.MODIFY_HDJCONTRACT_FAILED;
             }
             //  修改会签单模版的响应数据只包含头
             AsyncSocketMessage socketMessage = new AsyncSocketMessage(response);
@@ -1949,6 +1974,105 @@ namespace SignPressServer.SignSocket.AsyncSocket
         }
 
         #endregion
+
+        #region 查询被拒绝的所有会签单的信息
+        /// <summary>
+        /// 查询正在审核，审核通过以及被拒绝的所有会签单的信息
+        /// </summary>
+        /// <param name="state"></param>
+        private void RaiseSearchSignedHDJContractRequest(AsyncSocketState state)
+        {
+            Console.WriteLine("接收到来自" + state.ClientIp + "的查询被拒绝的会签单模版信息" + state.SocketMessage.Message);
+            this.Log.Write(new LogMessage("接收到来自" + state.ClientIp + "查询被拒绝的会签单模版信息" + state.SocketMessage.Message, LogMessageType.Information));
+
+            ServerResponse response = new ServerResponse();
+
+            Search search = JsonConvert.DeserializeObject<Search>(state.SocketMessage.Message);
+            List<SHDJContract> contracts = DALSignatureStatus.SearchSignedHDJContract(search);
+            this.Log.Write(new LogMessage(state.ClientIp + "查询到的了所有被拒绝的会签单", LogMessageType.Information));
+
+            if (contracts != null)
+            {
+                Console.WriteLine("被拒绝会签单信息查询成功");
+                this.Log.Write(new LogMessage(state.ClientIp + "被拒绝会签单信息查询成功", LogMessageType.Success));
+
+                //QUERY_EMPLOYEE_RESPONSE = "QUERY_EMPLOYEE_SUCCESS";               //  用户登录成功信号   
+                response = ServerResponse.SEARCH_SIGNED_HDJCONTRACT_SUCCESS;
+            }
+            else
+            {
+                Console.WriteLine("被拒绝的会签单信息查询失败");
+                this.Log.Write(new LogMessage(state.ClientIp + "被拒绝的会签单信息查询失败", LogMessageType.Error));
+
+                //QUERY_EMPLOYEE_RESPONSE = "QUERY_EMPLOYEE_FAILED";                //  用户登录失败信号
+                response = ServerResponse.SEARCH_SIGNED_HDJCONTRACT_FAILED;
+            }
+
+            //  查询会签单成功则同时发送[报头 + 部门信息] 
+            if (response.Equals(ServerResponse.SEARCH_SIGNED_HDJCONTRACT_SUCCESS))
+            {
+                AsyncSocketMessage socketMessage = new AsyncSocketMessage(response, contracts);
+                this.Send(state.ClientSocket, Encoding.UTF8.GetBytes(socketMessage.Package));                    //  将
+            }
+            else      //  查询失败则只发报头
+            {
+                AsyncSocketMessage socketMessage = new AsyncSocketMessage(response);
+                this.Send(state.ClientSocket, Encoding.UTF8.GetBytes(socketMessage.Package));
+            }
+        }
+
+        #endregion
+
+
+        #region 查询被拒绝的所有会签单的信息
+        /// <summary>
+        /// 查询正在审核，审核通过以及被拒绝的所有会签单的信息
+        /// </summary>
+        /// <param name="state"></param>
+        private void RaiseSearchAgreeHDJContractRequest(AsyncSocketState state)
+        {
+            Console.WriteLine("接收到来自" + state.ClientIp + "的查询被拒绝的会签单模版信息" + state.SocketMessage.Message);
+            this.Log.Write(new LogMessage("接收到来自" + state.ClientIp + "查询被拒绝的会签单模版信息" + state.SocketMessage.Message, LogMessageType.Information));
+
+            ServerResponse response = new ServerResponse();
+
+            Search search = JsonConvert.DeserializeObject<Search>(state.SocketMessage.Message);
+            List<SHDJContract> contracts = DALSignatureStatus.SearchAgreeHDJContract(search);
+            this.Log.Write(new LogMessage(state.ClientIp + "查询到的了所有被拒绝的会签单", LogMessageType.Information));
+
+            if (contracts != null)
+            {
+                Console.WriteLine("被拒绝会签单信息查询成功");
+                this.Log.Write(new LogMessage(state.ClientIp + "被拒绝会签单信息查询成功", LogMessageType.Success));
+
+                //QUERY_EMPLOYEE_RESPONSE = "QUERY_EMPLOYEE_SUCCESS";               //  用户登录成功信号   
+                response = ServerResponse.SEARCH_AGREE_HDJCONTRACT_SUCCESS;
+            }
+            else
+            {
+                Console.WriteLine("被拒绝的会签单信息查询失败");
+                this.Log.Write(new LogMessage(state.ClientIp + "被拒绝的会签单信息查询失败", LogMessageType.Error));
+
+                //QUERY_EMPLOYEE_RESPONSE = "QUERY_EMPLOYEE_FAILED";                //  用户登录失败信号
+                response = ServerResponse.SEARCH_AGREE_HDJCONTRACT_FAILED;
+            }
+
+            //  查询会签单成功则同时发送[报头 + 部门信息] 
+            if (response.Equals(ServerResponse.SEARCH_AGREE_HDJCONTRACT_SUCCESS))
+            {
+                AsyncSocketMessage socketMessage = new AsyncSocketMessage(response, contracts);
+                this.Send(state.ClientSocket, Encoding.UTF8.GetBytes(socketMessage.Package));                    //  将
+            }
+            else      //  查询失败则只发报头
+            {
+                AsyncSocketMessage socketMessage = new AsyncSocketMessage(response);
+                this.Send(state.ClientSocket, Encoding.UTF8.GetBytes(socketMessage.Package));
+            }
+        }
+
+        #endregion
+
+
 
         #endregion
         

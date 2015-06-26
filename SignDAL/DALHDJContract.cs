@@ -32,7 +32,7 @@ namespace SignPressServer.SignDAL
         /// 修改航道局会签单的信息串
         /// </summary>
         private const String MODIFY_HDJCONTRACT_STR = @"UPDATE `hdjcontract`
-                                                        SET `name` = @Name, `subempid` = @SubEmpId, `submitdate` = @SubmitDate
+                                                        SET `submitdate` = @SubmitDate,
                                                             `columndata1` = @ColumnData_1, `columndata2` = @ColumnData_2, `columndata3` = @ColumnData_3, `columndata4` = @ColumnData_4, `columndata5` = @ColumnData_5        
                                                         WHERE (`id` = @Id)";
 
@@ -204,10 +204,10 @@ and h.id = s.conid);";
                 cmd.CommandText = MODIFY_HDJCONTRACT_STR;
 
                 cmd.Parameters.AddWithValue("@Id", contract.Id);
-                cmd.Parameters.AddWithValue("@Name", contract.Name);
-                cmd.Parameters.AddWithValue("@TempId", contract.ConTemp.TempId);
-                cmd.Parameters.AddWithValue("@SubEmpId", contract.SubmitEmployee.Id);
-                cmd.Parameters.AddWithValue("@SubmitDate", contract.SubmitDate);
+                //cmd.Parameters.AddWithValue("@Name", contract.Name);
+                //cmd.Parameters.AddWithValue("@TempId", contract.ConTemp.TempId);
+                //cmd.Parameters.AddWithValue("@SubEmpId", contract.SubmitEmployee.Id);
+                cmd.Parameters.AddWithValue("@SubmitDate", System.DateTime.Now);
                 ///  5个栏目信息
                 for (int cnt = 0; cnt < 5; cnt++)
                 {
