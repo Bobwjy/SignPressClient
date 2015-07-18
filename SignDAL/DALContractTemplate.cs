@@ -44,32 +44,35 @@ signaturelevel表
 // 当插入一张新会签单模版的时候
 CREATE trigger insert_signature_level
 AFTER INSERT on `contemp` 
-FOR EACH ROW 
+FOR EACH ROW
 BEGIN
 
-	INSERT INTO `signaturelevel` (`contempid`, `signnum`, `empid`, `signlevel`)
-        VALUES (new.id, '1', new.signid1, new.signlevel1);
+	INSERT INTO `signaturelevel` (`contempid`, `signnum`, `empid`, `signlevel`, `canview`, `candownload`)
+        VALUES (new.id, '1', new.signid1, new.signlevel1, new.canview1, new.candownload1);
 
-	INSERT INTO `signaturelevel` (`contempid`, `signnum`, `empid`, `signlevel`)
-        VALUES (new.id, '2', new.signid2, new.signlevel2);
-	
-	INSERT INTO `signaturelevel` (`contempid`, `signnum`, `empid`, `signlevel`)
-        VALUES (new.id, '3', new.signid3, new.signlevel3);
-	
-	INSERT INTO `signaturelevel` (`contempid`, `signnum`, `empid`, `signlevel`)
-        VALUES (new.id, '4', new.signid4, new.signlevel4);
-	
-	INSERT INTO `signaturelevel` (`contempid`, `signnum`, `empid`, `signlevel`)
-        VALUES (new.id, '5', new.signid5, new.signlevel5);
 
-	INSERT INTO `signaturelevel` (`contempid`, `signnum`, `empid`, `signlevel`)
-        VALUES (new.id, '6', new.signid6, new.signlevel6);
-
-	INSERT INTO `signaturelevel` (`contempid`, `signnum`, `empid`, `signlevel`)
-        VALUES (new.id, '7', new.signid7, new.signlevel7);
+	INSERT INTO `signaturelevel` (`contempid`, `signnum`, `empid`, `signlevel`, `canview`, `candownload`)
+        VALUES (new.id, '2', new.signid2, new.signlevel2, new.canview2, new.candownload2);
 	
-	INSERT INTO `signaturelevel` (`contempid`, `signnum`, `empid`, `signlevel`)
-        VALUES (new.id, '8', new.signid8, new.signlevel8);
+	INSERT INTO `signaturelevel` (`contempid`, `signnum`, `empid`, `signlevel`, `canview`, `candownload`)
+        VALUES (new.id, '3', new.signid3, new.signlevel3, new.canview3, new.candownload3);
+
+
+	INSERT INTO `signaturelevel` (`contempid`, `signnum`, `empid`, `signlevel`, `canview`, `candownload`)
+        VALUES (new.id, '4', new.signid4, new.signlevel4, new.canview4, new.candownload4);
+  	
+    INSERT INTO `signaturelevel` (`contempid`, `signnum`, `empid`, `signlevel`, `canview`, `candownload`)
+        VALUES (new.id, '5', new.signid5, new.signlevel5, new.canview5, new.candownload5);
+
+	INSERT INTO `signaturelevel` (`contempid`, `signnum`, `empid`, `signlevel`, `canview`, `candownload`)
+        VALUES (new.id, '6', new.signid6, new.signlevel6, new.canview6, new.candownload6);
+	
+    INSERT INTO `signaturelevel` (`contempid`, `signnum`, `empid`, `signlevel`, `canview`, `candownload`)
+        VALUES (new.id, '7', new.signid7, new.signlevel7, new.canview7, new.candownload7);
+	
+    INSERT INTO `signaturelevel` (`contempid`, `signnum`, `empid`, `signlevel`, `canview`, `candownload`)
+        VALUES (new.id, '8', new.signid8, new.signlevel8, new.canview8, new.candownload8);
+ 
 END;  
 
 // 当修改一张新会签单模版的时候
@@ -79,35 +82,35 @@ FOR EACH ROW
 BEGIN
 
 	UPDATE `signaturelevel` 
-	SET `empid` = new.signid1, `signlevel` = new.signlevel1
+	SET `empid` = new.signid1, `signlevel` = new.signlevel1, `canview` = new.canview1, `candownload` = new.candownload1
 	WHERE(`contempid` = new.id and `signnum` = 1);
 
 	UPDATE `signaturelevel` 
-	SET `empid` = new.signid2, `signlevel` = new.signlevel2
+	SET `empid` = new.signid2, `signlevel` = new.signlevel2, `canview` = new.canview2, `candownload` = new.candownload2
 	WHERE(`contempid` = new.id and `signnum` = 2);
 	
 	UPDATE `signaturelevel` 
-	SET `empid` = new.signid3, `signlevel` = new.signlevel3
+	SET `empid` = new.signid3, `signlevel` = new.signlevel3, `canview` = new.canview3, `candownload` = new.candownload3
 	WHERE(`contempid` = new.id and `signnum` = 3);
 	
 	UPDATE `signaturelevel` 
-	SET `empid` = new.signid4, `signlevel` = new.signlevel4
+	SET `empid` = new.signid4, `signlevel` = new.signlevel4, `canview` = new.canview4, `candownload` = new.candownload4
 	WHERE(`contempid` = new.id and `signnum` = 4);
 	
 	UPDATE `signaturelevel` 
-	SET `empid` = new.signid5, `signlevel` = new.signlevel5
+	SET `empid` = new.signid5, `signlevel` = new.signlevel5, `canview` = new.canview5, `candownload` = new.candownload5
 	WHERE(`contempid` = new.id and `signnum` = 5);
 	
 	UPDATE `signaturelevel` 
-	SET `empid` = new.signid6, `signlevel` = new.signlevel6
+	SET `empid` = new.signid6, `signlevel` = new.signlevel6, `canview` = new.canview6, `candownload` = new.candownload6
 	WHERE(`contempid` = new.id and `signnum` = 6);
 
 	UPDATE `signaturelevel` 
-	SET `empid` = new.signid7, `signlevel` = new.signlevel7
+	SET `empid` = new.signid7, `signlevel` = new.signlevel7, `canview` = new.canview7, `candownload` = new.candownload7
 	WHERE(`contempid` = new.id and `signnum` = 7);
 	
 	UPDATE `signaturelevel` 
-	SET `empid` = new.signid8, `signlevel` = new.signlevel8
+	SET `empid` = new.signid8, `signlevel` = new.signlevel8, `canview` = new.canview8, `candownload` = new.candownload8
 	WHERE(`contempid` = new.id and `signnum` = 8);
 
 END;  
@@ -131,12 +134,16 @@ namespace SignPressServer.SignDAL
                                                                                      `column1`, `column2`, `column3`, `column4`, `column5`, 
                                                                                      `signinfo1`, `signinfo2`, `signinfo3`, `signinfo4`, `signinfo5`, `signinfo6`, `signinfo7`, `signinfo8`, 
                                                                                      `signid1`, `signid2`, `signid3`, `signid4`, `signid5`, `signid6`, `signid7`, `signid8`,
-                                                                                     `signlevel1`, `signlevel2`, `signlevel3`, `signlevel4`, `signlevel5`, `signlevel6`, `signlevel7`, `signlevel8`)
+                                                                                     `signlevel1`, `signlevel2`, `signlevel3`, `signlevel4`, `signlevel5`, `signlevel6`, `signlevel7`, `signlevel8`,
+                                                                                     `canview1`, `canview2`, `canview3`, `canview4`, `canview5`, `canview6`, `canview7`, `canview8`,
+                                                                                     `candownload1`, `candownload2`, `candownload3`, `candownload4`, `candownload5`, `candownload6`, `candownload7`, `candownload8`)
                                                               VALUES (@Name, @CreateDate,
                                                                       @Column_1, @Column_2, @Column_3, @Column_4, @Column_5, 
                                                                       @SignInfo_1, @SignInfo_2, @SignInfo_3, @SignInfo_4, @SignInfo_5, @SignInfo_6, @SignInfo_7, @SignInfo_8, 
                                                                       @SignId_1, @SignId_2, @SignId_3, @SignId_4, @SignId_5, @SignId_6, @SignId_7, @SignId_8,
-                                                                      @SignLevel_1, @SignLevel_2, @SignLevel_3, @SignLevel_4, @SignLevel_5, @SignLevel_6, @SignLevel_7, @SignLevel_8)"; 
+                                                                      @SignLevel_1, @SignLevel_2, @SignLevel_3, @SignLevel_4, @SignLevel_5, @SignLevel_6, @SignLevel_7, @SignLevel_8,
+                                                                      @CanView_1, @CanView_2, @CanView_3, @CanView_4, @CanView_5, @CanView_6, @CanView_7, @CanView_8,
+                                                                      @CanDownload_1, @CanDownload_2, @CanDownload_3, @CanDownload_4, @CanDownload_5, @CanDownload_6, @CanDownload_7, @CanDownload_8)"; 
 
         /// <summary>
         /// 删除会签单模版信息串
@@ -153,7 +160,9 @@ namespace SignPressServer.SignDAL
                                                         SET `name` = @Name, `column1` = @Column_1, `column2` = @Column_2, `column3` = @Column_3, `column4` = @Column_4, `column5` = @Column_5, 
                                                              `signinfo1` = @SignInfo_1, `signinfo2` = @SignInfo_2, `signinfo3` = @SignInfo_3, `signinfo4` = @SignInfo_4, `signinfo5` = @SignInfo_5, `signinfo6` = @SignInfo_6, `signinfo7` = @SignInfo_7, `signinfo8` = @SignInfo_8, 
                                                              `signid1` = @SignId_1, `signid2` = @SignId_2, `signid3` = @SignId_3, `signid4` = @SignId_4, `signid5` = @SignId_5, `signid6` = @SignId_6, `signid7` = @SignId_7, `signid8` = @SignId_8,
-                                                             `signlevel1` = @SignLevel_1, `signlevel2` = @SignLevel_2, `signlevel3` = @SignLevel_3, `signlevel4` = @SignLevel_4, `signlevel5` = @SignLevel_5, `signlevel6` = @SignLevel_6, `signlevel7` = @SignLevel_7, `signlevel8` = @SignLevel_8 
+                                                             `signlevel1` = @SignLevel_1, `signlevel2` = @SignLevel_2, `signlevel3` = @SignLevel_3, `signlevel4` = @SignLevel_4, `signlevel5` = @SignLevel_5, `signlevel6` = @SignLevel_6, `signlevel7` = @SignLevel_7, `signlevel8` = @SignLevel_8,
+                                                             `canview1` = @CanView_1, `canview2` = @CanView_2, `canview3` = @CanView_3, `canview4` = @CanView_4, `canview5` = @CanView_5, `canview6` = @CanView_6, `canview7` = @CanView_7, `canview8` = @CanView_8,
+                                                             `candownload1` = @CanDownload_1, `candownload2` = @CanDownload_2, `candownload3` = @CanDownload_3, `candownload4` = @CanDownload_4, `candownload5` = @CanDownload_5, `candownload6` = @CanDownload_6, `candownload7` = @CanDownload_7, `candownload8` = @CanDownload_8
                                                         WHERE (`id` = @Id)";
 
 
@@ -167,7 +176,10 @@ namespace SignPressServer.SignDAL
                                                                   e1.name signname1, e2.name signname2, e3.name signname3, e4.name signname4, e5.name signname5, e6.name signname6, e7.name signname7, e8.name signname8,          
                                                                   d1.id departmentid1, d2.id departmentid2, d3.id departmentid3, d4.id departmentid4, d5.id departmentid5, d6.id departmentid6, d7.id departmentid7, d8.id departmentid8,
                                                                   d1.name departmentname1, d2.name departmentname2, d3.name departmentname3, d4.name departmentname4, d5.name departmentname5, d6.name departmentname6, d7.name departmentname7, d8.name departmentname8,
-                                                                  c.signlevel1 signlevel1, c.signlevel2, c.signlevel2, c.signlevel3, signlevel3, c.signlevel4 signlevel4, c.signlevel5 signlevel5, c.signlevel6 signlevel6, c.signlevel7 signlevel7, c.signlevel8 signlevel8
+                                                                  c.signlevel1 signlevel1, c.signlevel2, c.signlevel2, c.signlevel3, signlevel3, c.signlevel4 signlevel4, c.signlevel5 signlevel5, c.signlevel6 signlevel6, c.signlevel7 signlevel7, c.signlevel8 signlevel8,
+                                                                  c.canview1 canview1, c.canview2 canview2, c.canview3 canview3, c.canview4 canview4, c.canview5 canview5, c.canview6 canview6, c.canview7 canview7, c.canview8 canview8,
+                                                                  c.candownload1 candownload1, c.candownload2 candownload2, c.candownload3 candownload3, c.candownload4 candownload4, c.candownload5 candownload5, c.candownload6 candownload6, c.candownload7 candownload7, c.candownload8 candownload8
+   
                                                               FROM contemp c, 
                                                                    employee e1, employee e2, employee e3, employee e4, employee e5, employee e6, employee e7, employee e8,
                                                                    department d1, department d2, department d3, department d4, department d5, department d6, department d7, department d8 
@@ -180,7 +192,9 @@ namespace SignPressServer.SignDAL
                                                                   `column1`, `column2`, `column3`, `column4`, `column5`, 
                                                                   `signinfo1`, `signinfo2`, `signinfo3`, `signinfo4`, `signinfo5`, `signinfo6`, `signinfo7`, `signinfo8`, 
                                                                   `signid1`, `signid2`, `signid3`, `signid4`, `signid5`, `signid6`, `signid7`, `signid8`
-                                                                  `signlevel1`, `signlevel2`, `signlevel3`, `signlevel4`, `signlevel5`, `signlevel6`, `signlevel7`, `signlevel8`
+                                                                  `signlevel1`, `signlevel2`, `signlevel3`, `signlevel4`, `signlevel5`, `signlevel6`, `signlevel7`, `signlevel8`,
+                                                                  `canview1`, `canview2`, `canview3`, `canview4`, `canview5`, `canview6`, `canview7`, `canview8`,
+                                                                  `candownload1`, `candownload2`, `candownload3`, `candownload4`, `candownload5`, `candownload6`, `candownload7`, `candownload8`)
                                                               FROM `contemp`
                                                               WHERE (`name` = @Name)"; 
 
@@ -199,7 +213,6 @@ namespace SignPressServer.SignDAL
         /// </summary>
         /// <param name="conTemp">待插入的会签单模版</param>
         /// <returns></returns>
-        /// 
         public static bool InsertContractTemplate(ContractTemplate conTemp)
         {
             MySqlConnection con = DBTools.GetMySqlConnection();
@@ -264,11 +277,15 @@ namespace SignPressServer.SignDAL
                     String strSignInfo = "@SignInfo_" + (cnt + 1).ToString();
                     String strSignId = "@SignId_" + (cnt + 1).ToString();
                     String strSignLevel = @"SignLevel_" + (cnt + 1).ToString();
-
+                    String strCanView = "@CanView_" + (cnt + 1).ToString();
+                    String strCanDownload = "@CanDownload_" + (cnt + 1).ToString();
+    
                     cmd.Parameters.AddWithValue(strSignInfo, conTemp.SignDatas[cnt].SignInfo);
                     cmd.Parameters.AddWithValue(strSignId, conTemp.SignDatas[cnt].SignEmployee.Id);
                     cmd.Parameters.AddWithValue(strSignLevel, conTemp.SignDatas[cnt].SignLevel);
-
+                    cmd.Parameters.AddWithValue(strCanView, conTemp.SignDatas[cnt].CanView);
+                    cmd.Parameters.AddWithValue(strCanDownload, conTemp.SignDatas[cnt].CanDownload);
+                    
                 }
 
                 count = cmd.ExecuteNonQuery();
@@ -478,13 +495,18 @@ namespace SignPressServer.SignDAL
                 */
                 for (int cnt = 0; cnt < 8; cnt++)
                 {
+
                     String strSignInfo = "@SignInfo_" + (cnt + 1).ToString();
                     String strSignId = "@SignId_" + (cnt + 1).ToString();
                     String strSignLevel = @"SignLevel_" + (cnt + 1).ToString();
+                    String strCanView = "@CanView_" + (cnt + 1).ToString();
+                    String strCanDownload = "@CanDownload_" + (cnt + 1).ToString();
 
                     cmd.Parameters.AddWithValue(strSignInfo, conTemp.SignDatas[cnt].SignInfo);
                     cmd.Parameters.AddWithValue(strSignId, conTemp.SignDatas[cnt].SignEmployee.Id);
                     cmd.Parameters.AddWithValue(strSignLevel, conTemp.SignDatas[cnt].SignLevel);
+                    cmd.Parameters.AddWithValue(strCanView, conTemp.SignDatas[cnt].CanView);
+                    cmd.Parameters.AddWithValue(strCanDownload, conTemp.SignDatas[cnt].CanDownload);
                 }
 
   
@@ -671,7 +693,8 @@ namespace SignPressServer.SignDAL
                         String strDepartmentId = "departmentid" + cnt.ToString();
                         String strDepartmentName = "departmentname" + cnt.ToString();
                         String strSignLevel = "signlevel" + cnt.ToString();
-
+                        String strCanView = "canview" + cnt.ToString();
+                        String strCanDownload = "candownload" + cnt.ToString();
 
                         SignatureTemplate signDatas = new SignatureTemplate();
                         signDatas.SignInfo = sqlRead[strSignInfo].ToString();
@@ -685,6 +708,8 @@ namespace SignPressServer.SignDAL
                         employee.Department = department;
                         signDatas.SignEmployee = employee;
 
+                        signDatas.CanView = int.Parse(sqlRead[strCanView].ToString());
+                        signDatas.CanDownload = int.Parse(sqlRead[strCanDownload].ToString());
 
                         signatures.Add(signDatas);
                     }
@@ -769,6 +794,9 @@ namespace SignPressServer.SignDAL
                         String strSignName = "signname" + cnt.ToString();
                         String strDepartmentId = "department" + cnt.ToString();
                         String strDepartmentName = "department" + cnt.ToString();
+                        String strCanView = "canview" + cnt.ToString();
+                        String strCanDownload = "candownload" + cnt.ToString();
+
 
                         SignatureTemplate signDatas = new SignatureTemplate();
                         signDatas.SignInfo = sqlRead[strSignInfo].ToString();
@@ -782,6 +810,8 @@ namespace SignPressServer.SignDAL
                         employee.Department = department;
                         signDatas.SignEmployee = employee;
 
+                        signDatas.CanView = int.Parse(sqlRead[strCanView].ToString());
+                        signDatas.CanDownload = int.Parse(sqlRead[strCanDownload].ToString());
 
                         signatures.Add(signDatas);
                     }
@@ -809,7 +839,125 @@ namespace SignPressServer.SignDAL
         }
         #endregion
 
+        #region 查询当前员工关联的会签单模版的数目
+		private  const String GET_EMPLOYEE_CONTRACT_TEMPLATE_COUNT = @"SELECT Count(contempid) count FROM `signaturelevel` WHERE (empid = @EmployeeId)";
+
+        public static int GetEmployeeContractTemplateCount(int employeeId)
+        {
+            {
+                MySqlConnection con = DBTools.GetMySqlConnection();
+                MySqlCommand cmd;
+
+                int count = 0;
+
+                try
+                {
+                    con.Open();
+
+                    cmd = con.CreateCommand();
+
+                    cmd.CommandText = GET_EMPLOYEE_CONTRACT_TEMPLATE_COUNT;
+                    cmd.Parameters.AddWithValue("@EmployeeId", employeeId);
+
+                    MySqlDataReader sqlRead = cmd.ExecuteReader();
+                    cmd.Dispose();
+
+                    while (sqlRead.Read())
+                    {
+
+                        count = int.Parse(sqlRead["count"].ToString());
+                    }
+
+                    con.Close();
+                    con.Dispose();
+
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+                finally
+                {
+
+                    if (con.State == ConnectionState.Open)
+                    {
+                        con.Close();
+                    }
+                }
+                return count;
+            }
+        }
+
+        #endregion
+        
+        #region 获取当前会签单模版相关联的会签单信息
+        private const String GET_CONTRACT_TEMPLATE_HCONTRACT_COUNT = @"SELECT Count(id) count FROM `hdjcontract` WHERE (contempid = @ConTempId)";
+
+        public static int GetContractTemplateHDJContractCount(int contempId)
+        {
+            {
+                MySqlConnection con = DBTools.GetMySqlConnection();
+                MySqlCommand cmd;
+
+                int count = 0;
+
+                try
+                {
+                    con.Open();
+
+                    cmd = con.CreateCommand();
+
+                    cmd.CommandText = GET_CONTRACT_TEMPLATE_HCONTRACT_COUNT;
+                    cmd.Parameters.AddWithValue("@ConTempId", contempId);
+
+                    MySqlDataReader sqlRead = cmd.ExecuteReader();
+                    cmd.Dispose();
+
+                    while (sqlRead.Read())
+                    {
+
+                        count = int.Parse(sqlRead["count"].ToString());
+                    }
+
+                    con.Close();
+                    con.Dispose();
+
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+                finally
+                {
+
+                    if (con.State == ConnectionState.Open)
+                    {
+                        con.Close();
+                    }
+                }
+                return count;
+            }
+        }
+
+        #endregion
+        
+        
+
+        #region 查询某个员工对于会签单是否有查看状态的权限
+        private const string IS_EMPLOYEE_CAN_VIEW_CONTRACT = @"SELECT sl.canview canview FROM `signaturelevel` sl, `hdjcontract` hc WHERE (sl.empid = @EmployeeId and hc.contempid = sl.contempid)";
+        public bool  IsEmployeeCanViewContract(int employeeId, string contractId)
+        {
+            return false;
+        }
+        #endregion
+
+        #region 查询某个员工对于会签单是否有
+        public bool  IsEmployeeCanDownloadContract(int employeeId, string contractId)
+        {
+            return false;
+        }
 
 
+        #endregion
     }
 }

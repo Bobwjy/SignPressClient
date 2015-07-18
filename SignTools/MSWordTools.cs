@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-
+using System.Threading;
 using System.Web;
 using System.Data;
 using System.Reflection;
@@ -28,6 +28,7 @@ using Microsoft.Office.MyWord;
 
 using SignPressServer.SignContract;
 using SignPressServer.SignData;
+using SignPressServer.SignDAL;
 
 namespace SignPressServer.SignTools
 {
@@ -55,6 +56,92 @@ namespace SignPressServer.SignTools
 
         public static string DEFAULT_SIGNATURE_PATH = DEFAULT_ROOT_PATH + "signature\\";
 
+        //  待生成的航道局会前的那列表
+        private static Queue<String> m_contracts = null;
+        private static Thread m_threadWatch = null;
+
+        public void AddContractWhenCanCreated(string contractId)
+        {
+            //  会签单信息已经完成，直接生成会签单信息
+            if (DALSignatureDetail.IsContractAgree(contractId) == true)
+            {
+
+                // 创建后台线程生成会签单信息
+                //parameterizedthreadstart pts = new parameterizedthreadstart(createhdjcontracttrigger);
+                //            thread thradrecmsg = new thread(pts);
+                //            thradrecmsg.isbackground = true;
+                //            thradrecmsg.start(detail.conid);
+
+                lock (m_contracts)
+                {
+                    m_contracts.Enqueue(contractId);
+                }
+
+            }
+        }
+        /// <summary>
+        /// 创建日志对象的新实例，根据指定的日志文件路径和指定的日志文件创建类型
+        /// </summary>
+        /// <param name="p">日志文件保存路径</param>
+        /// <param name="t">日志文件创建方式的枚举</param>
+        public MSWordTools( )
+        {
+            if (m_contracts == null)
+            {
+                m_contracts = new Queue<string>();
+            }
+            if(m_threadWatch == null)
+            {
+                m_threadWatch = new Thread(Work);
+            }
+            m_threadWatch.Start();
+            
+        }
+
+        public void Work()
+        {
+            while (true)
+            {
+                //判断队列中是否存在待写入的日志
+                if (m_contracts.Count > 0)
+                {
+                    string contractId = null;
+                    lock (m_contracts)
+                    {
+                        contractId = m_contracts.Dequeue();
+                    }
+                    if (m_contracts != null)
+                    {
+                        CreateHDJContractWork(contractId);      //  生成会签单信息
+                    }
+                }
+                else
+                {
+                    Thread.Sleep(10000);
+                }
+            }
+        }
+
+        public void Stop()
+        {
+            m_threadWatch.Abort();
+        }
+
+        public void CreateHDJContractWork(string contractId)
+        {
+            String filePath = MSWordTools.DEFAULT_HDJCONTRACT_PATH + contractId + ".pdf";
+            if (!(File.Exists((String)filePath)))     // 首先检测文件是否存在
+            {
+                String wordPath = MSWordTools.DEFAULT_HDJCONTRACT_PATH + contractId + ".doc";
+                HDJContract contract = DALHDJContract.GetHDJContactAgree(contractId);       // 获取待生成的会签单信息
+                MSWordTools.CreateHDJContractWordWithReplace(contract, wordPath);
+                MSWordTools.WordConvertToPdf(wordPath, filePath);
+
+                File.Delete((String)wordPath);
+                MSWordTools.KillWordProcess();
+
+            }
+        }
 
 
         #region  创建一个WORD文档
@@ -372,7 +459,7 @@ namespace SignPressServer.SignTools
                 {
 
                     replaceKey = "$" + contract.ConTemp.ColumnNames[currTableRow - 1] + "$";
-                    replaceValue = contract.ColumnDatas[currTableRow - 1].ToString();
+                    replaceValue = contract.ColumnDatas[currTableRow - 1].ToString().Replace("\r\n", "^l");
                     table.Range.Find.Execute(ref replaceKey, ref Missing, ref Missing, ref Missing, ref Missing, ref Missing, ref Missing, ref Missing, ref Missing, ref  replaceValue, ref replaceArea, ref Missing, ref Missing, ref Missing, ref Missing);
 
                     Console.WriteLine("替换{0}为{1}成功", replaceKey, replaceValue);
@@ -522,7 +609,7 @@ namespace SignPressServer.SignTools
                 {
 
                     replaceKey = "$" + contract.ConTemp.ColumnNames[currTableRow - 1] + "$";
-                    replaceValue = contract.ColumnDatas[currTableRow - 1].ToString();
+                    replaceValue = contract.ColumnDatas[currTableRow - 1].ToString().Replace("\r", "").Replace("\n", "^p");
                     table.Range.Find.Execute(ref replaceKey, ref Missing, ref Missing, ref Missing, ref Missing, ref Missing, ref Missing, ref Missing, ref Missing, ref  replaceValue, ref replaceArea, ref Missing, ref Missing, ref Missing, ref Missing);
 
                     Console.WriteLine("替换{0}为{1}成功", replaceKey, replaceValue);
@@ -595,7 +682,9 @@ namespace SignPressServer.SignTools
 
                 //   保存为PDF   
                 wordDoc.Save();
-
+                object o = false;
+                wordDoc.Close(ref o, ref Missing, ref Missing);
+                wordApp.Quit(ref o, ref Missing, ref Missing);
                 result = true;
             }
             catch (Exception)
@@ -605,13 +694,420 @@ namespace SignPressServer.SignTools
             }
             finally
             {
-                object o = false;
-                wordDoc.Close(ref o, ref Missing, ref Missing);
-                wordApp.Quit(ref o, ref Missing, ref Missing);
+
+
             }
             return result;
         }
 
+
+
+        /// <summary>
+        /// 使用替换的方式生成会签单，同时加上备注信息
+        /// </summary>
+        /// <param name="contract"></param>
+        /// <param name="filePath"></param>
+        /// <returns></returns>
+        public static bool CreateHDJContractWordWithReplaceIntoRemarks(HDJContract contract, Object filePath)
+        {
+
+            bool result = false;
+
+            // 首先导入会签单模版
+            object Missing = System.Reflection.Missing.Value;
+            Microsoft.Office.Interop.Word._Application wordApp;
+            Microsoft.Office.Interop.Word._Document wordDoc = null;
+            wordApp = new Microsoft.Office.Interop.Word.Application();
+            wordApp.Visible = false;
+            object ConTempFileName = DEFAULT_CONTEMP_PATH + contract.ConTemp.TempId + ".doc";        //  模版信息
+            object saveFileName = filePath;                    //  保存成的会签单信息
+            Console.WriteLine("待导入的会签单模版{0}", ConTempFileName);
+            Console.WriteLine("待保存的会签单信息{0}", saveFileName);
+
+            try
+            {
+
+                File.Copy((string)ConTempFileName, (string)saveFileName, true);
+                wordDoc = wordApp.Documents.Open(ref saveFileName, ref Missing, ref Missing, ref Missing, ref Missing, ref Missing, ref Missing,
+                    ref Missing, ref Missing, ref Missing, ref Missing, ref Missing, ref Missing, ref Missing, ref Missing, ref Missing);
+
+
+                //wordDoc = wordApp.Documents.Add(ref saveFileName, ref Missing, ref Missing, ref Missing, ref Missing, ref Missing, ref Missing,
+                //    ref Missing, ref Missing, ref Missing, ref Missing, ref Missing, ref Missing, ref Missing, ref Missing, ref Missing);
+
+                wordDoc.Activate();
+                object replaceArea = Microsoft.Office.Interop.Word.WdReplace.wdReplaceAll;
+
+
+                wordApp.Selection.Find.Text = "$编号$";
+                //wordApp.Selection.Find.Replacement.ClearFormatting(); 
+                wordApp.Selection.Find.Replacement.Text = contract.Id;
+                wordApp.Selection.Find.Execute(ref Missing, ref Missing, ref Missing, ref Missing, ref Missing, ref Missing, ref Missing, ref Missing, ref Missing, ref Missing, ref replaceArea, ref Missing, ref Missing, ref Missing, ref Missing);
+
+                //  填写表格的信息
+                MSWord.Table table = wordDoc.Tables[1];
+                //table.Range.Cells.VerticalAlignment = MSWord.WdCellVerticalAlignment.wdCellAlignVerticalCenter;
+                //table.Range.Rows.Alignment = MSWord.WdRowAlignment.wdAlignRowCenter;
+                //设置table边框样式
+                //table.Borders.Outsidelinestyle = MSWord.WdLineStyle.wdLineStyleDouble;
+                //table.Borders.Insidelinestyle = MSWord.WdLineStyle.wdLineStyleSingle;
+                Console.WriteLine("表格的行数{0}, 列数{1}", table.Rows.Count, table.Columns.Count);
+                //wordDoc.Tables[1].Select();     //复制第一个表格,如果有多条粘贴到尾部
+                //wordDoc.Selection.Copy();       //如果导入多条要把原来的模版粘贴下来
+
+
+                object replaceKey = "$编号$";
+                object replaceValue = contract.Id.ToString();
+                //wordDoc.Range.Find.Execute(ref replaceKey, ref Missing, ref Missing, ref Missing, ref Missing, ref Missing, ref Missing, ref Missing, ref Missing, ref  replaceValue, ref replaceArea, ref Missing, ref Missing, ref Missing, ref Missing);
+
+                // 首先填写前5行的会签单基本信息
+                //object replaceArea = Microsoft.Office.Interop.Word.WdReplace.wdReplaceAll;
+                int currTableRow = 1;
+                for (currTableRow = 1; currTableRow <= 5; currTableRow++)
+                {
+
+                    replaceKey = "$" + contract.ConTemp.ColumnNames[currTableRow - 1] + "$";
+                    replaceValue = contract.ColumnDatas[currTableRow - 1].ToString();
+                    table.Range.Find.Execute(ref replaceKey, ref Missing, ref Missing, ref Missing, ref Missing, ref Missing, ref Missing, ref Missing, ref Missing, ref  replaceValue, ref replaceArea, ref Missing, ref Missing, ref Missing, ref Missing);
+
+                    Console.WriteLine("替换{0}为{1}成功", replaceKey, replaceValue);
+                }
+
+                //  开始添加审核人的签名图片信息和备注信息
+                Console.WriteLine("开始生成后8行签字栏目的信息");
+
+                int signCount = 0;                          // 8个签字人的计数器
+                for (currTableRow = 6; currTableRow <= 8; currTableRow++)    // 填写表格的签字人表头
+                {
+                    for (int col = 1; col <= 3; col += 2, signCount++)
+                    {
+                        Console.WriteLine("签字人信息位置{0}, {1} ==== 签字人序号{2} ==== 签字位置{3},{4}", currTableRow, col, signCount, currTableRow, col + 1);
+
+                        ///////
+                        // 填写第row行第一个签字人的签字信息[表头 + 签字信息 + 备注]
+                        ///////
+                        /// 填写第row行第一个签字人的表头
+                        /// [签字人表头坐标(row, col), 签字人序号cnt]
+                        Console.WriteLine("当前签字人序号{0}, 信息{1}", signCount, contract.ConTemp.SignDatas[signCount].SignInfo);
+                        table.Cell(currTableRow, col).Range.Text = contract.ConTemp.SignDatas[signCount].SignInfo;
+
+                        // 插入第row行第一个人签字人的签字图片
+                        //[签字人签字位置坐标(row, col + 1)] 
+                        string signFileName = DEFAULT_SIGNATURE_PATH + contract.ConTemp.SignDatas[signCount].SignEmployee.Id.ToString() + ".jpg";   //图片所在路径
+                        //string signFileName = @"g:\[b]coderuntimelibrary\[e]github\signpressserver\测试图片.jpg";
+                        object linktofile = false;
+                        object savewithdocument = true;
+                        object anchor = table.Cell(currTableRow, col + 1).Range;//选中要添加图片的单元格
+                        Console.WriteLine("签字人的签名图片地址" + signFileName);
+                        wordDoc.Application.ActiveDocument.InlineShapes.AddPicture((string)signFileName, ref linktofile, ref savewithdocument, ref anchor);
+                        wordDoc.Application.ActiveDocument.InlineShapes[1].Width = 75;//图片宽度
+                        wordDoc.Application.ActiveDocument.InlineShapes[1].Height = 25;//图片高度
+                        //Console.WriteLine("签字人的备注信息" + contract.SignRemarks[signCount]);
+
+
+                        // 将图片设置为四周环绕型
+                        //	wdWrapInline 7 将形状嵌入到文字中。 
+                        //	wdWrapNone 3 将形状放在文字前面。请参阅 wdWrapFront 。
+                        //	wdWrapSquare 0 使文字环绕形状。行在形状的另一侧延续。
+                        //	wdWrapThrough 2 使文字环绕形状。
+                        //	wdWrapTight 1 使文字紧密地环绕形状。
+                        //	wdWrapTopBottom 4 将文字放在形状的上方和下方。
+                        //	wdWrapBehind 5 将形状放在文字后面。
+                        //	wdWrapFront 6 将形状放在文字前面。
+                        string signRemark = contract.SignRemarks[signCount].ToString();
+                        replaceKey = "$备注" + signCount + "$";
+                        if(signRemark == "" || signRemark == "未填")
+                        {
+
+                            MSWord.Shape s = wordDoc.Application.ActiveDocument.InlineShapes[1].ConvertToShape();
+                            s.WrapFormat.Type = MSWord.WdWrapType.wdWrapSquare;
+                        
+                            replaceValue = "";
+                        }
+                        else
+                        {
+                            // 将图片设置为四周环绕型
+                            MSWord.Shape s = wordDoc.Application.ActiveDocument.InlineShapes[1].ConvertToShape();
+                            s.WrapFormat.Type = MSWord.WdWrapType.wdWrapSquare;
+                        
+                            replaceValue = contract.SignRemarks[signCount].ToString();
+                        }
+                        table.Range.Find.Execute(ref replaceKey, ref Missing, ref Missing, ref Missing, ref Missing, ref Missing, ref Missing, ref Missing, ref Missing, ref  replaceValue, ref replaceArea, ref Missing, ref Missing, ref Missing, ref Missing);
+
+                        Console.WriteLine("替换备注{0}为{1}成功", replaceKey, replaceValue);
+ 
+                    }
+                }
+
+                // 生成主管局长和局长的签字信息
+                for (currTableRow = 9; currTableRow <= table.Rows.Count; currTableRow++, signCount++)
+                {
+                    Console.WriteLine("当前签字人序号{0}, 信息{1}", signCount, contract.ConTemp.SignDatas[signCount].SignInfo);
+                    //table.Cell(currTableRow, 1).Range.Text = contract.ConTemp.SignDatas[signCount].SignInfo;
+
+                    // 局长副局长只需要签字就可以，因此合并后面的单元格
+                    //table.Cell(currTableRow, 2).Merge(table.Cell(currTableRow, 4));                       //  横向合并
+                    //table.Cell(currTableRow, 2).Range.Text = contract.ConTemp.SignDatas[signCount].SignInfo;
+
+                    // 插入第row行第一个人签字人的签字图片
+                    //[签字人签字位置坐标(row, col + 1)] 
+                    string signFileName = DEFAULT_SIGNATURE_PATH + contract.ConTemp.SignDatas[signCount].SignEmployee.Id.ToString() + ".jpg";   //图片所在路径
+                    //string signFileName = @"g:\[b]coderuntimelibrary\[e]github\signpressserver\测试图片.jpg";
+                    object linktofile = false;
+                    object savewithdocument = true;
+                    object anchor = table.Cell(currTableRow, 2).Range;//选中要添加图片的单元格
+                    Console.WriteLine("签字人的签名图片地址" + signFileName);
+                    wordDoc.Application.ActiveDocument.InlineShapes.AddPicture((string)signFileName, ref linktofile, ref savewithdocument, ref anchor);
+                    wordDoc.Application.ActiveDocument.InlineShapes[1].Width = 75;//图片宽度
+                    wordDoc.Application.ActiveDocument.InlineShapes[1].Height = 25;//图片高度
+
+
+
+                    string signRemark = contract.SignRemarks[signCount].ToString();
+                    replaceKey = "$备注" + signCount + "$";
+                    if (signRemark == "" || signRemark == "未填")
+                    {
+                        MSWord.Shape s = wordDoc.Application.ActiveDocument.InlineShapes[1].ConvertToShape();
+                        s.WrapFormat.Type = MSWord.WdWrapType.wdWrapSquare;
+                        replaceValue = "";
+                    }
+                    else
+                    {
+                        MSWord.Shape s = wordDoc.Application.ActiveDocument.InlineShapes[1].ConvertToShape();
+                        s.WrapFormat.Type = MSWord.WdWrapType.wdWrapSquare;
+
+                        replaceValue = contract.SignRemarks[signCount].ToString();
+                    }
+                    table.Range.Find.Execute(ref replaceKey, ref Missing, ref Missing, ref Missing, ref Missing, ref Missing, ref Missing, ref Missing, ref Missing, ref  replaceValue, ref replaceArea, ref Missing, ref Missing, ref Missing, ref Missing);
+
+                    Console.WriteLine("替换备注{0}为{1}成功", replaceKey, replaceValue);
+                }
+                table.Range.ParagraphFormat.Alignment = MSWord.WdParagraphAlignment.wdAlignParagraphCenter;     //  水平居中
+                table.Range.Cells.VerticalAlignment = MSWord.WdCellVerticalAlignment.wdCellAlignVerticalCenter; //  垂直居中
+
+                //   保存为PDF   
+                wordDoc.Save();
+                object o = false;
+                wordDoc.Close(ref o, ref Missing, ref Missing);
+                wordApp.Quit(ref o, ref Missing, ref Missing);
+                result = true;
+            }
+            catch (Exception)
+            {
+                result = false;
+
+            }
+            finally
+            {
+
+            }
+            return result;
+        }
+
+
+        /// <summary>
+        /// 使用替换的方式生成会签单，同时加上备注信息
+        /// </summary>
+        /// <param name="contract"></param>
+        /// <param name="filePath"></param>
+        /// <returns></returns>
+        public static bool CreateHDJContractWordWithReplaceOntoRemarks(HDJContract contract, Object filePath)
+        {
+
+            bool result = false;
+
+            // 首先导入会签单模版
+            object Missing = System.Reflection.Missing.Value;
+            Microsoft.Office.Interop.Word._Application wordApp;
+            Microsoft.Office.Interop.Word._Document wordDoc = null;
+            wordApp = new Microsoft.Office.Interop.Word.Application();
+            wordApp.Visible = false;
+            object ConTempFileName = DEFAULT_CONTEMP_PATH + contract.ConTemp.TempId + ".doc";        //  模版信息
+            object saveFileName = filePath;                    //  保存成的会签单信息
+            Console.WriteLine("待导入的会签单模版{0}", ConTempFileName);
+            Console.WriteLine("待保存的会签单信息{0}", saveFileName);
+
+            try
+            {
+
+                File.Copy((string)ConTempFileName, (string)saveFileName, true);
+                wordDoc = wordApp.Documents.Open(ref saveFileName, ref Missing, ref Missing, ref Missing, ref Missing, ref Missing, ref Missing,
+                    ref Missing, ref Missing, ref Missing, ref Missing, ref Missing, ref Missing, ref Missing, ref Missing, ref Missing);
+
+
+                //wordDoc = wordApp.Documents.Add(ref saveFileName, ref Missing, ref Missing, ref Missing, ref Missing, ref Missing, ref Missing,
+                //    ref Missing, ref Missing, ref Missing, ref Missing, ref Missing, ref Missing, ref Missing, ref Missing, ref Missing);
+
+                wordDoc.Activate();
+                object replaceArea = Microsoft.Office.Interop.Word.WdReplace.wdReplaceAll;
+
+
+                wordApp.Selection.Find.Text = "$编号$";
+                //wordApp.Selection.Find.Replacement.ClearFormatting(); 
+                wordApp.Selection.Find.Replacement.Text = contract.Id;
+                wordApp.Selection.Find.Execute(ref Missing, ref Missing, ref Missing, ref Missing, ref Missing, ref Missing, ref Missing, ref Missing, ref Missing, ref Missing, ref replaceArea, ref Missing, ref Missing, ref Missing, ref Missing);
+
+                //  填写表格的信息
+                MSWord.Table table = wordDoc.Tables[1];
+                //table.Range.Cells.VerticalAlignment = MSWord.WdCellVerticalAlignment.wdCellAlignVerticalCenter;
+                //table.Range.Rows.Alignment = MSWord.WdRowAlignment.wdAlignRowCenter;
+                //设置table边框样式
+                //table.Borders.Outsidelinestyle = MSWord.WdLineStyle.wdLineStyleDouble;
+                //table.Borders.Insidelinestyle = MSWord.WdLineStyle.wdLineStyleSingle;
+                Console.WriteLine("表格的行数{0}, 列数{1}", table.Rows.Count, table.Columns.Count);
+                //wordDoc.Tables[1].Select();     //复制第一个表格,如果有多条粘贴到尾部
+                //wordDoc.Selection.Copy();       //如果导入多条要把原来的模版粘贴下来
+
+
+                object replaceKey = "$编号$";
+                object replaceValue = contract.Id.ToString();
+                //wordDoc.Range.Find.Execute(ref replaceKey, ref Missing, ref Missing, ref Missing, ref Missing, ref Missing, ref Missing, ref Missing, ref Missing, ref  replaceValue, ref replaceArea, ref Missing, ref Missing, ref Missing, ref Missing);
+
+                // 首先填写前5行的会签单基本信息
+                //object replaceArea = Microsoft.Office.Interop.Word.WdReplace.wdReplaceAll;
+                int currTableRow = 1;
+                for (currTableRow = 1; currTableRow <= 5; currTableRow++)
+                {
+
+                    replaceKey = "$" + contract.ConTemp.ColumnNames[currTableRow - 1] + "$";
+                    replaceValue = contract.ColumnDatas[currTableRow - 1].ToString();
+                    table.Range.Find.Execute(ref replaceKey, ref Missing, ref Missing, ref Missing, ref Missing, ref Missing, ref Missing, ref Missing, ref Missing, ref  replaceValue, ref replaceArea, ref Missing, ref Missing, ref Missing, ref Missing);
+
+                    Console.WriteLine("替换{0}为{1}成功", replaceKey, replaceValue);
+                }
+
+                //  开始添加审核人的签名图片信息和备注信息
+                Console.WriteLine("开始生成后8行签字栏目的信息");
+
+                int signCount = 0;                          // 8个签字人的计数器
+                for (currTableRow = 6; currTableRow <= 8; currTableRow++)    // 填写表格的签字人表头
+                {
+                    for (int col = 1; col <= 3; col += 2, signCount++)
+                    {
+                        Console.WriteLine("签字人信息位置{0}, {1} ==== 签字人序号{2} ==== 签字位置{3},{4}", currTableRow, col, signCount, currTableRow, col + 1);
+
+                        ///////
+                        // 填写第row行第一个签字人的签字信息[表头 + 签字信息 + 备注]
+                        ///////
+                        /// 填写第row行第一个签字人的表头
+                        /// [签字人表头坐标(row, col), 签字人序号cnt]
+                        Console.WriteLine("当前签字人序号{0}, 信息{1}", signCount, contract.ConTemp.SignDatas[signCount].SignInfo);
+                        table.Cell(currTableRow, col).Range.Text = contract.ConTemp.SignDatas[signCount].SignInfo;
+
+
+
+                        // 将图片设置为四周环绕型
+                        //	wdWrapInline 7 将形状嵌入到文字中。 
+                        //	wdWrapNone 3 将形状放在文字前面。请参阅 wdWrapFront 。
+                        //	wdWrapSquare 0 使文字环绕形状。行在形状的另一侧延续。
+                        //	wdWrapThrough 2 使文字环绕形状。
+                        //	wdWrapTight 1 使文字紧密地环绕形状。
+                        //	wdWrapTopBottom 4 将文字放在形状的上方和下方。
+                        //	wdWrapBehind 5 将形状放在文字后面。
+                        //	wdWrapFront 6 将形状放在文字前面。
+                        string signRemark = contract.SignRemarks[signCount].ToString();
+                        replaceKey = "$备注" + signCount + "$";
+                        if (signRemark == "" || signRemark == "未填")
+                        {
+
+                            MSWord.Shape s = wordDoc.Application.ActiveDocument.InlineShapes[1].ConvertToShape();
+                            s.WrapFormat.Type = MSWord.WdWrapType.wdWrapSquare;
+
+                            replaceValue = "";
+                        }
+                        else
+                        {
+                            // 将图片设置为四周环绕型
+                            MSWord.Shape s = wordDoc.Application.ActiveDocument.InlineShapes[1].ConvertToShape();
+                            s.WrapFormat.Type = MSWord.WdWrapType.wdWrapSquare;
+
+                            replaceValue = contract.SignRemarks[signCount].ToString();
+                        }
+                        table.Range.Find.Execute(ref replaceKey, ref Missing, ref Missing, ref Missing, ref Missing, ref Missing, ref Missing, ref Missing, ref Missing, ref  replaceValue, ref replaceArea, ref Missing, ref Missing, ref Missing, ref Missing);
+
+                        Console.WriteLine("替换备注{0}为{1}成功", replaceKey, replaceValue);
+
+
+                        // 插入第row行第一个人签字人的签字图片
+                        //[签字人签字位置坐标(row, col + 1)] 
+                        string signFileName = DEFAULT_SIGNATURE_PATH + contract.ConTemp.SignDatas[signCount].SignEmployee.Id.ToString() + ".jpg";   //图片所在路径
+                        //string signFileName = @"g:\[b]coderuntimelibrary\[e]github\signpressserver\测试图片.jpg";
+                        object linktofile = false;
+                        object savewithdocument = true;
+                        object anchor = table.Cell(currTableRow, col + 1).Range;//选中要添加图片的单元格
+                        Console.WriteLine("签字人的签名图片地址" + signFileName);
+                        wordDoc.Application.ActiveDocument.InlineShapes.AddPicture((string)signFileName, ref linktofile, ref savewithdocument, ref anchor);
+                        wordDoc.Application.ActiveDocument.InlineShapes[1].Width = 75;//图片宽度
+                        wordDoc.Application.ActiveDocument.InlineShapes[1].Height = 25;//图片高度
+                        //Console.WriteLine("签字人的备注信息" + contract.SignRemarks[signCount]);
+                    }
+                }
+
+                // 生成主管局长和局长的签字信息
+                for (currTableRow = 9; currTableRow <= table.Rows.Count; currTableRow++, signCount++)
+                {
+                    Console.WriteLine("当前签字人序号{0}, 信息{1}", signCount, contract.ConTemp.SignDatas[signCount].SignInfo);
+                    //table.Cell(currTableRow, 1).Range.Text = contract.ConTemp.SignDatas[signCount].SignInfo;
+
+                    // 局长副局长只需要签字就可以，因此合并后面的单元格
+                    //table.Cell(currTableRow, 2).Merge(table.Cell(currTableRow, 4));                       //  横向合并
+                    //table.Cell(currTableRow, 2).Range.Text = contract.ConTemp.SignDatas[signCount].SignInfo;
+
+                    string signRemark = contract.SignRemarks[signCount].ToString();
+                    replaceKey = "$备注" + signCount + "$";
+                    if (signRemark == "" || signRemark == "未填")
+                    {
+                        MSWord.Shape s = wordDoc.Application.ActiveDocument.InlineShapes[1].ConvertToShape();
+                        s.WrapFormat.Type = MSWord.WdWrapType.wdWrapSquare;
+                        replaceValue = "";
+                    }
+                    else
+                    {
+                        MSWord.Shape s = wordDoc.Application.ActiveDocument.InlineShapes[1].ConvertToShape();
+                        s.WrapFormat.Type = MSWord.WdWrapType.wdWrapSquare;
+
+                        replaceValue = contract.SignRemarks[signCount].ToString();
+                    }
+                    table.Range.Find.Execute(ref replaceKey, ref Missing, ref Missing, ref Missing, ref Missing, ref Missing, ref Missing, ref Missing, ref Missing, ref  replaceValue, ref replaceArea, ref Missing, ref Missing, ref Missing, ref Missing);
+
+                    Console.WriteLine("替换备注{0}为{1}成功", replaceKey, replaceValue);
+
+                    // 插入第row行第一个人签字人的签字图片
+                    //[签字人签字位置坐标(row, col + 1)] 
+                    string signFileName = DEFAULT_SIGNATURE_PATH + contract.ConTemp.SignDatas[signCount].SignEmployee.Id.ToString() + ".jpg";   //图片所在路径
+                    //string signFileName = @"g:\[b]coderuntimelibrary\[e]github\signpressserver\测试图片.jpg";
+                    object linktofile = false;
+                    object savewithdocument = true;
+                    object anchor = table.Cell(currTableRow, 2).Range;//选中要添加图片的单元格
+                    Console.WriteLine("签字人的签名图片地址" + signFileName);
+                    wordDoc.Application.ActiveDocument.InlineShapes.AddPicture((string)signFileName, ref linktofile, ref savewithdocument, ref anchor);
+                    wordDoc.Application.ActiveDocument.InlineShapes[1].Width = 75;//图片宽度
+                    wordDoc.Application.ActiveDocument.InlineShapes[1].Height = 25;//图片高度
+
+
+
+                }
+                table.Range.ParagraphFormat.Alignment = MSWord.WdParagraphAlignment.wdAlignParagraphCenter;     //  水平居中
+                table.Range.Cells.VerticalAlignment = MSWord.WdCellVerticalAlignment.wdCellAlignVerticalCenter; //  垂直居中
+
+                //   保存为PDF   
+                wordDoc.Save();
+                object o = false;
+                wordDoc.Close(ref o, ref Missing, ref Missing);
+                wordApp.Quit(ref o, ref Missing, ref Missing);
+                result = true;
+            }
+            catch (Exception)
+            {
+                result = false;
+
+            }
+            finally
+            {
+
+            }
+            return result;
+        }
         //public static bool CreateHDJContractWord(HDJContract contract, Object saveFilePath)
         //{
         //    #region 完全生成会签单信息
@@ -829,8 +1325,6 @@ namespace SignPressServer.SignTools
             return result;
 
 
-            return true;
-
         }
         public static bool CreateHDJContractPdf(HDJContract contract, Object saveFilePath)
         {
@@ -1033,8 +1527,8 @@ namespace SignPressServer.SignTools
         /// <param name="strSaveFileName">要生成的具体的Html页面</param>
         public static void WordToHtml(string strFileName, string strSaveFileName)
         {
-            Microsoft.Office.Interop.Word.Application WordApp;
-            Microsoft.Office.Interop.Word.Document wordDoc;
+            Microsoft.Office.Interop.Word._Application WordApp;
+            Microsoft.Office.Interop.Word._Document wordDoc;
             Object oMissing = System.Reflection.Missing.Value;
             WordApp = new Microsoft.Office.Interop.Word.Application();
             object fileName = strFileName;

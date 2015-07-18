@@ -14,6 +14,8 @@ using System.Data;
 using MySql.Data.MySqlClient;
 using SignPressServer.SignTools;
 
+
+// BUG 修改用户密码为密文之后，出现用户密码修改后无法登录的BUG
 namespace SignPressServer.SignDAL
 {
     /*
@@ -24,6 +26,8 @@ namespace SignPressServer.SignDAL
     {
         /// <summary>
         /// 向数据库中添加人员， 并返回其编号信息
+        /// 
+        /// 员工表的主键是id，但是其中username是唯一的
         /// </summary>
         /// <param name="?"></param>
         /// <returns></returns>
@@ -41,12 +45,12 @@ namespace SignPressServer.SignDAL
         /// <summary>
         /// 插入员工信息的信息串
         /// </summary>
-        private const String DELETE_EMPLOYEE_STR = @"DELETE FROM `employee` WHERE (`id`=@Id)";
+        private const String DELETE_EMPLOYEE_STR = @"DELETE FROM `employee` WHERE (`id` = @Id)";
 
         /// <summary>
         /// 判断用户名密码是否正确
         /// </summary>
-        private const String LOGIN_EMPLOYEE_SIM_STR = @"SELECT id FROM `employee` WHERE(`username` = @Username and `password` = @Password) ORDER BY id";
+        private const String LOGIN_EMPLOYEE_SIM_STR = @"SELECT id FROM `employee` WHERE(`username` = @Username and `password` = @Password ORDER BY id";
         private const String LOGIN_EMPLOYEE_COM_STR = @"SELECT e.id id, e.name name, e.position position, e.cansubmit cansubmit, e.cansign cansign, e.isadmin isadmin,
                                                                d.id departid, d.name departname, 
                                                                e.username username, e.password password
@@ -58,11 +62,13 @@ namespace SignPressServer.SignDAL
         /// 修改密码的信息串
         /// </summary>
         private const String MODIFY_EMPLOYEE_PASSWORD_STR = @"UPDATE `employee` SET `password` = @Password WHERE (`id` = @Id)";
+        
+        private const String MODIFY_EMPLOYEE_PASSWORD_USERENAME_STR = @"UPDATE `employee` SET `password` = @Password WHERE (`username` = @Username)";
 
         private const String MODIFY_EMPLOYEE_ID_STR = @"UPDATE `employee` 
                                                         SET `name` = @Name, `position` = @Position, `departmentid` = @DepartmentId, 
-                                                            `cansubmit` = CanSubmit, `cansign` = @CanSign, `isadmin` = IsAdmin, 
-                                                            `username` = @Username, `password` = @Password 
+                                                            `cansubmit` = @CanSubmit, `cansign` = @CanSign, `isadmin` = @IsAdmin, 
+                                                            `username` = @Username, `password` = @Password
                                                         WHERE (`id` = @Id)";
         /// <summary>
         /// 获取员工信息的信息串
@@ -390,6 +396,54 @@ namespace SignPressServer.SignDAL
                 return false;
             }
         }
+
+        public static bool ModifyEmployeePassword(User user)
+        {
+            MySqlConnection con = DBTools.GetMySqlConnection();
+            MySqlCommand cmd;
+            int count = -1;
+            try
+            {
+                con.Open();
+
+                cmd = con.CreateCommand();
+
+                cmd.CommandText = MODIFY_EMPLOYEE_PASSWORD_USERENAME_STR;
+                cmd.Parameters.AddWithValue("@Password", user.Password);
+                cmd.Parameters.AddWithValue("@Username", user.Username);                        // 员工姓名
+
+
+                count = cmd.ExecuteNonQuery();
+                cmd.Dispose();
+
+                con.Close();
+                con.Dispose();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+
+                if (con.State == ConnectionState.Open)
+                {
+                    con.Close();
+                }
+            }
+            if (count == 1)
+            {
+                Console.WriteLine("修改密码" + user.ToString() + "成功");
+
+                return true;
+            }
+            else
+            {
+                Console.WriteLine("修改密码" + user.ToString() + "失败");
+
+                return false;
+            }
+        }
         #endregion
 
 
@@ -533,6 +587,7 @@ namespace SignPressServer.SignDAL
 
                 cmd.CommandText = MODIFY_EMPLOYEE_ID_STR;
 
+                cmd.Parameters.AddWithValue("@Id", employee.Id);
                 cmd.Parameters.AddWithValue("@Name", employee.Name);
                 cmd.Parameters.AddWithValue("@Position", employee.Position);                        // 员工姓名
                 cmd.Parameters.AddWithValue("@DepartmentId", employee.Department.Id);
@@ -816,21 +871,176 @@ namespace SignPressServer.SignDAL
             return null;
         }
         #endregion
-        
-        
-        #region 测试增加用户
-        public static void TestInsertEmployee()
+
+
+        #region 判断当前用户的密码时候正确
+        private const String IS_EMP_PWD_RIGHT_STR = @"SELECT Count(id) count FROM `employee` WHERE (username = @Username and password = @Password)";
+
+        public static bool IsEmployeePasswordRight(User user)
         {
-            Employee em = new Employee
+            MySqlConnection con = DBTools.GetMySqlConnection();
+            MySqlCommand cmd;
+
+            int count = -1;
+
+            try
             {
-                Id = 9,
-                Name = "王盼盼",
-                Position = "局长",
-                Department = new Department { Id = 5, Name = "行政科" },
-                User = new User { Username = "wangpanpan", Password = "wangpanpan" }
-            };
-            InsertEmployee(em);
+                con.Open();
+
+                cmd = con.CreateCommand();
+
+                cmd.CommandText = IS_EMP_PWD_RIGHT_STR;
+                cmd.Parameters.AddWithValue("@username", user.Username);
+                cmd.Parameters.AddWithValue("@Password", user.Password);
+
+                MySqlDataReader sqlRead = cmd.ExecuteReader();
+                cmd.Dispose();
+
+                while (sqlRead.Read())
+                {
+                    count = int.Parse(sqlRead["count"].ToString());
+                }
+
+
+                con.Close();
+                con.Dispose();
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+
+                if (con.State == ConnectionState.Open)
+                {
+                    con.Close();
+                }
+            }
+            if (count == 1)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
         #endregion
+
+
+        #region 判断用户信息是否存在
+        private const String IS_EMPLOYEE_EXIST_STR = @"SELECT Count(id) count FROM `employee` WHERE (username = @Username)";
+
+        public static bool IsEmployeeExist(Employee employee)
+        {
+            MySqlConnection con = DBTools.GetMySqlConnection();
+            MySqlCommand cmd;
+
+            int count = -1;
+
+            try
+            {
+                con.Open();
+
+                cmd = con.CreateCommand();
+
+                cmd.CommandText = IS_EMPLOYEE_EXIST_STR;
+                cmd.Parameters.AddWithValue("@Username", employee.User.Username);
+
+                MySqlDataReader sqlRead = cmd.ExecuteReader();
+                cmd.Dispose();
+
+                while (sqlRead.Read())
+                {
+                    count = int.Parse(sqlRead["count"].ToString());
+                }
+
+
+                con.Close();
+                con.Dispose();
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+
+                if (con.State == ConnectionState.Open)
+                {
+                    con.Close();
+                }
+            }
+            if (count == 1)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        
+        #endregion
+
+        #region 查看当前用户是否有级联的表信息，比如会签单签字模版，会签单，以及详细的签字信息
+        public const string QUERY_HDJ_COUNT_OF_EMP_STR = @"SELECT Count(id) FROM `employee` WHERE (departmentId = @DeaprtmentId)";
+        //public static 
+        
+        #endregion
+    
+        #region 查询当前部门下的员工数据
+        private const string QUERY_DEPARTMENT_EMPLOYEE_COUNT = @"SELECT Count(id) count FROM `employee` WHERE (departmentId = @DeaprtmentId)";
+
+        public static int QueryDepartmentEmployeeCount(int deaprtmentId)
+        {
+            MySqlConnection con = DBTools.GetMySqlConnection();
+            MySqlCommand cmd;
+
+            int count = -1;
+
+            try
+            {
+                con.Open();
+
+                cmd = con.CreateCommand();
+
+                cmd.CommandText = QUERY_DEPARTMENT_EMPLOYEE_COUNT;
+                cmd.Parameters.AddWithValue("@deaprtmentid", deaprtmentId);
+
+                MySqlDataReader sqlRead = cmd.ExecuteReader();
+                cmd.Dispose();
+
+                while (sqlRead.Read())
+                {
+                    count = int.Parse(sqlRead["count"].ToString());
+                }
+
+
+                con.Close();
+                con.Dispose();
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                
+                throw;
+            }
+            finally
+            {
+
+                if (con.State == ConnectionState.Open)
+                {
+                    con.Close();
+                }
+            }
+            return count;
+        }
+	    #endregion
+    
     }
 }

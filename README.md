@@ -798,3 +798,48 @@ and d1.id = e1.departmentid and d2.id = e2.departmentid and d3.id = e3.departmen
 
 
 [表头]
+目前需要解决的问题
+删除数据时，数据库的正常处理
+如果删除的数据与某个表相互关联，我们就不能只是简单的删除，否则会破坏数据库的参照完整性
+
+首先是删除用户数据，用户的ID是主键，而username是唯一的标识
+
+ . cascade方式
+在父表上update/delete记录时，同步update/delete掉子表的匹配记录 
+
+   . set null方式
+在父表上update/delete记录时，将子表上匹配记录的列设为null
+要注意子表的外键列不能为not null  
+
+   . No action方式
+如果子表中有匹配的记录,则不允许对父表对应候选键进行update/delete操作  
+
+   . Restrict方式
+同no action, 都是立即检查外键约束
+
+   . Set default方式
+父表有变更时,子表将外键列设置成一个默认的值 但Innodb不能识别
+
+删除部门时（删除部门时）
+作为员工信息的一个属性成员
+因为我们假定如果需要删除某一个部门的时候，则将其部门员工全部清楚
+修改员工时，则级联修改所有员工信息
+
+删除员工时用户的的ID，
+作为会签单表[主键id + 唯一标识 = submitdate + submitid]中的提交人subempid，
+作为会签单模版[主键为编号]的签字人empid
+作为签字明细[主键 conid + empid + updatecount]中的签字Id
+因此删除员工时则级联删除对应的信息
+
+
+// 查询出表20150621124713中第1个签字人的签字信息
+// 需要签字明细表signaturedetail  主键 sd.empid + sd.conid + sd.updatecount
+// 会签单表 hdjcontract  主键 hc.id
+// 签字对应表signaturelevel sl.conid + sl.signnum
+// 会签单状态表 signaturestatus st.conid + st.updatecount
+
+查询当前签字人是否有下载和查看签字状态的权限
+
+SELECT hc.id "会签单编号", sl.canview "是否可查看"
+FROM `signaturelevel` sl, `hdjcontract` hc
+WHERE (sl.empid = 1 and hc.contempid = sl.contempid);

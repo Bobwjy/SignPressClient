@@ -9,6 +9,7 @@ namespace SignPressServer.SignData
     /*
      * 
      *  签字信息模版类SignatureTemplate
+     *  数据库中的signaturelevel表就是在此数据结构的基础上，进行的一次封装
      *  包括了一下信息
      *  签字人的职位信息m_signinfo，此字段不同于员工表中的职位，而是如表格中的申请单位项目负责人（签字）栏目的字段信息
      *  签字人的编号m_signposX, 直接对应该位置的签字人信息
@@ -43,20 +44,22 @@ namespace SignPressServer.SignData
         {
             get { return this.m_signlevel; }
             set { this.m_signlevel = value; }
+
         }
 
-        private int m_signPosX;         // 签字人坐标X
-        public int SignPosX
+
+        private int m_canView;            //  用户是否有查看会签单审核状态的权限
+        public int CanView
         {
-            get{ return this.m_signPosX; }
-            set{ this.m_signPosX = value; }
+            get { return this.m_canView; }
+            set { this.m_canView = value; }
         }
-    
-        private int m_signposY;         // 签字人坐标Y
-        public int SignPosY
+
+        private int m_canDownload;              //  当前签字人是否有下载会签单的权限
+        public int CanDownload
         {
-            get { return this.m_signposY; }
-            set { this.m_signposY = value; }
+            get { return this.m_canDownload; }
+            set { this.m_canDownload = value; }
         }
 
 

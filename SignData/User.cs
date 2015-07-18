@@ -25,5 +25,6 @@ namespace SignPressServer.SignData
         {
             return "USERNAME : " + this.m_username + ", PASSWORD : " + this.m_password;
         }
+
     }
 }

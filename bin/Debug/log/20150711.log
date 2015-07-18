@@ -1,0 +1,956 @@
+﻿2015/7/11 10:44:35	Information	接收了60个数据单元
+2015/7/11 10:44:35	Information	接收到的数据 LOGIN_REQUEST~43~{"Username":"shixiao","Password":"shixiao"}, 大小60
+2015/7/11 10:44:35	Information	接收到来自10.0.62.182:6571的登录信息{"Username":"shixiao","Password":"shixiao"}
+2015/7/11 10:44:37	Success	USERNAME : shixiao, PASSWORD : shixiao用户名密码均正确，可以登录
+2015/7/11 10:44:38	Information	正在与10.0.62.182 : 6576进行数据传输...
+2015/7/11 10:44:38	Information	接收了33个数据单元
+2015/7/11 10:44:38	Information	接收到的数据 QUERY_UNSIGN_CONTRACT_REQUEST~1~2, 大小33
+2015/7/11 10:44:38	Information	接收到来自10.0.62.182:6576查询待签字的会签单信息2
+2015/7/11 10:44:39	Information	10.0.62.182:6576查询到的了所有查询待签字的的会签单
+2015/7/11 10:44:39	Success	10.0.62.182:6576查询待签字的会签单信息查询成功
+2015/7/11 10:44:39	Information	正在与10.0.62.182 : 6576进行数据传输...
+2015/7/11 10:44:39	Information	接收了27个数据单元
+2015/7/11 10:44:39	Information	接收到的数据 QUERY_SIGN_PEND_REQUEST~1~2, 大小27
+2015/7/11 10:44:39	Information	接收到来自10.0.62.182:6576查询正在审核中的会签单模版信息2
+2015/7/11 10:44:39	Information	10.0.62.182:6576查询到的了所有正在审核中的会签单
+2015/7/11 10:44:39	Success	10.0.62.182:6576会签单模版信息信息查询成功
+2015/7/11 10:44:39	Information	正在与10.0.62.182 : 6576进行数据传输...
+2015/7/11 10:44:39	Information	接收了29个数据单元
+2015/7/11 10:44:39	Information	接收到的数据 QUERY_SIGN_REFUSE_REQUEST~1~2, 大小29
+2015/7/11 10:44:39	Information	接收到来自10.0.62.182:6576查询被拒绝的会签单模版信息2
+2015/7/11 10:44:39	Information	10.0.62.182:6576查询到的了所有被拒绝的会签单
+2015/7/11 10:44:39	Information	正在与10.0.62.182 : 6571进行数据传输...
+2015/7/11 10:44:39	Success	10.0.62.182:6576被拒绝会签单信息查询成功
+2015/7/11 10:44:39	Information	正在与10.0.62.182 : 6576进行数据传输...
+2015/7/11 10:44:39	Information	接收了30个数据单元
+2015/7/11 10:44:39	Information	接收到的数据 QUERY_AGREE_UNDOWN_REQUEST~1~2, 大小30
+2015/7/11 10:44:39	Information	接收到来自10.0.62.182:6576的查询未被下载的已通过的会签单模版信息2
+2015/7/11 10:44:39	Information	10.0.62.182:6576查询未被下载的已通过的会签单模版信息
+2015/7/11 10:44:39	Success	10.0.62.182:6576查询未被下载的已通过的会签单模版信息
+2015/7/11 10:44:39	Exception	System.Net.Sockets.SocketException (0x80004005): 远程主机强迫关闭了一个现有的连接。
+   在 System.Net.Sockets.Socket.EndReceive(IAsyncResult asyncResult)
+   在 SignPressServer.SignSocket.AsyncSocket.AsyncSocketServer.HandleDataReceived(IAsyncResult ar) 位置 g:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressServer\SignSocket\AsyncSocket\AsyncSocketServer.cs:行号 469
+2015/7/11 10:44:39	Error	客户端终止，关闭了客户端, 当前连接的客户端数目1
+2015/7/11 10:44:46	Information	正在与10.0.62.182 : 6576进行数据传输...
+2015/7/11 10:44:46	Information	接收了58个数据单元
+2015/7/11 10:44:46	Information	接收到的数据 GET_HDJCONTRACT_REQUEST~21~"编号前缀：20150709000002", 大小48
+2015/7/11 10:44:46	Information	接收到来自10.0.62.182:6576待获取的会签单编号"编号前缀：20150709000002"
+2015/7/11 10:44:46	Success	10.0.62.182:6576获取会签单编号前缀：20150709000002成功
+2015/7/11 10:45:19	Information	正在与10.0.62.182 : 6576进行数据传输...
+2015/7/11 10:45:19	Information	接收了165个数据单元
+2015/7/11 10:45:19	Information	接收到的数据 SEARCH_SIGNED_HDJCONTRACT_REQUEST~127~{"EmployeeId":2,"ConId":"","ProjectName":"","DateBegin":"2015-07-05T10:45:34","DateEnd":"2015-08-01T10:45:34","Downloadable":0}, 大小165
+2015/7/11 10:45:19	Information	接收到来自10.0.62.182:6576查询被拒绝的会签单模版信息{"EmployeeId":2,"ConId":"","ProjectName":"","DateBegin":"2015-07-05T10:45:34","DateEnd":"2015-08-01T10:45:34","Downloadable":0}
+2015/7/11 10:45:20	Information	10.0.62.182:6576查询到的了所有被拒绝的会签单
+2015/7/11 10:45:20	Success	10.0.62.182:6576被拒绝会签单信息查询成功
+2015/7/11 10:45:21	Information	正在与10.0.62.182 : 6576进行数据传输...
+2015/7/11 10:45:21	Information	接收了43个数据单元
+2015/7/11 10:45:21	Information	接收到的数据 GET_HDJCONTRACT_REQUEST~16~"20150626140534", 大小43
+2015/7/11 10:45:21	Information	接收到来自10.0.62.182:6576待获取的会签单编号"20150626140534"
+2015/7/11 10:45:21	Success	10.0.62.182:6576获取会签单20150626140534成功
+2015/7/11 10:46:04	Information	正在与10.0.62.182 : 6576进行数据传输...
+2015/7/11 10:46:04	Information	接收了45个数据单元
+2015/7/11 10:46:04	Information	接收到的数据 GET_HDJCONTRACT_REQUEST~18~"wsgswegwegwegdeg", 大小45
+2015/7/11 10:46:04	Information	接收到来自10.0.62.182:6576待获取的会签单编号"wsgswegwegwegdeg"
+2015/7/11 10:46:04	Success	10.0.62.182:6576获取会签单wsgswegwegwegdeg成功
+2015/7/11 10:46:07	Information	正在与10.0.62.182 : 6576进行数据传输...
+2015/7/11 10:46:07	Information	接收了43个数据单元
+2015/7/11 10:46:07	Information	接收到的数据 GET_HDJCONTRACT_REQUEST~16~"20150707000010", 大小43
+2015/7/11 10:46:07	Information	接收到来自10.0.62.182:6576待获取的会签单编号"20150707000010"
+2015/7/11 10:46:08	Success	10.0.62.182:6576获取会签单20150707000010成功
+2015/7/11 10:46:11	Information	正在与10.0.62.182 : 6576进行数据传输...
+2015/7/11 10:46:11	Information	接收了43个数据单元
+2015/7/11 10:46:11	Information	接收到的数据 GET_HDJCONTRACT_REQUEST~16~"20150707000016", 大小43
+2015/7/11 10:46:11	Information	接收到来自10.0.62.182:6576待获取的会签单编号"20150707000016"
+2015/7/11 10:46:11	Success	10.0.62.182:6576获取会签单20150707000016成功
+2015/7/11 10:46:26	Information	正在与10.0.62.182 : 6576进行数据传输...
+2015/7/11 10:46:26	Information	接收了165个数据单元
+2015/7/11 10:46:26	Information	接收到的数据 SEARCH_SIGNED_HDJCONTRACT_REQUEST~127~{"EmployeeId":2,"ConId":"","ProjectName":"","DateBegin":"2015-07-05T10:45:34","DateEnd":"2015-08-01T10:45:34","Downloadable":1}, 大小165
+2015/7/11 10:46:26	Information	接收到来自10.0.62.182:6576查询被拒绝的会签单模版信息{"EmployeeId":2,"ConId":"","ProjectName":"","DateBegin":"2015-07-05T10:45:34","DateEnd":"2015-08-01T10:45:34","Downloadable":1}
+2015/7/11 10:46:26	Information	10.0.62.182:6576查询到的了所有被拒绝的会签单
+2015/7/11 10:46:26	Success	10.0.62.182:6576被拒绝会签单信息查询成功
+2015/7/11 10:46:27	Information	正在与10.0.62.182 : 6576进行数据传输...
+2015/7/11 10:46:27	Information	接收了165个数据单元
+2015/7/11 10:46:27	Information	接收到的数据 SEARCH_SIGNED_HDJCONTRACT_REQUEST~127~{"EmployeeId":2,"ConId":"","ProjectName":"","DateBegin":"2015-07-05T10:45:34","DateEnd":"2015-08-01T10:45:34","Downloadable":1}, 大小165
+2015/7/11 10:46:27	Information	接收到来自10.0.62.182:6576查询被拒绝的会签单模版信息{"EmployeeId":2,"ConId":"","ProjectName":"","DateBegin":"2015-07-05T10:45:34","DateEnd":"2015-08-01T10:45:34","Downloadable":1}
+2015/7/11 10:46:27	Information	10.0.62.182:6576查询到的了所有被拒绝的会签单
+2015/7/11 10:46:27	Success	10.0.62.182:6576被拒绝会签单信息查询成功
+2015/7/11 10:46:27	Information	正在与10.0.62.182 : 6576进行数据传输...
+2015/7/11 10:46:27	Information	接收了165个数据单元
+2015/7/11 10:46:27	Information	接收到的数据 SEARCH_SIGNED_HDJCONTRACT_REQUEST~127~{"EmployeeId":2,"ConId":"","ProjectName":"","DateBegin":"2015-07-05T10:45:34","DateEnd":"2015-08-01T10:45:34","Downloadable":1}, 大小165
+2015/7/11 10:46:27	Information	接收到来自10.0.62.182:6576查询被拒绝的会签单模版信息{"EmployeeId":2,"ConId":"","ProjectName":"","DateBegin":"2015-07-05T10:45:34","DateEnd":"2015-08-01T10:45:34","Downloadable":1}
+2015/7/11 10:46:27	Information	10.0.62.182:6576查询到的了所有被拒绝的会签单
+2015/7/11 10:46:27	Success	10.0.62.182:6576被拒绝会签单信息查询成功
+2015/7/11 10:46:27	Information	正在与10.0.62.182 : 6576进行数据传输...
+2015/7/11 10:46:27	Information	接收了165个数据单元
+2015/7/11 10:46:27	Information	接收到的数据 SEARCH_SIGNED_HDJCONTRACT_REQUEST~127~{"EmployeeId":2,"ConId":"","ProjectName":"","DateBegin":"2015-07-05T10:45:34","DateEnd":"2015-08-01T10:45:34","Downloadable":1}, 大小165
+2015/7/11 10:46:27	Information	接收到来自10.0.62.182:6576查询被拒绝的会签单模版信息{"EmployeeId":2,"ConId":"","ProjectName":"","DateBegin":"2015-07-05T10:45:34","DateEnd":"2015-08-01T10:45:34","Downloadable":1}
+2015/7/11 10:46:27	Information	10.0.62.182:6576查询到的了所有被拒绝的会签单
+2015/7/11 10:46:27	Success	10.0.62.182:6576被拒绝会签单信息查询成功
+2015/7/11 10:46:29	Information	正在与10.0.62.182 : 6576进行数据传输...
+2015/7/11 10:46:29	Information	接收了165个数据单元
+2015/7/11 10:46:29	Information	接收到的数据 SEARCH_SIGNED_HDJCONTRACT_REQUEST~127~{"EmployeeId":2,"ConId":"","ProjectName":"","DateBegin":"2015-07-05T10:45:34","DateEnd":"2015-08-01T10:45:34","Downloadable":0}, 大小165
+2015/7/11 10:46:29	Information	接收到来自10.0.62.182:6576查询被拒绝的会签单模版信息{"EmployeeId":2,"ConId":"","ProjectName":"","DateBegin":"2015-07-05T10:45:34","DateEnd":"2015-08-01T10:45:34","Downloadable":0}
+2015/7/11 10:46:29	Information	10.0.62.182:6576查询到的了所有被拒绝的会签单
+2015/7/11 10:46:29	Success	10.0.62.182:6576被拒绝会签单信息查询成功
+2015/7/11 10:46:32	Information	正在与10.0.62.182 : 6576进行数据传输...
+2015/7/11 10:46:32	Information	接收了165个数据单元
+2015/7/11 10:46:32	Information	接收到的数据 SEARCH_SIGNED_HDJCONTRACT_REQUEST~127~{"EmployeeId":2,"ConId":"","ProjectName":"","DateBegin":"2015-07-05T10:45:34","DateEnd":"2015-08-01T10:45:34","Downloadable":1}, 大小165
+2015/7/11 10:46:32	Information	接收到来自10.0.62.182:6576查询被拒绝的会签单模版信息{"EmployeeId":2,"ConId":"","ProjectName":"","DateBegin":"2015-07-05T10:45:34","DateEnd":"2015-08-01T10:45:34","Downloadable":1}
+2015/7/11 10:46:32	Information	10.0.62.182:6576查询到的了所有被拒绝的会签单
+2015/7/11 10:46:32	Success	10.0.62.182:6576被拒绝会签单信息查询成功
+2015/7/11 10:46:36	Information	正在与10.0.62.182 : 6576进行数据传输...
+2015/7/11 10:46:36	Information	接收了165个数据单元
+2015/7/11 10:46:36	Information	接收到的数据 SEARCH_SIGNED_HDJCONTRACT_REQUEST~127~{"EmployeeId":2,"ConId":"","ProjectName":"","DateBegin":"2015-07-05T10:45:34","DateEnd":"2015-08-01T10:45:34","Downloadable":0}, 大小165
+2015/7/11 10:46:36	Information	接收到来自10.0.62.182:6576查询被拒绝的会签单模版信息{"EmployeeId":2,"ConId":"","ProjectName":"","DateBegin":"2015-07-05T10:45:34","DateEnd":"2015-08-01T10:45:34","Downloadable":0}
+2015/7/11 10:46:36	Information	10.0.62.182:6576查询到的了所有被拒绝的会签单
+2015/7/11 10:46:36	Success	10.0.62.182:6576被拒绝会签单信息查询成功
+2015/7/11 10:46:59	Information	正在与10.0.62.182 : 6576进行数据传输...
+2015/7/11 10:46:59	Exception	System.Net.Sockets.SocketException (0x80004005): 远程主机强迫关闭了一个现有的连接。
+   在 System.Net.Sockets.Socket.EndReceive(IAsyncResult asyncResult)
+   在 SignPressServer.SignSocket.AsyncSocket.AsyncSocketServer.HandleDataReceived(IAsyncResult ar) 位置 g:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressServer\SignSocket\AsyncSocket\AsyncSocketServer.cs:行号 469
+2015/7/11 10:46:59	Error	客户端终止，关闭了客户端, 当前连接的客户端数目0
+2015/7/11 10:47:08	Information	正在与10.0.62.182 : 6605进行数据传输...
+2015/7/11 10:47:08	Information	接收了64个数据单元
+2015/7/11 10:47:08	Information	接收到的数据 LOGIN_REQUEST~47~{"Username":"chengjian","Password":"chengjian"}, 大小64
+2015/7/11 10:47:08	Information	接收到来自10.0.62.182:6605的登录信息{"Username":"chengjian","Password":"chengjian"}
+2015/7/11 10:47:08	Success	USERNAME : chengjian, PASSWORD : chengjian用户名密码均正确，可以登录
+2015/7/11 10:47:08	Information	正在与10.0.62.182 : 6606进行数据传输...
+2015/7/11 10:47:08	Information	接收了33个数据单元
+2015/7/11 10:47:08	Information	接收到的数据 QUERY_UNSIGN_CONTRACT_REQUEST~1~1, 大小33
+2015/7/11 10:47:08	Information	接收到来自10.0.62.182:6606查询待签字的会签单信息1
+2015/7/11 10:47:08	Information	10.0.62.182:6606查询到的了所有查询待签字的的会签单
+2015/7/11 10:47:08	Success	10.0.62.182:6606查询待签字的会签单信息查询成功
+2015/7/11 10:47:08	Information	正在与10.0.62.182 : 6606进行数据传输...
+2015/7/11 10:47:08	Information	接收了27个数据单元
+2015/7/11 10:47:08	Information	接收到的数据 QUERY_SIGN_PEND_REQUEST~1~1, 大小27
+2015/7/11 10:47:08	Information	接收到来自10.0.62.182:6606查询正在审核中的会签单模版信息1
+2015/7/11 10:47:08	Information	10.0.62.182:6606查询到的了所有正在审核中的会签单
+2015/7/11 10:47:08	Success	10.0.62.182:6606会签单模版信息信息查询成功
+2015/7/11 10:47:08	Information	正在与10.0.62.182 : 6606进行数据传输...
+2015/7/11 10:47:08	Information	接收了29个数据单元
+2015/7/11 10:47:08	Information	接收到的数据 QUERY_SIGN_REFUSE_REQUEST~1~1, 大小29
+2015/7/11 10:47:08	Information	接收到来自10.0.62.182:6606查询被拒绝的会签单模版信息1
+2015/7/11 10:47:08	Information	10.0.62.182:6606查询到的了所有被拒绝的会签单
+2015/7/11 10:47:08	Success	10.0.62.182:6606被拒绝会签单信息查询成功
+2015/7/11 10:47:08	Information	正在与10.0.62.182 : 6606进行数据传输...
+2015/7/11 10:47:08	Information	接收了30个数据单元
+2015/7/11 10:47:08	Information	接收到的数据 QUERY_AGREE_UNDOWN_REQUEST~1~1, 大小30
+2015/7/11 10:47:08	Information	接收到来自10.0.62.182:6606的查询未被下载的已通过的会签单模版信息1
+2015/7/11 10:47:08	Information	10.0.62.182:6606查询未被下载的已通过的会签单模版信息
+2015/7/11 10:47:08	Success	10.0.62.182:6606查询未被下载的已通过的会签单模版信息
+2015/7/11 10:47:11	Information	正在与10.0.62.182 : 6605进行数据传输...
+2015/7/11 10:47:11	Exception	System.Net.Sockets.SocketException (0x80004005): 远程主机强迫关闭了一个现有的连接。
+   在 System.Net.Sockets.Socket.EndReceive(IAsyncResult asyncResult)
+   在 SignPressServer.SignSocket.AsyncSocket.AsyncSocketServer.HandleDataReceived(IAsyncResult ar) 位置 g:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressServer\SignSocket\AsyncSocket\AsyncSocketServer.cs:行号 469
+2015/7/11 10:47:11	Error	客户端终止，关闭了客户端, 当前连接的客户端数目1
+2015/7/11 10:47:16	Information	正在与10.0.62.182 : 6606进行数据传输...
+2015/7/11 10:47:16	Information	接收了58个数据单元
+2015/7/11 10:47:16	Information	接收到的数据 GET_HDJCONTRACT_REQUEST~21~"编号前缀：20150709000002", 大小48
+2015/7/11 10:47:16	Information	接收到来自10.0.62.182:6606待获取的会签单编号"编号前缀：20150709000002"
+2015/7/11 10:47:16	Success	10.0.62.182:6606获取会签单编号前缀：20150709000002成功
+2015/7/11 10:47:23	Information	正在与10.0.62.182 : 6606进行数据传输...
+2015/7/11 10:47:23	Information	接收了49个数据单元
+2015/7/11 10:47:23	Information	接收到的数据 GET_HDJCONTRACT_REQUEST~18~"信内20150709000005", 大小45
+2015/7/11 10:47:23	Information	接收到来自10.0.62.182:6606待获取的会签单编号"信内20150709000005"
+2015/7/11 10:47:23	Success	10.0.62.182:6606获取会签单信内20150709000005成功
+2015/7/11 10:47:35	Information	正在与10.0.62.182 : 6606进行数据传输...
+2015/7/11 10:47:35	Exception	System.Net.Sockets.SocketException (0x80004005): 远程主机强迫关闭了一个现有的连接。
+   在 System.Net.Sockets.Socket.EndReceive(IAsyncResult asyncResult)
+   在 SignPressServer.SignSocket.AsyncSocket.AsyncSocketServer.HandleDataReceived(IAsyncResult ar) 位置 g:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressServer\SignSocket\AsyncSocket\AsyncSocketServer.cs:行号 469
+2015/7/11 10:47:35	Error	客户端终止，关闭了客户端, 当前连接的客户端数目0
+2015/7/11 10:47:45	Information	正在与10.0.62.182 : 6611进行数据传输...
+2015/7/11 10:47:45	Information	接收了66个数据单元
+2015/7/11 10:47:45	Information	接收到的数据 LOGIN_REQUEST~49~{"Username":"lijinglong","Password":"lijinglong"}, 大小66
+2015/7/11 10:47:45	Information	接收到来自10.0.62.182:6611的登录信息{"Username":"lijinglong","Password":"lijinglong"}
+2015/7/11 10:47:45	Success	USERNAME : lijinglong, PASSWORD : lijinglong用户名密码均正确，可以登录
+2015/7/11 10:47:45	Information	正在与10.0.62.182 : 6611进行数据传输...
+2015/7/11 10:47:45	Exception	System.Net.Sockets.SocketException (0x80004005): 远程主机强迫关闭了一个现有的连接。
+   在 System.Net.Sockets.Socket.EndReceive(IAsyncResult asyncResult)
+   在 SignPressServer.SignSocket.AsyncSocket.AsyncSocketServer.HandleDataReceived(IAsyncResult ar) 位置 g:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressServer\SignSocket\AsyncSocket\AsyncSocketServer.cs:行号 469
+2015/7/11 10:47:45	Error	客户端终止，关闭了客户端, 当前连接的客户端数目1
+2015/7/11 10:47:45	Information	正在与10.0.62.182 : 6612进行数据传输...
+2015/7/11 10:47:45	Information	接收了33个数据单元
+2015/7/11 10:47:45	Information	接收到的数据 QUERY_UNSIGN_CONTRACT_REQUEST~1~6, 大小33
+2015/7/11 10:47:45	Information	接收到来自10.0.62.182:6612查询待签字的会签单信息6
+2015/7/11 10:47:45	Information	10.0.62.182:6612查询到的了所有查询待签字的的会签单
+2015/7/11 10:47:45	Success	10.0.62.182:6612查询待签字的会签单信息查询成功
+2015/7/11 10:47:48	Information	正在与10.0.62.182 : 6612进行数据传输...
+2015/7/11 10:47:48	Information	接收了58个数据单元
+2015/7/11 10:47:48	Information	接收到的数据 GET_HDJCONTRACT_REQUEST~21~"编号前缀：20150709000002", 大小48
+2015/7/11 10:47:48	Information	接收到来自10.0.62.182:6612待获取的会签单编号"编号前缀：20150709000002"
+2015/7/11 10:47:48	Success	10.0.62.182:6612获取会签单编号前缀：20150709000002成功
+2015/7/11 10:48:03	Information	正在与10.0.62.182 : 6612进行数据传输...
+2015/7/11 10:48:03	Information	接收了179个数据单元
+2015/7/11 10:48:03	Information	接收到的数据 SEARCH_SIGNED_HDJCONTRACT_REQUEST~141~{"EmployeeId":6,"ConId":"","ProjectName":"","DateBegin":"2015-07-11T10:48:37.9545194+08:00","DateEnd":"2015-08-01T10:48:37","Downloadable":0}, 大小179
+2015/7/11 10:48:03	Information	接收到来自10.0.62.182:6612查询被拒绝的会签单模版信息{"EmployeeId":6,"ConId":"","ProjectName":"","DateBegin":"2015-07-11T10:48:37.9545194+08:00","DateEnd":"2015-08-01T10:48:37","Downloadable":0}
+2015/7/11 10:48:03	Information	10.0.62.182:6612查询到的了所有被拒绝的会签单
+2015/7/11 10:48:03	Success	10.0.62.182:6612被拒绝会签单信息查询成功
+2015/7/11 10:48:06	Information	正在与10.0.62.182 : 6612进行数据传输...
+2015/7/11 10:48:06	Information	接收了165个数据单元
+2015/7/11 10:48:06	Information	接收到的数据 SEARCH_SIGNED_HDJCONTRACT_REQUEST~127~{"EmployeeId":6,"ConId":"","ProjectName":"","DateBegin":"2015-07-05T10:48:37","DateEnd":"2015-08-01T10:48:37","Downloadable":0}, 大小165
+2015/7/11 10:48:06	Information	接收到来自10.0.62.182:6612查询被拒绝的会签单模版信息{"EmployeeId":6,"ConId":"","ProjectName":"","DateBegin":"2015-07-05T10:48:37","DateEnd":"2015-08-01T10:48:37","Downloadable":0}
+2015/7/11 10:48:06	Information	10.0.62.182:6612查询到的了所有被拒绝的会签单
+2015/7/11 10:48:06	Success	10.0.62.182:6612被拒绝会签单信息查询成功
+2015/7/11 10:48:09	Information	正在与10.0.62.182 : 6612进行数据传输...
+2015/7/11 10:48:09	Information	接收了165个数据单元
+2015/7/11 10:48:09	Information	接收到的数据 SEARCH_SIGNED_HDJCONTRACT_REQUEST~127~{"EmployeeId":6,"ConId":"","ProjectName":"","DateBegin":"2015-07-05T10:48:37","DateEnd":"2015-08-01T10:48:37","Downloadable":1}, 大小165
+2015/7/11 10:48:09	Information	接收到来自10.0.62.182:6612查询被拒绝的会签单模版信息{"EmployeeId":6,"ConId":"","ProjectName":"","DateBegin":"2015-07-05T10:48:37","DateEnd":"2015-08-01T10:48:37","Downloadable":1}
+2015/7/11 10:48:09	Information	10.0.62.182:6612查询到的了所有被拒绝的会签单
+2015/7/11 10:48:09	Success	10.0.62.182:6612被拒绝会签单信息查询成功
+2015/7/11 10:48:11	Information	正在与10.0.62.182 : 6612进行数据传输...
+2015/7/11 10:48:11	Exception	System.Net.Sockets.SocketException (0x80004005): 远程主机强迫关闭了一个现有的连接。
+   在 System.Net.Sockets.Socket.EndReceive(IAsyncResult asyncResult)
+   在 SignPressServer.SignSocket.AsyncSocket.AsyncSocketServer.HandleDataReceived(IAsyncResult ar) 位置 g:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressServer\SignSocket\AsyncSocket\AsyncSocketServer.cs:行号 469
+2015/7/11 10:48:11	Error	客户端终止，关闭了客户端, 当前连接的客户端数目0
+2015/7/11 10:50:01	Information	正在与10.0.62.182 : 6644进行数据传输...
+2015/7/11 10:50:01	Information	接收了60个数据单元
+2015/7/11 10:50:01	Information	接收到的数据 LOGIN_REQUEST~43~{"Username":"shixiao","Password":"shixiao"}, 大小60
+2015/7/11 10:50:01	Information	接收到来自10.0.62.182:6644的登录信息{"Username":"shixiao","Password":"shixiao"}
+2015/7/11 10:50:01	Success	USERNAME : shixiao, PASSWORD : shixiao用户名密码均正确，可以登录
+2015/7/11 10:50:02	Information	正在与10.0.62.182 : 6645进行数据传输...
+2015/7/11 10:50:02	Information	接收了33个数据单元
+2015/7/11 10:50:02	Information	接收到的数据 QUERY_UNSIGN_CONTRACT_REQUEST~1~2, 大小33
+2015/7/11 10:50:02	Information	接收到来自10.0.62.182:6645查询待签字的会签单信息2
+2015/7/11 10:50:02	Information	10.0.62.182:6645查询到的了所有查询待签字的的会签单
+2015/7/11 10:50:02	Success	10.0.62.182:6645查询待签字的会签单信息查询成功
+2015/7/11 10:50:02	Information	正在与10.0.62.182 : 6645进行数据传输...
+2015/7/11 10:50:02	Information	接收了27个数据单元
+2015/7/11 10:50:02	Information	接收到的数据 QUERY_SIGN_PEND_REQUEST~1~2, 大小27
+2015/7/11 10:50:02	Information	接收到来自10.0.62.182:6645查询正在审核中的会签单模版信息2
+2015/7/11 10:50:02	Information	10.0.62.182:6645查询到的了所有正在审核中的会签单
+2015/7/11 10:50:02	Success	10.0.62.182:6645会签单模版信息信息查询成功
+2015/7/11 10:50:02	Information	正在与10.0.62.182 : 6645进行数据传输...
+2015/7/11 10:50:02	Information	接收了27个数据单元
+2015/7/11 10:50:02	Information	接收到的数据 QUERY_SIGN_PEND_REQUEST~1~2, 大小27
+2015/7/11 10:50:02	Information	接收到来自10.0.62.182:6645查询正在审核中的会签单模版信息2
+2015/7/11 10:50:02	Information	10.0.62.182:6645查询到的了所有正在审核中的会签单
+2015/7/11 10:50:02	Success	10.0.62.182:6645会签单模版信息信息查询成功
+2015/7/11 10:50:02	Information	正在与10.0.62.182 : 6645进行数据传输...
+2015/7/11 10:50:02	Information	接收了33个数据单元
+2015/7/11 10:50:02	Information	接收到的数据 QUERY_UNSIGN_CONTRACT_REQUEST~1~2, 大小33
+2015/7/11 10:50:02	Information	接收到来自10.0.62.182:6645查询待签字的会签单信息2
+2015/7/11 10:50:02	Information	10.0.62.182:6645查询到的了所有查询待签字的的会签单
+2015/7/11 10:50:02	Success	10.0.62.182:6645查询待签字的会签单信息查询成功
+2015/7/11 10:50:02	Information	正在与10.0.62.182 : 6645进行数据传输...
+2015/7/11 10:50:02	Information	接收了29个数据单元
+2015/7/11 10:50:02	Information	接收到的数据 QUERY_SIGN_REFUSE_REQUEST~1~2, 大小29
+2015/7/11 10:50:02	Information	接收到来自10.0.62.182:6645查询被拒绝的会签单模版信息2
+2015/7/11 10:50:02	Information	10.0.62.182:6645查询到的了所有被拒绝的会签单
+2015/7/11 10:50:02	Success	10.0.62.182:6645被拒绝会签单信息查询成功
+2015/7/11 10:50:02	Information	正在与10.0.62.182 : 6645进行数据传输...
+2015/7/11 10:50:02	Information	接收了30个数据单元
+2015/7/11 10:50:02	Information	接收到的数据 QUERY_AGREE_UNDOWN_REQUEST~1~2, 大小30
+2015/7/11 10:50:02	Information	接收到来自10.0.62.182:6645的查询未被下载的已通过的会签单模版信息2
+2015/7/11 10:50:02	Information	10.0.62.182:6645查询未被下载的已通过的会签单模版信息
+2015/7/11 10:50:02	Success	10.0.62.182:6645查询未被下载的已通过的会签单模版信息
+2015/7/11 10:50:04	Information	正在与10.0.62.182 : 6644进行数据传输...
+2015/7/11 10:50:04	Exception	System.Net.Sockets.SocketException (0x80004005): 远程主机强迫关闭了一个现有的连接。
+   在 System.Net.Sockets.Socket.EndReceive(IAsyncResult asyncResult)
+   在 SignPressServer.SignSocket.AsyncSocket.AsyncSocketServer.HandleDataReceived(IAsyncResult ar) 位置 g:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressServer\SignSocket\AsyncSocket\AsyncSocketServer.cs:行号 469
+2015/7/11 10:50:04	Error	客户端终止，关闭了客户端, 当前连接的客户端数目1
+2015/7/11 10:50:10	Information	正在与10.0.62.182 : 6645进行数据传输...
+2015/7/11 10:50:10	Information	接收了165个数据单元
+2015/7/11 10:50:10	Information	接收到的数据 SEARCH_SIGNED_HDJCONTRACT_REQUEST~127~{"EmployeeId":2,"ConId":"","ProjectName":"","DateBegin":"2015-06-28T10:50:44","DateEnd":"2015-07-25T10:50:44","Downloadable":0}, 大小165
+2015/7/11 10:50:10	Information	接收到来自10.0.62.182:6645查询被拒绝的会签单模版信息{"EmployeeId":2,"ConId":"","ProjectName":"","DateBegin":"2015-06-28T10:50:44","DateEnd":"2015-07-25T10:50:44","Downloadable":0}
+2015/7/11 10:50:10	Information	10.0.62.182:6645查询到的了所有被拒绝的会签单
+2015/7/11 10:50:10	Success	10.0.62.182:6645被拒绝会签单信息查询成功
+2015/7/11 10:50:12	Information	正在与10.0.62.182 : 6645进行数据传输...
+2015/7/11 10:50:12	Information	接收了43个数据单元
+2015/7/11 10:50:12	Information	接收到的数据 GET_HDJCONTRACT_REQUEST~16~"20150624175351", 大小43
+2015/7/11 10:50:12	Information	接收到来自10.0.62.182:6645待获取的会签单编号"20150624175351"
+2015/7/11 10:50:12	Success	10.0.62.182:6645获取会签单20150624175351成功
+2015/7/11 10:50:29	Information	正在与10.0.62.182 : 6645进行数据传输...
+2015/7/11 10:50:29	Information	接收了165个数据单元
+2015/7/11 10:50:29	Information	接收到的数据 SEARCH_SIGNED_HDJCONTRACT_REQUEST~127~{"EmployeeId":2,"ConId":"","ProjectName":"","DateBegin":"2015-06-28T10:50:44","DateEnd":"2015-07-25T10:50:44","Downloadable":1}, 大小165
+2015/7/11 10:50:29	Information	接收到来自10.0.62.182:6645查询被拒绝的会签单模版信息{"EmployeeId":2,"ConId":"","ProjectName":"","DateBegin":"2015-06-28T10:50:44","DateEnd":"2015-07-25T10:50:44","Downloadable":1}
+2015/7/11 10:50:29	Information	10.0.62.182:6645查询到的了所有被拒绝的会签单
+2015/7/11 10:50:29	Success	10.0.62.182:6645被拒绝会签单信息查询成功
+2015/7/11 11:10:02	Information	正在与10.0.62.182 : 6645进行数据传输...
+2015/7/11 11:10:02	Information	接收了33个数据单元
+2015/7/11 11:10:02	Information	接收到的数据 QUERY_UNSIGN_CONTRACT_REQUEST~1~2, 大小33
+2015/7/11 11:10:02	Information	接收到来自10.0.62.182:6645查询待签字的会签单信息2
+2015/7/11 11:10:03	Information	10.0.62.182:6645查询到的了所有查询待签字的的会签单
+2015/7/11 11:10:03	Success	10.0.62.182:6645查询待签字的会签单信息查询成功
+2015/7/11 11:20:02	Information	正在与10.0.62.182 : 6645进行数据传输...
+2015/7/11 11:20:02	Information	接收了27个数据单元
+2015/7/11 11:20:02	Information	接收到的数据 QUERY_SIGN_PEND_REQUEST~1~2, 大小27
+2015/7/11 11:20:02	Information	接收到来自10.0.62.182:6645查询正在审核中的会签单模版信息2
+2015/7/11 11:20:03	Information	10.0.62.182:6645查询到的了所有正在审核中的会签单
+2015/7/11 11:20:03	Success	10.0.62.182:6645会签单模版信息信息查询成功
+2015/7/11 11:20:03	Information	正在与10.0.62.182 : 6645进行数据传输...
+2015/7/11 11:20:03	Information	接收了29个数据单元
+2015/7/11 11:20:03	Information	接收到的数据 QUERY_SIGN_REFUSE_REQUEST~1~2, 大小29
+2015/7/11 11:20:03	Information	接收到来自10.0.62.182:6645查询被拒绝的会签单模版信息2
+2015/7/11 11:20:03	Information	10.0.62.182:6645查询到的了所有被拒绝的会签单
+2015/7/11 11:20:03	Success	10.0.62.182:6645被拒绝会签单信息查询成功
+2015/7/11 11:20:03	Information	正在与10.0.62.182 : 6645进行数据传输...
+2015/7/11 11:20:03	Information	接收了30个数据单元
+2015/7/11 11:20:03	Information	接收到的数据 QUERY_AGREE_UNDOWN_REQUEST~1~2, 大小30
+2015/7/11 11:20:03	Information	接收到来自10.0.62.182:6645的查询未被下载的已通过的会签单模版信息2
+2015/7/11 11:20:03	Information	10.0.62.182:6645查询未被下载的已通过的会签单模版信息
+2015/7/11 11:20:03	Success	10.0.62.182:6645查询未被下载的已通过的会签单模版信息
+2015/7/11 12:37:46	Information	正在与10.0.62.182 : 6645进行数据传输...
+2015/7/11 12:37:46	Information	接收了60个数据单元
+2015/7/11 12:37:46	Information	接收到的数据 QUERY_SIGN_PEND_REQUEST~1~2QUERY_UNSIGN_CONTRACT_REQUEST~1~2, 大小60
+2015/7/11 12:37:46	Information	接收到来自10.0.62.182:6645查询正在审核中的会签单模版信息2
+2015/7/11 12:37:47	Information	10.0.62.182:6645查询到的了所有正在审核中的会签单
+2015/7/11 12:37:47	Success	10.0.62.182:6645会签单模版信息信息查询成功
+2015/7/11 12:37:47	Information	接收到来自10.0.62.182:6645查询待签字的会签单信息2
+2015/7/11 12:37:47	Information	10.0.62.182:6645查询到的了所有查询待签字的的会签单
+2015/7/11 12:37:47	Success	10.0.62.182:6645查询待签字的会签单信息查询成功
+2015/7/11 12:38:10	Information	正在与10.0.62.182 : 6645进行数据传输...
+2015/7/11 12:38:10	Exception	System.Net.Sockets.SocketException (0x80004005): 远程主机强迫关闭了一个现有的连接。
+   在 System.Net.Sockets.Socket.EndReceive(IAsyncResult asyncResult)
+   在 SignPressServer.SignSocket.AsyncSocket.AsyncSocketServer.HandleDataReceived(IAsyncResult ar) 位置 g:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressServer\SignSocket\AsyncSocket\AsyncSocketServer.cs:行号 469
+2015/7/11 12:38:10	Error	客户端终止，关闭了客户端, 当前连接的客户端数目0
+2015/7/11 12:40:06	Information	正在与10.0.62.182 : 7521进行数据传输...
+2015/7/11 12:40:06	Information	接收了60个数据单元
+2015/7/11 12:40:06	Information	接收到的数据 LOGIN_REQUEST~43~{"Username":"shixiao","Password":"shixiao"}, 大小60
+2015/7/11 12:40:06	Information	接收到来自10.0.62.182:7521的登录信息{"Username":"shixiao","Password":"shixiao"}
+2015/7/11 12:40:06	Success	USERNAME : shixiao, PASSWORD : shixiao用户名密码均正确，可以登录
+2015/7/11 12:40:06	Information	正在与10.0.62.182 : 7522进行数据传输...
+2015/7/11 12:40:06	Information	接收了33个数据单元
+2015/7/11 12:40:06	Information	接收到的数据 QUERY_UNSIGN_CONTRACT_REQUEST~1~2, 大小33
+2015/7/11 12:40:06	Information	接收到来自10.0.62.182:7522查询待签字的会签单信息2
+2015/7/11 12:40:06	Information	10.0.62.182:7522查询到的了所有查询待签字的的会签单
+2015/7/11 12:40:06	Success	10.0.62.182:7522查询待签字的会签单信息查询成功
+2015/7/11 12:40:06	Information	正在与10.0.62.182 : 7522进行数据传输...
+2015/7/11 12:40:06	Information	接收了27个数据单元
+2015/7/11 12:40:06	Information	接收到的数据 QUERY_SIGN_PEND_REQUEST~1~2, 大小27
+2015/7/11 12:40:06	Information	接收到来自10.0.62.182:7522查询正在审核中的会签单模版信息2
+2015/7/11 12:40:06	Information	10.0.62.182:7522查询到的了所有正在审核中的会签单
+2015/7/11 12:40:06	Success	10.0.62.182:7522会签单模版信息信息查询成功
+2015/7/11 12:40:06	Information	正在与10.0.62.182 : 7522进行数据传输...
+2015/7/11 12:40:06	Information	接收了27个数据单元
+2015/7/11 12:40:06	Information	接收到的数据 QUERY_SIGN_PEND_REQUEST~1~2, 大小27
+2015/7/11 12:40:06	Information	接收到来自10.0.62.182:7522查询正在审核中的会签单模版信息2
+2015/7/11 12:40:06	Information	10.0.62.182:7522查询到的了所有正在审核中的会签单
+2015/7/11 12:40:06	Success	10.0.62.182:7522会签单模版信息信息查询成功
+2015/7/11 12:40:06	Information	正在与10.0.62.182 : 7522进行数据传输...
+2015/7/11 12:40:06	Information	接收了33个数据单元
+2015/7/11 12:40:06	Information	接收到的数据 QUERY_UNSIGN_CONTRACT_REQUEST~1~2, 大小33
+2015/7/11 12:40:06	Information	接收到来自10.0.62.182:7522查询待签字的会签单信息2
+2015/7/11 12:40:06	Information	10.0.62.182:7522查询到的了所有查询待签字的的会签单
+2015/7/11 12:40:06	Success	10.0.62.182:7522查询待签字的会签单信息查询成功
+2015/7/11 12:40:06	Information	正在与10.0.62.182 : 7522进行数据传输...
+2015/7/11 12:40:06	Information	接收了29个数据单元
+2015/7/11 12:40:06	Information	接收到的数据 QUERY_SIGN_REFUSE_REQUEST~1~2, 大小29
+2015/7/11 12:40:06	Information	接收到来自10.0.62.182:7522查询被拒绝的会签单模版信息2
+2015/7/11 12:40:06	Information	10.0.62.182:7522查询到的了所有被拒绝的会签单
+2015/7/11 12:40:06	Success	10.0.62.182:7522被拒绝会签单信息查询成功
+2015/7/11 12:40:06	Information	正在与10.0.62.182 : 7522进行数据传输...
+2015/7/11 12:40:06	Information	接收了30个数据单元
+2015/7/11 12:40:06	Information	接收到的数据 QUERY_AGREE_UNDOWN_REQUEST~1~2, 大小30
+2015/7/11 12:40:06	Information	接收到来自10.0.62.182:7522的查询未被下载的已通过的会签单模版信息2
+2015/7/11 12:40:06	Information	10.0.62.182:7522查询未被下载的已通过的会签单模版信息
+2015/7/11 12:40:06	Success	10.0.62.182:7522查询未被下载的已通过的会签单模版信息
+2015/7/11 12:40:10	Information	正在与10.0.62.182 : 7522进行数据传输...
+2015/7/11 12:40:10	Information	接收了35个数据单元
+2015/7/11 12:40:10	Information	接收到的数据 QUERY_CONTRACT_TEMPLATE_REQUEST~1~0, 大小35
+2015/7/11 12:40:10	Information	接收到来自10.0.62.182:7522查询会签单模版信息0
+2015/7/11 12:40:10	Information	10.0.62.182:7522查询到的了所有的会签单
+2015/7/11 12:40:10	Success	10.0.62.182:7522会签单模版信息信息查询成功
+2015/7/11 12:40:10	Information	正在与10.0.62.182 : 7522进行数据传输...
+2015/7/11 12:40:10	Information	接收了33个数据单元
+2015/7/11 12:40:10	Information	接收到的数据 GET_CONTRACT_TEMPLATE_REQUEST~1~1, 大小33
+2015/7/11 12:40:10	Information	接收到来自10.0.62.182:7522待获取会签单模版编号1
+2015/7/11 12:40:10	Success	10.0.62.182:7522获取会签单模版1成功
+2015/7/11 12:40:10	Information	正在与10.0.62.182 : 7522进行数据传输...
+2015/7/11 12:40:10	Information	接收了30个数据单元
+2015/7/11 12:40:10	Information	接收到的数据 QUERY_AGREE_UNDOWN_REQUEST~1~2, 大小30
+2015/7/11 12:40:10	Information	接收到来自10.0.62.182:7522的查询未被下载的已通过的会签单模版信息2
+2015/7/11 12:40:10	Information	10.0.62.182:7522查询未被下载的已通过的会签单模版信息
+2015/7/11 12:40:10	Success	10.0.62.182:7522查询未被下载的已通过的会签单模版信息
+2015/7/11 12:40:10	Information	正在与10.0.62.182 : 7521进行数据传输...
+2015/7/11 12:40:10	Exception	System.Net.Sockets.SocketException (0x80004005): 远程主机强迫关闭了一个现有的连接。
+   在 System.Net.Sockets.Socket.EndReceive(IAsyncResult asyncResult)
+   在 SignPressServer.SignSocket.AsyncSocket.AsyncSocketServer.HandleDataReceived(IAsyncResult ar) 位置 g:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressServer\SignSocket\AsyncSocket\AsyncSocketServer.cs:行号 469
+2015/7/11 12:40:10	Error	客户端终止，关闭了客户端, 当前连接的客户端数目1
+2015/7/11 12:58:51	Information	正在与10.0.62.182 : 7522进行数据传输...
+2015/7/11 12:58:51	Information	接收了43个数据单元
+2015/7/11 12:58:51	Information	接收到的数据 GET_HDJCONTRACT_REQUEST~16~"20150707000008", 大小43
+2015/7/11 12:58:51	Information	接收到来自10.0.62.182:7522待获取的会签单编号"20150707000008"
+2015/7/11 12:58:53	Success	10.0.62.182:7522获取会签单20150707000008成功
+2015/7/11 12:58:56	Information	正在与10.0.62.182 : 7522进行数据传输...
+2015/7/11 12:58:56	Information	接收了43个数据单元
+2015/7/11 12:58:56	Information	接收到的数据 GET_HDJCONTRACT_REQUEST~16~"20150709000004", 大小43
+2015/7/11 12:58:56	Information	接收到来自10.0.62.182:7522待获取的会签单编号"20150709000004"
+2015/7/11 12:58:56	Success	10.0.62.182:7522获取会签单20150709000004成功
+2015/7/11 13:00:06	Information	正在与10.0.62.182 : 7522进行数据传输...
+2015/7/11 13:00:06	Information	接收了33个数据单元
+2015/7/11 13:00:06	Information	接收到的数据 QUERY_UNSIGN_CONTRACT_REQUEST~1~2, 大小33
+2015/7/11 13:00:06	Information	接收到来自10.0.62.182:7522查询待签字的会签单信息2
+2015/7/11 13:00:06	Information	10.0.62.182:7522查询到的了所有查询待签字的的会签单
+2015/7/11 13:00:06	Success	10.0.62.182:7522查询待签字的会签单信息查询成功
+2015/7/11 13:10:06	Information	正在与10.0.62.182 : 7522进行数据传输...
+2015/7/11 13:10:06	Information	接收了27个数据单元
+2015/7/11 13:10:06	Information	接收到的数据 QUERY_SIGN_PEND_REQUEST~1~2, 大小27
+2015/7/11 13:10:06	Information	接收到来自10.0.62.182:7522查询正在审核中的会签单模版信息2
+2015/7/11 13:10:07	Information	10.0.62.182:7522查询到的了所有正在审核中的会签单
+2015/7/11 13:10:07	Success	10.0.62.182:7522会签单模版信息信息查询成功
+2015/7/11 13:10:07	Information	正在与10.0.62.182 : 7522进行数据传输...
+2015/7/11 13:10:07	Information	接收了29个数据单元
+2015/7/11 13:10:07	Information	接收到的数据 QUERY_SIGN_REFUSE_REQUEST~1~2, 大小29
+2015/7/11 13:10:07	Information	接收到来自10.0.62.182:7522查询被拒绝的会签单模版信息2
+2015/7/11 13:10:07	Information	10.0.62.182:7522查询到的了所有被拒绝的会签单
+2015/7/11 13:10:07	Success	10.0.62.182:7522被拒绝会签单信息查询成功
+2015/7/11 13:10:07	Information	正在与10.0.62.182 : 7522进行数据传输...
+2015/7/11 13:10:07	Information	接收了30个数据单元
+2015/7/11 13:10:07	Information	接收到的数据 QUERY_AGREE_UNDOWN_REQUEST~1~2, 大小30
+2015/7/11 13:10:07	Information	接收到来自10.0.62.182:7522的查询未被下载的已通过的会签单模版信息2
+2015/7/11 13:10:07	Information	10.0.62.182:7522查询未被下载的已通过的会签单模版信息
+2015/7/11 13:10:07	Success	10.0.62.182:7522查询未被下载的已通过的会签单模版信息
+2015/7/11 13:20:06	Information	正在与10.0.62.182 : 7522进行数据传输...
+2015/7/11 13:20:06	Information	接收了33个数据单元
+2015/7/11 13:20:06	Information	接收到的数据 QUERY_UNSIGN_CONTRACT_REQUEST~1~2, 大小33
+2015/7/11 13:20:06	Information	接收到来自10.0.62.182:7522查询待签字的会签单信息2
+2015/7/11 13:20:07	Information	10.0.62.182:7522查询到的了所有查询待签字的的会签单
+2015/7/11 13:20:07	Success	10.0.62.182:7522查询待签字的会签单信息查询成功
+2015/7/11 13:30:47	Information	正在与10.0.62.182 : 7522进行数据传输...
+2015/7/11 13:30:47	Information	接收了49个数据单元
+2015/7/11 13:30:47	Information	接收到的数据 GET_HDJCONTRACT_REQUEST~18~"信内20150709000005", 大小45
+2015/7/11 13:30:47	Information	接收到来自10.0.62.182:7522待获取的会签单编号"信内20150709000005"
+2015/7/11 13:30:48	Success	10.0.62.182:7522获取会签单信内20150709000005成功
+2015/7/11 13:30:56	Information	正在与10.0.62.182 : 7522进行数据传输...
+2015/7/11 13:30:56	Information	接收了43个数据单元
+2015/7/11 13:30:56	Information	接收到的数据 GET_HDJCONTRACT_REQUEST~16~"20150702000001", 大小43
+2015/7/11 13:30:56	Information	接收到来自10.0.62.182:7522待获取的会签单编号"20150702000001"
+2015/7/11 13:30:56	Success	10.0.62.182:7522获取会签单20150702000001成功
+2015/7/11 13:31:04	Information	正在与10.0.62.182 : 7522进行数据传输...
+2015/7/11 13:31:04	Information	接收了43个数据单元
+2015/7/11 13:31:04	Information	接收到的数据 GET_HDJCONTRACT_REQUEST~16~"20150707000008", 大小43
+2015/7/11 13:31:04	Information	接收到来自10.0.62.182:7522待获取的会签单编号"20150707000008"
+2015/7/11 13:31:04	Success	10.0.62.182:7522获取会签单20150707000008成功
+2015/7/11 13:31:08	Information	正在与10.0.62.182 : 7522进行数据传输...
+2015/7/11 13:31:08	Information	接收了58个数据单元
+2015/7/11 13:31:08	Information	接收到的数据 GET_HDJCONTRACT_REQUEST~21~"编号前缀：20150709000002", 大小48
+2015/7/11 13:31:08	Information	接收到来自10.0.62.182:7522待获取的会签单编号"编号前缀：20150709000002"
+2015/7/11 13:31:08	Success	10.0.62.182:7522获取会签单编号前缀：20150709000002成功
+2015/7/11 13:31:10	Information	正在与10.0.62.182 : 7522进行数据传输...
+2015/7/11 13:31:10	Information	接收了122个数据单元
+2015/7/11 13:31:10	Information	接收到的数据 INSERT_SIGN_DETAIL_REQUEST~78~{"Date":null,"EmpId":2,"ConId":"编号前缀：20150709000002","Result":1,"Remark":"未填"}, 大小108
+2015/7/11 13:31:10	Information	接收到来自10.0.62.182:7522的进行签字确认的请求{"Date":null,"EmpId":2,"ConId":"编号前缀：20150709000002","Result":1,"Remark":"未填"}
+2015/7/11 13:31:10	Information	10.0.62.182:7522的进行签字确认的请求
+2015/7/11 13:31:10	Success	来自10.0.62.182:7522的签字确认成功
+2015/7/11 13:31:10	Information	正在与10.0.62.182 : 7522进行数据传输...
+2015/7/11 13:31:10	Information	接收了33个数据单元
+2015/7/11 13:31:10	Information	接收到的数据 QUERY_UNSIGN_CONTRACT_REQUEST~1~2, 大小33
+2015/7/11 13:31:10	Information	接收到来自10.0.62.182:7522查询待签字的会签单信息2
+2015/7/11 13:31:10	Information	10.0.62.182:7522查询到的了所有查询待签字的的会签单
+2015/7/11 13:31:10	Success	10.0.62.182:7522查询待签字的会签单信息查询成功
+2015/7/11 13:40:06	Information	正在与10.0.62.182 : 7522进行数据传输...
+2015/7/11 13:40:06	Information	接收了27个数据单元
+2015/7/11 13:40:06	Information	接收到的数据 QUERY_SIGN_PEND_REQUEST~1~2, 大小27
+2015/7/11 13:40:06	Information	接收到来自10.0.62.182:7522查询正在审核中的会签单模版信息2
+2015/7/11 13:40:07	Information	10.0.62.182:7522查询到的了所有正在审核中的会签单
+2015/7/11 13:40:07	Success	10.0.62.182:7522会签单模版信息信息查询成功
+2015/7/11 13:40:07	Information	正在与10.0.62.182 : 7522进行数据传输...
+2015/7/11 13:40:07	Information	接收了62个数据单元
+2015/7/11 13:40:07	Information	接收到的数据 QUERY_UNSIGN_CONTRACT_REQUEST~1~2QUERY_SIGN_REFUSE_REQUEST~1~2, 大小62
+2015/7/11 13:40:07	Information	接收到来自10.0.62.182:7522查询待签字的会签单信息2
+2015/7/11 13:40:07	Information	10.0.62.182:7522查询到的了所有查询待签字的的会签单
+2015/7/11 13:40:07	Success	10.0.62.182:7522查询待签字的会签单信息查询成功
+2015/7/11 13:40:07	Information	接收到来自10.0.62.182:7522查询被拒绝的会签单模版信息2
+2015/7/11 13:40:07	Information	10.0.62.182:7522查询到的了所有被拒绝的会签单
+2015/7/11 13:40:07	Success	10.0.62.182:7522被拒绝会签单信息查询成功
+2015/7/11 13:40:07	Information	正在与10.0.62.182 : 7522进行数据传输...
+2015/7/11 13:40:07	Information	接收了30个数据单元
+2015/7/11 13:40:07	Information	接收到的数据 QUERY_AGREE_UNDOWN_REQUEST~1~2, 大小30
+2015/7/11 13:40:07	Information	接收到来自10.0.62.182:7522的查询未被下载的已通过的会签单模版信息2
+2015/7/11 13:40:07	Information	10.0.62.182:7522查询未被下载的已通过的会签单模版信息
+2015/7/11 13:40:07	Success	10.0.62.182:7522查询未被下载的已通过的会签单模版信息
+2015/7/11 14:00:06	Information	正在与10.0.62.182 : 7522进行数据传输...
+2015/7/11 14:00:06	Information	接收了33个数据单元
+2015/7/11 14:00:06	Information	接收到的数据 QUERY_UNSIGN_CONTRACT_REQUEST~1~2, 大小33
+2015/7/11 14:00:06	Information	接收到来自10.0.62.182:7522查询待签字的会签单信息2
+2015/7/11 14:00:07	Information	10.0.62.182:7522查询到的了所有查询待签字的的会签单
+2015/7/11 14:00:07	Success	10.0.62.182:7522查询待签字的会签单信息查询成功
+2015/7/11 14:00:26	Information	正在与10.0.62.182 : 7522进行数据传输...
+2015/7/11 14:00:26	Information	接收了43个数据单元
+2015/7/11 14:00:26	Information	接收到的数据 GET_HDJCONTRACT_REQUEST~16~"20150707000008", 大小43
+2015/7/11 14:00:26	Information	接收到来自10.0.62.182:7522待获取的会签单编号"20150707000008"
+2015/7/11 14:00:26	Success	10.0.62.182:7522获取会签单20150707000008成功
+2015/7/11 14:00:32	Information	正在与10.0.62.182 : 7522进行数据传输...
+2015/7/11 14:00:32	Information	接收了43个数据单元
+2015/7/11 14:00:32	Information	接收到的数据 GET_HDJCONTRACT_REQUEST~16~"20150707000008", 大小43
+2015/7/11 14:00:32	Information	接收到来自10.0.62.182:7522待获取的会签单编号"20150707000008"
+2015/7/11 14:00:32	Success	10.0.62.182:7522获取会签单20150707000008成功
+2015/7/11 14:10:06	Information	正在与10.0.62.182 : 7522进行数据传输...
+2015/7/11 14:10:06	Information	接收了27个数据单元
+2015/7/11 14:10:06	Information	接收到的数据 QUERY_SIGN_PEND_REQUEST~1~2, 大小27
+2015/7/11 14:10:06	Information	接收到来自10.0.62.182:7522查询正在审核中的会签单模版信息2
+2015/7/11 14:10:07	Information	10.0.62.182:7522查询到的了所有正在审核中的会签单
+2015/7/11 14:10:07	Success	10.0.62.182:7522会签单模版信息信息查询成功
+2015/7/11 14:10:36	Information	正在与10.0.62.182 : 7522进行数据传输...
+2015/7/11 14:10:36	Exception	System.Net.Sockets.SocketException (0x80004005): 您的主机中的软件中止了一个已建立的连接。
+   在 System.Net.Sockets.Socket.EndReceive(IAsyncResult asyncResult)
+   在 SignPressServer.SignSocket.AsyncSocket.AsyncSocketServer.HandleDataReceived(IAsyncResult ar) 位置 g:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressServer\SignSocket\AsyncSocket\AsyncSocketServer.cs:行号 469
+2015/7/11 14:10:36	Error	客户端终止，关闭了客户端, 当前连接的客户端数目0
+2015/7/11 15:24:12	Information	正在与10.0.62.182 : 55359进行数据传输...
+2015/7/11 15:24:12	Information	接收了64个数据单元
+2015/7/11 15:24:12	Information	接收到的数据 LOGIN_REQUEST~47~{"Username":"chengjian","Password":"chengjian"}, 大小64
+2015/7/11 15:24:12	Information	接收到来自10.0.62.182:55359的登录信息{"Username":"chengjian","Password":"chengjian"}
+2015/7/11 15:24:13	Success	USERNAME : chengjian, PASSWORD : chengjian用户名密码均正确，可以登录
+2015/7/11 15:24:14	Information	正在与10.0.62.182 : 55360进行数据传输...
+2015/7/11 15:24:14	Information	接收了33个数据单元
+2015/7/11 15:24:14	Information	接收到的数据 QUERY_UNSIGN_CONTRACT_REQUEST~1~1, 大小33
+2015/7/11 15:24:14	Information	接收到来自10.0.62.182:55360查询待签字的会签单信息1
+2015/7/11 15:24:14	Information	10.0.62.182:55360查询到的了所有查询待签字的的会签单
+2015/7/11 15:24:14	Success	10.0.62.182:55360查询待签字的会签单信息查询成功
+2015/7/11 15:24:14	Information	正在与10.0.62.182 : 55360进行数据传输...
+2015/7/11 15:24:14	Information	接收了27个数据单元
+2015/7/11 15:24:14	Information	接收到的数据 QUERY_SIGN_PEND_REQUEST~1~1, 大小27
+2015/7/11 15:24:14	Information	接收到来自10.0.62.182:55360查询正在审核中的会签单模版信息1
+2015/7/11 15:24:14	Information	10.0.62.182:55360查询到的了所有正在审核中的会签单
+2015/7/11 15:24:14	Success	10.0.62.182:55360会签单模版信息信息查询成功
+2015/7/11 15:24:14	Information	正在与10.0.62.182 : 55360进行数据传输...
+2015/7/11 15:24:14	Information	接收了27个数据单元
+2015/7/11 15:24:14	Information	接收到的数据 QUERY_SIGN_PEND_REQUEST~1~1, 大小27
+2015/7/11 15:24:14	Information	接收到来自10.0.62.182:55360查询正在审核中的会签单模版信息1
+2015/7/11 15:24:14	Information	10.0.62.182:55360查询到的了所有正在审核中的会签单
+2015/7/11 15:24:14	Success	10.0.62.182:55360会签单模版信息信息查询成功
+2015/7/11 15:24:14	Information	正在与10.0.62.182 : 55360进行数据传输...
+2015/7/11 15:24:14	Information	接收了33个数据单元
+2015/7/11 15:24:14	Information	接收到的数据 QUERY_UNSIGN_CONTRACT_REQUEST~1~1, 大小33
+2015/7/11 15:24:14	Information	接收到来自10.0.62.182:55360查询待签字的会签单信息1
+2015/7/11 15:24:14	Information	10.0.62.182:55360查询到的了所有查询待签字的的会签单
+2015/7/11 15:24:14	Success	10.0.62.182:55360查询待签字的会签单信息查询成功
+2015/7/11 15:24:14	Information	正在与10.0.62.182 : 55360进行数据传输...
+2015/7/11 15:24:14	Information	接收了29个数据单元
+2015/7/11 15:24:14	Information	接收到的数据 QUERY_SIGN_REFUSE_REQUEST~1~1, 大小29
+2015/7/11 15:24:14	Information	接收到来自10.0.62.182:55360查询被拒绝的会签单模版信息1
+2015/7/11 15:24:14	Information	10.0.62.182:55360查询到的了所有被拒绝的会签单
+2015/7/11 15:24:14	Success	10.0.62.182:55360被拒绝会签单信息查询成功
+2015/7/11 15:24:14	Information	正在与10.0.62.182 : 55360进行数据传输...
+2015/7/11 15:24:14	Information	接收了30个数据单元
+2015/7/11 15:24:14	Information	接收到的数据 QUERY_AGREE_UNDOWN_REQUEST~1~1, 大小30
+2015/7/11 15:24:14	Information	接收到来自10.0.62.182:55360的查询未被下载的已通过的会签单模版信息1
+2015/7/11 15:24:14	Information	正在与10.0.62.182 : 55359进行数据传输...
+2015/7/11 15:24:14	Exception	System.Net.Sockets.SocketException (0x80004005): 远程主机强迫关闭了一个现有的连接。
+   在 System.Net.Sockets.Socket.EndReceive(IAsyncResult asyncResult)
+   在 SignPressServer.SignSocket.AsyncSocket.AsyncSocketServer.HandleDataReceived(IAsyncResult ar) 位置 g:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressServer\SignSocket\AsyncSocket\AsyncSocketServer.cs:行号 469
+2015/7/11 15:24:14	Error	客户端终止，关闭了客户端, 当前连接的客户端数目1
+2015/7/11 15:24:14	Information	10.0.62.182:55360查询未被下载的已通过的会签单模版信息
+2015/7/11 15:24:14	Success	10.0.62.182:55360查询未被下载的已通过的会签单模版信息
+2015/7/11 15:24:16	Information	正在与10.0.62.182 : 55360进行数据传输...
+2015/7/11 15:24:16	Information	接收了35个数据单元
+2015/7/11 15:24:16	Information	接收到的数据 QUERY_CONTRACT_TEMPLATE_REQUEST~1~0, 大小35
+2015/7/11 15:24:16	Information	接收到来自10.0.62.182:55360查询会签单模版信息0
+2015/7/11 15:24:16	Information	10.0.62.182:55360查询到的了所有的会签单
+2015/7/11 15:24:16	Success	10.0.62.182:55360会签单模版信息信息查询成功
+2015/7/11 15:24:16	Information	正在与10.0.62.182 : 55360进行数据传输...
+2015/7/11 15:24:16	Information	接收了33个数据单元
+2015/7/11 15:24:16	Information	接收到的数据 GET_CONTRACT_TEMPLATE_REQUEST~1~1, 大小33
+2015/7/11 15:24:16	Information	接收到来自10.0.62.182:55360待获取会签单模版编号1
+2015/7/11 15:24:16	Success	10.0.62.182:55360获取会签单模版1成功
+2015/7/11 15:24:16	Information	正在与10.0.62.182 : 55360进行数据传输...
+2015/7/11 15:24:16	Information	接收了30个数据单元
+2015/7/11 15:24:16	Information	接收到的数据 QUERY_AGREE_UNDOWN_REQUEST~1~1, 大小30
+2015/7/11 15:24:16	Information	接收到来自10.0.62.182:55360的查询未被下载的已通过的会签单模版信息1
+2015/7/11 15:24:16	Information	10.0.62.182:55360查询未被下载的已通过的会签单模版信息
+2015/7/11 15:24:16	Success	10.0.62.182:55360查询未被下载的已通过的会签单模版信息
+2015/7/11 15:25:39	Information	正在与10.0.62.182 : 55360进行数据传输...
+2015/7/11 15:25:39	Exception	System.Net.Sockets.SocketException (0x80004005): 远程主机强迫关闭了一个现有的连接。
+   在 System.Net.Sockets.Socket.EndReceive(IAsyncResult asyncResult)
+   在 SignPressServer.SignSocket.AsyncSocket.AsyncSocketServer.HandleDataReceived(IAsyncResult ar) 位置 g:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressServer\SignSocket\AsyncSocket\AsyncSocketServer.cs:行号 469
+2015/7/11 15:25:39	Error	客户端终止，关闭了客户端, 当前连接的客户端数目0
+2015/7/11 15:25:53	Information	正在与10.0.62.182 : 55382进行数据传输...
+2015/7/11 15:25:53	Information	接收了64个数据单元
+2015/7/11 15:25:53	Information	接收到的数据 LOGIN_REQUEST~47~{"Username":"chengjian","Password":"chengjian"}, 大小64
+2015/7/11 15:25:53	Information	接收到来自10.0.62.182:55382的登录信息{"Username":"chengjian","Password":"chengjian"}
+2015/7/11 15:25:53	Success	USERNAME : chengjian, PASSWORD : chengjian用户名密码均正确，可以登录
+2015/7/11 15:25:53	Information	正在与10.0.62.182 : 55385进行数据传输...
+2015/7/11 15:25:53	Information	接收了33个数据单元
+2015/7/11 15:25:53	Information	接收到的数据 QUERY_UNSIGN_CONTRACT_REQUEST~1~1, 大小33
+2015/7/11 15:25:53	Information	接收到来自10.0.62.182:55385查询待签字的会签单信息1
+2015/7/11 15:25:53	Information	10.0.62.182:55385查询到的了所有查询待签字的的会签单
+2015/7/11 15:25:53	Success	10.0.62.182:55385查询待签字的会签单信息查询成功
+2015/7/11 15:25:53	Information	正在与10.0.62.182 : 55385进行数据传输...
+2015/7/11 15:25:53	Information	接收了27个数据单元
+2015/7/11 15:25:53	Information	接收到的数据 QUERY_SIGN_PEND_REQUEST~1~1, 大小27
+2015/7/11 15:25:53	Information	接收到来自10.0.62.182:55385查询正在审核中的会签单模版信息1
+2015/7/11 15:25:53	Information	10.0.62.182:55385查询到的了所有正在审核中的会签单
+2015/7/11 15:25:53	Success	10.0.62.182:55385会签单模版信息信息查询成功
+2015/7/11 15:25:53	Information	正在与10.0.62.182 : 55385进行数据传输...
+2015/7/11 15:25:53	Information	接收了29个数据单元
+2015/7/11 15:25:53	Information	接收到的数据 QUERY_SIGN_REFUSE_REQUEST~1~1, 大小29
+2015/7/11 15:25:53	Information	接收到来自10.0.62.182:55385查询被拒绝的会签单模版信息1
+2015/7/11 15:25:53	Information	10.0.62.182:55385查询到的了所有被拒绝的会签单
+2015/7/11 15:25:53	Success	10.0.62.182:55385被拒绝会签单信息查询成功
+2015/7/11 15:25:53	Information	正在与10.0.62.182 : 55385进行数据传输...
+2015/7/11 15:25:53	Information	接收了30个数据单元
+2015/7/11 15:25:53	Information	接收到的数据 QUERY_AGREE_UNDOWN_REQUEST~1~1, 大小30
+2015/7/11 15:25:53	Information	接收到来自10.0.62.182:55385的查询未被下载的已通过的会签单模版信息1
+2015/7/11 15:25:53	Information	10.0.62.182:55385查询未被下载的已通过的会签单模版信息
+2015/7/11 15:25:53	Success	10.0.62.182:55385查询未被下载的已通过的会签单模版信息
+2015/7/11 15:26:04	Information	正在与10.0.62.182 : 55385进行数据传输...
+2015/7/11 15:26:04	Information	接收了28个数据单元
+2015/7/11 15:26:04	Information	接收到的数据 QUERY_DEPARTMENT_REQUEST~1~0, 大小28
+2015/7/11 15:26:04	Success	10.0.62.182:55385部门信息查询成功
+2015/7/11 15:26:04	Information	正在与10.0.62.182 : 55385进行数据传输...
+2015/7/11 15:26:04	Information	接收了26个数据单元
+2015/7/11 15:26:04	Information	接收到的数据 QUERY_EMPLOYEE_REQUEST~1~0, 大小26
+2015/7/11 15:26:04	Information	10.0.62.182:55385待查询的员工的编号 = 0
+2015/7/11 15:26:04	Information	10.0.62.182:55385查询到的部门编号为0的所有员工
+2015/7/11 15:26:04	Success	10.0.62.182:55385部门0的员工信息查询成功
+2015/7/11 15:26:04	Information	正在与10.0.62.182 : 55385进行数据传输...
+2015/7/11 15:26:04	Information	接收了35个数据单元
+2015/7/11 15:26:04	Information	接收到的数据 QUERY_CONTRACT_TEMPLATE_REQUEST~1~0, 大小35
+2015/7/11 15:26:04	Information	接收到来自10.0.62.182:55385查询会签单模版信息0
+2015/7/11 15:26:04	Information	10.0.62.182:55385查询到的了所有的会签单
+2015/7/11 15:26:04	Success	10.0.62.182:55385会签单模版信息信息查询成功
+2015/7/11 15:26:04	Information	正在与10.0.62.182 : 55382进行数据传输...
+2015/7/11 15:26:04	Exception	System.Net.Sockets.SocketException (0x80004005): 远程主机强迫关闭了一个现有的连接。
+   在 System.Net.Sockets.Socket.EndReceive(IAsyncResult asyncResult)
+   在 SignPressServer.SignSocket.AsyncSocket.AsyncSocketServer.HandleDataReceived(IAsyncResult ar) 位置 g:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressServer\SignSocket\AsyncSocket\AsyncSocketServer.cs:行号 469
+2015/7/11 15:26:04	Error	客户端终止，关闭了客户端, 当前连接的客户端数目1
+2015/7/11 15:26:10	Information	正在与10.0.62.182 : 55385进行数据传输...
+2015/7/11 15:26:10	Information	接收了33个数据单元
+2015/7/11 15:26:10	Information	接收到的数据 GET_CONTRACT_TEMPLATE_REQUEST~1~1, 大小33
+2015/7/11 15:26:10	Information	接收到来自10.0.62.182:55385待获取会签单模版编号1
+2015/7/11 15:26:10	Success	10.0.62.182:55385获取会签单模版1成功
+2015/7/11 15:26:10	Information	正在与10.0.62.182 : 55385进行数据传输...
+2015/7/11 15:26:10	Information	接收了30个数据单元
+2015/7/11 15:26:10	Information	接收到的数据 QUERY_AGREE_UNDOWN_REQUEST~1~1, 大小30
+2015/7/11 15:26:10	Information	接收到来自10.0.62.182:55385的查询未被下载的已通过的会签单模版信息1
+2015/7/11 15:26:10	Information	10.0.62.182:55385查询未被下载的已通过的会签单模版信息
+2015/7/11 15:26:10	Success	10.0.62.182:55385查询未被下载的已通过的会签单模版信息
+2015/7/11 15:26:27	Information	正在与10.0.62.182 : 55385进行数据传输...
+2015/7/11 15:26:27	Information	接收了27个数据单元
+2015/7/11 15:26:27	Information	接收到的数据 DELETE_EMPLOYEE_REQUEST~1~8, 大小27
+2015/7/11 15:26:27	Information	接收到来自10.0.62.182:55385待删除员工信息8
+2015/7/11 15:26:28	Information	正在与10.0.62.182 : 55385进行数据传输...
+2015/7/11 15:26:28	Information	接收了26个数据单元
+2015/7/11 15:26:28	Information	接收到的数据 QUERY_EMPLOYEE_REQUEST~1~0, 大小26
+2015/7/11 15:26:28	Information	10.0.62.182:55385待查询的员工的编号 = 0
+2015/7/11 15:26:28	Information	10.0.62.182:55385查询到的部门编号为0的所有员工
+2015/7/11 15:26:28	Success	10.0.62.182:55385部门0的员工信息查询成功
+2015/7/11 15:27:13	Information	正在与10.0.62.182 : 55385进行数据传输...
+2015/7/11 15:27:13	Information	接收了33个数据单元
+2015/7/11 15:27:13	Information	接收到的数据 GET_CONTRACT_TEMPLATE_REQUEST~1~1, 大小33
+2015/7/11 15:27:13	Information	接收到来自10.0.62.182:55385待获取会签单模版编号1
+2015/7/11 15:27:13	Success	10.0.62.182:55385获取会签单模版1成功
+2015/7/11 15:27:31	Information	正在与10.0.62.182 : 55385进行数据传输...
+2015/7/11 15:27:31	Information	接收了43个数据单元
+2015/7/11 15:27:31	Information	接收到的数据 GET_HDJCONTRACT_REQUEST~16~"20150707000020", 大小43
+2015/7/11 15:27:31	Information	接收到来自10.0.62.182:55385待获取的会签单编号"20150707000020"
+2015/7/11 15:27:31	Success	10.0.62.182:55385获取会签单20150707000020成功
+2015/7/11 15:27:34	Information	正在与10.0.62.182 : 55385进行数据传输...
+2015/7/11 15:27:34	Information	接收了43个数据单元
+2015/7/11 15:27:34	Information	接收到的数据 GET_HDJCONTRACT_REQUEST~16~"20150709000001", 大小43
+2015/7/11 15:27:34	Information	接收到来自10.0.62.182:55385待获取的会签单编号"20150709000001"
+2015/7/11 15:27:34	Success	10.0.62.182:55385获取会签单20150709000001成功
+2015/7/11 15:27:36	Information	正在与10.0.62.182 : 55385进行数据传输...
+2015/7/11 15:27:36	Information	接收了49个数据单元
+2015/7/11 15:27:36	Information	接收到的数据 GET_HDJCONTRACT_REQUEST~18~"信内20150709000005", 大小45
+2015/7/11 15:27:36	Information	接收到来自10.0.62.182:55385待获取的会签单编号"信内20150709000005"
+2015/7/11 15:27:36	Success	10.0.62.182:55385获取会签单信内20150709000005成功
+2015/7/11 15:27:38	Information	正在与10.0.62.182 : 55385进行数据传输...
+2015/7/11 15:27:38	Information	接收了58个数据单元
+2015/7/11 15:27:38	Information	接收到的数据 GET_HDJCONTRACT_REQUEST~21~"编号前缀：20150709000002", 大小48
+2015/7/11 15:27:38	Information	接收到来自10.0.62.182:55385待获取的会签单编号"编号前缀：20150709000002"
+2015/7/11 15:27:38	Success	10.0.62.182:55385获取会签单编号前缀：20150709000002成功
+2015/7/11 15:28:27	Information	正在与10.0.62.182 : 55385进行数据传输...
+2015/7/11 15:28:27	Information	接收了29个数据单元
+2015/7/11 15:28:27	Information	接收到的数据 QUERY_SIGN_REFUSE_REQUEST~1~1, 大小29
+2015/7/11 15:28:27	Information	接收到来自10.0.62.182:55385查询被拒绝的会签单模版信息1
+2015/7/11 15:28:27	Information	10.0.62.182:55385查询到的了所有被拒绝的会签单
+2015/7/11 15:28:27	Success	10.0.62.182:55385被拒绝会签单信息查询成功
+2015/7/11 15:28:28	Information	正在与10.0.62.182 : 55385进行数据传输...
+2015/7/11 15:28:28	Information	接收了29个数据单元
+2015/7/11 15:28:28	Information	接收到的数据 QUERY_SIGN_REFUSE_REQUEST~1~1, 大小29
+2015/7/11 15:28:28	Information	接收到来自10.0.62.182:55385查询被拒绝的会签单模版信息1
+2015/7/11 15:28:28	Information	10.0.62.182:55385查询到的了所有被拒绝的会签单
+2015/7/11 15:28:28	Success	10.0.62.182:55385被拒绝会签单信息查询成功
+2015/7/11 15:29:17	Information	正在与10.0.62.182 : 55385进行数据传输...
+2015/7/11 15:29:17	Information	接收了43个数据单元
+2015/7/11 15:29:17	Information	接收到的数据 GET_HDJCONTRACT_REQUEST~16~"20150709000001", 大小43
+2015/7/11 15:29:17	Information	接收到来自10.0.62.182:55385待获取的会签单编号"20150709000001"
+2015/7/11 15:29:17	Success	10.0.62.182:55385获取会签单20150709000001成功
+2015/7/11 15:29:19	Information	正在与10.0.62.182 : 55385进行数据传输...
+2015/7/11 15:29:19	Information	接收了49个数据单元
+2015/7/11 15:29:19	Information	接收到的数据 GET_HDJCONTRACT_REQUEST~18~"信内20150709000005", 大小45
+2015/7/11 15:29:19	Information	接收到来自10.0.62.182:55385待获取的会签单编号"信内20150709000005"
+2015/7/11 15:29:19	Success	10.0.62.182:55385获取会签单信内20150709000005成功
+2015/7/11 15:29:45	Information	正在与10.0.62.182 : 55385进行数据传输...
+2015/7/11 15:29:45	Information	接收了27个数据单元
+2015/7/11 15:29:45	Information	接收到的数据 DELETE_EMPLOYEE_REQUEST~1~2, 大小27
+2015/7/11 15:29:45	Information	接收到来自10.0.62.182:55385待删除员工信息2
+2015/7/11 15:29:45	Information	正在与10.0.62.182 : 55385进行数据传输...
+2015/7/11 15:29:45	Information	接收了26个数据单元
+2015/7/11 15:29:45	Information	接收到的数据 QUERY_EMPLOYEE_REQUEST~1~0, 大小26
+2015/7/11 15:29:45	Information	10.0.62.182:55385待查询的员工的编号 = 0
+2015/7/11 15:29:45	Information	10.0.62.182:55385查询到的部门编号为0的所有员工
+2015/7/11 15:29:45	Success	10.0.62.182:55385部门0的员工信息查询成功
+2015/7/11 15:29:50	Information	正在与10.0.62.182 : 55385进行数据传输...
+2015/7/11 15:29:50	Information	接收了29个数据单元
+2015/7/11 15:29:50	Information	接收到的数据 DELETE_DEPARTMENT_REQUEST~1~7, 大小29
+2015/7/11 15:29:50	Information	接收到来自10.0.62.182:55385的待删除的部门编号7
+2015/7/11 15:29:50	Success	部门7删除成功
+2015/7/11 15:29:51	Information	正在与10.0.62.182 : 55385进行数据传输...
+2015/7/11 15:29:51	Information	接收了28个数据单元
+2015/7/11 15:29:51	Information	接收到的数据 QUERY_DEPARTMENT_REQUEST~1~0, 大小28
+2015/7/11 15:29:51	Success	10.0.62.182:55385部门信息查询成功
+2015/7/11 15:29:51	Information	正在与10.0.62.182 : 55385进行数据传输...
+2015/7/11 15:29:51	Information	接收了26个数据单元
+2015/7/11 15:29:51	Information	接收到的数据 QUERY_EMPLOYEE_REQUEST~1~0, 大小26
+2015/7/11 15:29:51	Information	10.0.62.182:55385待查询的员工的编号 = 0
+2015/7/11 15:29:51	Information	10.0.62.182:55385查询到的部门编号为0的所有员工
+2015/7/11 15:29:51	Success	10.0.62.182:55385部门0的员工信息查询成功
+2015/7/11 15:29:53	Information	正在与10.0.62.182 : 55385进行数据传输...
+2015/7/11 15:29:53	Information	接收了29个数据单元
+2015/7/11 15:29:53	Information	接收到的数据 DELETE_DEPARTMENT_REQUEST~1~6, 大小29
+2015/7/11 15:29:53	Information	接收到来自10.0.62.182:55385的待删除的部门编号6
+2015/7/11 15:29:53	Success	部门6删除成功
+2015/7/11 15:29:54	Information	正在与10.0.62.182 : 55385进行数据传输...
+2015/7/11 15:29:54	Information	接收了28个数据单元
+2015/7/11 15:29:54	Information	接收到的数据 QUERY_DEPARTMENT_REQUEST~1~0, 大小28
+2015/7/11 15:29:54	Success	10.0.62.182:55385部门信息查询成功
+2015/7/11 15:29:54	Information	正在与10.0.62.182 : 55385进行数据传输...
+2015/7/11 15:29:54	Information	接收了26个数据单元
+2015/7/11 15:29:54	Information	接收到的数据 QUERY_EMPLOYEE_REQUEST~1~0, 大小26
+2015/7/11 15:29:54	Information	10.0.62.182:55385待查询的员工的编号 = 0
+2015/7/11 15:29:54	Information	10.0.62.182:55385查询到的部门编号为0的所有员工
+2015/7/11 15:29:54	Success	10.0.62.182:55385部门0的员工信息查询成功
+2015/7/11 15:29:55	Information	正在与10.0.62.182 : 55385进行数据传输...
+2015/7/11 15:29:55	Information	接收了29个数据单元
+2015/7/11 15:29:55	Information	接收到的数据 DELETE_DEPARTMENT_REQUEST~1~5, 大小29
+2015/7/11 15:29:55	Information	接收到来自10.0.62.182:55385的待删除的部门编号5
+2015/7/11 15:29:58	Information	正在与10.0.62.182 : 55385进行数据传输...
+2015/7/11 15:29:58	Information	接收了29个数据单元
+2015/7/11 15:29:58	Information	接收到的数据 DELETE_DEPARTMENT_REQUEST~1~4, 大小29
+2015/7/11 15:29:58	Information	接收到来自10.0.62.182:55385的待删除的部门编号4
+2015/7/11 15:30:00	Information	正在与10.0.62.182 : 55385进行数据传输...
+2015/7/11 15:30:00	Information	接收了29个数据单元
+2015/7/11 15:30:00	Information	接收到的数据 DELETE_DEPARTMENT_REQUEST~1~5, 大小29
+2015/7/11 15:30:00	Information	接收到来自10.0.62.182:55385的待删除的部门编号5
+2015/7/11 15:30:57	Information	正在与10.0.62.182 : 55385进行数据传输...
+2015/7/11 15:30:57	Information	接收了43个数据单元
+2015/7/11 15:30:57	Information	接收到的数据 GET_HDJCONTRACT_REQUEST~16~"20150707000020", 大小43
+2015/7/11 15:30:57	Information	接收到来自10.0.62.182:55385待获取的会签单编号"20150707000020"
+2015/7/11 15:30:57	Success	10.0.62.182:55385获取会签单20150707000020成功
+2015/7/11 15:30:59	Information	正在与10.0.62.182 : 55385进行数据传输...
+2015/7/11 15:30:59	Information	接收了58个数据单元
+2015/7/11 15:30:59	Information	接收到的数据 GET_HDJCONTRACT_REQUEST~21~"编号前缀：20150709000002", 大小48
+2015/7/11 15:30:59	Information	接收到来自10.0.62.182:55385待获取的会签单编号"编号前缀：20150709000002"
+2015/7/11 15:30:59	Success	10.0.62.182:55385获取会签单编号前缀：20150709000002成功
+2015/7/11 15:31:02	Information	正在与10.0.62.182 : 55385进行数据传输...
+2015/7/11 15:31:02	Information	接收了49个数据单元
+2015/7/11 15:31:02	Information	接收到的数据 GET_HDJCONTRACT_REQUEST~18~"信内20150709000005", 大小45
+2015/7/11 15:31:02	Information	接收到来自10.0.62.182:55385待获取的会签单编号"信内20150709000005"
+2015/7/11 15:31:02	Success	10.0.62.182:55385获取会签单信内20150709000005成功
+2015/7/11 15:31:04	Information	正在与10.0.62.182 : 55385进行数据传输...
+2015/7/11 15:31:04	Information	接收了43个数据单元
+2015/7/11 15:31:04	Information	接收到的数据 GET_HDJCONTRACT_REQUEST~16~"20150709000004", 大小43
+2015/7/11 15:31:04	Information	接收到来自10.0.62.182:55385待获取的会签单编号"20150709000004"
+2015/7/11 15:31:04	Success	10.0.62.182:55385获取会签单20150709000004成功
+2015/7/11 15:31:06	Information	正在与10.0.62.182 : 55385进行数据传输...
+2015/7/11 15:31:06	Information	接收了43个数据单元
+2015/7/11 15:31:06	Information	接收到的数据 GET_HDJCONTRACT_REQUEST~16~"20150709000001", 大小43
+2015/7/11 15:31:06	Information	接收到来自10.0.62.182:55385待获取的会签单编号"20150709000001"
+2015/7/11 15:31:06	Success	10.0.62.182:55385获取会签单20150709000001成功
+2015/7/11 15:31:10	Information	正在与10.0.62.182 : 55385进行数据传输...
+2015/7/11 15:31:10	Information	接收了43个数据单元
+2015/7/11 15:31:10	Information	接收到的数据 GET_HDJCONTRACT_REQUEST~16~"20150709000004", 大小43
+2015/7/11 15:31:10	Information	接收到来自10.0.62.182:55385待获取的会签单编号"20150709000004"
+2015/7/11 15:31:10	Success	10.0.62.182:55385获取会签单20150709000004成功
+2015/7/11 15:31:13	Information	正在与10.0.62.182 : 55385进行数据传输...
+2015/7/11 15:31:13	Information	接收了43个数据单元
+2015/7/11 15:31:13	Information	接收到的数据 GET_HDJCONTRACT_REQUEST~16~"20150626140534", 大小43
+2015/7/11 15:31:13	Information	接收到来自10.0.62.182:55385待获取的会签单编号"20150626140534"
+2015/7/11 15:31:13	Success	10.0.62.182:55385获取会签单20150626140534成功
+2015/7/11 15:31:15	Information	正在与10.0.62.182 : 55385进行数据传输...
+2015/7/11 15:31:15	Information	接收了43个数据单元
+2015/7/11 15:31:15	Information	接收到的数据 GET_HDJCONTRACT_REQUEST~16~"20150701000002", 大小43
+2015/7/11 15:31:15	Information	接收到来自10.0.62.182:55385待获取的会签单编号"20150701000002"
+2015/7/11 15:31:15	Success	10.0.62.182:55385获取会签单20150701000002成功
+2015/7/11 15:31:26	Information	正在与10.0.62.182 : 55385进行数据传输...
+2015/7/11 15:31:26	Information	接收了43个数据单元
+2015/7/11 15:31:26	Information	接收到的数据 GET_HDJCONTRACT_REQUEST~16~"20150705000009", 大小43
+2015/7/11 15:31:26	Information	接收到来自10.0.62.182:55385待获取的会签单编号"20150705000009"
+2015/7/11 15:31:26	Success	10.0.62.182:55385获取会签单20150705000009成功
+2015/7/11 15:31:31	Information	正在与10.0.62.182 : 55385进行数据传输...
+2015/7/11 15:31:31	Exception	System.Net.Sockets.SocketException (0x80004005): 远程主机强迫关闭了一个现有的连接。
+   在 System.Net.Sockets.Socket.EndReceive(IAsyncResult asyncResult)
+   在 SignPressServer.SignSocket.AsyncSocket.AsyncSocketServer.HandleDataReceived(IAsyncResult ar) 位置 g:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressServer\SignSocket\AsyncSocket\AsyncSocketServer.cs:行号 469
+2015/7/11 15:31:31	Error	客户端终止，关闭了客户端, 当前连接的客户端数目0
+2015/7/11 15:32:13	Information	正在与10.0.62.182 : 55522进行数据传输...
+2015/7/11 15:32:13	Information	接收了64个数据单元
+2015/7/11 15:32:13	Information	接收到的数据 LOGIN_REQUEST~47~{"Username":"chengjian","Password":"chengjian"}, 大小64
+2015/7/11 15:32:13	Information	接收到来自10.0.62.182:55522的登录信息{"Username":"chengjian","Password":"chengjian"}
+2015/7/11 15:32:13	Success	USERNAME : chengjian, PASSWORD : chengjian用户名密码均正确，可以登录
+2015/7/11 15:32:14	Information	正在与10.0.62.182 : 55523进行数据传输...
+2015/7/11 15:32:14	Information	接收了33个数据单元
+2015/7/11 15:32:14	Information	接收到的数据 QUERY_UNSIGN_CONTRACT_REQUEST~1~1, 大小33
+2015/7/11 15:32:14	Information	接收到来自10.0.62.182:55523查询待签字的会签单信息1
+2015/7/11 15:32:14	Information	10.0.62.182:55523查询到的了所有查询待签字的的会签单
+2015/7/11 15:32:14	Success	10.0.62.182:55523查询待签字的会签单信息查询成功
+2015/7/11 15:32:14	Information	正在与10.0.62.182 : 55523进行数据传输...
+2015/7/11 15:32:14	Information	接收了27个数据单元
+2015/7/11 15:32:14	Information	接收到的数据 QUERY_SIGN_PEND_REQUEST~1~1, 大小27
+2015/7/11 15:32:14	Information	接收到来自10.0.62.182:55523查询正在审核中的会签单模版信息1
+2015/7/11 15:32:14	Information	10.0.62.182:55523查询到的了所有正在审核中的会签单
+2015/7/11 15:32:14	Success	10.0.62.182:55523会签单模版信息信息查询成功
+2015/7/11 15:32:14	Information	正在与10.0.62.182 : 55523进行数据传输...
+2015/7/11 15:32:14	Information	接收了29个数据单元
+2015/7/11 15:32:14	Information	接收到的数据 QUERY_SIGN_REFUSE_REQUEST~1~1, 大小29
+2015/7/11 15:32:14	Information	接收到来自10.0.62.182:55523查询被拒绝的会签单模版信息1
+2015/7/11 15:32:14	Information	10.0.62.182:55523查询到的了所有被拒绝的会签单
+2015/7/11 15:32:14	Success	10.0.62.182:55523被拒绝会签单信息查询成功
+2015/7/11 15:32:14	Information	正在与10.0.62.182 : 55523进行数据传输...
+2015/7/11 15:32:14	Information	接收了30个数据单元
+2015/7/11 15:32:14	Information	接收到的数据 QUERY_AGREE_UNDOWN_REQUEST~1~1, 大小30
+2015/7/11 15:32:14	Information	接收到来自10.0.62.182:55523的查询未被下载的已通过的会签单模版信息1
+2015/7/11 15:32:14	Information	10.0.62.182:55523查询未被下载的已通过的会签单模版信息
+2015/7/11 15:32:14	Success	10.0.62.182:55523查询未被下载的已通过的会签单模版信息
+2015/7/11 15:32:26	Information	正在与10.0.62.182 : 55522进行数据传输...
+2015/7/11 15:32:26	Information	正在与10.0.62.182 : 55523进行数据传输...
+2015/7/11 15:32:26	Exception	System.Net.Sockets.SocketException (0x80004005): 远程主机强迫关闭了一个现有的连接。
+   在 System.Net.Sockets.Socket.EndReceive(IAsyncResult asyncResult)
+   在 SignPressServer.SignSocket.AsyncSocket.AsyncSocketServer.HandleDataReceived(IAsyncResult ar) 位置 g:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressServer\SignSocket\AsyncSocket\AsyncSocketServer.cs:行号 469
+2015/7/11 15:32:26	Error	客户端终止，关闭了客户端, 当前连接的客户端数目1
+2015/7/11 15:32:26	Exception	System.Net.Sockets.SocketException (0x80004005): 远程主机强迫关闭了一个现有的连接。
+   在 System.Net.Sockets.Socket.EndReceive(IAsyncResult asyncResult)
+   在 SignPressServer.SignSocket.AsyncSocket.AsyncSocketServer.HandleDataReceived(IAsyncResult ar) 位置 g:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressServer\SignSocket\AsyncSocket\AsyncSocketServer.cs:行号 469
+2015/7/11 15:32:26	Error	客户端终止，关闭了客户端, 当前连接的客户端数目0
+2015/7/11 15:39:56	Information	正在与10.0.62.182 : 55704进行数据传输...
+2015/7/11 15:39:56	Information	接收了60个数据单元
+2015/7/11 15:39:56	Information	接收到的数据 LOGIN_REQUEST~43~{"Username":"shixiao","Password":"shixiao"}, 大小60
+2015/7/11 15:39:56	Information	接收到来自10.0.62.182:55704的登录信息{"Username":"shixiao","Password":"shixiao"}
+2015/7/11 15:39:57	Success	USERNAME : shixiao, PASSWORD : shixiao用户名密码均正确，可以登录
+2015/7/11 15:39:57	Information	正在与10.0.62.182 : 55706进行数据传输...
+2015/7/11 15:39:57	Information	接收了27个数据单元
+2015/7/11 15:39:57	Information	接收到的数据 QUERY_SIGN_PEND_REQUEST~1~2, 大小27
+2015/7/11 15:39:57	Information	接收到来自10.0.62.182:55706查询正在审核中的会签单模版信息2
+2015/7/11 15:39:57	Information	10.0.62.182:55706查询到的了所有正在审核中的会签单
+2015/7/11 15:39:57	Success	10.0.62.182:55706会签单模版信息信息查询成功
+2015/7/11 15:39:57	Information	正在与10.0.62.182 : 55706进行数据传输...
+2015/7/11 15:39:57	Information	接收了33个数据单元
+2015/7/11 15:39:57	Information	接收到的数据 QUERY_UNSIGN_CONTRACT_REQUEST~1~2, 大小33
+2015/7/11 15:39:57	Information	接收到来自10.0.62.182:55706查询待签字的会签单信息2
+2015/7/11 15:39:57	Information	正在与10.0.62.182 : 55704进行数据传输...
+2015/7/11 15:39:57	Exception	System.Net.Sockets.SocketException (0x80004005): 远程主机强迫关闭了一个现有的连接。
+   在 System.Net.Sockets.Socket.EndReceive(IAsyncResult asyncResult)
+   在 SignPressServer.SignSocket.AsyncSocket.AsyncSocketServer.HandleDataReceived(IAsyncResult ar) 位置 g:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressServer\SignSocket\AsyncSocket\AsyncSocketServer.cs:行号 469
+2015/7/11 15:39:57	Error	客户端终止，关闭了客户端, 当前连接的客户端数目1
+2015/7/11 15:39:57	Information	10.0.62.182:55706查询到的了所有查询待签字的的会签单
+2015/7/11 15:39:57	Success	10.0.62.182:55706查询待签字的会签单信息查询成功
+2015/7/11 15:39:57	Information	正在与10.0.62.182 : 55706进行数据传输...
+2015/7/11 15:39:57	Information	接收了29个数据单元
+2015/7/11 15:39:57	Information	接收到的数据 QUERY_SIGN_REFUSE_REQUEST~1~2, 大小29
+2015/7/11 15:39:57	Information	接收到来自10.0.62.182:55706查询被拒绝的会签单模版信息2
+2015/7/11 15:39:57	Information	10.0.62.182:55706查询到的了所有被拒绝的会签单
+2015/7/11 15:39:57	Success	10.0.62.182:55706被拒绝会签单信息查询成功
+2015/7/11 15:39:57	Information	正在与10.0.62.182 : 55706进行数据传输...
+2015/7/11 15:39:57	Information	接收了30个数据单元
+2015/7/11 15:39:57	Information	接收到的数据 QUERY_AGREE_UNDOWN_REQUEST~1~2, 大小30
+2015/7/11 15:39:57	Information	接收到来自10.0.62.182:55706的查询未被下载的已通过的会签单模版信息2
+2015/7/11 15:39:57	Information	10.0.62.182:55706查询未被下载的已通过的会签单模版信息
+2015/7/11 15:39:57	Success	10.0.62.182:55706查询未被下载的已通过的会签单模版信息
+2015/7/11 15:40:00	Information	正在与10.0.62.182 : 55706进行数据传输...
+2015/7/11 15:40:00	Exception	System.Net.Sockets.SocketException (0x80004005): 远程主机强迫关闭了一个现有的连接。
+   在 System.Net.Sockets.Socket.EndReceive(IAsyncResult asyncResult)
+   在 SignPressServer.SignSocket.AsyncSocket.AsyncSocketServer.HandleDataReceived(IAsyncResult ar) 位置 g:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressServer\SignSocket\AsyncSocket\AsyncSocketServer.cs:行号 469
+2015/7/11 15:40:00	Error	客户端终止，关闭了客户端, 当前连接的客户端数目0
+2015/7/11 15:40:15	Information	正在与10.0.62.182 : 55709进行数据传输...
+2015/7/11 15:40:15	Information	接收了60个数据单元
+2015/7/11 15:40:15	Information	接收到的数据 LOGIN_REQUEST~43~{"Username":"shixiao","Password":"shixiao"}, 大小60
+2015/7/11 15:40:15	Information	接收到来自10.0.62.182:55709的登录信息{"Username":"shixiao","Password":"shixiao"}
+2015/7/11 15:40:15	Success	USERNAME : shixiao, PASSWORD : shixiao用户名密码均正确，可以登录
+2015/7/11 15:40:15	Information	正在与10.0.62.182 : 55710进行数据传输...
+2015/7/11 15:40:15	Information	接收了33个数据单元
+2015/7/11 15:40:15	Information	接收到的数据 QUERY_UNSIGN_CONTRACT_REQUEST~1~2, 大小33
+2015/7/11 15:40:15	Information	接收到来自10.0.62.182:55710查询待签字的会签单信息2
+2015/7/11 15:40:15	Information	10.0.62.182:55710查询到的了所有查询待签字的的会签单
+2015/7/11 15:40:15	Success	10.0.62.182:55710查询待签字的会签单信息查询成功
+2015/7/11 15:40:15	Information	正在与10.0.62.182 : 55710进行数据传输...
+2015/7/11 15:40:15	Information	接收了27个数据单元
+2015/7/11 15:40:15	Information	接收到的数据 QUERY_SIGN_PEND_REQUEST~1~2, 大小27
+2015/7/11 15:40:15	Information	接收到来自10.0.62.182:55710查询正在审核中的会签单模版信息2
+2015/7/11 15:40:15	Information	10.0.62.182:55710查询到的了所有正在审核中的会签单
+2015/7/11 15:40:15	Success	10.0.62.182:55710会签单模版信息信息查询成功
+2015/7/11 15:40:15	Information	正在与10.0.62.182 : 55710进行数据传输...
+2015/7/11 15:40:15	Information	接收了27个数据单元
+2015/7/11 15:40:15	Information	接收到的数据 QUERY_SIGN_PEND_REQUEST~1~2, 大小27
+2015/7/11 15:40:15	Information	接收到来自10.0.62.182:55710查询正在审核中的会签单模版信息2
+2015/7/11 15:40:15	Information	10.0.62.182:55710查询到的了所有正在审核中的会签单
+2015/7/11 15:40:15	Success	10.0.62.182:55710会签单模版信息信息查询成功
+2015/7/11 15:40:15	Information	正在与10.0.62.182 : 55710进行数据传输...
+2015/7/11 15:40:15	Information	接收了33个数据单元
+2015/7/11 15:40:15	Information	接收到的数据 QUERY_UNSIGN_CONTRACT_REQUEST~1~2, 大小33
+2015/7/11 15:40:15	Information	接收到来自10.0.62.182:55710查询待签字的会签单信息2
+2015/7/11 15:40:15	Information	10.0.62.182:55710查询到的了所有查询待签字的的会签单
+2015/7/11 15:40:15	Success	10.0.62.182:55710查询待签字的会签单信息查询成功
+2015/7/11 15:40:15	Information	正在与10.0.62.182 : 55710进行数据传输...
+2015/7/11 15:40:15	Information	接收了29个数据单元
+2015/7/11 15:40:15	Information	接收到的数据 QUERY_SIGN_REFUSE_REQUEST~1~2, 大小29
+2015/7/11 15:40:15	Information	接收到来自10.0.62.182:55710查询被拒绝的会签单模版信息2
+2015/7/11 15:40:15	Information	10.0.62.182:55710查询到的了所有被拒绝的会签单
+2015/7/11 15:40:15	Success	10.0.62.182:55710被拒绝会签单信息查询成功
+2015/7/11 15:40:15	Information	正在与10.0.62.182 : 55710进行数据传输...
+2015/7/11 15:40:15	Information	接收了30个数据单元
+2015/7/11 15:40:15	Information	接收到的数据 QUERY_AGREE_UNDOWN_REQUEST~1~2, 大小30
+2015/7/11 15:40:15	Information	接收到来自10.0.62.182:55710的查询未被下载的已通过的会签单模版信息2
+2015/7/11 15:40:15	Information	10.0.62.182:55710查询未被下载的已通过的会签单模版信息
+2015/7/11 15:40:15	Success	10.0.62.182:55710查询未被下载的已通过的会签单模版信息
+2015/7/11 15:40:19	Information	正在与10.0.62.182 : 55710进行数据传输...
+2015/7/11 15:40:19	Information	接收了35个数据单元
+2015/7/11 15:40:19	Information	接收到的数据 QUERY_CONTRACT_TEMPLATE_REQUEST~1~0, 大小35
+2015/7/11 15:40:19	Information	接收到来自10.0.62.182:55710查询会签单模版信息0
+2015/7/11 15:40:19	Information	10.0.62.182:55710查询到的了所有的会签单
+2015/7/11 15:40:19	Success	10.0.62.182:55710会签单模版信息信息查询成功
+2015/7/11 15:40:19	Information	正在与10.0.62.182 : 55710进行数据传输...
+2015/7/11 15:40:19	Information	接收了33个数据单元
+2015/7/11 15:40:19	Information	接收到的数据 GET_CONTRACT_TEMPLATE_REQUEST~1~1, 大小33
+2015/7/11 15:40:19	Information	接收到来自10.0.62.182:55710待获取会签单模版编号1
+2015/7/11 15:40:19	Success	10.0.62.182:55710获取会签单模版1成功
+2015/7/11 15:40:19	Information	正在与10.0.62.182 : 55710进行数据传输...
+2015/7/11 15:40:19	Information	接收了30个数据单元
+2015/7/11 15:40:19	Information	接收到的数据 QUERY_AGREE_UNDOWN_REQUEST~1~2, 大小30
+2015/7/11 15:40:19	Information	接收到来自10.0.62.182:55710的查询未被下载的已通过的会签单模版信息2
+2015/7/11 15:40:19	Information	10.0.62.182:55710查询未被下载的已通过的会签单模版信息
+2015/7/11 15:40:19	Success	10.0.62.182:55710查询未被下载的已通过的会签单模版信息
+2015/7/11 15:40:19	Information	正在与10.0.62.182 : 55709进行数据传输...
+2015/7/11 15:40:19	Exception	System.Net.Sockets.SocketException (0x80004005): 远程主机强迫关闭了一个现有的连接。
+   在 System.Net.Sockets.Socket.EndReceive(IAsyncResult asyncResult)
+   在 SignPressServer.SignSocket.AsyncSocket.AsyncSocketServer.HandleDataReceived(IAsyncResult ar) 位置 g:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressServer\SignSocket\AsyncSocket\AsyncSocketServer.cs:行号 469
+2015/7/11 15:40:19	Error	客户端终止，关闭了客户端, 当前连接的客户端数目1
+2015/7/11 15:40:25	Information	正在与10.0.62.182 : 55710进行数据传输...
+2015/7/11 15:40:25	Information	接收了43个数据单元
+2015/7/11 15:40:25	Information	接收到的数据 GET_HDJCONTRACT_REQUEST~16~"20150702000001", 大小43
+2015/7/11 15:40:25	Information	接收到来自10.0.62.182:55710待获取的会签单编号"20150702000001"
+2015/7/11 15:40:25	Success	10.0.62.182:55710获取会签单20150702000001成功
+2015/7/11 15:59:04	Information	正在与10.0.62.182 : 55710进行数据传输...
+2015/7/11 15:59:04	Information	接收了43个数据单元
+2015/7/11 15:59:04	Information	接收到的数据 GET_HDJCONTRACT_REQUEST~16~"20150709000004", 大小43
+2015/7/11 15:59:04	Information	接收到来自10.0.62.182:55710待获取的会签单编号"20150709000004"
+2015/7/11 15:59:05	Success	10.0.62.182:55710获取会签单20150709000004成功
+2015/7/11 15:59:11	Information	正在与10.0.62.182 : 55710进行数据传输...
+2015/7/11 15:59:11	Information	接收了43个数据单元
+2015/7/11 15:59:11	Information	接收到的数据 GET_HDJCONTRACT_REQUEST~16~"20150707000016", 大小43
+2015/7/11 15:59:11	Information	接收到来自10.0.62.182:55710待获取的会签单编号"20150707000016"
+2015/7/11 15:59:11	Success	10.0.62.182:55710获取会签单20150707000016成功
+2015/7/11 16:00:15	Information	正在与10.0.62.182 : 55710进行数据传输...
+2015/7/11 16:00:15	Information	接收了33个数据单元
+2015/7/11 16:00:15	Information	接收到的数据 QUERY_UNSIGN_CONTRACT_REQUEST~1~2, 大小33
+2015/7/11 16:00:15	Information	接收到来自10.0.62.182:55710查询待签字的会签单信息2
+2015/7/11 16:00:15	Information	10.0.62.182:55710查询到的了所有查询待签字的的会签单
+2015/7/11 16:00:15	Success	10.0.62.182:55710查询待签字的会签单信息查询成功
+2015/7/11 16:10:15	Information	正在与10.0.62.182 : 55710进行数据传输...
+2015/7/11 16:10:15	Information	接收了27个数据单元
+2015/7/11 16:10:15	Information	接收到的数据 QUERY_SIGN_PEND_REQUEST~1~2, 大小27
+2015/7/11 16:10:15	Information	接收到来自10.0.62.182:55710查询正在审核中的会签单模版信息2
+2015/7/11 16:10:16	Information	10.0.62.182:55710查询到的了所有正在审核中的会签单
+2015/7/11 16:10:16	Success	10.0.62.182:55710会签单模版信息信息查询成功
+2015/7/11 16:10:16	Information	正在与10.0.62.182 : 55710进行数据传输...
+2015/7/11 16:10:16	Information	接收了29个数据单元
+2015/7/11 16:10:16	Information	接收到的数据 QUERY_SIGN_REFUSE_REQUEST~1~2, 大小29
+2015/7/11 16:10:16	Information	接收到来自10.0.62.182:55710查询被拒绝的会签单模版信息2
+2015/7/11 16:10:16	Information	10.0.62.182:55710查询到的了所有被拒绝的会签单
+2015/7/11 16:10:16	Success	10.0.62.182:55710被拒绝会签单信息查询成功
+2015/7/11 16:10:16	Information	正在与10.0.62.182 : 55710进行数据传输...
+2015/7/11 16:10:16	Information	接收了30个数据单元
+2015/7/11 16:10:16	Information	接收到的数据 QUERY_AGREE_UNDOWN_REQUEST~1~2, 大小30
+2015/7/11 16:10:16	Information	接收到来自10.0.62.182:55710的查询未被下载的已通过的会签单模版信息2
+2015/7/11 16:10:16	Information	10.0.62.182:55710查询未被下载的已通过的会签单模版信息
+2015/7/11 16:10:16	Success	10.0.62.182:55710查询未被下载的已通过的会签单模版信息

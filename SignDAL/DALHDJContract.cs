@@ -60,15 +60,74 @@ and c.signid1 = e1.id  and c.signid2 = e2.id and c.signid3 = e3.id and c.signid4
 and d1.id = e1.departmentid and d2.id = e2.departmentid and d3.id = e3.departmentid and d4.id = e4.departmentid and d5.id = e5.departmentid and d6.id = e6.departmentid and d7.id = e7.departmentid and d8.id = e8.departmentid
 and h.id = s.conid);";
 
-        
+        #region 判断当前会签单shio
+        private const string IS_HDJCONTRACT_EXIST_STR = @"SELECT Count(id) count FROM `hdjcontract` WHERE (id = @Id)";
+
+        public static bool IsHDJContractExist(string contractId)
+        {
+            MySqlConnection con = DBTools.GetMySqlConnection();
+            MySqlCommand cmd;
+
+            int count = -1;
+
+            try
+            {
+                con.Open();
+
+                cmd = con.CreateCommand();
+
+                cmd.CommandText = IS_HDJCONTRACT_EXIST_STR;
+                cmd.Parameters.AddWithValue("@Id", contractId);
+
+                MySqlDataReader sqlRead = cmd.ExecuteReader();
+                cmd.Dispose();
+
+                while (sqlRead.Read())
+                {
+                    count = int.Parse(sqlRead["count"].ToString());
+                }
+
+
+                con.Close();
+                con.Dispose();
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+
+                if (con.State == ConnectionState.Open)
+                {
+                    con.Close();
+                }
+            }
+            if (count == 1)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        #endregion
+
+
         #region 插入会签单模版信息
 
         public static bool InsertHDJContract(HDJContract contract)
         {
             MySqlConnection con = DBTools.GetMySqlConnection();
             MySqlCommand cmd;
+            
+            int count = -1;         // 受影响行数
 
-            int count = -1;                      // 受影响行数
+            // 当天的会签单的数目
+            int currDayConCount = DALHDJContract.GetDayHDJContractCount(System.DateTime.Now.Date);
+            
             try
             {
                 con.Open();
@@ -78,15 +137,26 @@ and h.id = s.conid);";
 
 
                 /// 修改编号的设置
+                /// 目前编号设置[前缀串 年4位 + 月2位 + 日2位 + 编号6位]
                 //////////////////////////////////////////////////////////////////////
-                contract.Id = System.DateTime.Now.ToString("yyyyMMddHHmmss");/////////
+                // modify by gatieme 2015-07-10 14Label2
+                ///  修改ID为手动填写
+                if (contract.Id == "")
+                {
+                    contract.Id += System.DateTime.Now.ToString("yyyyMMdd") + (currDayConCount + 1).ToString().PadLeft(6, '0');
+                }
                 //////////////////////////////////////////////////////////////////////
+
+                
+
+                
+
                 cmd.Parameters.AddWithValue("@Id", contract.Id);
                 cmd.Parameters.AddWithValue("@Name", contract.Name);
                 cmd.Parameters.AddWithValue("@ConTempId", contract.ConTemp.TempId);
                 cmd.Parameters.AddWithValue("@SubEmpId", contract.SubmitEmployee.Id);
                 cmd.Parameters.AddWithValue("@SubmitDate", System.DateTime.Now);
-
+                
                 ///  5个栏目信息
                 for (int cnt = 0; cnt < 5; cnt++)
                 {
@@ -104,6 +174,10 @@ and h.id = s.conid);";
                 if (count == 1)     //  插入成功后的受影响行数为1
                 {
                     Console.WriteLine("插入会签单成功");
+                    ///////////////////////////////////////////////////////////
+                    //  此处应该判断如果提交人和申请人的第一个人的同一个个人的话，直接同意
+                    //  但是暂时不予考虑，应该自己的确需要签字审核
+                    ///////////////////////////////////////////////////////////
                     return true;
                 }
                 else
@@ -196,8 +270,6 @@ and h.id = s.conid);";
             int count = -1;
             try
             {
-
-
                 con.Open();
 
                 cmd = con.CreateCommand();
@@ -317,7 +389,9 @@ e1.id signid1, e2.id signid2, e3.id signid3, e4.id signid4, e5.id signid5, e6.id
 e1.name signname1, e2.name signname2, e3.name signname3, e4.name signname4, e5.name signname5, e6.name signname6, e7.name signname7, e8.name signname8,          
 d1.id departmentid1, d2.id departmentid2, d3.id departmentid3, d4.id departmentid4, d5.id departmentid5, d6.id departmentid6, d7.id departmentid7, d8.id departmentid8,
 d1.name departmentname1, d2.name departmentname2, d3.name departmentname3, d4.name departmentname4, d5.name departmentname5, d6.name departmentname6, d7.name departmentname7, d8.name departmentname8,
-signlevel1 signlevel1, c.signlevel2, c.signlevel2, c.signlevel3, signlevel3, c.signlevel4 signlevel4, c.signlevel5 signlevel5, c.signlevel6 signlevel6, c.signlevel7 signlevel7, c.signlevel8 signlevel8,
+c.signlevel1 signlevel1, c.signlevel2, c.signlevel2, c.signlevel3, signlevel3, c.signlevel4 signlevel4, c.signlevel5 signlevel5, c.signlevel6 signlevel6, c.signlevel7 signlevel7, c.signlevel8 signlevel8,
+c.canview1 canview1, c.canview2 canview2, c.canview3 canview3, c.canview4 canview4, c.canview5 canview5, c.canview6 canview6, c.canview7 canview7, c.canview8 canview8,
+c.candownload1 candownload1, c.candownload2 candownload2, c.candownload3 candownload3, c.candownload4 candownload4, c.candownload5 candownload5, c.candownload6 candownload6, c.candownload7 candownload7, c.candownload8 candownload8,
 s.result1 result1, s.result2 result2, s.result3 result3, s.result4 result4, s.result5 result5, s.result6 result6, s.result7 result7, s.result8 result8,
 
 (SELECT sd.remark remark1
@@ -378,6 +452,13 @@ and c.signid1 = e1.id  and c.signid2 = e2.id and c.signid3 = e3.id and c.signid4
 and d1.id = e1.departmentid and d2.id = e2.departmentid and d3.id = e3.departmentid and d4.id = e4.departmentid and d5.id = e5.departmentid and d6.id = e6.departmentid and d7.id = e7.departmentid and d8.id = e8.departmentid
 and h.id = s.conid);
 ";
+
+        //  keyi
+        //public static HDJContract ViewHDJContract(String contractId)
+        //{
+        //    DALHDJContract.GetHDJContactRefuse(contractId);
+        //}
+        
         public static HDJContract GetHDJContactRefuse(String contractId)
         { 
             MySqlConnection con = DBTools.GetMySqlConnection();
@@ -413,6 +494,7 @@ and h.id = s.conid);
                     {
                         String strColumnname = "columnname" + cnt.ToString();
                         String strColumnData = "columndata" + cnt.ToString();
+                        
                         columnnames.Add(sqlRead[strColumnname].ToString());
                         columndatas.Add(sqlRead[strColumnData].ToString());
                     }
@@ -432,6 +514,8 @@ and h.id = s.conid);
                         String strDepartmentId = "departmentid" + cnt.ToString();
                         String strDepartmentName = "departmentname" + cnt.ToString();
                         String strSignLevel = "signlevel" + cnt.ToString();
+                        String strCanView = "canview" + cnt.ToString();
+                        String strCanDownload = "candownload" + cnt.ToString();
                         String strSignResult = "result" + cnt.ToString();
                         String strSignRemark = "remark" + cnt.ToString();
 
@@ -439,6 +523,9 @@ and h.id = s.conid);
                         SignatureTemplate signDatas = new SignatureTemplate();
                         signDatas.SignInfo = sqlRead[strSignInfo].ToString();
                         signDatas.SignLevel = int.Parse(sqlRead[strSignLevel].ToString());
+                        signDatas.CanView = int.Parse(sqlRead[strCanView].ToString());
+                        signDatas.CanDownload = int.Parse(sqlRead[strCanDownload].ToString());
+
                         Employee employee = new Employee();
                         employee.Id = int.Parse(sqlRead[strSignId].ToString());
                         employee.Name = sqlRead[strSignName].ToString();
@@ -622,6 +709,106 @@ and d1.id = e1.departmentid and d2.id = e2.departmentid and d3.id = e3.departmen
                 }
             }
             return contract;
+        }
+        #endregion
+
+        #region 获取当天会签单的数目
+        public static String GET_DAY_HDJCONTRACT_COUNT_STR = @"SELECT Count(id) dayconcount FROM `hdjcontract` WHERE DATE(submitdate) = @Date";
+        /// <summary>
+        /// 获取当天会签单的数目
+        /// </summary>
+        /// <param name="date"></param>
+        /// <returns></returns>
+        public static int GetDayHDJContractCount(DateTime date)
+        {
+            MySqlConnection con = DBTools.GetMySqlConnection();
+            MySqlCommand cmd;
+
+            int count = 0;
+
+            try
+            {
+                con.Open();
+
+                cmd = con.CreateCommand();
+
+                cmd.CommandText = GET_DAY_HDJCONTRACT_COUNT_STR;
+                cmd.Parameters.AddWithValue("@Date", date);
+
+                MySqlDataReader sqlRead = cmd.ExecuteReader();
+                cmd.Dispose();
+
+                while (sqlRead.Read())
+                {
+
+                    count = int.Parse(sqlRead["dayconcount"].ToString());
+                }
+
+                con.Close();
+                con.Dispose();
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+
+                if (con.State == ConnectionState.Open)
+                {
+                    con.Close();
+                }
+            }
+            return count;
+        }
+             
+	    #endregion
+
+        #region 获取当前员工提交的会签单数目
+        private const String GET_EMPLOYEE_SUBMIT_HDJCONTRACT_COUNT_STR = @"SELECT Count(id) count FROM `hdjcontract` WHERE (subempid = @EmployeeId)";
+        public static int GetEmployeeSubmitedHDJContractCount(int employeeId)
+        {
+            MySqlConnection con = DBTools.GetMySqlConnection();
+            MySqlCommand cmd;
+
+            int count = 0;
+
+            try
+            {
+                con.Open();
+
+                cmd = con.CreateCommand();
+
+                cmd.CommandText = GET_EMPLOYEE_SUBMIT_HDJCONTRACT_COUNT_STR;
+                cmd.Parameters.AddWithValue("@EmployeeId", employeeId);
+
+                MySqlDataReader sqlRead = cmd.ExecuteReader();
+                cmd.Dispose();
+
+                while (sqlRead.Read())
+                {
+
+                    count = int.Parse(sqlRead["count"].ToString());
+                }
+
+                con.Close();
+                con.Dispose();
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+
+                if (con.State == ConnectionState.Open)
+                {
+                    con.Close();
+                }
+            }
+            return count;
         }
         #endregion
     }

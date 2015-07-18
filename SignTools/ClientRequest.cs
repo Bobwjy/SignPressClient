@@ -36,6 +36,7 @@ namespace SignPressServer.SignTools
         DELETE_EMPLOYEE_REQUEST,
         MODIFY_EMPLOYEE_REQUEST,
         QUERY_EMPLOYEE_REQUEST,
+        MODIFY_EMP_PWD_REQUEST,
 
         /// <summary>
         /// ==会签单模版操作==
@@ -71,6 +72,7 @@ namespace SignPressServer.SignTools
         QUERY_SIGN_AGREE_REQUEST,
         QUERY_SIGN_REFUSE_REQUEST,
 
+
         /// <summary>
         /// 查询会签单状态操作
         /// QUERY_UNSIGN_CONTRACT_REQUEST 签字人查询自己需要签字中的会签单
@@ -87,7 +89,7 @@ namespace SignPressServer.SignTools
         QUERY_SIGN_DETAIL_REQUEST,
         QUERY_SIGN_DETAIL_CON_REQUEST,
 
-        
+        QUERY_SIGNED_CONTRACT_TOP_REQUEST,
     }
 
 }

@@ -29,6 +29,9 @@ namespace SignPressServer.SignLog
         //日志文件写入流对象
         private static StreamWriter m_writer;
 
+        //设置日志文件的过期删除时间
+        //private static DateTime TimeDelete;
+
         /// <summary>
         /// 创建日志对象的新实例，采用默认当前程序位置作为日志路径和默认的每日日志文件类型记录日志
         /// </summary>
@@ -145,6 +148,8 @@ namespace SignPressServer.SignLog
                     {
                         FileClose();
                         FileOpen();
+
+                        //  到期时创建了新的文件，但是同时应该删除7天之前的文件
                     }
                     m_writer.Write(LogMessage.Datetime);
                     m_writer.Write('\t');

@@ -54,12 +54,12 @@ namespace SignPressServer.SignData
             set { this.m_conTemp = value; }
         }
 
-        private List<String> m_signRemark;      //  每一个人的批注信息
-        public List<String> SginRemark
-        {
-            get { return this.m_signRemark; }
-            set { this.m_signRemark = value; }
-        }
+        //private List<String> m_signRemark;      //  每一个人的批注信息
+        //public List<String> SignRemark
+        //{
+        //    get { return this.m_signRemark; }
+        //    set { this.m_signRemark = value; }
+        //}
 
         private int m_currLevel;                //  当前进度节点
         public int CurrLevel

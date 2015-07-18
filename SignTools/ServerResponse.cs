@@ -34,6 +34,8 @@ namespace SignPressServer.SignTools
 
         DELETE_DEPARTMENT_SUCCESS,
         DELETE_DEPARTMENT_FAILED,
+        DELETE_DEPARTMENT_EXIST_EMPLOYEE,       // 删除一个已经有员工的部门信息
+
         
         MODIFY_DEPARTMENT_SUCCESS,
         MODIFY_DEPARTMENT_FAILED,
@@ -50,9 +52,14 @@ namespace SignPressServer.SignTools
         /// </summary>
         INSERT_EMPLOYEE_SUCCESS,        /// </summary>
         INSERT_EMPLOYEE_FAILED,
+        INSERT_EMPLOYEE_EXIST,                 /// 插入用户时用户已经村催
+
+
 
         DELETE_EMPLOYEE_SUCCESS,
         DELETE_EMPLOYEE_FAILED,
+        DELETE_EMPLOYEE_EXIST_CONTRACT,     //  待删除的员工存在会签单信息无法删除
+        DELETE_EMPLOYEE_EXIST_CONTEMP,      //  待删除的员工在某个会签模版中，无法删除
         
         MODIFY_EMPLOYEE_SUCCESS,
         MODIFY_EMPLOYEE_FAILED,
@@ -60,6 +67,8 @@ namespace SignPressServer.SignTools
         QUERY_EMPLOYEE_SUCCESS,
         QUERY_EMPLOYEE_FAILED,
 
+        MODIFY_EMP_PWD_SUCCESS,
+        MODIFY_EMP_PWD_FAILED,
         /// <summary>
         /// ==会签单模版操作==
         /// 增加会签单模版  INSERT_CONTRACT_TEMPLATE_REQUEST
@@ -73,6 +82,7 @@ namespace SignPressServer.SignTools
 
         DELETE_CONTRACT_TEMPLATE_SUCCESS,
         DELETE_CONTRACT_TEMPLATE_FAILED,
+        DELETE_CONTRACT_TEMPLATE_EXIST_CONTRACT,        //  待删除的会签单模版已经有单子无法删除 
         
         MODIFY_CONTRACT_TEMPLATE_SUCCESS,
         MODIFY_CONTRACT_TEMPLATE_FAILED,
@@ -87,6 +97,8 @@ namespace SignPressServer.SignTools
         SEARCH_AGREE_HDJCONTRACT_SUCCESS,
         SEARCH_AGREE_HDJCONTRACT_FAILED,
 
+        QUERY_AGREE_UNDOWN_SUCCESS,                //  查询已通过的但是未下载的成功
+        QUERY_AGREE_UNDOWN_FAILED,                 //  查询已通过但是未下载的失败
 
         /// <summary>
         /// ==航道局会签单操作==
@@ -97,6 +109,8 @@ namespace SignPressServer.SignTools
         /// </summary>
         INSERT_HDJCONTRACT_SUCCESS,
         INSERT_HDJCONTRACT_FAILED,
+        INSERT_HDJCONTRACT_EXIST,
+
 
         DELETE_HDJCONTRACT_SUCCESS,
         DELETE_HDJCONTRACT_FAILED,
@@ -145,6 +159,11 @@ namespace SignPressServer.SignTools
 
         QUERY_SIGN_DETAIL_CON_SUCCESS,
         QUERY_SIGN_DETAIL_CON_FAILED,
+
+
+        //  手机上考虑数据流量的问题
+        QUERY_SIGNED_CONTRACT_TOP_SUCCESS,
+        QUERY_SIGNED_CONTRACT_TOP_FAILED,
         
     }
 }

@@ -87,6 +87,22 @@ using SignPressServer.SignDAL;      //  数据库处理
 using SignPressServer.SignSocket.AsyncSocket;   //  套接字信息
 using SignPressServer.SignSocket.AsyncTcpListener;  //  
 using SignPressServer.SignSocket.SyncSocket;
+
+
+///  modify by gatieme at 2015-07-09 11:12
+///  新增加功能签字人对会签单的权限问题，
+///  在SignatureTemplate中增加了canview和candownload权限
+/// 
+///  新增的功能会签单前缀信息 [比如信内，信界]
+///  通常来说, 前缀跟模板相关  模板跟部门相关就可以了
+///  即，正常来说，一个部门使用一套签字模版，一个部门有几个固定的前缀
+///
+///  那么我们最终的设计可以这样，
+///  签字模版中增加一个部门标识，用于标识使用此模版的部门信息
+///  我们的前缀信息这样设计，前缀，前缀表 == id + 前缀信息串 + 使用部门
+///  
+///  这样用户在提交会签单的时候，
+
 /*
  * SignPress程序的服务器程序
  * 
@@ -127,6 +143,11 @@ namespace SignPressServer
             //result: X:\xxx\xxx (.exe文件所在的目录)
             /// 测试连接服务器以及查询测试
 
+
+            //int currDayConCount = DALHDJContract.GetDayHDJContractCount(System.DateTime.Now.Date);
+            //Console.WriteLine(System.DateTime.Now.ToString("yyyyMMdd") + (currDayConCount + 1).ToString().PadLeft(6, '0'));
+            
+            
             #region 测试数据库连接
 
             /*DBTools dbtools = new DBTools();
@@ -178,6 +199,9 @@ namespace SignPressServer
             Employee em2 = DALEmployee.GetEmployee("che1ngjian");
             Console.WriteLine(em2);
             */
+            //User user = new User { Username = "gatieme", Password = "gatieme" };
+            //DALEmployee.IsEmployeePasswordRight(user);
+            //Console.WriteLine(DALEmployee.QueryDepartmentEmployeeCount(2));
             #endregion
 
 
@@ -197,23 +221,24 @@ namespace SignPressServer
             //MSWordTools.WordConvertToPdf(@"G:\[B]CodeRuntimeLibrary\[E]GitHub\\测试文档.doc",
             //    @"G:\[B]CodeRuntimeLibrary\[E]GitHub\测试文档.pdf");              将一个创建的WORD保存为PDF
 
-            String filePath =  MSWordTools.DEFAULT_HDJCONTRACT_PATH + "20150623164733.pdf";
-            if (!(File.Exists((String)filePath)))     // 首先检测文件是否存在
-            {
-                String wordPath = MSWordTools.DEFAULT_HDJCONTRACT_PATH + "20150623164733.doc";
-                HDJContract contract = DALHDJContract.GetHDJContactAgree("20150623164733");       // 获取待生成的会签单信息
-                MSWordTools.CreateHDJContractWordWithReplace(contract, wordPath);
-                MSWordTools.WordConvertToPdf(wordPath, filePath);
+            //String filePath = MSWordTools.DEFAULT_HDJCONTRACT_PATH + "20150712000005.pdf";
+            //if (!(File.Exists((String)filePath)))     // 首先检测文件是否存在
+            //{
+            //    MSWordTools.KillWordProcess();
+            //    String wordPath = MSWordTools.DEFAULT_HDJCONTRACT_PATH + "20150712000005.doc";
+            //    HDJContract contract = DALHDJContract.GetHDJContactAgree("20150712000005");       // 获取待生成的会签单信息
+            //    MSWordTools.CreateHDJContractWordWithReplace(contract, wordPath);
+            //    MSWordTools.WordConvertToPdf(wordPath, filePath);
 
-                File.Delete((String)wordPath);
-
-            }
-            else
-            {
-                Console.WriteLine("文件存在无需在生成");
-            }
+            //    File.Delete((String)wordPath);
+            //    MSWordTools.KillWordProcess();
+            //}
+            //else
+            //{
+            //    Console.WriteLine("文件存在无需在生成");
+            //}
             //MSWordTools.WordConvertToPdf();
-            MSWordTools.KillWordProcess();
+
             
 
             #endregion
@@ -264,14 +289,24 @@ namespace SignPressServer
             #endregion
 
             #region 获取本机的IP
-            //string s1 = "代办列表(4)";
+            //QUERY_UNSIGN_CONTRACT_REQUEST; 1; 1QUERY_SIGN_REFUSE_REQUEST; 1; 1
+            //QUERY_REQUEST;0; QUERY_SIGN_REFUSE_REQUEST; 1; 1
+            //QUERY_SIGN_REFUSE_REQUEST;1; 1; QUERY_REQUEST;0
+            //QUERY_REQUEST;0; QUERY_REQUEST;0 
 
-            //string[] split = s1.Split('(');    //返回由'/'分隔的子字符串数组
-            //foreach (string s in split)
-            //{
-            //    Console.WriteLine(s);
-            //}
-            //Console.WriteLine();
+            ////string s1 = "QUERY_REQUEST; QUERY_SIGN_REFUSE_REQUEST;1;1;";
+//            AsyncSocketMessage message = new AsyncSocketMessage(ClientRequest.LOGIN_REQUEST);
+//            message.Package = @"QUERY_UNSIGN_CONTRACT_RE
+//            QUEST11QUERY_SIGN_REFUSE_REQU
+//            EST1QUERY_SIGN_REFUSE_REQUES1";
+//            // 3 5 7 9 11
+//            do
+//            {
+//                if (message.Split() == AsyncSocketMessageFlag.MESSAGE_UNKOWN)   // 将数据包分割
+//                {
+//                    break;
+//                }
+//            }while(message.Flag != AsyncSocketMessageFlag.MESSAGE_RIGHT);
             string hostName = System.Net.Dns.GetHostName();//本机名   
             System.Net.IPAddress[] addressList = System.Net.Dns.GetHostAddresses(hostName);//会返回所有地址，包括IPv4和IPv6   
             foreach (System.Net.IPAddress ip in addressList)
@@ -295,7 +330,7 @@ namespace SignPressServer
 
             Console.WriteLine("服务器准备中...");
 
-            // System.Net.IPEndPoint ep = new System.Net.IPEndPoint(System.Net.IPAddress.Parse("10.0.209.144"), 6666);
+            //System.Net.IPEndPoint ep = new System.Net.IPEndPoint(System.Net.IPAddress.Parse("10.0.209.144"), 6666);
             AsyncSocketServer server = new AsyncSocketServer(6666);
             while (true)
             {

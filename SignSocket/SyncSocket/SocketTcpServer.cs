@@ -140,6 +140,7 @@ namespace SignPressServer.SignSocket.SyncSocket
                     //TODO 创建一个处理客户端的线程并启动
                     handle = new SocketClientHandle(clientSock);
                     _clients.Add(handle);
+                    
                     //使用线程池来操作
                     ThreadPool.QueueUserWorkItem(new WaitCallback(handle.RecevieData));
 

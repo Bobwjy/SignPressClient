@@ -13,7 +13,7 @@ namespace SignPressServer.SignTools
     class DBTools
     {
 
-        public static readonly string M_str_sqlcon = "server=localhost;user id=root;password=root;database=signature";
+        public static readonly string M_str_sqlcon = "server=localhost;port = 3333;user id=root;password=root;database=signature";
              
         #region  建立MySql数据库连接
         /// <summary>

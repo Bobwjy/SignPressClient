@@ -8,8 +8,8 @@ namespace Microsoft.Office.MyWord.MyWord
 {
     public class MyWord
     {
-        protected Microsoft.Office.Interop.Word.Application _WordApplicMain;
-        protected Microsoft.Office.Interop.Word.Document _MainDoc;
+        protected Microsoft.Office.Interop.Word._Application _WordApplicMain;
+        protected Microsoft.Office.Interop.Word._Document _MainDoc;
         protected Object Nothing = System.Reflection.Missing.Value;
         protected MyWordTable.WordTable _WordTable;
         protected string _SaveFilePath;
@@ -188,6 +188,7 @@ namespace Microsoft.Office.MyWord.MyWord
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.ToString());
             }
         }
 

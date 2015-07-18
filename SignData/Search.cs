@@ -16,8 +16,10 @@ namespace SignPressServer.SignData
         public DateTime DateEnd { get; set; }
 
         //  员工的ID
-        public int EmployeeId { get; set; }    
+        public int EmployeeId { get; set; }
 
+
+        public int Downloadable { get; set; }
        
     }
 }

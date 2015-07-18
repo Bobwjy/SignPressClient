@@ -22,7 +22,7 @@ namespace SignPressServer.SignSocket.AsyncSocket
         /// </summary>
         private byte[] m_recvBuffer;
 
-        private AsyncSocketMessage m_socketMessage;    // 发送缓冲区
+        private AsyncSocketMessage m_socketMessage;    // 接收到的报文信息
         public AsyncSocketMessage SocketMessage
         {
             get { return this.m_socketMessage; }
@@ -39,7 +39,7 @@ namespace SignPressServer.SignSocket.AsyncSocket
         /// 客户端发送到服务器的报文
         /// 注意:在有些情况下报文可能只是报文的片断而不完整
         /// </summary>
-        private string m_datagram;
+        private string m_datagram;  //  此接口其实已经废弃，我们使用AsyncSocketMessage封装了报文的信息
 
         /// <summary>
         /// 客户端的Socket
@@ -121,6 +121,8 @@ namespace SignPressServer.SignSocket.AsyncSocket
             this.m_clientSocket = clientSocket;
             this.m_clientIp = (IPEndPoint)clientSocket.RemoteEndPoint;  // 保存服务器的信息
             this.m_socketMessage = new AsyncSocketMessage();
+            //this.RecvDataBuffer = new byte[this.ClientSocket.ReceiveBufferSize];
+            this.InitBuffer();
         }
 
         /// <summary>
@@ -128,9 +130,10 @@ namespace SignPressServer.SignSocket.AsyncSocket
         /// </summary>
         public void InitBuffer( )
         {
-            if (this.m_recvBuffer == null&& this.m_clientSocket != null)
+            if (this.m_recvBuffer == null && this.m_clientSocket != null)
             {
                 this.m_recvBuffer = new byte[this.m_clientSocket.ReceiveBufferSize];
+                //this.m_recvBuffer = new byte[1024 * 1024 * 8];
             }
         }
 

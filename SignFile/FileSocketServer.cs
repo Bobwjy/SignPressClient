@@ -27,7 +27,7 @@ namespace SignPressServer.SignFile
     /*
      * 文件传输的套接字信息
      */
-    class FileSocketServer
+    public class FileSocketServer
     {
         private const String SIGNATURE_PICTURE_PATH = ".\\signature\\";
         private const String HDJCONTDACT_PATH = @".\\hdjcontract\\";
@@ -114,14 +114,14 @@ namespace SignPressServer.SignFile
                     //listbOnline.Items.Add(connection.RemoteEndPoint.ToString());
                     //将与客户端通信的套接字对象connection添加到键值对集合中，并以客户端Ip做为健
                     dict.Add(connection.RemoteEndPoint.ToString(), connection);
+                    Console.WriteLine("文件传输客户端{0}连接成功", connection.RemoteEndPoint.ToString());
 
-                    //创建通信线程
+                    // 创建通信线程，并为线程要调用的方法RecMsg 传入参数sokConnection
                     ParameterizedThreadStart pts = new ParameterizedThreadStart(RecMsg);
                     Thread thradRecMsg = new Thread(pts);
                     thradRecMsg.IsBackground = true;
                     thradRecMsg.Start(connection);
                     //ShwMsgForView.ShwMsgforView(lstbxMsgView, "客户端连接成功" + connection.RemoteEndPoint.ToString());
-                    Console.WriteLine("文件传输客户端{0}连接成功", connection.RemoteEndPoint.ToString());
                 }
             }
         }
@@ -136,10 +136,15 @@ namespace SignPressServer.SignFile
         {
             Socket socketClient = socketClientPara as Socket;
             byte[] recvBuffer = new byte[512];
-           // SocketMessage message = new SocketMessage(); 
+            // SocketMessage message = new SocketMessage(); 
 
-            while (true)
-            {
+            // modify by gatieme 205-07-04 12:44
+            //  正常来说线程执行完毕以后，应该自行终止，
+            //  但是由于之前这个使用了while循环的错误方式，
+            //  导致用户上传下载签字图片，或者下载会签单信息后，线程一直在跑，未中断
+            //  导致服务器的CPU占有率达到100%
+            //while (true)
+            //{
                 //定义一个接受用的缓存区（100M字节数组）
                 //byte[] arrMsgRec = new byte[1024 * 1024 * 100];
                 //将接收到的数据存入arrMsgRec数组,并返回真正接受到的数据的长度   
@@ -153,7 +158,7 @@ namespace SignPressServer.SignFile
                         socketClient.Receive(recvBuffer, 0, 50, SocketFlags.None);
                         String message = Encoding.UTF8.GetString(recvBuffer);
                         Console.WriteLine("大小{0},{1}", message.Length, message);
-                        string[] split = message.Split(';');    //返回由'/'分隔的子字符串数组
+                        string[] split = message.Split('~');    //返回由'/'分隔的子字符串数组
 
                         Console.WriteLine("LENGTH : {0}", split.Length);
                         String id = split[2];
@@ -165,35 +170,36 @@ namespace SignPressServer.SignFile
                         switch (split[0])
                         {
                             // UPLOAD_PICTURE_REQUEST;2;30
-                            case "UPLOAD_PICTURE_REQUEST" :
+                            case "UPLOAD_PICTURE_REQUEST" :             // 用户上传签字图片
                                 UploadFile(socketClient, id);
                                 break;
-                            case "DOWNLOAD_HDJCONTRACT_REQUEST" :
+                            case "DOWNLOAD_PICTURE_REQUEST":         // 用户下载签字图片
+                                String empId = JsonConvert.DeserializeObject<String>(id);
+                                DownloadSignatureFile(socketClient, empId);
+                                break;
+                            case "DOWNLOAD_HDJCONTRACT_REQUEST" :       // 用户下载会签单
                                 String conId = JsonConvert.DeserializeObject<String>(id);
-
-                                DownloadFile(socketClient, conId);
+                                DownloadContractFile(socketClient, conId);
                                 break;
 
                         }
-
-
 
                         dict.Remove(socketClient.RemoteEndPoint.ToString());
                         socketClient.Close();
                     }
                     catch
                     {
-                        dict.Remove(socketClient.RemoteEndPoint.ToString());
-
-                        break;
+                        //dict.Remove(socketClient.RemoteEndPoint.ToString());
                     }
                 }
                 else
                 {
-
+                    ///  客户端未正常连接
+                    Console.WriteLine("文件传输客户端未正常连接自文件服务器");
+                    
                 }
             }
-        }
+      //  }
 
         /// <summary>
         /// 关闭连接
@@ -206,6 +212,16 @@ namespace SignPressServer.SignFile
             Console.WriteLine("服务器关闭监听");
         }
 
+        /// <summary>
+        /// 关闭连接
+        /// </summary>
+        public void Stop()
+        {
+            dict.Clear();
+            m_threadWatch.Abort();
+            m_socketWatch.Close();
+            Console.WriteLine("服务器关闭监听");
+        }
 
         /// <summary>
         /// 上传文件
@@ -255,9 +271,9 @@ namespace SignPressServer.SignFile
 
 
         /// <summary>
-        /// 下载文件
+        /// 下载会签单信息文件
         /// </summary>
-        private void DownloadFile(Socket socketClient, String contractId)
+        private void DownloadContractFile(Socket socketClient, String contractId)
         {
             //  首先生成会签单信息
             String filePath = MSWordTools.DEFAULT_HDJCONTRACT_PATH + contractId + ".pdf";
@@ -269,10 +285,10 @@ namespace SignPressServer.SignFile
                 MSWordTools.WordConvertToPdf(wordPath, filePath);
 
                 File.Delete((String)wordPath);
+                MSWordTools.KillWordProcess();
 
             }
-
-
+            DALSignatureStatus.SetAgreeContractDownload(contractId);
 
             FileStream fs = new FileStream(filePath, FileMode.OpenOrCreate, FileAccess.Read);
             Console.WriteLine("开始下载文件{0}", filePath);
@@ -288,6 +304,56 @@ namespace SignPressServer.SignFile
             //socketClient.Close();
         }
 
+        /// <summary>
+        /// 下载会签单信息文件
+        /// </summary>
+        private void DownloadFile(Socket socketClient, String filePath)
+        {
+            if (!(File.Exists((String)filePath)))     // 首先检测文件是否存在
+            {
+                return;
+            }
+
+            FileStream fs = new FileStream(filePath, FileMode.OpenOrCreate, FileAccess.Read);
+            Console.WriteLine("开始下载文件{0}", filePath);
+            byte[] fssize = new byte[fs.Length];
+            BinaryReader reader = new BinaryReader(fs);
+            reader.Read(fssize, 0, fssize.Length - 1);
+            socketClient.Send(fssize);
+            fs.Flush();
+            fs.Close();
+            Console.WriteLine("下载文件结束");
+
+            //dict.Remove(socketClient.RemoteEndPoint.ToString());
+            //socketClient.Close();
+        }
+
+
+        /// <summary>
+        /// 下载会签单信息文件
+        /// </summary>
+        private void DownloadSignatureFile(Socket socketClient, String employeeId)
+        {
+            //  首先生成会签单信息
+            String filePath = MSWordTools.DEFAULT_SIGNATURE_PATH + employeeId + ".jpg";
+            if (!(File.Exists((String)filePath)))     // 如果文件不存在
+            {
+                return;
+            }
+
+            FileStream fs = new FileStream(filePath, FileMode.OpenOrCreate, FileAccess.Read);
+            Console.WriteLine("开始下载文件{0}", filePath);
+            byte[] fssize = new byte[fs.Length];
+            BinaryReader reader = new BinaryReader(fs);
+            reader.Read(fssize, 0, fssize.Length - 1);
+            socketClient.Send(fssize);
+            fs.Flush();
+            fs.Close();
+            Console.WriteLine("下载文件结束");
+
+            //dict.Remove(socketClient.RemoteEndPoint.ToString());
+            //socketClient.Close();
+        }
 
     }
 }
