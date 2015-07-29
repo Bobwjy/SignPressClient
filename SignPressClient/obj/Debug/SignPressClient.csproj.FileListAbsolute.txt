@@ -228,3 +228,5 @@ G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient_0.99999\SignPressClient_win7_
 G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient_0.99999\SignPressClient_win7_sync\SignPressClient\obj\Debug\SignPressClient.csproj.GenerateResource.Cache
 G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient_0.99999\SignPressClient_win7_sync\SignPressClient\obj\Debug\SignPressClient.exe.manifest
 G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient_0.99999\SignPressClient_win7_sync\SignPressClient\obj\Debug\SignPressClient.application
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient\SignPressClient\obj\Debug\SignPressClient.EditDepartment.resources
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient\SignPressClient\obj\Debug\SignPressClient.EditEmployee.resources

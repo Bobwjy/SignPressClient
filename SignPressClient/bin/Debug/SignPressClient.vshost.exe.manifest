@@ -72,14 +72,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SignPressClient.exe" size="415744">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SignPressClient.exe" size="485888">
       <assemblyIdentity name="SignPressClient" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>B22C2LdB11e4lpr3ryfSMQlO0mcK8QciPibFyn0xZgw=</dsig:DigestValue>
+        <dsig:DigestValue>QmFqQUFhhPz02xvCaulJ27Yl7Cyg24Oa8je8LOWFD+U=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

@@ -502,10 +502,119 @@ namespace SignPressClient
             }
         }
 
-        private async void MainWindow_FormClosed(object sender, FormClosedEventArgs e)
+
+        //  BUG
+        //  只有Form_Closing事件中 e.Cancel可以用。
+        //  你的是Form_Closed事件。 Form_Closed事件时窗口已关了 ，Cancel没用了；
+        //  Form_Closing是窗口即将关闭时询问你是不是真的关闭才有Cancel事件
+        //private  void MainWindow_FormClosed(object sender, FormClosedEventArgs e)
+        //{
+        //    //await this._sc.Quit();
+        //    //this._sc.Close();
+        //    // 注意判断关闭事件reason来源于窗体按钮，否则用菜单退出时无法退出!
+        //    if (e.CloseReason == CloseReason.UserClosing)
+        //    {
+        //        //取消"关闭窗口"事件
+        //        e.Cancel = true;
+        //        e.Cancel = true; // 取消关闭窗体 
+        //        //使关闭时窗口向右下角缩小的效果
+        //        this.WindowState = FormWindowState.Minimized;
+        //        this.mainNotifyIcon.Visible = true;
+        //        this.Hide();
+        //        return;
+        //    }
+        //}
+        private void MainWindow_FormClosing(object sender, FormClosingEventArgs e)
         {
-            await this._sc.Quit();
-            this._sc.Close();
+            //await this._sc.Quit();
+            //this._sc.Close();
+            // 注意判断关闭事件reason来源于窗体按钮，否则用菜单退出时无法退出!
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+                //取消"关闭窗口"事件
+                e.Cancel = true; // 取消关闭窗体 
+               
+                //使关闭时窗口向右下角缩小的效果
+                this.WindowState = FormWindowState.Minimized;
+                this.mainNotifyIcon.Visible = true;
+                this.Hide();
+                return;
+            }
         }
+
+        //  添加托盘程序
+        //  版本更新自1.0.1
+        private void mainNotifyIcon_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (this.Visible)
+            {
+                this.WindowState = FormWindowState.Minimized;
+                this.mainNotifyIcon.Visible = true;
+                this.Hide();
+            }
+            else
+            {
+                this.Visible = true;
+                this.WindowState = FormWindowState.Normal;
+                this.Activate();
+            }
+        }
+
+
+        /// http://www.cnblogs.com/yuejin/p/3445713.html
+        //  添加托盘程序右键菜单项
+        //  版本更新自1.0.1
+        //  最小化
+        //  添加日期 --  2015-07-29 21:40
+        private void toolStripMenuItemMinimize_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+            this.mainNotifyIcon.Visible = true;
+            this.Hide();
+        }
+
+        //  添加托盘程序右键菜单项
+        //  版本更新自1.0.1
+        //  最大化
+        //  添加日期 --  2015-07-29 21:41
+        private void toolStripMenuItemMaximize_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Maximized;
+            this.mainNotifyIcon.Visible = true;
+            this.Show();
+        }
+
+        //  添加托盘程序右键菜单项
+        //  版本更新自1.0.1
+        //  还原
+        //  添加日期 --  2015-07-29 21:43
+        private void toolStripMenuItemMNormal_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Normal;
+            this.mainNotifyIcon.Visible = true;
+            this.Show();
+        }
+
+        //  添加托盘程序右键菜单项
+        //  版本更新自1.0.1
+        //  退出
+        //  添加日期 --  2015-07-29 21:44
+        private async void toolStripMenuItemQuit_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("你确定要退出？", "系统提示", MessageBoxButtons.YesNo, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1) == DialogResult.Yes)
+            {
+                await this._sc.Quit();
+                this._sc.Close();
+                this.Close();
+            }
+        }
+
+
+
+
+
+
+
+
     }
 }

@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
             System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("部门管理");
             System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("人员管理");
             System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("模板管理");
@@ -57,8 +59,15 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
+            this.mainNotifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
+            this.mainnotifyContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenuItemMinimize = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemMaximize = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemMNormal = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemQuit = new System.Windows.Forms.ToolStripMenuItem();
             this.treeView1 = new SignPressClient.BaseTreeView();
             this.panel2.SuspendLayout();
+            this.mainnotifyContextMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -88,6 +97,52 @@
             this.label1.Size = new System.Drawing.Size(41, 12);
             this.label1.TabIndex = 0;
             this.label1.Text = "label1";
+            // 
+            // mainNotifyIcon
+            // 
+            this.mainNotifyIcon.ContextMenuStrip = this.mainnotifyContextMenuStrip;
+            this.mainNotifyIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("mainNotifyIcon.Icon")));
+            this.mainNotifyIcon.Text = "黑龙江省航道局会签单";
+            this.mainNotifyIcon.Visible = true;
+            this.mainNotifyIcon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.mainNotifyIcon_MouseDoubleClick);
+            // 
+            // mainnotifyContextMenuStrip
+            // 
+            this.mainnotifyContextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItemMinimize,
+            this.toolStripMenuItemMaximize,
+            this.toolStripMenuItemMNormal,
+            this.toolStripMenuItemQuit});
+            this.mainnotifyContextMenuStrip.Name = "mainnotifyContextMenuStrip";
+            this.mainnotifyContextMenuStrip.Size = new System.Drawing.Size(153, 114);
+            // 
+            // toolStripMenuItemMinimize
+            // 
+            this.toolStripMenuItemMinimize.Name = "toolStripMenuItemMinimize";
+            this.toolStripMenuItemMinimize.Size = new System.Drawing.Size(152, 22);
+            this.toolStripMenuItemMinimize.Text = "最小化";
+            this.toolStripMenuItemMinimize.Click += new System.EventHandler(this.toolStripMenuItemMinimize_Click);
+            // 
+            // toolStripMenuItemMaximize
+            // 
+            this.toolStripMenuItemMaximize.Name = "toolStripMenuItemMaximize";
+            this.toolStripMenuItemMaximize.Size = new System.Drawing.Size(152, 22);
+            this.toolStripMenuItemMaximize.Text = "最大化";
+            this.toolStripMenuItemMaximize.Click += new System.EventHandler(this.toolStripMenuItemMaximize_Click);
+            // 
+            // toolStripMenuItemMNormal
+            // 
+            this.toolStripMenuItemMNormal.Name = "toolStripMenuItemMNormal";
+            this.toolStripMenuItemMNormal.Size = new System.Drawing.Size(152, 22);
+            this.toolStripMenuItemMNormal.Text = "还原";
+            this.toolStripMenuItemMNormal.Click += new System.EventHandler(this.toolStripMenuItemMNormal_Click);
+            // 
+            // toolStripMenuItemQuit
+            // 
+            this.toolStripMenuItemQuit.Name = "toolStripMenuItemQuit";
+            this.toolStripMenuItemQuit.Size = new System.Drawing.Size(152, 22);
+            this.toolStripMenuItemQuit.Text = "退出";
+            this.toolStripMenuItemQuit.Click += new System.EventHandler(this.toolStripMenuItemQuit_Click);
             // 
             // treeView1
             // 
@@ -152,10 +207,12 @@
             this.Name = "MainWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "主界面";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainWindow_FormClosed);
+            //this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainWindow_FormClosed);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainWindow_FormClosing);
             this.Load += new System.EventHandler(this.MainWindow_Load);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.mainnotifyContextMenuStrip.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -167,5 +224,11 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.NotifyIcon mainNotifyIcon;
+        private System.Windows.Forms.ContextMenuStrip mainnotifyContextMenuStrip;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemMinimize;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemMaximize;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemMNormal;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemQuit;
     }
 }
