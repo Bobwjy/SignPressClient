@@ -1,0 +1,329 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{5CD5A61F-D32E-4A0C-9427-EF4F6A848A4E}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SignPressClient</RootNamespace>
+    <AssemblyName>SignPressClient</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <TargetFrameworkProfile />
+    <PublishUrl>F:\0.0.1\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>0.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>62399173AC7A5E2E1D186C2C9179C5D0ADF3BA30</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>SignPressClient_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>logo.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="Microsoft.VisualBasic.PowerPacks.Vs, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AddConTemp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddConTemp.Designer.cs">
+      <DependentUpon>AddConTemp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdminManage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminManage.Designer.cs">
+      <DependentUpon>AdminManage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseTreeView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="BaseTreeView.Designer.cs">
+      <DependentUpon>BaseTreeView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditConTemp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditConTemp.Designer.cs">
+      <DependentUpon>EditConTemp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditDepartment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditDepartment.Designer.cs">
+      <DependentUpon>EditDepartment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditEmployee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditEmployee.Designer.cs">
+      <DependentUpon>EditEmployee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Loading.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Loading.Designer.cs">
+      <DependentUpon>Loading.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainWindow.Designer.cs">
+      <DependentUpon>MainWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\CreateSocket.cs" />
+    <Compile Include="Model\Department.cs" />
+    <Compile Include="Model\Employee.cs" />
+    <Compile Include="Model\HDJContract.cs" />
+    <Compile Include="Model\Request.cs" />
+    <Compile Include="Model\Search.cs" />
+    <Compile Include="Model\sEmployee.cs" />
+    <Compile Include="Model\sHDJContract.cs" />
+    <Compile Include="Model\SignatureDetail.cs" />
+    <Compile Include="Model\SignatureStatus.cs" />
+    <Compile Include="Model\SignatureTemplate.cs" />
+    <Compile Include="Model\SocketMessage.cs" />
+    <Compile Include="Model\Templete.cs" />
+    <Compile Include="Model\User.cs" />
+    <Compile Include="Model\UserHelper.cs" />
+    <Compile Include="MyOpaqueLayer.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="OpaqueCommand.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Model\Response.cs" />
+    <Compile Include="ReSubmitConTemp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReSubmitConTemp.Designer.cs">
+      <DependentUpon>ReSubmitConTemp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Setting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Setting.Designer.cs">
+      <DependentUpon>Setting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SignConTemp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SignConTemp.Designer.cs">
+      <DependentUpon>SignConTemp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SignLogging\Logging.cs" />
+    <Compile Include="SignManage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SignManage.Designer.cs">
+      <DependentUpon>SignManage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SignSocket\SignSocketClient.cs" />
+    <Compile Include="SubmitManage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SubmitManage.Designer.cs">
+      <DependentUpon>SubmitManage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserManage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserManage.Designer.cs">
+      <DependentUpon>UserManage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewConTemp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewConTemp.Designer.cs">
+      <DependentUpon>ViewConTemp.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="AddConTemp.resx">
+      <DependentUpon>AddConTemp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminManage.resx">
+      <DependentUpon>AdminManage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditConTemp.resx">
+      <DependentUpon>EditConTemp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditDepartment.resx">
+      <DependentUpon>EditDepartment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditEmployee.resx">
+      <DependentUpon>EditEmployee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Loading.resx">
+      <DependentUpon>Loading.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainWindow.resx">
+      <DependentUpon>MainWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="ReSubmitConTemp.resx">
+      <DependentUpon>ReSubmitConTemp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Setting.resx">
+      <DependentUpon>Setting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SignConTemp.resx">
+      <DependentUpon>SignConTemp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SignManage.resx">
+      <DependentUpon>SignManage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SubmitManage.resx">
+      <DependentUpon>SubmitManage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserManage.resx">
+      <DependentUpon>UserManage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewConTemp.resx">
+      <DependentUpon>ViewConTemp.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <None Include="SignPressClient_TemporaryKey.pfx" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="image\icon_close.png" />
+    <Content Include="image\icon_minus-06.png" />
+    <Content Include="image\Login-Header.jpg" />
+    <None Include="Resources\航道会签单2.png" />
+    <None Include="Resources\Login-Header.jpg" />
+    <None Include="Resources\icon_back.jpg" />
+    <Content Include="logo.ico" />
+    <Content Include="Resources\loading.gif" />
+    <None Include="Resources\white.png" />
+    <None Include="Resources\tree_Selected.png" />
+    <None Include="Resources\tree_NodeExpend.png" />
+    <None Include="Resources\tree_NodeCollaps.png" />
+    <None Include="Resources\tree_Hover.png" />
+    <None Include="Resources\input.png" />
+    <None Include="Resources\bottom%281%29.jpg" />
+    <None Include="Resources\bottom.jpg" />
+    <None Include="Resources\setting.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5 %28x86 和 x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

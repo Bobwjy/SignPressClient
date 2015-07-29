@@ -1,0 +1,230 @@
+D:\我的文档\Visual Studio 2012\Projects\SignPressClient\SignPressClient\bin\Debug\SignPressClient.exe.config
+D:\我的文档\Visual Studio 2012\Projects\SignPressClient\SignPressClient\bin\Debug\SignPressClient.exe
+D:\我的文档\Visual Studio 2012\Projects\SignPressClient\SignPressClient\bin\Debug\SignPressClient.pdb
+D:\我的文档\Visual Studio 2012\Projects\SignPressClient\SignPressClient\bin\Debug\Newtonsoft.Json.dll
+D:\我的文档\Visual Studio 2012\Projects\SignPressClient\SignPressClient\bin\Debug\Newtonsoft.Json.xml
+D:\我的文档\Visual Studio 2012\Projects\SignPressClient\SignPressClient\obj\Debug\SignPressClient.AddConTemp.resources
+D:\我的文档\Visual Studio 2012\Projects\SignPressClient\SignPressClient\obj\Debug\SignPressClient.AdminManage.resources
+D:\我的文档\Visual Studio 2012\Projects\SignPressClient\SignPressClient\obj\Debug\SignPressClient.Loading.resources
+D:\我的文档\Visual Studio 2012\Projects\SignPressClient\SignPressClient\obj\Debug\SignPressClient.Login.resources
+D:\我的文档\Visual Studio 2012\Projects\SignPressClient\SignPressClient\obj\Debug\SignPressClient.MainWindow.resources
+D:\我的文档\Visual Studio 2012\Projects\SignPressClient\SignPressClient\obj\Debug\SignPressClient.Properties.Resources.resources
+D:\我的文档\Visual Studio 2012\Projects\SignPressClient\SignPressClient\obj\Debug\SignPressClient.Setting.resources
+D:\我的文档\Visual Studio 2012\Projects\SignPressClient\SignPressClient\obj\Debug\SignPressClient.SignManage.resources
+D:\我的文档\Visual Studio 2012\Projects\SignPressClient\SignPressClient\obj\Debug\SignPressClient.SubmitManage.resources
+D:\我的文档\Visual Studio 2012\Projects\SignPressClient\SignPressClient\obj\Debug\SignPressClient.UserManage.resources
+D:\我的文档\Visual Studio 2012\Projects\SignPressClient\SignPressClient\obj\Debug\SignPressClient.csproj.GenerateResource.Cache
+D:\我的文档\Visual Studio 2012\Projects\SignPressClient\SignPressClient\obj\Debug\SignPressClient.exe
+D:\我的文档\Visual Studio 2012\Projects\SignPressClient\SignPressClient\obj\Debug\SignPressClient.pdb
+D:\我的文档\Visual Studio 2012\Projects\SignPressClient\SignPressClient\obj\Debug\SignPressClient.ViewConTemp.resources
+D:\我的文档\Visual Studio 2012\Projects\SignPressClient\SignPressClient\obj\Debug\SignPressClient.EditConTemp.resources
+D:\我的文档\Visual Studio 2012\Projects\SignPressClient\SignPressClient\obj\Debug\SignPressClient.SignConTemp.resources
+D:\我的文档\Visual Studio 2012\Projects\SignPressClient\SignPressClient\bin\Debug\SignPressClient.exe.manifest
+D:\我的文档\Visual Studio 2012\Projects\SignPressClient\SignPressClient\bin\Debug\SignPressClient.application
+D:\我的文档\Visual Studio 2012\Projects\SignPressClient\SignPressClient\obj\Debug\SignPressClient.exe.manifest
+D:\我的文档\Visual Studio 2012\Projects\SignPressClient\SignPressClient\obj\Debug\SignPressClient.application
+D:\我的文档\Visual Studio 2012\Projects\SignPressClient\SignPressClient\obj\Debug\SignPressClient.csprojResolveAssemblyReference.cache
+D:\我的文档\Visual Studio 2012\Projects\SignPressClient\SignPressClient\obj\Debug\SignPressClient.ReSubmitConTemp.resources
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient\SignPressClient\SignPressClient\bin\Debug\SignPressClient.exe.config
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient\SignPressClient\SignPressClient\obj\Debug\SignPressClient.exe
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient\SignPressClient\SignPressClient\obj\Debug\SignPressClient.pdb
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient\SignPressClient\bin\Debug\SignPressClient.exe.config
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient\SignPressClient\obj\Debug\SignPressClient.exe
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient\SignPressClient\obj\Debug\SignPressClient.pdb
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient\SignPressClient\obj\Debug\SignPressClient.csprojResolveAssemblyReference.cache
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient\SignPressClient\obj\Debug\SignPressClient.AddConTemp.resources
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient\SignPressClient\obj\Debug\SignPressClient.AdminManage.resources
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient\SignPressClient\obj\Debug\SignPressClient.EditConTemp.resources
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient\SignPressClient\obj\Debug\SignPressClient.Loading.resources
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient\SignPressClient\obj\Debug\SignPressClient.Login.resources
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient\SignPressClient\obj\Debug\SignPressClient.MainWindow.resources
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient\SignPressClient\obj\Debug\SignPressClient.Properties.Resources.resources
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient\SignPressClient\obj\Debug\SignPressClient.ReSubmitConTemp.resources
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient\SignPressClient\obj\Debug\SignPressClient.Setting.resources
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient\SignPressClient\obj\Debug\SignPressClient.SignConTemp.resources
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient\SignPressClient\obj\Debug\SignPressClient.SignManage.resources
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient\SignPressClient\obj\Debug\SignPressClient.SubmitManage.resources
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient\SignPressClient\obj\Debug\SignPressClient.UserManage.resources
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient\SignPressClient\obj\Debug\SignPressClient.ViewConTemp.resources
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient\SignPressClient\obj\Debug\SignPressClient.csproj.GenerateResource.Cache
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient\SignPressClient\bin\Debug\SignPressClient.exe.manifest
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient\SignPressClient\bin\Debug\SignPressClient.application
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient\SignPressClient\bin\Debug\SignPressClient.exe
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient\SignPressClient\bin\Debug\Newtonsoft.Json.dll
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient\SignPressClient\bin\Debug\Newtonsoft.Json.xml
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient\SignPressClient\obj\Debug\SignPressClient.exe.manifest
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient\SignPressClient\obj\Debug\SignPressClient.application
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient\SignPressClient\bin\Debug\SignPressClient.pdb
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient_win7\SignPressClient\bin\Debug\SignPressClient.exe.config
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient_win7\SignPressClient\obj\Debug\SignPressClient.exe
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient_win7\SignPressClient\obj\Debug\SignPressClient.pdb
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient_win7\SignPressClient\bin\Debug\SignPressClient.exe.manifest
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient_win7\SignPressClient\bin\Debug\SignPressClient.application
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient_win7\SignPressClient\bin\Debug\SignPressClient.exe
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient_win7\SignPressClient\bin\Debug\SignPressClient.pdb
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient_win7\SignPressClient\bin\Debug\Newtonsoft.Json.dll
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient_win7\SignPressClient\bin\Debug\Newtonsoft.Json.xml
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient_win7\SignPressClient\obj\Debug\SignPressClient.csprojResolveAssemblyReference.cache
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient_win7\SignPressClient\obj\Debug\SignPressClient.AddConTemp.resources
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient_win7\SignPressClient\obj\Debug\SignPressClient.AdminManage.resources
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient_win7\SignPressClient\obj\Debug\SignPressClient.EditConTemp.resources
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient_win7\SignPressClient\obj\Debug\SignPressClient.Loading.resources
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient_win7\SignPressClient\obj\Debug\SignPressClient.Login.resources
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient_win7\SignPressClient\obj\Debug\SignPressClient.MainWindow.resources
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient_win7\SignPressClient\obj\Debug\SignPressClient.Properties.Resources.resources
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient_win7\SignPressClient\obj\Debug\SignPressClient.ReSubmitConTemp.resources
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient_win7\SignPressClient\obj\Debug\SignPressClient.Setting.resources
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient_win7\SignPressClient\obj\Debug\SignPressClient.SignConTemp.resources
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient_win7\SignPressClient\obj\Debug\SignPressClient.SignManage.resources
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient_win7\SignPressClient\obj\Debug\SignPressClient.SubmitManage.resources
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient_win7\SignPressClient\obj\Debug\SignPressClient.UserManage.resources
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient_win7\SignPressClient\obj\Debug\SignPressClient.ViewConTemp.resources
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient_win7\SignPressClient\obj\Debug\SignPressClient.csproj.GenerateResource.Cache
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient_win7\SignPressClient\obj\Debug\SignPressClient.exe.manifest
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient_win7\SignPressClient\obj\Debug\SignPressClient.application
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient_win7\SignPressClient\obj\Debug\SignPressClient.EditEmployee.resources
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient_win7\SignPressClient\obj\Debug\SignPressClient.EditDepartment.resources
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient_win7_async\SignPressClient\bin\Debug\SignPressClient.exe.config
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient_win7_async\SignPressClient\obj\Debug\SignPressClient.exe
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient_win7_async\SignPressClient\obj\Debug\SignPressClient.pdb
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient_win7_async\SignPressClient\bin\Debug\SignPressClient.exe.manifest
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient_win7_async\SignPressClient\bin\Debug\SignPressClient.application
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient_win7_async\SignPressClient\bin\Debug\SignPressClient.exe
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient_win7_async\SignPressClient\bin\Debug\SignPressClient.pdb
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient_win7_async\SignPressClient\bin\Debug\Newtonsoft.Json.dll
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient_win7_async\SignPressClient\bin\Debug\Newtonsoft.Json.xml
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient_win7_async\SignPressClient\obj\Debug\SignPressClient.csprojResolveAssemblyReference.cache
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient_win7_async\SignPressClient\obj\Debug\SignPressClient.AddConTemp.resources
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient_win7_async\SignPressClient\obj\Debug\SignPressClient.AdminManage.resources
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient_win7_async\SignPressClient\obj\Debug\SignPressClient.EditConTemp.resources
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient_win7_async\SignPressClient\obj\Debug\SignPressClient.EditDepartment.resources
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient_win7_async\SignPressClient\obj\Debug\SignPressClient.EditEmployee.resources
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient_win7_async\SignPressClient\obj\Debug\SignPressClient.Loading.resources
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient_win7_async\SignPressClient\obj\Debug\SignPressClient.Login.resources
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient_win7_async\SignPressClient\obj\Debug\SignPressClient.MainWindow.resources
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient_win7_async\SignPressClient\obj\Debug\SignPressClient.Properties.Resources.resources
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient_win7_async\SignPressClient\obj\Debug\SignPressClient.ReSubmitConTemp.resources
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient_win7_async\SignPressClient\obj\Debug\SignPressClient.Setting.resources
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient_win7_async\SignPressClient\obj\Debug\SignPressClient.SignConTemp.resources
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient_win7_async\SignPressClient\obj\Debug\SignPressClient.SignManage.resources
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient_win7_async\SignPressClient\obj\Debug\SignPressClient.SubmitManage.resources
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient_win7_async\SignPressClient\obj\Debug\SignPressClient.UserManage.resources
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient_win7_async\SignPressClient\obj\Debug\SignPressClient.ViewConTemp.resources
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient_win7_async\SignPressClient\obj\Debug\SignPressClient.csproj.GenerateResource.Cache
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient_win7_async\SignPressClient\obj\Debug\SignPressClient.exe.manifest
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient_win7_async\SignPressClient\obj\Debug\SignPressClient.application
+F:\SignPressClient_win7_async\SignPressClient_win7_async\SignPressClient\bin\Debug\SignPressClient.exe.config
+F:\SignPressClient_win7_async\SignPressClient_win7_async\SignPressClient\obj\Debug\SignPressClient.exe
+F:\SignPressClient_win7_async\SignPressClient_win7_async\SignPressClient\obj\Debug\SignPressClient.pdb
+F:\SignPressClient_win7_async\SignPressClient_win7_async\SignPressClient\obj\Debug\SignPressClient.csprojResolveAssemblyReference.cache
+F:\SignPressClient_win7_async\SignPressClient_win7_async\SignPressClient\obj\Debug\SignPressClient.AddConTemp.resources
+F:\SignPressClient_win7_async\SignPressClient_win7_async\SignPressClient\obj\Debug\SignPressClient.AdminManage.resources
+F:\SignPressClient_win7_async\SignPressClient_win7_async\SignPressClient\obj\Debug\SignPressClient.EditConTemp.resources
+F:\SignPressClient_win7_async\SignPressClient_win7_async\SignPressClient\obj\Debug\SignPressClient.EditDepartment.resources
+F:\SignPressClient_win7_async\SignPressClient_win7_async\SignPressClient\obj\Debug\SignPressClient.EditEmployee.resources
+F:\SignPressClient_win7_async\SignPressClient_win7_async\SignPressClient\obj\Debug\SignPressClient.Loading.resources
+F:\SignPressClient_win7_async\SignPressClient_win7_async\SignPressClient\obj\Debug\SignPressClient.Login.resources
+F:\SignPressClient_win7_async\SignPressClient_win7_async\SignPressClient\obj\Debug\SignPressClient.MainWindow.resources
+F:\SignPressClient_win7_async\SignPressClient_win7_async\SignPressClient\obj\Debug\SignPressClient.Properties.Resources.resources
+F:\SignPressClient_win7_async\SignPressClient_win7_async\SignPressClient\obj\Debug\SignPressClient.ReSubmitConTemp.resources
+F:\SignPressClient_win7_async\SignPressClient_win7_async\SignPressClient\obj\Debug\SignPressClient.Setting.resources
+F:\SignPressClient_win7_async\SignPressClient_win7_async\SignPressClient\obj\Debug\SignPressClient.SignConTemp.resources
+F:\SignPressClient_win7_async\SignPressClient_win7_async\SignPressClient\obj\Debug\SignPressClient.SignManage.resources
+F:\SignPressClient_win7_async\SignPressClient_win7_async\SignPressClient\obj\Debug\SignPressClient.SubmitManage.resources
+F:\SignPressClient_win7_async\SignPressClient_win7_async\SignPressClient\obj\Debug\SignPressClient.UserManage.resources
+F:\SignPressClient_win7_async\SignPressClient_win7_async\SignPressClient\obj\Debug\SignPressClient.ViewConTemp.resources
+F:\SignPressClient_win7_async\SignPressClient_win7_async\SignPressClient\obj\Debug\SignPressClient.csproj.GenerateResource.Cache
+F:\SignPressClient_win7_async\SignPressClient_win7_async\SignPressClient\bin\Debug\SignPressClient.exe.manifest
+F:\SignPressClient_win7_async\SignPressClient_win7_async\SignPressClient\bin\Debug\SignPressClient.application
+F:\SignPressClient_win7_async\SignPressClient_win7_async\SignPressClient\bin\Debug\SignPressClient.exe
+F:\SignPressClient_win7_async\SignPressClient_win7_async\SignPressClient\bin\Debug\SignPressClient.pdb
+F:\SignPressClient_win7_async\SignPressClient_win7_async\SignPressClient\bin\Debug\Newtonsoft.Json.dll
+F:\SignPressClient_win7_async\SignPressClient_win7_async\SignPressClient\bin\Debug\Newtonsoft.Json.xml
+F:\SignPressClient_win7_async\SignPressClient_win7_async\SignPressClient\obj\Debug\SignPressClient.exe.manifest
+F:\SignPressClient_win7_async\SignPressClient_win7_async\SignPressClient\obj\Debug\SignPressClient.application
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient_win7_sync\SignPressClient\bin\Debug\SignPressClient.exe.config
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient_win7_sync\SignPressClient\obj\Debug\SignPressClient.exe
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient_win7_sync\SignPressClient\obj\Debug\SignPressClient.pdb
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient_win7_sync\SignPressClient\bin\Debug\SignPressClient.exe.manifest
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient_win7_sync\SignPressClient\bin\Debug\SignPressClient.application
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient_win7_sync\SignPressClient\bin\Debug\SignPressClient.exe
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient_win7_sync\SignPressClient\bin\Debug\Newtonsoft.Json.dll
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient_win7_sync\SignPressClient\bin\Debug\Newtonsoft.Json.xml
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient_win7_sync\SignPressClient\obj\Debug\SignPressClient.csprojResolveAssemblyReference.cache
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient_win7_sync\SignPressClient\obj\Debug\SignPressClient.AddConTemp.resources
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient_win7_sync\SignPressClient\obj\Debug\SignPressClient.AdminManage.resources
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient_win7_sync\SignPressClient\obj\Debug\SignPressClient.EditConTemp.resources
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient_win7_sync\SignPressClient\obj\Debug\SignPressClient.EditDepartment.resources
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient_win7_sync\SignPressClient\obj\Debug\SignPressClient.EditEmployee.resources
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient_win7_sync\SignPressClient\obj\Debug\SignPressClient.Loading.resources
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient_win7_sync\SignPressClient\obj\Debug\SignPressClient.Login.resources
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient_win7_sync\SignPressClient\obj\Debug\SignPressClient.MainWindow.resources
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient_win7_sync\SignPressClient\obj\Debug\SignPressClient.Properties.Resources.resources
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient_win7_sync\SignPressClient\obj\Debug\SignPressClient.ReSubmitConTemp.resources
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient_win7_sync\SignPressClient\obj\Debug\SignPressClient.Setting.resources
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient_win7_sync\SignPressClient\obj\Debug\SignPressClient.SignConTemp.resources
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient_win7_sync\SignPressClient\obj\Debug\SignPressClient.SignManage.resources
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient_win7_sync\SignPressClient\obj\Debug\SignPressClient.SubmitManage.resources
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient_win7_sync\SignPressClient\obj\Debug\SignPressClient.UserManage.resources
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient_win7_sync\SignPressClient\obj\Debug\SignPressClient.ViewConTemp.resources
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient_win7_sync\SignPressClient\obj\Debug\SignPressClient.csproj.GenerateResource.Cache
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient_win7_sync\SignPressClient\obj\Debug\SignPressClient.exe.manifest
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient_win7_sync\SignPressClient\obj\Debug\SignPressClient.application
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient_win7_sync\SignPressClient\bin\Debug\SignPressClient.pdb
+F:\[E]GitHub\SignPressClient_win7_sync\SignPressClient\bin\Debug\SignPressClient.exe.config
+F:\[E]GitHub\SignPressClient_win7_sync\SignPressClient\obj\Debug\SignPressClient.exe
+F:\[E]GitHub\SignPressClient_win7_sync\SignPressClient\obj\Debug\SignPressClient.pdb
+F:\[E]GitHub\SignPressClient_win7_sync\SignPressClient\bin\Debug\SignPressClient.exe.manifest
+F:\[E]GitHub\SignPressClient_win7_sync\SignPressClient\bin\Debug\SignPressClient.application
+F:\[E]GitHub\SignPressClient_win7_sync\SignPressClient\bin\Debug\SignPressClient.exe
+F:\[E]GitHub\SignPressClient_win7_sync\SignPressClient\bin\Debug\SignPressClient.pdb
+F:\[E]GitHub\SignPressClient_win7_sync\SignPressClient\bin\Debug\Newtonsoft.Json.dll
+F:\[E]GitHub\SignPressClient_win7_sync\SignPressClient\bin\Debug\Newtonsoft.Json.xml
+F:\[E]GitHub\SignPressClient_win7_sync\SignPressClient\obj\Debug\SignPressClient.csprojResolveAssemblyReference.cache
+F:\[E]GitHub\SignPressClient_win7_sync\SignPressClient\obj\Debug\SignPressClient.AddConTemp.resources
+F:\[E]GitHub\SignPressClient_win7_sync\SignPressClient\obj\Debug\SignPressClient.AdminManage.resources
+F:\[E]GitHub\SignPressClient_win7_sync\SignPressClient\obj\Debug\SignPressClient.EditConTemp.resources
+F:\[E]GitHub\SignPressClient_win7_sync\SignPressClient\obj\Debug\SignPressClient.EditDepartment.resources
+F:\[E]GitHub\SignPressClient_win7_sync\SignPressClient\obj\Debug\SignPressClient.EditEmployee.resources
+F:\[E]GitHub\SignPressClient_win7_sync\SignPressClient\obj\Debug\SignPressClient.Loading.resources
+F:\[E]GitHub\SignPressClient_win7_sync\SignPressClient\obj\Debug\SignPressClient.Login.resources
+F:\[E]GitHub\SignPressClient_win7_sync\SignPressClient\obj\Debug\SignPressClient.MainWindow.resources
+F:\[E]GitHub\SignPressClient_win7_sync\SignPressClient\obj\Debug\SignPressClient.Properties.Resources.resources
+F:\[E]GitHub\SignPressClient_win7_sync\SignPressClient\obj\Debug\SignPressClient.ReSubmitConTemp.resources
+F:\[E]GitHub\SignPressClient_win7_sync\SignPressClient\obj\Debug\SignPressClient.Setting.resources
+F:\[E]GitHub\SignPressClient_win7_sync\SignPressClient\obj\Debug\SignPressClient.SignConTemp.resources
+F:\[E]GitHub\SignPressClient_win7_sync\SignPressClient\obj\Debug\SignPressClient.SignManage.resources
+F:\[E]GitHub\SignPressClient_win7_sync\SignPressClient\obj\Debug\SignPressClient.SubmitManage.resources
+F:\[E]GitHub\SignPressClient_win7_sync\SignPressClient\obj\Debug\SignPressClient.UserManage.resources
+F:\[E]GitHub\SignPressClient_win7_sync\SignPressClient\obj\Debug\SignPressClient.ViewConTemp.resources
+F:\[E]GitHub\SignPressClient_win7_sync\SignPressClient\obj\Debug\SignPressClient.csproj.GenerateResource.Cache
+F:\[E]GitHub\SignPressClient_win7_sync\SignPressClient\obj\Debug\SignPressClient.exe.manifest
+F:\[E]GitHub\SignPressClient_win7_sync\SignPressClient\obj\Debug\SignPressClient.application
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient_0.99999\SignPressClient_win7_sync\SignPressClient\bin\Debug\SignPressClient.exe.config
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient_0.99999\SignPressClient_win7_sync\SignPressClient\obj\Debug\SignPressClient.exe
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient_0.99999\SignPressClient_win7_sync\SignPressClient\obj\Debug\SignPressClient.pdb
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient_0.99999\SignPressClient_win7_sync\SignPressClient\bin\Debug\SignPressClient.exe.manifest
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient_0.99999\SignPressClient_win7_sync\SignPressClient\bin\Debug\SignPressClient.application
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient_0.99999\SignPressClient_win7_sync\SignPressClient\bin\Debug\SignPressClient.exe
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient_0.99999\SignPressClient_win7_sync\SignPressClient\bin\Debug\SignPressClient.pdb
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient_0.99999\SignPressClient_win7_sync\SignPressClient\bin\Debug\Newtonsoft.Json.dll
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient_0.99999\SignPressClient_win7_sync\SignPressClient\bin\Debug\Newtonsoft.Json.xml
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient_0.99999\SignPressClient_win7_sync\SignPressClient\obj\Debug\SignPressClient.AddConTemp.resources
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient_0.99999\SignPressClient_win7_sync\SignPressClient\obj\Debug\SignPressClient.AdminManage.resources
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient_0.99999\SignPressClient_win7_sync\SignPressClient\obj\Debug\SignPressClient.EditConTemp.resources
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient_0.99999\SignPressClient_win7_sync\SignPressClient\obj\Debug\SignPressClient.EditDepartment.resources
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient_0.99999\SignPressClient_win7_sync\SignPressClient\obj\Debug\SignPressClient.EditEmployee.resources
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient_0.99999\SignPressClient_win7_sync\SignPressClient\obj\Debug\SignPressClient.Loading.resources
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient_0.99999\SignPressClient_win7_sync\SignPressClient\obj\Debug\SignPressClient.Login.resources
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient_0.99999\SignPressClient_win7_sync\SignPressClient\obj\Debug\SignPressClient.MainWindow.resources
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient_0.99999\SignPressClient_win7_sync\SignPressClient\obj\Debug\SignPressClient.Properties.Resources.resources
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient_0.99999\SignPressClient_win7_sync\SignPressClient\obj\Debug\SignPressClient.ReSubmitConTemp.resources
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient_0.99999\SignPressClient_win7_sync\SignPressClient\obj\Debug\SignPressClient.Setting.resources
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient_0.99999\SignPressClient_win7_sync\SignPressClient\obj\Debug\SignPressClient.SignConTemp.resources
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient_0.99999\SignPressClient_win7_sync\SignPressClient\obj\Debug\SignPressClient.SignManage.resources
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient_0.99999\SignPressClient_win7_sync\SignPressClient\obj\Debug\SignPressClient.SubmitManage.resources
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient_0.99999\SignPressClient_win7_sync\SignPressClient\obj\Debug\SignPressClient.UserManage.resources
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient_0.99999\SignPressClient_win7_sync\SignPressClient\obj\Debug\SignPressClient.ViewConTemp.resources
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient_0.99999\SignPressClient_win7_sync\SignPressClient\obj\Debug\SignPressClient.csproj.GenerateResource.Cache
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient_0.99999\SignPressClient_win7_sync\SignPressClient\obj\Debug\SignPressClient.exe.manifest
+G:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressClient_0.99999\SignPressClient_win7_sync\SignPressClient\obj\Debug\SignPressClient.application
