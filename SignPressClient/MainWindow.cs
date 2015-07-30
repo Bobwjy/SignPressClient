@@ -12,6 +12,19 @@ using SignPressClient.SignSocket;
 using System.Timers;
 using SignPressClient.SignLogging;
 
+
+///  日期2015-07-29 21:40
+///  版本更新自1.0.1
+///  添加托盘程序
+/// 
+///
+
+
+
+///  日期2015-07-30 21:48
+///  版本更新自1.0.2
+///  登录窗体，增加记密码的功能
+
 namespace SignPressClient
 {
     public partial class MainWindow : Form
@@ -51,7 +64,8 @@ namespace SignPressClient
             }
             // 2015-07-01 14:17 modify by gatieme
             // 设置主窗口的标题
-            this.Text = "黑龙江省航道局会签单";
+            this.Text = "黑龙江省航道局会签单 : " + UserHelper.UserInfo.Name;
+            this.mainNotifyIcon.Text = "黑龙江省航道局会签单 : " + UserHelper.UserInfo.Name;
         }
 
         private void Submit_timer_Elapsed(object sender, ElapsedEventArgs e)
@@ -603,9 +617,15 @@ namespace SignPressClient
         {
             if (MessageBox.Show("你确定要退出？", "系统提示", MessageBoxButtons.YesNo, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1) == DialogResult.Yes)
             {
+
                 await this._sc.Quit();
                 this._sc.Close();
+
+                this.mainNotifyIcon.Visible = false;
                 this.Close();
+                this.Dispose();
+                System.Environment.Exit(System.Environment.ExitCode);   
+
             }
         }
 

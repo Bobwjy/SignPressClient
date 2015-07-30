@@ -11,6 +11,14 @@ using System.Runtime.InteropServices;
 using SignPressClient.Model;
 using SignPressClient.SignSocket;
 using SignPressClient.SignLogging;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
+
+
+//  modify by gatieme at version 1.0.2
+//  date 2015-07-30 19:01
+//  登录界面添加记住密码的功能
+
 
 namespace SignPressClient
 {
@@ -21,6 +29,13 @@ namespace SignPressClient
         private Point mouseOffset;      //鼠标的按下位置
         private OpaqueCommand cmd = new OpaqueCommand();
         public SignSocketClient _sc;
+
+
+        List<User> item = new List<User>();
+        User user = new User();
+        //BUser bUser = new BUser();
+        Dictionary<string, User> users = new Dictionary<string, User>();
+
 
         public Login()
         {
@@ -206,6 +221,31 @@ namespace SignPressClient
             }
             else
             {
+                User user = new User();
+                //BUser bUser = new BUser();
+                FileStream fs = new FileStream("data.bin", FileMode.Create);
+                BinaryFormatter bf = new BinaryFormatter();
+                user.Username = username;
+                if (this.RemeberPassword.Checked)       //  如果单击了记住密码的功能
+                {   //  在文件中保存密码
+                    user.Password = password;
+                }
+                else
+                {   //  不在文件中保存密码
+                    user.Password = "";
+                }
+                
+                //  选在集合中是否存在用户名 
+                if (users.ContainsKey(user.Username))
+                {
+                    users.Remove(user.Username);
+                }
+                users.Add(user.Username, user);
+                //要先将User类先设为可以序列化(即在类的前面加[Serializable])
+                bf.Serialize(fs, users);
+                //user.Password = this.PassWord.Text;
+                fs.Close();
+            
                 try
                 {
                     _sc = new SignSocketClient();
@@ -246,6 +286,96 @@ namespace SignPressClient
         {
             this.BackColor = Color.Blue;
             this.TransparencyKey = Color.Blue;
+
+
+            //  读取配置文件寻找记住的用户名和密码
+            FileStream fs = new FileStream("data.bin", FileMode.OpenOrCreate);
+
+            if (fs.Length > 0)
+            {
+                BinaryFormatter bf = new BinaryFormatter();
+                users = bf.Deserialize(fs) as Dictionary<string, User>;
+                foreach (User user in users.Values)
+                {
+                    this.UserName.Items.Add(user.Username);
+                }
+
+                for (int i = 0; i < users.Count; i++)
+                {
+                    if (this.UserName.Text != "")
+                    {
+                        if (users.ContainsKey(this.UserName.Text))
+                        {
+                            this.PassWord.Text = users[this.UserName.Text].Password;
+                            this.RemeberPassword.Checked = true;
+                        }
+                    }
+                }
+            }
+            fs.Close();
+            //  用户名默认选中第一个
+            if (this.UserName.Items.Count > 0)
+            {
+                this.UserName.SelectedIndex = this.UserName.Items.Count - 1;
+            }
+            //item = (List<User>)bUser.GetAll();
+            //item = 
+            //this.UserName.DataSource = item;
+            //this.UserName.DisplayMember = "Username";
         }
+
+        private void UserName_SelectedValueChanged(object sender, EventArgs e)
+        {
+            //  首先读取记住密码的配置文件
+            FileStream fs = new FileStream("data.bin", FileMode.OpenOrCreate);
+
+            if (fs.Length > 0)
+            {
+                BinaryFormatter bf = new BinaryFormatter();
+
+                users = bf.Deserialize(fs) as Dictionary<string, User>;
+                
+                for (int i = 0; i < users.Count; i++)
+                {
+                    if (this.UserName.Text != "")
+                    {
+                        if (users.ContainsKey(UserName.Text) && users[UserName.Text].Password != "")
+                        {
+                            this.PassWord.Text = users[UserName.Text].Password;
+                            this.RemeberPassword.Checked = true;
+                        }
+                        else
+                        {
+                            this.PassWord.Text = "";
+                            this.RemeberPassword.Checked = false;
+                        }
+                    }
+                }
+            }
+
+            fs.Close();
+        }
+
+        //  modify by gatieme at version 1.0.2
+        //  回车实现登录
+        //  http://www.bubuko.com/infodetail-828823.html
+        //  虽然从字面理解, KeyDown是按下一个键的意思,
+        //  但实际上二者的根本区别是, 
+        //  系统由KeyDown返回键盘的代码, 然后由TranslateMessage函数翻译成成字符, 由KeyPress返回字符值. 
+        //  因此在KeyDown中返回的是键盘的代码, 而KeyPress返回的是ASCII字符. 
+        //  所以根据你的目的, 如果只想读取字符, 用KeyPress, 如果想读各键的状态, 用KeyDown. 
+        // 
+        //  说KeyDown是按下, KeyPress是按下并松开, 是不对的. 
+        //  如果你一直按着键呢? 这时不断地产生KeyDown和KeyPress.
+        private void PassWord_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                this.Submit_Click(sender, e);
+            }
+        }
+
+
+
     }  
 }

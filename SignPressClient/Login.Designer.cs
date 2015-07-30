@@ -32,16 +32,17 @@
             System.Windows.Forms.Button Submit;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
             this.AllForm = new System.Windows.Forms.Panel();
+            this.RemeberPassword = new System.Windows.Forms.CheckBox();
+            this.UserName = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.PassWord = new System.Windows.Forms.TextBox();
-            this.UserName = new System.Windows.Forms.TextBox();
-            this.errormessage = new System.Windows.Forms.ToolTip(this.components);
-            this.cuemessage = new System.Windows.Forms.ToolTip(this.components);
             this.HeaderForm = new System.Windows.Forms.Panel();
             this.Close = new System.Windows.Forms.PictureBox();
             this.Settings = new System.Windows.Forms.PictureBox();
             this.min = new System.Windows.Forms.PictureBox();
+            this.errormessage = new System.Windows.Forms.ToolTip(this.components);
+            this.cuemessage = new System.Windows.Forms.ToolTip(this.components);
             Submit = new System.Windows.Forms.Button();
             this.AllForm.SuspendLayout();
             this.HeaderForm.SuspendLayout();
@@ -65,11 +66,12 @@
             // 
             this.AllForm.BackColor = System.Drawing.SystemColors.Window;
             this.AllForm.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.AllForm.Controls.Add(this.RemeberPassword);
+            this.AllForm.Controls.Add(this.UserName);
             this.AllForm.Controls.Add(this.label3);
             this.AllForm.Controls.Add(this.label2);
             this.AllForm.Controls.Add(Submit);
             this.AllForm.Controls.Add(this.PassWord);
-            this.AllForm.Controls.Add(this.UserName);
             this.AllForm.Controls.Add(this.HeaderForm);
             this.AllForm.Dock = System.Windows.Forms.DockStyle.Fill;
             this.AllForm.Location = new System.Drawing.Point(0, 0);
@@ -80,12 +82,34 @@
             this.AllForm.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Login_MouseMove);
             this.AllForm.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Login_MouseUp);
             // 
+            // RemeberPassword
+            // 
+            this.RemeberPassword.AutoSize = true;
+            this.RemeberPassword.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.RemeberPassword.Location = new System.Drawing.Point(124, 262);
+            this.RemeberPassword.Name = "RemeberPassword";
+            this.RemeberPassword.Size = new System.Drawing.Size(75, 21);
+            this.RemeberPassword.TabIndex = 2;
+            this.RemeberPassword.Text = "记住密码";
+            this.RemeberPassword.UseVisualStyleBackColor = true;
+            // 
+            // UserName
+            // 
+            this.UserName.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.UserName.FormattingEnabled = true;
+            this.UserName.Location = new System.Drawing.Point(124, 178);
+            this.UserName.Name = "UserName";
+            this.UserName.Size = new System.Drawing.Size(179, 29);
+            this.UserName.TabIndex = 0;
+            this.UserName.Text = "用户名";
+            this.UserName.SelectedValueChanged += new System.EventHandler(this.UserName_SelectedValueChanged);
+            // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.SystemColors.Window;
             this.label3.ForeColor = System.Drawing.Color.Silver;
-            this.label3.Location = new System.Drawing.Point(132, 249);
+            this.label3.Location = new System.Drawing.Point(132, 233);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(29, 12);
             this.label3.TabIndex = 5;
@@ -96,7 +120,7 @@
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.SystemColors.Window;
             this.label2.ForeColor = System.Drawing.Color.Silver;
-            this.label2.Location = new System.Drawing.Point(132, 210);
+            this.label2.Location = new System.Drawing.Point(132, 188);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(41, 12);
             this.label2.TabIndex = 4;
@@ -104,25 +128,15 @@
             // 
             // PassWord
             // 
-            this.PassWord.Font = new System.Drawing.Font("宋体", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.PassWord.Location = new System.Drawing.Point(124, 239);
+            this.PassWord.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.PassWord.Location = new System.Drawing.Point(123, 223);
             this.PassWord.Name = "PassWord";
-            this.PassWord.Size = new System.Drawing.Size(179, 31);
-            this.PassWord.TabIndex = 2;
+            this.PassWord.Size = new System.Drawing.Size(179, 29);
+            this.PassWord.TabIndex = 1;
             this.PassWord.UseSystemPasswordChar = true;
             this.PassWord.TextChanged += new System.EventHandler(this.PassWord_TextChanged);
+            this.PassWord.KeyDown += new System.Windows.Forms.KeyEventHandler(this.PassWord_KeyDown);
             this.PassWord.Validated += new System.EventHandler(this.PassWord_Validated);
-            // 
-            // UserName
-            // 
-            this.UserName.Font = new System.Drawing.Font("宋体", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.UserName.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.UserName.Location = new System.Drawing.Point(124, 200);
-            this.UserName.Name = "UserName";
-            this.UserName.Size = new System.Drawing.Size(179, 31);
-            this.UserName.TabIndex = 1;
-            this.UserName.TextChanged += new System.EventHandler(this.UserName_TextChanged);
-            this.UserName.Validated += new System.EventHandler(this.UserName_Validated);
             // 
             // HeaderForm
             // 
@@ -212,15 +226,16 @@
 
         private System.Windows.Forms.Panel AllForm;
         private System.Windows.Forms.Panel HeaderForm;
-        private System.Windows.Forms.TextBox PassWord;
-        private System.Windows.Forms.TextBox UserName;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.PictureBox Close;
         private System.Windows.Forms.PictureBox min;
         private System.Windows.Forms.ToolTip errormessage;
         private System.Windows.Forms.PictureBox Settings;
         private System.Windows.Forms.ToolTip cuemessage;
+        private System.Windows.Forms.ComboBox UserName;
+        private System.Windows.Forms.CheckBox RemeberPassword;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox PassWord;
     }
 }
 
