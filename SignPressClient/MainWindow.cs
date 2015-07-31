@@ -11,7 +11,7 @@ using SignPressClient.Model;
 using SignPressClient.SignSocket;
 using System.Timers;
 using SignPressClient.SignLogging;
-
+using SignPressClient.Tools;
 
 ///  日期2015-07-29 21:40
 ///  版本更新自1.0.1
@@ -29,7 +29,7 @@ namespace SignPressClient
 {
     public partial class MainWindow : Form
     {
-
+        private CartoonForm m_cartoonForm;
 
         private System.Timers.Timer UnSign_timer = new System.Timers.Timer();                  //定时器
         private System.Timers.Timer Submit_timer = new System.Timers.Timer();
@@ -40,7 +40,7 @@ namespace SignPressClient
         public MainWindow()
         {
             InitializeComponent();
-            
+            m_cartoonForm = new CartoonForm(this);
             
             this.UnSign_timer.Elapsed += new ElapsedEventHandler(this.UnSign_timer_Elapsed);
             this.Submit_timer.Elapsed += new ElapsedEventHandler(this.Submit_timer_Elapsed);
@@ -551,6 +551,7 @@ namespace SignPressClient
                 //使关闭时窗口向右下角缩小的效果
                 this.WindowState = FormWindowState.Minimized;
                 this.mainNotifyIcon.Visible = true;
+                //this.m_cartoonForm.CartoonClose();
                 this.Hide();
                 return;
             }
@@ -602,10 +603,11 @@ namespace SignPressClient
         //  版本更新自1.0.1
         //  还原
         //  添加日期 --  2015-07-29 21:43
-        private void toolStripMenuItemMNormal_Click(object sender, EventArgs e)
+        private void toolStripMenuItemNormal_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Normal;
             this.mainNotifyIcon.Visible = true;
+            //this.m_cartoonForm.CartoonShowNormal();
             this.Show();
         }
 
@@ -628,13 +630,5 @@ namespace SignPressClient
 
             }
         }
-
-
-
-
-
-
-
-
     }
 }

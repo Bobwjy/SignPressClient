@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using SignPressClient.Model;
 using SignPressClient.SignSocket;
+using SignPressClient.Tools;
 
 namespace SignPressClient
 {

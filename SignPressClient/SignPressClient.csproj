@@ -157,10 +157,11 @@
     <Compile Include="Model\Templete.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="Model\UserHelper.cs" />
-    <Compile Include="MyOpaqueLayer.cs">
+    <Compile Include="Tools\CartoonForm.cs" />
+    <Compile Include="Tools\MyOpaqueLayer.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="OpaqueCommand.cs" />
+    <Compile Include="Tools\OpaqueCommand.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Model\Response.cs" />

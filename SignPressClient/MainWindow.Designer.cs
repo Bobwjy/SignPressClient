@@ -135,7 +135,7 @@
             this.toolStripMenuItemMNormal.Name = "toolStripMenuItemMNormal";
             this.toolStripMenuItemMNormal.Size = new System.Drawing.Size(152, 22);
             this.toolStripMenuItemMNormal.Text = "还原";
-            this.toolStripMenuItemMNormal.Click += new System.EventHandler(this.toolStripMenuItemMNormal_Click);
+            this.toolStripMenuItemMNormal.Click += new System.EventHandler(this.toolStripMenuItemNormal_Click);
             // 
             // toolStripMenuItemQuit
             // 

@@ -14,7 +14,7 @@ using SignPressClient.SignLogging;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 
-
+using SignPressClient.Tools;
 //  modify by gatieme at version 1.0.2
 //  date 2015-07-30 19:01
 //  登录界面添加记住密码的功能

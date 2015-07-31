@@ -7,11 +7,11 @@ using System.Windows.Forms;
 
 
 
-namespace SignPressClient
+namespace SignPressClient.Tools
 {
     class OpaqueCommand
     {
-        private SignPressClient.MyOpaqueLayer m_OpaqueLayer = null;//半透明蒙板层
+        private MyOpaqueLayer m_OpaqueLayer = null;//半透明蒙板层
 
         /// <summary>
         /// 显示遮罩层
