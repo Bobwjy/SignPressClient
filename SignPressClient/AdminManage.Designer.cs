@@ -35,7 +35,10 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.DepartmentID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DepartName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DepartmentShortCall = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.textBoxDepartmentShortCall = new System.Windows.Forms.TextBox();
+            this.labelDepartmentShortCall = new System.Windows.Forms.Label();
             this.AddDepartment = new System.Windows.Forms.Button();
             this.DepartmentName = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -151,7 +154,8 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.DepartmentID,
-            this.DepartName});
+            this.DepartName,
+            this.DepartmentShortCall});
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(3, 25);
             this.dataGridView1.Name = "dataGridView1";
@@ -174,10 +178,19 @@
             this.DepartName.Name = "DepartName";
             this.DepartName.ReadOnly = true;
             // 
+            // DepartmentShortCall
+            // 
+            this.DepartmentShortCall.DataPropertyName = "ShortCall";
+            this.DepartmentShortCall.HeaderText = "部门简称";
+            this.DepartmentShortCall.Name = "DepartmentShortCall";
+            this.DepartmentShortCall.ReadOnly = true;
+            // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Aqua;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.textBoxDepartmentShortCall);
+            this.panel1.Controls.Add(this.labelDepartmentShortCall);
             this.panel1.Controls.Add(this.AddDepartment);
             this.panel1.Controls.Add(this.DepartmentName);
             this.panel1.Controls.Add(this.label2);
@@ -187,10 +200,28 @@
             this.panel1.Size = new System.Drawing.Size(851, 64);
             this.panel1.TabIndex = 0;
             // 
+            // textBoxDepartmentShortCall
+            // 
+            this.textBoxDepartmentShortCall.Font = new System.Drawing.Font("微软雅黑", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.textBoxDepartmentShortCall.Location = new System.Drawing.Point(358, 12);
+            this.textBoxDepartmentShortCall.Name = "textBoxDepartmentShortCall";
+            this.textBoxDepartmentShortCall.Size = new System.Drawing.Size(132, 25);
+            this.textBoxDepartmentShortCall.TabIndex = 5;
+            // 
+            // labelDepartmentShortCall
+            // 
+            this.labelDepartmentShortCall.AutoSize = true;
+            this.labelDepartmentShortCall.Font = new System.Drawing.Font("微软雅黑", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.labelDepartmentShortCall.Location = new System.Drawing.Point(273, 17);
+            this.labelDepartmentShortCall.Name = "labelDepartmentShortCall";
+            this.labelDepartmentShortCall.Size = new System.Drawing.Size(61, 19);
+            this.labelDepartmentShortCall.TabIndex = 4;
+            this.labelDepartmentShortCall.Text = "部门简称";
+            // 
             // AddDepartment
             // 
             this.AddDepartment.Font = new System.Drawing.Font("微软雅黑", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.AddDepartment.Location = new System.Drawing.Point(506, 32);
+            this.AddDepartment.Location = new System.Drawing.Point(594, 10);
             this.AddDepartment.Name = "AddDepartment";
             this.AddDepartment.Size = new System.Drawing.Size(87, 27);
             this.AddDepartment.TabIndex = 3;
@@ -706,7 +737,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn TemplateID;
         private System.Windows.Forms.DataGridViewLinkColumn TemplateName;
         private System.Windows.Forms.DataGridViewTextBoxColumn CraeteTime;
+        private System.Windows.Forms.TextBox textBoxDepartmentShortCall;
+        private System.Windows.Forms.Label labelDepartmentShortCall;
         private System.Windows.Forms.DataGridViewTextBoxColumn DepartmentID;
         private System.Windows.Forms.DataGridViewTextBoxColumn DepartName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DepartmentShortCall;
     }
 }

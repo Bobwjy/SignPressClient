@@ -190,33 +190,51 @@ namespace SignPressClient
 
         private void AddDepartment_Click(object sender, EventArgs e)                  //添加部门
         {
+            //  modify by gatieme at 2015-08-08 16:20
+            //  为部门添加部门简称
             string departmentName = this.DepartmentName.Text.Trim();
+            string departmentShortCall = this.textBoxDepartmentShortCall.Text.Trim();
 
-            if (departmentName != "")
+            if (departmentName == "")
             {
-                if (UserHelper.DepList.Where(o => o.Name == departmentName).ToList().Count > 0)
-                {
-                    MessageBox.Show("该部门已经存在!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-                else
-                {
-                    string result = _sc.InsertDepartment(departmentName);
+                MessageBox.Show("请填写部门名称!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
-                    if (result == Response.INSERT_DEPARTMENT_SUCCESS.ToString())
-                    {
-                        MessageBox.Show("添加" + departmentName + "部门成功!");
-                        BindGridViewDataSourece();
-                    }
-                    else
-                    {
-                        MessageBox.Show("添加" + departmentName + "部门失败!");
-                    }
-                }
+            if (departmentShortCall == "")
+            {
+                MessageBox.Show("请填写部门简称!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (UserHelper.DepList.Where(o => o.Name == departmentName).ToList().Count > 0)
+            {
+                MessageBox.Show("该部门的部门名称与其他部门重复!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (UserHelper.DepList.Where(o => o.ShortCall == departmentShortCall).ToList().Count > 0)
+            {
+                MessageBox.Show("该部门的部门简称与其他部门重复!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+
+            Department department = new Department { Id = -1, Name = departmentName, ShortCall = departmentShortCall };
+            string result = _sc.InsertDepartment(department);
+
+            if (result == Response.INSERT_DEPARTMENT_SUCCESS.ToString())
+            {
+                MessageBox.Show("添加" + departmentName + "部门成功!");
+                
+                ///////
+                BindGridViewDataSourece();
+                ///////
             }
             else
             {
-                MessageBox.Show("请填写部门名称!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("添加" + departmentName + "部门失败!");
             }
+
         }
 
         /// <summary>
@@ -405,7 +423,7 @@ namespace SignPressClient
                 return;
             }
 
-            if (e.ColumnIndex == 2)
+            if (e.ColumnIndex == 3)
             {
                 if (MessageBox.Show("确定要修改当前部门信息？", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
@@ -423,7 +441,7 @@ namespace SignPressClient
                     }
                 }
             }
-            else if (e.ColumnIndex == 3)
+            else if (e.ColumnIndex == 4)
             {
                 if (MessageBox.Show("确定要删除此部门？\n危险操作，请谨慎进行\n由于部门下面可能有员工，因此您的删除操作会将部门下的所有员工全部被删除，由此将引入很多不安全问题，请问您是否继续删除", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {

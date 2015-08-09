@@ -150,18 +150,21 @@ namespace SignPressClient.SignSocket
         }  
 
 
-         /// <summary>
-         /// 添加部门
-         /// </summary>
-         /// <param name="departmentName"></param>
-         /// <returns></returns>
-        public string InsertDepartment(string departmentName)
+        /// <summary>
+        /// 添加部门
+        /// </summary>
+        /// <param name="department"></param>
+        /// <returns></returns>
+        ///  modify by gatieme at 2015-08-08 16:09
+        ///  实现功能--为部门添加部门简称
+        ///  本函数修改，修改参数string departmentName为Department department
+        public string InsertDepartment(Department department)
         {
             //return Task.Factory.StartNew(() =>
             {
                 try
                 {
-                    SocketMessage sm = new SocketMessage(Request.INSERT_DEPARTMENT_REQUEST, departmentName);
+                    SocketMessage sm = new SocketMessage(Request.INSERT_DEPARTMENT_REQUEST, department);
                     //scoket发送请求信息
                     ClientSocket.Send(Encoding.UTF8.GetBytes(sm.Package));
 

@@ -33,12 +33,14 @@
             this.labelName = new System.Windows.Forms.Label();
             this.textBoxId = new System.Windows.Forms.TextBox();
             this.labelId = new System.Windows.Forms.Label();
+            this.textBoxShortCall = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // ModifyDepartment
             // 
             this.ModifyDepartment.Font = new System.Drawing.Font("微软雅黑", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.ModifyDepartment.Location = new System.Drawing.Point(103, 149);
+            this.ModifyDepartment.Location = new System.Drawing.Point(99, 189);
             this.ModifyDepartment.Name = "ModifyDepartment";
             this.ModifyDepartment.Size = new System.Drawing.Size(87, 34);
             this.ModifyDepartment.TabIndex = 6;
@@ -49,7 +51,7 @@
             // textBoxName
             // 
             this.textBoxName.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.textBoxName.Location = new System.Drawing.Point(116, 75);
+            this.textBoxName.Location = new System.Drawing.Point(116, 69);
             this.textBoxName.Name = "textBoxName";
             this.textBoxName.Size = new System.Drawing.Size(132, 29);
             this.textBoxName.TabIndex = 5;
@@ -58,7 +60,7 @@
             // 
             this.labelName.AutoSize = true;
             this.labelName.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelName.Location = new System.Drawing.Point(49, 78);
+            this.labelName.Location = new System.Drawing.Point(36, 77);
             this.labelName.Name = "labelName";
             this.labelName.Size = new System.Drawing.Size(74, 21);
             this.labelName.TabIndex = 4;
@@ -77,17 +79,37 @@
             // 
             this.labelId.AutoSize = true;
             this.labelId.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelId.Location = new System.Drawing.Point(49, 24);
+            this.labelId.Location = new System.Drawing.Point(36, 24);
             this.labelId.Name = "labelId";
             this.labelId.Size = new System.Drawing.Size(74, 21);
             this.labelId.TabIndex = 7;
-            this.labelId.Text = "部门名称";
+            this.labelId.Text = "部门编号";
+            // 
+            // textBoxShortCall
+            // 
+            this.textBoxShortCall.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.textBoxShortCall.Location = new System.Drawing.Point(115, 111);
+            this.textBoxShortCall.Name = "textBoxShortCall";
+            this.textBoxShortCall.Size = new System.Drawing.Size(132, 29);
+            this.textBoxShortCall.TabIndex = 10;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label1.Location = new System.Drawing.Point(35, 113);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(74, 21);
+            this.label1.TabIndex = 9;
+            this.label1.Text = "部门简称";
             // 
             // EditDepartment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 262);
+            this.Controls.Add(this.textBoxShortCall);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.textBoxId);
             this.Controls.Add(this.labelId);
             this.Controls.Add(this.ModifyDepartment);
@@ -108,5 +130,7 @@
         private System.Windows.Forms.Label labelName;
         private System.Windows.Forms.TextBox textBoxId;
         private System.Windows.Forms.Label labelId;
+        private System.Windows.Forms.TextBox textBoxShortCall;
+        private System.Windows.Forms.Label label1;
     }
 }
