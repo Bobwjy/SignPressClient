@@ -244,7 +244,7 @@ namespace SignPressServer.SignSocket.AsyncSocket
         /// </summary>
         /// <param name="listenPort">监听的端口</param>
         public AsyncSocketServer(int listenPort)
-            : this(IPAddress.Any, listenPort,65536)
+            : this(IPAddress.Any, listenPort, 65536)
         {
         }
 
@@ -265,6 +265,8 @@ namespace SignPressServer.SignSocket.AsyncSocket
         /// <param name="maxClientCount">最大客户端数量</param>
         public AsyncSocketServer(IPAddress localIPAddress, int listenPort, int maxClientCount)
         {
+
+            //Console.WriteLine("IP " + localIPAddress + "， PORT " + listenPort);
             this.Address = localIPAddress;
             this.Port = listenPort;
             this.Encoding = Encoding.Default;
@@ -341,6 +343,7 @@ namespace SignPressServer.SignSocket.AsyncSocket
         {
             if (!IsRunning)
             {
+                Console.WriteLine("服务器已经启动");
                 this.IsRunning = true;
                 this.m_serverSocket.Bind(new IPEndPoint(this.Address, this.Port));  //  绑定服务器和端口
                 this.m_serverSocket.Listen(1024);
@@ -924,6 +927,18 @@ namespace SignPressServer.SignSocket.AsyncSocket
                             new AsyncCallback(HandleQueryDepartmentRequestDataReceived), state);*/
                         RaiseQueryDepartmentRequest(state);
                         break;
+                    
+                    // modify by gatieme at 2015-08-26
+                    case "QUERY_SDEPARTMENT_REQUEST":
+                        RaiseQuerySDepartmentRequest(state);
+                        break;
+                    case "QUERY_SDEPARTMENT_CONTRACTCATEGORY_REQUEST":
+                        RaiseQuerySDepartmentContractCategoryRequest(state);
+                        break;
+                    case "MODIFY_SDEPARTMENT_REQUEST":
+                        RaiseModifySDepartmentRequest(state);
+                        break;
+
                     #endregion  部门操作
 
                     /// <summary>
@@ -1158,20 +1173,20 @@ namespace SignPressServer.SignSocket.AsyncSocket
             ServerResponse response = new ServerResponse(); 
 
             // json数据解包
-            String departmentName = JsonConvert.DeserializeObject<String>(state.SocketMessage.Message);
-            bool result = DALDepartment.InsertDepartment(departmentName);
+            Department department = JsonConvert.DeserializeObject<Department>(state.SocketMessage.Message);
+            bool result = DALDepartment.InsertDepartment(department);
             if (result == true)
             {
-                Console.WriteLine("部门{0}插入成功", departmentName);
-                this.Log.Write(new LogMessage("部门" + departmentName + "插入成功", LogMessageType.Success));
+                Console.WriteLine("部门{0}插入成功", department);
+                this.Log.Write(new LogMessage("部门" + department.Name + "插入成功", LogMessageType.Success));
                 
                 //INSERT_DEPARTMENT_RESPONSE = "INSERT_DEPARTMENT_SUCCESS";               //  用户登录成功信号   
                 response = ServerResponse.INSERT_DEPARTMENT_SUCCESS;
             }
             else
             {
-                Console.WriteLine("部门{0}插入失败", departmentName);
-                this.Log.Write(new LogMessage("部门" + departmentName + "插入失败", LogMessageType.Error));
+                Console.WriteLine("部门{0}插入失败", department.Name);
+                this.Log.Write(new LogMessage("部门" + department.Name + "插入失败", LogMessageType.Error));
                 
                 //INSERT_DEPARTMENT_RESPONSE = "INSERT_DEPARTMENT_FAILED";                //  用户登录失败信号
                 response = ServerResponse.INSERT_DEPARTMENT_FAILED;
@@ -1248,6 +1263,11 @@ namespace SignPressServer.SignSocket.AsyncSocket
 
             // json数据解包
             Department department = JsonConvert.DeserializeObject<Department>(state.SocketMessage.Message);
+
+            //  首先检测
+
+
+
             bool result = DALDepartment.ModifyDepartment(department);
 
             if (result == true)
@@ -1274,8 +1294,7 @@ namespace SignPressServer.SignSocket.AsyncSocket
 
         #endregion
 
-
-        #region 处理客户端的查询部门请求
+        #region 处理客户端的查询部门Department请求
         /// <summary>
         /// 处理客户端的查询部门请求
         /// </summary>
@@ -1291,7 +1310,7 @@ namespace SignPressServer.SignSocket.AsyncSocket
             {
                 Console.WriteLine("部门信息查询成功");
                 this.Log.Write(new LogMessage(state.ClientIp + "部门信息查询成功", LogMessageType.Success));
-                
+
                 //QUERY_DEPARTMENT_RESPONSE = "QUERY_DEPARTMENT_SUCCESS";               //  用户登录成功信号   
                 response = ServerResponse.QUERY_DEPARTMENT_SUCCESS;
             }
@@ -1318,7 +1337,187 @@ namespace SignPressServer.SignSocket.AsyncSocket
         }
 
         #endregion
+        
+        #region 处理客户端的插入部门请求
 
+        /// 带权限的插入操作请使用RaiseInsertDepartmentRequest
+        /// 因为在部门插入的时候，权限信息可以作为迷人信息进行插入
+        private void RaiseInsertSDepartmentReuqest(AsyncSocketState state)
+        {
+            Console.WriteLine("接收到来自{0}的待插入部门信息{1}", state.ClientIp, state.SocketMessage.Message); // 输出真正的信息
+            this.Log.Write(new LogMessage("接收到来自" + state.ClientIp + "的待插入的部门信息" + state.SocketMessage.Message, LogMessageType.Information));
+
+            ServerResponse response = new ServerResponse();
+
+            // json数据解包
+            SDepartment department = JsonConvert.DeserializeObject<SDepartment>(state.SocketMessage.Message);
+            bool result = DALSDepartment.InsertSDepartment(department);
+            if (result == true)
+            {
+                Console.WriteLine("部门{0}插入成功", department);
+                this.Log.Write(new LogMessage("部门" + department.Name + "插入成功", LogMessageType.Success));
+
+                //INSERT_DEPARTMENT_RESPONSE = "INSERT_DEPARTMENT_SUCCESS";               //  用户登录成功信号   
+                response = ServerResponse.INSERT_DEPARTMENT_SUCCESS;
+            }
+            else
+            {
+                Console.WriteLine("部门{0}插入失败", department.Name);
+                this.Log.Write(new LogMessage("部门" + department.Name + "插入失败", LogMessageType.Error));
+
+                //INSERT_DEPARTMENT_RESPONSE = "INSERT_DEPARTMENT_FAILED";                //  用户登录失败信号
+                response = ServerResponse.INSERT_DEPARTMENT_FAILED;
+            }
+
+            // 插入部门的相应，只是一个响应头
+            AsyncSocketMessage socketMessage = new AsyncSocketMessage(response);
+            this.Send(state.ClientSocket, Encoding.UTF8.GetBytes(socketMessage.Package));                    //  将
+
+        }
+        #endregion
+
+
+        #region 处理客户端的修改部门SDepartment请求
+        /// <summary>
+        /// 用户修改部门请求的事件的具体信息
+        /// </summary>
+        /// <param name="state"></param>
+        private void RaiseModifySDepartmentRequest(AsyncSocketState state)
+        {
+            Console.WriteLine("接收到来自{0}的待修改部门信息{1}", state.ClientIp, state.SocketMessage.Message); // 输出真正的信息
+            this.Log.Write(new LogMessage("接收到来自" + state.ClientIp + "的待修改的部门信息" + state.SocketMessage.Message, LogMessageType.Information));
+  
+            ServerResponse response = new ServerResponse();
+
+            // json数据解包
+            SDepartment department = JsonConvert.DeserializeObject<SDepartment>(state.SocketMessage.Message);
+
+            //  首先检测
+
+
+
+            bool result = DALSDepartment.ModifySDepartment(department);
+
+            if (result == true)
+            {
+                Console.WriteLine("部门{0}, {1}修改成功", department.Id, department.Name);
+                this.Log.Write(new LogMessage("部门" + department.Id + ", " + department.Name + "修改成功", LogMessageType.Success));
+
+                //MODIFY_DEPARTMENT_RESPONSE = "MODIFY_DEPARTMENT_SUCCESS";               //  用户登录成功信号   
+                response = ServerResponse.MODIFY_SDEPARTMENT_SUCCESS;
+            }
+            else
+            {
+                Console.WriteLine("部门{0}, {1}修改失败", department.Id, department.Name);
+                this.Log.Write(new LogMessage("部门" + department.Id + ", " + department.Name + "修改失败", LogMessageType.Error));
+
+                //MODIFY_DEPARTMENT_RESPONSE = "MODIFY_DEPARTMENT_FAILED";                //  用户登录失败信号
+                response = ServerResponse.MODIFY_SDEPARTMENT_FAILED;
+            }
+
+            // 修改部门的响应信息只包含响应头
+            AsyncSocketMessage socketMessage = new AsyncSocketMessage(response);
+            this.Send(state.ClientSocket, Encoding.UTF8.GetBytes(socketMessage.Package)); 
+        }
+
+        #endregion
+
+
+
+
+        #region 处理客户端的查询部门详细请求（包括当前部门的会签单申请权限）
+        /// <summary>
+        /// 处理客户端的查询部门请求
+        /// </summary>
+        /// <param name="state"></param>
+        private void RaiseQuerySDepartmentRequest(AsyncSocketState state)
+        {
+            List<SDepartment> departments = new List<SDepartment>();
+            ServerResponse response = new ServerResponse();
+
+            // 向数据库中查询部门的信息
+            departments = DALSDepartment.QuerySDepartment();
+            if (departments != null)
+            {
+                Console.WriteLine("部门信息查询成功");
+                this.Log.Write(new LogMessage(state.ClientIp + "部门信息查询成功", LogMessageType.Success));
+
+                //QUERY_DEPARTMENT_RESPONSE = "QUERY_DEPARTMENT_SUCCESS";               //  用户登录成功信号   
+                response = ServerResponse.QUERY_SDEPARTMENT_SUCCESS;
+            }
+            else
+            {
+                Console.WriteLine("部门信息查询失败");
+                this.Log.Write(new LogMessage(state.ClientIp + "部门信息查询失败", LogMessageType.Error));
+
+                //QUERY_DEPARTMENT_RESPONSE = "QUERY_DEPARTMENT_FAILED";                //  用户登录失败信号
+                response = ServerResponse.QUERY_SDEPARTMENT_FAILED;
+            }
+
+            //  查询部门成功则同时发送[报头 + 部门信息] 
+            if (response.Equals(ServerResponse.QUERY_SDEPARTMENT_SUCCESS))
+            {
+                AsyncSocketMessage socketMessage = new AsyncSocketMessage(response, departments);
+                this.Send(state.ClientSocket, Encoding.UTF8.GetBytes(socketMessage.Package));                    //  将
+            }
+            else      //  查询失败则只发报头
+            {
+                AsyncSocketMessage socketMessage = new AsyncSocketMessage(response);
+                this.Send(state.ClientSocket, Encoding.UTF8.GetBytes(socketMessage.Package));
+            }
+        }
+
+        #endregion
+
+        #region 处理客户端的查询部门会签单申请权限
+        /// <summary>
+        /// 处理客户端的查询部门请求
+        /// </summary>
+        /// <param name="state"></param>
+        private void RaiseQuerySDepartmentContractCategoryRequest(AsyncSocketState state)
+        {
+            Console.WriteLine("接收到来自{0}的待查询权限部门编号{1}", state.ClientIp, state.SocketMessage.Message); // 输出真正的信息
+            this.Log.Write(new LogMessage("接收到来自" + state.ClientIp + "待查询权限部门编号" + state.SocketMessage.Message, LogMessageType.Information));
+  
+            List<ContractCategory> categorys = null;
+            ServerResponse response = new ServerResponse();
+
+            
+            // json数据解包
+            int  departmentId = JsonConvert.DeserializeObject<int>(state.SocketMessage.Message);
+            // 向数据库中查询部门的信息
+            categorys = DALContractIdCategory.QuerySDepartmentContractCategory(departmentId);
+            if (categorys != null)
+            {
+                Console.WriteLine("查询部门会签单申请权限成功");
+                this.Log.Write(new LogMessage(state.ClientIp + "查询部门会签单申请权限成功", LogMessageType.Success));
+
+                //QUERY_DEPARTMENT_RESPONSE = "QUERY_DEPARTMENT_SUCCESS";               //  用户登录成功信号   
+                response = ServerResponse.QUERY_SDEPARTMENT_CONTRACTCATEGORY_SUCCESS;
+            }
+            else
+            {
+                Console.WriteLine("查询部门会签单申请权限失败");
+                this.Log.Write(new LogMessage(state.ClientIp + "查询部门会签单申请权限失败", LogMessageType.Error));
+
+                //QUERY_DEPARTMENT_RESPONSE = "QUERY_DEPARTMENT_FAILED";                //  用户登录失败信号
+                response = ServerResponse.QUERY_SDEPARTMENT_CONTRACTCATEGORY_FAILED;
+            }
+
+            //  查询部门成功则同时发送[报头 + 部门信息] 
+            if (response.Equals(ServerResponse.QUERY_SDEPARTMENT_CONTRACTCATEGORY_SUCCESS))
+            {
+                AsyncSocketMessage socketMessage = new AsyncSocketMessage(response, categorys);
+                this.Send(state.ClientSocket, Encoding.UTF8.GetBytes(socketMessage.Package));                    //  将
+            }
+            else      //  查询失败则只发报头
+            {
+                AsyncSocketMessage socketMessage = new AsyncSocketMessage(response);
+                this.Send(state.ClientSocket, Encoding.UTF8.GetBytes(socketMessage.Package));
+            }
+        }
+
+        #endregion
 
         #endregion // 部门信息的处理（多个处理段[插入-删除-修改-查询]）
 
@@ -2704,8 +2903,10 @@ namespace SignPressServer.SignSocket.AsyncSocket
             }
         }
         #endregion
-        
 
+
+
+      
     }
 }
 

@@ -128,7 +128,7 @@ namespace SignPressServer.SignDAL
         FOR EACH ROW 
         BEGIN
             INSERT INTO `signaturestatus` (`id`, `conid`, `result1`, `result2`, `result3`, `result4`, `result5`, `result6`, `result7`, `result8`, `totalresult`, `agreecount`, `refusecount`, `currlevel`, `maxlevel`, `updatecount`) 
-            VALUES (NOW(), new.id, '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '1', (SELECT c.signlevel8 FROM `hdjcontract` h, `contemp` c WHERE (h.contempid = c.id and h.id = new.id)), '1');
+            VALUES (NOW(), new.id, '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '1', (SELECT c.signlevel8 FROM `hdjcontract` h, `contemp` c WHERE (h.contempid = c.id and h.id = new.id)), '0');
 
         END;";
 
@@ -228,7 +228,7 @@ END";
         BEGIN
 
             [2015-6-22 19：08添加]
-            set new.updatecount = (SELECT `updatecount` FROM `signaturestatus` WHERE (conid = new.conid)));
+            set new.updatecount = (SELECT `updatecount` FROM `signaturestatus` WHERE (conid = new.conid));
             
             UPDATE `signaturestatus`
             SET result1 = new.result 

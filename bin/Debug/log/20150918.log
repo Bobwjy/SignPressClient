@@ -1,0 +1,181 @@
+﻿2015/9/18 10:54:24	Information	接收了58个数据单元
+2015/9/18 10:54:24	Information	接收到的数据 LOGIN_REQUEST~41~{"Username":"chengjian","Password":"111"}, 大小58
+2015/9/18 10:54:24	Information	接收到来自192.168.10.77:4981的登录信息{"Username":"chengjian","Password":"111"}
+2015/9/18 10:54:26	Error	USERNAME : chengjian, PASSWORD : 111用户名密码验证失败，无法正常登录
+2015/9/18 10:54:31	Information	正在与192.168.10.77 : 4989进行数据传输...
+2015/9/18 10:54:31	Information	接收了64个数据单元
+2015/9/18 10:54:31	Information	接收到的数据 LOGIN_REQUEST~47~{"Username":"chengjian","Password":"chengjian"}, 大小64
+2015/9/18 10:54:31	Information	接收到来自192.168.10.77:4989的登录信息{"Username":"chengjian","Password":"chengjian"}
+2015/9/18 10:54:31	Success	USERNAME : chengjian, PASSWORD : chengjian用户名密码均正确，可以登录
+2015/9/18 10:54:31	Information	正在与192.168.10.77 : 4989进行数据传输...
+2015/9/18 10:54:31	Information	接收了33个数据单元
+2015/9/18 10:54:31	Information	接收到的数据 QUERY_UNSIGN_CONTRACT_REQUEST~1~1, 大小33
+2015/9/18 10:54:31	Information	接收到来自192.168.10.77:4989查询待签字的会签单信息1
+2015/9/18 11:19:32	Information	接收了64个数据单元
+2015/9/18 11:19:32	Information	接收到的数据 LOGIN_REQUEST~47~{"Username":"chengjian","Password":"chengjian"}, 大小64
+2015/9/18 11:19:32	Information	接收到来自192.168.10.77:5842的登录信息{"Username":"chengjian","Password":"chengjian"}
+2015/9/18 11:19:33	Success	USERNAME : chengjian, PASSWORD : chengjian用户名密码均正确，可以登录
+2015/9/18 11:19:34	Information	正在与192.168.10.77 : 5842进行数据传输...
+2015/9/18 11:19:34	Information	接收了27个数据单元
+2015/9/18 11:19:34	Information	接收到的数据 QUERY_SIGN_PEND_REQUEST~1~1, 大小27
+2015/9/18 11:19:34	Information	接收到来自192.168.10.77:5842查询正在审核中的会签单模版信息1
+2015/9/18 11:19:34	Information	192.168.10.77:5842查询到的了所有正在审核中的会签单
+2015/9/18 11:19:34	Success	192.168.10.77:5842会签单模版信息信息查询成功
+2015/9/18 11:19:34	Information	正在与192.168.10.77 : 5842进行数据传输...
+2015/9/18 11:19:34	Information	接收了33个数据单元
+2015/9/18 11:19:34	Information	接收到的数据 QUERY_UNSIGN_CONTRACT_REQUEST~1~1, 大小33
+2015/9/18 11:19:34	Information	接收到来自192.168.10.77:5842查询待签字的会签单信息1
+2015/9/18 11:19:34	Information	192.168.10.77:5842查询到的了所有查询待签字的的会签单
+2015/9/18 11:19:34	Success	192.168.10.77:5842查询待签字的会签单信息查询成功
+2015/9/18 11:19:34	Information	正在与192.168.10.77 : 5842进行数据传输...
+2015/9/18 11:19:34	Information	接收了29个数据单元
+2015/9/18 11:19:34	Information	接收到的数据 QUERY_SIGN_REFUSE_REQUEST~1~1, 大小29
+2015/9/18 11:19:34	Information	接收到来自192.168.10.77:5842查询被拒绝的会签单模版信息1
+2015/9/18 11:19:34	Information	192.168.10.77:5842查询到的了所有被拒绝的会签单
+2015/9/18 11:19:34	Success	192.168.10.77:5842被拒绝会签单信息查询成功
+2015/9/18 11:19:34	Information	正在与192.168.10.77 : 5842进行数据传输...
+2015/9/18 11:19:34	Information	接收了30个数据单元
+2015/9/18 11:19:34	Information	接收到的数据 QUERY_AGREE_UNDOWN_REQUEST~1~1, 大小30
+2015/9/18 11:19:34	Information	接收到来自192.168.10.77:5842的查询未被下载的已通过的会签单模版信息1
+2015/9/18 11:42:02	Information	接收了60个数据单元
+2015/9/18 11:42:02	Information	接收到的数据 LOGIN_REQUEST~43~{"Username":"wangdonglai","Password":"111"}, 大小60
+2015/9/18 11:42:02	Information	接收到来自192.168.10.77:6392的登录信息{"Username":"wangdonglai","Password":"111"}
+2015/9/18 11:42:03	Error	USERNAME : wangdonglai, PASSWORD : 111用户名密码验证失败，无法正常登录
+2015/9/18 11:42:12	Information	正在与192.168.10.77 : 6395进行数据传输...
+2015/9/18 11:42:12	Information	接收了64个数据单元
+2015/9/18 11:42:12	Information	接收到的数据 LOGIN_REQUEST~47~{"Username":"chengjian","Password":"chengjian"}, 大小64
+2015/9/18 11:42:12	Information	接收到来自192.168.10.77:6395的登录信息{"Username":"chengjian","Password":"chengjian"}
+2015/9/18 11:42:12	Success	USERNAME : chengjian, PASSWORD : chengjian用户名密码均正确，可以登录
+2015/9/18 11:42:13	Information	正在与192.168.10.77 : 6395进行数据传输...
+2015/9/18 11:42:13	Information	接收了33个数据单元
+2015/9/18 11:42:13	Information	接收到的数据 QUERY_UNSIGN_CONTRACT_REQUEST~1~1, 大小33
+2015/9/18 11:42:13	Information	接收到来自192.168.10.77:6395查询待签字的会签单信息1
+2015/9/18 11:42:13	Information	192.168.10.77:6395查询到的了所有查询待签字的的会签单
+2015/9/18 11:42:13	Success	192.168.10.77:6395查询待签字的会签单信息查询成功
+2015/9/18 11:42:13	Information	正在与192.168.10.77 : 6395进行数据传输...
+2015/9/18 11:42:13	Information	接收了27个数据单元
+2015/9/18 11:42:13	Information	接收到的数据 QUERY_SIGN_PEND_REQUEST~1~1, 大小27
+2015/9/18 11:42:13	Information	接收到来自192.168.10.77:6395查询正在审核中的会签单模版信息1
+2015/9/18 11:42:13	Information	192.168.10.77:6395查询到的了所有正在审核中的会签单
+2015/9/18 11:42:13	Success	192.168.10.77:6395会签单模版信息信息查询成功
+2015/9/18 11:42:13	Information	正在与192.168.10.77 : 6395进行数据传输...
+2015/9/18 11:42:13	Information	接收了29个数据单元
+2015/9/18 11:42:13	Information	接收到的数据 QUERY_SIGN_REFUSE_REQUEST~1~1, 大小29
+2015/9/18 11:42:13	Information	接收到来自192.168.10.77:6395查询被拒绝的会签单模版信息1
+2015/9/18 11:42:13	Information	192.168.10.77:6395查询到的了所有被拒绝的会签单
+2015/9/18 11:42:13	Success	192.168.10.77:6395被拒绝会签单信息查询成功
+2015/9/18 11:42:13	Information	正在与192.168.10.77 : 6395进行数据传输...
+2015/9/18 11:42:13	Information	接收了30个数据单元
+2015/9/18 11:42:13	Information	接收到的数据 QUERY_AGREE_UNDOWN_REQUEST~1~1, 大小30
+2015/9/18 11:42:13	Information	接收到来自192.168.10.77:6395的查询未被下载的已通过的会签单模版信息1
+2015/9/18 11:42:13	Information	192.168.10.77:6395查询未被下载的已通过的会签单模版信息
+2015/9/18 11:42:13	Success	192.168.10.77:6395查询未被下载的已通过的会签单模版信息
+2015/9/18 11:42:17	Information	正在与192.168.10.77 : 6395进行数据传输...
+2015/9/18 11:42:17	Information	接收了35个数据单元
+2015/9/18 11:42:17	Information	接收到的数据 QUERY_CONTRACT_TEMPLATE_REQUEST~1~0, 大小35
+2015/9/18 11:42:17	Information	接收到来自192.168.10.77:6395查询会签单模版信息0
+2015/9/18 11:42:17	Information	192.168.10.77:6395查询到的了所有的会签单
+2015/9/18 11:42:17	Success	192.168.10.77:6395会签单模版信息信息查询成功
+2015/9/18 11:42:17	Information	正在与192.168.10.77 : 6395进行数据传输...
+2015/9/18 11:42:17	Information	接收了33个数据单元
+2015/9/18 11:42:17	Information	接收到的数据 GET_CONTRACT_TEMPLATE_REQUEST~1~1, 大小33
+2015/9/18 11:42:17	Information	接收到来自192.168.10.77:6395待获取会签单模版编号1
+2015/9/18 11:42:17	Success	192.168.10.77:6395获取会签单模版1成功
+2015/9/18 11:42:17	Information	正在与192.168.10.77 : 6395进行数据传输...
+2015/9/18 11:42:17	Information	接收了30个数据单元
+2015/9/18 11:42:17	Information	接收到的数据 QUERY_AGREE_UNDOWN_REQUEST~1~1, 大小30
+2015/9/18 11:42:17	Information	接收到来自192.168.10.77:6395的查询未被下载的已通过的会签单模版信息1
+2015/9/18 11:42:17	Information	192.168.10.77:6395查询未被下载的已通过的会签单模版信息
+2015/9/18 11:42:17	Success	192.168.10.77:6395查询未被下载的已通过的会签单模版信息
+2015/9/18 11:42:17	Information	正在与192.168.10.77 : 6395进行数据传输...
+2015/9/18 11:42:17	Information	接收了28个数据单元
+2015/9/18 11:42:17	Information	接收到的数据 QUERY_DEPARTMENT_REQUEST~1~0, 大小28
+2015/9/18 11:42:17	Success	192.168.10.77:6395部门信息查询成功
+2015/9/18 11:42:17	Information	正在与192.168.10.77 : 6392进行数据传输...
+2015/9/18 11:42:17	Exception	System.Net.Sockets.SocketException (0x80004005): 远程主机强迫关闭了一个现有的连接。
+   在 System.Net.Sockets.Socket.EndReceive(IAsyncResult asyncResult)
+   在 SignPressServer.SignSocket.AsyncSocket.AsyncSocketServer.HandleDataReceived(IAsyncResult ar) 位置 e:\[O]Github\SignPressServer\SignSocket\AsyncSocket\AsyncSocketServer.cs:行号 509
+2015/9/18 11:42:17	Error	客户端终止，关闭了客户端, 当前连接的客户端数目1
+2015/9/18 11:42:18	Information	正在与192.168.10.77 : 6395进行数据传输...
+2015/9/18 11:42:18	Information	接收了28个数据单元
+2015/9/18 11:42:18	Information	接收到的数据 QUERY_DEPARTMENT_REQUEST~1~0, 大小28
+2015/9/18 11:42:18	Success	192.168.10.77:6395部门信息查询成功
+2015/9/18 11:42:19	Information	正在与192.168.10.77 : 6395进行数据传输...
+2015/9/18 11:42:19	Information	接收了28个数据单元
+2015/9/18 11:42:19	Information	接收到的数据 QUERY_DEPARTMENT_REQUEST~1~0, 大小28
+2015/9/18 11:42:19	Success	192.168.10.77:6395部门信息查询成功
+2015/9/18 11:42:20	Information	正在与192.168.10.77 : 6395进行数据传输...
+2015/9/18 11:42:20	Information	接收了28个数据单元
+2015/9/18 11:42:20	Information	接收到的数据 QUERY_DEPARTMENT_REQUEST~1~0, 大小28
+2015/9/18 11:42:20	Success	192.168.10.77:6395部门信息查询成功
+2015/9/18 11:42:20	Information	正在与192.168.10.77 : 6395进行数据传输...
+2015/9/18 11:42:20	Information	接收了28个数据单元
+2015/9/18 11:42:20	Information	接收到的数据 QUERY_DEPARTMENT_REQUEST~1~0, 大小28
+2015/9/18 11:42:20	Success	192.168.10.77:6395部门信息查询成功
+2015/9/18 11:42:25	Information	正在与192.168.10.77 : 6395进行数据传输...
+2015/9/18 11:42:25	Information	接收了28个数据单元
+2015/9/18 11:42:25	Information	接收到的数据 QUERY_DEPARTMENT_REQUEST~1~0, 大小28
+2015/9/18 11:42:25	Success	192.168.10.77:6395部门信息查询成功
+2015/9/18 11:42:25	Information	正在与192.168.10.77 : 6395进行数据传输...
+2015/9/18 11:42:25	Information	接收了28个数据单元
+2015/9/18 11:42:25	Information	接收到的数据 QUERY_DEPARTMENT_REQUEST~1~0, 大小28
+2015/9/18 11:42:25	Success	192.168.10.77:6395部门信息查询成功
+2015/9/18 11:42:25	Information	正在与192.168.10.77 : 6395进行数据传输...
+2015/9/18 11:42:25	Information	接收了28个数据单元
+2015/9/18 11:42:25	Information	接收到的数据 QUERY_DEPARTMENT_REQUEST~1~0, 大小28
+2015/9/18 11:42:25	Success	192.168.10.77:6395部门信息查询成功
+2015/9/18 11:42:26	Information	正在与192.168.10.77 : 6395进行数据传输...
+2015/9/18 11:42:26	Information	接收了28个数据单元
+2015/9/18 11:42:26	Information	接收到的数据 QUERY_DEPARTMENT_REQUEST~1~0, 大小28
+2015/9/18 11:42:26	Success	192.168.10.77:6395部门信息查询成功
+2015/9/18 11:42:26	Information	正在与192.168.10.77 : 6395进行数据传输...
+2015/9/18 11:42:26	Information	接收了28个数据单元
+2015/9/18 11:42:26	Information	接收到的数据 QUERY_DEPARTMENT_REQUEST~1~0, 大小28
+2015/9/18 11:42:26	Success	192.168.10.77:6395部门信息查询成功
+2015/9/18 11:42:30	Information	正在与192.168.10.77 : 6395进行数据传输...
+2015/9/18 11:42:30	Information	接收了28个数据单元
+2015/9/18 11:42:30	Information	接收到的数据 QUERY_DEPARTMENT_REQUEST~1~0, 大小28
+2015/9/18 11:42:30	Success	192.168.10.77:6395部门信息查询成功
+2015/9/18 11:42:33	Information	正在与192.168.10.77 : 6395进行数据传输...
+2015/9/18 11:42:33	Information	接收了28个数据单元
+2015/9/18 11:42:33	Information	接收到的数据 QUERY_DEPARTMENT_REQUEST~1~0, 大小28
+2015/9/18 11:42:33	Success	192.168.10.77:6395部门信息查询成功
+2015/9/18 11:42:33	Information	正在与192.168.10.77 : 6395进行数据传输...
+2015/9/18 11:42:33	Information	接收了28个数据单元
+2015/9/18 11:42:33	Information	接收到的数据 QUERY_DEPARTMENT_REQUEST~1~0, 大小28
+2015/9/18 11:42:33	Success	192.168.10.77:6395部门信息查询成功
+2015/9/18 11:42:34	Information	正在与192.168.10.77 : 6395进行数据传输...
+2015/9/18 11:42:34	Information	接收了28个数据单元
+2015/9/18 11:42:34	Information	接收到的数据 QUERY_DEPARTMENT_REQUEST~1~0, 大小28
+2015/9/18 11:42:34	Success	192.168.10.77:6395部门信息查询成功
+2015/9/18 11:42:34	Information	正在与192.168.10.77 : 6395进行数据传输...
+2015/9/18 11:42:34	Information	接收了28个数据单元
+2015/9/18 11:42:34	Information	接收到的数据 QUERY_DEPARTMENT_REQUEST~1~0, 大小28
+2015/9/18 11:42:34	Success	192.168.10.77:6395部门信息查询成功
+2015/9/18 11:42:44	Information	正在与192.168.10.77 : 6396进行数据传输...
+2015/9/18 11:42:44	Information	接收了60个数据单元
+2015/9/18 11:42:44	Information	接收到的数据 LOGIN_REQUEST~43~{"Username":"wujiayi","Password":"wujiayi"}, 大小60
+2015/9/18 11:42:44	Information	接收到来自192.168.10.77:6396的登录信息{"Username":"wujiayi","Password":"wujiayi"}
+2015/9/18 11:42:44	Success	USERNAME : wujiayi, PASSWORD : wujiayi用户名密码均正确，可以登录
+2015/9/18 11:42:45	Information	正在与192.168.10.77 : 6396进行数据传输...
+2015/9/18 11:42:45	Information	接收了33个数据单元
+2015/9/18 11:42:45	Information	接收到的数据 QUERY_UNSIGN_CONTRACT_REQUEST~1~8, 大小33
+2015/9/18 11:42:45	Information	接收到来自192.168.10.77:6396查询待签字的会签单信息8
+2015/9/18 11:42:45	Information	192.168.10.77:6396查询到的了所有查询待签字的的会签单
+2015/9/18 11:42:45	Success	192.168.10.77:6396查询待签字的会签单信息查询成功
+2015/9/18 11:42:46	Information	正在与192.168.10.77 : 6396进行数据传输...
+2015/9/18 11:42:46	Information	接收了29个数据单元
+2015/9/18 11:42:46	Information	接收到的数据 QUERY_SDEPARTMENT_REQUEST~1~0, 大小29
+2015/9/18 11:42:46	Success	192.168.10.77:6396部门信息查询成功
+2015/9/18 11:42:46	Information	正在与192.168.10.77 : 6396进行数据传输...
+2015/9/18 11:42:46	Information	接收了26个数据单元
+2015/9/18 11:42:46	Information	接收到的数据 QUERY_EMPLOYEE_REQUEST~1~0, 大小26
+2015/9/18 11:42:46	Information	192.168.10.77:6396待查询的员工的编号 = 0
+2015/9/18 11:42:46	Information	192.168.10.77:6396查询到的部门编号为0的所有员工
+2015/9/18 11:42:46	Success	192.168.10.77:6396部门0的员工信息查询成功
+2015/9/18 11:42:46	Information	正在与192.168.10.77 : 6396进行数据传输...
+2015/9/18 11:42:46	Information	接收了35个数据单元
+2015/9/18 11:42:46	Information	接收到的数据 QUERY_CONTRACT_TEMPLATE_REQUEST~1~0, 大小35
+2015/9/18 11:42:46	Information	接收到来自192.168.10.77:6396查询会签单模版信息0
+2015/9/18 11:42:46	Information	192.168.10.77:6396查询到的了所有的会签单
+2015/9/18 11:42:46	Success	192.168.10.77:6396会签单模版信息信息查询成功

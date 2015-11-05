@@ -1,0 +1,56 @@
+﻿2015/11/5 10:34:52	Information	接收了60个数据单元
+2015/11/5 10:34:52	Information	接收到的数据 LOGIN_REQUEST~43~{"Username":"wujiayi","Password":"wujiayi"}, 大小60
+2015/11/5 10:34:52	Information	接收到来自192.168.10.77:2743的登录信息{"Username":"wujiayi","Password":"wujiayi"}
+2015/11/5 10:34:54	Success	USERNAME : wujiayi, PASSWORD : wujiayi用户名密码均正确，可以登录
+2015/11/5 10:34:55	Information	正在与192.168.10.77 : 2743进行数据传输...
+2015/11/5 10:34:55	Information	接收了33个数据单元
+2015/11/5 10:34:55	Information	接收到的数据 QUERY_UNSIGN_CONTRACT_REQUEST~1~8, 大小33
+2015/11/5 10:34:55	Information	接收到来自192.168.10.77:2743查询待签字的会签单信息8
+2015/11/5 10:34:55	Information	192.168.10.77:2743查询到的了所有查询待签字的的会签单
+2015/11/5 10:34:55	Success	192.168.10.77:2743查询待签字的会签单信息查询成功
+2015/11/5 10:35:02	Information	正在与192.168.10.77 : 2743进行数据传输...
+2015/11/5 10:35:02	Information	接收了29个数据单元
+2015/11/5 10:35:02	Information	接收到的数据 QUERY_SDEPARTMENT_REQUEST~1~0, 大小29
+2015/11/5 10:35:02	Success	192.168.10.77:2743部门信息查询成功
+2015/11/5 10:35:02	Information	正在与192.168.10.77 : 2743进行数据传输...
+2015/11/5 10:35:02	Information	接收了26个数据单元
+2015/11/5 10:35:02	Information	接收到的数据 QUERY_EMPLOYEE_REQUEST~1~0, 大小26
+2015/11/5 10:35:02	Information	192.168.10.77:2743待查询的员工的编号 = 0
+2015/11/5 10:35:02	Information	192.168.10.77:2743查询到的部门编号为0的所有员工
+2015/11/5 10:35:02	Success	192.168.10.77:2743部门0的员工信息查询成功
+2015/11/5 10:35:02	Information	正在与192.168.10.77 : 2743进行数据传输...
+2015/11/5 10:35:02	Information	接收了35个数据单元
+2015/11/5 10:35:02	Information	接收到的数据 QUERY_CONTRACT_TEMPLATE_REQUEST~1~0, 大小35
+2015/11/5 10:35:02	Information	接收到来自192.168.10.77:2743查询会签单模版信息0
+2015/11/5 10:35:02	Information	192.168.10.77:2743查询到的了所有的会签单
+2015/11/5 10:35:02	Success	192.168.10.77:2743会签单模版信息信息查询成功
+2015/11/5 10:36:11	Information	正在与192.168.10.77 : 2743进行数据传输...
+2015/11/5 10:36:11	Information	接收了154个数据单元
+2015/11/5 10:36:11	Information	接收到的数据 MODIFY_SDEPARTMENT_REQUEST~107~{"CanBoundary":"否","CanInland":"是","CanEmergency":"是","CanRegular":"是","Id":1,"Name":"申请科","ShortCall":"申"}, 大小138
+2015/11/5 10:36:11	Information	接收到来自192.168.10.77:2743的待修改的部门信息{"CanBoundary":"否","CanInland":"是","CanEmergency":"是","CanRegular":"是","Id":1,"Name":"申请科","ShortCall":"申"}
+2015/11/5 10:36:11	Success	部门1, 申请科修改成功
+2015/11/5 10:36:12	Information	正在与192.168.10.77 : 2743进行数据传输...
+2015/11/5 10:36:12	Information	接收了29个数据单元
+2015/11/5 10:36:12	Information	接收到的数据 QUERY_SDEPARTMENT_REQUEST~1~0, 大小29
+2015/11/5 10:36:12	Success	192.168.10.77:2743部门信息查询成功
+2015/11/5 10:36:12	Information	正在与192.168.10.77 : 2743进行数据传输...
+2015/11/5 10:36:12	Information	接收了26个数据单元
+2015/11/5 10:36:12	Information	接收到的数据 QUERY_EMPLOYEE_REQUEST~1~0, 大小26
+2015/11/5 10:36:13	Information	192.168.10.77:2743待查询的员工的编号 = 0
+2015/11/5 10:36:13	Information	192.168.10.77:2743查询到的部门编号为0的所有员工
+2015/11/5 10:36:13	Success	192.168.10.77:2743部门0的员工信息查询成功
+2015/11/5 10:39:28	Information	正在与192.168.10.77 : 2743进行数据传输...
+2015/11/5 10:39:28	Information	接收了154个数据单元
+2015/11/5 10:39:28	Information	接收到的数据 MODIFY_SDEPARTMENT_REQUEST~107~{"CanBoundary":"是","CanInland":"是","CanEmergency":"否","CanRegular":"是","Id":5,"Name":"行政科","ShortCall":"政"}, 大小138
+2015/11/5 10:39:28	Information	接收到来自192.168.10.77:2743的待修改的部门信息{"CanBoundary":"是","CanInland":"是","CanEmergency":"否","CanRegular":"是","Id":5,"Name":"行政科","ShortCall":"政"}
+2015/11/5 10:39:28	Success	部门5, 行政科修改成功
+2015/11/5 10:39:29	Information	正在与192.168.10.77 : 2743进行数据传输...
+2015/11/5 10:39:29	Information	接收了29个数据单元
+2015/11/5 10:39:29	Information	接收到的数据 QUERY_SDEPARTMENT_REQUEST~1~0, 大小29
+2015/11/5 10:39:29	Success	192.168.10.77:2743部门信息查询成功
+2015/11/5 10:39:29	Information	正在与192.168.10.77 : 2743进行数据传输...
+2015/11/5 10:39:29	Information	接收了26个数据单元
+2015/11/5 10:39:29	Information	接收到的数据 QUERY_EMPLOYEE_REQUEST~1~0, 大小26
+2015/11/5 10:39:29	Information	192.168.10.77:2743待查询的员工的编号 = 0
+2015/11/5 10:39:29	Information	192.168.10.77:2743查询到的部门编号为0的所有员工
+2015/11/5 10:39:29	Success	192.168.10.77:2743部门0的员工信息查询成功

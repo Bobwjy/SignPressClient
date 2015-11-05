@@ -38,10 +38,14 @@ namespace SignPressServer.SignTools
 
         
         MODIFY_DEPARTMENT_SUCCESS,
+        MODIFY_DEPARTMENT_EXIST_NAME,           //  修改的部门名称与其他部门的名称重复
+        MODIFY_DEPARTMENT_EXIST_SHORTCALL,      //  修改的部门简称与其他部门的简称重复
         MODIFY_DEPARTMENT_FAILED,
-        
+
         QUERY_DEPARTMENT_SUCCESS,
         QUERY_DEPARTMENT_FAILED,
+        QUERY_SDEPARTMENT_SUCCESS,
+        QUERY_SDEPARTMENT_FAILED,
 
         /// <summary>
         /// ==员工操作==
@@ -164,6 +168,14 @@ namespace SignPressServer.SignTools
         //  手机上考虑数据流量的问题
         QUERY_SIGNED_CONTRACT_TOP_SUCCESS,
         QUERY_SIGNED_CONTRACT_TOP_FAILED,
-        
+
+
+        QUERY_SDEPARTMENT_CONTRACTCATEGORY_SUCCESS,
+        QUERY_SDEPARTMENT_CONTRACTCATEGORY_FAILED,
+
+
+        MODIFY_SDEPARTMENT_SUCCESS,
+        MODIFY_SDEPARTMENT_FAILED,
+
     }
 }

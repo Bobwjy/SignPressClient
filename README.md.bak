@@ -868,7 +868,7 @@ C -- 在申请会签单时，填写编号，选择部门后，直接对应后面
 
 
 我们在部门表中新增加了几个数据域
-canboundary, caninland, canemergency, canregular
+canboundary, caninland, canemergency, canreqular
 来标识当前部门是否可以提交，界内应例项目的权限
 此修改比较容易实现AB功能，实现对部门的管理
 
@@ -890,14 +890,14 @@ canboundary, caninland, canemergency, canregular
 其中①方法特别不适合扩充
 ②方法更加灵活，但是需要更多的模块支持，
 需要添加一个engineercategory表存储工程类别，同时需要conidcategory关联工程类别和部门
-因此我们采用方法二，但是其中canboundary, caninland, canemergency, canregular不对外开发，仅是只读属性
+因此我们采用方法二，但是其中canboundary, caninland, canemergency, canreqular不对外开发，仅是只读属性
 修改时直接通过向数据库conidcategory
 
 
 
 我们现在选用的设计方法是，conidcategory是一个只读属性的触发器表
 // 查询部门的详细信息
-SELECT id, name, shortcall, canboundary, caninland, canemergency, canregular
+SELECT id, name, shortcall, canboundary, caninland, canemergency, canreqular
 FROM department
 
 
@@ -938,10 +938,10 @@ BEGIN
         WHERE(`departmentid` = new.id and `categoryid` = 3);
     end if;
 
-    if (old.canregular = 0 and new.canregular = 1) then 
+    if (old.canreqular = 0 and new.canreqular = 1) then 
         INSERT into `conidcategory` (`departmentid`, `categoryid`)
         VALUES(new.id, 3);
-    elseif (old.canregular = 1 and new.canregular = 0) then 
+    elseif (old.canreqular = 1 and new.canreqular = 0) then 
         DELETE from `conidcategory`
         WHERE(`departmentid` = new.id and `categoryid` = 4);
     end if;
@@ -966,7 +966,7 @@ BEGIN
     then    UPDATE `department` SET canemergency = 1 WHERE (id = new.id);
     
     if(new.categoryid == 4)
-    then    UPDATE `department` SET canregular = 1 WHERE (id = new.id);
+    then    UPDATE `department` SET canreqular = 1 WHERE (id = new.id);
 
 END;
 
@@ -986,7 +986,7 @@ BEGIN
     then    UPDATE `department` SET canemergency = 0 WHERE (id = new.id);
     
     if(old.categoryid == 4)
-    then    UPDATE `department` SET canregular = 0 WHERE (id = new.id);
+    then    UPDATE `department` SET canreqular = 0 WHERE (id = new.id);
 
 END;
 

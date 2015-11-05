@@ -1,0 +1,620 @@
+﻿2015/7/30 19:06:44	Information	接收了59个数据单元
+2015/7/30 19:06:44	Information	接收到的数据 LOGIN_REQUEST~42~{"Username":"chenngjian","Password":"111"}, 大小59
+2015/7/30 19:06:44	Information	接收到来自192.168.1.100:2750的登录信息{"Username":"chenngjian","Password":"111"}
+2015/7/30 19:06:53	Error	USERNAME : chenngjian, PASSWORD : 111用户名密码验证失败，无法正常登录
+2015/7/30 19:06:59	Information	正在与192.168.1.100 : 2768进行数据传输...
+2015/7/30 19:06:59	Information	接收了58个数据单元
+2015/7/30 19:06:59	Information	接收到的数据 LOGIN_REQUEST~41~{"Username":"chengjian","Password":"111"}, 大小58
+2015/7/30 19:06:59	Information	接收到来自192.168.1.100:2768的登录信息{"Username":"chengjian","Password":"111"}
+2015/7/30 19:06:59	Success	USERNAME : chengjian, PASSWORD : 111用户名密码均正确，可以登录
+2015/7/30 19:07:01	Information	正在与192.168.1.100 : 2768进行数据传输...
+2015/7/30 19:07:01	Information	接收了33个数据单元
+2015/7/30 19:07:01	Information	接收到的数据 QUERY_UNSIGN_CONTRACT_REQUEST~1~1, 大小33
+2015/7/30 19:07:01	Information	接收到来自192.168.1.100:2768查询待签字的会签单信息1
+2015/7/30 19:07:02	Information	192.168.1.100:2768查询到的了所有查询待签字的的会签单
+2015/7/30 19:07:02	Success	192.168.1.100:2768查询待签字的会签单信息查询成功
+2015/7/30 19:07:02	Information	正在与192.168.1.100 : 2768进行数据传输...
+2015/7/30 19:07:02	Information	接收了87个数据单元
+2015/7/30 19:07:02	Information	接收到的数据 QUERY_SIGN_PEND_REQUEST~1~1QUERY_SIGN_PEND_REQUEST~1~1QUERY_UNSIGN_CONTRACT_REQUEST~1~1, 大小87
+2015/7/30 19:07:03	Information	接收到来自192.168.1.100:2768查询正在审核中的会签单模版信息1
+2015/7/30 19:07:03	Information	192.168.1.100:2768查询到的了所有正在审核中的会签单
+2015/7/30 19:07:03	Success	192.168.1.100:2768会签单模版信息信息查询成功
+2015/7/30 19:07:03	Information	接收到来自192.168.1.100:2768查询正在审核中的会签单模版信息1
+2015/7/30 19:07:03	Information	192.168.1.100:2768查询到的了所有正在审核中的会签单
+2015/7/30 19:07:03	Success	192.168.1.100:2768会签单模版信息信息查询成功
+2015/7/30 19:07:03	Information	接收到来自192.168.1.100:2768查询待签字的会签单信息1
+2015/7/30 19:07:03	Information	192.168.1.100:2768查询到的了所有查询待签字的的会签单
+2015/7/30 19:07:03	Success	192.168.1.100:2768查询待签字的会签单信息查询成功
+2015/7/30 19:07:03	Information	正在与192.168.1.100 : 2768进行数据传输...
+2015/7/30 19:07:03	Information	接收了58个数据单元
+2015/7/30 19:07:03	Information	接收到的数据 QUERY_SIGN_REFUSE_REQUEST~1~1QUERY_SIGN_REFUSE_REQUEST~1~1, 大小58
+2015/7/30 19:07:03	Information	接收到来自192.168.1.100:2768查询被拒绝的会签单模版信息1
+2015/7/30 19:07:03	Information	192.168.1.100:2768查询到的了所有被拒绝的会签单
+2015/7/30 19:07:03	Success	192.168.1.100:2768被拒绝会签单信息查询成功
+2015/7/30 19:07:03	Information	接收到来自192.168.1.100:2768查询被拒绝的会签单模版信息1
+2015/7/30 19:07:03	Information	192.168.1.100:2768查询到的了所有被拒绝的会签单
+2015/7/30 19:07:03	Success	192.168.1.100:2768被拒绝会签单信息查询成功
+2015/7/30 19:07:03	Information	正在与192.168.1.100 : 2768进行数据传输...
+2015/7/30 19:07:03	Information	接收了60个数据单元
+2015/7/30 19:07:03	Information	接收到的数据 QUERY_AGREE_UNDOWN_REQUEST~1~1QUERY_AGREE_UNDOWN_REQUEST~1~1, 大小60
+2015/7/30 19:07:03	Information	接收到来自192.168.1.100:2768的查询未被下载的已通过的会签单模版信息1
+2015/7/30 19:07:03	Information	192.168.1.100:2768查询未被下载的已通过的会签单模版信息
+2015/7/30 19:07:03	Success	192.168.1.100:2768查询未被下载的已通过的会签单模版信息
+2015/7/30 19:07:04	Information	接收到来自192.168.1.100:2768的查询未被下载的已通过的会签单模版信息1
+2015/7/30 19:07:04	Information	192.168.1.100:2768查询未被下载的已通过的会签单模版信息
+2015/7/30 19:07:04	Success	192.168.1.100:2768查询未被下载的已通过的会签单模版信息
+2015/7/30 19:07:09	Information	正在与192.168.1.100 : 2750进行数据传输...
+2015/7/30 19:07:09	Exception	System.Net.Sockets.SocketException (0x80004005): 远程主机强迫关闭了一个现有的连接。
+   在 System.Net.Sockets.Socket.EndReceive(IAsyncResult asyncResult)
+   在 SignPressServer.SignSocket.AsyncSocket.AsyncSocketServer.HandleDataReceived(IAsyncResult ar) 位置 g:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressServer_4.5\SignSocket\AsyncSocket\AsyncSocketServer.cs:行号 509
+2015/7/30 19:07:09	Error	客户端终止，关闭了客户端, 当前连接的客户端数目1
+2015/7/30 19:07:09	Information	正在与192.168.1.100 : 2768进行数据传输...
+2015/7/30 19:07:09	Information	接收了35个数据单元
+2015/7/30 19:07:09	Information	接收到的数据 QUERY_CONTRACT_TEMPLATE_REQUEST~1~0, 大小35
+2015/7/30 19:07:09	Information	接收到来自192.168.1.100:2768查询会签单模版信息0
+2015/7/30 19:07:10	Information	192.168.1.100:2768查询到的了所有的会签单
+2015/7/30 19:07:10	Success	192.168.1.100:2768会签单模版信息信息查询成功
+2015/7/30 19:07:10	Information	正在与192.168.1.100 : 2768进行数据传输...
+2015/7/30 19:07:10	Information	接收了33个数据单元
+2015/7/30 19:07:10	Information	接收到的数据 GET_CONTRACT_TEMPLATE_REQUEST~1~1, 大小33
+2015/7/30 19:07:10	Information	接收到来自192.168.1.100:2768待获取会签单模版编号1
+2015/7/30 19:07:10	Success	192.168.1.100:2768获取会签单模版1成功
+2015/7/30 19:07:10	Information	正在与192.168.1.100 : 2768进行数据传输...
+2015/7/30 19:07:10	Information	接收了30个数据单元
+2015/7/30 19:07:10	Information	接收到的数据 QUERY_AGREE_UNDOWN_REQUEST~1~1, 大小30
+2015/7/30 19:07:10	Information	接收到来自192.168.1.100:2768的查询未被下载的已通过的会签单模版信息1
+2015/7/30 19:07:10	Information	192.168.1.100:2768查询未被下载的已通过的会签单模版信息
+2015/7/30 19:07:10	Success	192.168.1.100:2768查询未被下载的已通过的会签单模版信息
+2015/7/30 19:07:12	Information	正在与192.168.1.100 : 2768进行数据传输...
+2015/7/30 19:07:12	Information	接收了28个数据单元
+2015/7/30 19:07:12	Information	接收到的数据 QUERY_DEPARTMENT_REQUEST~1~0, 大小28
+2015/7/30 19:07:12	Success	192.168.1.100:2768部门信息查询成功
+2015/7/30 19:07:12	Information	正在与192.168.1.100 : 2768进行数据传输...
+2015/7/30 19:07:12	Information	接收了26个数据单元
+2015/7/30 19:07:12	Information	接收到的数据 QUERY_EMPLOYEE_REQUEST~1~0, 大小26
+2015/7/30 19:07:12	Information	192.168.1.100:2768待查询的员工的编号 = 0
+2015/7/30 19:07:12	Information	192.168.1.100:2768查询到的部门编号为0的所有员工
+2015/7/30 19:07:12	Success	192.168.1.100:2768部门0的员工信息查询成功
+2015/7/30 19:08:06	Information	正在与192.168.1.100 : 2768进行数据传输...
+2015/7/30 19:08:06	Exception	System.Net.Sockets.SocketException (0x80004005): 远程主机强迫关闭了一个现有的连接。
+   在 System.Net.Sockets.Socket.EndReceive(IAsyncResult asyncResult)
+   在 SignPressServer.SignSocket.AsyncSocket.AsyncSocketServer.HandleDataReceived(IAsyncResult ar) 位置 g:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressServer_4.5\SignSocket\AsyncSocket\AsyncSocketServer.cs:行号 509
+2015/7/30 19:08:06	Error	客户端终止，关闭了客户端, 当前连接的客户端数目0
+2015/7/30 19:44:58	Information	正在与192.168.1.100 : 3890进行数据传输...
+2015/7/30 19:44:58	Information	接收了58个数据单元
+2015/7/30 19:44:58	Information	接收到的数据 LOGIN_REQUEST~41~{"Username":"chengjian","Password":"111"}, 大小58
+2015/7/30 19:44:58	Information	接收到来自192.168.1.100:3890的登录信息{"Username":"chengjian","Password":"111"}
+2015/7/30 19:45:00	Success	USERNAME : chengjian, PASSWORD : 111用户名密码均正确，可以登录
+2015/7/30 19:45:00	Information	正在与192.168.1.100 : 3890进行数据传输...
+2015/7/30 19:45:00	Information	接收了27个数据单元
+2015/7/30 19:45:00	Information	接收到的数据 QUERY_SIGN_PEND_REQUEST~1~1, 大小27
+2015/7/30 19:45:00	Information	接收到来自192.168.1.100:3890查询正在审核中的会签单模版信息1
+2015/7/30 19:45:00	Information	192.168.1.100:3890查询到的了所有正在审核中的会签单
+2015/7/30 19:45:00	Success	192.168.1.100:3890会签单模版信息信息查询成功
+2015/7/30 19:45:00	Information	正在与192.168.1.100 : 3890进行数据传输...
+2015/7/30 19:45:00	Information	接收了33个数据单元
+2015/7/30 19:45:00	Information	接收到的数据 QUERY_UNSIGN_CONTRACT_REQUEST~1~1, 大小33
+2015/7/30 19:45:00	Information	接收到来自192.168.1.100:3890查询待签字的会签单信息1
+2015/7/30 19:45:00	Information	192.168.1.100:3890查询到的了所有查询待签字的的会签单
+2015/7/30 19:45:00	Success	192.168.1.100:3890查询待签字的会签单信息查询成功
+2015/7/30 19:45:01	Information	正在与192.168.1.100 : 3890进行数据传输...
+2015/7/30 19:45:01	Information	接收了29个数据单元
+2015/7/30 19:45:01	Information	接收到的数据 QUERY_SIGN_REFUSE_REQUEST~1~1, 大小29
+2015/7/30 19:45:01	Information	接收到来自192.168.1.100:3890查询被拒绝的会签单模版信息1
+2015/7/30 19:45:01	Information	192.168.1.100:3890查询到的了所有被拒绝的会签单
+2015/7/30 19:45:01	Success	192.168.1.100:3890被拒绝会签单信息查询成功
+2015/7/30 19:45:01	Information	正在与192.168.1.100 : 3890进行数据传输...
+2015/7/30 19:45:01	Information	接收了30个数据单元
+2015/7/30 19:45:01	Information	接收到的数据 QUERY_AGREE_UNDOWN_REQUEST~1~1, 大小30
+2015/7/30 19:45:01	Information	接收到来自192.168.1.100:3890的查询未被下载的已通过的会签单模版信息1
+2015/7/30 19:45:01	Information	192.168.1.100:3890查询未被下载的已通过的会签单模版信息
+2015/7/30 19:45:01	Success	192.168.1.100:3890查询未被下载的已通过的会签单模版信息
+2015/7/30 19:46:06	Information	正在与192.168.1.100 : 3890进行数据传输...
+2015/7/30 19:46:06	Error	客户端终止，关闭了客户端, 当前连接的客户端数目0
+2015/7/30 19:46:17	Information	正在与192.168.1.100 : 3912进行数据传输...
+2015/7/30 19:46:17	Information	接收了58个数据单元
+2015/7/30 19:46:17	Information	接收到的数据 LOGIN_REQUEST~41~{"Username":"chengjian","Password":"111"}, 大小58
+2015/7/30 19:46:17	Information	接收到来自192.168.1.100:3912的登录信息{"Username":"chengjian","Password":"111"}
+2015/7/30 19:46:17	Success	USERNAME : chengjian, PASSWORD : 111用户名密码均正确，可以登录
+2015/7/30 19:46:18	Information	正在与192.168.1.100 : 3912进行数据传输...
+2015/7/30 19:46:18	Information	接收了33个数据单元
+2015/7/30 19:46:18	Information	接收到的数据 QUERY_UNSIGN_CONTRACT_REQUEST~1~1, 大小33
+2015/7/30 19:46:18	Information	接收到来自192.168.1.100:3912查询待签字的会签单信息1
+2015/7/30 19:46:18	Information	192.168.1.100:3912查询到的了所有查询待签字的的会签单
+2015/7/30 19:46:18	Success	192.168.1.100:3912查询待签字的会签单信息查询成功
+2015/7/30 19:46:18	Information	正在与192.168.1.100 : 3912进行数据传输...
+2015/7/30 19:46:18	Information	接收了27个数据单元
+2015/7/30 19:46:18	Information	接收到的数据 QUERY_SIGN_PEND_REQUEST~1~1, 大小27
+2015/7/30 19:46:18	Information	接收到来自192.168.1.100:3912查询正在审核中的会签单模版信息1
+2015/7/30 19:46:18	Information	192.168.1.100:3912查询到的了所有正在审核中的会签单
+2015/7/30 19:46:18	Success	192.168.1.100:3912会签单模版信息信息查询成功
+2015/7/30 19:46:18	Information	正在与192.168.1.100 : 3912进行数据传输...
+2015/7/30 19:46:18	Information	接收了29个数据单元
+2015/7/30 19:46:18	Information	接收到的数据 QUERY_SIGN_REFUSE_REQUEST~1~1, 大小29
+2015/7/30 19:46:18	Information	接收到来自192.168.1.100:3912查询被拒绝的会签单模版信息1
+2015/7/30 19:46:18	Information	192.168.1.100:3912查询到的了所有被拒绝的会签单
+2015/7/30 19:46:18	Success	192.168.1.100:3912被拒绝会签单信息查询成功
+2015/7/30 19:46:18	Information	正在与192.168.1.100 : 3912进行数据传输...
+2015/7/30 19:46:18	Information	接收了30个数据单元
+2015/7/30 19:46:18	Information	接收到的数据 QUERY_AGREE_UNDOWN_REQUEST~1~1, 大小30
+2015/7/30 19:46:18	Information	接收到来自192.168.1.100:3912的查询未被下载的已通过的会签单模版信息1
+2015/7/30 19:46:18	Information	192.168.1.100:3912查询未被下载的已通过的会签单模版信息
+2015/7/30 19:46:18	Success	192.168.1.100:3912查询未被下载的已通过的会签单模版信息
+2015/7/30 19:46:33	Information	正在与192.168.1.100 : 3921进行数据传输...
+2015/7/30 19:46:33	Information	接收了56个数据单元
+2015/7/30 19:46:33	Information	接收到的数据 LOGIN_REQUEST~39~{"Username":"wujiayi","Password":"111"}, 大小56
+2015/7/30 19:46:33	Information	接收到来自192.168.1.100:3921的登录信息{"Username":"wujiayi","Password":"111"}
+2015/7/30 19:46:33	Success	USERNAME : wujiayi, PASSWORD : 111用户名密码均正确，可以登录
+2015/7/30 19:46:34	Information	正在与192.168.1.100 : 3921进行数据传输...
+2015/7/30 19:46:34	Information	接收了33个数据单元
+2015/7/30 19:46:34	Information	接收到的数据 QUERY_UNSIGN_CONTRACT_REQUEST~1~8, 大小33
+2015/7/30 19:46:34	Information	接收到来自192.168.1.100:3921查询待签字的会签单信息8
+2015/7/30 19:46:34	Information	192.168.1.100:3921查询到的了所有查询待签字的的会签单
+2015/7/30 19:46:34	Success	192.168.1.100:3921查询待签字的会签单信息查询成功
+2015/7/30 19:50:06	Information	正在与192.168.1.100 : 3921进行数据传输...
+2015/7/30 19:50:06	Exception	System.Net.Sockets.SocketException (0x80004005): 远程主机强迫关闭了一个现有的连接。
+   在 System.Net.Sockets.Socket.EndReceive(IAsyncResult asyncResult)
+   在 SignPressServer.SignSocket.AsyncSocket.AsyncSocketServer.HandleDataReceived(IAsyncResult ar) 位置 g:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressServer_4.5\SignSocket\AsyncSocket\AsyncSocketServer.cs:行号 509
+2015/7/30 19:50:06	Error	客户端终止，关闭了客户端, 当前连接的客户端数目1
+2015/7/30 19:50:09	Information	正在与192.168.1.100 : 3912进行数据传输...
+2015/7/30 19:50:09	Exception	System.Net.Sockets.SocketException (0x80004005): 远程主机强迫关闭了一个现有的连接。
+   在 System.Net.Sockets.Socket.EndReceive(IAsyncResult asyncResult)
+   在 SignPressServer.SignSocket.AsyncSocket.AsyncSocketServer.HandleDataReceived(IAsyncResult ar) 位置 g:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressServer_4.5\SignSocket\AsyncSocket\AsyncSocketServer.cs:行号 509
+2015/7/30 19:50:09	Error	客户端终止，关闭了客户端, 当前连接的客户端数目0
+2015/7/30 19:50:24	Information	正在与192.168.1.100 : 3955进行数据传输...
+2015/7/30 19:50:24	Information	接收了58个数据单元
+2015/7/30 19:50:24	Information	接收到的数据 LOGIN_REQUEST~41~{"Username":"chengjian","Password":"111"}, 大小58
+2015/7/30 19:50:24	Information	接收到来自192.168.1.100:3955的登录信息{"Username":"chengjian","Password":"111"}
+2015/7/30 19:50:24	Success	USERNAME : chengjian, PASSWORD : 111用户名密码均正确，可以登录
+2015/7/30 19:50:24	Information	正在与192.168.1.100 : 3955进行数据传输...
+2015/7/30 19:50:24	Information	接收了27个数据单元
+2015/7/30 19:50:24	Information	接收到的数据 QUERY_SIGN_PEND_REQUEST~1~1, 大小27
+2015/7/30 19:50:24	Information	接收到来自192.168.1.100:3955查询正在审核中的会签单模版信息1
+2015/7/30 19:50:24	Information	192.168.1.100:3955查询到的了所有正在审核中的会签单
+2015/7/30 19:50:24	Success	192.168.1.100:3955会签单模版信息信息查询成功
+2015/7/30 19:50:25	Information	正在与192.168.1.100 : 3955进行数据传输...
+2015/7/30 19:50:25	Information	接收了33个数据单元
+2015/7/30 19:50:25	Information	接收到的数据 QUERY_UNSIGN_CONTRACT_REQUEST~1~1, 大小33
+2015/7/30 19:50:25	Information	接收到来自192.168.1.100:3955查询待签字的会签单信息1
+2015/7/30 19:50:25	Information	192.168.1.100:3955查询到的了所有查询待签字的的会签单
+2015/7/30 19:50:25	Success	192.168.1.100:3955查询待签字的会签单信息查询成功
+2015/7/30 19:50:25	Information	正在与192.168.1.100 : 3955进行数据传输...
+2015/7/30 19:50:25	Information	接收了29个数据单元
+2015/7/30 19:50:25	Information	接收到的数据 QUERY_SIGN_REFUSE_REQUEST~1~1, 大小29
+2015/7/30 19:50:25	Information	接收到来自192.168.1.100:3955查询被拒绝的会签单模版信息1
+2015/7/30 19:50:25	Information	192.168.1.100:3955查询到的了所有被拒绝的会签单
+2015/7/30 19:50:25	Success	192.168.1.100:3955被拒绝会签单信息查询成功
+2015/7/30 19:50:25	Information	正在与192.168.1.100 : 3955进行数据传输...
+2015/7/30 19:50:25	Information	接收了30个数据单元
+2015/7/30 19:50:25	Information	接收到的数据 QUERY_AGREE_UNDOWN_REQUEST~1~1, 大小30
+2015/7/30 19:50:25	Information	接收到来自192.168.1.100:3955的查询未被下载的已通过的会签单模版信息1
+2015/7/30 19:50:25	Information	192.168.1.100:3955查询未被下载的已通过的会签单模版信息
+2015/7/30 19:50:25	Success	192.168.1.100:3955查询未被下载的已通过的会签单模版信息
+2015/7/30 19:50:42	Information	正在与192.168.1.100 : 3957进行数据传输...
+2015/7/30 19:50:42	Information	接收了58个数据单元
+2015/7/30 19:50:42	Information	接收到的数据 LOGIN_REQUEST~41~{"Username":"chengjian","Password":"111"}, 大小58
+2015/7/30 19:50:42	Information	接收到来自192.168.1.100:3957的登录信息{"Username":"chengjian","Password":"111"}
+2015/7/30 19:50:42	Success	USERNAME : chengjian, PASSWORD : 111用户名密码均正确，可以登录
+2015/7/30 19:50:43	Information	正在与192.168.1.100 : 3957进行数据传输...
+2015/7/30 19:50:43	Information	接收了33个数据单元
+2015/7/30 19:50:43	Information	接收到的数据 QUERY_UNSIGN_CONTRACT_REQUEST~1~1, 大小33
+2015/7/30 19:50:43	Information	接收到来自192.168.1.100:3957查询待签字的会签单信息1
+2015/7/30 19:50:43	Information	192.168.1.100:3957查询到的了所有查询待签字的的会签单
+2015/7/30 19:50:43	Success	192.168.1.100:3957查询待签字的会签单信息查询成功
+2015/7/30 19:50:43	Information	正在与192.168.1.100 : 3957进行数据传输...
+2015/7/30 19:50:43	Information	接收了27个数据单元
+2015/7/30 19:50:43	Information	接收到的数据 QUERY_SIGN_PEND_REQUEST~1~1, 大小27
+2015/7/30 19:50:43	Information	接收到来自192.168.1.100:3957查询正在审核中的会签单模版信息1
+2015/7/30 19:50:43	Information	192.168.1.100:3957查询到的了所有正在审核中的会签单
+2015/7/30 19:50:43	Success	192.168.1.100:3957会签单模版信息信息查询成功
+2015/7/30 19:50:44	Information	正在与192.168.1.100 : 3957进行数据传输...
+2015/7/30 19:50:44	Information	接收了29个数据单元
+2015/7/30 19:50:44	Information	接收到的数据 QUERY_SIGN_REFUSE_REQUEST~1~1, 大小29
+2015/7/30 19:50:44	Information	接收到来自192.168.1.100:3957查询被拒绝的会签单模版信息1
+2015/7/30 19:50:44	Information	192.168.1.100:3957查询到的了所有被拒绝的会签单
+2015/7/30 19:50:44	Success	192.168.1.100:3957被拒绝会签单信息查询成功
+2015/7/30 19:50:44	Information	正在与192.168.1.100 : 3957进行数据传输...
+2015/7/30 19:50:44	Information	接收了30个数据单元
+2015/7/30 19:50:44	Information	接收到的数据 QUERY_AGREE_UNDOWN_REQUEST~1~1, 大小30
+2015/7/30 19:50:44	Information	接收到来自192.168.1.100:3957的查询未被下载的已通过的会签单模版信息1
+2015/7/30 19:50:44	Information	192.168.1.100:3957查询未被下载的已通过的会签单模版信息
+2015/7/30 19:50:44	Success	192.168.1.100:3957查询未被下载的已通过的会签单模版信息
+2015/7/30 19:50:59	Information	正在与192.168.1.100 : 3960进行数据传输...
+2015/7/30 19:50:59	Information	接收了58个数据单元
+2015/7/30 19:50:59	Information	接收到的数据 LOGIN_REQUEST~41~{"Username":"chengjian","Password":"111"}, 大小58
+2015/7/30 19:50:59	Information	接收到来自192.168.1.100:3960的登录信息{"Username":"chengjian","Password":"111"}
+2015/7/30 19:50:59	Success	USERNAME : chengjian, PASSWORD : 111用户名密码均正确，可以登录
+2015/7/30 19:51:00	Information	正在与192.168.1.100 : 3960进行数据传输...
+2015/7/30 19:51:00	Information	接收了33个数据单元
+2015/7/30 19:51:00	Information	接收到的数据 QUERY_UNSIGN_CONTRACT_REQUEST~1~1, 大小33
+2015/7/30 19:51:00	Information	接收到来自192.168.1.100:3960查询待签字的会签单信息1
+2015/7/30 19:51:00	Information	192.168.1.100:3960查询到的了所有查询待签字的的会签单
+2015/7/30 19:51:00	Success	192.168.1.100:3960查询待签字的会签单信息查询成功
+2015/7/30 19:51:00	Information	正在与192.168.1.100 : 3960进行数据传输...
+2015/7/30 19:51:00	Information	接收了27个数据单元
+2015/7/30 19:51:00	Information	接收到的数据 QUERY_SIGN_PEND_REQUEST~1~1, 大小27
+2015/7/30 19:51:00	Information	接收到来自192.168.1.100:3960查询正在审核中的会签单模版信息1
+2015/7/30 19:51:00	Information	192.168.1.100:3960查询到的了所有正在审核中的会签单
+2015/7/30 19:51:00	Success	192.168.1.100:3960会签单模版信息信息查询成功
+2015/7/30 19:51:00	Information	正在与192.168.1.100 : 3960进行数据传输...
+2015/7/30 19:51:00	Information	接收了29个数据单元
+2015/7/30 19:51:00	Information	接收到的数据 QUERY_SIGN_REFUSE_REQUEST~1~1, 大小29
+2015/7/30 19:51:00	Information	接收到来自192.168.1.100:3960查询被拒绝的会签单模版信息1
+2015/7/30 19:51:00	Information	192.168.1.100:3960查询到的了所有被拒绝的会签单
+2015/7/30 19:51:00	Success	192.168.1.100:3960被拒绝会签单信息查询成功
+2015/7/30 19:51:01	Information	正在与192.168.1.100 : 3960进行数据传输...
+2015/7/30 19:51:01	Information	接收了30个数据单元
+2015/7/30 19:51:01	Information	接收到的数据 QUERY_AGREE_UNDOWN_REQUEST~1~1, 大小30
+2015/7/30 19:51:01	Information	接收到来自192.168.1.100:3960的查询未被下载的已通过的会签单模版信息1
+2015/7/30 19:51:01	Information	192.168.1.100:3960查询未被下载的已通过的会签单模版信息
+2015/7/30 19:51:01	Success	192.168.1.100:3960查询未被下载的已通过的会签单模版信息
+2015/7/30 19:59:08	Information	正在与192.168.1.100 : 3955进行数据传输...
+2015/7/30 19:59:08	Exception	System.Net.Sockets.SocketException (0x80004005): 远程主机强迫关闭了一个现有的连接。
+   在 System.Net.Sockets.Socket.EndReceive(IAsyncResult asyncResult)
+   在 SignPressServer.SignSocket.AsyncSocket.AsyncSocketServer.HandleDataReceived(IAsyncResult ar) 位置 g:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressServer_4.5\SignSocket\AsyncSocket\AsyncSocketServer.cs:行号 509
+2015/7/30 19:59:08	Error	客户端终止，关闭了客户端, 当前连接的客户端数目2
+2015/7/30 19:59:10	Information	正在与192.168.1.100 : 3957进行数据传输...
+2015/7/30 19:59:10	Exception	System.Net.Sockets.SocketException (0x80004005): 远程主机强迫关闭了一个现有的连接。
+   在 System.Net.Sockets.Socket.EndReceive(IAsyncResult asyncResult)
+   在 SignPressServer.SignSocket.AsyncSocket.AsyncSocketServer.HandleDataReceived(IAsyncResult ar) 位置 g:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressServer_4.5\SignSocket\AsyncSocket\AsyncSocketServer.cs:行号 509
+2015/7/30 19:59:10	Error	客户端终止，关闭了客户端, 当前连接的客户端数目1
+2015/7/30 19:59:13	Information	正在与192.168.1.100 : 3960进行数据传输...
+2015/7/30 19:59:13	Exception	System.Net.Sockets.SocketException (0x80004005): 远程主机强迫关闭了一个现有的连接。
+   在 System.Net.Sockets.Socket.EndReceive(IAsyncResult asyncResult)
+   在 SignPressServer.SignSocket.AsyncSocket.AsyncSocketServer.HandleDataReceived(IAsyncResult ar) 位置 g:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressServer_4.5\SignSocket\AsyncSocket\AsyncSocketServer.cs:行号 509
+2015/7/30 19:59:13	Error	客户端终止，关闭了客户端, 当前连接的客户端数目0
+2015/7/30 20:00:09	Information	正在与192.168.1.100 : 4210进行数据传输...
+2015/7/30 20:00:09	Information	接收了58个数据单元
+2015/7/30 20:00:09	Information	接收到的数据 LOGIN_REQUEST~41~{"Username":"chengjian","Password":"111"}, 大小58
+2015/7/30 20:00:09	Information	接收到来自192.168.1.100:4210的登录信息{"Username":"chengjian","Password":"111"}
+2015/7/30 20:00:10	Success	USERNAME : chengjian, PASSWORD : 111用户名密码均正确，可以登录
+2015/7/30 20:00:11	Information	正在与192.168.1.100 : 4210进行数据传输...
+2015/7/30 20:00:11	Information	接收了33个数据单元
+2015/7/30 20:00:11	Information	接收到的数据 QUERY_UNSIGN_CONTRACT_REQUEST~1~1, 大小33
+2015/7/30 20:00:11	Information	接收到来自192.168.1.100:4210查询待签字的会签单信息1
+2015/7/30 20:00:11	Information	192.168.1.100:4210查询到的了所有查询待签字的的会签单
+2015/7/30 20:00:11	Success	192.168.1.100:4210查询待签字的会签单信息查询成功
+2015/7/30 20:00:11	Information	正在与192.168.1.100 : 4210进行数据传输...
+2015/7/30 20:00:11	Information	接收了27个数据单元
+2015/7/30 20:00:11	Information	接收到的数据 QUERY_SIGN_PEND_REQUEST~1~1, 大小27
+2015/7/30 20:00:11	Information	接收到来自192.168.1.100:4210查询正在审核中的会签单模版信息1
+2015/7/30 20:00:11	Information	192.168.1.100:4210查询到的了所有正在审核中的会签单
+2015/7/30 20:00:11	Success	192.168.1.100:4210会签单模版信息信息查询成功
+2015/7/30 20:00:11	Information	正在与192.168.1.100 : 4210进行数据传输...
+2015/7/30 20:00:11	Information	接收了29个数据单元
+2015/7/30 20:00:11	Information	接收到的数据 QUERY_SIGN_REFUSE_REQUEST~1~1, 大小29
+2015/7/30 20:00:11	Information	接收到来自192.168.1.100:4210查询被拒绝的会签单模版信息1
+2015/7/30 20:00:11	Information	192.168.1.100:4210查询到的了所有被拒绝的会签单
+2015/7/30 20:00:11	Success	192.168.1.100:4210被拒绝会签单信息查询成功
+2015/7/30 20:00:11	Information	正在与192.168.1.100 : 4210进行数据传输...
+2015/7/30 20:00:11	Information	接收了30个数据单元
+2015/7/30 20:00:11	Information	接收到的数据 QUERY_AGREE_UNDOWN_REQUEST~1~1, 大小30
+2015/7/30 20:00:11	Information	接收到来自192.168.1.100:4210的查询未被下载的已通过的会签单模版信息1
+2015/7/30 20:00:11	Information	192.168.1.100:4210查询未被下载的已通过的会签单模版信息
+2015/7/30 20:00:11	Success	192.168.1.100:4210查询未被下载的已通过的会签单模版信息
+2015/7/30 20:00:28	Information	正在与192.168.1.100 : 4221进行数据传输...
+2015/7/30 20:00:28	Information	接收了59个数据单元
+2015/7/30 20:00:28	Information	接收到的数据 LOGIN_REQUEST~42~{"Username":"wangpanpan","Password":"111"}, 大小59
+2015/7/30 20:00:28	Information	接收到来自192.168.1.100:4221的登录信息{"Username":"wangpanpan","Password":"111"}
+2015/7/30 20:00:28	Success	USERNAME : wangpanpan, PASSWORD : 111用户名密码均正确，可以登录
+2015/7/30 20:00:29	Information	正在与192.168.1.100 : 4221进行数据传输...
+2015/7/30 20:00:29	Information	接收了33个数据单元
+2015/7/30 20:00:29	Information	接收到的数据 QUERY_UNSIGN_CONTRACT_REQUEST~1~7, 大小33
+2015/7/30 20:00:29	Information	接收到来自192.168.1.100:4221查询待签字的会签单信息7
+2015/7/30 20:00:29	Information	192.168.1.100:4221查询到的了所有查询待签字的的会签单
+2015/7/30 20:00:29	Success	192.168.1.100:4221查询待签字的会签单信息查询成功
+2015/7/30 20:00:39	Information	正在与192.168.1.100 : 4224进行数据传输...
+2015/7/30 20:00:39	Information	接收了58个数据单元
+2015/7/30 20:00:39	Information	接收到的数据 LOGIN_REQUEST~41~{"Username":"chengjian","Password":"111"}, 大小58
+2015/7/30 20:00:39	Information	接收到来自192.168.1.100:4224的登录信息{"Username":"chengjian","Password":"111"}
+2015/7/30 20:00:39	Success	USERNAME : chengjian, PASSWORD : 111用户名密码均正确，可以登录
+2015/7/30 20:00:39	Information	正在与192.168.1.100 : 4224进行数据传输...
+2015/7/30 20:00:39	Information	接收了27个数据单元
+2015/7/30 20:00:39	Information	接收到的数据 QUERY_SIGN_PEND_REQUEST~1~1, 大小27
+2015/7/30 20:00:39	Information	接收到来自192.168.1.100:4224查询正在审核中的会签单模版信息1
+2015/7/30 20:00:39	Information	192.168.1.100:4224查询到的了所有正在审核中的会签单
+2015/7/30 20:00:39	Success	192.168.1.100:4224会签单模版信息信息查询成功
+2015/7/30 20:00:39	Information	正在与192.168.1.100 : 4224进行数据传输...
+2015/7/30 20:00:39	Information	接收了33个数据单元
+2015/7/30 20:00:39	Information	接收到的数据 QUERY_UNSIGN_CONTRACT_REQUEST~1~1, 大小33
+2015/7/30 20:00:39	Information	接收到来自192.168.1.100:4224查询待签字的会签单信息1
+2015/7/30 20:00:39	Information	192.168.1.100:4224查询到的了所有查询待签字的的会签单
+2015/7/30 20:00:39	Success	192.168.1.100:4224查询待签字的会签单信息查询成功
+2015/7/30 20:00:40	Information	正在与192.168.1.100 : 4224进行数据传输...
+2015/7/30 20:00:40	Information	接收了29个数据单元
+2015/7/30 20:00:40	Information	接收到的数据 QUERY_SIGN_REFUSE_REQUEST~1~1, 大小29
+2015/7/30 20:00:40	Information	接收到来自192.168.1.100:4224查询被拒绝的会签单模版信息1
+2015/7/30 20:00:40	Information	192.168.1.100:4224查询到的了所有被拒绝的会签单
+2015/7/30 20:00:40	Success	192.168.1.100:4224被拒绝会签单信息查询成功
+2015/7/30 20:00:40	Information	正在与192.168.1.100 : 4224进行数据传输...
+2015/7/30 20:00:40	Information	接收了30个数据单元
+2015/7/30 20:00:40	Information	接收到的数据 QUERY_AGREE_UNDOWN_REQUEST~1~1, 大小30
+2015/7/30 20:00:40	Information	接收到来自192.168.1.100:4224的查询未被下载的已通过的会签单模版信息1
+2015/7/30 20:00:40	Information	192.168.1.100:4224查询未被下载的已通过的会签单模版信息
+2015/7/30 20:00:40	Success	192.168.1.100:4224查询未被下载的已通过的会签单模版信息
+2015/7/30 20:00:50	Information	正在与192.168.1.100 : 4231进行数据传输...
+2015/7/30 20:00:50	Information	接收了58个数据单元
+2015/7/30 20:00:50	Information	接收到的数据 LOGIN_REQUEST~41~{"Username":"chengjian","Password":"111"}, 大小58
+2015/7/30 20:00:50	Information	接收到来自192.168.1.100:4231的登录信息{"Username":"chengjian","Password":"111"}
+2015/7/30 20:00:50	Success	USERNAME : chengjian, PASSWORD : 111用户名密码均正确，可以登录
+2015/7/30 20:00:51	Information	正在与192.168.1.100 : 4231进行数据传输...
+2015/7/30 20:00:51	Information	接收了33个数据单元
+2015/7/30 20:00:51	Information	接收到的数据 QUERY_UNSIGN_CONTRACT_REQUEST~1~1, 大小33
+2015/7/30 20:00:51	Information	接收到来自192.168.1.100:4231查询待签字的会签单信息1
+2015/7/30 20:00:51	Information	192.168.1.100:4231查询到的了所有查询待签字的的会签单
+2015/7/30 20:00:51	Success	192.168.1.100:4231查询待签字的会签单信息查询成功
+2015/7/30 20:00:51	Information	正在与192.168.1.100 : 4231进行数据传输...
+2015/7/30 20:00:51	Information	接收了27个数据单元
+2015/7/30 20:00:51	Information	接收到的数据 QUERY_SIGN_PEND_REQUEST~1~1, 大小27
+2015/7/30 20:00:51	Information	接收到来自192.168.1.100:4231查询正在审核中的会签单模版信息1
+2015/7/30 20:00:51	Information	192.168.1.100:4231查询到的了所有正在审核中的会签单
+2015/7/30 20:00:51	Success	192.168.1.100:4231会签单模版信息信息查询成功
+2015/7/30 20:00:51	Information	正在与192.168.1.100 : 4231进行数据传输...
+2015/7/30 20:00:51	Information	接收了29个数据单元
+2015/7/30 20:00:51	Information	接收到的数据 QUERY_SIGN_REFUSE_REQUEST~1~1, 大小29
+2015/7/30 20:00:51	Information	接收到来自192.168.1.100:4231查询被拒绝的会签单模版信息1
+2015/7/30 20:00:51	Information	192.168.1.100:4231查询到的了所有被拒绝的会签单
+2015/7/30 20:00:51	Success	192.168.1.100:4231被拒绝会签单信息查询成功
+2015/7/30 20:00:51	Information	正在与192.168.1.100 : 4231进行数据传输...
+2015/7/30 20:00:51	Information	接收了30个数据单元
+2015/7/30 20:00:51	Information	接收到的数据 QUERY_AGREE_UNDOWN_REQUEST~1~1, 大小30
+2015/7/30 20:00:51	Information	接收到来自192.168.1.100:4231的查询未被下载的已通过的会签单模版信息1
+2015/7/30 20:00:51	Information	192.168.1.100:4231查询未被下载的已通过的会签单模版信息
+2015/7/30 20:00:51	Success	192.168.1.100:4231查询未被下载的已通过的会签单模版信息
+2015/7/30 20:01:43	Information	正在与192.168.1.100 : 4221进行数据传输...
+2015/7/30 20:01:43	Exception	System.Net.Sockets.SocketException (0x80004005): 远程主机强迫关闭了一个现有的连接。
+   在 System.Net.Sockets.Socket.EndReceive(IAsyncResult asyncResult)
+   在 SignPressServer.SignSocket.AsyncSocket.AsyncSocketServer.HandleDataReceived(IAsyncResult ar) 位置 g:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressServer_4.5\SignSocket\AsyncSocket\AsyncSocketServer.cs:行号 509
+2015/7/30 20:01:43	Error	客户端终止，关闭了客户端, 当前连接的客户端数目3
+2015/7/30 20:01:46	Information	正在与192.168.1.100 : 4210进行数据传输...
+2015/7/30 20:01:46	Exception	System.Net.Sockets.SocketException (0x80004005): 远程主机强迫关闭了一个现有的连接。
+   在 System.Net.Sockets.Socket.EndReceive(IAsyncResult asyncResult)
+   在 SignPressServer.SignSocket.AsyncSocket.AsyncSocketServer.HandleDataReceived(IAsyncResult ar) 位置 g:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressServer_4.5\SignSocket\AsyncSocket\AsyncSocketServer.cs:行号 509
+2015/7/30 20:01:46	Error	客户端终止，关闭了客户端, 当前连接的客户端数目2
+2015/7/30 20:01:51	Information	正在与192.168.1.100 : 4224进行数据传输...
+2015/7/30 20:01:51	Information	接收了16个数据单元
+2015/7/30 20:01:51	Information	接收到的数据 QUIT_REQUEST~1~0, 大小16
+2015/7/30 20:01:51	Information	接收到来自192.168.1.100:4224的退出信息0
+2015/7/30 20:01:51	Information	正在与192.168.1.100 : 4224进行数据传输...
+2015/7/30 20:01:51	Error	客户端终止，关闭了客户端, 当前连接的客户端数目1
+2015/7/30 20:01:53	Information	正在与192.168.1.100 : 4231进行数据传输...
+2015/7/30 20:01:53	Information	接收了16个数据单元
+2015/7/30 20:01:53	Information	接收到的数据 QUIT_REQUEST~1~0, 大小16
+2015/7/30 20:01:53	Information	接收到来自192.168.1.100:4231的退出信息0
+2015/7/30 20:01:53	Information	正在与192.168.1.100 : 4231进行数据传输...
+2015/7/30 20:01:53	Error	客户端终止，关闭了客户端, 当前连接的客户端数目0
+2015/7/30 20:04:59	Information	正在与192.168.1.100 : 4279进行数据传输...
+2015/7/30 20:04:59	Information	接收了58个数据单元
+2015/7/30 20:04:59	Information	接收到的数据 LOGIN_REQUEST~41~{"Username":"chengjian","Password":"111"}, 大小58
+2015/7/30 20:04:59	Information	接收到来自192.168.1.100:4279的登录信息{"Username":"chengjian","Password":"111"}
+2015/7/30 20:05:00	Success	USERNAME : chengjian, PASSWORD : 111用户名密码均正确，可以登录
+2015/7/30 20:05:01	Information	正在与192.168.1.100 : 4279进行数据传输...
+2015/7/30 20:05:01	Information	接收了33个数据单元
+2015/7/30 20:05:01	Information	接收到的数据 QUERY_UNSIGN_CONTRACT_REQUEST~1~1, 大小33
+2015/7/30 20:05:01	Information	接收到来自192.168.1.100:4279查询待签字的会签单信息1
+2015/7/30 20:05:01	Information	192.168.1.100:4279查询到的了所有查询待签字的的会签单
+2015/7/30 20:05:01	Success	192.168.1.100:4279查询待签字的会签单信息查询成功
+2015/7/30 20:05:01	Information	正在与192.168.1.100 : 4279进行数据传输...
+2015/7/30 20:05:01	Information	接收了27个数据单元
+2015/7/30 20:05:01	Information	接收到的数据 QUERY_SIGN_PEND_REQUEST~1~1, 大小27
+2015/7/30 20:05:01	Information	接收到来自192.168.1.100:4279查询正在审核中的会签单模版信息1
+2015/7/30 20:05:01	Information	192.168.1.100:4279查询到的了所有正在审核中的会签单
+2015/7/30 20:05:01	Success	192.168.1.100:4279会签单模版信息信息查询成功
+2015/7/30 20:05:01	Information	正在与192.168.1.100 : 4279进行数据传输...
+2015/7/30 20:05:01	Information	接收了29个数据单元
+2015/7/30 20:05:01	Information	接收到的数据 QUERY_SIGN_REFUSE_REQUEST~1~1, 大小29
+2015/7/30 20:05:01	Information	接收到来自192.168.1.100:4279查询被拒绝的会签单模版信息1
+2015/7/30 20:05:01	Information	192.168.1.100:4279查询到的了所有被拒绝的会签单
+2015/7/30 20:05:01	Success	192.168.1.100:4279被拒绝会签单信息查询成功
+2015/7/30 20:05:01	Information	正在与192.168.1.100 : 4279进行数据传输...
+2015/7/30 20:05:01	Information	接收了30个数据单元
+2015/7/30 20:05:01	Information	接收到的数据 QUERY_AGREE_UNDOWN_REQUEST~1~1, 大小30
+2015/7/30 20:05:01	Information	接收到来自192.168.1.100:4279的查询未被下载的已通过的会签单模版信息1
+2015/7/30 20:05:01	Information	192.168.1.100:4279查询未被下载的已通过的会签单模版信息
+2015/7/30 20:05:01	Success	192.168.1.100:4279查询未被下载的已通过的会签单模版信息
+2015/7/30 20:13:52	Information	正在与192.168.1.100 : 4279进行数据传输...
+2015/7/30 20:13:52	Exception	System.Net.Sockets.SocketException (0x80004005): 远程主机强迫关闭了一个现有的连接。
+   在 System.Net.Sockets.Socket.EndReceive(IAsyncResult asyncResult)
+   在 SignPressServer.SignSocket.AsyncSocket.AsyncSocketServer.HandleDataReceived(IAsyncResult ar) 位置 g:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressServer_4.5\SignSocket\AsyncSocket\AsyncSocketServer.cs:行号 509
+2015/7/30 20:13:52	Error	客户端终止，关闭了客户端, 当前连接的客户端数目0
+2015/7/30 20:14:17	Information	正在与192.168.1.100 : 4441进行数据传输...
+2015/7/30 20:14:17	Information	接收了56个数据单元
+2015/7/30 20:14:17	Information	接收到的数据 LOGIN_REQUEST~39~{"Username":"wujiayi","Password":"111"}, 大小56
+2015/7/30 20:14:17	Information	接收到来自192.168.1.100:4441的登录信息{"Username":"wujiayi","Password":"111"}
+2015/7/30 20:14:18	Success	USERNAME : wujiayi, PASSWORD : 111用户名密码均正确，可以登录
+2015/7/30 20:14:19	Information	正在与192.168.1.100 : 4441进行数据传输...
+2015/7/30 20:14:19	Information	接收了33个数据单元
+2015/7/30 20:14:19	Information	接收到的数据 QUERY_UNSIGN_CONTRACT_REQUEST~1~8, 大小33
+2015/7/30 20:14:19	Information	接收到来自192.168.1.100:4441查询待签字的会签单信息8
+2015/7/30 20:14:19	Information	192.168.1.100:4441查询到的了所有查询待签字的的会签单
+2015/7/30 20:14:19	Success	192.168.1.100:4441查询待签字的会签单信息查询成功
+2015/7/30 20:14:27	Information	正在与192.168.1.100 : 4441进行数据传输...
+2015/7/30 20:14:27	Information	接收了16个数据单元
+2015/7/30 20:14:27	Information	接收到的数据 QUIT_REQUEST~1~0, 大小16
+2015/7/30 20:14:27	Information	接收到来自192.168.1.100:4441的退出信息0
+2015/7/30 20:14:27	Information	正在与192.168.1.100 : 4441进行数据传输...
+2015/7/30 20:14:27	Error	客户端终止，关闭了客户端, 当前连接的客户端数目0
+2015/7/30 20:17:23	Information	正在与192.168.1.100 : 4532进行数据传输...
+2015/7/30 20:17:23	Information	接收了59个数据单元
+2015/7/30 20:17:23	Information	接收到的数据 LOGIN_REQUEST~42~{"Username":"wangpanpan","Password":"111"}, 大小59
+2015/7/30 20:17:23	Information	接收到来自192.168.1.100:4532的登录信息{"Username":"wangpanpan","Password":"111"}
+2015/7/30 20:17:23	Success	USERNAME : wangpanpan, PASSWORD : 111用户名密码均正确，可以登录
+2015/7/30 20:17:24	Information	正在与192.168.1.100 : 4532进行数据传输...
+2015/7/30 20:17:24	Information	接收了33个数据单元
+2015/7/30 20:17:24	Information	接收到的数据 QUERY_UNSIGN_CONTRACT_REQUEST~1~7, 大小33
+2015/7/30 20:17:24	Information	接收到来自192.168.1.100:4532查询待签字的会签单信息7
+2015/7/30 20:17:24	Information	192.168.1.100:4532查询到的了所有查询待签字的的会签单
+2015/7/30 20:17:24	Success	192.168.1.100:4532查询待签字的会签单信息查询成功
+2015/7/30 20:17:29	Information	正在与192.168.1.100 : 4532进行数据传输...
+2015/7/30 20:17:29	Information	接收了16个数据单元
+2015/7/30 20:17:29	Information	接收到的数据 QUIT_REQUEST~1~0, 大小16
+2015/7/30 20:17:29	Information	接收到来自192.168.1.100:4532的退出信息0
+2015/7/30 20:17:29	Information	正在与192.168.1.100 : 4532进行数据传输...
+2015/7/30 20:17:29	Error	客户端终止，关闭了客户端, 当前连接的客户端数目0
+2015/7/30 20:17:45	Information	正在与192.168.1.100 : 4535进行数据传输...
+2015/7/30 20:17:45	Information	接收了59个数据单元
+2015/7/30 20:17:45	Information	接收到的数据 LOGIN_REQUEST~42~{"Username":"wangpanpan","Password":"111"}, 大小59
+2015/7/30 20:17:45	Information	接收到来自192.168.1.100:4535的登录信息{"Username":"wangpanpan","Password":"111"}
+2015/7/30 20:17:45	Success	USERNAME : wangpanpan, PASSWORD : 111用户名密码均正确，可以登录
+2015/7/30 20:17:46	Information	正在与192.168.1.100 : 4535进行数据传输...
+2015/7/30 20:17:46	Information	接收了33个数据单元
+2015/7/30 20:17:46	Information	接收到的数据 QUERY_UNSIGN_CONTRACT_REQUEST~1~7, 大小33
+2015/7/30 20:17:46	Information	接收到来自192.168.1.100:4535查询待签字的会签单信息7
+2015/7/30 20:17:46	Information	192.168.1.100:4535查询到的了所有查询待签字的的会签单
+2015/7/30 20:17:46	Success	192.168.1.100:4535查询待签字的会签单信息查询成功
+2015/7/30 20:17:52	Information	正在与192.168.1.100 : 4535进行数据传输...
+2015/7/30 20:17:52	Information	接收了16个数据单元
+2015/7/30 20:17:52	Information	接收到的数据 QUIT_REQUEST~1~0, 大小16
+2015/7/30 20:17:52	Information	接收到来自192.168.1.100:4535的退出信息0
+2015/7/30 20:17:52	Information	正在与192.168.1.100 : 4535进行数据传输...
+2015/7/30 20:17:52	Error	客户端终止，关闭了客户端, 当前连接的客户端数目0
+2015/7/30 20:35:20	Information	正在与192.168.1.100 : 5081进行数据传输...
+2015/7/30 20:35:20	Information	接收了59个数据单元
+2015/7/30 20:35:20	Information	接收到的数据 LOGIN_REQUEST~42~{"Username":"wangpanpan","Password":"111"}, 大小59
+2015/7/30 20:35:20	Information	正在与192.168.1.100 : 5082进行数据传输...
+2015/7/30 20:35:20	Information	接收了59个数据单元
+2015/7/30 20:35:20	Information	接收到的数据 LOGIN_REQUEST~42~{"Username":"wangpanpan","Password":"111"}, 大小59
+2015/7/30 20:35:20	Information	接收到来自192.168.1.100:5082的登录信息{"Username":"wangpanpan","Password":"111"}
+2015/7/30 20:35:20	Information	接收到来自192.168.1.100:5081的登录信息{"Username":"wangpanpan","Password":"111"}
+2015/7/30 20:35:21	Success	USERNAME : wangpanpan, PASSWORD : 111用户名密码均正确，可以登录
+2015/7/30 20:35:21	Success	USERNAME : wangpanpan, PASSWORD : 111用户名密码均正确，可以登录
+2015/7/30 20:35:22	Information	正在与192.168.1.100 : 5082进行数据传输...
+2015/7/30 20:35:22	Information	接收了33个数据单元
+2015/7/30 20:35:22	Information	接收到的数据 QUERY_UNSIGN_CONTRACT_REQUEST~1~7, 大小33
+2015/7/30 20:35:22	Information	接收到来自192.168.1.100:5082查询待签字的会签单信息7
+2015/7/30 20:35:22	Information	192.168.1.100:5082查询到的了所有查询待签字的的会签单
+2015/7/30 20:35:22	Success	192.168.1.100:5082查询待签字的会签单信息查询成功
+2015/7/30 20:35:22	Information	正在与192.168.1.100 : 5081进行数据传输...
+2015/7/30 20:35:22	Exception	System.Net.Sockets.SocketException (0x80004005): 远程主机强迫关闭了一个现有的连接。
+   在 System.Net.Sockets.Socket.EndReceive(IAsyncResult asyncResult)
+   在 SignPressServer.SignSocket.AsyncSocket.AsyncSocketServer.HandleDataReceived(IAsyncResult ar) 位置 g:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressServer_4.5\SignSocket\AsyncSocket\AsyncSocketServer.cs:行号 509
+2015/7/30 20:35:22	Error	客户端终止，关闭了客户端, 当前连接的客户端数目1
+2015/7/30 20:36:56	Information	正在与192.168.1.100 : 5082进行数据传输...
+2015/7/30 20:36:56	Exception	System.Net.Sockets.SocketException (0x80004005): 远程主机强迫关闭了一个现有的连接。
+   在 System.Net.Sockets.Socket.EndReceive(IAsyncResult asyncResult)
+   在 SignPressServer.SignSocket.AsyncSocket.AsyncSocketServer.HandleDataReceived(IAsyncResult ar) 位置 g:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressServer_4.5\SignSocket\AsyncSocket\AsyncSocketServer.cs:行号 509
+2015/7/30 20:36:56	Error	客户端终止，关闭了客户端, 当前连接的客户端数目0
+2015/7/30 20:37:16	Information	正在与192.168.1.100 : 5161进行数据传输...
+2015/7/30 20:37:16	Information	接收了59个数据单元
+2015/7/30 20:37:16	Information	接收到的数据 LOGIN_REQUEST~42~{"Username":"wangpanpan","Password":"111"}, 大小59
+2015/7/30 20:37:16	Information	接收到来自192.168.1.100:5161的登录信息{"Username":"wangpanpan","Password":"111"}
+2015/7/30 20:37:16	Success	USERNAME : wangpanpan, PASSWORD : 111用户名密码均正确，可以登录
+2015/7/30 20:37:17	Information	正在与192.168.1.100 : 5161进行数据传输...
+2015/7/30 20:37:17	Information	接收了33个数据单元
+2015/7/30 20:37:17	Information	接收到的数据 QUERY_UNSIGN_CONTRACT_REQUEST~1~7, 大小33
+2015/7/30 20:37:17	Information	接收到来自192.168.1.100:5161查询待签字的会签单信息7
+2015/7/30 20:37:17	Information	192.168.1.100:5161查询到的了所有查询待签字的的会签单
+2015/7/30 20:37:17	Success	192.168.1.100:5161查询待签字的会签单信息查询成功
+2015/7/30 20:51:03	Information	正在与192.168.1.100 : 5161进行数据传输...
+2015/7/30 20:51:03	Exception	System.Net.Sockets.SocketException (0x80004005): 远程主机强迫关闭了一个现有的连接。
+   在 System.Net.Sockets.Socket.EndReceive(IAsyncResult asyncResult)
+   在 SignPressServer.SignSocket.AsyncSocket.AsyncSocketServer.HandleDataReceived(IAsyncResult ar) 位置 g:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressServer_4.5\SignSocket\AsyncSocket\AsyncSocketServer.cs:行号 509
+2015/7/30 20:51:03	Error	客户端终止，关闭了客户端, 当前连接的客户端数目0
+2015/7/30 20:51:10	Information	正在与192.168.1.100 : 5748进行数据传输...
+2015/7/30 20:51:10	Information	接收了59个数据单元
+2015/7/30 20:51:10	Information	接收到的数据 LOGIN_REQUEST~42~{"Username":"wangpanpan","Password":"111"}, 大小59
+2015/7/30 20:51:10	Information	接收到来自192.168.1.100:5748的登录信息{"Username":"wangpanpan","Password":"111"}
+2015/7/30 20:51:11	Success	USERNAME : wangpanpan, PASSWORD : 111用户名密码均正确，可以登录
+2015/7/30 20:51:12	Information	正在与192.168.1.100 : 5748进行数据传输...
+2015/7/30 20:51:12	Information	接收了33个数据单元
+2015/7/30 20:51:12	Information	接收到的数据 QUERY_UNSIGN_CONTRACT_REQUEST~1~7, 大小33
+2015/7/30 20:51:12	Information	接收到来自192.168.1.100:5748查询待签字的会签单信息7
+2015/7/30 20:51:12	Information	192.168.1.100:5748查询到的了所有查询待签字的的会签单
+2015/7/30 20:51:12	Success	192.168.1.100:5748查询待签字的会签单信息查询成功
+2015/7/30 20:51:20	Information	正在与192.168.1.100 : 5748进行数据传输...
+2015/7/30 20:51:20	Information	接收了16个数据单元
+2015/7/30 20:51:20	Information	接收到的数据 QUIT_REQUEST~1~0, 大小16
+2015/7/30 20:51:20	Information	接收到来自192.168.1.100:5748的退出信息0
+2015/7/30 20:51:20	Information	正在与192.168.1.100 : 5748进行数据传输...
+2015/7/30 20:51:20	Error	客户端终止，关闭了客户端, 当前连接的客户端数目0
+2015/7/30 20:51:35	Information	正在与192.168.1.100 : 5753进行数据传输...
+2015/7/30 20:51:35	Information	接收了59个数据单元
+2015/7/30 20:51:35	Information	接收到的数据 LOGIN_REQUEST~42~{"Username":"wangpanpan","Password":"111"}, 大小59
+2015/7/30 20:51:35	Information	接收到来自192.168.1.100:5753的登录信息{"Username":"wangpanpan","Password":"111"}
+2015/7/30 20:51:35	Success	USERNAME : wangpanpan, PASSWORD : 111用户名密码均正确，可以登录
+2015/7/30 20:51:36	Information	正在与192.168.1.100 : 5753进行数据传输...
+2015/7/30 20:51:36	Information	接收了33个数据单元
+2015/7/30 20:51:36	Information	接收到的数据 QUERY_UNSIGN_CONTRACT_REQUEST~1~7, 大小33
+2015/7/30 20:51:36	Information	接收到来自192.168.1.100:5753查询待签字的会签单信息7
+2015/7/30 20:51:36	Information	192.168.1.100:5753查询到的了所有查询待签字的的会签单
+2015/7/30 20:51:36	Success	192.168.1.100:5753查询待签字的会签单信息查询成功
+2015/7/30 20:52:50	Information	正在与192.168.1.100 : 5753进行数据传输...
+2015/7/30 20:52:50	Exception	System.Net.Sockets.SocketException (0x80004005): 远程主机强迫关闭了一个现有的连接。
+   在 System.Net.Sockets.Socket.EndReceive(IAsyncResult asyncResult)
+   在 SignPressServer.SignSocket.AsyncSocket.AsyncSocketServer.HandleDataReceived(IAsyncResult ar) 位置 g:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressServer_4.5\SignSocket\AsyncSocket\AsyncSocketServer.cs:行号 509
+2015/7/30 20:52:50	Error	客户端终止，关闭了客户端, 当前连接的客户端数目0
+2015/7/30 20:53:45	Information	正在与192.168.1.100 : 5816进行数据传输...
+2015/7/30 20:53:45	Information	接收了59个数据单元
+2015/7/30 20:53:45	Information	接收到的数据 LOGIN_REQUEST~42~{"Username":"wangpanpan","Password":"111"}, 大小59
+2015/7/30 20:53:45	Information	接收到来自192.168.1.100:5816的登录信息{"Username":"wangpanpan","Password":"111"}
+2015/7/30 20:53:45	Success	USERNAME : wangpanpan, PASSWORD : 111用户名密码均正确，可以登录
+2015/7/30 20:53:46	Information	正在与192.168.1.100 : 5816进行数据传输...
+2015/7/30 20:53:46	Information	接收了33个数据单元
+2015/7/30 20:53:46	Information	接收到的数据 QUERY_UNSIGN_CONTRACT_REQUEST~1~7, 大小33
+2015/7/30 20:53:46	Information	接收到来自192.168.1.100:5816查询待签字的会签单信息7
+2015/7/30 20:53:46	Information	192.168.1.100:5816查询到的了所有查询待签字的的会签单
+2015/7/30 20:53:46	Success	192.168.1.100:5816查询待签字的会签单信息查询成功
+2015/7/30 21:10:47	Information	正在与192.168.1.100 : 5816进行数据传输...
+2015/7/30 21:10:47	Exception	System.Net.Sockets.SocketException (0x80004005): 远程主机强迫关闭了一个现有的连接。
+   在 System.Net.Sockets.Socket.EndReceive(IAsyncResult asyncResult)
+   在 SignPressServer.SignSocket.AsyncSocket.AsyncSocketServer.HandleDataReceived(IAsyncResult ar) 位置 g:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressServer_4.5\SignSocket\AsyncSocket\AsyncSocketServer.cs:行号 509
+2015/7/30 21:10:47	Error	客户端终止，关闭了客户端, 当前连接的客户端数目0
+2015/7/30 21:23:47	Information	正在与192.168.1.100 : 6339进行数据传输...
+2015/7/30 21:23:47	Information	接收了59个数据单元
+2015/7/30 21:23:47	Information	接收到的数据 LOGIN_REQUEST~42~{"Username":"wangpanpan","Password":"111"}, 大小59
+2015/7/30 21:23:47	Information	接收到来自192.168.1.100:6339的登录信息{"Username":"wangpanpan","Password":"111"}
+2015/7/30 21:23:48	Success	USERNAME : wangpanpan, PASSWORD : 111用户名密码均正确，可以登录
+2015/7/30 21:23:49	Information	正在与192.168.1.100 : 6339进行数据传输...
+2015/7/30 21:23:49	Information	接收了33个数据单元
+2015/7/30 21:23:49	Information	接收到的数据 QUERY_UNSIGN_CONTRACT_REQUEST~1~7, 大小33
+2015/7/30 21:23:49	Information	接收到来自192.168.1.100:6339查询待签字的会签单信息7
+2015/7/30 21:23:49	Information	192.168.1.100:6339查询到的了所有查询待签字的的会签单
+2015/7/30 21:23:49	Success	192.168.1.100:6339查询待签字的会签单信息查询成功
+2015/7/30 21:24:31	Information	正在与192.168.1.100 : 6339进行数据传输...
+2015/7/30 21:24:31	Exception	System.Net.Sockets.SocketException (0x80004005): 远程主机强迫关闭了一个现有的连接。
+   在 System.Net.Sockets.Socket.EndReceive(IAsyncResult asyncResult)
+   在 SignPressServer.SignSocket.AsyncSocket.AsyncSocketServer.HandleDataReceived(IAsyncResult ar) 位置 g:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressServer_4.5\SignSocket\AsyncSocket\AsyncSocketServer.cs:行号 509
+2015/7/30 21:24:31	Error	客户端终止，关闭了客户端, 当前连接的客户端数目0
+2015/7/30 21:25:04	Information	正在与192.168.1.100 : 6357进行数据传输...
+2015/7/30 21:25:04	Information	接收了59个数据单元
+2015/7/30 21:25:04	Information	接收到的数据 LOGIN_REQUEST~42~{"Username":"wangpanpan","Password":"111"}, 大小59
+2015/7/30 21:25:04	Information	接收到来自192.168.1.100:6357的登录信息{"Username":"wangpanpan","Password":"111"}
+2015/7/30 21:25:04	Success	USERNAME : wangpanpan, PASSWORD : 111用户名密码均正确，可以登录
+2015/7/30 21:25:05	Information	正在与192.168.1.100 : 6357进行数据传输...
+2015/7/30 21:25:05	Information	接收了33个数据单元
+2015/7/30 21:25:05	Information	接收到的数据 QUERY_UNSIGN_CONTRACT_REQUEST~1~7, 大小33
+2015/7/30 21:25:05	Information	接收到来自192.168.1.100:6357查询待签字的会签单信息7
+2015/7/30 21:25:05	Information	192.168.1.100:6357查询到的了所有查询待签字的的会签单
+2015/7/30 21:25:05	Success	192.168.1.100:6357查询待签字的会签单信息查询成功
+2015/7/30 21:25:23	Information	正在与192.168.1.100 : 6357进行数据传输...
+2015/7/30 21:25:23	Exception	System.Net.Sockets.SocketException (0x80004005): 远程主机强迫关闭了一个现有的连接。
+   在 System.Net.Sockets.Socket.EndReceive(IAsyncResult asyncResult)
+   在 SignPressServer.SignSocket.AsyncSocket.AsyncSocketServer.HandleDataReceived(IAsyncResult ar) 位置 g:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressServer_4.5\SignSocket\AsyncSocket\AsyncSocketServer.cs:行号 509
+2015/7/30 21:25:23	Error	客户端终止，关闭了客户端, 当前连接的客户端数目0
+2015/7/30 21:26:18	Information	正在与192.168.1.100 : 6373进行数据传输...
+2015/7/30 21:26:18	Information	接收了59个数据单元
+2015/7/30 21:26:18	Information	接收到的数据 LOGIN_REQUEST~42~{"Username":"wangpanpan","Password":"111"}, 大小59
+2015/7/30 21:26:18	Information	接收到来自192.168.1.100:6373的登录信息{"Username":"wangpanpan","Password":"111"}
+2015/7/30 21:26:18	Success	USERNAME : wangpanpan, PASSWORD : 111用户名密码均正确，可以登录
+2015/7/30 21:26:19	Information	正在与192.168.1.100 : 6373进行数据传输...
+2015/7/30 21:26:19	Information	接收了33个数据单元
+2015/7/30 21:26:19	Information	接收到的数据 QUERY_UNSIGN_CONTRACT_REQUEST~1~7, 大小33
+2015/7/30 21:26:19	Information	接收到来自192.168.1.100:6373查询待签字的会签单信息7
+2015/7/30 21:26:19	Information	192.168.1.100:6373查询到的了所有查询待签字的的会签单
+2015/7/30 21:26:19	Success	192.168.1.100:6373查询待签字的会签单信息查询成功
+2015/7/30 21:31:20	Information	正在与192.168.1.100 : 6431进行数据传输...
+2015/7/30 21:31:20	Information	接收了59个数据单元
+2015/7/30 21:31:20	Information	接收到的数据 LOGIN_REQUEST~42~{"Username":"wangpanpan","Password":"111"}, 大小59
+2015/7/30 21:31:20	Information	接收到来自192.168.1.100:6431的登录信息{"Username":"wangpanpan","Password":"111"}
+2015/7/30 21:31:21	Success	USERNAME : wangpanpan, PASSWORD : 111用户名密码均正确，可以登录
+2015/7/30 21:31:22	Information	正在与192.168.1.100 : 6431进行数据传输...
+2015/7/30 21:31:22	Information	接收了33个数据单元
+2015/7/30 21:31:22	Information	接收到的数据 QUERY_UNSIGN_CONTRACT_REQUEST~1~7, 大小33
+2015/7/30 21:31:22	Information	接收到来自192.168.1.100:6431查询待签字的会签单信息7
+2015/7/30 21:31:22	Information	192.168.1.100:6431查询到的了所有查询待签字的的会签单
+2015/7/30 21:31:22	Success	192.168.1.100:6431查询待签字的会签单信息查询成功
+2015/7/30 21:31:41	Information	正在与192.168.1.100 : 6373进行数据传输...
+2015/7/30 21:31:41	Exception	System.Net.Sockets.SocketException (0x80004005): 远程主机强迫关闭了一个现有的连接。
+   在 System.Net.Sockets.Socket.EndReceive(IAsyncResult asyncResult)
+   在 SignPressServer.SignSocket.AsyncSocket.AsyncSocketServer.HandleDataReceived(IAsyncResult ar) 位置 g:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressServer_4.5\SignSocket\AsyncSocket\AsyncSocketServer.cs:行号 509
+2015/7/30 21:31:41	Error	客户端终止，关闭了客户端, 当前连接的客户端数目1

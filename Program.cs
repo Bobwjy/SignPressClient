@@ -88,6 +88,9 @@ using SignPressServer.SignSocket.AsyncSocket;   //  套接字信息
 using SignPressServer.SignSocket.AsyncTcpListener;  //  
 using SignPressServer.SignSocket.SyncSocket;
 
+///  测试正则表达式
+using System.Text.RegularExpressions;
+/// 
 
 ///  modify by gatieme at 2015-07-09 11:12
 ///  新增加功能签字人对会签单的权限问题，
@@ -115,7 +118,7 @@ namespace SignPressServer
         {
             Console.WriteLine("SignPress服务器程序");
             Console.WriteLine(System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
-            Console.WriteLine(System.DateTime.Now.ToString("yyyyMMddHHmmss"));
+            //Console.WriteLine(System.DateTime.Now.ToString("yyyyMMddHHmmss"));
 
 
             //获取当前进程的完整路径，包含文件名(进程名)。
@@ -123,31 +126,66 @@ namespace SignPressServer
             //result: X:\xxx\xxx\xxx.exe (.exe文件所在的目录+.exe文件名)
 
             //获取新的Process 组件并将其与当前活动的进程关联的主模块的完整路径，包含文件名(进程名)。
-            Console.WriteLine(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName);
+            //Console.WriteLine(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName);
             //result: X:\xxx\xxx\xxx.exe (.exe文件所在的目录+.exe文件名)
 
             //获取和设置当前目录（即该进程从中启动的目录）的完全限定路径。
-            Console.WriteLine(System.Environment.CurrentDirectory);
+            //Console.WriteLine(System.Environment.CurrentDirectory);
             //result: X:\xxx\xxx (.exe文件所在的目录)
 
             //获取当前 Thread 的当前应用程序域的基目录，它由程序集冲突解决程序用来探测程序集。
-            Console.WriteLine(System.AppDomain.CurrentDomain.BaseDirectory);
+            //Console.WriteLine(System.AppDomain.CurrentDomain.BaseDirectory);
             //result: X:\xxx\xxx\ (.exe文件所在的目录+"\")
 
             //获取和设置包含该应用程序的目录的名称。
-            Console.WriteLine(System.AppDomain.CurrentDomain.SetupInformation.ApplicationBase);
+            //Console.WriteLine(System.AppDomain.CurrentDomain.SetupInformation.ApplicationBase);
             //result: X:\xxx\xxx\ (.exe文件所在的目录+"\")
 
             //获取应用程序的当前工作目录(不可靠)。
-            Console.WriteLine(System.IO.Directory.GetCurrentDirectory());
+            //Console.WriteLine(System.IO.Directory.GetCurrentDirectory());
             //result: X:\xxx\xxx (.exe文件所在的目录)
             /// 测试连接服务器以及查询测试
 
 
             //int currDayConCount = DALHDJContract.GetDayHDJContractCount(System.DateTime.Now.Date);
             //Console.WriteLine(System.DateTime.Now.ToString("yyyyMMdd") + (currDayConCount + 1).ToString().PadLeft(6, '0'));
-            
-            
+
+
+            #region 测试正则表达式
+//            String[] text = {   "username/password@//myserver:1521/my.service.com", 
+//                                "username/password@myserver//instancename",
+//                                "username/password@myserver/myservice:dedicated/instancename"};
+//            //Regex regex = new Regex(@"\S*/\S*@/*(\S*):(\S*)/(\S*)", RegexOptions.None);     // text1
+//            //Regex regex = new Regex(@"\S*/\S*@/*(\S*):(\d*|/)/(\S*)", RegexOptions.None);     // text1
+//            //Regex regex = new Regex(@"\S*/\S*@/*(\S*):(\d*|/*)/(\S*)", RegexOptions.None);     // text1
+
+//            // 在第二个串中@后的`/`可省, myserver:1521中的:port也可以缺省, 
+//            //Regex regex = new Regex(@"\S*/\S*@/*(\S*)[:*(\S*) | (/*)]/{1,2}(\S*)", RegexOptions.None);     // text1 + text2
+//            //Regex regex = new Regex(@"\S*/\S*@/*(\w*)(:*)(\d*)/*(\S*)", RegexOptions.None);     // text1 + text2
+
+//            // 在第三个串中, 
+////            Regex regex = new Regex(@"\S*/\S*(@/{0,2})(\w*)(:*)(\d*)/*(\S*)(:*)(\S*)/(\S*)", RegexOptions.None);     // text1 + text2
+//            Regex regex = new Regex(@"\S*/\S*(@/{0,2})(\w*):*(\d*)/*\S*:*\S*/(\S*)", RegexOptions.None);     // text1 + text2
+
+//            //Console.WriteLine(text1);
+//            for(int i = 0; i < 3; i++)
+//            {
+//                MatchCollection matchCollection = regex.Matches(text[i]);
+//                Console.WriteLine("Count = " + matchCollection.Count);
+//                for (int j = 0; j < matchCollection.Count; j++)
+//                {
+//                    Match match = matchCollection[j];
+//                    Console.WriteLine("Match[{0}]========================", j);
+//                    for (int k = 0; k < match.Groups.Count; k++)
+//                    {
+//                        Console.WriteLine("Groups[{0}]={1}", k, match.Groups[k].Value);
+//                    }
+//                }
+//            }
+            #endregion
+
+
+
             #region 测试数据库连接
 
             /*DBTools dbtools = new DBTools();
@@ -309,9 +347,10 @@ namespace SignPressServer
 //            }while(message.Flag != AsyncSocketMessageFlag.MESSAGE_RIGHT);
             string hostName = System.Net.Dns.GetHostName();//本机名   
             System.Net.IPAddress[] addressList = System.Net.Dns.GetHostAddresses(hostName);//会返回所有地址，包括IPv4和IPv6   
+            Console.WriteLine("HOST Name = " + hostName);
             foreach (System.Net.IPAddress ip in addressList)
             {
-                Console.WriteLine(ip.ToString());
+                Console.WriteLine("IP Address = " + ip.ToString());
             }
             #endregion
 
@@ -329,9 +368,9 @@ namespace SignPressServer
             #region 服务器的处理程序AsyncSocketServer
 
             Console.WriteLine("服务器准备中...");
-
+            const int PORT = 6666;
             //System.Net.IPEndPoint ep = new System.Net.IPEndPoint(System.Net.IPAddress.Parse("10.0.209.144"), 6666);
-            AsyncSocketServer server = new AsyncSocketServer(6666);
+            AsyncSocketServer server = new AsyncSocketServer(PORT);
             while (true)
             {
                 server.Start();

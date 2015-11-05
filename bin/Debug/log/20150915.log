@@ -1,0 +1,28 @@
+﻿2015/9/15 12:01:17	Information	接收了60个数据单元
+2015/9/15 12:01:17	Information	接收到的数据 LOGIN_REQUEST~43~{"Username":"wangdonglai","Password":"111"}, 大小60
+2015/9/15 12:01:17	Information	接收到来自192.168.10.77:1484的登录信息{"Username":"wangdonglai","Password":"111"}
+2015/9/15 12:01:19	Error	USERNAME : wangdonglai, PASSWORD : 111用户名密码验证失败，无法正常登录
+2015/9/15 12:01:23	Information	正在与192.168.10.77 : 1499进行数据传输...
+2015/9/15 12:01:23	Information	接收了59个数据单元
+2015/9/15 12:01:23	Information	接收到的数据 LOGIN_REQUEST~42~{"Username":"wangpanpan","Password":"111"}, 大小59
+2015/9/15 12:01:23	Information	接收到来自192.168.10.77:1499的登录信息{"Username":"wangpanpan","Password":"111"}
+2015/9/15 12:01:23	Error	USERNAME : wangpanpan, PASSWORD : 111用户名密码验证失败，无法正常登录
+2015/9/15 12:01:25	Information	正在与192.168.10.77 : 1501进行数据传输...
+2015/9/15 12:01:25	Information	接收了59个数据单元
+2015/9/15 12:01:25	Information	接收到的数据 LOGIN_REQUEST~42~{"Username":"wangpanpan","Password":"111"}, 大小59
+2015/9/15 12:01:25	Information	接收到来自192.168.10.77:1501的登录信息{"Username":"wangpanpan","Password":"111"}
+2015/9/15 12:01:25	Error	USERNAME : wangpanpan, PASSWORD : 111用户名密码验证失败，无法正常登录
+2015/9/15 12:01:28	Information	正在与192.168.10.77 : 1502进行数据传输...
+2015/9/15 12:01:28	Information	接收了59个数据单元
+2015/9/15 12:01:28	Information	接收到的数据 LOGIN_REQUEST~42~{"Username":"wangpanpan","Password":"111"}, 大小59
+2015/9/15 12:01:28	Information	接收到来自192.168.10.77:1502的登录信息{"Username":"wangpanpan","Password":"111"}
+2015/9/15 12:01:28	Error	USERNAME : wangpanpan, PASSWORD : 111用户名密码验证失败，无法正常登录
+2015/9/15 12:01:41	Information	正在与192.168.10.77 : 1508进行数据传输...
+2015/9/15 12:01:41	Information	接收了66个数据单元
+2015/9/15 12:01:41	Information	接收到的数据 LOGIN_REQUEST~49~{"Username":"wangpanpan","Password":"wangpanpan"}, 大小66
+2015/9/15 12:01:41	Information	接收到来自192.168.10.77:1508的登录信息{"Username":"wangpanpan","Password":"wangpanpan"}
+2015/9/15 12:01:41	Success	USERNAME : wangpanpan, PASSWORD : wangpanpan用户名密码均正确，可以登录
+2015/9/15 12:01:41	Information	正在与192.168.10.77 : 1508进行数据传输...
+2015/9/15 12:01:41	Information	接收了33个数据单元
+2015/9/15 12:01:41	Information	接收到的数据 QUERY_UNSIGN_CONTRACT_REQUEST~1~7, 大小33
+2015/9/15 12:01:41	Information	接收到来自192.168.10.77:1508查询待签字的会签单信息7

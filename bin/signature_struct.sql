@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50529
 File Encoding         : 65001
 
-Date: 2015-10-08 20:15:11
+Date: 2015-09-13 09:39:46
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -27,14 +27,6 @@ CREATE TABLE `category` (
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Records of category
--- ----------------------------
-INSERT INTO `category` VALUES ('1', '界河项目', '界');
-INSERT INTO `category` VALUES ('2', '内河项目', '内');
-INSERT INTO `category` VALUES ('3', '应急项目', '应');
-INSERT INTO `category` VALUES ('4', '例会项目', '例');
-
--- ----------------------------
 -- Table structure for conidcategory
 -- ----------------------------
 DROP TABLE IF EXISTS `conidcategory`;
@@ -48,30 +40,6 @@ CREATE TABLE `conidcategory` (
   CONSTRAINT `conidcategory_ibfk_1` FOREIGN KEY (`departmentid`) REFERENCES `department` (`id`),
   CONSTRAINT `conidcategory_ibfk_2` FOREIGN KEY (`categoryid`) REFERENCES `category` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of conidcategory
--- ----------------------------
-INSERT INTO `conidcategory` VALUES ('3', '1', '1');
-INSERT INTO `conidcategory` VALUES ('4', '2', '1');
-INSERT INTO `conidcategory` VALUES ('5', '3', '1');
-INSERT INTO `conidcategory` VALUES ('6', '4', '1');
-INSERT INTO `conidcategory` VALUES ('7', '5', '1');
-INSERT INTO `conidcategory` VALUES ('8', '1', '2');
-INSERT INTO `conidcategory` VALUES ('9', '2', '2');
-INSERT INTO `conidcategory` VALUES ('10', '3', '2');
-INSERT INTO `conidcategory` VALUES ('11', '4', '2');
-INSERT INTO `conidcategory` VALUES ('12', '5', '2');
-INSERT INTO `conidcategory` VALUES ('13', '1', '3');
-INSERT INTO `conidcategory` VALUES ('14', '2', '3');
-INSERT INTO `conidcategory` VALUES ('15', '3', '3');
-INSERT INTO `conidcategory` VALUES ('16', '4', '3');
-INSERT INTO `conidcategory` VALUES ('17', '5', '3');
-INSERT INTO `conidcategory` VALUES ('18', '1', '3');
-INSERT INTO `conidcategory` VALUES ('19', '2', '3');
-INSERT INTO `conidcategory` VALUES ('20', '3', '3');
-INSERT INTO `conidcategory` VALUES ('21', '4', '3');
-INSERT INTO `conidcategory` VALUES ('22', '5', '3');
 
 -- ----------------------------
 -- Table structure for contemp
@@ -127,12 +95,7 @@ CREATE TABLE `contemp` (
   `candownload7` int(11) DEFAULT NULL,
   `candownload8` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of contemp
--- ----------------------------
-INSERT INTO `contemp` VALUES ('1', '2015-06-20 12:30:30', '养护及例会项目拨款会签审批单模版 ', '工程名称', '项目名称', '主要项目及工程量', '本次申请资金额度（元）', '累计申请资金额度（元）', '申请单位项目负责人', '申请单位负责人', '养护主管部门项目负责人', '养护主管部门负责人', '计划科负责人', '财务科负责人', '主 管 局 长', '局      长', '1', '2', '3', '4', '5', '6', '8', '7', '1', '1', '1', '1', '1', '1', '2', '3', '0', '0', '1', '0', '0', '0', '1', '1', '0', '0', '1', '0', '0', '0', '1', '1');
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for department
@@ -148,16 +111,7 @@ CREATE TABLE `department` (
   `canregular` int(11) DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `name` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of department
--- ----------------------------
-INSERT INTO `department` VALUES ('1', '申请科', '申', '1', '1', '1', '1');
-INSERT INTO `department` VALUES ('2', '养护科', '养', '1', '1', '1', '1');
-INSERT INTO `department` VALUES ('3', '计划科', '计', '1', '1', '1', '1');
-INSERT INTO `department` VALUES ('4', '财务科', '财', '1', '1', '1', '1');
-INSERT INTO `department` VALUES ('5', '行政科', '政', '1', '1', '1', '1');
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for employee
@@ -178,18 +132,6 @@ CREATE TABLE `employee` (
   KEY `departmentid` (`departmentid`),
   CONSTRAINT `employee_ibfk_1` FOREIGN KEY (`departmentid`) REFERENCES `department` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of employee
--- ----------------------------
-INSERT INTO `employee` VALUES ('1', '成坚', '负责人', '1', '1', '1', '0', 'chengjian', 'chengjian');
-INSERT INTO `employee` VALUES ('2', '石啸', '主管', '1', '1', '1', '0', 'shixiao', 'shixiao');
-INSERT INTO `employee` VALUES ('3', '张立平', '负责人', '2', '0', '1', '0', 'zhanglilping', 'zhangliping');
-INSERT INTO `employee` VALUES ('4', '许伟', '科长', '2', '0', '1', '0', 'xuwei', 'xuwei');
-INSERT INTO `employee` VALUES ('5', '赵强', '科长', '3', '0', '1', '0', 'zhaoqiang', 'zhaoqiang');
-INSERT INTO `employee` VALUES ('6', '李景龙', '科长', '4', '0', '1', '0', 'lijinglong', 'lijinglong');
-INSERT INTO `employee` VALUES ('7', '王盼盼', '副局长', '5', '0', '1', '1', 'wangpanpan', 'wangpanpan');
-INSERT INTO `employee` VALUES ('8', '吴佳怡', '局长', '5', '0', '1', '1', 'wujiayi', 'wujiayi');
 
 -- ----------------------------
 -- Table structure for hdjcontract
@@ -214,16 +156,6 @@ CREATE TABLE `hdjcontract` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Records of hdjcontract
--- ----------------------------
-INSERT INTO `hdjcontract` VALUES ('1', '会签单', '1', '阿里巴巴', '马云', '你没', '你妹', '赵老五', '2', null);
-INSERT INTO `hdjcontract` VALUES ('20150621124713', '养护及例会项目拨款会签审批单 ', '1', '航道局', '百度收购案', '收购百度', '1000', '2000', '2', '2015-06-21 00:00:00');
-INSERT INTO `hdjcontract` VALUES ('20150621125041', '养护及例会项目拨款会签审批单 ', '1', '航道局', '腾讯收购案', '收购腾讯', '200', '200', '2', '2015-06-21 00:00:00');
-INSERT INTO `hdjcontract` VALUES ('20150621131837', '养护及例会项目拨款会签审批单 ', '1', 'dfrfrg', 'sdgf', 'dsg', 'dsgf', 'sdg', '2', '2015-06-21 00:00:00');
-INSERT INTO `hdjcontract` VALUES ('20150621132328', '养护及例会项目拨款会签审批单 ', '1', 'g`w', 'ewf', 'ewf', 'fwedf', 'fw', '2', '2015-06-21 00:00:00');
-INSERT INTO `hdjcontract` VALUES ('20150621182606', '养护及例会项目拨款会签审批单 ', '1', 'dsds', 'dsdsds', 'dsgff', 'sdasga', 'ga', '2', '2015-06-21 18:26:06');
-
--- ----------------------------
 -- Table structure for signaturedetail
 -- ----------------------------
 DROP TABLE IF EXISTS `signaturedetail`;
@@ -234,20 +166,8 @@ CREATE TABLE `signaturedetail` (
   `conid` varchar(255) NOT NULL COMMENT '签字的会签单表',
   `result` int(11) NOT NULL COMMENT '签字结果(-1拒绝，0未知,1同意)',
   `remark` varchar(255) NOT NULL COMMENT '签字的备注信息',
-  `updatecount` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of signaturedetail
--- ----------------------------
-INSERT INTO `signaturedetail` VALUES ('1', '2015-06-21 00:00:00', '1', '1', '1', '同意了，写的不错', null);
-INSERT INTO `signaturedetail` VALUES ('2', '2015-06-21 00:00:00', '1', '1', '1', '同意', null);
-INSERT INTO `signaturedetail` VALUES ('3', '2015-06-21 00:00:00', '2', '1', '-1', '同意了', null);
-INSERT INTO `signaturedetail` VALUES ('4', '2015-06-21 00:00:00', '3', '1', '-1', '拒绝', null);
-INSERT INTO `signaturedetail` VALUES ('5', '2015-06-21 00:00:00', '4', '2', '1', '同意了', null);
-INSERT INTO `signaturedetail` VALUES ('6', '2015-06-21 00:00:00', '4', '2015-06-21 12:50:41', '-1', '拒绝', null);
-INSERT INTO `signaturedetail` VALUES ('7', '2015-06-21 00:00:00', '4', '20150621125041', '-1', '拒绝', null);
 
 -- ----------------------------
 -- Table structure for signaturelevel
@@ -262,18 +182,6 @@ CREATE TABLE `signaturelevel` (
   `candownload` int(11) DEFAULT '0',
   PRIMARY KEY (`contempid`,`signnum`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of signaturelevel
--- ----------------------------
-INSERT INTO `signaturelevel` VALUES ('1', '1', '1', '1', '0', '0');
-INSERT INTO `signaturelevel` VALUES ('1', '2', '2', '1', '0', '0');
-INSERT INTO `signaturelevel` VALUES ('1', '3', '3', '1', '1', '1');
-INSERT INTO `signaturelevel` VALUES ('1', '4', '4', '1', '0', '0');
-INSERT INTO `signaturelevel` VALUES ('1', '5', '5', '1', '0', '0');
-INSERT INTO `signaturelevel` VALUES ('1', '6', '6', '1', '0', '0');
-INSERT INTO `signaturelevel` VALUES ('1', '7', '8', '2', '1', '1');
-INSERT INTO `signaturelevel` VALUES ('1', '8', '7', '3', '1', '1');
 
 -- ----------------------------
 -- Table structure for signaturestatus
@@ -295,21 +203,8 @@ CREATE TABLE `signaturestatus` (
   `refusecount` int(11) NOT NULL,
   `currlevel` int(11) NOT NULL COMMENT '当前签字',
   `maxlevel` int(11) NOT NULL COMMENT '完成所需节点',
-  `updatecount` int(11) DEFAULT '0',
-  `isdownload` int(11) DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of signaturestatus
--- ----------------------------
-INSERT INTO `signaturestatus` VALUES ('2015-06-21 11:47:25', '2015-6-21', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '1', '3', null, '0');
-INSERT INTO `signaturestatus` VALUES ('2015-06-21 12:47:13', '20150621124713', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '1', '3', null, '0');
-INSERT INTO `signaturestatus` VALUES ('2015-06-21 12:50:41', '20150621125041', '0', '0', '0', '-1', '0', '0', '0', '0', '0', '0', '0', '1', '3', null, '0');
-INSERT INTO `signaturestatus` VALUES ('2015-06-21 13:18:37', '20150621131837', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '1', '3', null, '0');
-INSERT INTO `signaturestatus` VALUES ('2015-06-21 13:23:28', '20150621132328', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '1', '3', null, '0');
-INSERT INTO `signaturestatus` VALUES ('2015-06-21 18:20:05', '1', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '1', '3', null, '0');
-INSERT INTO `signaturestatus` VALUES ('2015-06-21 18:26:06', '20150621182606', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '1', '3', null, '0');
 
 -- ----------------------------
 -- Table structure for yhjlhxmbkcontract
@@ -330,10 +225,6 @@ CREATE TABLE `yhjlhxmbkcontract` (
   `finadepartid` int(11) NOT NULL COMMENT '财务科负责人（需要签字）',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of yhjlhxmbkcontract
--- ----------------------------
 DROP TRIGGER IF EXISTS `insert_signature_level`;
 DELIMITER ;;
 CREATE TRIGGER `insert_signature_level` AFTER INSERT ON `contemp` FOR EACH ROW BEGIN
@@ -448,29 +339,15 @@ DROP TRIGGER IF EXISTS `insert_signature_status`;
 DELIMITER ;;
 CREATE TRIGGER `insert_signature_status` AFTER INSERT ON `hdjcontract` FOR EACH ROW BEGIN
 
-            INSERT INTO `signaturestatus` (`id`, `conid`, `result1`, `result2`, `result3`, `result4`, `result5`, `result6`, `result7`, `result8`, `totalresult`, `agreecount`, `refusecount`, `currlevel`, `maxlevel`, `updatecount`) 
-            VALUES (NOW(), new.id, '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '1', (SELECT c.signlevel8 FROM `hdjcontract` h, `contemp` c WHERE (h.contempid = c.id and h.id = new.id)), '0');
-
+INSERT INTO `signaturestatus` (`id`, `conid`, `result1`, `result2`, `result3`, `result4`, `result5`, `result6`, `result7`, `result8`, `totalresult`, `agreecount`, `refusecount`, `currlevel`, `maxlevel`) 
+VALUES (NOW(), new.id, '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '1', (SELECT c.signlevel8 FROM `hdjcontract` h, `contemp` c WHERE (h.contempid = c.id and h.id = new.id)));
 
 END
 ;;
 DELIMITER ;
-DROP TRIGGER IF EXISTS `update_signature_status`;
-DELIMITER ;;
-CREATE TRIGGER `update_signature_status` AFTER UPDATE ON `hdjcontract` FOR EACH ROW BEGIN
-
-            UPDATE `signaturestatus`
-            set `result1` = '0', `result2` = '0', `result3` = '0', `result4` = '0', `result5` = '0', `result6` = '0', `result7` = '0', `result8` = '0', `totalresult` = '0', `agreecount` = '0', `refusecount` = '0', `currlevel` = '1', `updatecount` = `updatecount` + 1
-            WHERE (conid = new.id);
-
-        END
-;;
-DELIMITER ;
 DROP TRIGGER IF EXISTS `modify_signature_status`;
 DELIMITER ;;
-CREATE TRIGGER `modify_signature_status` BEFORE INSERT ON `signaturedetail` FOR EACH ROW BEGIN
-            set new.updatecount = (SELECT `updatecount` FROM `signaturestatus` WHERE (conid = new.conid));
-
+CREATE TRIGGER `modify_signature_status` AFTER INSERT ON `signaturedetail` FOR EACH ROW BEGIN
             UPDATE `signaturestatus`
             SET result1 = new.result 
             WHERE (signaturestatus.conid = new.conid 

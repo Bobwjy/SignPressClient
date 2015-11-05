@@ -57,6 +57,7 @@
     <Compile Include="MyWord\MyWordTest.cs" />
     <Compile Include="MyWord\MyWordWithTemplate.cs" />
     <Compile Include="SignContract\YHJLHXMBKContract.cs" />
+    <Compile Include="SignDAL\DALContractIdCategory.cs" />
     <Compile Include="SignDAL\DALHDJContract.cs" />
     <Compile Include="SignDAL\DALContractTemplate.cs" />
     <Compile Include="SignDAL\DALDepartment.cs" />
@@ -65,6 +66,7 @@
     <Compile Include="SignDAL\DALSignatureStatus.cs" />
     <Compile Include="SignDAL\DALYHJLHXMBKContract.cs" />
     <Compile Include="SignData\ColumnTemplate.cs" />
+    <Compile Include="SignData\ContractIdCategory.cs" />
     <Compile Include="SignData\ContractNoPrefix.cs" />
     <Compile Include="SignData\HDJContract.cs" />
     <Compile Include="SignData\ContractTemplate.cs" />
