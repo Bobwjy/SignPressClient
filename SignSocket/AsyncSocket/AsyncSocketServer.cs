@@ -1393,9 +1393,6 @@ namespace SignPressServer.SignSocket.AsyncSocket
             SDepartment department = JsonConvert.DeserializeObject<SDepartment>(state.SocketMessage.Message);
 
             //  首先检测
-
-
-
             bool result = DALSDepartment.ModifySDepartment(department);
 
             if (result == true)
@@ -2904,9 +2901,11 @@ namespace SignPressServer.SignSocket.AsyncSocket
         }
         #endregion
 
+        #region 添加
+        
+        #endregion
 
 
-      
     }
 }
 
