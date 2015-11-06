@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50529
 File Encoding         : 65001
 
-Date: 2015-10-08 20:15:11
+Date: 2015-11-06 22:21:46
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -29,10 +29,10 @@ CREATE TABLE `category` (
 -- ----------------------------
 -- Records of category
 -- ----------------------------
-INSERT INTO `category` VALUES ('1', '界河项目', '界');
-INSERT INTO `category` VALUES ('2', '内河项目', '内');
-INSERT INTO `category` VALUES ('3', '应急项目', '应');
-INSERT INTO `category` VALUES ('4', '例会项目', '例');
+INSERT INTO `category` VALUES ('1', '界河航道养护工程', '界');
+INSERT INTO `category` VALUES ('2', '内河航道养护工程', '内');
+INSERT INTO `category` VALUES ('3', '应急抢通工程', '应');
+INSERT INTO `category` VALUES ('4', '例会项目工程', '例');
 
 -- ----------------------------
 -- Table structure for conidcategory
@@ -47,31 +47,30 @@ CREATE TABLE `conidcategory` (
   KEY `categoryid` (`categoryid`),
   CONSTRAINT `conidcategory_ibfk_1` FOREIGN KEY (`departmentid`) REFERENCES `department` (`id`),
   CONSTRAINT `conidcategory_ibfk_2` FOREIGN KEY (`categoryid`) REFERENCES `category` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of conidcategory
 -- ----------------------------
-INSERT INTO `conidcategory` VALUES ('3', '1', '1');
-INSERT INTO `conidcategory` VALUES ('4', '2', '1');
-INSERT INTO `conidcategory` VALUES ('5', '3', '1');
-INSERT INTO `conidcategory` VALUES ('6', '4', '1');
-INSERT INTO `conidcategory` VALUES ('7', '5', '1');
-INSERT INTO `conidcategory` VALUES ('8', '1', '2');
-INSERT INTO `conidcategory` VALUES ('9', '2', '2');
-INSERT INTO `conidcategory` VALUES ('10', '3', '2');
-INSERT INTO `conidcategory` VALUES ('11', '4', '2');
-INSERT INTO `conidcategory` VALUES ('12', '5', '2');
-INSERT INTO `conidcategory` VALUES ('13', '1', '3');
-INSERT INTO `conidcategory` VALUES ('14', '2', '3');
-INSERT INTO `conidcategory` VALUES ('15', '3', '3');
-INSERT INTO `conidcategory` VALUES ('16', '4', '3');
-INSERT INTO `conidcategory` VALUES ('17', '5', '3');
-INSERT INTO `conidcategory` VALUES ('18', '1', '3');
-INSERT INTO `conidcategory` VALUES ('19', '2', '3');
-INSERT INTO `conidcategory` VALUES ('20', '3', '3');
-INSERT INTO `conidcategory` VALUES ('21', '4', '3');
-INSERT INTO `conidcategory` VALUES ('22', '5', '3');
+INSERT INTO `conidcategory` VALUES ('31', '1', '1');
+INSERT INTO `conidcategory` VALUES ('32', '1', '2');
+INSERT INTO `conidcategory` VALUES ('33', '1', '3');
+INSERT INTO `conidcategory` VALUES ('34', '1', '4');
+INSERT INTO `conidcategory` VALUES ('35', '2', '1');
+INSERT INTO `conidcategory` VALUES ('36', '2', '2');
+INSERT INTO `conidcategory` VALUES ('37', '2', '3');
+INSERT INTO `conidcategory` VALUES ('38', '2', '4');
+INSERT INTO `conidcategory` VALUES ('39', '3', '1');
+INSERT INTO `conidcategory` VALUES ('40', '3', '2');
+INSERT INTO `conidcategory` VALUES ('41', '3', '3');
+INSERT INTO `conidcategory` VALUES ('42', '3', '4');
+INSERT INTO `conidcategory` VALUES ('43', '4', '1');
+INSERT INTO `conidcategory` VALUES ('44', '4', '2');
+INSERT INTO `conidcategory` VALUES ('45', '4', '3');
+INSERT INTO `conidcategory` VALUES ('46', '4', '4');
+INSERT INTO `conidcategory` VALUES ('47', '5', '1');
+INSERT INTO `conidcategory` VALUES ('48', '5', '2');
+INSERT INTO `conidcategory` VALUES ('49', '5', '4');
 
 -- ----------------------------
 -- Table structure for contemp
@@ -157,7 +156,7 @@ INSERT INTO `department` VALUES ('1', '申请科', '申', '1', '1', '1', '1');
 INSERT INTO `department` VALUES ('2', '养护科', '养', '1', '1', '1', '1');
 INSERT INTO `department` VALUES ('3', '计划科', '计', '1', '1', '1', '1');
 INSERT INTO `department` VALUES ('4', '财务科', '财', '1', '1', '1', '1');
-INSERT INTO `department` VALUES ('5', '行政科', '政', '1', '1', '1', '1');
+INSERT INTO `department` VALUES ('5', '行政科', '政', '1', '1', '0', '1');
 
 -- ----------------------------
 -- Table structure for employee
@@ -222,6 +221,39 @@ INSERT INTO `hdjcontract` VALUES ('20150621125041', '养护及例会项目拨款
 INSERT INTO `hdjcontract` VALUES ('20150621131837', '养护及例会项目拨款会签审批单 ', '1', 'dfrfrg', 'sdgf', 'dsg', 'dsgf', 'sdg', '2', '2015-06-21 00:00:00');
 INSERT INTO `hdjcontract` VALUES ('20150621132328', '养护及例会项目拨款会签审批单 ', '1', 'g`w', 'ewf', 'ewf', 'fwedf', 'fw', '2', '2015-06-21 00:00:00');
 INSERT INTO `hdjcontract` VALUES ('20150621182606', '养护及例会项目拨款会签审批单 ', '1', 'dsds', 'dsdsds', 'dsgff', 'sdasga', 'ga', '2', '2015-06-21 18:26:06');
+
+-- ----------------------------
+-- Table structure for project
+-- ----------------------------
+DROP TABLE IF EXISTS `project`;
+CREATE TABLE `project` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `categoryid` int(11) DEFAULT NULL,
+  `project` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `categoryid` (`categoryid`),
+  CONSTRAINT `project_ibfk_1` FOREIGN KEY (`categoryid`) REFERENCES `category` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of project
+-- ----------------------------
+INSERT INTO `project` VALUES ('1', '1', '航道养护');
+INSERT INTO `project` VALUES ('2', '1', '航标养护');
+INSERT INTO `project` VALUES ('3', '1', '船艇养护');
+INSERT INTO `project` VALUES ('4', '1', '站场维护');
+INSERT INTO `project` VALUES ('5', '1', '其他');
+INSERT INTO `project` VALUES ('6', '1', '延伸养护');
+INSERT INTO `project` VALUES ('7', '2', '航道养护');
+INSERT INTO `project` VALUES ('8', '2', '航标养护');
+INSERT INTO `project` VALUES ('9', '2', '船艇养护');
+INSERT INTO `project` VALUES ('10', '2', '站场维护');
+INSERT INTO `project` VALUES ('11', '2', '其他');
+INSERT INTO `project` VALUES ('12', '3', '航标');
+INSERT INTO `project` VALUES ('13', '3', '测量');
+INSERT INTO `project` VALUES ('14', '3', '疏浚');
+INSERT INTO `project` VALUES ('15', '3', '水工');
+INSERT INTO `project` VALUES ('16', '4', '55');
 
 -- ----------------------------
 -- Table structure for signaturedetail
@@ -436,7 +468,7 @@ CREATE TRIGGER `set_conidcategory` BEFORE UPDATE ON `department` FOR EACH ROW BE
 
     if (old.canregular = 0 and new.canregular = 1) then 
         INSERT into `conidcategory` (`departmentid`, `categoryid`)
-        VALUES(new.id, 3);
+        VALUES(new.id, 4);
     elseif (old.canregular = 1 and new.canregular = 0) then 
         DELETE from `conidcategory`
         WHERE(`departmentid` = new.id and `categoryid` = 4);

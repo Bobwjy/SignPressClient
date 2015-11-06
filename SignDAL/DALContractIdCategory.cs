@@ -164,7 +164,6 @@ namespace SignPressServer.SignDAL
             }
             finally
             {
-
                 if (con.State == ConnectionState.Open)
                 {
                     con.Close();

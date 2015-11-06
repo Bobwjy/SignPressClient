@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50529
 File Encoding         : 65001
 
-Date: 2015-09-13 09:39:46
+Date: 2015-11-06 22:22:01
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -39,7 +39,7 @@ CREATE TABLE `conidcategory` (
   KEY `categoryid` (`categoryid`),
   CONSTRAINT `conidcategory_ibfk_1` FOREIGN KEY (`departmentid`) REFERENCES `department` (`id`),
   CONSTRAINT `conidcategory_ibfk_2` FOREIGN KEY (`categoryid`) REFERENCES `category` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for contemp
@@ -95,7 +95,7 @@ CREATE TABLE `contemp` (
   `candownload7` int(11) DEFAULT NULL,
   `candownload8` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for department
@@ -111,7 +111,7 @@ CREATE TABLE `department` (
   `canregular` int(11) DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `name` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for employee
@@ -156,6 +156,19 @@ CREATE TABLE `hdjcontract` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
+-- Table structure for project
+-- ----------------------------
+DROP TABLE IF EXISTS `project`;
+CREATE TABLE `project` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `categoryid` int(11) DEFAULT NULL,
+  `project` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `categoryid` (`categoryid`),
+  CONSTRAINT `project_ibfk_1` FOREIGN KEY (`categoryid`) REFERENCES `category` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
 -- Table structure for signaturedetail
 -- ----------------------------
 DROP TABLE IF EXISTS `signaturedetail`;
@@ -166,6 +179,7 @@ CREATE TABLE `signaturedetail` (
   `conid` varchar(255) NOT NULL COMMENT '签字的会签单表',
   `result` int(11) NOT NULL COMMENT '签字结果(-1拒绝，0未知,1同意)',
   `remark` varchar(255) NOT NULL COMMENT '签字的备注信息',
+  `updatecount` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -203,6 +217,8 @@ CREATE TABLE `signaturestatus` (
   `refusecount` int(11) NOT NULL,
   `currlevel` int(11) NOT NULL COMMENT '当前签字',
   `maxlevel` int(11) NOT NULL COMMENT '完成所需节点',
+  `updatecount` int(11) DEFAULT '0',
+  `isdownload` int(11) DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -327,7 +343,7 @@ CREATE TRIGGER `set_conidcategory` BEFORE UPDATE ON `department` FOR EACH ROW BE
 
     if (old.canregular = 0 and new.canregular = 1) then 
         INSERT into `conidcategory` (`departmentid`, `categoryid`)
-        VALUES(new.id, 3);
+        VALUES(new.id, 4);
     elseif (old.canregular = 1 and new.canregular = 0) then 
         DELETE from `conidcategory`
         WHERE(`departmentid` = new.id and `categoryid` = 4);
@@ -339,15 +355,29 @@ DROP TRIGGER IF EXISTS `insert_signature_status`;
 DELIMITER ;;
 CREATE TRIGGER `insert_signature_status` AFTER INSERT ON `hdjcontract` FOR EACH ROW BEGIN
 
-INSERT INTO `signaturestatus` (`id`, `conid`, `result1`, `result2`, `result3`, `result4`, `result5`, `result6`, `result7`, `result8`, `totalresult`, `agreecount`, `refusecount`, `currlevel`, `maxlevel`) 
-VALUES (NOW(), new.id, '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '1', (SELECT c.signlevel8 FROM `hdjcontract` h, `contemp` c WHERE (h.contempid = c.id and h.id = new.id)));
+            INSERT INTO `signaturestatus` (`id`, `conid`, `result1`, `result2`, `result3`, `result4`, `result5`, `result6`, `result7`, `result8`, `totalresult`, `agreecount`, `refusecount`, `currlevel`, `maxlevel`, `updatecount`) 
+            VALUES (NOW(), new.id, '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '1', (SELECT c.signlevel8 FROM `hdjcontract` h, `contemp` c WHERE (h.contempid = c.id and h.id = new.id)), '0');
+
 
 END
 ;;
 DELIMITER ;
+DROP TRIGGER IF EXISTS `update_signature_status`;
+DELIMITER ;;
+CREATE TRIGGER `update_signature_status` AFTER UPDATE ON `hdjcontract` FOR EACH ROW BEGIN
+
+            UPDATE `signaturestatus`
+            set `result1` = '0', `result2` = '0', `result3` = '0', `result4` = '0', `result5` = '0', `result6` = '0', `result7` = '0', `result8` = '0', `totalresult` = '0', `agreecount` = '0', `refusecount` = '0', `currlevel` = '1', `updatecount` = `updatecount` + 1
+            WHERE (conid = new.id);
+
+        END
+;;
+DELIMITER ;
 DROP TRIGGER IF EXISTS `modify_signature_status`;
 DELIMITER ;;
-CREATE TRIGGER `modify_signature_status` AFTER INSERT ON `signaturedetail` FOR EACH ROW BEGIN
+CREATE TRIGGER `modify_signature_status` BEFORE INSERT ON `signaturedetail` FOR EACH ROW BEGIN
+            set new.updatecount = (SELECT `updatecount` FROM `signaturestatus` WHERE (conid = new.conid));
+
             UPDATE `signaturestatus`
             SET result1 = new.result 
             WHERE (signaturestatus.conid = new.conid 
