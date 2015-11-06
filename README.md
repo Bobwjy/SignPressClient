@@ -2,6 +2,55 @@
 一个远程签单工具的服务器程序
 
 
+#实现工程名称的数据绑定
+-------------------------------------------------------------------------------
+2015年11月6日 20:41:25 更新
+##之前在做的
+在之前的Department派生出新类SDepartment
+附带了部门的申请权限，包括界, 内,应,例
+QUERY_SDEPARTMENT_REQUEST,
+MODIFY_SDEPARTMENT_REQUEST,
+
+
+##工程名称
+ContractCategory类存储了工程名称的类别信息
+对于数据库中Category表
+DALContractIdCategory操作数据库接口
+请求
+QUERY_SDEPARTMENT_CONTRACTCATEGORY_REQUEST
+
+QUERY_SDEPARTMENT_CONTRACTCATEGORY_SUCCESS,
+QUERY_SDEPARTMENT_CONTRACTCATEGORY_FAILED,
+
+查询工程名称信息的时候, 直接向服务器发送departmentid [int]
+
+
+##项目名称
+ContractProject类存储了项目名称的类别信息
+对于数据库中Project表
+DALContractProject操作数据库接口
+
+查询项目集请直接发送categoryid [int]
+QUERY_CATEGORY_PROJECT_REQUEST,
+
+QUERY_CATEGORY_PROJECT_SUCCESS,
+QUERY_CATEGORY_PROJECT_FAILED,
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#-------------------------------------------------------------------------------
 # 签字信息表的数据
 
 一种方案
@@ -994,3 +1043,5 @@ END;
 SELECT ec.id, ec.category, ec.categoryshortcall 
 FROM `conidcategory` cc, `engineercategory` ec 
 WHERE (cc.departmentid = 1 and ec.id = cc.categoryid);
+
+

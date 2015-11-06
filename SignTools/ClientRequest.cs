@@ -25,6 +25,7 @@ namespace SignPressServer.SignTools
         MODIFY_DEPARTMENT_REQUEST,
         QUERY_DEPARTMENT_REQUEST,
         QUERY_SDEPARTMENT_REQUEST,
+        MODIFY_SDEPARTMENT_REQUEST,
         /// <summary>
         /// ==员工操作==
         /// 增加员工  INSERT_EMPLOYEE_REQUEST
@@ -95,6 +96,9 @@ namespace SignPressServer.SignTools
         //  查询当前部门可以申请的会签单的类别
         QUERY_SDEPARTMENT_CONTRACTCATEGORY_REQUEST,
         MODIFY_SDEPARTMENT_SREQUEST,
+
+        ///
+        QUERY_CATEGORY_PROJECT_REQUEST,
     }
 
 }

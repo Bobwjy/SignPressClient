@@ -2901,8 +2901,47 @@ namespace SignPressServer.SignSocket.AsyncSocket
         }
         #endregion
 
-        #region 添加
-        
+        #region 查询工程列表的信息[2015-11-6 21:41] modify by gatieme 
+        private void RaiseQueryContractProjectRequest(AsyncSocketState state)
+        {
+            Console.WriteLine("接收到来自{0}的查询工程列表的信息{1}", state.ClientIp, state.SocketMessage.Message); // 输出真正的信息
+            this.Log.Write(new LogMessage("接收到来自" + state.ClientIp + "的查询工程列表的信息" + state.SocketMessage.Message, LogMessageType.Information));
+
+            ServerResponse response = new ServerResponse();
+
+            // json数据解包
+            int categoryId = JsonConvert.DeserializeObject<int>(state.SocketMessage.Message);
+
+            //  首先检测
+            List<ContractProject> projects = DALContractProject.QueryCategoryProject(categoryId);
+
+            if (projects != null)
+            {
+                Console.WriteLine("查询工程列表成功");
+                this.Log.Write(new LogMessage(state.ClientIp + "查询工程列表成功", LogMessageType.Success));
+
+                response = ServerResponse.QUERY_CATEGORY_PROJECT_SUCCESS;
+            }
+            else
+            {
+                Console.WriteLine("查询工程列表失败");
+                this.Log.Write(new LogMessage(state.ClientIp + "查询工程列表失败", LogMessageType.Error));
+
+                response = ServerResponse.QUERY_CATEGORY_PROJECT_FAILED;
+            }
+
+            //  查询部门成功则同时发送[报头 + 信息] 
+            if (response.Equals(ServerResponse.QUERY_DEPARTMENT_SUCCESS))
+            {
+                AsyncSocketMessage socketMessage = new AsyncSocketMessage(response, projects);
+                this.Send(state.ClientSocket, Encoding.UTF8.GetBytes(socketMessage.Package));                 
+            }
+            else      //  查询失败则只发报头
+            {
+                AsyncSocketMessage socketMessage = new AsyncSocketMessage(response);
+                this.Send(state.ClientSocket, Encoding.UTF8.GetBytes(socketMessage.Package));
+            }
+        }
         #endregion
 
 

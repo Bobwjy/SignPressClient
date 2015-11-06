@@ -44,6 +44,7 @@ namespace SignPressServer.SignTools
 
         QUERY_DEPARTMENT_SUCCESS,
         QUERY_DEPARTMENT_FAILED,
+
         QUERY_SDEPARTMENT_SUCCESS,
         QUERY_SDEPARTMENT_FAILED,
 
@@ -173,9 +174,17 @@ namespace SignPressServer.SignTools
         QUERY_SDEPARTMENT_CONTRACTCATEGORY_SUCCESS,
         QUERY_SDEPARTMENT_CONTRACTCATEGORY_FAILED,
 
-
+        /// <summary>
+        /// 2015-11-2
+        /// </summary>
         MODIFY_SDEPARTMENT_SUCCESS,
         MODIFY_SDEPARTMENT_FAILED,
 
+        /// <summary>
+        /// 2015-11-6
+        /// </summary>
+        QUERY_CATEGORY_PROJECT_SUCCESS,
+        QUERY_CATEGORY_PROJECT_FAILED,
+        
     }
 }

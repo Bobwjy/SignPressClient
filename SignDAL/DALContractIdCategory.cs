@@ -123,7 +123,7 @@ namespace SignPressServer.SignDAL
         /// </summary>
         /// <param name="departmentId"></param>
         /// <returns></returns>
-        private const String QUERY_SDEPARTMENT_CONTRACTCATEGORY_STR = "SELECT ec.id id, ec.category category, ec.categoryshortcall categoryshortcall FROM `conidcategory` cc, `engineercategory` ec WHERE (cc.departmentid = @DepartmentId and ec.id = cc.categoryid);";
+        private const String QUERY_SDEPARTMENT_CONTRACTCATEGORY_STR = "SELECT c.id id, c.category category, c.shortcall categoryshortcall FROM `category` c, `conidcategory` cc WHERE (c.id = cc.categoryid and cc.departmentid = @DepartmentId);";
         public static List<ContractCategory> QuerySDepartmentContractCategory(int departmentId)
         {
             MySqlConnection con = DBTools.GetMySqlConnection();
