@@ -5,14 +5,14 @@
 #实现工程名称的数据绑定
 -------------------------------------------------------------------------------
 2015年11月6日 20:41:25 更新
-##之前在做的
+##之前在做的[接口已经实现--客户端已实现，但是BUG]
 在之前的Department派生出新类SDepartment
 附带了部门的申请权限，包括界, 内,应,例
 QUERY_SDEPARTMENT_REQUEST,
 MODIFY_SDEPARTMENT_REQUEST,
 
 
-##工程名称
+##工程名称[接口已经实现--客户端未实现]
 ContractCategory类存储了工程名称的类别信息
 对于数据库中Category表
 DALContractIdCategory操作数据库接口
@@ -25,17 +25,20 @@ QUERY_SDEPARTMENT_CONTRACTCATEGORY_FAILED,
 查询工程名称信息的时候, 直接向服务器发送departmentid [int]
 
 
-##项目名称
+##项目名称[接口已经实现--客户端未实现]
 ContractProject类存储了项目名称的类别信息
 对于数据库中Project表
 DALContractProject操作数据库接口
 
-查询项目集请直接发送categoryid [int]
+查询工程列表请直接发送categoryid [int]
 QUERY_CATEGORY_PROJECT_REQUEST,
 
 QUERY_CATEGORY_PROJECT_SUCCESS,
 QUERY_CATEGORY_PROJECT_FAILED,
-        
+
+   
+##可能需要额外的接口
+前面的接口都是单个的，可能需要提供一个直接从部门就获取到包括工程集合和项目集合的接口
 
 
 
