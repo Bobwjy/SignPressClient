@@ -22,10 +22,5 @@
 *.a
 *.lib
 
-# Executables
-*.exe
-*.out
-*.app
-
 #Log file
 *.log
