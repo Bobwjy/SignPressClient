@@ -73,5 +73,6 @@ namespace SignPressClient.Model
         // Modify by gatieme at 2015-09-07 10:51
         MODIFY_SDEPARTMENT_SUCCESS,
         MODIFY_SDEPARTMENT_FAILED,
+        INSERT_SDEPARTMENT_SUCCESS             //添加部门权限成功
     }
 }

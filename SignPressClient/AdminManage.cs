@@ -234,16 +234,64 @@ namespace SignPressClient
             }
 
 
-            Department department = new Department { Id = -1, Name = departmentName, ShortCall = departmentShortCall };
+            Department department = new Department();
+            department.Id = -1;
+            department.Name = departmentName;
+            department.ShortCall = departmentShortCall;
+            SDepartment sdepartment = new SDepartment();
+            if (this.CanBoundary.Checked)
+            {
+                sdepartment.CanBoundary = "是";
+            }
+            else
+            {
+                sdepartment.CanBoundary = "否";
+            }
+
+            if (this.CanInLand.Checked)
+            {
+                sdepartment.CanInland = "是";
+            }
+            else
+            {
+                sdepartment.CanInland = "否";
+            }
+
+            if (this.CanEmergency.Checked)
+            {
+                sdepartment.CanEmergency = "是";
+            }
+            else
+            {
+                sdepartment.CanEmergency = "否";
+            }
+
+            if (this.CanRegular.Checked)
+            {
+                sdepartment.CanRegular = "是";
+            }
+            else
+            {
+                sdepartment.CanRegular = "否";
+            }
+
             string result = _sc.InsertDepartment(department);
+            string result1 = _sc.InsertSDepartment(sdepartment);
 
             if (result == Response.INSERT_DEPARTMENT_SUCCESS.ToString())
             {
-                MessageBox.Show("添加" + departmentName + "部门成功!");
-                
-                ///////
-                BindGridViewDataSourece();
-                ///////
+                if (result1 == Response.INSERT_SDEPARTMENT_SUCCESS.ToString())
+                {
+                    MessageBox.Show("添加" + departmentName + "部门成功!");
+
+                    ///////
+                    BindGridViewDataSourece();
+                    ///////
+                }
+                else
+                {
+                    MessageBox.Show("添加" + departmentName + "部门失败!");
+                }
             }
             else
             {
@@ -495,7 +543,8 @@ namespace SignPressClient
                 if (MessageBox.Show("确定要修改当前部门信息？", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     Department department = UserHelper.DepList[e.RowIndex];
-                    EditDepartment ed = new EditDepartment(department, _sc);
+                    SDepartment sdepartment = UserHelper.SDepList[e.RowIndex];
+                    EditDepartment ed = new EditDepartment(department, sdepartment, _sc);
                     ed.ShowDialog();
                     if (ed.DialogResult == DialogResult.OK)
                     {
@@ -648,6 +697,7 @@ namespace SignPressClient
                 }
             }
         }
+
 
     }
 }

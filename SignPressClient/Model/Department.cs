@@ -83,7 +83,7 @@ namespace SignPressClient.Model
             set { this.m_canBoundary = value; }
         }
 
-        private string m_canInland;     //  当前部门是否可以申请内河项目1
+        private string m_canInland;     //  当前部门是否可以申请内河项目
         public string CanInland
         {
             get { return this.m_canInland; }

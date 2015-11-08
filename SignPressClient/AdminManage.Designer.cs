@@ -86,6 +86,10 @@
             this.TemplateName = new System.Windows.Forms.DataGridViewLinkColumn();
             this.CraeteTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.CanBoundary = new System.Windows.Forms.CheckBox();
+            this.CanEmergency = new System.Windows.Forms.CheckBox();
+            this.CanRegular = new System.Windows.Forms.CheckBox();
+            this.CanInLand = new System.Windows.Forms.CheckBox();
             this.Admin.SuspendLayout();
             this.Department.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -145,9 +149,9 @@
             this.groupBox1.Controls.Add(this.dataGridView1);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.groupBox1.Location = new System.Drawing.Point(3, 67);
+            this.groupBox1.Location = new System.Drawing.Point(3, 113);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(851, 453);
+            this.groupBox1.Size = new System.Drawing.Size(851, 407);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "部门信息";
@@ -168,7 +172,7 @@
             this.dataGridView1.Location = new System.Drawing.Point(3, 25);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(845, 425);
+            this.dataGridView1.Size = new System.Drawing.Size(845, 379);
             this.dataGridView1.TabIndex = 2;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -225,6 +229,10 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.Aqua;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.CanInLand);
+            this.panel1.Controls.Add(this.CanRegular);
+            this.panel1.Controls.Add(this.CanEmergency);
+            this.panel1.Controls.Add(this.CanBoundary);
             this.panel1.Controls.Add(this.textBoxDepartmentShortCall);
             this.panel1.Controls.Add(this.labelDepartmentShortCall);
             this.panel1.Controls.Add(this.AddDepartment);
@@ -233,13 +241,13 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(851, 64);
+            this.panel1.Size = new System.Drawing.Size(851, 110);
             this.panel1.TabIndex = 0;
             // 
             // textBoxDepartmentShortCall
             // 
             this.textBoxDepartmentShortCall.Font = new System.Drawing.Font("微软雅黑", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.textBoxDepartmentShortCall.Location = new System.Drawing.Point(358, 12);
+            this.textBoxDepartmentShortCall.Location = new System.Drawing.Point(331, 14);
             this.textBoxDepartmentShortCall.Name = "textBoxDepartmentShortCall";
             this.textBoxDepartmentShortCall.Size = new System.Drawing.Size(132, 25);
             this.textBoxDepartmentShortCall.TabIndex = 5;
@@ -248,7 +256,7 @@
             // 
             this.labelDepartmentShortCall.AutoSize = true;
             this.labelDepartmentShortCall.Font = new System.Drawing.Font("微软雅黑", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelDepartmentShortCall.Location = new System.Drawing.Point(273, 17);
+            this.labelDepartmentShortCall.Location = new System.Drawing.Point(264, 17);
             this.labelDepartmentShortCall.Name = "labelDepartmentShortCall";
             this.labelDepartmentShortCall.Size = new System.Drawing.Size(61, 19);
             this.labelDepartmentShortCall.TabIndex = 4;
@@ -257,7 +265,7 @@
             // AddDepartment
             // 
             this.AddDepartment.Font = new System.Drawing.Font("微软雅黑", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.AddDepartment.Location = new System.Drawing.Point(594, 10);
+            this.AddDepartment.Location = new System.Drawing.Point(746, 76);
             this.AddDepartment.Name = "AddDepartment";
             this.AddDepartment.Size = new System.Drawing.Size(87, 27);
             this.AddDepartment.TabIndex = 3;
@@ -268,7 +276,7 @@
             // DepartmentName
             // 
             this.DepartmentName.Font = new System.Drawing.Font("微软雅黑", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.DepartmentName.Location = new System.Drawing.Point(90, 12);
+            this.DepartmentName.Location = new System.Drawing.Point(108, 14);
             this.DepartmentName.Name = "DepartmentName";
             this.DepartmentName.Size = new System.Drawing.Size(132, 25);
             this.DepartmentName.TabIndex = 2;
@@ -277,7 +285,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("微软雅黑", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label2.Location = new System.Drawing.Point(23, 15);
+            this.label2.Location = new System.Drawing.Point(41, 17);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(61, 19);
             this.label2.TabIndex = 1;
@@ -687,6 +695,50 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
+            // CanBoundary
+            // 
+            this.CanBoundary.AutoSize = true;
+            this.CanBoundary.Font = new System.Drawing.Font("微软雅黑", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.CanBoundary.Location = new System.Drawing.Point(45, 55);
+            this.CanBoundary.Name = "CanBoundary";
+            this.CanBoundary.Size = new System.Drawing.Size(119, 23);
+            this.CanBoundary.TabIndex = 3;
+            this.CanBoundary.Text = "可申请界河项目";
+            this.CanBoundary.UseVisualStyleBackColor = true;
+            // 
+            // CanEmergency
+            // 
+            this.CanEmergency.AutoSize = true;
+            this.CanEmergency.Font = new System.Drawing.Font("微软雅黑", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.CanEmergency.Location = new System.Drawing.Point(375, 55);
+            this.CanEmergency.Name = "CanEmergency";
+            this.CanEmergency.Size = new System.Drawing.Size(119, 23);
+            this.CanEmergency.TabIndex = 6;
+            this.CanEmergency.Text = "可申请应急项目";
+            this.CanEmergency.UseVisualStyleBackColor = true;
+            // 
+            // CanRegular
+            // 
+            this.CanRegular.AutoSize = true;
+            this.CanRegular.Font = new System.Drawing.Font("微软雅黑", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.CanRegular.Location = new System.Drawing.Point(550, 55);
+            this.CanRegular.Name = "CanRegular";
+            this.CanRegular.Size = new System.Drawing.Size(119, 23);
+            this.CanRegular.TabIndex = 7;
+            this.CanRegular.Text = "可申请例会项目";
+            this.CanRegular.UseVisualStyleBackColor = true;
+            // 
+            // CanInLand
+            // 
+            this.CanInLand.AutoSize = true;
+            this.CanInLand.Font = new System.Drawing.Font("微软雅黑", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.CanInLand.Location = new System.Drawing.Point(208, 55);
+            this.CanInLand.Name = "CanInLand";
+            this.CanInLand.Size = new System.Drawing.Size(119, 23);
+            this.CanInLand.TabIndex = 8;
+            this.CanInLand.Text = "可申请内河项目";
+            this.CanInLand.UseVisualStyleBackColor = true;
+            // 
             // AdminManage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -782,5 +834,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn DepartmentCanInland;
         private System.Windows.Forms.DataGridViewTextBoxColumn DepartmentCanEmergency;
         private System.Windows.Forms.DataGridViewTextBoxColumn DepartmentCanRegular;
+        private System.Windows.Forms.CheckBox CanInLand;
+        private System.Windows.Forms.CheckBox CanRegular;
+        private System.Windows.Forms.CheckBox CanEmergency;
+        private System.Windows.Forms.CheckBox CanBoundary;
     }
 }

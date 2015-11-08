@@ -4,7 +4,7 @@
   <description asmv2:iconFile="logo.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <application />
   <entryPoint>
-    <assemblyIdentity name="SignPressClient" version="1.0.0.0" publicKeyToken="DB8530DE99A45F1E" language="neutral" processorArchitecture="msil" />
+    <assemblyIdentity name="SignPressClient" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
     <commandLine file="SignPressClient.exe" parameters="" />
   </entryPoint>
   <trustInfo>
@@ -72,14 +72,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SignPressClient.exe" size="498176">
-      <assemblyIdentity name="SignPressClient" version="1.0.0.0" publicKeyToken="DB8530DE99A45F1E" language="neutral" processorArchitecture="msil" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SignPressClient.exe" size="497152">
+      <assemblyIdentity name="SignPressClient" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>ohVbpOkNR2jndsU6w9+T8ip5ivTrvOiLUHQvmrslMaQ=</dsig:DigestValue>
+        <dsig:DigestValue>6S7JD8EKFNATAxWrnq7UWxQrc3o23XLD0bbAC6CkADg=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

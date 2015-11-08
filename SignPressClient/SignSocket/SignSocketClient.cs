@@ -193,6 +193,41 @@ namespace SignPressClient.SignSocket
         }
 
         /// <summary>
+        /// 添加部门权限
+        /// </summary>
+        /// <param name="sdepartment"></param>
+        /// <returns></returns>
+        public string InsertSDepartment(SDepartment sdepartment)
+        {
+            try
+            {
+                SocketMessage sm = new SocketMessage(Request.INSERT_SDEPARTMENT_REQUEST, sdepartment);
+                //scoket发送请求信息
+                ClientSocket.Send(Encoding.UTF8.GetBytes(sm.Package));
+
+                //scoket接收请求信息
+                recLength = ClientSocket.Receive(recivebuffer);
+                string recMsg = Encoding.UTF8.GetString(recivebuffer, 0, recLength);
+                string[] Msg = recMsg.Split(SocketMessage.DEFAULT_SEPARATOR);
+
+                if (Msg[0] == Response.INSERT_SDEPARTMENT_SUCCESS.ToString())
+                {
+                    Logging.AddLog("添加部门权限成功!");
+                }
+                else
+                {
+                    Logging.AddLog("添加部门权限失败！");
+                }
+                return Msg[0];
+            }
+            catch
+            {
+                Logging.AddLog("添加部门权限失败（服务器连接中断）!");
+                return "添加失败";
+            }
+        }
+
+        /// <summary>
         /// 查询部门列表
         /// </summary>
         /// <returns></returns>
@@ -1409,6 +1444,7 @@ namespace SignPressClient.SignSocket
          {
              this.ClientSocket.Close();
          }
-     }
+
+    }
 }
 

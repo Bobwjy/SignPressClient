@@ -37,7 +37,7 @@ namespace SignPressClient.Model
         SEARCH_AGREE_HDJCONTRACT_REQUEST,                 //条件查询已通过方案
         SEARCH_SIGNED_HDJCONTRACT_REQUEST,                 //条件查询已办理方案
 
-        
+
         MODIFY_EMP_PWD_REQUEST,                  // 重置员工的密码为111
         MODIFY_EMPLOYEE_REQUEST,                //  修改员工信息
 
@@ -47,5 +47,6 @@ namespace SignPressClient.Model
         // Modify by gatieme at 2015-08-26 13:44
         QUERY_SDEPARTMENT_REQUEST,
         MODIFY_SDEPARTMENT_REQUEST,
+        INSERT_SDEPARTMENT_REQUEST,              //添加部门权限
     }
 }

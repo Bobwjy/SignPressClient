@@ -20,6 +20,8 @@ namespace SignPressClient
         ////   此处应该注意，这里的dpartment跟底层Uderhelper的数据是同一个数据域
         private Department m_department;
 
+        private SDepartment m_sdepartment;
+
         private SignSocketClient _sc;
 
         public EditDepartment()
@@ -28,10 +30,11 @@ namespace SignPressClient
         }
 
 
-        public EditDepartment(Department department, SignSocketClient sc)
+        public EditDepartment(Department department, SDepartment sdepartment, SignSocketClient sc)
             :this()
         {
             this.m_department = department;
+            this.m_sdepartment = sdepartment;
             this._sc = sc;
         }
 
@@ -42,6 +45,26 @@ namespace SignPressClient
             this.textBoxId.Text = this.m_department.Id.ToString();
             this.textBoxName.Text = this.m_department.Name;
             this.textBoxShortCall.Text = this.m_department.ShortCall;
+
+            if (this.m_sdepartment.CanBoundary == "是")
+            {
+                this.CanBoundary.Checked = true;
+            }
+
+            if (this.m_sdepartment.CanInland == "是")
+            {
+                this.CanInLand.Checked = true;
+            }
+
+            if (this.m_sdepartment.CanEmergency == "是")
+            {
+                this.CanEmergency.Checked = true;
+            }
+
+            if (this.m_sdepartment.CanRegular == "是")
+            {
+                this.CanRegular.Checked = true;
+            }
         }
 
         private void ModifyDepartment_Click(object sender, EventArgs e)
@@ -52,14 +75,57 @@ namespace SignPressClient
                 ////   此处应该注意，这里的dpartment跟底层Uderhelper的数据是同一个数据域
                 this.m_department.Name = this.textBoxName.Text.Trim();       // 
                 this.m_department.ShortCall = this.textBoxShortCall.Text.Trim();
+                if (this.CanBoundary.Checked)
+                {
+                    this.m_sdepartment.CanBoundary = "是";
+                }
+                else
+                {
+                    this.m_sdepartment.CanBoundary = "否";
+                }
+
+                if (this.CanInLand.Checked)
+                {
+                    this.m_sdepartment.CanInland = "是";
+                }
+                else
+                {
+                    this.m_sdepartment.CanInland = "否";
+                }
+
+                if (this.CanEmergency.Checked)
+                {
+                    this.m_sdepartment.CanEmergency = "是";
+                }
+                else
+                {
+                    this.m_sdepartment.CanEmergency = "否";
+                }
+
+                if (this.CanRegular.Checked)
+                {
+                    this.m_sdepartment.CanRegular = "是";
+                }
+                else
+                {
+                    this.m_sdepartment.CanRegular = "否";
+                }
 
                 string result = _sc.ModifyDepartment(this.m_department);
+                string result1=_sc.ModifySDepartment(this.m_sdepartment);
 
                 if (result == Response.MODIFY_DEPARTMENT_SUCCESS.ToString())
                 {
-                    MessageBox.Show("修改部门成功!", "提示", MessageBoxButtons.OK);
-                    //this.m_department.Name = departmentname;
-                    this.DialogResult = DialogResult.OK;
+                    if (result1 == Response.MODIFY_SDEPARTMENT_SUCCESS.ToString())
+                    {
+                        MessageBox.Show("修改部门成功!", "提示", MessageBoxButtons.OK);
+                        //this.m_department.Name = departmentname;
+                        this.DialogResult = DialogResult.OK;
+                    }
+                    else
+                    {
+                        MessageBox.Show("修改部门失败！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
                 }
                 else if (result == "服务器连接中断")
                 {
@@ -67,7 +133,7 @@ namespace SignPressClient
                 }
                 else
                 {
-                    MessageBox.Show("删除部门失败！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("修改部门失败！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
         }
