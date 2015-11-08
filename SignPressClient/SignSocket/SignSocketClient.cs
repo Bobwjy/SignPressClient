@@ -236,6 +236,48 @@ namespace SignPressClient.SignSocket
         }
 
         /// <summary>
+        /// 查询部门列表
+        /// </summary>
+        /// <returns></returns>
+        public List<SDepartment> QuerySDepartment()
+        {
+            //return Task.Factory.StartNew(() =>
+            {
+                try
+                {
+                    SocketMessage sm = new SocketMessage(Request.QUERY_SDEPARTMENT_REQUEST);
+                    //string request = JsonConvert.SerializeObject(Request.QUERY_DEPARTMENT_REQUEST.ToString());
+                    //scoket发送请求信息
+                    ClientSocket.Send(Encoding.UTF8.GetBytes(sm.Package));
+
+                    //scoket接收请求信息
+                    recLength = ClientSocket.Receive(recivebuffer);
+                    string recMsg = Encoding.UTF8.GetString(recivebuffer, 0, recLength);
+                    string[] Msg = recMsg.Split(SocketMessage.DEFAULT_SEPARATOR);
+
+                    if (Msg[0] == Response.QUERY_SDEPARTMENT_SUCCESS.ToString())
+                    {
+                        List<SDepartment> list = new List<SDepartment>();
+
+                        list = JsonConvert.DeserializeObject<List<SDepartment>>(Msg[2]);
+
+                        return list;
+                    }
+                    else
+                    {
+                        Logging.AddLog("查询部门列表失败!" + recMsg);
+                        return null;
+                    }
+                }
+                catch
+                {
+                    Logging.AddLog("查询部门列表失败(服务器连接中断)!");
+                    return null;
+                }
+                //});
+            }
+        }
+        /// <summary>
         /// 查询部门员工
         /// </summary>
         /// <param name="departmentID"></param>
@@ -1256,6 +1298,43 @@ namespace SignPressClient.SignSocket
              }
          }
 
+
+         public String ModifySDepartment(SDepartment department)
+         {
+             //return Task.Factory.StartNew(() =>
+             {
+                 try
+                 {
+                     SocketMessage sm = new SocketMessage(Request.MODIFY_SDEPARTMENT_REQUEST, department);
+                     ClientSocket.Send(Encoding.UTF8.GetBytes(sm.Package));
+
+                     recLength = ClientSocket.Receive(recivebuffer);
+                     string recMsg = Encoding.UTF8.GetString(recivebuffer, 0, recLength);
+
+                     string[] Msg = recMsg.Split(SocketMessage.DEFAULT_SEPARATOR);
+
+                     if (Msg[0] == Response.MODIFY_SDEPARTMENT_SUCCESS.ToString())
+                     {
+
+                         Logging.AddLog("修改部门成功");
+                     }
+                     else
+                     {
+                         Logging.AddLog("修改部门失败!");
+                     }
+                     return Msg[0];
+                 }
+                 catch
+                 {
+                     Logging.AddLog("重置用户密码失败(服务器连接中断)!");
+                     return "服务器连接中断";
+                 }
+                 //});
+             }
+         }
+
+
+
          public List<SHDJContract> QuerySignAgreeUndownload(int employeeId)
          {
              //return Task.Factory.StartNew(() =>
@@ -1289,6 +1368,42 @@ namespace SignPressClient.SignSocket
                  }
             // });
          }
+
+         /// <summary>
+         /// 查询出所有
+         /// </summary>
+         /// <returns></returns>
+         //public List<String> QueryDepartmentShortCall()
+         //{
+         //    try
+         //    {
+         //        SocketMessage sm = new SocketMessage(Request.QUERY_DEPARTMENT_SHORTCALL_REQUEST);
+         //        ClientSocket.Send(Encoding.UTF8.GetBytes(sm.Package));
+
+         //        recLength = ClientSocket.Receive(recivebuffer);
+         //        string recMsg = Encoding.UTF8.GetString(recivebuffer, 0, recLength);
+         //        string[] Msg = recMsg.Split(SocketMessage.DEFAULT_SEPARATOR);
+
+         //        if (Msg[0] == Response.QUERY_DEPARTMENT_SHORTCALL_SUCCESS.ToString())
+         //        {
+         //            List<string> list = new List<string>();
+         //            list = JsonConvert.DeserializeObject<List<string>>(Msg[2]);
+
+         //            return list;
+         //        }
+         //        else
+         //        {
+         //            Logging.AddLog("查询当前已通过但是未进行下载的方案列表失败!");
+         //            return null;
+         //        }
+         //    }
+         //    catch
+         //    {
+         //        Logging.AddLog("查询当前已通过但是未进行下载的方案列表失败(服务器连接中断)!");
+         //        return null;
+         //    }
+         //}
+
 
          public void Close()
          {

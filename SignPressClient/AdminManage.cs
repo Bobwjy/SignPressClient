@@ -32,13 +32,13 @@ namespace SignPressClient
         private void DepartmentManage_Load(object sender, EventArgs e)            //窗体加载事件
         {
             //窗体加载时位datagridview绑定数据源
-            if (UserHelper.DepList == null)                   //绑定部门信息
+            if (UserHelper.SDepList == null || UserHelper.DepList  == null)                   //绑定部门信息
             {
                 BindGridViewDataSourece();
             }
             else
             {
-                this.dataGridView1.DataSource = UserHelper.DepList;
+                this.dataGridView1.DataSource = UserHelper.SDepList;
 
                 this.SelectedDepartment.ValueMember = "Id";
                 this.SelectedDepartment.DisplayMember = "Name";
@@ -73,6 +73,9 @@ namespace SignPressClient
 
         private void BindDataGridView3Column()
         {
+            //this.DepartmentCanBoundary;
+
+
             this.dataGridView1.AutoGenerateColumns = false;
             DataGridViewLinkColumn modify = new DataGridViewLinkColumn();
             modify.Text = "修改";
@@ -174,17 +177,29 @@ namespace SignPressClient
 
         public void BindGridViewDataSourece()              //异步获取部门列表数据并绑定
         {
+            // Modify by gatieme at 2015-08-26 14:12
             //List<Department> list = new List<Department>();
-            List<Department> list = _sc.QueryDepartment();
+            List<SDepartment> sdepList = _sc.QuerySDepartment();
 
-            if (list != null)
+            if (sdepList != null)
             {
-                UserHelper.DepList = list;
-                this.dataGridView1.DataSource = list;
+                List<Department> depList = new List<Department>();
+                
+                //  
+                //SDepartment department = null;
+                foreach (SDepartment department in sdepList)
+                {
+                    depList.Add(department.ToDepartment());
+                }
+                UserHelper.DepList = depList;
+
+                UserHelper.SDepList = sdepList;
+
+                this.dataGridView1.DataSource = sdepList;
 
                 this.SelectedDepartment.ValueMember = "Id";
                 this.SelectedDepartment.DisplayMember = "Name";
-                this.SelectedDepartment.DataSource = list;
+                this.SelectedDepartment.DataSource = depList;
             }
         }
 
@@ -418,30 +433,79 @@ namespace SignPressClient
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            /// modify by gatieme at 2015-09-10 13:47
+            ///
+            MessageBox.Show("单击了第" + e.RowIndex.ToString() + "行" + e.ColumnIndex.ToString() + "列", "提示", MessageBoxButtons.OK);
+            ///
+
             if (e.RowIndex < 0)
             {
                 return;
             }
 
-            if (e.ColumnIndex == 3)
+
+            if (e.ColumnIndex >= 0 && e.ColumnIndex <= 3)
+            {
+                /// 首先取出底层数据中对应的数据项
+
+                SDepartment sdepartment = UserHelper.SDepList[e.RowIndex];
+
+                if (e.ColumnIndex == 0)             //  可以申请界河项目
+                {
+                    sdepartment.CanBoundary = ((sdepartment.CanBoundary == "是") ? "否" : "是");
+                }
+                else if (e.ColumnIndex == 1)        //  可以申请内河项目
+                {
+                    sdepartment.CanInland = ((sdepartment.CanInland == "是") ? "否" : "是");
+                }
+                else if (e.ColumnIndex == 2)        //  可以申请应急抢修项目
+                {
+                    sdepartment.CanEmergency = ((sdepartment.CanEmergency == "是") ? "否" : "是");
+                }
+                else if (e.ColumnIndex == 3)        //  可以申请例会项目
+                {
+                    sdepartment.CanRegular = ((sdepartment.CanRegular == "是") ? "否" : "是");
+                }
+
+                string result = _sc.ModifySDepartment(sdepartment);
+
+                if (result == Response.MODIFY_SDEPARTMENT_SUCCESS.ToString())
+                {
+                    MessageBox.Show("修改部门权限成功!", "提示", MessageBoxButtons.OK);
+                    BindGridViewDataSourece();
+                    BindEmployee(0);                    //  绑定员工信息
+
+                }
+                else if (result == "服务器连接中断")
+                {
+                    MessageBox.Show("服务器连接中断,删除失败！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else if (result == Response.DELETE_DEPARTMENT_EXIST_EMPLOYEE.ToString())
+                {
+                    MessageBox.Show("该部门下有人员存在，无法删除！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else
+                {
+                    MessageBox.Show("删除部门失败！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                
+            }
+            else if(e.ColumnIndex == 7)         //  修改当前部门信息
             {
                 if (MessageBox.Show("确定要修改当前部门信息？", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    int row = e.RowIndex;
-                    Department department = UserHelper.DepList[row];
-
+                    Department department = UserHelper.DepList[e.RowIndex];
                     EditDepartment ed = new EditDepartment(department, _sc);
                     ed.ShowDialog();
-
                     if (ed.DialogResult == DialogResult.OK)
                     {
                         BindGridViewDataSourece();          //  绑定部门源
-
+                        
                         BindEmployee(0);                    //  绑定员工信息
                     }
                 }
             }
-            else if (e.ColumnIndex == 4)
+            else if (e.ColumnIndex == 8)         //  删除当前部门信息
             {
                 if (MessageBox.Show("确定要删除此部门？\n危险操作，请谨慎进行\n由于部门下面可能有员工，因此您的删除操作会将部门下的所有员工全部被删除，由此将引入很多不安全问题，请问您是否继续删除", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {

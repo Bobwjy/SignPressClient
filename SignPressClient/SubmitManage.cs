@@ -122,10 +122,36 @@ namespace SignPressClient
             //this.BindAgreeList(false);
             this.BindRefuseList(false);                                //加载已拒绝的方案
 
+            //  绑定编号前缀信息
+            this.BindIdDepartment(true);
 
+            
             BindSignRefuseAndAgreeOpera();                     //绑定已拒绝以及已通过方案操作列
             BindRefuseOper();
         }
+
+        /// <summary>
+        /// 绑定会前单那编号部门简称信息
+        /// </summary>
+        /// modify by gatieme at 2015-08-10 09:58
+        /// version 
+        private void BindIdDepartment(bool isFlush)
+        {
+            //窗体加载时位datagridview绑定数据源
+            if (UserHelper.DepList == null || isFlush == true)
+            {
+                List<Department> list = _sc.QueryDepartment();
+                UserHelper.DepList = list;
+            }
+
+            if (UserHelper.DepList != null)
+            {
+                this.IdDepartShortCall.ValueMember = "Id";
+                this.IdDepartShortCall.DisplayMember = "ShortCall";
+                this.IdDepartShortCall.DataSource = UserHelper.DepList;
+            }
+        }
+
 
         private  void BindContractTemplate()
         {
@@ -346,7 +372,7 @@ namespace SignPressClient
                     Templete temp = new Templete();
                     temp.TempId = UserHelper.SelectedTemp.TempId;
                     hdj.ConTemp = temp;
-                    hdj.Id = this.ID.Text.Trim();
+                    hdj.Id = this.IdNo.Text.Trim();
 
                     List<String> list = new List<string>();
                     list.Add(this.Column1Info.Text.ToString());
@@ -365,7 +391,7 @@ namespace SignPressClient
                         this.Column3Info.Text = "";
                         this.Column4Info.Text = "";
                         this.Column5Info.Text = "";
-                        this.ID.Text = "";
+                        this.IdNo.Text = "";
 
                         MessageBox.Show("提交成功!", "提示", MessageBoxButtons.OK);
 

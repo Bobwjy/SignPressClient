@@ -36,6 +36,10 @@
             this.DepartmentID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DepartName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DepartmentShortCall = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DepartmentCanBoundary = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DepartmentCanInland = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DepartmentCanEmergency = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DepartmentCanRegular = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1 = new System.Windows.Forms.Panel();
             this.textBoxDepartmentShortCall = new System.Windows.Forms.TextBox();
             this.labelDepartmentShortCall = new System.Windows.Forms.Label();
@@ -155,7 +159,11 @@
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.DepartmentID,
             this.DepartName,
-            this.DepartmentShortCall});
+            this.DepartmentShortCall,
+            this.DepartmentCanBoundary,
+            this.DepartmentCanInland,
+            this.DepartmentCanEmergency,
+            this.DepartmentCanRegular});
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(3, 25);
             this.dataGridView1.Name = "dataGridView1";
@@ -184,6 +192,34 @@
             this.DepartmentShortCall.HeaderText = "部门简称";
             this.DepartmentShortCall.Name = "DepartmentShortCall";
             this.DepartmentShortCall.ReadOnly = true;
+            // 
+            // DepartmentCanBoundary
+            // 
+            this.DepartmentCanBoundary.DataPropertyName = "CanBoundary";
+            this.DepartmentCanBoundary.HeaderText = "可申请界河项目";
+            this.DepartmentCanBoundary.Name = "DepartmentCanBoundary";
+            this.DepartmentCanBoundary.ReadOnly = true;
+            // 
+            // DepartmentCanInland
+            // 
+            this.DepartmentCanInland.DataPropertyName = "CanInland";
+            this.DepartmentCanInland.HeaderText = "可申请内河项目";
+            this.DepartmentCanInland.Name = "DepartmentCanInland";
+            this.DepartmentCanInland.ReadOnly = true;
+            // 
+            // DepartmentCanEmergency
+            // 
+            this.DepartmentCanEmergency.DataPropertyName = "CanEmergency";
+            this.DepartmentCanEmergency.HeaderText = "可申请应急项目";
+            this.DepartmentCanEmergency.Name = "DepartmentCanEmergency";
+            this.DepartmentCanEmergency.ReadOnly = true;
+            // 
+            // DepartmentCanRegular
+            // 
+            this.DepartmentCanRegular.DataPropertyName = "CanRegular";
+            this.DepartmentCanRegular.HeaderText = "可申请例会项目";
+            this.DepartmentCanRegular.Name = "DepartmentCanRegular";
+            this.DepartmentCanRegular.ReadOnly = true;
             // 
             // panel1
             // 
@@ -742,5 +778,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn DepartmentID;
         private System.Windows.Forms.DataGridViewTextBoxColumn DepartName;
         private System.Windows.Forms.DataGridViewTextBoxColumn DepartmentShortCall;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DepartmentCanBoundary;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DepartmentCanInland;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DepartmentCanEmergency;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DepartmentCanRegular;
     }
 }

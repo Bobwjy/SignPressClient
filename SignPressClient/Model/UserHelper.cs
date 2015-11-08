@@ -17,9 +17,9 @@ namespace SignPressClient.Model
         public static Employee UserInfo { get; set; }
 
         public static List<Department> DepList { get; set; }
+        public static List<SDepartment> SDepList { get; set; } 
 
         public static List<Employee> EmpList { get; set; }
-
         public static List<sEmployee> sEmpList { get; set; }
 
         public static List<Templete> TempList { get; set; }
@@ -36,5 +36,9 @@ namespace SignPressClient.Model
 
         public static List<SHDJContract> AgreeList { get; set; }
         public static List<SHDJContract> AgreeUndownList { get; set; }
+
+        public static List<String> DepartmentShortCallList{ get; set;}          ///  存放部门简称
+    
+
     }
 }

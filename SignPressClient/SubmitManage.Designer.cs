@@ -31,7 +31,10 @@
             this.label1 = new System.Windows.Forms.Label();
             this.SubmitPlan = new System.Windows.Forms.TabPage();
             this.ConTempInfo = new System.Windows.Forms.Panel();
-            this.ID = new System.Windows.Forms.TextBox();
+            this.IdFlag = new System.Windows.Forms.ComboBox();
+            this.IdCategory = new System.Windows.Forms.ComboBox();
+            this.IdDepartShortCall = new System.Windows.Forms.ComboBox();
+            this.IdNo = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -180,7 +183,10 @@
             // ConTempInfo
             // 
             this.ConTempInfo.AutoScroll = true;
-            this.ConTempInfo.Controls.Add(this.ID);
+            this.ConTempInfo.Controls.Add(this.IdFlag);
+            this.ConTempInfo.Controls.Add(this.IdCategory);
+            this.ConTempInfo.Controls.Add(this.IdDepartShortCall);
+            this.ConTempInfo.Controls.Add(this.IdNo);
             this.ConTempInfo.Controls.Add(this.label3);
             this.ConTempInfo.Controls.Add(this.button1);
             this.ConTempInfo.Controls.Add(this.tableLayoutPanel1);
@@ -191,13 +197,43 @@
             this.ConTempInfo.Size = new System.Drawing.Size(771, 658);
             this.ConTempInfo.TabIndex = 3;
             // 
-            // ID
+            // IdFlag
             // 
-            this.ID.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.ID.Location = new System.Drawing.Point(583, 31);
-            this.ID.Name = "ID";
-            this.ID.Size = new System.Drawing.Size(166, 29);
-            this.ID.TabIndex = 4;
+            this.IdFlag.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.IdFlag.FormattingEnabled = true;
+            this.IdFlag.Items.AddRange(new object[] {
+            "0",
+            "1"});
+            this.IdFlag.Location = new System.Drawing.Point(635, 31);
+            this.IdFlag.Name = "IdFlag";
+            this.IdFlag.Size = new System.Drawing.Size(47, 29);
+            this.IdFlag.TabIndex = 6;
+            // 
+            // IdCategory
+            // 
+            this.IdCategory.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.IdCategory.FormattingEnabled = true;
+            this.IdCategory.Location = new System.Drawing.Point(582, 31);
+            this.IdCategory.Name = "IdCategory";
+            this.IdCategory.Size = new System.Drawing.Size(46, 29);
+            this.IdCategory.TabIndex = 1;
+            // 
+            // IdDepartShortCall
+            // 
+            this.IdDepartShortCall.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.IdDepartShortCall.FormattingEnabled = true;
+            this.IdDepartShortCall.Location = new System.Drawing.Point(532, 31);
+            this.IdDepartShortCall.Name = "IdDepartShortCall";
+            this.IdDepartShortCall.Size = new System.Drawing.Size(44, 29);
+            this.IdDepartShortCall.TabIndex = 5;
+            // 
+            // IdNo
+            // 
+            this.IdNo.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.IdNo.Location = new System.Drawing.Point(688, 31);
+            this.IdNo.Name = "IdNo";
+            this.IdNo.Size = new System.Drawing.Size(61, 29);
+            this.IdNo.TabIndex = 4;
             // 
             // label3
             // 
@@ -1283,7 +1319,7 @@
         private System.Windows.Forms.DataGridViewLinkColumn dataGridViewLinkColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewLinkColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.TextBox ID;
+        private System.Windows.Forms.TextBox IdNo;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel15;
         private System.Windows.Forms.Button RefreshRefuselist;
@@ -1305,5 +1341,8 @@
         private System.Windows.Forms.DataGridViewLinkColumn dataGridViewLinkColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProjectName1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.ComboBox IdFlag;
+        private System.Windows.Forms.ComboBox IdCategory;
+        private System.Windows.Forms.ComboBox IdDepartShortCall;
     }
 }

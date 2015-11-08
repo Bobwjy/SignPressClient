@@ -12,6 +12,7 @@ namespace SignPressClient.Model
         QUIT_REQUEST,           //  退出请求
         INSERT_DEPARTMENT_REQUEST,      //添加部门请求
         QUERY_DEPARTMENT_REQUEST,        //查询所有部门
+        QUERY_DEPARTMENT_SHORTCALL_REQUEST,
         QUERY_EMPLOYEE_REQUEST,        //查询所有员工
         INSERT_CONTRACT_TEMPLATE_REQUEST,    //添加模板
         QUERY_CONTRACT_TEMPLATE_REQUEST,      //查询模板
@@ -42,5 +43,9 @@ namespace SignPressClient.Model
 
         MODIFY_DEPARTMENT_REQUEST,
         QUERY_AGREE_UNDOWN_REQUEST,
+
+        // Modify by gatieme at 2015-08-26 13:44
+        QUERY_SDEPARTMENT_REQUEST,
+        MODIFY_SDEPARTMENT_REQUEST,
     }
 }

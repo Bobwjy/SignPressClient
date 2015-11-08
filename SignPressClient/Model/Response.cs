@@ -16,6 +16,8 @@ namespace SignPressClient.Model
 
         QUERY_DEPARTMENT_SUCCESS,       //查询部门成功
         DELETE_DEPARTMENT_SUCCESS,      //删除部门成功  
+        QUERY_DEPARTMENT_SHORTCALL_SUCCESS,
+        QUERY_DEPARTMENT_SHORTCALL_FAILED,
 
         QUERY_EMPLOYEE_SUCCESS,     //查询部门员工成功
         INSERT_EMPLOYEE_SUCCESS,    //添加部门员工成功
@@ -57,9 +59,19 @@ namespace SignPressClient.Model
         QUERY_AGREE_UNDOWN_FAILED,
 
         DELETE_DEPARTMENT_EXIST_EMPLOYEE,              //该部门存在员工无法删除
-         DELETE_EMPLOYEE_EXIST_CONTRACT,     //  待删除的员工存在会签单信息无法删除
+        DELETE_EMPLOYEE_EXIST_CONTRACT,     //  待删除的员工存在会签单信息无法删除
         DELETE_EMPLOYEE_EXIST_CONTEMP,      //  待删除的员工在某个会签模版中，无法删除
         DELETE_CONTRACT_TEMPLATE_EXIST_CONTRACT,
-        INSERT_HDJCONTRACT_EXIST
+        INSERT_HDJCONTRACT_EXIST,
+
+
+
+        // Modify by gatieme at 2015-08-26 13:44
+        QUERY_SDEPARTMENT_SUCCESS,
+        QUERY_SDEPARTMENT_FAILED,
+
+        // Modify by gatieme at 2015-09-07 10:51
+        MODIFY_SDEPARTMENT_SUCCESS,
+        MODIFY_SDEPARTMENT_FAILED,
     }
 }
