@@ -9,9 +9,9 @@
 *.pch
 
 # Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
+#*.so
+#*.dylib
+#*.dll
 
 # Fortran module files
 *.mod
@@ -22,7 +22,9 @@
 *.a
 *.lib
 
-# Executables
-*.exe
-*.out
-*.app
+#Log
+*.log
+*.doc
+*.docx
+*.xls
+*.xlsx
