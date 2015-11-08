@@ -392,7 +392,7 @@ namespace SignPressServer.SignDAL
                 cmd.CommandText = INSERT_SDEPARTMENT_STR;
                 cmd.Parameters.AddWithValue("@Name", department.Name);                  //  部门职位
                 cmd.Parameters.AddWithValue("@ShortCall", department.ShortCall);         //  部门简称
-                cmd.Parameters.AddWithValue("@ShortCall", ((department.ShortCall == "是") ? 1 : 0));              //  部门简称
+
                 cmd.Parameters.AddWithValue("@CanBoundary", ((department.CanBoundary == "是") ? 1 : 0));
                 cmd.Parameters.AddWithValue("@CanInland", ((department.CanInland == "是") ? 1 : 0));
                 cmd.Parameters.AddWithValue("@CanEmergency", ((department.CanEmergency == "是") ? 1 : 0));
@@ -451,8 +451,8 @@ namespace SignPressServer.SignDAL
                 cmd.CommandText = MODIFY_SDEPARTMENT_ID_STR;
                 cmd.Parameters.AddWithValue("@Id", department.Id);
                 cmd.Parameters.AddWithValue("@Name", department.Name);                        // 员工姓名
-                
-                cmd.Parameters.AddWithValue("@ShortCall", ((department.ShortCall == "是") ? 1 : 0));              //  部门简称
+                cmd.Parameters.AddWithValue("@ShortCall", department.ShortCall);              //  部门简称
+
                 cmd.Parameters.AddWithValue("@CanBoundary", ((department.CanBoundary == "是") ? 1 : 0));
                 cmd.Parameters.AddWithValue("@CanInland", ((department.CanInland == "是") ? 1 : 0));
                 cmd.Parameters.AddWithValue("@CanEmergency", ((department.CanEmergency == "是") ? 1 : 0));

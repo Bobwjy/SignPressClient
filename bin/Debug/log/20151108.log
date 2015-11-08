@@ -409,3 +409,149 @@
 2015/11/8 17:46:23	Information	接收到来自127.0.0.1:9797查询会签单模版信息0
 2015/11/8 17:46:23	Information	127.0.0.1:9797查询到的了所有的会签单
 2015/11/8 17:46:23	Success	127.0.0.1:9797会签单模版信息信息查询成功
+2015/11/8 17:51:34	Information	正在与127.0.0.1 : 9797进行数据传输...
+2015/11/8 17:51:34	Information	接收了71个数据单元
+2015/11/8 17:51:34	Information	接收到的数据 INSERT_DEPARTMENT_REQUEST~42~{"Id":-1,"Name":"1111","ShortCall":"1111"}, 大小71
+2015/11/8 17:51:34	Information	接收到来自127.0.0.1:9797的待插入的部门信息{"Id":-1,"Name":"1111","ShortCall":"1111"}
+2015/11/8 17:51:35	Success	部门1111插入成功
+2015/11/8 17:51:35	Information	正在与127.0.0.1 : 9797进行数据传输...
+2015/11/8 17:51:35	Information	接收了146个数据单元
+2015/11/8 17:51:35	Information	接收到的数据 INSERT_SDEPARTMENT_REQUEST~107~{"CanBoundary":"是","CanInland":"否","CanEmergency":"否","CanRegular":"否","Id":0,"Name":null,"ShortCall":null}, 大小138
+2015/11/8 17:51:35	Information	接收到来自127.0.0.1:9797的待插入的部门信息{"CanBoundary":"是","CanInland":"否","CanEmergency":"否","CanRegular":"否","Id":0,"Name":null,"ShortCall":null}
+2015/11/8 17:52:23	Information	接收了60个数据单元
+2015/11/8 17:52:23	Information	接收到的数据 LOGIN_REQUEST~43~{"Username":"wujiayi","Password":"wujiayi"}, 大小60
+2015/11/8 17:52:23	Information	接收到来自127.0.0.1:9914的登录信息{"Username":"wujiayi","Password":"wujiayi"}
+2015/11/8 17:52:25	Success	USERNAME : wujiayi, PASSWORD : wujiayi用户名密码均正确，可以登录
+2015/11/8 17:52:25	Information	正在与127.0.0.1 : 9914进行数据传输...
+2015/11/8 17:52:25	Information	接收了33个数据单元
+2015/11/8 17:52:25	Information	接收到的数据 QUERY_UNSIGN_CONTRACT_REQUEST~1~8, 大小33
+2015/11/8 17:52:25	Information	接收到来自127.0.0.1:9914查询待签字的会签单信息8
+2015/11/8 17:52:25	Information	127.0.0.1:9914查询到的了所有查询待签字的的会签单
+2015/11/8 17:52:25	Success	127.0.0.1:9914查询待签字的会签单信息查询成功
+2015/11/8 17:52:26	Information	正在与127.0.0.1 : 9914进行数据传输...
+2015/11/8 17:52:26	Information	接收了29个数据单元
+2015/11/8 17:52:26	Information	接收到的数据 QUERY_SDEPARTMENT_REQUEST~1~0, 大小29
+2015/11/8 17:52:26	Success	127.0.0.1:9914部门信息查询成功
+2015/11/8 17:52:26	Information	正在与127.0.0.1 : 9914进行数据传输...
+2015/11/8 17:52:26	Information	接收了26个数据单元
+2015/11/8 17:52:26	Information	接收到的数据 QUERY_EMPLOYEE_REQUEST~1~0, 大小26
+2015/11/8 17:52:26	Information	127.0.0.1:9914待查询的员工的编号 = 0
+2015/11/8 17:52:26	Information	127.0.0.1:9914查询到的部门编号为0的所有员工
+2015/11/8 17:52:26	Success	127.0.0.1:9914部门0的员工信息查询成功
+2015/11/8 17:52:26	Information	正在与127.0.0.1 : 9914进行数据传输...
+2015/11/8 17:52:26	Information	接收了35个数据单元
+2015/11/8 17:52:26	Information	接收到的数据 QUERY_CONTRACT_TEMPLATE_REQUEST~1~0, 大小35
+2015/11/8 17:52:26	Information	接收到来自127.0.0.1:9914查询会签单模版信息0
+2015/11/8 17:52:26	Information	127.0.0.1:9914查询到的了所有的会签单
+2015/11/8 17:52:26	Success	127.0.0.1:9914会签单模版信息信息查询成功
+2015/11/8 17:52:34	Information	正在与127.0.0.1 : 9914进行数据传输...
+2015/11/8 17:52:34	Information	接收了75个数据单元
+2015/11/8 17:52:34	Information	接收到的数据 INSERT_DEPARTMENT_REQUEST~46~{"Id":-1,"Name":"111111","ShortCall":"111111"}, 大小75
+2015/11/8 17:52:34	Information	接收到来自127.0.0.1:9914的待插入的部门信息{"Id":-1,"Name":"111111","ShortCall":"111111"}
+2015/11/8 17:52:34	Success	部门111111插入成功
+2015/11/8 17:52:34	Information	正在与127.0.0.1 : 9914进行数据传输...
+2015/11/8 17:52:34	Information	接收了146个数据单元
+2015/11/8 17:52:34	Information	接收到的数据 INSERT_SDEPARTMENT_REQUEST~107~{"CanBoundary":"是","CanInland":"是","CanEmergency":"是","CanRegular":"是","Id":0,"Name":null,"ShortCall":null}, 大小138
+2015/11/8 17:52:34	Information	接收到来自127.0.0.1:9914的待插入的部门信息{"CanBoundary":"是","CanInland":"是","CanEmergency":"是","CanRegular":"是","Id":0,"Name":null,"ShortCall":null}
+2015/11/8 17:53:06	Information	接收了60个数据单元
+2015/11/8 17:53:06	Information	接收到的数据 LOGIN_REQUEST~43~{"Username":"wujiayi","Password":"wujiayi"}, 大小60
+2015/11/8 17:53:06	Information	接收到来自127.0.0.1:9923的登录信息{"Username":"wujiayi","Password":"wujiayi"}
+2015/11/8 17:53:08	Success	USERNAME : wujiayi, PASSWORD : wujiayi用户名密码均正确，可以登录
+2015/11/8 17:53:08	Information	正在与127.0.0.1 : 9923进行数据传输...
+2015/11/8 17:53:08	Information	接收了33个数据单元
+2015/11/8 17:53:08	Information	接收到的数据 QUERY_UNSIGN_CONTRACT_REQUEST~1~8, 大小33
+2015/11/8 17:53:08	Information	接收到来自127.0.0.1:9923查询待签字的会签单信息8
+2015/11/8 17:53:08	Information	127.0.0.1:9923查询到的了所有查询待签字的的会签单
+2015/11/8 17:53:08	Success	127.0.0.1:9923查询待签字的会签单信息查询成功
+2015/11/8 17:53:09	Information	正在与127.0.0.1 : 9923进行数据传输...
+2015/11/8 17:53:09	Information	接收了29个数据单元
+2015/11/8 17:53:09	Information	接收到的数据 QUERY_SDEPARTMENT_REQUEST~1~0, 大小29
+2015/11/8 17:53:09	Success	127.0.0.1:9923部门信息查询成功
+2015/11/8 17:53:09	Information	正在与127.0.0.1 : 9923进行数据传输...
+2015/11/8 17:53:09	Information	接收了26个数据单元
+2015/11/8 17:53:09	Information	接收到的数据 QUERY_EMPLOYEE_REQUEST~1~0, 大小26
+2015/11/8 17:53:09	Information	127.0.0.1:9923待查询的员工的编号 = 0
+2015/11/8 17:53:09	Information	127.0.0.1:9923查询到的部门编号为0的所有员工
+2015/11/8 17:53:09	Success	127.0.0.1:9923部门0的员工信息查询成功
+2015/11/8 17:53:09	Information	正在与127.0.0.1 : 9923进行数据传输...
+2015/11/8 17:53:09	Information	接收了35个数据单元
+2015/11/8 17:53:09	Information	接收到的数据 QUERY_CONTRACT_TEMPLATE_REQUEST~1~0, 大小35
+2015/11/8 17:53:09	Information	接收到来自127.0.0.1:9923查询会签单模版信息0
+2015/11/8 17:53:09	Information	127.0.0.1:9923查询到的了所有的会签单
+2015/11/8 17:53:09	Success	127.0.0.1:9923会签单模版信息信息查询成功
+2015/11/8 17:53:37	Information	正在与127.0.0.1 : 9923进行数据传输...
+2015/11/8 17:53:37	Information	接收了71个数据单元
+2015/11/8 17:53:37	Information	接收到的数据 INSERT_DEPARTMENT_REQUEST~42~{"Id":-1,"Name":"111122","ShortCall":"11"}, 大小71
+2015/11/8 17:53:37	Information	接收到来自127.0.0.1:9923的待插入的部门信息{"Id":-1,"Name":"111122","ShortCall":"11"}
+2015/11/8 17:53:37	Success	部门111122插入成功
+2015/11/8 17:53:37	Information	正在与127.0.0.1 : 9923进行数据传输...
+2015/11/8 17:53:37	Information	接收了146个数据单元
+2015/11/8 17:53:37	Information	接收到的数据 INSERT_SDEPARTMENT_REQUEST~107~{"CanBoundary":"是","CanInland":"是","CanEmergency":"是","CanRegular":"是","Id":0,"Name":null,"ShortCall":null}, 大小138
+2015/11/8 17:53:37	Information	接收到来自127.0.0.1:9923的待插入的部门信息{"CanBoundary":"是","CanInland":"是","CanEmergency":"是","CanRegular":"是","Id":0,"Name":null,"ShortCall":null}
+2015/11/8 17:55:52	Information	接收了60个数据单元
+2015/11/8 17:55:52	Information	接收到的数据 LOGIN_REQUEST~43~{"Username":"wujiayi","Password":"wujiayi"}, 大小60
+2015/11/8 17:55:52	Information	接收到来自127.0.0.1:9967的登录信息{"Username":"wujiayi","Password":"wujiayi"}
+2015/11/8 17:55:53	Success	USERNAME : wujiayi, PASSWORD : wujiayi用户名密码均正确，可以登录
+2015/11/8 17:55:54	Information	正在与127.0.0.1 : 9967进行数据传输...
+2015/11/8 17:55:54	Information	接收了33个数据单元
+2015/11/8 17:55:54	Information	接收到的数据 QUERY_UNSIGN_CONTRACT_REQUEST~1~8, 大小33
+2015/11/8 17:55:54	Information	接收到来自127.0.0.1:9967查询待签字的会签单信息8
+2015/11/8 17:55:54	Information	127.0.0.1:9967查询到的了所有查询待签字的的会签单
+2015/11/8 17:55:54	Success	127.0.0.1:9967查询待签字的会签单信息查询成功
+2015/11/8 17:56:13	Information	正在与127.0.0.1 : 9967进行数据传输...
+2015/11/8 17:56:13	Information	接收了29个数据单元
+2015/11/8 17:56:13	Information	接收到的数据 QUERY_SDEPARTMENT_REQUEST~1~0, 大小29
+2015/11/8 17:56:13	Success	127.0.0.1:9967部门信息查询成功
+2015/11/8 17:56:13	Information	正在与127.0.0.1 : 9967进行数据传输...
+2015/11/8 17:56:13	Information	接收了26个数据单元
+2015/11/8 17:56:13	Information	接收到的数据 QUERY_EMPLOYEE_REQUEST~1~0, 大小26
+2015/11/8 17:56:13	Information	127.0.0.1:9967待查询的员工的编号 = 0
+2015/11/8 17:56:13	Information	127.0.0.1:9967查询到的部门编号为0的所有员工
+2015/11/8 17:56:13	Success	127.0.0.1:9967部门0的员工信息查询成功
+2015/11/8 17:56:13	Information	正在与127.0.0.1 : 9967进行数据传输...
+2015/11/8 17:56:13	Information	接收了35个数据单元
+2015/11/8 17:56:13	Information	接收到的数据 QUERY_CONTRACT_TEMPLATE_REQUEST~1~0, 大小35
+2015/11/8 17:56:13	Information	接收到来自127.0.0.1:9967查询会签单模版信息0
+2015/11/8 17:56:13	Information	127.0.0.1:9967查询到的了所有的会签单
+2015/11/8 17:56:13	Success	127.0.0.1:9967会签单模版信息信息查询成功
+2015/11/8 17:56:51	Information	正在与127.0.0.1 : 9967进行数据传输...
+2015/11/8 17:56:51	Information	接收了93个数据单元
+2015/11/8 17:56:51	Information	接收到的数据 INSERT_DEPARTMENT_REQUEST~64~{"Id":-1,"Name":"1111111111","ShortCall":"11111111111111111111"}, 大小93
+2015/11/8 17:56:51	Information	接收到来自127.0.0.1:9967的待插入的部门信息{"Id":-1,"Name":"1111111111","ShortCall":"11111111111111111111"}
+2015/11/8 17:56:51	Success	部门1111111111插入成功
+2015/11/8 17:56:51	Information	正在与127.0.0.1 : 9967进行数据传输...
+2015/11/8 17:56:51	Information	接收了146个数据单元
+2015/11/8 17:56:51	Information	接收到的数据 INSERT_SDEPARTMENT_REQUEST~107~{"CanBoundary":"是","CanInland":"是","CanEmergency":"是","CanRegular":"是","Id":0,"Name":null,"ShortCall":null}, 大小138
+2015/11/8 17:56:51	Information	接收到来自127.0.0.1:9967的待插入的部门信息{"CanBoundary":"是","CanInland":"是","CanEmergency":"是","CanRegular":"是","Id":0,"Name":null,"ShortCall":null}
+2015/11/8 17:59:31	Information	接收了60个数据单元
+2015/11/8 17:59:31	Information	接收到的数据 LOGIN_REQUEST~43~{"Username":"wujiayi","Password":"wujiayi"}, 大小60
+2015/11/8 17:59:31	Information	接收到来自127.0.0.1:10011的登录信息{"Username":"wujiayi","Password":"wujiayi"}
+2015/11/8 17:59:33	Success	USERNAME : wujiayi, PASSWORD : wujiayi用户名密码均正确，可以登录
+2015/11/8 17:59:33	Information	正在与127.0.0.1 : 10011进行数据传输...
+2015/11/8 17:59:33	Information	接收了33个数据单元
+2015/11/8 17:59:33	Information	接收到的数据 QUERY_UNSIGN_CONTRACT_REQUEST~1~8, 大小33
+2015/11/8 17:59:33	Information	接收到来自127.0.0.1:10011查询待签字的会签单信息8
+2015/11/8 17:59:33	Information	127.0.0.1:10011查询到的了所有查询待签字的的会签单
+2015/11/8 17:59:33	Success	127.0.0.1:10011查询待签字的会签单信息查询成功
+2015/11/8 17:59:35	Information	正在与127.0.0.1 : 10011进行数据传输...
+2015/11/8 17:59:35	Information	接收了29个数据单元
+2015/11/8 17:59:35	Information	接收到的数据 QUERY_SDEPARTMENT_REQUEST~1~0, 大小29
+2015/11/8 17:59:35	Success	127.0.0.1:10011部门信息查询成功
+2015/11/8 17:59:35	Information	正在与127.0.0.1 : 10011进行数据传输...
+2015/11/8 17:59:35	Information	接收了26个数据单元
+2015/11/8 17:59:35	Information	接收到的数据 QUERY_EMPLOYEE_REQUEST~1~0, 大小26
+2015/11/8 17:59:35	Information	127.0.0.1:10011待查询的员工的编号 = 0
+2015/11/8 17:59:35	Information	127.0.0.1:10011查询到的部门编号为0的所有员工
+2015/11/8 17:59:35	Success	127.0.0.1:10011部门0的员工信息查询成功
+2015/11/8 17:59:35	Information	正在与127.0.0.1 : 10011进行数据传输...
+2015/11/8 17:59:35	Information	接收了35个数据单元
+2015/11/8 17:59:35	Information	接收到的数据 QUERY_CONTRACT_TEMPLATE_REQUEST~1~0, 大小35
+2015/11/8 17:59:35	Information	接收到来自127.0.0.1:10011查询会签单模版信息0
+2015/11/8 17:59:35	Information	127.0.0.1:10011查询到的了所有的会签单
+2015/11/8 17:59:35	Success	127.0.0.1:10011会签单模版信息信息查询成功
+2015/11/8 18:00:48	Information	正在与127.0.0.1 : 10011进行数据传输...
+2015/11/8 18:00:49	Information	接收了16个数据单元
+2015/11/8 18:00:49	Information	接收到的数据 QUIT_REQUEST~1~0, 大小16
+2015/11/8 18:00:49	Information	接收到来自127.0.0.1:10011的退出信息0
+2015/11/8 18:00:49	Information	正在与127.0.0.1 : 10011进行数据传输...
+2015/11/8 18:00:49	Error	客户端终止，关闭了客户端, 当前连接的客户端数目0
