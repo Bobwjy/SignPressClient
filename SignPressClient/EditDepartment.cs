@@ -30,10 +30,9 @@ namespace SignPressClient
         }
 
 
-        public EditDepartment(Department department, SDepartment sdepartment, SignSocketClient sc)
+        public EditDepartment(SDepartment sdepartment, SignSocketClient sc)
             :this()
         {
-            this.m_department = department;
             this.m_sdepartment = sdepartment;
             this._sc = sc;
         }
@@ -42,9 +41,9 @@ namespace SignPressClient
 
         private void EditDepartment_Load(object sender, EventArgs e)
         {
-            this.textBoxId.Text = this.m_department.Id.ToString();
-            this.textBoxName.Text = this.m_department.Name;
-            this.textBoxShortCall.Text = this.m_department.ShortCall;
+            this.textBoxId.Text = this.m_sdepartment.Id.ToString();
+            this.textBoxName.Text = this.m_sdepartment.Name;
+            this.textBoxShortCall.Text = this.m_sdepartment.ShortCall;
 
             if (this.m_sdepartment.CanBoundary == "是")
             {
@@ -73,8 +72,8 @@ namespace SignPressClient
             { 
 
                 ////   此处应该注意，这里的dpartment跟底层Uderhelper的数据是同一个数据域
-                this.m_department.Name = this.textBoxName.Text.Trim();       // 
-                this.m_department.ShortCall = this.textBoxShortCall.Text.Trim();
+                this.m_sdepartment.Name = this.textBoxName.Text.Trim();       // 
+                this.m_sdepartment.ShortCall = this.textBoxShortCall.Text.Trim();
                 if (this.CanBoundary.Checked)
                 {
                     this.m_sdepartment.CanBoundary = "是";
@@ -111,22 +110,15 @@ namespace SignPressClient
                     this.m_sdepartment.CanRegular = "否";
                 }
 
-                string result = _sc.ModifyDepartment(this.m_department);
-                string result1=_sc.ModifySDepartment(this.m_sdepartment);
+                string result=_sc.ModifySDepartment(this.m_sdepartment);
 
-                if (result == Response.MODIFY_DEPARTMENT_SUCCESS.ToString())
-                {
-                    if (result1 == Response.MODIFY_SDEPARTMENT_SUCCESS.ToString())
-                    {
-                        MessageBox.Show("修改部门成功!", "提示", MessageBoxButtons.OK);
-                        //this.m_department.Name = departmentname;
-                        this.DialogResult = DialogResult.OK;
-                    }
-                    else
-                    {
-                        MessageBox.Show("修改部门失败！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
-                }
+                //if (result == Response.MODIFY_DEPARTMENT_SUCCESS.ToString())
+               if (result == Response.MODIFY_SDEPARTMENT_SUCCESS.ToString())
+               {
+                 MessageBox.Show("修改部门成功!", "提示", MessageBoxButtons.OK);
+                 //this.m_department.Name = departmentname;
+                 this.DialogResult = DialogResult.OK;
+               }
                 else if (result == "服务器连接中断")
                 {
                     MessageBox.Show("服务器连接中断,删除失败！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -160,23 +152,23 @@ namespace SignPressClient
             }
 
 
-            if (departmentName == this.m_department.Name && departmentShortCall == this.m_department.ShortCall)
+            if (departmentName == this.m_sdepartment.Name && departmentShortCall == this.m_sdepartment.ShortCall)
             {
                 MessageBox.Show("您未对此部门做任何修改!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
-            else if (UserHelper.DepList.Where(o => (o.Name == departmentName && o.ShortCall == departmentShortCall)).ToList().Count > 0)
+            else if (UserHelper.SDepList.Where(o => (o.Name == departmentName && o.ShortCall == departmentShortCall)).ToList().Count > 0)
             {
                 MessageBox.Show("该部门已经存在!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
             //  一下两种情况仅发生在修改只某个部门的名称或者简称时（只需改一项）
-            else if (UserHelper.DepList.Where(o => (o.Id != this.m_department.Id && o.Name == departmentName)).ToList().Count > 0)
+            else if (UserHelper.SDepList.Where(o => (o.Id != this.m_sdepartment.Id && o.Name == departmentName)).ToList().Count > 0)
             {
                 MessageBox.Show("该部门名称与其他部门的部门名称重复!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
-            else if (UserHelper.DepList.Where(o => (o.Id != this.m_department.Id && o.ShortCall == departmentShortCall)).ToList().Count > 0)
+            else if (UserHelper.SDepList.Where(o => (o.Id != this.m_sdepartment.Id && o.ShortCall == departmentShortCall)).ToList().Count > 0)
             {
                 MessageBox.Show("该部门简称与其他部门的部门简称重复!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;

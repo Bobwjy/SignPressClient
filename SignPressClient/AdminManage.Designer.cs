@@ -41,6 +41,10 @@
             this.DepartmentCanEmergency = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DepartmentCanRegular = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.CanInLand = new System.Windows.Forms.CheckBox();
+            this.CanRegular = new System.Windows.Forms.CheckBox();
+            this.CanEmergency = new System.Windows.Forms.CheckBox();
+            this.CanBoundary = new System.Windows.Forms.CheckBox();
             this.textBoxDepartmentShortCall = new System.Windows.Forms.TextBox();
             this.labelDepartmentShortCall = new System.Windows.Forms.Label();
             this.AddDepartment = new System.Windows.Forms.Button();
@@ -86,10 +90,6 @@
             this.TemplateName = new System.Windows.Forms.DataGridViewLinkColumn();
             this.CraeteTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.CanBoundary = new System.Windows.Forms.CheckBox();
-            this.CanEmergency = new System.Windows.Forms.CheckBox();
-            this.CanRegular = new System.Windows.Forms.CheckBox();
-            this.CanInLand = new System.Windows.Forms.CheckBox();
             this.Admin.SuspendLayout();
             this.Department.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -243,6 +243,50 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(851, 110);
             this.panel1.TabIndex = 0;
+            // 
+            // CanInLand
+            // 
+            this.CanInLand.AutoSize = true;
+            this.CanInLand.Font = new System.Drawing.Font("微软雅黑", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.CanInLand.Location = new System.Drawing.Point(208, 55);
+            this.CanInLand.Name = "CanInLand";
+            this.CanInLand.Size = new System.Drawing.Size(119, 23);
+            this.CanInLand.TabIndex = 8;
+            this.CanInLand.Text = "可申请内河项目";
+            this.CanInLand.UseVisualStyleBackColor = true;
+            // 
+            // CanRegular
+            // 
+            this.CanRegular.AutoSize = true;
+            this.CanRegular.Font = new System.Drawing.Font("微软雅黑", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.CanRegular.Location = new System.Drawing.Point(550, 55);
+            this.CanRegular.Name = "CanRegular";
+            this.CanRegular.Size = new System.Drawing.Size(119, 23);
+            this.CanRegular.TabIndex = 7;
+            this.CanRegular.Text = "可申请例会项目";
+            this.CanRegular.UseVisualStyleBackColor = true;
+            // 
+            // CanEmergency
+            // 
+            this.CanEmergency.AutoSize = true;
+            this.CanEmergency.Font = new System.Drawing.Font("微软雅黑", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.CanEmergency.Location = new System.Drawing.Point(375, 55);
+            this.CanEmergency.Name = "CanEmergency";
+            this.CanEmergency.Size = new System.Drawing.Size(119, 23);
+            this.CanEmergency.TabIndex = 6;
+            this.CanEmergency.Text = "可申请应急项目";
+            this.CanEmergency.UseVisualStyleBackColor = true;
+            // 
+            // CanBoundary
+            // 
+            this.CanBoundary.AutoSize = true;
+            this.CanBoundary.Font = new System.Drawing.Font("微软雅黑", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.CanBoundary.Location = new System.Drawing.Point(45, 55);
+            this.CanBoundary.Name = "CanBoundary";
+            this.CanBoundary.Size = new System.Drawing.Size(119, 23);
+            this.CanBoundary.TabIndex = 3;
+            this.CanBoundary.Text = "可申请界河项目";
+            this.CanBoundary.UseVisualStyleBackColor = true;
             // 
             // textBoxDepartmentShortCall
             // 
@@ -694,50 +738,6 @@
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
-            // 
-            // CanBoundary
-            // 
-            this.CanBoundary.AutoSize = true;
-            this.CanBoundary.Font = new System.Drawing.Font("微软雅黑", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.CanBoundary.Location = new System.Drawing.Point(45, 55);
-            this.CanBoundary.Name = "CanBoundary";
-            this.CanBoundary.Size = new System.Drawing.Size(119, 23);
-            this.CanBoundary.TabIndex = 3;
-            this.CanBoundary.Text = "可申请界河项目";
-            this.CanBoundary.UseVisualStyleBackColor = true;
-            // 
-            // CanEmergency
-            // 
-            this.CanEmergency.AutoSize = true;
-            this.CanEmergency.Font = new System.Drawing.Font("微软雅黑", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.CanEmergency.Location = new System.Drawing.Point(375, 55);
-            this.CanEmergency.Name = "CanEmergency";
-            this.CanEmergency.Size = new System.Drawing.Size(119, 23);
-            this.CanEmergency.TabIndex = 6;
-            this.CanEmergency.Text = "可申请应急项目";
-            this.CanEmergency.UseVisualStyleBackColor = true;
-            // 
-            // CanRegular
-            // 
-            this.CanRegular.AutoSize = true;
-            this.CanRegular.Font = new System.Drawing.Font("微软雅黑", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.CanRegular.Location = new System.Drawing.Point(550, 55);
-            this.CanRegular.Name = "CanRegular";
-            this.CanRegular.Size = new System.Drawing.Size(119, 23);
-            this.CanRegular.TabIndex = 7;
-            this.CanRegular.Text = "可申请例会项目";
-            this.CanRegular.UseVisualStyleBackColor = true;
-            // 
-            // CanInLand
-            // 
-            this.CanInLand.AutoSize = true;
-            this.CanInLand.Font = new System.Drawing.Font("微软雅黑", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.CanInLand.Location = new System.Drawing.Point(208, 55);
-            this.CanInLand.Name = "CanInLand";
-            this.CanInLand.Size = new System.Drawing.Size(119, 23);
-            this.CanInLand.TabIndex = 8;
-            this.CanInLand.Text = "可申请内河项目";
-            this.CanInLand.UseVisualStyleBackColor = true;
             // 
             // AdminManage
             // 

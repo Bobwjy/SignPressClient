@@ -234,11 +234,11 @@ namespace SignPressClient
             }
 
 
-            Department department = new Department();
-            department.Id = -1;
-            department.Name = departmentName;
-            department.ShortCall = departmentShortCall;
+            Department department = new Department { Id = -1, Name = departmentName, ShortCall = departmentShortCall };
             SDepartment sdepartment = new SDepartment();
+            sdepartment.Id = -1;
+            sdepartment.Name = departmentName;
+            sdepartment.ShortCall = departmentShortCall;
             if (this.CanBoundary.Checked)
             {
                 sdepartment.CanBoundary = "是";
@@ -275,12 +275,12 @@ namespace SignPressClient
                 sdepartment.CanRegular = "否";
             }
 
-            string result = _sc.InsertDepartment(department);
-            string result1 = _sc.InsertSDepartment(sdepartment);
+            //string result = _sc.InsertDepartment(department);
+            string result = _sc.InsertSDepartment(sdepartment);
 
-            if (result == Response.INSERT_DEPARTMENT_SUCCESS.ToString())
-            {
-                if (result1 == Response.INSERT_SDEPARTMENT_SUCCESS.ToString())
+            //if (result == Response.INSERT_DEPARTMENT_SUCCESS.ToString())
+            //{
+                if (result == Response.INSERT_SDEPARTMENT_SUCCESS.ToString())
                 {
                     MessageBox.Show("添加" + departmentName + "部门成功!");
 
@@ -288,11 +288,7 @@ namespace SignPressClient
                     BindGridViewDataSourece();
                     ///////
                 }
-                else
-                {
-                    MessageBox.Show("添加" + departmentName + "部门失败!");
-                }
-            }
+            //}
             else
             {
                 MessageBox.Show("添加" + departmentName + "部门失败!");
@@ -486,65 +482,64 @@ namespace SignPressClient
             MessageBox.Show("单击了第" + e.RowIndex.ToString() + "行" + e.ColumnIndex.ToString() + "列", "提示", MessageBoxButtons.OK);
             ///
 
-            if (e.RowIndex < 0)
-            {
-                return;
-            }
+            //if (e.RowIndex < 0)
+            //{
+            //    return;
+            //}
 
 
-            if (e.ColumnIndex >= 0 && e.ColumnIndex <= 3)
-            {
-                /// 首先取出底层数据中对应的数据项
+            //if (e.ColumnIndex >= 0 && e.ColumnIndex <= 3)
+            //{
+            //    /// 首先取出底层数据中对应的数据项
 
-                SDepartment sdepartment = UserHelper.SDepList[e.RowIndex];
+            //    SDepartment sdepartment = UserHelper.SDepList[e.RowIndex];
 
-                if (e.ColumnIndex == 0)             //  可以申请界河项目
-                {
-                    sdepartment.CanBoundary = ((sdepartment.CanBoundary == "是") ? "否" : "是");
-                }
-                else if (e.ColumnIndex == 1)        //  可以申请内河项目
-                {
-                    sdepartment.CanInland = ((sdepartment.CanInland == "是") ? "否" : "是");
-                }
-                else if (e.ColumnIndex == 2)        //  可以申请应急抢修项目
-                {
-                    sdepartment.CanEmergency = ((sdepartment.CanEmergency == "是") ? "否" : "是");
-                }
-                else if (e.ColumnIndex == 3)        //  可以申请例会项目
-                {
-                    sdepartment.CanRegular = ((sdepartment.CanRegular == "是") ? "否" : "是");
-                }
+            //    if (e.ColumnIndex == 0)             //  可以申请界河项目
+            //    {
+            //        sdepartment.CanBoundary = ((sdepartment.CanBoundary == "是") ? "否" : "是");
+            //    }
+            //    else if (e.ColumnIndex == 1)        //  可以申请内河项目
+            //    {
+            //        sdepartment.CanInland = ((sdepartment.CanInland == "是") ? "否" : "是");
+            //    }
+            //    else if (e.ColumnIndex == 2)        //  可以申请应急抢修项目
+            //    {
+            //        sdepartment.CanEmergency = ((sdepartment.CanEmergency == "是") ? "否" : "是");
+            //    }
+            //    else if (e.ColumnIndex == 3)        //  可以申请例会项目
+            //    {
+            //        sdepartment.CanRegular = ((sdepartment.CanRegular == "是") ? "否" : "是");
+            //    }
 
-                string result = _sc.ModifySDepartment(sdepartment);
+            //    string result = _sc.ModifySDepartment(sdepartment);
 
-                if (result == Response.MODIFY_SDEPARTMENT_SUCCESS.ToString())
-                {
-                    MessageBox.Show("修改部门权限成功!", "提示", MessageBoxButtons.OK);
-                    BindGridViewDataSourece();
-                    BindEmployee(0);                    //  绑定员工信息
+            //    if (result == Response.MODIFY_SDEPARTMENT_SUCCESS.ToString())
+            //    {
+            //        MessageBox.Show("修改部门权限成功!", "提示", MessageBoxButtons.OK);
+            //        BindGridViewDataSourece();
+            //        BindEmployee(0);                    //  绑定员工信息
 
-                }
-                else if (result == "服务器连接中断")
-                {
-                    MessageBox.Show("服务器连接中断,删除失败！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                else if (result == Response.DELETE_DEPARTMENT_EXIST_EMPLOYEE.ToString())
-                {
-                    MessageBox.Show("该部门下有人员存在，无法删除！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-                else
-                {
-                    MessageBox.Show("删除部门失败！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
+            //    }
+            //    else if (result == "服务器连接中断")
+            //    {
+            //        MessageBox.Show("服务器连接中断,删除失败！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    }
+            //    else if (result == Response.DELETE_DEPARTMENT_EXIST_EMPLOYEE.ToString())
+            //    {
+            //        MessageBox.Show("该部门下有人员存在，无法删除！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //    }
+            //    else
+            //    {
+            //        MessageBox.Show("删除部门失败！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //    }
                 
-            }
-            else if(e.ColumnIndex == 7)         //  修改当前部门信息
+            //}
+            if(e.ColumnIndex == 7)         //  修改当前部门信息
             {
                 if (MessageBox.Show("确定要修改当前部门信息？", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    Department department = UserHelper.DepList[e.RowIndex];
                     SDepartment sdepartment = UserHelper.SDepList[e.RowIndex];
-                    EditDepartment ed = new EditDepartment(department, sdepartment, _sc);
+                    EditDepartment ed = new EditDepartment(sdepartment, _sc);
                     ed.ShowDialog();
                     if (ed.DialogResult == DialogResult.OK)
                     {
@@ -558,6 +553,7 @@ namespace SignPressClient
             {
                 if (MessageBox.Show("确定要删除此部门？\n危险操作，请谨慎进行\n由于部门下面可能有员工，因此您的删除操作会将部门下的所有员工全部被删除，由此将引入很多不安全问题，请问您是否继续删除", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
+                    object a = this.dataGridView1[0,e.RowIndex].Value.ToString();
                     int Id = Convert.ToInt32(this.dataGridView1.Rows[e.RowIndex].Cells[0].Value);
                     string result = _sc.DeleteDepartment(Id);
 
