@@ -479,7 +479,7 @@ namespace SignPressClient
         {
             /// modify by gatieme at 2015-09-10 13:47
             ///
-            MessageBox.Show("单击了第" + e.RowIndex.ToString() + "行" + e.ColumnIndex.ToString() + "列", "提示", MessageBoxButtons.OK);
+            //MessageBox.Show("单击了第" + e.RowIndex.ToString() + "行" + e.ColumnIndex.ToString() + "列", "提示", MessageBoxButtons.OK);
             ///
 
             //if (e.RowIndex < 0)
@@ -553,8 +553,7 @@ namespace SignPressClient
             {
                 if (MessageBox.Show("确定要删除此部门？\n危险操作，请谨慎进行\n由于部门下面可能有员工，因此您的删除操作会将部门下的所有员工全部被删除，由此将引入很多不安全问题，请问您是否继续删除", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    object a = this.dataGridView1[0,e.RowIndex].Value.ToString();
-                    int Id = Convert.ToInt32(this.dataGridView1.Rows[e.RowIndex].Cells[0].Value);
+                    int Id = Convert.ToInt32(this.dataGridView1.Rows[e.RowIndex].Cells[4].Value);
                     string result = _sc.DeleteDepartment(Id);
 
                     if (result == Response.DELETE_DEPARTMENT_SUCCESS.ToString())
