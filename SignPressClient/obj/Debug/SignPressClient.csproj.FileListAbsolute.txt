@@ -268,7 +268,6 @@ F:\SignPress\SignPressClient\SignPressClient\bin\Debug\SignPressClient.exe
 F:\SignPress\SignPressClient\SignPressClient\bin\Debug\SignPressClient.pdb
 F:\SignPress\SignPressClient\SignPressClient\bin\Debug\Newtonsoft.Json.dll
 F:\SignPress\SignPressClient\SignPressClient\bin\Debug\Newtonsoft.Json.xml
-F:\SignPress\SignPressClient\SignPressClient\obj\Debug\SignPressClient.csprojResolveAssemblyReference.cache
 F:\SignPress\SignPressClient\SignPressClient\obj\Debug\SignPressClient.AddConTemp.resources
 F:\SignPress\SignPressClient\SignPressClient\obj\Debug\SignPressClient.AdminManage.resources
 F:\SignPress\SignPressClient\SignPressClient\obj\Debug\SignPressClient.EditConTemp.resources
