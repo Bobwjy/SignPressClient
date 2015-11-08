@@ -929,6 +929,10 @@ namespace SignPressServer.SignSocket.AsyncSocket
                         break;
                     
                     // modify by gatieme at 2015-08-26
+                    case "INSERT_SDEPARTMENT_REQUEST":  //  添加部门请求
+                        // 开始接收期望添加进入数据的库的部门的信息
+                        RaiseInsertSDepartmentRequest(state);
+                        break;
                     case "QUERY_SDEPARTMENT_REQUEST":
                         RaiseQuerySDepartmentRequest(state);
                         break;
@@ -1197,6 +1201,46 @@ namespace SignPressServer.SignSocket.AsyncSocket
             this.Send(state.ClientSocket, Encoding.UTF8.GetBytes(socketMessage.Package));                    //  将
 
         }
+        #endregion
+
+        #region 处理客户端的插入S部门请求
+        /// <summary>
+        /// 用户登录请求的事件的具体信息
+        /// </summary>
+        /// <param name="state"></param>
+        private void RaiseInsertSDepartmentRequest(AsyncSocketState state)
+        {
+            Console.WriteLine("接收到来自{0}的待插入部门信息{1}", state.ClientIp, state.SocketMessage.Message); // 输出真正的信息
+            this.Log.Write(new LogMessage("接收到来自" + state.ClientIp + "的待插入的部门信息" + state.SocketMessage.Message, LogMessageType.Information));
+
+            ServerResponse response = new ServerResponse();
+
+            // json数据解包
+            SDepartment department = JsonConvert.DeserializeObject<SDepartment>(state.SocketMessage.Message);
+            bool result = DALSDepartment.InsertSDepartment(department);
+            if (result == true)
+            {
+                Console.WriteLine("部门{0}插入成功", department);
+                this.Log.Write(new LogMessage("部门" + department.Name + "插入成功", LogMessageType.Success));
+
+                //INSERT_DEPARTMENT_RESPONSE = "INSERT_DEPARTMENT_SUCCESS";               //  用户登录成功信号   
+                response = ServerResponse.INSERT_SDEPARTMENT_SUCCESS;
+            }
+            else
+            {
+                Console.WriteLine("部门{0}插入失败", department.Name);
+                this.Log.Write(new LogMessage("部门" + department.Name + "插入失败", LogMessageType.Error));
+
+                //INSERT_DEPARTMENT_RESPONSE = "INSERT_DEPARTMENT_FAILED";                //  用户登录失败信号
+                response = ServerResponse.INSERT_SDEPARTMENT_FAILED;
+            }
+
+            // 插入部门的相应，只是一个响应头
+            AsyncSocketMessage socketMessage = new AsyncSocketMessage(response);
+            this.Send(state.ClientSocket, Encoding.UTF8.GetBytes(socketMessage.Package));                    //  将
+
+        }
+
         #endregion
 
 

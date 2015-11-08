@@ -1,0 +1,67 @@
+﻿2015/11/8 14:02:40	Information	接收了60个数据单元
+2015/11/8 14:02:40	Information	接收到的数据 LOGIN_REQUEST~43~{"Username":"wangdonglai","Password":"111"}, 大小60
+2015/11/8 14:02:40	Information	接收到来自192.168.10.77:4495的登录信息{"Username":"wangdonglai","Password":"111"}
+2015/11/8 14:02:43	Error	USERNAME : wangdonglai, PASSWORD : 111用户名密码验证失败，无法正常登录
+2015/11/8 14:02:46	Information	正在与192.168.10.77 : 4498进行数据传输...
+2015/11/8 14:02:46	Information	接收了64个数据单元
+2015/11/8 14:02:46	Information	接收到的数据 LOGIN_REQUEST~47~{"Username":"wangdonglai","Password":"wujiayi"}, 大小64
+2015/11/8 14:02:46	Information	接收到来自192.168.10.77:4498的登录信息{"Username":"wangdonglai","Password":"wujiayi"}
+2015/11/8 14:02:46	Error	USERNAME : wangdonglai, PASSWORD : wujiayi用户名密码验证失败，无法正常登录
+2015/11/8 14:02:56	Information	正在与192.168.10.77 : 4500进行数据传输...
+2015/11/8 14:02:56	Information	接收了60个数据单元
+2015/11/8 14:02:56	Information	接收到的数据 LOGIN_REQUEST~43~{"Username":"wujiayi","Password":"wujiayi"}, 大小60
+2015/11/8 14:02:56	Information	接收到来自192.168.10.77:4500的登录信息{"Username":"wujiayi","Password":"wujiayi"}
+2015/11/8 14:02:56	Success	USERNAME : wujiayi, PASSWORD : wujiayi用户名密码均正确，可以登录
+2015/11/8 14:02:56	Information	正在与192.168.10.77 : 4500进行数据传输...
+2015/11/8 14:02:56	Information	接收了33个数据单元
+2015/11/8 14:02:56	Information	接收到的数据 QUERY_UNSIGN_CONTRACT_REQUEST~1~8, 大小33
+2015/11/8 14:02:56	Information	接收到来自192.168.10.77:4500查询待签字的会签单信息8
+2015/11/8 14:02:56	Information	192.168.10.77:4500查询到的了所有查询待签字的的会签单
+2015/11/8 14:02:56	Success	192.168.10.77:4500查询待签字的会签单信息查询成功
+2015/11/8 14:03:00	Information	正在与192.168.10.77 : 4500进行数据传输...
+2015/11/8 14:03:00	Information	接收了29个数据单元
+2015/11/8 14:03:00	Information	接收到的数据 QUERY_SDEPARTMENT_REQUEST~1~0, 大小29
+2015/11/8 14:03:00	Success	192.168.10.77:4500部门信息查询成功
+2015/11/8 14:03:00	Information	正在与192.168.10.77 : 4500进行数据传输...
+2015/11/8 14:03:00	Information	接收了26个数据单元
+2015/11/8 14:03:00	Information	接收到的数据 QUERY_EMPLOYEE_REQUEST~1~0, 大小26
+2015/11/8 14:03:00	Information	192.168.10.77:4500待查询的员工的编号 = 0
+2015/11/8 14:03:00	Information	192.168.10.77:4500查询到的部门编号为0的所有员工
+2015/11/8 14:03:00	Success	192.168.10.77:4500部门0的员工信息查询成功
+2015/11/8 14:03:00	Information	正在与192.168.10.77 : 4500进行数据传输...
+2015/11/8 14:03:00	Information	接收了35个数据单元
+2015/11/8 14:03:00	Information	接收到的数据 QUERY_CONTRACT_TEMPLATE_REQUEST~1~0, 大小35
+2015/11/8 14:03:00	Information	接收到来自192.168.10.77:4500查询会签单模版信息0
+2015/11/8 14:03:00	Information	192.168.10.77:4500查询到的了所有的会签单
+2015/11/8 14:03:00	Success	192.168.10.77:4500会签单模版信息信息查询成功
+2015/11/8 14:03:00	Information	正在与192.168.10.77 : 4495进行数据传输...
+2015/11/8 14:03:00	Information	正在与192.168.10.77 : 4498进行数据传输...
+2015/11/8 14:03:00	Exception	System.Net.Sockets.SocketException (0x80004005): 远程主机强迫关闭了一个现有的连接。
+   在 System.Net.Sockets.Socket.EndReceive(IAsyncResult asyncResult)
+   在 SignPressServer.SignSocket.AsyncSocket.AsyncSocketServer.HandleDataReceived(IAsyncResult ar) 位置 e:\[O]Github\SignPressServer\SignSocket\AsyncSocket\AsyncSocketServer.cs:行号 512
+2015/11/8 14:03:00	Exception	System.Net.Sockets.SocketException (0x80004005): 远程主机强迫关闭了一个现有的连接。
+   在 System.Net.Sockets.Socket.EndReceive(IAsyncResult asyncResult)
+   在 SignPressServer.SignSocket.AsyncSocket.AsyncSocketServer.HandleDataReceived(IAsyncResult ar) 位置 e:\[O]Github\SignPressServer\SignSocket\AsyncSocket\AsyncSocketServer.cs:行号 512
+2015/11/8 14:03:00	Error	客户端终止，关闭了客户端, 当前连接的客户端数目1
+2015/11/8 14:03:00	Error	客户端终止，关闭了客户端, 当前连接的客户端数目1
+2015/11/8 14:03:35	Information	正在与192.168.10.77 : 4500进行数据传输...
+2015/11/8 14:03:35	Information	接收了154个数据单元
+2015/11/8 14:03:35	Information	接收到的数据 MODIFY_SDEPARTMENT_REQUEST~107~{"CanBoundary":"是","CanInland":"否","CanEmergency":"否","CanRegular":"是","Id":5,"Name":"行政科","ShortCall":"政"}, 大小138
+2015/11/8 14:03:35	Information	接收到来自192.168.10.77:4500的待修改的部门信息{"CanBoundary":"是","CanInland":"否","CanEmergency":"否","CanRegular":"是","Id":5,"Name":"行政科","ShortCall":"政"}
+2015/11/8 14:03:35	Success	部门5, 行政科修改成功
+2015/11/8 14:03:36	Information	正在与192.168.10.77 : 4500进行数据传输...
+2015/11/8 14:03:36	Information	接收了29个数据单元
+2015/11/8 14:03:36	Information	接收到的数据 QUERY_SDEPARTMENT_REQUEST~1~0, 大小29
+2015/11/8 14:03:36	Success	192.168.10.77:4500部门信息查询成功
+2015/11/8 14:03:36	Information	正在与192.168.10.77 : 4500进行数据传输...
+2015/11/8 14:03:36	Information	接收了26个数据单元
+2015/11/8 14:03:36	Information	接收到的数据 QUERY_EMPLOYEE_REQUEST~1~0, 大小26
+2015/11/8 14:03:36	Information	192.168.10.77:4500待查询的员工的编号 = 0
+2015/11/8 14:03:36	Information	192.168.10.77:4500查询到的部门编号为0的所有员工
+2015/11/8 14:03:36	Success	192.168.10.77:4500部门0的员工信息查询成功
+2015/11/8 14:22:56	Information	正在与192.168.10.77 : 4500进行数据传输...
+2015/11/8 14:22:56	Information	接收了33个数据单元
+2015/11/8 14:22:56	Information	接收到的数据 QUERY_UNSIGN_CONTRACT_REQUEST~1~8, 大小33
+2015/11/8 14:22:56	Information	接收到来自192.168.10.77:4500查询待签字的会签单信息8
+2015/11/8 14:22:57	Information	192.168.10.77:4500查询到的了所有查询待签字的的会签单
+2015/11/8 14:22:57	Success	192.168.10.77:4500查询待签字的会签单信息查询成功

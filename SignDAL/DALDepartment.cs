@@ -392,10 +392,11 @@ namespace SignPressServer.SignDAL
                 cmd.CommandText = INSERT_SDEPARTMENT_STR;
                 cmd.Parameters.AddWithValue("@Name", department.Name);                  //  部门职位
                 cmd.Parameters.AddWithValue("@ShortCall", department.ShortCall);         //  部门简称
-                cmd.Parameters.AddWithValue("@CanBoundary", department.CanBoundary);
-                cmd.Parameters.AddWithValue("@CanInland", department.CanInland);
-                cmd.Parameters.AddWithValue("@CanEmergency", department.CanEmergency);
-                cmd.Parameters.AddWithValue("@CanRegular", department.CanRegular);
+                cmd.Parameters.AddWithValue("@ShortCall", ((department.ShortCall == "是") ? 1 : 0));              //  部门简称
+                cmd.Parameters.AddWithValue("@CanBoundary", ((department.CanBoundary == "是") ? 1 : 0));
+                cmd.Parameters.AddWithValue("@CanInland", ((department.CanInland == "是") ? 1 : 0));
+                cmd.Parameters.AddWithValue("@CanEmergency", ((department.CanEmergency == "是") ? 1 : 0));
+                cmd.Parameters.AddWithValue("@CanRegular", ((department.CanRegular == "是") ? 1 : 0));
                     
                 count = cmd.ExecuteNonQuery();
                 cmd.Dispose();
