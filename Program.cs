@@ -116,7 +116,7 @@ namespace SignPressServer
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("SignPress服务器程序");
+            Console.WriteLine("SignPress服务器程序1.0.0");
             Console.WriteLine(System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
             //Console.WriteLine(System.DateTime.Now.ToString("yyyyMMddHHmmss"));
 
