@@ -116,7 +116,10 @@ namespace SignPressServer
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("SignPress服务器程序1.0.0");
+            Console.WriteLine("=====================");
+            Console.WriteLine("SignPressServer 1.0.0");
+            Console.WriteLine("=====================");
+
             Console.WriteLine(System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
             //Console.WriteLine(System.DateTime.Now.ToString("yyyyMMddHHmmss"));
 
@@ -240,6 +243,9 @@ namespace SignPressServer
             //User user = new User { Username = "gatieme", Password = "gatieme" };
             //DALEmployee.IsEmployeePasswordRight(user);
             //Console.WriteLine(DALEmployee.QueryDepartmentEmployeeCount(2));
+
+            SDepartment department = new SDepartment { Name = "很多", ShortCall = "很", CanBoundary = "否", CanRegular = "否", CanInland = "否", CanEmergency = "否" };
+            DALSDepartment.InsertSDepartment(department);
             #endregion
 
 
@@ -365,6 +371,9 @@ namespace SignPressServer
 
             //    }
             //}
+
+
+
             #region 服务器的处理程序AsyncSocketServer
 
             Console.WriteLine("服务器准备中...");
