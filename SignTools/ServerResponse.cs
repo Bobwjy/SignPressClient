@@ -174,8 +174,8 @@ namespace SignPressServer.SignTools
         QUERY_SIGNED_CONTRACT_TOP_FAILED,
 
 
-        QUERY_SDEPARTMENT_CONTRACTCATEGORY_SUCCESS,
-        QUERY_SDEPARTMENT_CONTRACTCATEGORY_FAILED,
+        QUERY_SDEPARTMENT_CATEGORY_SUCCESS,
+        QUERY_SDEPARTMENT_CATEGORY_FAILED,
 
         /// <summary>
         /// 2015-11-2
@@ -188,6 +188,12 @@ namespace SignPressServer.SignTools
         /// </summary>
         QUERY_CATEGORY_PROJECT_SUCCESS,
         QUERY_CATEGORY_PROJECT_FAILED,
+
+        QUERY_PROJECT_ITEM_SUCCESS,             /// 查询当前项目类别下的所有工作量集合
+        QUERY_PROJECT_ITEM_FAILED,             /// 查询当前项目类别下的所有工作量集合 
+                                               /// 
+        QUERY_CONTRACT_WORKLOAD_SUCCESS,            /// 查询当前会签单的所有工作量集合  
+        QUERY_CONTRACT_WORKLOAD_FAILED,            /// 查询当前会签单的所有工作量集合  
         
     }
 }

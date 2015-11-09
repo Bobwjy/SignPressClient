@@ -244,8 +244,17 @@ namespace SignPressServer
             //DALEmployee.IsEmployeePasswordRight(user);
             //Console.WriteLine(DALEmployee.QueryDepartmentEmployeeCount(2));
 
-            SDepartment department = new SDepartment { Name = "很多", ShortCall = "很", CanBoundary = "否", CanRegular = "否", CanInland = "否", CanEmergency = "否" };
-            DALSDepartment.InsertSDepartment(department);
+            //SDepartment department = new SDepartment { Name = "很多", ShortCall = "很", CanBoundary = "否", CanRegular = "否", CanInland = "否", CanEmergency = "否" };
+            //DALSDepartment.InsertSDepartment(department);
+
+            //  测试查询工作量信息集合item
+            //List<ContractItem> items = DALContractItem.QueryProjectItem(1);
+            //foreach (ContractItem item in items)
+            //{
+            //    Console.WriteLine(item.Id + ", " + item.ProjectId + ", " + item.Item);
+            //}
+
+            //Console.WriteLine(JsonConvert.SerializeObject(DALContractWorkload.QureyContractWorkLoad("1")));
             #endregion
 
 

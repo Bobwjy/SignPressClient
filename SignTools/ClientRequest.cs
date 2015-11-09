@@ -95,11 +95,13 @@ namespace SignPressServer.SignTools
 
 
         //  查询当前部门可以申请的会签单的类别
-        QUERY_SDEPARTMENT_CONTRACTCATEGORY_REQUEST,
+        QUERY_SDEPARTMENT_CATEGORY_REQUEST,
         MODIFY_SDEPARTMENT_SREQUEST,
 
         ///
-        QUERY_CATEGORY_PROJECT_REQUEST,
+        QUERY_CATEGORY_PROJECT_REQUEST,         /// 查询当前工程类别下的所有项目类别
+        QUERY_PROJECT_ITEM_REQUEST,             /// 查询当前项目类别下的所有工作量集合
+        QUERY_CONTRACT_WORKLOAD_REQUEST,            /// 查询当前会签单的所有工作量集合  
     }
 
 }

@@ -11,34 +11,29 @@ namespace SignPressServer.SignData
     ///  对应数据库中的project表
     public class ContractProject
     {
-        public int Id;
-        private int m_id
+        private int m_id;
+        public int Id
         {
-            get { return this.Id; }
-            set { this.Id = value; }
+            get { return this.m_id; }
+            set { this.m_id = value; }
         }
 
         //  要不存储ContractCategory信息，要不存储ContractCategory的id=ContractCategory
-        //public ContractCategory Category;
-        //private ContractCategory m_category
-        //{
-        //    get { return this.Category; }
-        //    set { this.Category = value; }
-        //}
-        public int CategoryId;
-        private int m_categoryId
+
+        private int m_categoryId;
+        public int CategoryId
         {
-            get { return this.CategoryId; }
-            set { this.CategoryId = value; }
+            get { return this.m_categoryId; }
+            set { this.m_categoryId = value; }
         }
-        
 
 
-        public String Project;
-        private String m_project
+
+        private String m_project;
+        public String Project
         {
-            get { return this.Project; }
-            set { this.Project = value; }
+            get { return this.m_project; }
+            set { this.m_project = value; }
         }
         
     }

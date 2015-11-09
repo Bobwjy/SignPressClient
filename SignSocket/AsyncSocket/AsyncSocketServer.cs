@@ -482,8 +482,9 @@ namespace SignPressServer.SignSocket.AsyncSocket
                 Console.WriteLine(e.ToString());
                 this.Log.Write(new LogMessage(e.ToString(), LogMessageType.Exception));
                 
-                
+                ////////////////////////// BIG BUG//
                 //  异常后继续监听连接接受下一个请求
+                ////////////////////////////////////
                 Socket server = (Socket)ar.AsyncState;
                 server.BeginAccept(new AsyncCallback(HandleAcceptConnected), ar.AsyncState);
             }
@@ -936,9 +937,7 @@ namespace SignPressServer.SignSocket.AsyncSocket
                     case "QUERY_SDEPARTMENT_REQUEST":
                         RaiseQuerySDepartmentRequest(state);
                         break;
-                    case "QUERY_SDEPARTMENT_CONTRACTCATEGORY_REQUEST":
-                        RaiseQuerySDepartmentContractCategoryRequest(state);
-                        break;
+
                     case "MODIFY_SDEPARTMENT_REQUEST":
                         RaiseModifySDepartmentRequest(state);
                         break;
@@ -1088,6 +1087,25 @@ namespace SignPressServer.SignSocket.AsyncSocket
                     case "QUERY_SIGN_DETAIL_CON_REQUEST":   // 签字人查询自己EMP对于会签单CON的请求
                         RaiseQuerySignDetailContractRequest(state);
                         break;
+
+
+                    /// <summary>
+                    /// ==新增统计功能==
+                    /// </summary>
+                    case "QUERY_SDEPARTMENT_CATEGORY_REQUEST":
+                        RaiseQuerySDepartmentCategoryRequest(state);
+                        break;
+                    case "QUERY_CATEGORY_PROJECT_REQUEST":
+                        RaiseQueryCategoryProjectRequest(state);
+                        break;
+                    case "QUERY_PROJECT_ITEM_REQUEST":
+                        RaiseQueryProjectItemRequest(state);
+                        break;
+                    case "QUERY_CONTRACT_WORKLOAD_REQUEST":
+                        RaiseQueryContractWorkloadRequest(state);
+                        break;
+                     
+
                 }
                 //this.Close(state);
             }while(state.SocketMessage.Flag != AsyncSocketMessageFlag.MESSAGE_RIGHT);
@@ -1146,7 +1164,7 @@ namespace SignPressServer.SignSocket.AsyncSocket
         #endregion
 
 
-        #region
+        #region  退出请求
         private void RaiseQuitRequest(AsyncSocketState state)
         {
             Console.WriteLine("接收到来自{0}的退出信息{1}", state.ClientIp, state.SocketMessage.Message); // 输出真正的信息
@@ -1159,7 +1177,6 @@ namespace SignPressServer.SignSocket.AsyncSocket
         }
         #endregion
 
-       
 
         #region 部门信息的处理（多个处理段[插入-删除-修改-查询]）
 
@@ -1510,55 +1527,7 @@ namespace SignPressServer.SignSocket.AsyncSocket
 
         #endregion
 
-        #region 处理客户端的查询部门会签单申请权限
-        /// <summary>
-        /// 处理客户端的查询部门请求
-        /// </summary>
-        /// <param name="state"></param>
-        private void RaiseQuerySDepartmentContractCategoryRequest(AsyncSocketState state)
-        {
-            Console.WriteLine("接收到来自{0}的待查询权限部门编号{1}", state.ClientIp, state.SocketMessage.Message); // 输出真正的信息
-            this.Log.Write(new LogMessage("接收到来自" + state.ClientIp + "待查询权限部门编号" + state.SocketMessage.Message, LogMessageType.Information));
-  
-            List<ContractCategory> categorys = null;
-            ServerResponse response = new ServerResponse();
-
-            
-            // json数据解包
-            int  departmentId = JsonConvert.DeserializeObject<int>(state.SocketMessage.Message);
-            // 向数据库中查询部门的信息
-            categorys = DALContractIdCategory.QuerySDepartmentContractCategory(departmentId);
-            if (categorys != null)
-            {
-                Console.WriteLine("查询部门会签单申请权限成功");
-                this.Log.Write(new LogMessage(state.ClientIp + "查询部门会签单申请权限成功", LogMessageType.Success));
-
-                //QUERY_DEPARTMENT_RESPONSE = "QUERY_DEPARTMENT_SUCCESS";               //  用户登录成功信号   
-                response = ServerResponse.QUERY_SDEPARTMENT_CONTRACTCATEGORY_SUCCESS;
-            }
-            else
-            {
-                Console.WriteLine("查询部门会签单申请权限失败");
-                this.Log.Write(new LogMessage(state.ClientIp + "查询部门会签单申请权限失败", LogMessageType.Error));
-
-                //QUERY_DEPARTMENT_RESPONSE = "QUERY_DEPARTMENT_FAILED";                //  用户登录失败信号
-                response = ServerResponse.QUERY_SDEPARTMENT_CONTRACTCATEGORY_FAILED;
-            }
-
-            //  查询部门成功则同时发送[报头 + 部门信息] 
-            if (response.Equals(ServerResponse.QUERY_SDEPARTMENT_CONTRACTCATEGORY_SUCCESS))
-            {
-                AsyncSocketMessage socketMessage = new AsyncSocketMessage(response, categorys);
-                this.Send(state.ClientSocket, Encoding.UTF8.GetBytes(socketMessage.Package));                    //  将
-            }
-            else      //  查询失败则只发报头
-            {
-                AsyncSocketMessage socketMessage = new AsyncSocketMessage(response);
-                this.Send(state.ClientSocket, Encoding.UTF8.GetBytes(socketMessage.Package));
-            }
-        }
-
-        #endregion
+       
 
         #endregion // 部门信息的处理（多个处理段[插入-删除-修改-查询]）
 
@@ -2878,6 +2847,7 @@ namespace SignPressServer.SignSocket.AsyncSocket
 
         #endregion
 
+
         #region 用户上传签字图片
         private const String HDJCONTDACT_PATH = @".\\hdjcontract\\";
         private void RaiseDownloadHDJContract(AsyncSocketState state)
@@ -2899,6 +2869,7 @@ namespace SignPressServer.SignSocket.AsyncSocket
             fs.Flush();
         }
         #endregion
+
 
         #region 用户上传签字图片
         private const String SIGNATURE_PICTURE_PATH = ".\\signature\\";
@@ -2945,8 +2916,63 @@ namespace SignPressServer.SignSocket.AsyncSocket
         }
         #endregion
 
+
+        #region 统计功能
+
+
+        #region 处理客户端的查询部门会签单申请权限
+        /// <summary>
+        /// 处理客户端的查询部门请求
+        /// </summary>
+        /// <param name="state"></param>
+        private void RaiseQuerySDepartmentCategoryRequest(AsyncSocketState state)
+        {
+            Console.WriteLine("接收到来自{0}的待查询权限部门编号{1}", state.ClientIp, state.SocketMessage.Message); // 输出真正的信息
+            this.Log.Write(new LogMessage("接收到来自" + state.ClientIp + "待查询权限部门编号" + state.SocketMessage.Message, LogMessageType.Information));
+
+            List<ContractCategory> categorys = null;
+            ServerResponse response = new ServerResponse();
+
+
+            // json数据解包
+            int departmentId = JsonConvert.DeserializeObject<int>(state.SocketMessage.Message);
+            // 向数据库中查询部门的信息
+            categorys = DALContractIdCategory.QuerySDepartmentContractCategory(departmentId);
+            if (categorys != null)
+            {
+                Console.WriteLine("查询部门会签单申请权限成功");
+                this.Log.Write(new LogMessage(state.ClientIp + "查询部门会签单申请权限成功", LogMessageType.Success));
+
+                //QUERY_DEPARTMENT_RESPONSE = "QUERY_DEPARTMENT_SUCCESS";               //  用户登录成功信号   
+                response = ServerResponse.QUERY_SDEPARTMENT_CATEGORY_SUCCESS;
+            }
+            else
+            {
+                Console.WriteLine("查询部门会签单申请权限失败");
+                this.Log.Write(new LogMessage(state.ClientIp + "查询部门会签单申请权限失败", LogMessageType.Error));
+
+                //QUERY_DEPARTMENT_RESPONSE = "QUERY_DEPARTMENT_FAILED";                //  用户登录失败信号
+                response = ServerResponse.QUERY_SDEPARTMENT_CATEGORY_FAILED;
+            }
+
+            //  查询部门成功则同时发送[报头 + 部门信息] 
+            if (response.Equals(ServerResponse.QUERY_SDEPARTMENT_CATEGORY_SUCCESS))
+            {
+                AsyncSocketMessage socketMessage = new AsyncSocketMessage(response, categorys);
+                this.Send(state.ClientSocket, Encoding.UTF8.GetBytes(socketMessage.Package));                    //  将
+            }
+            else      //  查询失败则只发报头
+            {
+                AsyncSocketMessage socketMessage = new AsyncSocketMessage(response);
+                this.Send(state.ClientSocket, Encoding.UTF8.GetBytes(socketMessage.Package));
+            }
+        }
+
+        #endregion
+
+
         #region 查询工程列表的信息[2015-11-6 21:41] modify by gatieme 
-        private void RaiseQueryContractProjectRequest(AsyncSocketState state)
+        private void RaiseQueryCategoryProjectRequest(AsyncSocketState state)
         {
             Console.WriteLine("接收到来自{0}的查询工程列表的信息{1}", state.ClientIp, state.SocketMessage.Message); // 输出真正的信息
             this.Log.Write(new LogMessage("接收到来自" + state.ClientIp + "的查询工程列表的信息" + state.SocketMessage.Message, LogMessageType.Information));
@@ -2975,7 +3001,7 @@ namespace SignPressServer.SignSocket.AsyncSocket
             }
 
             //  查询部门成功则同时发送[报头 + 信息] 
-            if (response.Equals(ServerResponse.QUERY_DEPARTMENT_SUCCESS))
+            if (response.Equals(ServerResponse.QUERY_CATEGORY_PROJECT_SUCCESS))
             {
                 AsyncSocketMessage socketMessage = new AsyncSocketMessage(response, projects);
                 this.Send(state.ClientSocket, Encoding.UTF8.GetBytes(socketMessage.Package));                 
@@ -2989,6 +3015,111 @@ namespace SignPressServer.SignSocket.AsyncSocket
         #endregion
 
 
+        #region 查询工作量列表的信息[2015-11-9 20:39] modify by gatieme
+        /// <summary>
+        ///  查询工作量列表的信息
+        ///  客户端发送的请求信息QUERY_PROJECT_ITEM_REQUEST  +  projectId[int]
+        ///  服务器返回的信息   
+        ///  成功 QUERY_PROJECT_ITEM_SUCCESS + List<ContractItem>
+        ///  失败 QUERY_PROJECT_ITEM_FAILED
+        /// </summary>
+        /// <param name="state"></param>
+        private void RaiseQueryProjectItemRequest(AsyncSocketState state)
+        {
+            Console.WriteLine("接收到来自{0}的查询工作量列表的信息{1}", state.ClientIp, state.SocketMessage.Message); // 输出真正的信息
+            this.Log.Write(new LogMessage("接收到来自" + state.ClientIp + "的查询工作量列表的信息" + state.SocketMessage.Message, LogMessageType.Information));
+
+            ServerResponse response = new ServerResponse();
+
+            // json数据解包
+            int projectId = JsonConvert.DeserializeObject<int>(state.SocketMessage.Message);
+
+            //  首先检测
+            List<ContractItem> items = DALContractItem.QueryProjectItem(projectId);
+
+            if (items != null)
+            {
+                Console.WriteLine("查询工作量列表成功");
+                this.Log.Write(new LogMessage(state.ClientIp + "查询工作量列表成功", LogMessageType.Success));
+
+                response = ServerResponse.QUERY_PROJECT_ITEM_SUCCESS;
+            }
+            else
+            {
+                Console.WriteLine("查询工作量列表失败");
+                this.Log.Write(new LogMessage(state.ClientIp + "查询工作量列表失败", LogMessageType.Error));
+
+                response = ServerResponse.QUERY_PROJECT_ITEM_FAILED;
+            }
+
+            //  查询部门成功则同时发送[报头 + 信息] 
+            if (response.Equals(ServerResponse.QUERY_PROJECT_ITEM_SUCCESS))
+            {
+                AsyncSocketMessage socketMessage = new AsyncSocketMessage(response, items);
+                this.Send(state.ClientSocket, Encoding.UTF8.GetBytes(socketMessage.Package));
+            }
+            else      //  查询失败则只发报头
+            {
+                AsyncSocketMessage socketMessage = new AsyncSocketMessage(response);
+                this.Send(state.ClientSocket, Encoding.UTF8.GetBytes(socketMessage.Package));
+            }
+        }
+        #endregion
+
+
+        #region 查询会签单的工作量列表[2015-11-9 20:39] modify by gatieme
+        /// <summary>
+        ///  查询工作量列表的信息
+        ///  客户端发送的请求信息QUERY_CONTRACT_WORKLOAD_REQUEST  +  contractId[string]
+        ///  服务器返回的信息
+        ///  成功 QUERY_CONTRACT_WORKLOAD_SUCCESS + List<ContractWorkload>
+        ///  失败 QUERY_CONTRACT_WORKLOAD_FAILED
+        /// </summary>
+        /// <param name="state"></param>
+        private void RaiseQueryContractWorkloadRequest(AsyncSocketState state)
+        {
+            Console.WriteLine("接收到来自{0}的查询会签单的工作量信息{1}", state.ClientIp, state.SocketMessage.Message); // 输出真正的信息
+            this.Log.Write(new LogMessage("接收到来自" + state.ClientIp + "的查询会签单的工作量信息" + state.SocketMessage.Message, LogMessageType.Information));
+
+            ServerResponse response = new ServerResponse();
+
+            // json数据解包
+            string contractId = JsonConvert.DeserializeObject<string>(state.SocketMessage.Message);
+
+            //  首先检测
+            List<ContractWorkload> workloads = DALContractWorkload.QureyContractWorkLoad(contractId);
+
+            if (workloads != null)
+            {
+                Console.WriteLine("查查询会签单的工作量信息成功");
+                this.Log.Write(new LogMessage(state.ClientIp + "查询会签单的工作量信息成功", LogMessageType.Success));
+
+                response = ServerResponse.QUERY_CONTRACT_WORKLOAD_SUCCESS;
+            }
+            else
+            {
+                Console.WriteLine("查询会签单的工作量信息失败");
+                this.Log.Write(new LogMessage(state.ClientIp + "查询会签单的工作量信息失败", LogMessageType.Error));
+
+                response = ServerResponse.QUERY_CONTRACT_WORKLOAD_FAILED;
+            }
+
+            //  查询部门成功则同时发送[报头 + 信息] 
+            if (response.Equals(ServerResponse.QUERY_CONTRACT_WORKLOAD_SUCCESS))
+            {
+                AsyncSocketMessage socketMessage = new AsyncSocketMessage(response, workloads);
+                this.Send(state.ClientSocket, Encoding.UTF8.GetBytes(socketMessage.Package));
+            }
+            else      //  查询失败则只发报头
+            {
+                AsyncSocketMessage socketMessage = new AsyncSocketMessage(response);
+                this.Send(state.ClientSocket, Encoding.UTF8.GetBytes(socketMessage.Package));
+            }
+        }
+        #endregion
+
+
+        #endregion  /// 统计功能
     }
 }
 

@@ -98,6 +98,7 @@ namespace SignPressServer.SignDAL
                 cmd = con.CreateCommand();
 
                 cmd.CommandText = QUERY_CATEGORY_PROJECT;
+                cmd.Parameters.AddWithValue("@CategoryId", categoryId);
 
                 MySqlDataReader sqlRead = cmd.ExecuteReader();
                 cmd.Dispose();
