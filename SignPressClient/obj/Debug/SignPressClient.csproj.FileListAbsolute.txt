@@ -287,3 +287,4 @@ F:\SignPress\SignPressClient\SignPressClient\obj\Debug\SignPressClient.ViewConTe
 F:\SignPress\SignPressClient\SignPressClient\obj\Debug\SignPressClient.csproj.GenerateResource.Cache
 F:\SignPress\SignPressClient\SignPressClient\obj\Debug\SignPressClient.exe.manifest
 F:\SignPress\SignPressClient\SignPressClient\obj\Debug\SignPressClient.application
+F:\SignPress\SignPressClient\SignPressClient\obj\Debug\SignPressClient.csprojResolveAssemblyReference.cache

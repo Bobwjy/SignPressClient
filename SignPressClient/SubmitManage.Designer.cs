@@ -39,7 +39,6 @@
             this.button1 = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.Column1Info = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.Column2Info = new System.Windows.Forms.TextBox();
             this.panel4 = new System.Windows.Forms.Panel();
@@ -122,6 +121,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.AgreeStartDate = new System.Windows.Forms.DateTimePicker();
             this.label6 = new System.Windows.Forms.Label();
+            this.pName = new System.Windows.Forms.ComboBox();
             this.SubmitPlan.SuspendLayout();
             this.ConTempInfo.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -226,6 +226,7 @@
             this.IdDepartShortCall.Name = "IdDepartShortCall";
             this.IdDepartShortCall.Size = new System.Drawing.Size(44, 29);
             this.IdDepartShortCall.TabIndex = 5;
+            this.IdDepartShortCall.SelectedIndexChanged += new System.EventHandler(this.IdDepartShortCall_SelectedIndexChanged);
             // 
             // IdNo
             // 
@@ -312,20 +313,13 @@
             // 
             this.panel2.BackColor = System.Drawing.Color.White;
             this.tableLayoutPanel1.SetColumnSpan(this.panel2, 3);
-            this.panel2.Controls.Add(this.Column1Info);
+            this.panel2.Controls.Add(this.pName);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(219, 1);
             this.panel2.Margin = new System.Windows.Forms.Padding(0);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(498, 47);
             this.panel2.TabIndex = 0;
-            // 
-            // Column1Info
-            // 
-            this.Column1Info.Location = new System.Drawing.Point(3, 8);
-            this.Column1Info.Name = "Column1Info";
-            this.Column1Info.Size = new System.Drawing.Size(485, 29);
-            this.Column1Info.TabIndex = 0;
             // 
             // panel3
             // 
@@ -1177,6 +1171,15 @@
             this.label6.TabIndex = 0;
             this.label6.Text = "查询范围：";
             // 
+            // pName
+            // 
+            this.pName.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.pName.FormattingEnabled = true;
+            this.pName.Location = new System.Drawing.Point(3, 10);
+            this.pName.Name = "pName";
+            this.pName.Size = new System.Drawing.Size(210, 29);
+            this.pName.TabIndex = 6;
+            // 
             // SubmitManage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1199,7 +1202,6 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.panel4.ResumeLayout(false);
@@ -1256,7 +1258,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.TextBox Column1Info;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.TextBox Column2Info;
         private System.Windows.Forms.Panel panel4;
@@ -1344,5 +1345,6 @@
         private System.Windows.Forms.ComboBox IdFlag;
         private System.Windows.Forms.ComboBox IdCategory;
         private System.Windows.Forms.ComboBox IdDepartShortCall;
+        private System.Windows.Forms.ComboBox pName;
     }
 }

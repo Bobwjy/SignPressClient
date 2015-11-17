@@ -661,6 +661,12 @@ namespace SignPressClient
             UserHelper.PenddingList = list;
         }
 
+        private void IdDepartShortCall_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int depid = Convert.ToInt32(this.IdDepartShortCall.SelectedValue);
+
+        }
+
 
 
     }
