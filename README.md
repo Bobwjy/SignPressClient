@@ -1,3 +1,11 @@
+git如何删除本地所有未提交的更改，包括修改的、新增的、删除的
+如果你有的修改以及加入暂存区的话 
+那么 
+git reset --hard 
+git clean -xdf 
+
+
+
 # SignPressServer
 一个远程签单工具的服务器程序
 
