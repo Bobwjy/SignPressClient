@@ -13,6 +13,13 @@ namespace SignPressServer.SignData
     public class ContractWorkload
     {
 
+        private String m_id;
+        public String Id
+        {
+            get { return this.m_id; }
+            set { this.m_id = value; }
+        }
+
         /// <summary>
         /// 工作量所属的会签单编号
         /// </summary>

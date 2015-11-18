@@ -84,5 +84,180 @@ namespace SignPressServer.SignDAL
             return workloads;
         }
         #endregion
+
+
+        #region  插入部门信息
+        /// <summary>
+        /// 插入部门信息
+        /// </summary>
+        /// <param name="employee"></param>
+        /// <returns></returns>
+        private static String INSERT_WORKLOAD_STR = @"INSERT INTO `workload` (`contractid`, `itemid`, `work`, `expense`) VALUES (@ContractId, @ItemId, @Work, @Expense)";
+        public static bool InsertWorkload(ContractWorkload workload)
+        {
+            MySqlConnection con = DBTools.GetMySqlConnection();
+
+            MySqlCommand cmd;
+            int count = -1;                      // 受影响行数
+            try
+            {
+                con.Open();
+
+                cmd = con.CreateCommand();
+                cmd.CommandText = INSERT_WORKLOAD_STR;
+                cmd.Parameters.AddWithValue("@ContractId", workload.ContractId);             //  当前工作量所属的会签单信息
+                cmd.Parameters.AddWithValue("@ItemId", workload.Item.Id);                    //  当前工作量的工作量信息
+                cmd.Parameters.AddWithValue("@Work", workload.Work);                         //  当前工作量的工作量大小
+                cmd.Parameters.AddWithValue("@Expense", workload.Expense);                   //   当前工作量的报价
+
+
+                count = cmd.ExecuteNonQuery();
+                cmd.Dispose();
+
+                con.Close();
+                con.Dispose();
+                if (count == 1)     //  插入成功后的受影响行数为1
+                {
+                    Console.WriteLine("工作量信息插入成功");
+                    return true;
+                }
+                else
+                {
+                    Console.WriteLine("工作量信息插入失败");
+                    return false;
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+
+                if (con.State == ConnectionState.Open)
+                {
+                    con.Close();
+                }
+            }
+
+        }
+        #endregion
+
+
+        #region 删除工作量信息
+        /// <summary>
+        /// 删除部门的信息DeleteEmployee
+        /// </summary>
+        /// <param name="id">部门的部门号</param>
+        /// <returns></returns>
+        private static String DELETE_WORKLOAD_STR = @"DELETE FROM `workload` where(`contractid` = @ContractId and `itemid` = @ItemId)";
+
+        public static bool DeleteWorkload(ContractWorkload workload)
+        {
+            MySqlConnection con = DBTools.GetMySqlConnection();
+            MySqlCommand cmd;
+            int count = -1;
+            try
+            {
+                con.Open();
+
+                cmd = con.CreateCommand();
+
+                cmd.CommandText = DELETE_WORKLOAD_STR;
+                cmd.Parameters.AddWithValue("@Id", workload.ContractId);                        // 部门姓名
+                cmd.Parameters.AddWithValue("@ItemId", workload.Item.Id);
+
+                count = cmd.ExecuteNonQuery();
+                cmd.Dispose();
+
+                con.Close();
+                con.Dispose();
+
+                if (count == 1)
+                {
+                    Console.WriteLine("删除工作量[表" + workload.ContractId.ToString() + ", " + workload.Item.Id + "成功");
+                    return true;
+                }
+                else
+                {
+                    Console.WriteLine("删除工作量[表" + workload.ContractId.ToString() + ", " + workload.Item.Id + "失败");
+
+                    return false;
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+
+                if (con.State == ConnectionState.Open)
+                {
+                    con.Close();
+                }
+            }
+        }
+        #endregion
+
+
+        #region    修改工作量信息
+        private const String MODIFY_WORKLOAD_STR = @"UPDATE `workload` SET `work` = @Work, `expense` = @Expense WHERE (`contractid` = @ContractId and`itemid` = @ItemId)";
+        /// <summary>
+        /// 修改工作量信息
+        /// </summary>
+        /// <param name="workload"></param>
+        /// <returns></returns>
+        public static bool ModifyWorkload(ContractWorkload workload)
+        {
+            MySqlConnection con = DBTools.GetMySqlConnection();
+            MySqlCommand cmd;
+            int count = -1;
+            try
+            {
+                con.Open();
+
+                cmd = con.CreateCommand();
+
+                cmd.CommandText = MODIFY_WORKLOAD_STR;
+                cmd.Parameters.AddWithValue("@ContractId", workload.ContractId);
+                cmd.Parameters.AddWithValue("@ItemId", workload.Item.Id);
+                cmd.Parameters.AddWithValue("@Work", workload.Work);
+                cmd.Parameters.AddWithValue("@Expense", workload.Expense);              
+
+
+                count = cmd.ExecuteNonQuery();
+                cmd.Dispose();
+
+                con.Close();
+                con.Dispose();
+
+                if (count == 1)
+                {
+                    Console.WriteLine("删除工作量[表" + workload.ContractId.ToString() + ", " + workload.Item.Id + "成功");
+                    return true;
+                }
+                else
+                {
+                    Console.WriteLine("删除工作量[表" + workload.ContractId.ToString() + ", " + workload.Item.Id + "失败");
+
+                    return false;
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+
+                if (con.State == ConnectionState.Open)
+                {
+                    con.Close();
+                }
+            }
+        }
+        #endregion
+
     }
 }
