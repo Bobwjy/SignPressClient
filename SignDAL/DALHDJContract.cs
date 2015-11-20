@@ -12,37 +12,37 @@ using SignPressServer.SignData;
 
 namespace SignPressServer.SignDAL
 {
-    /*
-     * 航道局基本会签单的模版信息
-     */
-    class DALHDJContract
-    {
-        /// <summary>
-        /// 添加航道局会签单的信息串
-        /// </summary>
-        private const String INSERT_HDJCONTRACT_STR = @"INSERT INTO `hdjcontract` (`id`, `name`, `contempid`, `subempid`, `submitdate`, `columndata1`, `columndata2`, `columndata3`, `columndata4`, `columndata5`) 
-                                                        VALUES (@Id, @Name, @ConTempId, @SubEmpId, @SubmitDate, @ColumnData_1, @ColumnData_2, @ColumnData_3, @ColumnData_4, @ColumnData_5)";
+	/*
+	 * 航道局基本会签单的模版信息
+	 */
+	class DALHDJContract
+	{
+		/// <summary>
+		/// 添加航道局会签单的信息串
+		/// </summary>
+		private const String INSERT_HDJCONTRACT_STR = @"INSERT INTO `hdjcontract` (`id`, `name`, `contempid`, `subempid`, `submitdate`, `columndata1`, `columndata2`, `columndata3`, `columndata4`, `columndata5`) 
+														VALUES (@Id, @Name, @ConTempId, @SubEmpId, @SubmitDate, @ColumnData_1, @ColumnData_2, @ColumnData_3, @ColumnData_4, @ColumnData_5)";
 
-        /// <summary>
-        /// 删除航道局会签单的信息串
-        /// </summary>
-        private const String DELETE_HDJCONTRACT_ID_STR = @"DELETE FROM `hdjcontract` WHERE (`id` = @Id)";
+		/// <summary>
+		/// 删除航道局会签单的信息串
+		/// </summary>
+		private const String DELETE_HDJCONTRACT_ID_STR = @"DELETE FROM `hdjcontract` WHERE (`id` = @Id)";
 
-        /// <summary>
-        /// 修改航道局会签单的信息串
-        /// </summary>
-        private const String MODIFY_HDJCONTRACT_STR = @"UPDATE `hdjcontract`
-                                                        SET `submitdate` = @SubmitDate,
-                                                            `columndata1` = @ColumnData_1, `columndata2` = @ColumnData_2, `columndata3` = @ColumnData_3, `columndata4` = @ColumnData_4, `columndata5` = @ColumnData_5        
-                                                        WHERE (`id` = @Id)";
+		/// <summary>
+		/// 修改航道局会签单的信息串
+		/// </summary>
+		private const String MODIFY_HDJCONTRACT_STR = @"UPDATE `hdjcontract`
+														SET `submitdate` = @SubmitDate,
+															`columndata1` = @ColumnData_1, `columndata2` = @ColumnData_2, `columndata3` = @ColumnData_3, `columndata4` = @ColumnData_4, `columndata5` = @ColumnData_5        
+														WHERE (`id` = @Id)";
 
-        /// <summary>
-        /// 查询航道局会签单的信息串
-        /// </summary>
-        private const String QUERY_HDJCONTRACT_STR = @"SELECT `id`, `name`, `subempid`, `subempname`, `submitdate` FROM `hdjcontract`";
+		/// <summary>
+		/// 查询航道局会签单的信息串
+		/// </summary>
+		private const String QUERY_HDJCONTRACT_STR = @"SELECT `id`, `name`, `subempid`, `subempname`, `submitdate` FROM `hdjcontract`";
 
 
-        private const String GET_HDJCONTRACT_STR = @"SELECT h.id id, h.name name, c.id contempid, c.name contempname, 
+		private const String GET_HDJCONTRACT_STR = @"SELECT h.id id, h.name name, c.id contempid, c.name contempname, 
 c.column1 columnname1, c.column2 columnname2, c.column3 columnname3, c.column4 columnname4, c.column5 columnname5,
 h.columndata1 columndata1, h.columndata2 columndata2, h.columndata3 columndata3, h.columndata4 columndata4, h.columndata5 columndata5, 
 c.signinfo1 signinfo1, c.signinfo2 signinfo2, c.signinfo3 signinfo3, c.signinfo4 signinfo4, c.signinfo5 signinfo5, c.signinfo5 signinfo5, c.signinfo6 signinfo6, c.signinfo7 signinfo7, c.signinfo8 signinfo8,                                                                  
@@ -60,328 +60,328 @@ and c.signid1 = e1.id  and c.signid2 = e2.id and c.signid3 = e3.id and c.signid4
 and d1.id = e1.departmentid and d2.id = e2.departmentid and d3.id = e3.departmentid and d4.id = e4.departmentid and d5.id = e5.departmentid and d6.id = e6.departmentid and d7.id = e7.departmentid and d8.id = e8.departmentid
 and h.id = s.conid);";
 
-        #region 判断当前会签单shio
-        private const string IS_HDJCONTRACT_EXIST_STR = @"SELECT Count(id) count FROM `hdjcontract` WHERE (id = @Id)";
-
-        public static bool IsHDJContractExist(string contractId)
-        {
-            MySqlConnection con = DBTools.GetMySqlConnection();
-            MySqlCommand cmd;
-
-            int count = -1;
-
-            try
-            {
-                con.Open();
-
-                cmd = con.CreateCommand();
-
-                cmd.CommandText = IS_HDJCONTRACT_EXIST_STR;
-                cmd.Parameters.AddWithValue("@Id", contractId);
-
-                MySqlDataReader sqlRead = cmd.ExecuteReader();
-                cmd.Dispose();
-
-                while (sqlRead.Read())
-                {
-                    count = int.Parse(sqlRead["count"].ToString());
-                }
-
-
-                con.Close();
-                con.Dispose();
-
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-            finally
-            {
-
-                if (con.State == ConnectionState.Open)
-                {
-                    con.Close();
-                }
-            }
-            if (count == 1)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-        #endregion
-
-
-        #region 插入会签单模版信息
-
-        public static bool InsertHDJContract(HDJContract contract)
-        {
-            MySqlConnection con = DBTools.GetMySqlConnection();
-            MySqlCommand cmd;
-            
-            int count = -1;         // 受影响行数
-
-            // 当天的会签单的数目
-            int currDayConCount = DALHDJContract.GetDayHDJContractCount(System.DateTime.Now.Date);
-            
-            try
-            {
-                con.Open();
-
-                cmd = con.CreateCommand();
-                cmd.CommandText = INSERT_HDJCONTRACT_STR;
-
-
-                /// 修改编号的设置
-                /// 目前编号设置[前缀串 年4位 + 月2位 + 日2位 + 编号6位]
-                //////////////////////////////////////////////////////////////////////
-                // modify by gatieme 2015-07-10 14Label2
-                ///  修改ID为手动填写
-                if (contract.Id == "")
-                {
-                    contract.Id += System.DateTime.Now.ToString("yyyyMMdd") + (currDayConCount + 1).ToString().PadLeft(6, '0');
-                }
-                //////////////////////////////////////////////////////////////////////
-
-                
-
-                
-
-                cmd.Parameters.AddWithValue("@Id", contract.Id);
-                cmd.Parameters.AddWithValue("@Name", contract.Name);
-                cmd.Parameters.AddWithValue("@ConTempId", contract.ConTemp.TempId);
-                cmd.Parameters.AddWithValue("@SubEmpId", contract.SubmitEmployee.Id);
-                cmd.Parameters.AddWithValue("@SubmitDate", System.DateTime.Now);
-                
-                ///  5个栏目信息
-                for (int cnt = 0; cnt < 5; cnt++)
-                {
-                    String strColumn = "@ColumnData_" + (cnt + 1).ToString();
-                    cmd.Parameters.AddWithValue(strColumn, contract.ColumnDatas[cnt]);
-                }
-
-
-
-                count = cmd.ExecuteNonQuery();
-                cmd.Dispose();
-
-                con.Close();
-                con.Dispose();
-                if (count == 1)     //  插入成功后的受影响行数为1
-                {
-                    Console.WriteLine("插入会签单成功");
-                    ///////////////////////////////////////////////////////////
-                    //  此处应该判断如果提交人和申请人的第一个人的同一个个人的话，直接同意
-                    //  但是暂时不予考虑，应该自己的确需要签字审核
-                    ///////////////////////////////////////////////////////////
-                    return true;
-                }
-                else
-                {
-                    Console.WriteLine("插入会签单失败");
-                    return false;
-                }
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-            finally
-            {
-
-                if (con.State == ConnectionState.Open)
-                {
-                    con.Close();
-                }
-            }
-
-        }
-
-        #endregion
-
-
-        #region 删除会签单模版信息
-        /// <summary>
-        /// 删除编号为conTempId的会签单模版信息
-        /// </summary>
-        /// <param name="conTempId"></param>
-        /// <returns></returns>
-        public static bool DeleteHDJContact(int conTempId)
-        {
-            MySqlConnection con = DBTools.GetMySqlConnection();
-            MySqlCommand cmd;
-
-            int count = -1;
-            try
-            {
-                con.Open();
-
-                cmd = con.CreateCommand();
-
-                cmd.CommandText = DELETE_HDJCONTRACT_ID_STR;
-                cmd.Parameters.AddWithValue("@Id", conTempId);                        // 会签单模版姓名
-
-
-                count = cmd.ExecuteNonQuery();
-                cmd.Dispose();
-
-                con.Close();
-                con.Dispose();
-
-                if (count == 1)
-                {
-                    Console.WriteLine("删除会签单" + conTempId.ToString() + "成功");
-
-                    return true;
-                }
-                else
-                {
-                    Console.WriteLine("删除会签单" + conTempId.ToString() + "失败");
-
-                    return false;
-                }
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-            finally
-            {
-
-                if (con.State == ConnectionState.Open)
-                {
-                    con.Close();
-                }
-            }
-        }
-        #endregion
-
-
-        #region 修改会签单模版的信息
-        public static bool ModifyHDJContract(HDJContract contract)
-        {
-            MySqlConnection con = DBTools.GetMySqlConnection();
-            MySqlCommand cmd;
-
-            int count = -1;
-            try
-            {
-                con.Open();
-
-                cmd = con.CreateCommand();
-                cmd.CommandText = MODIFY_HDJCONTRACT_STR;
-
-                cmd.Parameters.AddWithValue("@Id", contract.Id);
-                //cmd.Parameters.AddWithValue("@Name", contract.Name);
-                //cmd.Parameters.AddWithValue("@TempId", contract.ConTemp.TempId);
-                //cmd.Parameters.AddWithValue("@SubEmpId", contract.SubmitEmployee.Id);
-                cmd.Parameters.AddWithValue("@SubmitDate", System.DateTime.Now);
-                ///  5个栏目信息
-                for (int cnt = 0; cnt < 5; cnt++)
-                {
-                    String strColumn = "@ColumnData_" + (cnt + 1).ToString();
-                    cmd.Parameters.AddWithValue(strColumn, contract.ColumnDatas[cnt]);
-                }
-
-                count = cmd.ExecuteNonQuery();
-                cmd.Dispose();
-
-                con.Close();
-                con.Dispose();
-
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-            finally
-            {
-
-                if (con.State == ConnectionState.Open)
-                {
-                    con.Close();
-                }
-            }
-            if (count == 1)
-            {
-                Console.WriteLine("修改会签单信息" + contract.Id.ToString() + "成功");
-
-                return true;
-            }
-            else
-            {
-                Console.WriteLine("修改会签单信息" + contract.Id.ToString() + "失败");
-
-                return false;
-            }
-        }
-        #endregion
-
-
-        #region 查询会签单的信息
-        public static List<HDJContract> QueryHDJContract()
-        {
-            MySqlConnection con = DBTools.GetMySqlConnection();
-            MySqlCommand cmd;
-
-            List<HDJContract> contracts = new List<HDJContract>();
-
-            try
-            {
-                con.Open();
-
-                cmd = con.CreateCommand();
-
-                cmd.CommandText = QUERY_HDJCONTRACT_STR;
-
-
-                MySqlDataReader sqlRead = cmd.ExecuteReader();
-                cmd.Dispose();
-
-                while (sqlRead.Read())
-                {
-                    HDJContract contract = new HDJContract();
-
-
-                }
-
-                con.Close();
-                con.Dispose();
-
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-            finally
-            {
-
-                if (con.State == ConnectionState.Open)
-                {
-                    con.Close();
-                }
-            }
-            return contracts;
-        }
-        #endregion
-
-
-        #region 查询会签单模版的信息
-        public static HDJContract GetHDJContract(String contractId)
-        {
-            return GetHDJContactRefuse(contractId);
-        }
-        #endregion
-
-
-
-        #region 获取到会签单更加详细的信息(特使用在查询被拒绝的单子)
-
-        private const String GET_HDJCONTRACT_REFUSE_STR = @"SELECT h.id id, h.name name, c.id contempid, c.name contempname, 
+		#region 判断当前会签单是否存在
+		private const string IS_HDJCONTRACT_EXIST_STR = @"SELECT Count(id) count FROM `hdjcontract` WHERE (id = @Id)";
+
+		public static bool IsHDJContractExist(string contractId)
+		{
+			MySqlConnection con = DBTools.GetMySqlConnection();
+			MySqlCommand cmd;
+
+			int count = -1;
+
+			try
+			{
+				con.Open();
+
+				cmd = con.CreateCommand();
+
+				cmd.CommandText = IS_HDJCONTRACT_EXIST_STR;
+				cmd.Parameters.AddWithValue("@Id", contractId);
+
+				MySqlDataReader sqlRead = cmd.ExecuteReader();
+				cmd.Dispose();
+
+				while (sqlRead.Read())
+				{
+					count = int.Parse(sqlRead["count"].ToString());
+				}
+
+
+				con.Close();
+				con.Dispose();
+
+			}
+			catch (Exception)
+			{
+				throw;
+			}
+			finally
+			{
+
+				if (con.State == ConnectionState.Open)
+				{
+					con.Close();
+				}
+			}
+			if (count == 1)
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}
+		#endregion
+
+
+		#region 插入会签单模版信息
+
+		public static bool InsertHDJContract(HDJContract contract)
+		{
+			MySqlConnection con = DBTools.GetMySqlConnection();
+			MySqlCommand cmd;
+			
+			int count = -1;         // 受影响行数
+
+			// 当天的会签单的数目
+			int currDayConCount = DALHDJContract.GetDayHDJContractCount(System.DateTime.Now.Date);
+			
+			try
+			{
+				con.Open();
+
+				cmd = con.CreateCommand();
+				cmd.CommandText = INSERT_HDJCONTRACT_STR;
+
+
+				/// 修改编号的设置
+				/// 目前编号设置[前缀串 年4位 + 月2位 + 日2位 + 编号6位]
+				//////////////////////////////////////////////////////////////////////
+				// modify by gatieme 2015-07-10 14Label2
+				///  修改ID为手动填写
+				if (contract.Id == "")
+				{
+					contract.Id += System.DateTime.Now.ToString("yyyyMMdd") + (currDayConCount + 1).ToString().PadLeft(6, '0');
+				}
+				//////////////////////////////////////////////////////////////////////
+
+				
+
+				
+
+				cmd.Parameters.AddWithValue("@Id", contract.Id);
+				cmd.Parameters.AddWithValue("@Name", contract.Name);
+				cmd.Parameters.AddWithValue("@ConTempId", contract.ConTemp.TempId);
+				cmd.Parameters.AddWithValue("@SubEmpId", contract.SubmitEmployee.Id);
+				cmd.Parameters.AddWithValue("@SubmitDate", System.DateTime.Now);
+				
+				///  5个栏目信息
+				for (int cnt = 0; cnt < 5; cnt++)
+				{
+					String strColumn = "@ColumnData_" + (cnt + 1).ToString();
+					cmd.Parameters.AddWithValue(strColumn, contract.ColumnDatas[cnt]);
+				}
+
+
+
+				count = cmd.ExecuteNonQuery();
+				cmd.Dispose();
+
+				con.Close();
+				con.Dispose();
+				if (count == 1)     //  插入成功后的受影响行数为1
+				{
+					Console.WriteLine("插入会签单成功");
+					///////////////////////////////////////////////////////////
+					//  此处应该判断如果提交人和申请人的第一个人的同一个个人的话，直接同意
+					//  但是暂时不予考虑，应该自己的确需要签字审核
+					///////////////////////////////////////////////////////////
+					return true;
+				}
+				else
+				{
+					Console.WriteLine("插入会签单失败");
+					return false;
+				}
+			}
+			catch (Exception)
+			{
+				throw;
+			}
+			finally
+			{
+
+				if (con.State == ConnectionState.Open)
+				{
+					con.Close();
+				}
+			}
+
+		}
+
+		#endregion
+
+
+		#region 删除会签单模版信息
+		/// <summary>
+		/// 删除编号为conTempId的会签单模版信息
+		/// </summary>
+		/// <param name="conTempId"></param>
+		/// <returns></returns>
+		public static bool DeleteHDJContact(int conTempId)
+		{
+			MySqlConnection con = DBTools.GetMySqlConnection();
+			MySqlCommand cmd;
+
+			int count = -1;
+			try
+			{
+				con.Open();
+
+				cmd = con.CreateCommand();
+
+				cmd.CommandText = DELETE_HDJCONTRACT_ID_STR;
+				cmd.Parameters.AddWithValue("@Id", conTempId);                        // 会签单模版姓名
+
+
+				count = cmd.ExecuteNonQuery();
+				cmd.Dispose();
+
+				con.Close();
+				con.Dispose();
+
+				if (count == 1)
+				{
+					Console.WriteLine("删除会签单" + conTempId.ToString() + "成功");
+
+					return true;
+				}
+				else
+				{
+					Console.WriteLine("删除会签单" + conTempId.ToString() + "失败");
+
+					return false;
+				}
+			}
+			catch (Exception)
+			{
+				throw;
+			}
+			finally
+			{
+
+				if (con.State == ConnectionState.Open)
+				{
+					con.Close();
+				}
+			}
+		}
+		#endregion
+
+
+		#region 修改会签单模版的信息
+		public static bool ModifyHDJContract(HDJContract contract)
+		{
+			MySqlConnection con = DBTools.GetMySqlConnection();
+			MySqlCommand cmd;
+
+			int count = -1;
+			try
+			{
+				con.Open();
+
+				cmd = con.CreateCommand();
+				cmd.CommandText = MODIFY_HDJCONTRACT_STR;
+
+				cmd.Parameters.AddWithValue("@Id", contract.Id);
+				//cmd.Parameters.AddWithValue("@Name", contract.Name);
+				//cmd.Parameters.AddWithValue("@TempId", contract.ConTemp.TempId);
+				//cmd.Parameters.AddWithValue("@SubEmpId", contract.SubmitEmployee.Id);
+				cmd.Parameters.AddWithValue("@SubmitDate", System.DateTime.Now);
+				///  5个栏目信息
+				for (int cnt = 0; cnt < 5; cnt++)
+				{
+					String strColumn = "@ColumnData_" + (cnt + 1).ToString();
+					cmd.Parameters.AddWithValue(strColumn, contract.ColumnDatas[cnt]);
+				}
+
+				count = cmd.ExecuteNonQuery();
+				cmd.Dispose();
+
+				con.Close();
+				con.Dispose();
+
+			}
+			catch (Exception)
+			{
+				throw;
+			}
+			finally
+			{
+
+				if (con.State == ConnectionState.Open)
+				{
+					con.Close();
+				}
+			}
+			if (count == 1)
+			{
+				Console.WriteLine("修改会签单信息" + contract.Id.ToString() + "成功");
+
+				return true;
+			}
+			else
+			{
+				Console.WriteLine("修改会签单信息" + contract.Id.ToString() + "失败");
+
+				return false;
+			}
+		}
+		#endregion
+
+
+		#region 查询会签单的信息
+		public static List<HDJContract> QueryHDJContract()
+		{
+			MySqlConnection con = DBTools.GetMySqlConnection();
+			MySqlCommand cmd;
+
+			List<HDJContract> contracts = new List<HDJContract>();
+
+			try
+			{
+				con.Open();
+
+				cmd = con.CreateCommand();
+
+				cmd.CommandText = QUERY_HDJCONTRACT_STR;
+
+
+				MySqlDataReader sqlRead = cmd.ExecuteReader();
+				cmd.Dispose();
+
+				while (sqlRead.Read())
+				{
+					HDJContract contract = new HDJContract();
+
+
+				}
+
+				con.Close();
+				con.Dispose();
+
+			}
+			catch (Exception)
+			{
+				throw;
+			}
+			finally
+			{
+
+				if (con.State == ConnectionState.Open)
+				{
+					con.Close();
+				}
+			}
+			return contracts;
+		}
+		#endregion
+
+
+		#region 查询会签单模版的信息
+		public static HDJContract GetHDJContract(String contractId)
+		{
+			return GetHDJContactRefuse(contractId);
+		}
+		#endregion
+
+
+
+		#region 获取到会签单更加详细的信息(特使用在查询被拒绝的单子)
+
+		private const String GET_HDJCONTRACT_REFUSE_STR = @"SELECT h.id id, h.name name, c.id contempid, c.name contempname, 
 c.column1 columnname1, c.column2 columnname2, c.column3 columnname3, c.column4 columnname4, c.column5 columnname5,
 h.columndata1 columndata1, h.columndata2 columndata2, h.columndata3 columndata3, h.columndata4 columndata4, h.columndata5 columndata5, 
 c.signinfo1 signinfo1, c.signinfo2 signinfo2, c.signinfo3 signinfo3, c.signinfo4 signinfo4, c.signinfo5 signinfo5, c.signinfo5 signinfo5, c.signinfo6 signinfo6, c.signinfo7 signinfo7, c.signinfo8 signinfo8,                                                                  
@@ -432,7 +432,7 @@ FROM signaturedetail sd, hdjcontract hc, signaturelevel sl, signaturestatus st
 WHERE hc.id = @Id and hc.id = sd.conid and st.conid = hc.id
   and sl.contempid = hc.contempid and sl.signnum = '7' and sd.empid = sl.empid
   and sd.updatecount = st.updatecount) remark7,
-    
+	
   (SELECT sd.remark remark8
 FROM signaturedetail sd, hdjcontract hc, signaturelevel sl, signaturestatus st
 WHERE hc.id = @Id and hc.id = sd.conid and st.conid = hc.id
@@ -453,127 +453,127 @@ and d1.id = e1.departmentid and d2.id = e2.departmentid and d3.id = e3.departmen
 and h.id = s.conid);
 ";
 
-        //  keyi
-        //public static HDJContract ViewHDJContract(String contractId)
-        //{
-        //    DALHDJContract.GetHDJContactRefuse(contractId);
-        //}
-        
-        public static HDJContract GetHDJContactRefuse(String contractId)
-        { 
-            MySqlConnection con = DBTools.GetMySqlConnection();
-            MySqlCommand cmd;
+		//  keyi
+		//public static HDJContract ViewHDJContract(String contractId)
+		//{
+		//    DALHDJContract.GetHDJContactRefuse(contractId);
+		//}
+		
+		public static HDJContract GetHDJContactRefuse(String contractId)
+		{ 
+			MySqlConnection con = DBTools.GetMySqlConnection();
+			MySqlCommand cmd;
 
-            HDJContract contract = new HDJContract();
+			HDJContract contract = new HDJContract();
 
-            try
-            {
-                con.Open();
+			try
+			{
+				con.Open();
 
-                cmd = con.CreateCommand();
+				cmd = con.CreateCommand();
 
-                cmd.CommandText = GET_HDJCONTRACT_REFUSE_STR;
-                cmd.Parameters.AddWithValue("@Id", contractId);
+				cmd.CommandText = GET_HDJCONTRACT_REFUSE_STR;
+				cmd.Parameters.AddWithValue("@Id", contractId);
 
-                MySqlDataReader sqlRead = cmd.ExecuteReader();
-                cmd.Dispose();
+				MySqlDataReader sqlRead = cmd.ExecuteReader();
+				cmd.Dispose();
 
-                while (sqlRead.Read())
-                {
+				while (sqlRead.Read())
+				{
 
-                    contract.Id = sqlRead["id"].ToString();
-                    contract.Name = sqlRead["name"].ToString();
-                    ContractTemplate conTemp = new ContractTemplate();
-                    conTemp.TempId = int.Parse(sqlRead["contempid"].ToString());
-                    conTemp.Name = sqlRead["contempname"].ToString();
-                    // 5个栏目信息
-                    // conTemp.ColumnCount = 5;
-                    List<String> columnnames = new List<String>();
-                    List<String> columndatas = new List<String>();
-                    for (int cnt = 1; cnt <= 5; cnt++)
-                    {
-                        String strColumnname = "columnname" + cnt.ToString();
-                        String strColumnData = "columndata" + cnt.ToString();
-                        
-                        columnnames.Add(sqlRead[strColumnname].ToString());
-                        columndatas.Add(sqlRead[strColumnData].ToString());
-                    }
-                    conTemp.ColumnNames = columnnames;
-                    contract.ColumnDatas = columndatas;
+					contract.Id = sqlRead["id"].ToString();
+					contract.Name = sqlRead["name"].ToString();
+					ContractTemplate conTemp = new ContractTemplate();
+					conTemp.TempId = int.Parse(sqlRead["contempid"].ToString());
+					conTemp.Name = sqlRead["contempname"].ToString();
+					// 5个栏目信息
+					// conTemp.ColumnCount = 5;
+					List<String> columnnames = new List<String>();
+					List<String> columndatas = new List<String>();
+					for (int cnt = 1; cnt <= 5; cnt++)
+					{
+						String strColumnname = "columnname" + cnt.ToString();
+						String strColumnData = "columndata" + cnt.ToString();
+						
+						columnnames.Add(sqlRead[strColumnname].ToString());
+						columndatas.Add(sqlRead[strColumnData].ToString());
+					}
+					conTemp.ColumnNames = columnnames;
+					contract.ColumnDatas = columndatas;
 
-                    // 8个签字人信息
-                    // conTemp.SignCount = 8;
-                    List<SignatureTemplate> signatures = new List<SignatureTemplate>();
-                    List<int> signResults = new List<int>();
-                    List<String > signRemarks = new List<String>();
-                    for (int cnt = 1; cnt <= 8; cnt++)
-                    {
-                        String strSignInfo = "signinfo" + cnt.ToString();
-                        String strSignId = "signid" + cnt.ToString();
-                        String strSignName = "signname" + cnt.ToString();
-                        String strDepartmentId = "departmentid" + cnt.ToString();
-                        String strDepartmentName = "departmentname" + cnt.ToString();
-                        String strSignLevel = "signlevel" + cnt.ToString();
-                        String strCanView = "canview" + cnt.ToString();
-                        String strCanDownload = "candownload" + cnt.ToString();
-                        String strSignResult = "result" + cnt.ToString();
-                        String strSignRemark = "remark" + cnt.ToString();
-
-
-                        SignatureTemplate signDatas = new SignatureTemplate();
-                        signDatas.SignInfo = sqlRead[strSignInfo].ToString();
-                        signDatas.SignLevel = int.Parse(sqlRead[strSignLevel].ToString());
-                        signDatas.CanView = int.Parse(sqlRead[strCanView].ToString());
-                        signDatas.CanDownload = int.Parse(sqlRead[strCanDownload].ToString());
-
-                        Employee employee = new Employee();
-                        employee.Id = int.Parse(sqlRead[strSignId].ToString());
-                        employee.Name = sqlRead[strSignName].ToString();
-                        Department department = new Department();
-                        department.Id = int.Parse(sqlRead[strDepartmentId].ToString());
-                        department.Name = sqlRead[strDepartmentName].ToString();
-                        employee.Department = department;
-                        signDatas.SignEmployee = employee;
-                        
-                        
-                        
-                        // 8个人的签字结果
-                        signResults.Add(int.Parse(sqlRead[strSignResult].ToString()));
-                        signRemarks.Add(sqlRead[strSignRemark].ToString());
-
-                        signatures.Add(signDatas);
-                    }
-                    conTemp.SignDatas = signatures;
-                    contract.ConTemp = conTemp;
-
-                    contract.SignResults = signResults;
-                    contract.SignRemarks = signRemarks;
-
-                }
-
-                con.Close();
-                con.Dispose();
-
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-            finally
-            {
-
-                if (con.State == ConnectionState.Open)
-                {
-                    con.Close();
-                }
-            }
-            return contract;
-        }
-        #endregion
+					// 8个签字人信息
+					// conTemp.SignCount = 8;
+					List<SignatureTemplate> signatures = new List<SignatureTemplate>();
+					List<int> signResults = new List<int>();
+					List<String > signRemarks = new List<String>();
+					for (int cnt = 1; cnt <= 8; cnt++)
+					{
+						String strSignInfo = "signinfo" + cnt.ToString();
+						String strSignId = "signid" + cnt.ToString();
+						String strSignName = "signname" + cnt.ToString();
+						String strDepartmentId = "departmentid" + cnt.ToString();
+						String strDepartmentName = "departmentname" + cnt.ToString();
+						String strSignLevel = "signlevel" + cnt.ToString();
+						String strCanView = "canview" + cnt.ToString();
+						String strCanDownload = "candownload" + cnt.ToString();
+						String strSignResult = "result" + cnt.ToString();
+						String strSignRemark = "remark" + cnt.ToString();
 
 
-        #region 获取已经完成签字的会签单的信息
-        private const String GET_HDJCONTRACT_AGREE_STR = @"SELECT h.id id, h.name name, c.id contempid, c.name contempname, 
+						SignatureTemplate signDatas = new SignatureTemplate();
+						signDatas.SignInfo = sqlRead[strSignInfo].ToString();
+						signDatas.SignLevel = int.Parse(sqlRead[strSignLevel].ToString());
+						signDatas.CanView = int.Parse(sqlRead[strCanView].ToString());
+						signDatas.CanDownload = int.Parse(sqlRead[strCanDownload].ToString());
+
+						Employee employee = new Employee();
+						employee.Id = int.Parse(sqlRead[strSignId].ToString());
+						employee.Name = sqlRead[strSignName].ToString();
+						Department department = new Department();
+						department.Id = int.Parse(sqlRead[strDepartmentId].ToString());
+						department.Name = sqlRead[strDepartmentName].ToString();
+						employee.Department = department;
+						signDatas.SignEmployee = employee;
+						
+						
+						
+						// 8个人的签字结果
+						signResults.Add(int.Parse(sqlRead[strSignResult].ToString()));
+						signRemarks.Add(sqlRead[strSignRemark].ToString());
+
+						signatures.Add(signDatas);
+					}
+					conTemp.SignDatas = signatures;
+					contract.ConTemp = conTemp;
+
+					contract.SignResults = signResults;
+					contract.SignRemarks = signRemarks;
+
+				}
+
+				con.Close();
+				con.Dispose();
+
+			}
+			catch (Exception)
+			{
+				throw;
+			}
+			finally
+			{
+
+				if (con.State == ConnectionState.Open)
+				{
+					con.Close();
+				}
+			}
+			return contract;
+		}
+		#endregion
+
+
+		#region 获取已经完成签字的会签单的信息
+		private const String GET_HDJCONTRACT_AGREE_STR = @"SELECT h.id id, h.name name, c.id contempid, c.name contempname, 
 c.column1 columnname1, c.column2 columnname2, c.column3 columnname3, c.column4 columnname4, c.column5 columnname5,
 h.columndata1 columndata1, h.columndata2 columndata2, h.columndata3 columndata3, h.columndata4 columndata4, h.columndata5 columndata5, 
 c.signinfo1 signinfo1, c.signinfo2 signinfo2, c.signinfo3 signinfo3, c.signinfo4 signinfo4, c.signinfo5 signinfo5, c.signinfo5 signinfo5, c.signinfo6 signinfo6, c.signinfo7 signinfo7, c.signinfo8 signinfo8,                                                                  
@@ -605,211 +605,377 @@ and d1.id = e1.departmentid and d2.id = e2.departmentid and d3.id = e3.departmen
  and s6.empid = e6.id and s6.conid = h.id and s6.updatecount = s.updatecount
  and s7.empid = e7.id and s7.conid = h.id and s7.updatecount = s.updatecount
  and s8.empid = e8.id and s8.conid = h.id and s8.updatecount = s.updatecount)";
-        public static HDJContract GetHDJContactAgree(String contractId)
-        { 
-            MySqlConnection con = DBTools.GetMySqlConnection();
-            MySqlCommand cmd;
+		public static HDJContract GetHDJContactAgree(String contractId)
+		{ 
+			MySqlConnection con = DBTools.GetMySqlConnection();
+			MySqlCommand cmd;
 
-            HDJContract contract = new HDJContract();
+			HDJContract contract = new HDJContract();
 
-            try
-            {
-                con.Open();
+			try
+			{
+				con.Open();
 
-                cmd = con.CreateCommand();
+				cmd = con.CreateCommand();
 
-                cmd.CommandText = GET_HDJCONTRACT_AGREE_STR;
-                cmd.Parameters.AddWithValue("@Id", contractId);
+				cmd.CommandText = GET_HDJCONTRACT_AGREE_STR;
+				cmd.Parameters.AddWithValue("@Id", contractId);
 
-                MySqlDataReader sqlRead = cmd.ExecuteReader();
-                cmd.Dispose();
+				MySqlDataReader sqlRead = cmd.ExecuteReader();
+				cmd.Dispose();
 
-                while (sqlRead.Read())
-                {
+				while (sqlRead.Read())
+				{
 
-                    contract.Id = sqlRead["id"].ToString();
-                    contract.Name = sqlRead["name"].ToString();
-                    ContractTemplate conTemp = new ContractTemplate();
-                    conTemp.TempId = int.Parse(sqlRead["contempid"].ToString());
-                    conTemp.Name = sqlRead["contempname"].ToString();
-                    // 5个栏目信息
-                    // conTemp.ColumnCount = 5;
-                    List<String> columnnames = new List<String>();
-                    List<String> columndatas = new List<String>();
-                    for (int cnt = 1; cnt <= 5; cnt++)
-                    {
-                        String strColumnname = "columnname" + cnt.ToString();
-                        String strColumnData = "columndata" + cnt.ToString();
-                        columnnames.Add(sqlRead[strColumnname].ToString());
-                        columndatas.Add(sqlRead[strColumnData].ToString());
-                    }
-                    conTemp.ColumnNames = columnnames;
-                    contract.ColumnDatas = columndatas;
+					contract.Id = sqlRead["id"].ToString();
+					contract.Name = sqlRead["name"].ToString();
+					ContractTemplate conTemp = new ContractTemplate();
+					conTemp.TempId = int.Parse(sqlRead["contempid"].ToString());
+					conTemp.Name = sqlRead["contempname"].ToString();
+					// 5个栏目信息
+					// conTemp.ColumnCount = 5;
+					List<String> columnnames = new List<String>();
+					List<String> columndatas = new List<String>();
+					for (int cnt = 1; cnt <= 5; cnt++)
+					{
+						String strColumnname = "columnname" + cnt.ToString();
+						String strColumnData = "columndata" + cnt.ToString();
+						columnnames.Add(sqlRead[strColumnname].ToString());
+						columndatas.Add(sqlRead[strColumnData].ToString());
+					}
+					conTemp.ColumnNames = columnnames;
+					contract.ColumnDatas = columndatas;
 
-                    // 8个签字人信息
-                    // conTemp.SignCount = 8;
-                    List<SignatureTemplate> signatures = new List<SignatureTemplate>();
-                    List<int> signResults = new List<int>();
-                    List<String > signRemarks = new List<String>();
-                    for (int cnt = 1; cnt <= 8; cnt++)
-                    {
-                        String strSignInfo = "signinfo" + cnt.ToString();
-                        String strSignId = "signid" + cnt.ToString();
-                        String strSignName = "signname" + cnt.ToString();
-                        String strDepartmentId = "departmentid" + cnt.ToString();
-                        String strDepartmentName = "departmentname" + cnt.ToString();
-                        String strSignLevel = "signlevel" + cnt.ToString();
-                        String strSignResult = "result" + cnt.ToString();
-                        String strSignRemark = "remark" + cnt.ToString();
+					// 8个签字人信息
+					// conTemp.SignCount = 8;
+					List<SignatureTemplate> signatures = new List<SignatureTemplate>();
+					List<int> signResults = new List<int>();
+					List<String > signRemarks = new List<String>();
+					for (int cnt = 1; cnt <= 8; cnt++)
+					{
+						String strSignInfo = "signinfo" + cnt.ToString();
+						String strSignId = "signid" + cnt.ToString();
+						String strSignName = "signname" + cnt.ToString();
+						String strDepartmentId = "departmentid" + cnt.ToString();
+						String strDepartmentName = "departmentname" + cnt.ToString();
+						String strSignLevel = "signlevel" + cnt.ToString();
+						String strSignResult = "result" + cnt.ToString();
+						String strSignRemark = "remark" + cnt.ToString();
 
 
-                        SignatureTemplate signDatas = new SignatureTemplate();
-                        signDatas.SignInfo = sqlRead[strSignInfo].ToString();
-                        signDatas.SignLevel = int.Parse(sqlRead[strSignLevel].ToString());
-                        Employee employee = new Employee();
-                        employee.Id = int.Parse(sqlRead[strSignId].ToString());
-                        employee.Name = sqlRead[strSignName].ToString();
-                        Department department = new Department();
-                        department.Id = int.Parse(sqlRead[strDepartmentId].ToString());
-                        department.Name = sqlRead[strDepartmentName].ToString();
-                        employee.Department = department;
-                        signDatas.SignEmployee = employee;
-                        
-                        
-                        
-                        // 8个人的签字结果
-                        signResults.Add(int.Parse(sqlRead[strSignResult].ToString()));
-                       // Console.WriteLine(1111);
-                        signRemarks.Add(sqlRead[strSignRemark].ToString());
+						SignatureTemplate signDatas = new SignatureTemplate();
+						signDatas.SignInfo = sqlRead[strSignInfo].ToString();
+						signDatas.SignLevel = int.Parse(sqlRead[strSignLevel].ToString());
+						Employee employee = new Employee();
+						employee.Id = int.Parse(sqlRead[strSignId].ToString());
+						employee.Name = sqlRead[strSignName].ToString();
+						Department department = new Department();
+						department.Id = int.Parse(sqlRead[strDepartmentId].ToString());
+						department.Name = sqlRead[strDepartmentName].ToString();
+						employee.Department = department;
+						signDatas.SignEmployee = employee;
+						
+						
+						
+						// 8个人的签字结果
+						signResults.Add(int.Parse(sqlRead[strSignResult].ToString()));
+					   // Console.WriteLine(1111);
+						signRemarks.Add(sqlRead[strSignRemark].ToString());
 
-                        signatures.Add(signDatas);
-                    }
-                    conTemp.SignDatas = signatures;
-                    contract.ConTemp = conTemp;
+						signatures.Add(signDatas);
+					}
+					conTemp.SignDatas = signatures;
+					contract.ConTemp = conTemp;
 
-                    contract.SignResults = signResults;
-                    contract.SignRemarks = signRemarks;
+					contract.SignResults = signResults;
+					contract.SignRemarks = signRemarks;
 
-                }
+				}
 
-                con.Close();
-                con.Dispose();
+				con.Close();
+				con.Dispose();
 
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-            finally
-            {
+			}
+			catch (Exception)
+			{
+				throw;
+			}
+			finally
+			{
 
-                if (con.State == ConnectionState.Open)
-                {
-                    con.Close();
-                }
-            }
-            return contract;
-        }
-        #endregion
+				if (con.State == ConnectionState.Open)
+				{
+					con.Close();
+				}
+			}
+			return contract;
+		}
+		#endregion
 
-        #region 获取当天会签单的数目
-        public static String GET_DAY_HDJCONTRACT_COUNT_STR = @"SELECT Count(id) dayconcount FROM `hdjcontract` WHERE DATE(submitdate) = @Date";
-        /// <summary>
-        /// 获取当天会签单的数目
-        /// </summary>
-        /// <param name="date"></param>
-        /// <returns></returns>
-        public static int GetDayHDJContractCount(DateTime date)
-        {
-            MySqlConnection con = DBTools.GetMySqlConnection();
-            MySqlCommand cmd;
+		#region 获取当天会签单的数目
+		public static String GET_DAY_HDJCONTRACT_COUNT_STR = @"SELECT Count(id) dayconcount FROM `hdjcontract` WHERE DATE(submitdate) = @Date";
+		/// <summary>
+		/// 获取当天会签单的数目
+		/// </summary>
+		/// <param name="date"></param>
+		/// <returns></returns>
+		public static int GetDayHDJContractCount(DateTime date)
+		{
+			MySqlConnection con = DBTools.GetMySqlConnection();
+			MySqlCommand cmd;
 
-            int count = 0;
+			int count = 0;
 
-            try
-            {
-                con.Open();
+			try
+			{
+				con.Open();
 
-                cmd = con.CreateCommand();
+				cmd = con.CreateCommand();
 
-                cmd.CommandText = GET_DAY_HDJCONTRACT_COUNT_STR;
-                cmd.Parameters.AddWithValue("@Date", date);
+				cmd.CommandText = GET_DAY_HDJCONTRACT_COUNT_STR;
+				cmd.Parameters.AddWithValue("@Date", date);
 
-                MySqlDataReader sqlRead = cmd.ExecuteReader();
-                cmd.Dispose();
+				MySqlDataReader sqlRead = cmd.ExecuteReader();
+				cmd.Dispose();
 
-                while (sqlRead.Read())
-                {
+				while (sqlRead.Read())
+				{
 
-                    count = int.Parse(sqlRead["dayconcount"].ToString());
-                }
+					count = int.Parse(sqlRead["dayconcount"].ToString());
+				}
 
-                con.Close();
-                con.Dispose();
+				con.Close();
+				con.Dispose();
 
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-            finally
-            {
+			}
+			catch (Exception)
+			{
+				throw;
+			}
+			finally
+			{
 
-                if (con.State == ConnectionState.Open)
-                {
-                    con.Close();
-                }
-            }
-            return count;
-        }
-             
-	    #endregion
+				if (con.State == ConnectionState.Open)
+				{
+					con.Close();
+				}
+			}
+			return count;
+		}
+			 
+		#endregion
 
-        #region 获取当前员工提交的会签单数目
-        private const String GET_EMPLOYEE_SUBMIT_HDJCONTRACT_COUNT_STR = @"SELECT Count(id) count FROM `hdjcontract` WHERE (subempid = @EmployeeId)";
-        public static int GetEmployeeSubmitedHDJContractCount(int employeeId)
-        {
-            MySqlConnection con = DBTools.GetMySqlConnection();
-            MySqlCommand cmd;
+		#region 获取当前员工提交的会签单数目
+		private const String GET_EMPLOYEE_SUBMIT_HDJCONTRACT_COUNT_STR = @"SELECT Count(id) count FROM `hdjcontract` WHERE (subempid = @EmployeeId)";
+		public static int GetEmployeeSubmitedHDJContractCount(int employeeId)
+		{
+			MySqlConnection con = DBTools.GetMySqlConnection();
+			MySqlCommand cmd;
 
-            int count = 0;
+			int count = 0;
 
-            try
-            {
-                con.Open();
+			try
+			{
+				con.Open();
 
-                cmd = con.CreateCommand();
+				cmd = con.CreateCommand();
 
-                cmd.CommandText = GET_EMPLOYEE_SUBMIT_HDJCONTRACT_COUNT_STR;
-                cmd.Parameters.AddWithValue("@EmployeeId", employeeId);
+				cmd.CommandText = GET_EMPLOYEE_SUBMIT_HDJCONTRACT_COUNT_STR;
+				cmd.Parameters.AddWithValue("@EmployeeId", employeeId);
 
-                MySqlDataReader sqlRead = cmd.ExecuteReader();
-                cmd.Dispose();
+				MySqlDataReader sqlRead = cmd.ExecuteReader();
+				cmd.Dispose();
 
-                while (sqlRead.Read())
-                {
+				while (sqlRead.Read())
+				{
 
-                    count = int.Parse(sqlRead["count"].ToString());
-                }
+					count = int.Parse(sqlRead["count"].ToString());
+				}
 
-                con.Close();
-                con.Dispose();
+				con.Close();
+				con.Dispose();
 
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-            finally
-            {
+			}
+			catch (Exception)
+			{
+				throw;
+			}
+			finally
+			{
 
-                if (con.State == ConnectionState.Open)
-                {
-                    con.Close();
-                }
-            }
-            return count;
-        }
-        #endregion
-    }
+				if (con.State == ConnectionState.Open)
+				{
+					con.Close();
+				}
+			}
+			return count;
+		}
+		#endregion
+
+
+
+
+		#region 统计当前类别Category的会签单的数目
+		///  编号共5位。
+		///  第一位代表是单位名称简称；
+		///  第二位代表类别简称；类别最多有四类，即界、内、应和例。具体的含义是为界河（简称为界）航道养护工程、内河（简称为内）航道养护工程、应急抢通（简称为应）工程、例会项目（简称为例）工程。
+		///  第三位如果为0，表示该会签审批单是在线（通过我们的系统）审批完成的；否则该位为1，表示离线审批（通过传统方式，没有通过系统，而是领导手工签字完成）；
+		///  第四位、第五位表示本年度的分类编号，要求年度内实现自加功能，年初重新初始化为0（可人工、或系统自动完成）。
+		///  该系统的使用对象有黑河航道局、佳木斯航道局、哈总段、一中心、二中心、三中心、测绘中心、省航道局八个科室，具体明细如下：
+		private static String GET_CATEGORY_HDJCONTRACT_COUNT_STR = "SELECT Count(id) count FROM `hdjcontract` WHERE id like (@CategoryShortCall)";
+		//public static int GetCategoryHDJContractCount(ContractCategory category)
+		public static int GetCategoryHDJContractCount(Search search)
+		{
+			MySqlConnection con = DBTools.GetMySqlConnection();
+			MySqlCommand cmd;
+
+			int count = 0;
+
+			try
+			{
+				con.Open();
+
+				cmd = con.CreateCommand();
+
+				cmd.CommandText = GET_CATEGORY_HDJCONTRACT_COUNT_STR;
+				cmd.Parameters.AddWithValue("@CategoryShortCall", "%" + search.CategoryShortCall + "%");
+
+				MySqlDataReader sqlRead = cmd.ExecuteReader();
+				cmd.Dispose();
+
+				while (sqlRead.Read())
+				{
+
+					count = int.Parse(sqlRead["count"].ToString());
+				}
+
+				con.Close();
+				con.Dispose();
+
+			}
+			catch (Exception)
+			{
+				throw;
+			}
+			finally
+			{
+
+				if (con.State == ConnectionState.Open)
+				{
+					con.Close();
+				}
+			}
+			return count;
+
+		}
+		
+		#endregion
+
+		#region 统计当前部门申请的会签单的数目
+		///  编号共5位。
+		///  第一位代表是单位名称简称；
+		///  第二位代表类别简称；类别最多有四类，即界、内、应和例。具体的含义是为界河（简称为界）航道养护工程、内河（简称为内）航道养护工程、应急抢通（简称为应）工程、例会项目（简称为例）工程。
+		///  第三位如果为0，表示该会签审批单是在线（通过我们的系统）审批完成的；否则该位为1，表示离线审批（通过传统方式，没有通过系统，而是领导手工签字完成）；
+		///  第四位、第五位表示本年度的分类编号，要求年度内实现自加功能，年初重新初始化为0（可人工、或系统自动完成）。
+		///  该系统的使用对象有黑河航道局、佳木斯航道局、哈总段、一中心、二中心、三中心、测绘中心、省航道局八个科室，具体明细如下：
+		private static String GET_SDEPARTMENT_HDJCONTRACT_COUNT_STR = "SELECT Count(id) count FROM `hdjcontract` WHERE id like (@SDepartmentShortall)";
+		//public static int GetSDepartmentHDJContractCount(SDepartment department)
+		public static int GetSDepartmentHDJContractCount(Search search)
+
+		{
+			MySqlConnection con = DBTools.GetMySqlConnection();
+			MySqlCommand cmd;
+
+			int count = 0;
+
+			try
+			{
+				con.Open();
+
+				cmd = con.CreateCommand();
+
+				cmd.CommandText = GET_SDEPARTMENT_HDJCONTRACT_COUNT_STR;
+				cmd.Parameters.AddWithValue("@SDepartmentShortall", search.SDepartmentShortlCall + "%");
+
+				MySqlDataReader sqlRead = cmd.ExecuteReader();
+				cmd.Dispose();
+
+				while (sqlRead.Read())
+				{
+
+					count = int.Parse(sqlRead["count"].ToString());
+				}
+
+				con.Close();
+				con.Dispose();
+
+			}
+			catch (Exception)
+			{
+				throw;
+			}
+			finally
+			{
+
+				if (con.State == ConnectionState.Open)
+				{
+					con.Close();
+				}
+			}
+			return count;
+
+		}
+
+		#endregion
+
+		#region 统计当前部门签署的类别为category的会签单的数目
+		private static String GET_SDEPARTMENT_CATEGORY_HDJCONTRACT_COUNT_STR = "SELECT Count(id) count FROM `hdjcontract` WHERE id like @SDepartmentCategoryShortall";
+		//public static int GetSDepartmentHDJContractCount(SDepartment department)
+		public static int GetSDepartmentCategoryHDJContractCount(Search search)
+		{
+			MySqlConnection con = DBTools.GetMySqlConnection();
+			MySqlCommand cmd;
+
+			int count = 0;
+
+			try
+			{
+				con.Open();
+
+				cmd = con.CreateCommand();
+
+				cmd.CommandText = GET_SDEPARTMENT_CATEGORY_HDJCONTRACT_COUNT_STR;
+				cmd.Parameters.AddWithValue("@SDepartmentCategoryShortall", search.SDepartmentShortlCall + search.CategoryShortCall + "%");
+
+				MySqlDataReader sqlRead = cmd.ExecuteReader();
+				cmd.Dispose();
+
+				while (sqlRead.Read())
+				{
+
+					count = int.Parse(sqlRead["count"].ToString());
+				}
+
+				con.Close();
+				con.Dispose();
+
+			}
+			catch (Exception)
+			{
+				throw;
+			}
+			finally
+			{
+
+				if (con.State == ConnectionState.Open)
+				{
+					con.Close();
+				}
+			}
+			return count;
+
+		}
+		#endregion
+
+	}
 }

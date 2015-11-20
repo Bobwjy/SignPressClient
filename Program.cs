@@ -255,6 +255,8 @@ namespace SignPressServer
             //}
 
             //Console.WriteLine(JsonConvert.SerializeObject(DALContractWorkload.QureyContractWorkLoad("1")));
+            //Console.WriteLine(DALHDJContract.GetCategoryHDJContractCount(new ContractCategory{CategoryShortCall = "内"}));
+            Console.WriteLine(DALHDJContract.GetSDepartmentCategoryHDJContractCount(new Search {SDepartmentShortlCall = "申", CategoryShortCall = "内"}));
             #endregion
 
 

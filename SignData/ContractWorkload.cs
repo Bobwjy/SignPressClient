@@ -12,7 +12,7 @@ namespace SignPressServer.SignData
     /// </summary>
     public class ContractWorkload
     {
-
+        //modify by gatieme at 2015-11-18 15:09
         private String m_id;
         public String Id
         {

@@ -20,7 +20,6 @@ namespace SignPressServer.SignDAL
 {
     public class DALContractItem
     {
-
         
         #region 获取到当前部门所申请的会签单的可申请工程的项目列表
         private const String QUERY_PROJECT_ITEM_STR = @"SELECT id, projectid, item FROM `item` WHERE (`projectid` = @ProjectId)";
