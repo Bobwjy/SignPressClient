@@ -822,9 +822,9 @@ and d1.id = e1.departmentid and d2.id = e2.departmentid and d3.id = e3.departmen
 		///  第三位如果为0，表示该会签审批单是在线（通过我们的系统）审批完成的；否则该位为1，表示离线审批（通过传统方式，没有通过系统，而是领导手工签字完成）；
 		///  第四位、第五位表示本年度的分类编号，要求年度内实现自加功能，年初重新初始化为0（可人工、或系统自动完成）。
 		///  该系统的使用对象有黑河航道局、佳木斯航道局、哈总段、一中心、二中心、三中心、测绘中心、省航道局八个科室，具体明细如下：
-		private static String GET_CATEGORY_HDJCONTRACT_COUNT_STR = "SELECT Count(id) count FROM `hdjcontract` WHERE id like (@CategoryShortCall)";
+        private static String GET_CATEGORY_YEAR_HDJCONTRACT_COUNT_STR = "SELECT Count(id) count FROM `hdjcontract` WHERE id like (@CategoryYear)";
 		//public static int GetCategoryHDJContractCount(ContractCategory category)
-		public static int GetCategoryHDJContractCount(Search search)
+        public static int GetCategoryYearHDJContractCount(Search search)
 		{
 			MySqlConnection con = DBTools.GetMySqlConnection();
 			MySqlCommand cmd;
@@ -837,8 +837,8 @@ and d1.id = e1.departmentid and d2.id = e2.departmentid and d3.id = e3.departmen
 
 				cmd = con.CreateCommand();
 
-				cmd.CommandText = GET_CATEGORY_HDJCONTRACT_COUNT_STR;
-				cmd.Parameters.AddWithValue("@CategoryShortCall", "%" + search.CategoryShortCall + "%");
+                cmd.CommandText = GET_CATEGORY_YEAR_HDJCONTRACT_COUNT_STR;
+                cmd.Parameters.AddWithValue("@CategoryYear", "_" + search.CategoryShortCall + search.Year.ToString() + "%");
 
 				MySqlDataReader sqlRead = cmd.ExecuteReader();
 				cmd.Dispose();
@@ -878,9 +878,9 @@ and d1.id = e1.departmentid and d2.id = e2.departmentid and d3.id = e3.departmen
 		///  第三位如果为0，表示该会签审批单是在线（通过我们的系统）审批完成的；否则该位为1，表示离线审批（通过传统方式，没有通过系统，而是领导手工签字完成）；
 		///  第四位、第五位表示本年度的分类编号，要求年度内实现自加功能，年初重新初始化为0（可人工、或系统自动完成）。
 		///  该系统的使用对象有黑河航道局、佳木斯航道局、哈总段、一中心、二中心、三中心、测绘中心、省航道局八个科室，具体明细如下：
-		private static String GET_SDEPARTMENT_HDJCONTRACT_COUNT_STR = "SELECT Count(id) count FROM `hdjcontract` WHERE id like (@SDepartmentShortall)";
+        private static String GET_SDEPARTMENT_YEAR_HDJCONTRACT_COUNT_STR = "SELECT Count(id) count FROM `hdjcontract` WHERE id like (@SDepartmentYear)";
 		//public static int GetSDepartmentHDJContractCount(SDepartment department)
-		public static int GetSDepartmentHDJContractCount(Search search)
+		public static int GetSDepartmentYearHDJContractCount(Search search)
 
 		{
 			MySqlConnection con = DBTools.GetMySqlConnection();
@@ -894,8 +894,8 @@ and d1.id = e1.departmentid and d2.id = e2.departmentid and d3.id = e3.departmen
 
 				cmd = con.CreateCommand();
 
-				cmd.CommandText = GET_SDEPARTMENT_HDJCONTRACT_COUNT_STR;
-				cmd.Parameters.AddWithValue("@SDepartmentShortall", search.SDepartmentShortlCall + "%");
+                cmd.CommandText = GET_SDEPARTMENT_YEAR_HDJCONTRACT_COUNT_STR;
+				cmd.Parameters.AddWithValue("@SDepartmentYear", search.SDepartmentShortlCall + "_" + search.Year.ToString() + "%");
 
 				MySqlDataReader sqlRead = cmd.ExecuteReader();
 				cmd.Dispose();
@@ -929,9 +929,9 @@ and d1.id = e1.departmentid and d2.id = e2.departmentid and d3.id = e3.departmen
 		#endregion
 
 		#region 统计当前部门签署的类别为category的会签单的数目
-		private static String GET_SDEPARTMENT_CATEGORY_HDJCONTRACT_COUNT_STR = "SELECT Count(id) count FROM `hdjcontract` WHERE id like @SDepartmentCategoryShortall";
+        private static String GET_SDEPARTMENT_CATEGORY_YEAR_HDJCONTRACT_COUNT_STR = "SELECT Count(id) count FROM `hdjcontract` WHERE id like @SDepartmentCategoryYear";
 		//public static int GetSDepartmentHDJContractCount(SDepartment department)
-		public static int GetSDepartmentCategoryHDJContractCount(Search search)
+        public static int GetSDepartmentCategoryYearHDJContractCount(Search search)
 		{
 			MySqlConnection con = DBTools.GetMySqlConnection();
 			MySqlCommand cmd;
@@ -944,15 +944,14 @@ and d1.id = e1.departmentid and d2.id = e2.departmentid and d3.id = e3.departmen
 
 				cmd = con.CreateCommand();
 
-				cmd.CommandText = GET_SDEPARTMENT_CATEGORY_HDJCONTRACT_COUNT_STR;
-				cmd.Parameters.AddWithValue("@SDepartmentCategoryShortall", search.SDepartmentShortlCall + search.CategoryShortCall + "%");
+                cmd.CommandText = GET_SDEPARTMENT_CATEGORY_YEAR_HDJCONTRACT_COUNT_STR;
+				cmd.Parameters.AddWithValue("@SDepartmentCategoryYear", search.SDepartmentShortlCall + search.CategoryShortCall + search.Year.ToString() +"%");
 
 				MySqlDataReader sqlRead = cmd.ExecuteReader();
 				cmd.Dispose();
 
 				while (sqlRead.Read())
 				{
-
 					count = int.Parse(sqlRead["count"].ToString());
 				}
 
@@ -977,5 +976,9 @@ and d1.id = e1.departmentid and d2.id = e2.departmentid and d3.id = e3.departmen
 		}
 		#endregion
 
-	}
+        
+
+
+
+    }
 }

@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50529
 File Encoding         : 65001
 
-Date: 2015-11-06 22:21:46
+Date: 2015-11-21 11:12:40
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -67,9 +67,7 @@ INSERT INTO `conidcategory` VALUES ('42', '3', '4');
 INSERT INTO `conidcategory` VALUES ('43', '4', '1');
 INSERT INTO `conidcategory` VALUES ('44', '4', '2');
 INSERT INTO `conidcategory` VALUES ('45', '4', '3');
-INSERT INTO `conidcategory` VALUES ('46', '4', '4');
 INSERT INTO `conidcategory` VALUES ('47', '5', '1');
-INSERT INTO `conidcategory` VALUES ('48', '5', '2');
 INSERT INTO `conidcategory` VALUES ('49', '5', '4');
 
 -- ----------------------------
@@ -155,8 +153,8 @@ CREATE TABLE `department` (
 INSERT INTO `department` VALUES ('1', '申请科', '申', '1', '1', '1', '1');
 INSERT INTO `department` VALUES ('2', '养护科', '养', '1', '1', '1', '1');
 INSERT INTO `department` VALUES ('3', '计划科', '计', '1', '1', '1', '1');
-INSERT INTO `department` VALUES ('4', '财务科', '财', '1', '1', '1', '1');
-INSERT INTO `department` VALUES ('5', '行政科', '政', '1', '1', '0', '1');
+INSERT INTO `department` VALUES ('4', '财务科', '财', '1', '1', '1', '0');
+INSERT INTO `department` VALUES ('5', '行政科', '政', '1', '0', '0', '1');
 
 -- ----------------------------
 -- Table structure for employee
@@ -216,11 +214,100 @@ CREATE TABLE `hdjcontract` (
 -- Records of hdjcontract
 -- ----------------------------
 INSERT INTO `hdjcontract` VALUES ('1', '会签单', '1', '阿里巴巴', '马云', '你没', '你妹', '赵老五', '2', null);
-INSERT INTO `hdjcontract` VALUES ('20150621124713', '养护及例会项目拨款会签审批单 ', '1', '航道局', '百度收购案', '收购百度', '1000', '2000', '2', '2015-06-21 00:00:00');
-INSERT INTO `hdjcontract` VALUES ('20150621125041', '养护及例会项目拨款会签审批单 ', '1', '航道局', '腾讯收购案', '收购腾讯', '200', '200', '2', '2015-06-21 00:00:00');
-INSERT INTO `hdjcontract` VALUES ('20150621131837', '养护及例会项目拨款会签审批单 ', '1', 'dfrfrg', 'sdgf', 'dsg', 'dsgf', 'sdg', '2', '2015-06-21 00:00:00');
-INSERT INTO `hdjcontract` VALUES ('20150621132328', '养护及例会项目拨款会签审批单 ', '1', 'g`w', 'ewf', 'ewf', 'fwedf', 'fw', '2', '2015-06-21 00:00:00');
-INSERT INTO `hdjcontract` VALUES ('20150621182606', '养护及例会项目拨款会签审批单 ', '1', 'dsds', 'dsdsds', 'dsgff', 'sdasga', 'ga', '2', '2015-06-21 18:26:06');
+INSERT INTO `hdjcontract` VALUES ('政内2015001', '养护及例会项目拨款会签审批单 ', '1', 'g`w', 'ewf', 'ewf', 'fwedf', 'fw', '2', '2015-06-21 00:00:00');
+INSERT INTO `hdjcontract` VALUES ('政界2015003', '养护及例会项目拨款会签审批单 ', '1', 'dfrfrg', 'sdgf', 'dsg', 'dsgf', 'sdg', '2', '2015-06-21 00:00:00');
+INSERT INTO `hdjcontract` VALUES ('申内2015002', '养护及例会项目拨款会签审批单 ', '1', 'dsds', 'dsdsds', 'dsgff', 'sdasga', 'ga', '2', '2015-06-21 18:26:06');
+INSERT INTO `hdjcontract` VALUES ('申界2015001', '养护及例会项目拨款会签审批单 ', '1', '航道局', '百度收购案', '收购百度', '1000', '2000', '2', '2015-06-21 00:00:00');
+INSERT INTO `hdjcontract` VALUES ('申界2015002', '养护及例会项目拨款会签审批单 ', '1', '航道局', '腾讯收购案', '收购腾讯', '200', '200', '2', '2015-06-21 00:00:00');
+
+-- ----------------------------
+-- Table structure for item
+-- ----------------------------
+DROP TABLE IF EXISTS `item`;
+CREATE TABLE `item` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `projectid` int(11) DEFAULT NULL,
+  `item` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `projectid` (`projectid`),
+  CONSTRAINT `item_ibfk_1` FOREIGN KEY (`projectid`) REFERENCES `project` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=73 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of item
+-- ----------------------------
+INSERT INTO `item` VALUES ('1', '1', '航道巡查');
+INSERT INTO `item` VALUES ('2', '1', '航道测量');
+INSERT INTO `item` VALUES ('3', '1', '航道疏浚');
+INSERT INTO `item` VALUES ('4', '1', '水文观测及咨询');
+INSERT INTO `item` VALUES ('5', '1', '养护补给');
+INSERT INTO `item` VALUES ('6', '1', '仪器检测费');
+INSERT INTO `item` VALUES ('7', '2', '航标巡查');
+INSERT INTO `item` VALUES ('8', '2', '航标养护及维修');
+INSERT INTO `item` VALUES ('9', '2', '器材购置');
+INSERT INTO `item` VALUES ('10', '2', '黑中957-893km遥测遥控航标安装');
+INSERT INTO `item` VALUES ('11', '3', '船体养护');
+INSERT INTO `item` VALUES ('12', '3', '机电设备维修');
+INSERT INTO `item` VALUES ('13', '3', '船舶检验');
+INSERT INTO `item` VALUES ('14', '3', '维修配件及材料');
+INSERT INTO `item` VALUES ('15', '3', '安全与通讯设备保养');
+INSERT INTO `item` VALUES ('16', '3', '卫星天线');
+INSERT INTO `item` VALUES ('17', '3', '水处理');
+INSERT INTO `item` VALUES ('18', '4', '房屋维护-日常维护');
+INSERT INTO `item` VALUES ('19', '4', '房屋维护-肇兴站房维修改造');
+INSERT INTO `item` VALUES ('20', '4', '房屋维护-逊克站房维修改造');
+INSERT INTO `item` VALUES ('21', '4', '房屋维护-航标段船架设陆地电缆');
+INSERT INTO `item` VALUES ('22', '4', '卧泊基地维护-黑河基地日常养护');
+INSERT INTO `item` VALUES ('23', '4', '卧泊基地维护-黑河基地维修改造');
+INSERT INTO `item` VALUES ('24', '4', '卧泊基地维护-同江基地日常养护');
+INSERT INTO `item` VALUES ('25', '4', '卧泊基地维护-同江基地维修改造');
+INSERT INTO `item` VALUES ('26', '4', '卧泊基地维护-漠河基地日常养护');
+INSERT INTO `item` VALUES ('27', '4', '卧泊基地维护-佳木斯基地维修改造');
+INSERT INTO `item` VALUES ('28', '5', '航道安全保障(暂估、暂列）');
+INSERT INTO `item` VALUES ('29', '5', '外事协调');
+INSERT INTO `item` VALUES ('30', '5', '政策及技术研究');
+INSERT INTO `item` VALUES ('31', '5', '设计');
+INSERT INTO `item` VALUES ('32', '5', '监理');
+INSERT INTO `item` VALUES ('33', '5', '船员伙食津贴');
+INSERT INTO `item` VALUES ('34', '5', '航道养护津贴');
+INSERT INTO `item` VALUES ('35', '5', '职工培训费');
+INSERT INTO `item` VALUES ('36', '5', '船员冬季劳保用品');
+INSERT INTO `item` VALUES ('37', '5', '航道卫生监督费');
+INSERT INTO `item` VALUES ('38', '5', '临时用工费');
+INSERT INTO `item` VALUES ('39', '5', '执法服装及办公费');
+INSERT INTO `item` VALUES ('40', '5', '航道养护专项检查、管理费');
+INSERT INTO `item` VALUES ('41', '6', '延伸养护调研费\r\n');
+INSERT INTO `item` VALUES ('42', '7', '航道巡查');
+INSERT INTO `item` VALUES ('43', '7', '航道测量');
+INSERT INTO `item` VALUES ('44', '7', '仪器购置及检测费');
+INSERT INTO `item` VALUES ('45', '7', '航道疏浚');
+INSERT INTO `item` VALUES ('46', '7', '水工整治');
+INSERT INTO `item` VALUES ('47', '7', '航道清障');
+INSERT INTO `item` VALUES ('48', '7', '水文观测及咨询');
+INSERT INTO `item` VALUES ('49', '8', '航标巡查');
+INSERT INTO `item` VALUES ('50', '8', '航标保养及维修');
+INSERT INTO `item` VALUES ('51', '8', '航标器材购置');
+INSERT INTO `item` VALUES ('52', '8', '示位标及三姓9#标');
+INSERT INTO `item` VALUES ('53', '8', '94-113航标遥测遥控');
+INSERT INTO `item` VALUES ('54', '9', '船体保养');
+INSERT INTO `item` VALUES ('55', '9', '机电设备维修');
+INSERT INTO `item` VALUES ('56', '9', '船舶检验');
+INSERT INTO `item` VALUES ('57', '9', '配件、备件及材料费');
+INSERT INTO `item` VALUES ('58', '9', '安全与通讯设备保养');
+INSERT INTO `item` VALUES ('59', '9', '水处理');
+INSERT INTO `item` VALUES ('60', '10', '站房维护-日常维护');
+INSERT INTO `item` VALUES ('61', '10', '站房维护-三姓维修');
+INSERT INTO `item` VALUES ('62', '10', '站房维护-绥滨维修');
+INSERT INTO `item` VALUES ('63', '10', '卧泊基地维护-哈尔滨基地日常养护');
+INSERT INTO `item` VALUES ('64', '10', '卧泊基地维护-佳木斯基地日常养护');
+INSERT INTO `item` VALUES ('65', '10', '卧泊基地维护-哈尔滨不间断电源');
+INSERT INTO `item` VALUES ('66', '11', '工程质量检测');
+INSERT INTO `item` VALUES ('67', '11', '设计费');
+INSERT INTO `item` VALUES ('68', '11', '监理费');
+INSERT INTO `item` VALUES ('69', '11', '卫生监督检查经费');
+INSERT INTO `item` VALUES ('70', '11', '船员伙食津贴');
+INSERT INTO `item` VALUES ('71', '11', '船员航行津贴');
+INSERT INTO `item` VALUES ('72', '11', '内河劳动保护用品');
 
 -- ----------------------------
 -- Table structure for project
@@ -342,6 +429,30 @@ INSERT INTO `signaturestatus` VALUES ('2015-06-21 13:18:37', '20150621131837', '
 INSERT INTO `signaturestatus` VALUES ('2015-06-21 13:23:28', '20150621132328', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '1', '3', null, '0');
 INSERT INTO `signaturestatus` VALUES ('2015-06-21 18:20:05', '1', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '1', '3', null, '0');
 INSERT INTO `signaturestatus` VALUES ('2015-06-21 18:26:06', '20150621182606', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '1', '3', null, '0');
+
+-- ----------------------------
+-- Table structure for workload
+-- ----------------------------
+DROP TABLE IF EXISTS `workload`;
+CREATE TABLE `workload` (
+  `id` varchar(255) NOT NULL,
+  `contractid` varchar(255) DEFAULT NULL,
+  `itemid` int(11) DEFAULT NULL,
+  `work` decimal(10,2) DEFAULT NULL,
+  `expense` decimal(10,2) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `workload_ibfk_1` (`contractid`),
+  KEY `workload_ibfk_2` (`itemid`),
+  CONSTRAINT `workload_ibfk_1` FOREIGN KEY (`contractid`) REFERENCES `hdjcontract` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `workload_ibfk_2` FOREIGN KEY (`itemid`) REFERENCES `item` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of workload
+-- ----------------------------
+INSERT INTO `workload` VALUES ('1', '1', '1', '100.00', '100.00');
+INSERT INTO `workload` VALUES ('2', '1', '2', '100.00', '100.00');
+INSERT INTO `workload` VALUES ('3', '1', '3', '100.00', '100.00');
 
 -- ----------------------------
 -- Table structure for yhjlhxmbkcontract

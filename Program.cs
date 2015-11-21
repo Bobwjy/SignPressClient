@@ -253,10 +253,10 @@ namespace SignPressServer
             //{
             //    Console.WriteLine(item.Id + ", " + item.ProjectId + ", " + item.Item);
             //}
-
             //Console.WriteLine(JsonConvert.SerializeObject(DALContractWorkload.QureyContractWorkLoad("1")));
-            //Console.WriteLine(DALHDJContract.GetCategoryHDJContractCount(new ContractCategory{CategoryShortCall = "内"}));
-            Console.WriteLine(DALHDJContract.GetSDepartmentCategoryHDJContractCount(new Search {SDepartmentShortlCall = "申", CategoryShortCall = "内"}));
+            Console.WriteLine(DALHDJContract.GetCategoryYearHDJContractCount(new Search { CategoryShortCall = "内", Year = 2015 }));
+            Console.WriteLine(DALHDJContract.GetSDepartmentYearHDJContractCount(new Search { SDepartmentShortlCall = "申", Year = 2015 }));
+            Console.WriteLine(DALHDJContract.GetSDepartmentCategoryYearHDJContractCount(new Search { SDepartmentShortlCall = "申", CategoryShortCall = "内", Year = 2015 }));
             #endregion
 
 

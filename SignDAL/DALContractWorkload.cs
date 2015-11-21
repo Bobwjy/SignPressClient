@@ -259,8 +259,69 @@ namespace SignPressServer.SignDAL
         }
         #endregion
 
+        #region 统计工作量的信息
+        private static String GET_SDEPARTMENT_CATEGORY_WORKLOAD_STR = @"SELECT item, work, expense FROM `workload` WHERE `conid` like @SDepartmentCategoryYear";
+        public static List<ContractWorkload> GetSDepartmentCategoryWorkload(Search search)
+        {
+            error
+            MySqlConnection con = DBTools.GetMySqlConnection();
+            MySqlCommand cmd;
+
+            List<ContractWorkload> workloads = new List<ContractWorkload>();
+
+            try
+            {
+                con.Open();
+
+                cmd = con.CreateCommand();
+
+                cmd.CommandText = GET_SDEPARTMENT_CATEGORY_WORKLOAD_STR;
+                cmd.Parameters.AddWithValue("@SDepartmentCategoryYear", "");
+
+                MySqlDataReader sqlRead = cmd.ExecuteReader();
+
+                cmd.Dispose();
+
+                while (sqlRead.Read())
+                {
+                    ContractWorkload workload = new ContractWorkload();
+
+                    workload.ContractId = "";
+
+                    workload.Work = double.Parse(sqlRead["work"].ToString());
+                    workload.Expense = double.Parse(sqlRead["expense"].ToString());
+
+                    ContractItem item = new ContractItem();
+                    item.Id = int.Parse(sqlRead["itemid"].ToString());
+                    item.ProjectId = int.Parse(sqlRead["projectid"].ToString());
+                    item.Item = sqlRead["item"].ToString();
+                    workload.Item = item;
+                    //Console.WriteLine(workload.Work + "  " + workload.Expense);
+
+                    workloads.Add(workload);
+                }
 
 
+                con.Close();
+                con.Dispose();
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+
+                if (con.State == ConnectionState.Open)
+                {
+                    con.Close();
+                }
+            }
+            return workloads;
+
+        }
+        #endregion
 
     }
 }

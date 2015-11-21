@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50529
 File Encoding         : 65001
 
-Date: 2015-11-06 22:22:01
+Date: 2015-11-21 11:12:47
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -156,6 +156,19 @@ CREATE TABLE `hdjcontract` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
+-- Table structure for item
+-- ----------------------------
+DROP TABLE IF EXISTS `item`;
+CREATE TABLE `item` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `projectid` int(11) DEFAULT NULL,
+  `item` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `projectid` (`projectid`),
+  CONSTRAINT `item_ibfk_1` FOREIGN KEY (`projectid`) REFERENCES `project` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=73 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
 -- Table structure for project
 -- ----------------------------
 DROP TABLE IF EXISTS `project`;
@@ -220,6 +233,23 @@ CREATE TABLE `signaturestatus` (
   `updatecount` int(11) DEFAULT '0',
   `isdownload` int(11) DEFAULT '0',
   PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Table structure for workload
+-- ----------------------------
+DROP TABLE IF EXISTS `workload`;
+CREATE TABLE `workload` (
+  `id` varchar(255) NOT NULL,
+  `contractid` varchar(255) DEFAULT NULL,
+  `itemid` int(11) DEFAULT NULL,
+  `work` decimal(10,2) DEFAULT NULL,
+  `expense` decimal(10,2) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `workload_ibfk_1` (`contractid`),
+  KEY `workload_ibfk_2` (`itemid`),
+  CONSTRAINT `workload_ibfk_1` FOREIGN KEY (`contractid`) REFERENCES `hdjcontract` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `workload_ibfk_2` FOREIGN KEY (`itemid`) REFERENCES `item` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
