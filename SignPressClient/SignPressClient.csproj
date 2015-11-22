@@ -146,6 +146,7 @@
       <DependentUpon>MainWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\ContractIdCategory.cs" />
+    <Compile Include="Model\ContractProject.cs" />
     <Compile Include="Model\CreateSocket.cs" />
     <Compile Include="Model\Department.cs" />
     <Compile Include="Model\Employee.cs" />

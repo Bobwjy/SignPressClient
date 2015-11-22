@@ -1405,6 +1405,77 @@ namespace SignPressClient.SignSocket
          }
 
          /// <summary>
+         /// 根据部门ID获取相关权限
+         /// </summary>
+         /// <param name="depid"></param>
+         /// <returns></returns>
+         public List<ContractCategory> QueryContract(int depid)     
+         {
+             try
+             {
+                 SocketMessage sm = new SocketMessage(Request.QUERY_SDEPARTMENT_CATEGORY_REQUEST, depid);
+                 ClientSocket.Send(Encoding.UTF8.GetBytes(sm.Package));
+
+                 recLength = ClientSocket.Receive(recivebuffer);
+                 string recMsg = Encoding.UTF8.GetString(recivebuffer, 0, recLength);
+                 string[] Msg = recMsg.Split(SocketMessage.DEFAULT_SEPARATOR);
+
+                 if (Msg[0] == Response.QUERY_SDEPARTMENT_CATEGORY_SUCCESS.ToString())
+                 {
+                     List<ContractCategory> list = new List<ContractCategory>();
+                     list = JsonConvert.DeserializeObject<List<ContractCategory>>(Msg[2]);
+
+                     return list;
+                 }
+                 else
+                 {
+                     Logging.AddLog("部门权限查询失败!");
+                     return null;
+                 }
+             }
+             catch
+             {
+                 Logging.AddLog("部门权限查询失败(服务器连接中断)!");
+                 return null;
+             }
+         }
+         
+         /// <summary>
+         /// 根据项目简称ID获取项目名称
+         /// </summary>
+         /// <param name="categoryId"></param>
+         /// <returns></returns>
+         public List<ContractProject> QueryContractProject(int categoryId)
+         {
+             try
+             {
+                 SocketMessage sm = new SocketMessage(Request.QUERY_CATEGORY_PROJECT_REQUEST, categoryId);
+                 ClientSocket.Send(Encoding.UTF8.GetBytes(sm.Package));
+
+                 recLength = ClientSocket.Receive(recivebuffer);
+                 string recMsg = Encoding.UTF8.GetString(recivebuffer, 0, recLength);
+                 string[] Msg = recMsg.Split(SocketMessage.DEFAULT_SEPARATOR);
+
+                 if (Msg[0] == Response.QUERY_CATEGORY_PROJECT_SUCCESS.ToString())
+                 {
+                     List<ContractProject> list = new List<ContractProject>();
+                     list = JsonConvert.DeserializeObject<List<ContractProject>>(Msg[2]);
+
+                     return list;
+                 }
+                 else
+                 {
+                     Logging.AddLog("项目名称查询失败!");
+                     return null;
+                 }
+             }
+             catch
+             {
+                 Logging.AddLog("项目名称查询失败(服务器连接中断)!");
+                 return null;
+             }
+         }
+         /// <summary>
          /// 查询出所有
          /// </summary>
          /// <returns></returns>
@@ -1444,7 +1515,7 @@ namespace SignPressClient.SignSocket
          {
              this.ClientSocket.Close();
          }
-
+     
     }
 }
 

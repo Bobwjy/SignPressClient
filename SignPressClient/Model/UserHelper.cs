@@ -38,7 +38,7 @@ namespace SignPressClient.Model
         public static List<SHDJContract> AgreeUndownList { get; set; }
 
         public static List<String> DepartmentShortCallList{ get; set;}          ///  存放部门简称
-    
 
+        public static List<ContractCategory> ContractCategoryList { get; set; }
     }
 }

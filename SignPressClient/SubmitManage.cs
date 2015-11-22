@@ -125,6 +125,8 @@ namespace SignPressClient
             //  绑定编号前缀信息
             this.BindIdDepartment(true);
 
+            this.BindCategory(true);
+
             
             BindSignRefuseAndAgreeOpera();                     //绑定已拒绝以及已通过方案操作列
             BindRefuseOper();
@@ -149,6 +151,16 @@ namespace SignPressClient
                 this.IdDepartShortCall.ValueMember = "Id";
                 this.IdDepartShortCall.DisplayMember = "ShortCall";
                 this.IdDepartShortCall.DataSource = UserHelper.DepList;
+            }
+        }
+
+        private void BindCategory(bool isFlush)
+        {
+            //窗体加载时位datagridview绑定数据源
+            if (UserHelper.ContractCategoryList == null || isFlush == true)
+            {
+                List<ContractCategory> list = _sc.QueryContract(0);
+                UserHelper.ContractCategoryList = list;
             }
         }
 
@@ -360,8 +372,8 @@ namespace SignPressClient
 
         private void button1_Click(object sender, EventArgs e)                   //提交会签单信息
         {
-            if (this.Column1Info.Text.Trim() != "" && this.Column2Info.Text.Trim() != "" &&
-                this.Column3Info.Text.Trim() != "" && this.Column4Info.Text.Trim() != "" && this.Column5Info.Text.Trim() != ""
+            if (this.pName.SelectedText.Trim() != "" && this.xmName.Text.Trim() != "" &&
+                this.ProjectPanel.Text.Trim() != "" && this.Column4Info.Text.Trim() != "" && this.Column5Info.Text.Trim() != ""
                 && this.label3.Text.Trim() != "")
             {
                 if (MessageBox.Show("您确定要提交所填方案吗？", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
@@ -375,9 +387,9 @@ namespace SignPressClient
                     hdj.Id = this.IdNo.Text.Trim();
 
                     List<String> list = new List<string>();
-                    list.Add(this.Column1Info.Text.ToString());
-                    list.Add(this.Column2Info.Text.ToString());
-                    list.Add(this.Column3Info.Text.ToString());
+                    list.Add(this.pName.SelectedValue.ToString());
+                    list.Add(this.xmName.Text.ToString());
+                    list.Add(this.ProjectPanel.Text.ToString());
                     list.Add(this.Column4Info.Text.ToString());
                     list.Add(this.Column5Info.Text.ToString());
                     hdj.ColumnDatas = list;
@@ -386,9 +398,9 @@ namespace SignPressClient
                     if (result == Response.INSERT_HDJCONTRACT_SUCCESS.ToString())
                     {
                         this.ConTempInfo.Visible = false;
-                        this.Column1Info.Text = "";
-                        this.Column2Info.Text = "";
-                        this.Column3Info.Text = "";
+                        this.pName.Text = "";
+                        this.xmName.Text = "";
+                        this.ProjectPanel.Text = "";
                         this.Column4Info.Text = "";
                         this.Column5Info.Text = "";
                         this.IdNo.Text = "";
@@ -661,12 +673,65 @@ namespace SignPressClient
             UserHelper.PenddingList = list;
         }
 
-        private void IdDepartShortCall_SelectedIndexChanged(object sender, EventArgs e)
+        private void IdDepartShortCall_SelectedIndexChanged(object sender, EventArgs e)  //根据部门id获取相应权限
         {
             int depid = Convert.ToInt32(this.IdDepartShortCall.SelectedValue);
-
+            
+            this.IdCategory.ValueMember = "Id";
+            this.IdCategory.DisplayMember = "CategoryShortCall";
+            this.IdCategory.DataSource = UserHelper.ContractCategoryList;
         }
 
+        private void IdCategory_SelectedIndexChanged(object sender, EventArgs e)          //根据项目简称获取工程名称
+        {
+            int categoryId = Convert.ToInt32(this.IdCategory.SelectedValue);
+
+            List<ContractProject> list = new List<ContractProject>();
+            list = _sc.QueryContractProject(categoryId);
+
+            this.pName.ValueMember = "Id";
+            this.pName.DisplayMember = "Project";
+            this.pName.DataSource = list;
+        }
+
+        private void pName_SelectedIndexChanged(object sender, EventArgs e)           //根据工程名称获取项目名称
+        {
+            
+        }
+
+        private void AddItem_Click(object sender, EventArgs e)                  //添加主要项目和工程量
+        {
+            int num = (this.ProjectPanel.Controls.Count - 1) / 5;
+            ComboBox cmb = new ComboBox();
+            cmb.Size = new Size(120, 29);
+            cmb.Location = new Point(3, 10 + 34 * num);
+            //cmb.SelectedIndexChanged += cmb_SelectedIndexChanged;    --点击选项后判断是否还有第二选项，有则动态添加控件
+            this.ProjectPanel.Controls.Add(cmb);
+            Label l = new Label();
+            l.Size = new Size(70, 29);
+            l.Location = new Point(130, 10 + 34 * num);
+            l.Text = "工作量:";
+            this.ProjectPanel.Controls.Add(l);
+            TextBox t = new TextBox();
+            t.Size = new Size(60, 29);
+            t.Location = new Point(202, 10 + 34 * num);
+            this.ProjectPanel.Controls.Add(t);
+            Label l1 = new Label();
+            l1.Size = new Size(70, 29);
+            l1.Location = new Point(269, 10 + 34 * num);
+            l1.Text = "投资额:";
+            this.ProjectPanel.Controls.Add(l1);
+            TextBox t1 = new TextBox();
+            t1.Size = new Size(60, 29);
+            t1.Location = new Point(341, 10 + 34 * num);
+            this.ProjectPanel.Controls.Add(t1);
+            this.ProjectPanel.Height = this.ProjectPanel.Height + 34;
+        }
+
+        private void cmb_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
 
 
     }
