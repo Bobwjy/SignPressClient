@@ -259,7 +259,7 @@ namespace SignPressServer
             //Console.WriteLine(DALHDJContract.GetSDepartmentCategoryYearHDJContractCount(new Search { SDepartmentShortlCall = "申", CategoryShortCall = "内", Year = 2015 }));
             //Console.WriteLine(JsonConvert.SerializeObject(DALContractWorkload.StatisSDepartmentItemYearWorkload(new Search { SDepartmentShortlCall = "申", Year = 2015, ItemId = 1 })));
             //Console.WriteLine(JsonConvert.SerializeObject(DALContractIdCategory.QuerySDepartmentContractCategory(1)));
-            Console.WriteLine(JsonConvert.SerializeObject(DALSDepartment.QuerySDepartmentCategory()));
+            Console.WriteLine(JsonConvert.SerializeObject(DALSDepartment.QuerySDepartment()));
             #endregion
 
 

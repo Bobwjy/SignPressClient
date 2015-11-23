@@ -72,28 +72,28 @@ namespace SignPressServer.SignData
         //}
 
        
-        private string m_canBoundary;   //  当前部门是否可以申请界河项目
-        public string CanBoundary
+        private int m_canBoundary;   //  当前部门是否可以申请界河项目
+        public int CanBoundary
         {
             get { return this.m_canBoundary; }
             set { this.m_canBoundary = value; }
         }
 
-        private string m_canInland;     //  当前部门是否可以申请内河项目1
-        public string CanInland
+        private int m_canInland;     //  当前部门是否可以申请内河项目1
+        public int CanInland
         {
             get { return this.m_canInland; }
             set { this.m_canInland = value; }
         }
 
-        private string m_canEmergency;           //  当前部门是否可以申请应急项目
-        public string CanEmergency
+        private int m_canEmergency;           //  当前部门是否可以申请应急项目
+        public int CanEmergency
         {
             get { return this.m_canEmergency; }
             set { this.m_canEmergency = value; }
         }
-        private string m_canRegular;            //  当前部门是否可以申请例会项目
-        public string CanRegular
+        private int m_canRegular;            //  当前部门是否可以申请例会项目
+        public int CanRegular
         {
             get { return this.m_canRegular; }
             set { this.m_canRegular = value; }

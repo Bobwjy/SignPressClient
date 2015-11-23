@@ -96,6 +96,7 @@ namespace SignPressServer.SignTools
 
         //  查询当前部门可以申请的会签单的类别
         QUERY_SDEPARTMENT_CATEGORY_REQUEST,
+        QUERY_SDEP_CON_CATEGORY_REQUEST,
         MODIFY_SDEPARTMENT_SREQUEST,
 
         ///

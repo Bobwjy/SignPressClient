@@ -176,7 +176,9 @@ namespace SignPressServer.SignTools
 
         QUERY_SDEPARTMENT_CATEGORY_SUCCESS,
         QUERY_SDEPARTMENT_CATEGORY_FAILED,
-
+        
+        QUERY_SDEP_CON_CATEGORY_SUCCESS,
+        QUERY_SDEP_CON_CATEGORY_FAILED,
         /// <summary>
         /// 2015-11-2
         /// </summary>

@@ -26,3 +26,12 @@ E:\[O]Github\SignPressServer\obj\Debug\SignPressServer.csproj.ResolveComReferenc
 E:\[O]Github\SignPressServer\obj\Debug\SignPressServer.exe
 E:\[O]Github\SignPressServer\obj\Debug\SignPressServer.pdb
 E:\[O]Github\SignPressServer\obj\Debug\SignPressServer.csprojResolveAssemblyReference.cache
+F:\[O]GitHub\SignPressServer\bin\Debug\SignPressServer.exe.config
+F:\[O]GitHub\SignPressServer\obj\Debug\SignPressServer.csproj.ResolveComReference.cache
+F:\[O]GitHub\SignPressServer\obj\Debug\SignPressServer.exe
+F:\[O]GitHub\SignPressServer\obj\Debug\SignPressServer.pdb
+F:\[O]GitHub\SignPressServer\obj\Debug\SignPressServer.csprojResolveAssemblyReference.cache
+F:\[O]GitHub\SignPressServer\bin\Debug\SignPressServer.exe
+F:\[O]GitHub\SignPressServer\bin\Debug\SignPressServer.pdb
+F:\[O]GitHub\SignPressServer\bin\Debug\Newtonsoft.Json.dll
+F:\[O]GitHub\SignPressServer\bin\Debug\Newtonsoft.Json.xml

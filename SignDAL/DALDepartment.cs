@@ -338,10 +338,10 @@ namespace SignPressServer.SignDAL
                     department.Name = sqlRead["name"].ToString();
                     department.ShortCall = sqlRead["shortcall"].ToString();
 
-                    department.CanBoundary = (int.Parse(sqlRead["canboundary"].ToString()) == 1) ? "是" : "否";
-                    department.CanInland = (int.Parse(sqlRead["caninland"].ToString()) == 1) ? "是" : "否";
-                    department.CanEmergency = (int.Parse(sqlRead["canemergency"].ToString()) == 1) ? "是" : "否";
-                    department.CanRegular = (int.Parse(sqlRead["canregular"].ToString()) == 1) ? "是" : "否";
+                    department.CanBoundary = int.Parse(sqlRead["canboundary"].ToString());
+                    department.CanInland = int.Parse(sqlRead["caninland"].ToString());
+                    department.CanEmergency = int.Parse(sqlRead["canemergency"].ToString());
+                    department.CanRegular = int.Parse(sqlRead["canregular"].ToString());
 
 
                     departments.Add(department);
@@ -369,66 +369,66 @@ namespace SignPressServer.SignDAL
         #endregion
 
 
-        #region 查询部门的信息项目信息        /// <summary>
-        /// 查询部门信息的信息串
-        /// </summary>
-        private const String QUERY_SDEPARTMENT_CATEGORY_STR = QUERY_SDEPARTMENT_STR;//@"SELECT id, name, shortcall, canboundary, caninland, canemergency, canregular FROM `department` ORDER BY id";
+        //#region 查询部门的信息项目信息        /// <summary>
+        ///// 查询部门信息的信息串
+        ///// </summary>
+        //private const String QUERY_SDEPARTMENT_CATEGORY_STR = @"SELECT id, name, shortcall, canboundary, caninland, canemergency, canregular FROM `department` ORDER BY id";
 
-        public static List<SDepartment> QuerySDepartmentCategory()
-        {
-            MySqlConnection con = DBTools.GetMySqlConnection();
-            MySqlCommand cmd;
+        //public static List<SDepartment> QuerySDepartmentCategory()
+        //{
+        //    MySqlConnection con = DBTools.GetMySqlConnection();
+        //    MySqlCommand cmd;
 
-            List<SDepartment> departments = new List<SDepartment>();
+        //    List<SDepartment> departments = new List<SDepartment>();
 
-            try
-            {
-                con.Open();
+        //    try
+        //    {
+        //        con.Open();
 
-                cmd = con.CreateCommand();
+        //        cmd = con.CreateCommand();
 
-                cmd.CommandText = QUERY_SDEPARTMENT_CATEGORY_STR;
+        //        cmd.CommandText = QUERY_SDEPARTMENT_CATEGORY_STR;
 
-                MySqlDataReader sqlRead = cmd.ExecuteReader();
-                cmd.Dispose();
+        //        MySqlDataReader sqlRead = cmd.ExecuteReader();
+        //        cmd.Dispose();
 
-                while (sqlRead.Read())
-                {
-                    SDepartment department = new SDepartment();
+        //        while (sqlRead.Read())
+        //        {
+        //            SDepartment department = new SDepartment();
 
-                    department.Id = int.Parse(sqlRead["id"].ToString());
-                    department.Name = sqlRead["name"].ToString();
-                    department.ShortCall = sqlRead["shortcall"].ToString();
+        //            department.Id = int.Parse(sqlRead["id"].ToString());
+        //            department.Name = sqlRead["name"].ToString();
+        //            department.ShortCall = sqlRead["shortcall"].ToString();
 
-                    department.CanBoundary = (int.Parse(sqlRead["canboundary"].ToString()) == 1) ? "界" : "";
-                    department.CanInland = (int.Parse(sqlRead["caninland"].ToString()) == 1) ? "内" : "";
-                    department.CanEmergency = (int.Parse(sqlRead["canemergency"].ToString()) == 1) ? "应" : "";
-                    department.CanRegular = (int.Parse(sqlRead["canregular"].ToString()) == 1) ? "例" : "";
-
-
-                    departments.Add(department);
-                }
+        //            department.CanBoundary = (int.Parse(sqlRead["canboundary"].ToString()) == 1) ? "界" : "";
+        //            department.CanInland = (int.Parse(sqlRead["caninland"].ToString()) == 1) ? "内" : "";
+        //            department.CanEmergency = (int.Parse(sqlRead["canemergency"].ToString()) == 1) ? "应" : "";
+        //            department.CanRegular = (int.Parse(sqlRead["canregular"].ToString()) == 1) ? "例" : "";
 
 
-                con.Close();
-                con.Dispose();
+        //            departments.Add(department);
+        //        }
 
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-            finally
-            {
 
-                if (con.State == ConnectionState.Open)
-                {
-                    con.Close();
-                }
-            }
-            return departments;
-        }
-        #endregion
+        //        con.Close();
+        //        con.Dispose();
+
+        //    }
+        //    catch (Exception)
+        //    {
+        //        throw;
+        //    }
+        //    finally
+        //    {
+
+        //        if (con.State == ConnectionState.Open)
+        //        {
+        //            con.Close();
+        //        }
+        //    }
+        //    return departments;
+        //}
+        //#endregion
 
         #region  插入部门信息
 
@@ -454,10 +454,10 @@ namespace SignPressServer.SignDAL
                 cmd.Parameters.AddWithValue("@Name", department.Name);                  //  部门职位
                 cmd.Parameters.AddWithValue("@ShortCall", department.ShortCall);         //  部门简称
 
-                cmd.Parameters.AddWithValue("@CanBoundary", ((department.CanBoundary == "是") ? 1 : 0));
-                cmd.Parameters.AddWithValue("@CanInland", ((department.CanInland == "是") ? 1 : 0));
-                cmd.Parameters.AddWithValue("@CanEmergency", ((department.CanEmergency == "是") ? 1 : 0));
-                cmd.Parameters.AddWithValue("@CanRegular", ((department.CanRegular == "是") ? 1 : 0));
+                cmd.Parameters.AddWithValue("@CanBoundary", department.CanBoundary);
+                cmd.Parameters.AddWithValue("@CanInland", department.CanInland);
+                cmd.Parameters.AddWithValue("@CanEmergency", department.CanEmergency);
+                cmd.Parameters.AddWithValue("@CanRegular", department.CanRegular);
                     
                 count = cmd.ExecuteNonQuery();
                 cmd.Dispose();
@@ -514,10 +514,10 @@ namespace SignPressServer.SignDAL
                 cmd.Parameters.AddWithValue("@Name", department.Name);                        // 员工姓名
                 cmd.Parameters.AddWithValue("@ShortCall", department.ShortCall);              //  部门简称
 
-                cmd.Parameters.AddWithValue("@CanBoundary", ((department.CanBoundary == "是") ? 1 : 0));
-                cmd.Parameters.AddWithValue("@CanInland", ((department.CanInland == "是") ? 1 : 0));
-                cmd.Parameters.AddWithValue("@CanEmergency", ((department.CanEmergency == "是") ? 1 : 0));
-                cmd.Parameters.AddWithValue("@CanRegular", ((department.CanRegular == "是") ? 1 : 0));
+                cmd.Parameters.AddWithValue("@CanBoundary", department.CanBoundary);
+                cmd.Parameters.AddWithValue("@CanInland", department.CanInland);
+                cmd.Parameters.AddWithValue("@CanEmergency", department.CanEmergency);
+                cmd.Parameters.AddWithValue("@CanRegular", department.CanRegular);
                 
                 
                 count = cmd.ExecuteNonQuery();

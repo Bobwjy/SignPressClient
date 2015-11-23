@@ -1092,8 +1092,19 @@ namespace SignPressServer.SignSocket.AsyncSocket
                     /// <summary>
                     /// ==新增统计功能==
                     /// </summary>
-                    case "QUERY_SDEPARTMENT_CATEGORY_REQUEST":
-                        RaiseQuerySDepartmentCategoryRequest(state);
+                   
+                    case "QUERY_SDEP_CON_CATEGORY_REQUEST":     //  用于在申请会签单时，根据部门获取对应的可申请权限
+                        //  暂时使用此接口而废弃下一个接口  QUERY_SDEPARTMENT_CATEGORY_REQUEST
+                        //  使用此接口需要在获取时候每次都向数据库获取当前部门的权限信息
+                        //  但是接口使用起来比较方便
+                        RaiseQuerySDepartmentContractCategoryRequest(state);
+                        break;
+
+                    case "QUERY_SDEPARTMENT_CATEGORY_REQUEST":        //  用于在申请会签单时获取带部门带可申请权限的全信息部门信息
+                        //  此接口暂时废弃，，
+                        //  使用此方法可以使用户选择时无需每次都向服务器提交REQUEST
+                        //  但是可能需要在Department中增加新的数据成员
+                        //RaiseQuerySDepartmentCategoryRequest(state);
                         break;
                     case "QUERY_CATEGORY_PROJECT_REQUEST":
                         RaiseQueryCategoryProjectRequest(state);
@@ -2925,7 +2936,7 @@ namespace SignPressServer.SignSocket.AsyncSocket
         /// 处理客户端的查询部门请求
         /// </summary>
         /// <param name="state"></param>
-        private void RaiseQuerySDepartmentCategoryRequest(AsyncSocketState state)
+        private void RaiseQuerySDepartmentContractCategoryRequest(AsyncSocketState state)
         {
             Console.WriteLine("接收到来自{0}的待查询权限部门编号{1}", state.ClientIp, state.SocketMessage.Message); // 输出真正的信息
             this.Log.Write(new LogMessage("接收到来自" + state.ClientIp + "待查询权限部门编号" + state.SocketMessage.Message, LogMessageType.Information));
@@ -2937,15 +2948,15 @@ namespace SignPressServer.SignSocket.AsyncSocket
             // json数据解包
             int departmentId = JsonConvert.DeserializeObject<int>(state.SocketMessage.Message);
             // 向数据库中查询部门的信息
-            //categorys = DALContractIdCategory.QuerySDepartmentContractCategory(departmentId);
-            List<SDepartment> deaprtments = DALSDepartment.QuerySDepartmentCategory();
+            categorys = DALContractIdCategory.QuerySDepartmentContractCategory(departmentId);
             if (categorys != null)
             {
                 Console.WriteLine("查询部门会签单申请权限成功");
                 this.Log.Write(new LogMessage(state.ClientIp + "查询部门会签单申请权限成功", LogMessageType.Success));
 
                 //QUERY_DEPARTMENT_RESPONSE = "QUERY_DEPARTMENT_SUCCESS";               //  用户登录成功信号   
-                response = ServerResponse.QUERY_SDEPARTMENT_CATEGORY_SUCCESS;
+                response = ServerResponse.QUERY_SDEP_CON_CATEGORY_SUCCESS;
+        
             }
             else
             {
@@ -2953,13 +2964,13 @@ namespace SignPressServer.SignSocket.AsyncSocket
                 this.Log.Write(new LogMessage(state.ClientIp + "查询部门会签单申请权限失败", LogMessageType.Error));
 
                 //QUERY_DEPARTMENT_RESPONSE = "QUERY_DEPARTMENT_FAILED";                //  用户登录失败信号
-                response = ServerResponse.QUERY_SDEPARTMENT_CATEGORY_FAILED;
+                response = ServerResponse.QUERY_SDEP_CON_CATEGORY_FAILED;
             }
 
             //  查询部门成功则同时发送[报头 + 部门信息] 
-            if (response.Equals(ServerResponse.QUERY_SDEPARTMENT_CATEGORY_SUCCESS))
+            if (response.Equals(ServerResponse.QUERY_SDEP_CON_CATEGORY_SUCCESS))
             {
-                AsyncSocketMessage socketMessage = new AsyncSocketMessage(response, deaprtments);
+                AsyncSocketMessage socketMessage = new AsyncSocketMessage(response, categorys);
                 this.Send(state.ClientSocket, Encoding.UTF8.GetBytes(socketMessage.Package));                    //  将
             }
             else      //  查询失败则只发报头
