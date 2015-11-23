@@ -2937,7 +2937,8 @@ namespace SignPressServer.SignSocket.AsyncSocket
             // json数据解包
             int departmentId = JsonConvert.DeserializeObject<int>(state.SocketMessage.Message);
             // 向数据库中查询部门的信息
-            categorys = DALContractIdCategory.QuerySDepartmentContractCategory(departmentId);
+            //categorys = DALContractIdCategory.QuerySDepartmentContractCategory(departmentId);
+            List<SDepartment> deaprtments = DALSDepartment.QuerySDepartmentCategory();
             if (categorys != null)
             {
                 Console.WriteLine("查询部门会签单申请权限成功");
@@ -2958,7 +2959,7 @@ namespace SignPressServer.SignSocket.AsyncSocket
             //  查询部门成功则同时发送[报头 + 部门信息] 
             if (response.Equals(ServerResponse.QUERY_SDEPARTMENT_CATEGORY_SUCCESS))
             {
-                AsyncSocketMessage socketMessage = new AsyncSocketMessage(response, categorys);
+                AsyncSocketMessage socketMessage = new AsyncSocketMessage(response, deaprtments);
                 this.Send(state.ClientSocket, Encoding.UTF8.GetBytes(socketMessage.Package));                    //  将
             }
             else      //  查询失败则只发报头

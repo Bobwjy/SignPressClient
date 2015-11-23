@@ -369,6 +369,67 @@ namespace SignPressServer.SignDAL
         #endregion
 
 
+        #region 查询部门的信息项目信息        /// <summary>
+        /// 查询部门信息的信息串
+        /// </summary>
+        private const String QUERY_SDEPARTMENT_CATEGORY_STR = QUERY_SDEPARTMENT_STR;//@"SELECT id, name, shortcall, canboundary, caninland, canemergency, canregular FROM `department` ORDER BY id";
+
+        public static List<SDepartment> QuerySDepartmentCategory()
+        {
+            MySqlConnection con = DBTools.GetMySqlConnection();
+            MySqlCommand cmd;
+
+            List<SDepartment> departments = new List<SDepartment>();
+
+            try
+            {
+                con.Open();
+
+                cmd = con.CreateCommand();
+
+                cmd.CommandText = QUERY_SDEPARTMENT_CATEGORY_STR;
+
+                MySqlDataReader sqlRead = cmd.ExecuteReader();
+                cmd.Dispose();
+
+                while (sqlRead.Read())
+                {
+                    SDepartment department = new SDepartment();
+
+                    department.Id = int.Parse(sqlRead["id"].ToString());
+                    department.Name = sqlRead["name"].ToString();
+                    department.ShortCall = sqlRead["shortcall"].ToString();
+
+                    department.CanBoundary = (int.Parse(sqlRead["canboundary"].ToString()) == 1) ? "界" : "";
+                    department.CanInland = (int.Parse(sqlRead["caninland"].ToString()) == 1) ? "内" : "";
+                    department.CanEmergency = (int.Parse(sqlRead["canemergency"].ToString()) == 1) ? "应" : "";
+                    department.CanRegular = (int.Parse(sqlRead["canregular"].ToString()) == 1) ? "例" : "";
+
+
+                    departments.Add(department);
+                }
+
+
+                con.Close();
+                con.Dispose();
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+
+                if (con.State == ConnectionState.Open)
+                {
+                    con.Close();
+                }
+            }
+            return departments;
+        }
+        #endregion
+
         #region  插入部门信息
 
         /// <summary>

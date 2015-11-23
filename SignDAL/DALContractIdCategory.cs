@@ -138,7 +138,7 @@ namespace SignPressServer.SignDAL
                 cmd = con.CreateCommand();
 
                 cmd.CommandText = QUERY_SDEPARTMENT_CONTRACTCATEGORY_STR;
-
+                cmd.Parameters.AddWithValue("@DepartmentId", departmentId);
                 MySqlDataReader sqlRead = cmd.ExecuteReader();
                 cmd.Dispose();
 
@@ -171,5 +171,9 @@ namespace SignPressServer.SignDAL
             }
             return categorys;
         }
+
+
+    
+    
     }
 }
