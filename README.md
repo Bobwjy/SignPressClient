@@ -45,14 +45,30 @@ QUERY_CATEGORY_PROJECT_SUCCESS,
 QUERY_CATEGORY_PROJECT_FAILED,
 
    
-##可能需要额外的接口
-前面的接口都是单个的，可能需要提供一个直接从部门就获取到包括工程集合和项目集合的接口
+## 查询当前会签单类型下可以申请的工作量条目，
+[2015-11-22 20:39] modify by gatieme
+用与用户在提交申请时，填写会签单的工作量信息
+///  客户端发送的请求信息QUERY_PROJECT_ITEM_REQUEST  +  projectId[int]
+///  服务器返回的信息   
+///  成功 QUERY_PROJECT_ITEM_SUCCESS + List<ContractItem>
+///  失败 QUERY_PROJECT_ITEM_FAILED
 
+#查询已提交会签单的工作量信息
+[2015-11-22 20:39] modify by gatieme
+用在查看会签单时显示会签单的工作量信息界河
+///  查询工作量列表的信息
+///  客户端发送的请求信息QUERY_CONTRACT_WORKLOAD_REQUEST  +  contractId[string]
+///  服务器返回的信息
+///  成功 QUERY_CONTRACT_WORKLOAD_SUCCESS + List<ContractWorkload>
+///  失败 QUERY_CONTRACT_WORKLOAD_FAILED
+       
 
-
-
-
-
+#查询会签单数目--用于提交签字时自动生成最后几位
+///  查询会签单数目--用于提交签字时自动生成最后几位
+///  客户端发送的请求信息GET_CATEGORY_YEAR_CONTRACT_COUNT_REQUEST  +  search[填充CategoryShortCall + Year两个字段]
+///  服务器返回的信息
+///  成功 GET_CATEGORY_YEAR_CONTRACT_COUNT_SUCCESS + count
+///  失败 GET_CATEGORY_YEAR_CONTRACT_COUNT_FAILED
 
 
 
@@ -1056,3 +1072,9 @@ FROM `conidcategory` cc, `engineercategory` ec
 WHERE (cc.departmentid = 1 and ec.id = cc.categoryid);
 
 
+#查询工作量的集合信息
+"SELECT item, work, expense FROM `workload` WHERE `conid` like @SDepartmentCategoryYear
+## 查询界河项目categoryid = 1
+###航道养护项目projectid = 1
+####航道巡查项目itemid = 1
+SELECT  FROM `workload` WHERE conid like "申"

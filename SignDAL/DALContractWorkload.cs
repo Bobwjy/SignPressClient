@@ -259,11 +259,17 @@ namespace SignPressServer.SignDAL
         }
         #endregion
 
-        #region 统计工作量的信息
-        private static String GET_SDEPARTMENT_CATEGORY_WORKLOAD_STR = @"SELECT item, work, expense FROM `workload` WHERE `conid` like @SDepartmentCategoryYear";
-        public static List<ContractWorkload> GetSDepartmentCategoryWorkload(Search search)
+        #region 统计工作量的信息[Search数据填写SDepartmentShortCall + ItemId]
+        private static String   QUERY_SDEPARTMENT_ITEM_YEAR_WORKLOAD_STR = @"SELECT `contractid`, `itemid`, `work`, `expense` FROM `workload` WHERE `contractid` like @SDepartmentYear AND `itemid` = @ItemId";
+        ///  SELECT w.contractid, w.itemid, i.item, w.work, w.expense FROM `workload` w, `item` i WHERE w.itemid = i.id AND `contractid` like "申%" AND `itemid` = 1
+        ///  SELECT w.contractid,  p.id projectid, p.project, i.id itemid, i.item,w.work, w.expense FROM `workload` w, `item` i, `project` p WHERE w.itemid = i.id AND i.projectid = p.id AND `contractid` like "申%" AND `itemid` = 1
+        /// <summary>
+        ///  统计工作量的信息[Search数据填写SDepartmentShortCall + ItemId]
+        /// </summary>
+        /// <param name="search"></param>
+        /// <returns></returns>
+        public static List<ContractWorkload> GetSDepartmentItemWorkload(Search search)
         {
-            error
             MySqlConnection con = DBTools.GetMySqlConnection();
             MySqlCommand cmd;
 
@@ -275,9 +281,9 @@ namespace SignPressServer.SignDAL
 
                 cmd = con.CreateCommand();
 
-                cmd.CommandText = GET_SDEPARTMENT_CATEGORY_WORKLOAD_STR;
-                cmd.Parameters.AddWithValue("@SDepartmentCategoryYear", "");
-
+                cmd.CommandText = QUERY_SDEPARTMENT_ITEM_YEAR_WORKLOAD_STR;
+                cmd.Parameters.AddWithValue("@SDepartmentYear", search.SDepartmentShortlCall + "_" + search.Year.ToString() + "%");
+                cmd.Parameters.AddWithValue("@ItemId", search.ItemId);
                 MySqlDataReader sqlRead = cmd.ExecuteReader();
 
                 cmd.Dispose();
@@ -286,15 +292,15 @@ namespace SignPressServer.SignDAL
                 {
                     ContractWorkload workload = new ContractWorkload();
 
-                    workload.ContractId = "";
+                    workload.ContractId = sqlRead["contractid"].ToString();
 
                     workload.Work = double.Parse(sqlRead["work"].ToString());
                     workload.Expense = double.Parse(sqlRead["expense"].ToString());
 
                     ContractItem item = new ContractItem();
                     item.Id = int.Parse(sqlRead["itemid"].ToString());
-                    item.ProjectId = int.Parse(sqlRead["projectid"].ToString());
-                    item.Item = sqlRead["item"].ToString();
+                    //item.ProjectId = int.Parse(sqlRead["projectid"].ToString());
+                    //item.Item = sqlRead["item"].ToString();
                     workload.Item = item;
                     //Console.WriteLine(workload.Work + "  " + workload.Expense);
 
@@ -319,6 +325,194 @@ namespace SignPressServer.SignDAL
                 }
             }
             return workloads;
+
+        }
+
+        private static String STATIS_SDEPARTMENT_ITEM_YEAR_WORKLOAD_STR = @"SELECT Sum(work) works, Sum(expense) expenses FROM `workload` WHERE `contractid` like @SDepartmentYear AND `itemid` = @ItemId";
+        ///  SELECT w.contractid, w.itemid, i.item, w.work, w.expense FROM `workload` w, `item` i WHERE w.itemid = i.id AND `contractid` like "申%" AND `itemid` = 1
+        ///  SELECT w.contractid,  p.id projectid, p.project, i.id itemid, i.item,w.work, w.expense FROM `workload` w, `item` i, `project` p WHERE w.itemid = i.id AND i.projectid = p.id AND `contractid` like "申%" AND `itemid` = 1
+        /// <summary>
+        ///  统计工作量的信息[Search数据填写SDepartmentShortCall + ItemId]
+        /// </summary>
+        /// <param name="search"></param>
+        /// <returns></returns>
+        public static ContractWorkload StatisSDepartmentItemYearWorkload(Search search)
+        {
+            MySqlConnection con = DBTools.GetMySqlConnection();
+            MySqlCommand cmd;
+
+            ContractWorkload workload = null;
+
+            try
+            {
+                con.Open();
+
+                cmd = con.CreateCommand();
+
+                cmd.CommandText = STATIS_SDEPARTMENT_ITEM_YEAR_WORKLOAD_STR;
+                cmd.Parameters.AddWithValue("@SDepartmentYear", search.SDepartmentShortlCall + "_" + search.Year.ToString() + "%");
+                cmd.Parameters.AddWithValue("@ItemId", search.ItemId);
+                MySqlDataReader sqlRead = cmd.ExecuteReader();
+
+                cmd.Dispose();
+
+                while (sqlRead.Read())
+                {
+                    workload = new ContractWorkload();
+
+                    workload.ContractId = "STATIS";
+
+                    workload.Work = double.Parse(sqlRead["works"].ToString());
+                    workload.Expense = double.Parse(sqlRead["expenses"].ToString());
+
+                    ContractItem item = new ContractItem();
+                    item.Id = -1;
+                    workload.Item = item;
+
+                }
+
+
+                con.Close();
+                con.Dispose();
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+
+                if (con.State == ConnectionState.Open)
+                {
+                    con.Close();
+                }
+            }
+            return workload;
+
+        }
+
+
+        private static String STATIS_SDEPARTMENT_PROJECT_YEAR_WORKLOAD_STR = @"SELECT Sum(expense) expense FROM `workload` w, `item` i WHERE w.itemid = i.id AND w.contractid like @SDepartmentYear AND i.projectid = @ProjectId";
+        /// <summary>
+        ///  统计当前部门申请的所有工程Project下的会签单信息[Search数据填写SDepartmentShortCall + ItemId]
+        /// </summary>
+        /// <param name="search"></param>
+        /// <returns></returns>
+        public static ContractWorkload StatisSDepartmentProjectYearWorkload(Search search)
+        {
+            MySqlConnection con = DBTools.GetMySqlConnection();
+            MySqlCommand cmd;
+
+            ContractWorkload workload = null;
+
+            try
+            {
+                con.Open();
+
+                cmd = con.CreateCommand();
+
+                cmd.CommandText = STATIS_SDEPARTMENT_PROJECT_YEAR_WORKLOAD_STR;
+                cmd.Parameters.AddWithValue("@SDepartmentYear", search.SDepartmentShortlCall + "_" + search.Year.ToString() + "%");
+                cmd.Parameters.AddWithValue("@ProjectId", search.ProjectId);
+                MySqlDataReader sqlRead = cmd.ExecuteReader();
+
+                cmd.Dispose();
+
+                while (sqlRead.Read())
+                {
+                    workload = new ContractWorkload();
+
+                    workload.ContractId = "STATIS";
+
+                    workload.Work = -1;
+                    workload.Expense = double.Parse(sqlRead["expenses"].ToString());
+
+                    ContractItem item = new ContractItem();
+                    item.Id = -1;
+                    workload.Item = item;
+
+                }
+
+
+                con.Close();
+                con.Dispose();
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+
+                if (con.State == ConnectionState.Open)
+                {
+                    con.Close();
+                }
+            }
+            return workload;
+
+        }
+
+        private static String STATIS_PROJECT_YEAR_WORKLOAD_STR = @"SELECT Sum(expense) expense FROM `workload` w, `item` i WHERE w.itemid = i.id AND i.projectid = @ProjectId";
+        /// <summary>
+        ///  统计所有工程为Project下的会签单信息[Search数据填写SDepartmentShortCall + ItemId]
+        /// </summary>
+        /// <param name="search"></param>
+        /// <returns></returns>
+        public static ContractWorkload StatisProjectYearWorkload(Search search)
+        {
+            MySqlConnection con = DBTools.GetMySqlConnection();
+            MySqlCommand cmd;
+
+            ContractWorkload workload = null;
+
+            try
+            {
+                con.Open();
+
+                cmd = con.CreateCommand();
+
+                cmd.CommandText = STATIS_PROJECT_YEAR_WORKLOAD_STR;
+                cmd.Parameters.AddWithValue("@ProjectId", search.ProjectId);
+                MySqlDataReader sqlRead = cmd.ExecuteReader();
+
+                cmd.Dispose();
+
+                while (sqlRead.Read())
+                {
+                    workload = new ContractWorkload();
+
+                    workload.ContractId = "STATIS";
+
+                    workload.Work = -1;
+                    workload.Expense = double.Parse(sqlRead["expenses"].ToString());
+
+                    ContractItem item = new ContractItem();
+                    item.Id = -1;
+                    workload.Item = item;
+
+                }
+
+
+                con.Close();
+                con.Dispose();
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+
+                if (con.State == ConnectionState.Open)
+                {
+                    con.Close();
+                }
+            }
+            return workload;
 
         }
         #endregion

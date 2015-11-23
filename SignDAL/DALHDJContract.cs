@@ -829,7 +829,7 @@ and d1.id = e1.departmentid and d2.id = e2.departmentid and d3.id = e3.departmen
 			MySqlConnection con = DBTools.GetMySqlConnection();
 			MySqlCommand cmd;
 
-			int count = 0;
+			int count = -1;
 
 			try
 			{

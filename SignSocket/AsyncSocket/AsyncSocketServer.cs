@@ -3091,7 +3091,7 @@ namespace SignPressServer.SignSocket.AsyncSocket
 
             if (workloads != null)
             {
-                Console.WriteLine("查查询会签单的工作量信息成功");
+                Console.WriteLine("查询会签单的工作量信息成功");
                 this.Log.Write(new LogMessage(state.ClientIp + "查询会签单的工作量信息成功", LogMessageType.Success));
 
                 response = ServerResponse.QUERY_CONTRACT_WORKLOAD_SUCCESS;
@@ -3117,6 +3117,59 @@ namespace SignPressServer.SignSocket.AsyncSocket
             }
         }
         #endregion
+
+
+        #region 查询会签单数目--用于提交签字时自动生成最后几位[2015-11-22 20:39] modify by gatieme
+        /// <summary>
+        ///  查询会签单数目--用于提交签字时自动生成最后几位
+        ///  客户端发送的请求信息GET_CATEGORY_YEAR_CONTRACT_COUNT_REQUEST  +  search[填充CategoryShortCall + Year两个字段]
+        ///  服务器返回的信息
+        ///  成功 GET_CATEGORY_YEAR_CONTRACT_COUNT_SUCCESS + count
+        ///  失败 GET_CATEGORY_YEAR_CONTRACT_COUNT_FAILED
+        /// </summary>
+        /// <param name="state"></param>
+        private void RaiseGetCategoryYearContractCountRequest(AsyncSocketState state)
+        {
+            Console.WriteLine("接收到来自{0}的获取当年该类别会签单已经申请的数目信息{1}", state.ClientIp, state.SocketMessage.Message); // 输出真正的信息
+            this.Log.Write(new LogMessage("接收到来自" + state.ClientIp + "的获取当年该类别会签单已经申请的数目信息" + state.SocketMessage.Message, LogMessageType.Information));
+
+            ServerResponse response = new ServerResponse();
+
+            // json数据解包
+            Search search = JsonConvert.DeserializeObject<Search>(state.SocketMessage.Message);
+
+            //  首先检测
+            int count = DALHDJContract.GetCategoryYearHDJContractCount(search);
+
+            if (count >= 0)
+            {
+                Console.WriteLine("获取当年该类别会签单已经申请的数目成功");
+                this.Log.Write(new LogMessage(state.ClientIp + "获取当年该类别会签单已经申请的数目成功", LogMessageType.Success));
+
+                response = ServerResponse.GET_CATEGORY_YEAR_CONTRACT_COUNT_SUCCESS;
+            }
+            else
+            {
+                Console.WriteLine("获取当年该类别会签单已经申请的数目失败");
+                this.Log.Write(new LogMessage(state.ClientIp + "获取当年该类别会签单已经申请的数目失败", LogMessageType.Error));
+
+                response = ServerResponse.GET_CATEGORY_YEAR_CONTRACT_COUNT_FAILED;
+            }
+
+            //  查询部门成功则同时发送[报头 + 信息] 
+            if (response.Equals(ServerResponse.GET_CATEGORY_YEAR_CONTRACT_COUNT_SUCCESS))
+            {
+                AsyncSocketMessage socketMessage = new AsyncSocketMessage(response, count);
+                this.Send(state.ClientSocket, Encoding.UTF8.GetBytes(socketMessage.Package));
+            }
+            else      //  查询失败则只发报头
+            {
+                AsyncSocketMessage socketMessage = new AsyncSocketMessage(response);
+                this.Send(state.ClientSocket, Encoding.UTF8.GetBytes(socketMessage.Package));
+            }
+        }
+        #endregion
+
 
 
         #endregion  /// 统计功能

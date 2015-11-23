@@ -190,10 +190,14 @@ namespace SignPressServer.SignTools
         QUERY_CATEGORY_PROJECT_FAILED,
 
         QUERY_PROJECT_ITEM_SUCCESS,             /// 查询当前项目类别下的所有工作量集合
-        QUERY_PROJECT_ITEM_FAILED,             /// 查询当前项目类别下的所有工作量集合 
-                                               /// 
+        QUERY_PROJECT_ITEM_FAILED,              /// 查询当前项目类别下的所有工作量集合 
+                                                /// 
         QUERY_CONTRACT_WORKLOAD_SUCCESS,            /// 查询当前会签单的所有工作量集合  
         QUERY_CONTRACT_WORKLOAD_FAILED,            /// 查询当前会签单的所有工作量集合  
-        
+
+
+        //  统计信息
+        GET_CATEGORY_YEAR_CONTRACT_COUNT_SUCCESS,       // 获取当年已经签署的CATEGORY的会签单数目
+        GET_CATEGORY_YEAR_CONTRACT_COUNT_FAILED,        // 获取当年已经签署的CATEGORY的会签单数目
     }
 }
