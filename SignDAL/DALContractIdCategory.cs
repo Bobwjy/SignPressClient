@@ -181,12 +181,12 @@ namespace SignPressServer.SignDAL
         /// SELECT * FROM conidcategory WHERE categoryid = @CategoryId
         /// SELECT d.id depid, d.name depname, d.shortcall depshortcall FROM conidcategory c, department d WHERE c.departmentid = d.id AND c.categoryid = 1
         /// SELECT d.id depid, d.name depname, d.shortcall depshortcall, c.category, c.shortcall FROM conidcategory cc, department d, category c WHERE c.id = cc.categoryid AND cc.departmentid = d.id AND cc.categoryid = 
-        public static List<int> QueryCategorySDepartment(int categoryId)
+        public static List<Department> QueryCategorySDepartment(int categoryId)
         {
             MySqlConnection con = DBTools.GetMySqlConnection();
             MySqlCommand cmd;
 
-            List<int> departmentIds = new List<int>();
+            List<Department> departments = new List<Department>();
 
             try
             {
@@ -201,9 +201,13 @@ namespace SignPressServer.SignDAL
 
                 while (sqlRead.Read())
                 {
+                    Department department = new Department();
 
-                    int departmentId = int.Parse(sqlRead["departmentid"].ToString());
-                    departmentIds.Add(departmentId);
+                    department.Id = int.Parse(sqlRead["id"].ToString());
+                    department.Name = sqlRead["name"].ToString();
+                    department.ShortCall = sqlRead["shortcall"].ToString();
+
+                    departments.Add(department);
                 }
 
 
@@ -222,7 +226,7 @@ namespace SignPressServer.SignDAL
                     con.Close();
                 }
             }
-            return departmentIds;
+            return departments;
         }
     
     }

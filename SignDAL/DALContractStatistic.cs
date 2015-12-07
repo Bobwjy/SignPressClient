@@ -249,12 +249,30 @@ namespace SignPressServer.SignDAL
         /// <returns></returns>
         public static bool StatisticSDepartmentYearCategory(int year, int categoryId)
         {
-            //  首先数据库中
-            List<int> departmentIds = DALContractIdCategory.QueryCategorySDepartment(categoryId);            
+            //int year = System.DateTime.Now.Year;
+            //  首先获取数据库中可以申请本会签单类别的所有部门的列表
+            List<Department> departments = DALContractIdCategory.QueryCategorySDepartment(categoryId);            
             
-            foreach (int departmentId in departmentIds)     // 循环每个部门
+            //  其次查询当前Category类别的所有Project信息和item信息
+            List<ContractProject> projects = DALContractProject.QueryCategoryProject(categoryId);
+
+            foreach (Department department in departments)     // 循环每个部门
             {
                 
+                foreach (ContractProject project in projects)       //  循环每个项目的信息
+                {
+                    //  统计当前部门Department当年Year项目Project的统计信息
+                    DALContractStatistic.StatisSDepartmentYearProjectWorkLoad(department.ShortCall, year, project.Id);
+
+                    //  获取当前项目的工作量集合
+                    List<ContractItem> items = DALContractItem.QueryProjectItem(project.Id);
+                    foreach (ContractItem item in items)
+                    {
+                        //  统计当前部门Department当年Year工作量为item的统计信息
+                        DALContractStatistic.StatisSDepartmentYearItemWorkLoad(department.ShortCall, year, item.Id);
+                        
+                    }
+                }
             }
             return true;
         }

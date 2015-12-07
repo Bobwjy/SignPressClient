@@ -302,7 +302,7 @@ namespace SignPressServer.SignDAL
         }
         #endregion
 
-        public List<Department> QueryCategory
+
 
     }
 

@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50529
 File Encoding         : 65001
 
-Date: 2015-11-21 11:12:40
+Date: 2015-12-07 20:11:10
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -52,23 +52,23 @@ CREATE TABLE `conidcategory` (
 -- ----------------------------
 -- Records of conidcategory
 -- ----------------------------
-INSERT INTO `conidcategory` VALUES ('31', '1', '1');
-INSERT INTO `conidcategory` VALUES ('32', '1', '2');
-INSERT INTO `conidcategory` VALUES ('33', '1', '3');
-INSERT INTO `conidcategory` VALUES ('34', '1', '4');
-INSERT INTO `conidcategory` VALUES ('35', '2', '1');
-INSERT INTO `conidcategory` VALUES ('36', '2', '2');
-INSERT INTO `conidcategory` VALUES ('37', '2', '3');
-INSERT INTO `conidcategory` VALUES ('38', '2', '4');
-INSERT INTO `conidcategory` VALUES ('39', '3', '1');
-INSERT INTO `conidcategory` VALUES ('40', '3', '2');
-INSERT INTO `conidcategory` VALUES ('41', '3', '3');
-INSERT INTO `conidcategory` VALUES ('42', '3', '4');
-INSERT INTO `conidcategory` VALUES ('43', '4', '1');
-INSERT INTO `conidcategory` VALUES ('44', '4', '2');
-INSERT INTO `conidcategory` VALUES ('45', '4', '3');
-INSERT INTO `conidcategory` VALUES ('47', '5', '1');
-INSERT INTO `conidcategory` VALUES ('49', '5', '4');
+INSERT INTO `conidcategory` VALUES ('1', '1', '1');
+INSERT INTO `conidcategory` VALUES ('2', '1', '2');
+INSERT INTO `conidcategory` VALUES ('3', '1', '3');
+INSERT INTO `conidcategory` VALUES ('4', '1', '4');
+INSERT INTO `conidcategory` VALUES ('5', '2', '1');
+INSERT INTO `conidcategory` VALUES ('6', '2', '2');
+INSERT INTO `conidcategory` VALUES ('7', '2', '3');
+INSERT INTO `conidcategory` VALUES ('8', '2', '4');
+INSERT INTO `conidcategory` VALUES ('9', '3', '1');
+INSERT INTO `conidcategory` VALUES ('10', '3', '2');
+INSERT INTO `conidcategory` VALUES ('11', '3', '3');
+INSERT INTO `conidcategory` VALUES ('12', '3', '4');
+INSERT INTO `conidcategory` VALUES ('13', '4', '1');
+INSERT INTO `conidcategory` VALUES ('14', '4', '2');
+INSERT INTO `conidcategory` VALUES ('15', '4', '3');
+INSERT INTO `conidcategory` VALUES ('16', '5', '1');
+INSERT INTO `conidcategory` VALUES ('17', '5', '4');
 
 -- ----------------------------
 -- Table structure for contemp
@@ -450,9 +450,10 @@ CREATE TABLE `workload` (
 -- ----------------------------
 -- Records of workload
 -- ----------------------------
-INSERT INTO `workload` VALUES ('1', '1', '1', '100.00', '100.00');
-INSERT INTO `workload` VALUES ('2', '1', '2', '100.00', '100.00');
-INSERT INTO `workload` VALUES ('3', '1', '3', '100.00', '100.00');
+INSERT INTO `workload` VALUES ('1', '申界2015001', '1', '100.00', '100.00');
+INSERT INTO `workload` VALUES ('2', '申界2015001', '2', '100.00', '100.00');
+INSERT INTO `workload` VALUES ('3', '申界2015001', '3', '100.00', '100.00');
+INSERT INTO `workload` VALUES ('4', '政内2015001', '4', '100.00', '100.00');
 
 -- ----------------------------
 -- Table structure for yhjlhxmbkcontract

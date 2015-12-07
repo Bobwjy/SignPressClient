@@ -60,6 +60,7 @@
     <Compile Include="SignDAL\DALContractIdCategory.cs" />
     <Compile Include="SignDAL\DALContractItem.cs" />
     <Compile Include="SignDAL\DALContractProject.cs" />
+    <Compile Include="SignDAL\DALContractStatistic.cs" />
     <Compile Include="SignDAL\DALContractWorkload.cs" />
     <Compile Include="SignDAL\DALHDJContract.cs" />
     <Compile Include="SignDAL\DALContractTemplate.cs" />
