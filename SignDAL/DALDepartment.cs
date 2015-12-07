@@ -302,6 +302,8 @@ namespace SignPressServer.SignDAL
         }
         #endregion
 
+        public List<Department> QueryCategory
+
     }
 
     public class DALSDepartment
@@ -553,7 +555,7 @@ namespace SignPressServer.SignDAL
             }
         }
         #endregion
-
+    
 
         #region 为当前部门增加界河项目的权限
         private const String SET_SDEPARTMENT_BOUNDARY_STR = @"UPDATE `department` SET `canboundary` = @Value";

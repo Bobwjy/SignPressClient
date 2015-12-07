@@ -172,8 +172,58 @@ namespace SignPressServer.SignDAL
             return categorys;
         }
 
+        /// <summary>
+        /// 查询可申请当前会签单类别的所有部门
+        /// </summary>
+        /// <param name="categoryId"></param>
+        /// <returns></returns>
+        private static String QUERY_CATEGORY_SDEPARTMENT_STR = @"SELECT departmentid FROM conidcategory WHERE categoryid = @CategoryId ORDER BY departmentid";
+        /// SELECT * FROM conidcategory WHERE categoryid = @CategoryId
+        /// SELECT d.id depid, d.name depname, d.shortcall depshortcall FROM conidcategory c, department d WHERE c.departmentid = d.id AND c.categoryid = 1
+        /// SELECT d.id depid, d.name depname, d.shortcall depshortcall, c.category, c.shortcall FROM conidcategory cc, department d, category c WHERE c.id = cc.categoryid AND cc.departmentid = d.id AND cc.categoryid = 
+        public static List<int> QueryCategorySDepartment(int categoryId)
+        {
+            MySqlConnection con = DBTools.GetMySqlConnection();
+            MySqlCommand cmd;
 
-    
+            List<int> departmentIds = new List<int>();
+
+            try
+            {
+                con.Open();
+
+                cmd = con.CreateCommand();
+
+                cmd.CommandText = QUERY_CATEGORY_SDEPARTMENT_STR;
+                cmd.Parameters.AddWithValue("@CategoryId", categoryId);
+                MySqlDataReader sqlRead = cmd.ExecuteReader();
+                cmd.Dispose();
+
+                while (sqlRead.Read())
+                {
+
+                    int departmentId = int.Parse(sqlRead["departmentid"].ToString());
+                    departmentIds.Add(departmentId);
+                }
+
+
+                con.Close();
+                con.Dispose();
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                if (con.State == ConnectionState.Open)
+                {
+                    con.Close();
+                }
+            }
+            return departmentIds;
+        }
     
     }
 }
