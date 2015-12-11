@@ -15,7 +15,7 @@ using SignPressServer.SignTools;
 
 namespace SignPressServer.SignDAL
 {
-    class DALContractIdCategory
+    public class DALContractIdCategory
     {
         //  采用此种侧率时的触发器信息为
         // 如果将conidcategory作为读写表
