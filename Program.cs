@@ -296,7 +296,7 @@ namespace SignPressServer
             //    Console.WriteLine("文件存在无需在生成");
             //}
             //MSWordTools.WordConvertToPdf();
-
+            MSExcelTools.Test();
             
 
             #endregion
