@@ -201,5 +201,16 @@ namespace SignPressServer.SignTools
         //  统计信息
         GET_CATEGORY_YEAR_CONTRACT_COUNT_SUCCESS,       // 获取当年已经签署的CATEGORY的会签单数目
         GET_CATEGORY_YEAR_CONTRACT_COUNT_FAILED,        // 获取当年已经签署的CATEGORY的会签单数目
+
+
+        INSERT_WORKLOAD_SUCCESS,                ///  插入工作量信息
+        INSERT_WORKLOAD_FAILED,                ///  插入工作量信息
+                                               ///  
+        DELETE_WORKLOAD_SUCCESS,                ///  删除工作量信息
+        DELETE_WORKLOAD_FAILED,                ///  删除工作量信息
+                                               ///  
+        MODIFY_WORKLOAD_SUCCESS,                ///  修改工作量信息
+        MODIFY_WORKLOAD_FAILED,                ///  修改工作量信息
+                                               ///  
     }
 }

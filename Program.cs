@@ -296,7 +296,7 @@ namespace SignPressServer
             //    Console.WriteLine("文件存在无需在生成");
             //}
             //MSWordTools.WordConvertToPdf();
-            MSExcelTools.Test();
+            //MSExcelTools.Test();
             
 
             #endregion
@@ -343,6 +343,13 @@ namespace SignPressServer
             //                employ.Show();
             //            }
 
+
+            #endregion
+
+
+
+            #region 测试统计的功能
+            MSExcelTools.StatisticYearCategory(2015, 1);
 
             #endregion
 

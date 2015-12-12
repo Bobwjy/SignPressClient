@@ -177,8 +177,9 @@ namespace SignPressServer.SignDAL
         /// </summary>
         /// <param name="categoryId"></param>
         /// <returns></returns>
-        private static String QUERY_CATEGORY_SDEPARTMENT_STR = @"SELECT departmentid FROM conidcategory WHERE categoryid = @CategoryId ORDER BY departmentid";
+        private static String QUERY_CATEGORY_SDEPARTMENT_STR = @"SELECT d.id depid, d.name depname, d.shortcall depshortcall FROM conidcategory c, department d WHERE c.departmentid = d.id AND c.categoryid = @CategoryId";
         /// SELECT * FROM conidcategory WHERE categoryid = @CategoryId
+        /// SELECT departmentid FROM conidcategory WHERE categoryid = @CategoryId ORDER BY departmentid
         /// SELECT d.id depid, d.name depname, d.shortcall depshortcall FROM conidcategory c, department d WHERE c.departmentid = d.id AND c.categoryid = 1
         /// SELECT d.id depid, d.name depname, d.shortcall depshortcall, c.category, c.shortcall FROM conidcategory cc, department d, category c WHERE c.id = cc.categoryid AND cc.departmentid = d.id AND cc.categoryid = 
         public static List<Department> QueryCategorySDepartment(int categoryId)
@@ -203,9 +204,9 @@ namespace SignPressServer.SignDAL
                 {
                     Department department = new Department();
 
-                    department.Id = int.Parse(sqlRead["id"].ToString());
-                    department.Name = sqlRead["name"].ToString();
-                    department.ShortCall = sqlRead["shortcall"].ToString();
+                    department.Id = int.Parse(sqlRead["depid"].ToString());
+                    department.Name = sqlRead["depname"].ToString();
+                    department.ShortCall = sqlRead["depshortcall"].ToString();
 
                     departments.Add(department);
                 }
@@ -228,6 +229,64 @@ namespace SignPressServer.SignDAL
             }
             return departments;
         }
-    
+
+
+        /// <summary>
+        /// 查询可申请当前会签单类别的所有部门
+        /// </summary>
+        /// <param name="categoryId"></param>
+        /// <returns></returns>
+        private static String GET_CATEGORY_BY_ID_STR = @"SELECT id, category, shortcall FROM category WHERE id = @CategoryId";
+        /// SELECT * FROM conidcategory WHERE categoryid = @CategoryId
+        /// SELECT d.id depid, d.name depname, d.shortcall depshortcall FROM conidcategory c, department d WHERE c.departmentid = d.id AND c.categoryid = 1
+        /// SELECT d.id depid, d.name depname, d.shortcall depshortcall, c.category, c.shortcall FROM conidcategory cc, department d, category c WHERE c.id = cc.categoryid AND cc.departmentid = d.id AND cc.categoryid = 
+        public static ContractCategory GetCategory(int categoryId)
+        {
+            MySqlConnection con = DBTools.GetMySqlConnection();
+            MySqlCommand cmd;
+
+            ContractCategory category = new ContractCategory();
+
+            try
+            {
+                con.Open();
+
+                cmd = con.CreateCommand();
+
+                cmd.CommandText = GET_CATEGORY_BY_ID_STR;
+                cmd.Parameters.AddWithValue("@CategoryId", categoryId);
+                MySqlDataReader sqlRead = cmd.ExecuteReader();
+                cmd.Dispose();
+
+                while (sqlRead.Read())
+                {
+
+                    category.Id = int.Parse(sqlRead["id"].ToString());
+                    category.Category = sqlRead["category"].ToString();
+                    category.CategoryShortCall = sqlRead["shortcall"].ToString();
+
+                }
+
+
+                con.Close();
+                con.Dispose();
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                if (con.State == ConnectionState.Open)
+                {
+                    con.Close();
+                }
+            }
+            return category;
+        }
+
+        
+
     }
 }

@@ -102,9 +102,13 @@ namespace SignPressServer.SignTools
         ///
         QUERY_CATEGORY_PROJECT_REQUEST,         /// 查询当前工程类别下的所有项目类别
         QUERY_PROJECT_ITEM_REQUEST,             /// 查询当前项目类别下的所有工作量集合
-        QUERY_CONTRACT_WORKLOAD_REQUEST,            /// 查询当前会签单的所有工作量集合  
+        QUERY_CONTRACT_WORKLOAD_REQUEST,        /// 查询当前会签单的所有工作量集合  
     
         QUERY_SDEAPRTMENT_REQUEST,
+        
+        INSERT_WORKLOAD_REQUEST,                ///  插入工作量信息
+        DELETE_WORKLOAD_REQUEST,                ///  删除工作量信息
+        MODIFY_WORKLOAD_REQUEST,                ///  修改工作量信息
 
         //  统计信息
         GET_CATEGORY_YEAR_CONTRACT_COUNT_REQUEST,       // 获取当年已经签署的CATEGORY的会签单数目

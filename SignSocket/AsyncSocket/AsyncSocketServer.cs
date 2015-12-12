@@ -2882,6 +2882,7 @@ namespace SignPressServer.SignSocket.AsyncSocket
         #endregion
 
 
+
         #region 用户上传签字图片
         private const String SIGNATURE_PICTURE_PATH = ".\\signature\\";
 
@@ -2925,6 +2926,284 @@ namespace SignPressServer.SignSocket.AsyncSocket
                 Console.WriteLine(ex.ToString());
             }
         }
+        #endregion
+
+
+        #region 会签单工作量的处理，添加修改与删除
+
+
+        #region  会签单工作量的处理item的获取
+
+        #region 查询工作量列表的信息[2015-11-9 20:39] modify by gatieme
+        /// <summary>
+        ///  查询某个会签单项目可以申请的工作量列表的信息
+        ///  客户端发送的请求信息QUERY_PROJECT_ITEM_REQUEST  +  projectId[int]
+        ///  服务器返回的信息   
+        ///  成功 QUERY_PROJECT_ITEM_SUCCESS + List<ContractItem>
+        ///  失败 QUERY_PROJECT_ITEM_FAILED
+        /// </summary>
+        /// <param name="state"></param>
+        private void RaiseQueryProjectItemRequest(AsyncSocketState state)
+        {
+            Console.WriteLine("接收到来自{0}的查询工作量列表的信息{1}", state.ClientIp, state.SocketMessage.Message); // 输出真正的信息
+            this.Log.Write(new LogMessage("接收到来自" + state.ClientIp + "的查询工作量列表的信息" + state.SocketMessage.Message, LogMessageType.Information));
+
+            ServerResponse response = new ServerResponse();
+
+            // json数据解包
+            int projectId = JsonConvert.DeserializeObject<int>(state.SocketMessage.Message);
+
+            //  首先检测
+            List<ContractItem> items = DALContractItem.QueryProjectItem(projectId);
+
+            if (items != null)
+            {
+                Console.WriteLine("查询工作量列表成功");
+                this.Log.Write(new LogMessage(state.ClientIp + "查询工作量列表成功", LogMessageType.Success));
+
+                response = ServerResponse.QUERY_PROJECT_ITEM_SUCCESS;
+            }
+            else
+            {
+                Console.WriteLine("查询工作量列表失败");
+                this.Log.Write(new LogMessage(state.ClientIp + "查询工作量列表失败", LogMessageType.Error));
+
+                response = ServerResponse.QUERY_PROJECT_ITEM_FAILED;
+            }
+
+            //  查询部门成功则同时发送[报头 + 信息] 
+            if (response.Equals(ServerResponse.QUERY_PROJECT_ITEM_SUCCESS))
+            {
+                AsyncSocketMessage socketMessage = new AsyncSocketMessage(response, items);
+                this.Send(state.ClientSocket, Encoding.UTF8.GetBytes(socketMessage.Package));
+            }
+            else      //  查询失败则只发报头
+            {
+                AsyncSocketMessage socketMessage = new AsyncSocketMessage(response);
+                this.Send(state.ClientSocket, Encoding.UTF8.GetBytes(socketMessage.Package));
+            }
+        }
+        #endregion
+
+
+        #region 查询会签单的工作量列表[2015-11-9 20:39] modify by gatieme
+        /// <summary>
+        ///  查询工作量列表的信息
+        ///  客户端发送的请求信息QUERY_CONTRACT_WORKLOAD_REQUEST  +  contractId[string]
+        ///  服务器返回的信息
+        ///  成功 QUERY_CONTRACT_WORKLOAD_SUCCESS + List<ContractWorkload>
+        ///  失败 QUERY_CONTRACT_WORKLOAD_FAILED
+        /// </summary>
+        /// <param name="state"></param>
+        private void RaiseQueryContractWorkloadRequest(AsyncSocketState state)
+        {
+            Console.WriteLine("接收到来自{0}的查询会签单的工作量信息{1}", state.ClientIp, state.SocketMessage.Message); // 输出真正的信息
+            this.Log.Write(new LogMessage("接收到来自" + state.ClientIp + "的查询会签单的工作量信息" + state.SocketMessage.Message, LogMessageType.Information));
+
+            ServerResponse response = new ServerResponse();
+
+            // json数据解包
+            string contractId = JsonConvert.DeserializeObject<string>(state.SocketMessage.Message);
+
+            //  首先检测
+            List<ContractWorkload> workloads = DALContractWorkload.QureyContractWorkLoad(contractId);
+
+            if (workloads != null)
+            {
+                Console.WriteLine("查询会签单的工作量信息成功");
+                this.Log.Write(new LogMessage(state.ClientIp + "查询会签单的工作量信息成功", LogMessageType.Success));
+
+                response = ServerResponse.QUERY_CONTRACT_WORKLOAD_SUCCESS;
+            }
+            else
+            {
+                Console.WriteLine("查询会签单的工作量信息失败");
+                this.Log.Write(new LogMessage(state.ClientIp + "查询会签单的工作量信息失败", LogMessageType.Error));
+
+                response = ServerResponse.QUERY_CONTRACT_WORKLOAD_FAILED;
+            }
+
+            //  查询部门成功则同时发送[报头 + 信息] 
+            if (response.Equals(ServerResponse.QUERY_CONTRACT_WORKLOAD_SUCCESS))
+            {
+                AsyncSocketMessage socketMessage = new AsyncSocketMessage(response, workloads);
+                this.Send(state.ClientSocket, Encoding.UTF8.GetBytes(socketMessage.Package));
+            }
+            else      //  查询失败则只发报头
+            {
+                AsyncSocketMessage socketMessage = new AsyncSocketMessage(response);
+                this.Send(state.ClientSocket, Encoding.UTF8.GetBytes(socketMessage.Package));
+            }
+        }
+
+        #endregion
+
+        #endregion
+
+
+        #region 会签单工作量的 增加 修改 删除
+
+
+
+        #region   提交会签单的时候添加工作 [add by gatieme @ 2015-12-12 18:05]
+        /// <summary>
+        /// 提交会签单的时候新增某个工作量的信息工作
+        /// 客户端发送的信息INSERT_WORKLOAD_REQUEST + [ContractWorkload workload]
+        /// 服务器返回的数据   INSERT_WORKLOAD_SUCCESS  /  INSERT_WORKLOAD_FAILED
+        /// </summary>
+        /// <param name="state"></param>
+        private void RaiseInsertWorkloadRequest(AsyncSocketState state)
+        {
+            Console.WriteLine("接收到的来自{0}的待插入工作量信息{1}", state.ClientIp, state.SocketMessage.Message);
+            this.Log.Write(new LogMessage("接收到的来自" + state.ClientIp + "的待工作量信息" + state.SocketMessage.Message, LogMessageType.Information));
+
+            ServerResponse response = new ServerResponse();
+
+            // json数据解包
+            ContractWorkload workload = JsonConvert.DeserializeObject<ContractWorkload>(state.SocketMessage.Message);
+
+            //  首先判断员工信息是否存在，主要检查用户是否存在用户表中
+            //  由于用户表的主键ID是自动生成的，
+            //  因此我们检查唯一的成员信息，比如username
+            //if (DALEmployee.IsEmployeeExist(employee) == true)          //  如果
+            //{
+            //    response = ServerResponse.INSERT_EMPLOYEE_EXIST;
+            //}
+            //else
+            //{
+            bool result = DALContractWorkload.InsertWorkload(workload);
+            if (result == true)
+            {
+                Console.WriteLine("工作量{0}插入成功", workload.Item.Id);
+                this.Log.Write(new LogMessage("工作量" + workload.Item.Id + "插入成功", LogMessageType.Success));
+
+                response = ServerResponse.INSERT_WORKLOAD_SUCCESS;               //  用户登录成功信号         
+            }
+            else
+            {
+                Console.WriteLine("工作量{0}插入失败", workload.Item.Id);
+                this.Log.Write(new LogMessage("工作量" + workload.Item.Id + "插入失败", LogMessageType.Error));
+
+                //INSERT_EMPLOYEE_RESPONSE = "INSERT_EMPLOYEE_FAILED";                //  用户登录失败信号
+                response = ServerResponse.INSERT_WORKLOAD_FAILED;
+            }
+
+            //if (response.Equals(ServerResponse.INSERT_WORKLOAD_SUCCESS))
+            //{
+            //    //  插入员工的响应信息只包含头信息
+            //    employee = DALEmployee.GetEmployee(employee.User.Username);
+            //    AsyncSocketMessage socketMessage = new AsyncSocketMessage(response);
+            //    this.Send(state.ClientSocket, Encoding.UTF8.GetBytes(socketMessage.Package));
+            //}
+            //else
+            {
+                //  插入员工的响应信息只包含头信息
+                AsyncSocketMessage socketMessage = new AsyncSocketMessage(response);
+                this.Send(state.ClientSocket, Encoding.UTF8.GetBytes(socketMessage.Package));
+            }
+
+        }
+
+        #endregion
+
+        #region   提交会签单的时候修改工作
+        /// <summary>
+        /// 提交会签单的时候修改某个工作量的信息工作
+        /// 客户端发送的信息MODIFY_WORKLOAD_REQUEST + [ContractWorkload workload]
+        /// 服务器返回的数据   MODIFY_WORKLOAD_SUCCESS  /  MODIFY_WORKLOAD_FAILED
+        /// </summary>
+        /// <param name="state"></param>
+        private void RaiseModifyWorkloadRequest(AsyncSocketState state)
+        {
+
+            Console.WriteLine("接收到来自{0}的待修改工作量信息{1}", state.ClientIp, state.SocketMessage.Message);
+            this.Log.Write(new LogMessage("接收到来自" + state.ClientIp + "的待修改工作量信息" + state.SocketMessage.Message, LogMessageType.Information));
+
+            ServerResponse response = new ServerResponse();
+
+            // json数据解包
+            ContractWorkload workload = JsonConvert.DeserializeObject<ContractWorkload>(state.SocketMessage.Message);
+
+            //  首先判断当前员工是否存在提交的会签字单子
+            //if (DALHDJContract.GetEmployeeSubmitedHDJContractCount(employeeId) > 0)
+            //{
+            //    response = ServerResponse.DELETE_EMPLOYEE_EXIST_CONTRACT;
+            //}
+            //else if (DALContractTemplate.GetEmployeeContractTemplateCount(employeeId) > 0)
+            //{   // 当前员工与某个会签单模版相关联，删除可能导致模版信息不完整， 无法删除
+            //    response = ServerResponse.DELETE_EMPLOYEE_EXIST_CONTEMP;
+            //}
+            //else
+            //{
+            bool result = DALContractWorkload.ModifyWorkload(workload);
+
+            if (result == true)
+            {
+                Console.WriteLine("工作量{0}插入成功", workload.Item.Id);
+                this.Log.Write(new LogMessage("工作量" + workload.Item.Id + "插入成功", LogMessageType.Success));
+
+                response = ServerResponse.MODIFY_WORKLOAD_SUCCESS;               //  用户登录成功信号         
+            }
+            else
+            {
+                Console.WriteLine("工作量{0}插入失败", workload.Item.Id);
+                this.Log.Write(new LogMessage("工作量" + workload.Item.Id + "插入失败", LogMessageType.Error));
+
+                //INSERT_EMPLOYEE_RESPONSE = "INSERT_EMPLOYEE_FAILED";                //  用户登录失败信号
+                response = ServerResponse.MODIFY_WORKLOAD_FAILED;
+            }
+
+            //  删除员工的响应信息只包含头信息
+            AsyncSocketMessage socketMessage = new AsyncSocketMessage(response);
+            this.Send(state.ClientSocket, Encoding.UTF8.GetBytes(socketMessage.Package));
+        }
+        #endregion
+        
+        #region   提交会签单的时候删除工作
+        /// <summary>
+        /// 提交会签单的时候删除某个工作量的信息工作
+        /// 客户端发送的信息DELETE_WORKLOAD_REQUEST + [String workloadId]
+        /// 服务器返回的数据   DELETE_WORKLOAD_SUCCESS  /  DELETE_WORKLOAD_FAILED
+        /// </summary>
+        /// <param name="state"></param>
+        private void RaiseDeleteWorkloadRequest(AsyncSocketState state)
+        {
+
+            Console.WriteLine("接收到来自{0}的待删除工作量信息{1}", state.ClientIp, state.SocketMessage.Message);
+            this.Log.Write(new LogMessage("接收到来自" + state.ClientIp + "的待删除工作量信息" + state.SocketMessage.Message, LogMessageType.Information));
+
+            ServerResponse response = new ServerResponse();
+
+            // json数据解包
+            String workloadId = JsonConvert.DeserializeObject<String>(state.SocketMessage.Message);
+
+            //  首先判断当前员工是否存在提交的会签字单子
+            bool result = DALContractWorkload.DeleteWorkload(workloadId);
+
+            if (result == true)
+            {
+                Console.WriteLine("工作量{0}删除成功", workloadId);
+                this.Log.Write(new LogMessage(state.ClientIp + "工作量" + workloadId + "删除成功", LogMessageType.Success));
+
+                //DELETE_DEPARTMENT_RESPONSE = "DELETE_DEPARTMENT_SUCCESS";               //  用户登录成功信号   
+                response = ServerResponse.DELETE_EMPLOYEE_SUCCESS;
+            }
+            else
+            {
+                Console.WriteLine("工作量{0}删除失败", workloadId);
+                this.Log.Write(new LogMessage(state.ClientIp + "工作量" + workloadId + "删除失败", LogMessageType.Error));
+
+                //DELETE_DEPARTMENT_RESPONSE = "DELETE_DEPARTMENT_FAILED";                //  用户登录失败信号
+                response = ServerResponse.DELETE_EMPLOYEE_FAILED;
+            }
+            //  删除员工的响应信息只包含头信息
+            AsyncSocketMessage socketMessage = new AsyncSocketMessage(response);
+            this.Send(state.ClientSocket, Encoding.UTF8.GetBytes(socketMessage.Package));
+        }
+        #endregion
+        
+        #endregion
+
         #endregion
 
 
@@ -3027,108 +3306,6 @@ namespace SignPressServer.SignSocket.AsyncSocket
         #endregion
 
 
-        #region 查询工作量列表的信息[2015-11-9 20:39] modify by gatieme
-        /// <summary>
-        ///  查询工作量列表的信息
-        ///  客户端发送的请求信息QUERY_PROJECT_ITEM_REQUEST  +  projectId[int]
-        ///  服务器返回的信息   
-        ///  成功 QUERY_PROJECT_ITEM_SUCCESS + List<ContractItem>
-        ///  失败 QUERY_PROJECT_ITEM_FAILED
-        /// </summary>
-        /// <param name="state"></param>
-        private void RaiseQueryProjectItemRequest(AsyncSocketState state)
-        {
-            Console.WriteLine("接收到来自{0}的查询工作量列表的信息{1}", state.ClientIp, state.SocketMessage.Message); // 输出真正的信息
-            this.Log.Write(new LogMessage("接收到来自" + state.ClientIp + "的查询工作量列表的信息" + state.SocketMessage.Message, LogMessageType.Information));
-
-            ServerResponse response = new ServerResponse();
-
-            // json数据解包
-            int projectId = JsonConvert.DeserializeObject<int>(state.SocketMessage.Message);
-
-            //  首先检测
-            List<ContractItem> items = DALContractItem.QueryProjectItem(projectId);
-
-            if (items != null)
-            {
-                Console.WriteLine("查询工作量列表成功");
-                this.Log.Write(new LogMessage(state.ClientIp + "查询工作量列表成功", LogMessageType.Success));
-
-                response = ServerResponse.QUERY_PROJECT_ITEM_SUCCESS;
-            }
-            else
-            {
-                Console.WriteLine("查询工作量列表失败");
-                this.Log.Write(new LogMessage(state.ClientIp + "查询工作量列表失败", LogMessageType.Error));
-
-                response = ServerResponse.QUERY_PROJECT_ITEM_FAILED;
-            }
-
-            //  查询部门成功则同时发送[报头 + 信息] 
-            if (response.Equals(ServerResponse.QUERY_PROJECT_ITEM_SUCCESS))
-            {
-                AsyncSocketMessage socketMessage = new AsyncSocketMessage(response, items);
-                this.Send(state.ClientSocket, Encoding.UTF8.GetBytes(socketMessage.Package));
-            }
-            else      //  查询失败则只发报头
-            {
-                AsyncSocketMessage socketMessage = new AsyncSocketMessage(response);
-                this.Send(state.ClientSocket, Encoding.UTF8.GetBytes(socketMessage.Package));
-            }
-        }
-        #endregion
-
-
-        #region 查询会签单的工作量列表[2015-11-9 20:39] modify by gatieme
-        /// <summary>
-        ///  查询工作量列表的信息
-        ///  客户端发送的请求信息QUERY_CONTRACT_WORKLOAD_REQUEST  +  contractId[string]
-        ///  服务器返回的信息
-        ///  成功 QUERY_CONTRACT_WORKLOAD_SUCCESS + List<ContractWorkload>
-        ///  失败 QUERY_CONTRACT_WORKLOAD_FAILED
-        /// </summary>
-        /// <param name="state"></param>
-        private void RaiseQueryContractWorkloadRequest(AsyncSocketState state)
-        {
-            Console.WriteLine("接收到来自{0}的查询会签单的工作量信息{1}", state.ClientIp, state.SocketMessage.Message); // 输出真正的信息
-            this.Log.Write(new LogMessage("接收到来自" + state.ClientIp + "的查询会签单的工作量信息" + state.SocketMessage.Message, LogMessageType.Information));
-
-            ServerResponse response = new ServerResponse();
-
-            // json数据解包
-            string contractId = JsonConvert.DeserializeObject<string>(state.SocketMessage.Message);
-
-            //  首先检测
-            List<ContractWorkload> workloads = DALContractWorkload.QureyContractWorkLoad(contractId);
-
-            if (workloads != null)
-            {
-                Console.WriteLine("查询会签单的工作量信息成功");
-                this.Log.Write(new LogMessage(state.ClientIp + "查询会签单的工作量信息成功", LogMessageType.Success));
-
-                response = ServerResponse.QUERY_CONTRACT_WORKLOAD_SUCCESS;
-            }
-            else
-            {
-                Console.WriteLine("查询会签单的工作量信息失败");
-                this.Log.Write(new LogMessage(state.ClientIp + "查询会签单的工作量信息失败", LogMessageType.Error));
-
-                response = ServerResponse.QUERY_CONTRACT_WORKLOAD_FAILED;
-            }
-
-            //  查询部门成功则同时发送[报头 + 信息] 
-            if (response.Equals(ServerResponse.QUERY_CONTRACT_WORKLOAD_SUCCESS))
-            {
-                AsyncSocketMessage socketMessage = new AsyncSocketMessage(response, workloads);
-                this.Send(state.ClientSocket, Encoding.UTF8.GetBytes(socketMessage.Package));
-            }
-            else      //  查询失败则只发报头
-            {
-                AsyncSocketMessage socketMessage = new AsyncSocketMessage(response);
-                this.Send(state.ClientSocket, Encoding.UTF8.GetBytes(socketMessage.Package));
-            }
-        }
-        #endregion
 
 
         #region 查询会签单数目--用于提交签字时自动生成最后几位[2015-11-22 20:39] modify by gatieme
@@ -3187,4 +3364,3 @@ namespace SignPressServer.SignSocket.AsyncSocket
         #endregion  /// 统计功能
     }
 }
-

@@ -33,7 +33,7 @@ namespace SignPressServer.SignDAL
         ///  SELECT w.contractid, w.itemid, i.item, w.work, w.expense FROM `workload` w, `item` i WHERE w.itemid = i.id AND `contractid` like "申%" AND `itemid` = 1
         ///  SELECT w.contractid,  p.id projectid, p.project, i.id itemid, i.item,w.work, w.expense FROM `workload` w, `item` i, `project` p WHERE w.itemid = i.id AND i.projectid = p.id AND `contractid` like "申%" AND `itemid` = 1
         
-        private static String STATIS_SDEPARTMENT_YEAR_ITEM_STR = @"SELECT Sum(work) works, Sum(expense) expenses FROM `workload` WHERE `contractid` like @SDepartmentYear AND `itemid` = @ItemId";
+        private static String STATIS_SDEPARTMENT_YEAR_ITEM_STR = @"SELECT IFNULL(Sum(work), 0) works, IFNULL(Sum(expense),0) expenses FROM `workload` WHERE `contractid` like @SDepartmentYear AND `itemid` = @ItemId";
         /// SELECT Sum(work) works, Sum(expense) expenses FROM `workload` WHERE `contractid` like "申_2015%" AND itemid = 1 GROUP BY itemid
         /// SELECT i.id "工作量编号", i.item "工作量名称", Sum(wl.work) "工作量大小", Sum(wl.expense) "花费" FROM `workload` wl, item i WHERE wl.itemid = i.id AND `contractid` like "申_2015%" GROUP BY i.id
 
@@ -105,7 +105,7 @@ namespace SignPressServer.SignDAL
         #region  统计当前部门deaprtment当年year申请的所有工程为Project的统计信息
 
         /// SELECT p.id, p.project, Sum(wl.work) work, Sum(wl.expense) expense FROM `workload` wl, item i, project p WHERE wl.itemid = i.id AND i.projectid = p.id AND `contractid` like "申_2015%" GROUP BY p.id
-        private static String STATIS_SDEPARTMENT_YEAR_PROJECT_STR = @"SELECT Sum(wl.work), Sum(expense) expense FROM `workload` w, `item` i WHERE w.itemid = i.id AND w.contractid like @SDepartmentYear AND i.projectid = @ProjectId";
+        private static String STATIS_SDEPARTMENT_YEAR_PROJECT_STR = @"SELECT IFNULL(Sum(work), 0) works, IFNULL(Sum(expense),0) expenses FROM `workload` w, `item` i WHERE w.itemid = i.id AND w.contractid like @SDepartmentYear AND i.projectid = @ProjectId";
         /// <summary>
         ///  统计当前部门申请的所有工程Project下的会签单信息[Search数据填写SDepartmentShortCall + ItemId]
         /// </summary>
@@ -137,7 +137,7 @@ namespace SignPressServer.SignDAL
 
                     workload.ContractId = "STATIS";
 
-                    workload.Work = -1;
+                    workload.Work = double.Parse(sqlRead["works"].ToString());
                     workload.Expense = double.Parse(sqlRead["expenses"].ToString());
 
                     ContractItem item = new ContractItem();
@@ -172,7 +172,7 @@ namespace SignPressServer.SignDAL
         #region  统计当前部门deaprtment当年year申请的类别为Category的统计信息
 
         /// SELECT p.id, p.project, Sum(wl.work) work, Sum(wl.expense) expense FROM `workload` wl, item i, project p WHERE wl.itemid = i.id AND i.projectid = p.id AND `contractid` like "申_2015%" GROUP BY p.id
-        private static String STATIS_SDEPARTMENT_YEAR_CATEGORY_STR = @"SELECT Sum(wl.work), Sum(expense) expense FROM `workload` w, `item` i WHERE w.itemid = i.id AND w.contractid like @SDepartmentYear AND i.projectid = @ProjectId";
+        private static String STATIS_SDEPARTMENT_YEAR_CATEGORY_STR = @"SELECT IFNULL(Sum(work), 0) works, IFNULL(Sum(expense),0) expenses FROM `workload` w, `item` i WHERE w.itemid = i.id AND w.contractid like @SDepartmentYear AND i.projectid = @ProjectId";
         /// <summary>
         ///  统计当前部门申请的所有工程Project下的会签单信息[Search数据填写SDepartmentShortCall + ItemId]
         /// </summary>
@@ -191,7 +191,7 @@ namespace SignPressServer.SignDAL
 
                 cmd = con.CreateCommand();
 
-                cmd.CommandText = STATIS_SDEPARTMENT_YEAR_PROJECT_STR;
+                cmd.CommandText = STATIS_SDEPARTMENT_YEAR_CATEGORY_STR;
                 cmd.Parameters.AddWithValue("@SDepartmentYear", departmentShortCall + "_" + year.ToString() + "%");
                 cmd.Parameters.AddWithValue("@Category", categoryId);
                 MySqlDataReader sqlRead = cmd.ExecuteReader();
@@ -204,7 +204,7 @@ namespace SignPressServer.SignDAL
 
                     workload.ContractId = "STATIS";
 
-                    workload.Work = -1;
+                    workload.Work = double.Parse(sqlRead["works"].ToString());
                     workload.Expense = double.Parse(sqlRead["expenses"].ToString());
 
                     ContractItem item = new ContractItem();
@@ -247,9 +247,13 @@ namespace SignPressServer.SignDAL
         /// <param name="departmentId"></param>
         /// <param name="year"></param>
         /// <returns></returns>
-        public static bool StatisticSDepartmentYearCategory(int year, string categoryShortCall/*int categoryId*/)
+        public static bool StatisticSDepartmentYearCategory(int year, int categoryId)
         {
-            string sheetName = categoryShortCall + year.ToString( );
+            //  首先获取到当前的会签单的信息
+            ContractCategory category = DALContractIdCategory.GetCategory(categoryId);
+
+            string sheetName = category.CategoryShortCall + year.ToString();
+            Console.WriteLine("待保存的excel名 sheetName = " + sheetName);
 
             //int year = System.DateTime.Now.Year;
             //  首先获取数据库中可以申请本会签单类别的所有部门的列表
@@ -266,7 +270,6 @@ namespace SignPressServer.SignDAL
                     //  统计当前部门Department当年Year项目Project的统计信息
                     ContractWorkload workload = DALContractStatistic.StatisSDepartmentYearProjectWorkLoad(department.ShortCall, year, project.Id);
                     
-                    //Console.WriteLine(workload);
 
                     //  获取当前项目的工作量集合
                     List<ContractItem> items = DALContractItem.QueryProjectItem(project.Id);

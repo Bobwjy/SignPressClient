@@ -198,6 +198,53 @@ namespace SignPressServer.SignDAL
                 }
             }
         }
+        private static String DELETE_WORKLOAD_BY_ID_STR = @"DELETE FROM `workload` where(`id` = @workloadId)";
+
+        public static bool DeleteWorkload(String workloadId)
+        {
+            MySqlConnection con = DBTools.GetMySqlConnection();
+            MySqlCommand cmd;
+            int count = -1;
+            try
+            {
+                con.Open();
+
+                cmd = con.CreateCommand();
+
+                cmd.CommandText = DELETE_WORKLOAD_BY_ID_STR;
+                cmd.Parameters.AddWithValue("@Id", workloadId);                        // 部门姓名
+
+                count = cmd.ExecuteNonQuery();
+                cmd.Dispose();
+
+                con.Close();
+                con.Dispose();
+
+                if (count == 1)
+                {
+                    Console.WriteLine("删除工作量" + workloadId + "成功");
+                    return true;
+                }
+                else
+                {
+                    Console.WriteLine("删除工作量" + workloadId + "失败");
+
+                    return false;
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+
+                if (con.State == ConnectionState.Open)
+                {
+                    con.Close();
+                }
+            }
+        }
         #endregion
 
 
