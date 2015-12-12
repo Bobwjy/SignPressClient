@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50529
 File Encoding         : 65001
 
-Date: 2015-12-07 20:11:10
+Date: 2015-12-12 19:43:47
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -43,32 +43,53 @@ CREATE TABLE `conidcategory` (
   `departmentid` int(11) DEFAULT NULL,
   `categoryid` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `departmentid` (`departmentid`),
   KEY `categoryid` (`categoryid`),
-  CONSTRAINT `conidcategory_ibfk_1` FOREIGN KEY (`departmentid`) REFERENCES `department` (`id`),
+  KEY `conidcategory_ibfk_1` (`departmentid`),
+  CONSTRAINT `conidcategory_ibfk_1` FOREIGN KEY (`departmentid`) REFERENCES `department` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `conidcategory_ibfk_2` FOREIGN KEY (`categoryid`) REFERENCES `category` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of conidcategory
 -- ----------------------------
 INSERT INTO `conidcategory` VALUES ('1', '1', '1');
 INSERT INTO `conidcategory` VALUES ('2', '1', '2');
-INSERT INTO `conidcategory` VALUES ('3', '1', '3');
-INSERT INTO `conidcategory` VALUES ('4', '1', '4');
-INSERT INTO `conidcategory` VALUES ('5', '2', '1');
-INSERT INTO `conidcategory` VALUES ('6', '2', '2');
-INSERT INTO `conidcategory` VALUES ('7', '2', '3');
-INSERT INTO `conidcategory` VALUES ('8', '2', '4');
+INSERT INTO `conidcategory` VALUES ('5', '4', '1');
+INSERT INTO `conidcategory` VALUES ('7', '4', '3');
+INSERT INTO `conidcategory` VALUES ('8', '4', '4');
 INSERT INTO `conidcategory` VALUES ('9', '3', '1');
 INSERT INTO `conidcategory` VALUES ('10', '3', '2');
 INSERT INTO `conidcategory` VALUES ('11', '3', '3');
 INSERT INTO `conidcategory` VALUES ('12', '3', '4');
-INSERT INTO `conidcategory` VALUES ('13', '4', '1');
-INSERT INTO `conidcategory` VALUES ('14', '4', '2');
-INSERT INTO `conidcategory` VALUES ('15', '4', '3');
-INSERT INTO `conidcategory` VALUES ('16', '5', '1');
+INSERT INTO `conidcategory` VALUES ('13', '2', '1');
+INSERT INTO `conidcategory` VALUES ('14', '2', '2');
+INSERT INTO `conidcategory` VALUES ('15', '2', '3');
 INSERT INTO `conidcategory` VALUES ('17', '5', '4');
+INSERT INTO `conidcategory` VALUES ('18', '5', '3');
+INSERT INTO `conidcategory` VALUES ('19', '6', '3');
+INSERT INTO `conidcategory` VALUES ('20', '6', '4');
+INSERT INTO `conidcategory` VALUES ('21', '7', '3');
+INSERT INTO `conidcategory` VALUES ('22', '7', '4');
+INSERT INTO `conidcategory` VALUES ('23', '8', '1');
+INSERT INTO `conidcategory` VALUES ('24', '8', '2');
+INSERT INTO `conidcategory` VALUES ('25', '8', '3');
+INSERT INTO `conidcategory` VALUES ('26', '8', '4');
+INSERT INTO `conidcategory` VALUES ('27', '9', '1');
+INSERT INTO `conidcategory` VALUES ('28', '9', '2');
+INSERT INTO `conidcategory` VALUES ('29', '10', '1');
+INSERT INTO `conidcategory` VALUES ('30', '10', '2');
+INSERT INTO `conidcategory` VALUES ('31', '11', '1');
+INSERT INTO `conidcategory` VALUES ('32', '11', '2');
+INSERT INTO `conidcategory` VALUES ('33', '12', '1');
+INSERT INTO `conidcategory` VALUES ('34', '12', '2');
+INSERT INTO `conidcategory` VALUES ('35', '13', '1');
+INSERT INTO `conidcategory` VALUES ('36', '13', '2');
+INSERT INTO `conidcategory` VALUES ('37', '14', '1');
+INSERT INTO `conidcategory` VALUES ('38', '14', '2');
+INSERT INTO `conidcategory` VALUES ('39', '15', '1');
+INSERT INTO `conidcategory` VALUES ('40', '15', '2');
+INSERT INTO `conidcategory` VALUES ('41', '16', '1');
+INSERT INTO `conidcategory` VALUES ('42', '16', '2');
 
 -- ----------------------------
 -- Table structure for contemp
@@ -145,16 +166,27 @@ CREATE TABLE `department` (
   `canregular` int(11) DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `name` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of department
 -- ----------------------------
-INSERT INTO `department` VALUES ('1', '申请科', '申', '1', '1', '1', '1');
-INSERT INTO `department` VALUES ('2', '养护科', '养', '1', '1', '1', '1');
-INSERT INTO `department` VALUES ('3', '计划科', '计', '1', '1', '1', '1');
-INSERT INTO `department` VALUES ('4', '财务科', '财', '1', '1', '1', '0');
-INSERT INTO `department` VALUES ('5', '行政科', '政', '1', '0', '0', '1');
+INSERT INTO `department` VALUES ('1', '黑龙江省航道局', '省', '1', '1', '0', '0');
+INSERT INTO `department` VALUES ('2', '哈总段', '哈', '1', '1', '1', '0');
+INSERT INTO `department` VALUES ('3', '佳木斯航道局', '佳', '1', '1', '1', '1');
+INSERT INTO `department` VALUES ('4', '黑河航道局', '黑', '1', '0', '1', '1');
+INSERT INTO `department` VALUES ('5', '一中心', '一', '0', '0', '1', '1');
+INSERT INTO `department` VALUES ('6', '二中心', '二', '0', '0', '1', '1');
+INSERT INTO `department` VALUES ('7', '三中心', '三', '0', '0', '1', '1');
+INSERT INTO `department` VALUES ('8', '测绘中心', '测', '1', '1', '1', '1');
+INSERT INTO `department` VALUES ('9', '信息中心', '信', '1', '1', '0', '0');
+INSERT INTO `department` VALUES ('10', '安监室', '安', '1', '1', '0', '0');
+INSERT INTO `department` VALUES ('11', '航政科', '政', '1', '1', '0', '0');
+INSERT INTO `department` VALUES ('12', '航道科', '道', '1', '1', '0', '0');
+INSERT INTO `department` VALUES ('13', '教育科', '教', '1', '1', '0', '0');
+INSERT INTO `department` VALUES ('14', '通讯办', '通', '1', '1', '0', '0');
+INSERT INTO `department` VALUES ('15', '设备科', '设', '1', '1', '0', '0');
+INSERT INTO `department` VALUES ('16', '财务科', '财', '1', '1', '0', '0');
 
 -- ----------------------------
 -- Table structure for employee
@@ -173,7 +205,7 @@ CREATE TABLE `employee` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `username` (`username`),
   KEY `departmentid` (`departmentid`),
-  CONSTRAINT `employee_ibfk_1` FOREIGN KEY (`departmentid`) REFERENCES `department` (`id`)
+  CONSTRAINT `employee_ibfk_1` FOREIGN KEY (`departmentid`) REFERENCES `department` (`id`) ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -181,10 +213,10 @@ CREATE TABLE `employee` (
 -- ----------------------------
 INSERT INTO `employee` VALUES ('1', '成坚', '负责人', '1', '1', '1', '0', 'chengjian', 'chengjian');
 INSERT INTO `employee` VALUES ('2', '石啸', '主管', '1', '1', '1', '0', 'shixiao', 'shixiao');
-INSERT INTO `employee` VALUES ('3', '张立平', '负责人', '2', '0', '1', '0', 'zhanglilping', 'zhangliping');
-INSERT INTO `employee` VALUES ('4', '许伟', '科长', '2', '0', '1', '0', 'xuwei', 'xuwei');
+INSERT INTO `employee` VALUES ('3', '张立平', '负责人', '4', '0', '1', '0', 'zhanglilping', 'zhangliping');
+INSERT INTO `employee` VALUES ('4', '许伟', '科长', '4', '0', '1', '0', 'xuwei', 'xuwei');
 INSERT INTO `employee` VALUES ('5', '赵强', '科长', '3', '0', '1', '0', 'zhaoqiang', 'zhaoqiang');
-INSERT INTO `employee` VALUES ('6', '李景龙', '科长', '4', '0', '1', '0', 'lijinglong', 'lijinglong');
+INSERT INTO `employee` VALUES ('6', '李景龙', '科长', '2', '0', '1', '0', 'lijinglong', 'lijinglong');
 INSERT INTO `employee` VALUES ('7', '王盼盼', '副局长', '5', '0', '1', '1', 'wangpanpan', 'wangpanpan');
 INSERT INTO `employee` VALUES ('8', '吴佳怡', '局长', '5', '0', '1', '1', 'wujiayi', 'wujiayi');
 
@@ -214,11 +246,11 @@ CREATE TABLE `hdjcontract` (
 -- Records of hdjcontract
 -- ----------------------------
 INSERT INTO `hdjcontract` VALUES ('1', '会签单', '1', '阿里巴巴', '马云', '你没', '你妹', '赵老五', '2', null);
-INSERT INTO `hdjcontract` VALUES ('政内2015001', '养护及例会项目拨款会签审批单 ', '1', 'g`w', 'ewf', 'ewf', 'fwedf', 'fw', '2', '2015-06-21 00:00:00');
-INSERT INTO `hdjcontract` VALUES ('政界2015003', '养护及例会项目拨款会签审批单 ', '1', 'dfrfrg', 'sdgf', 'dsg', 'dsgf', 'sdg', '2', '2015-06-21 00:00:00');
-INSERT INTO `hdjcontract` VALUES ('申内2015002', '养护及例会项目拨款会签审批单 ', '1', 'dsds', 'dsdsds', 'dsgff', 'sdasga', 'ga', '2', '2015-06-21 18:26:06');
-INSERT INTO `hdjcontract` VALUES ('申界2015001', '养护及例会项目拨款会签审批单 ', '1', '航道局', '百度收购案', '收购百度', '1000', '2000', '2', '2015-06-21 00:00:00');
-INSERT INTO `hdjcontract` VALUES ('申界2015002', '养护及例会项目拨款会签审批单 ', '1', '航道局', '腾讯收购案', '收购腾讯', '200', '200', '2', '2015-06-21 00:00:00');
+INSERT INTO `hdjcontract` VALUES ('佳内2015001', '养护及例会项目拨款会签审批单 ', '1', 'g`w', 'ewf', 'ewf', 'fwedf', 'fw', '2', '2015-06-21 00:00:00');
+INSERT INTO `hdjcontract` VALUES ('佳界2015003', '养护及例会项目拨款会签审批单 ', '1', 'dfrfrg', 'sdgf', 'dsg', 'dsgf', 'sdg', '2', '2015-06-21 00:00:00');
+INSERT INTO `hdjcontract` VALUES ('省内2015002', '养护及例会项目拨款会签审批单 ', '1', 'dsds', 'dsdsds', 'dsgff', 'sdasga', 'ga', '2', '2015-06-21 18:26:06');
+INSERT INTO `hdjcontract` VALUES ('省界2015001', '养护及例会项目拨款会签审批单 ', '1', '航道局', '百度收购案', '收购百度', '1000', '2000', '2', '2015-06-21 00:00:00');
+INSERT INTO `hdjcontract` VALUES ('省界2015002', '养护及例会项目拨款会签审批单 ', '1', '航道局', '腾讯收购案', '收购腾讯', '200', '200', '2', '2015-06-21 00:00:00');
 
 -- ----------------------------
 -- Table structure for item
@@ -231,7 +263,7 @@ CREATE TABLE `item` (
   PRIMARY KEY (`id`),
   KEY `projectid` (`projectid`),
   CONSTRAINT `item_ibfk_1` FOREIGN KEY (`projectid`) REFERENCES `project` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=73 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=74 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of item
@@ -276,7 +308,7 @@ INSERT INTO `item` VALUES ('37', '5', '航道卫生监督费');
 INSERT INTO `item` VALUES ('38', '5', '临时用工费');
 INSERT INTO `item` VALUES ('39', '5', '执法服装及办公费');
 INSERT INTO `item` VALUES ('40', '5', '航道养护专项检查、管理费');
-INSERT INTO `item` VALUES ('41', '6', '延伸养护调研费\r\n');
+INSERT INTO `item` VALUES ('41', '6', '延伸养护调研费');
 INSERT INTO `item` VALUES ('42', '7', '航道巡查');
 INSERT INTO `item` VALUES ('43', '7', '航道测量');
 INSERT INTO `item` VALUES ('44', '7', '仪器购置及检测费');
@@ -450,10 +482,10 @@ CREATE TABLE `workload` (
 -- ----------------------------
 -- Records of workload
 -- ----------------------------
-INSERT INTO `workload` VALUES ('1', '申界2015001', '1', '100.00', '100.00');
-INSERT INTO `workload` VALUES ('2', '申界2015001', '2', '100.00', '100.00');
-INSERT INTO `workload` VALUES ('3', '申界2015001', '3', '100.00', '100.00');
-INSERT INTO `workload` VALUES ('4', '政内2015001', '4', '100.00', '100.00');
+INSERT INTO `workload` VALUES ('1', '省界2015001', '1', '100.00', '100.00');
+INSERT INTO `workload` VALUES ('2', '省界2015001', '2', '100.00', '100.00');
+INSERT INTO `workload` VALUES ('3', '省界2015001', '3', '100.00', '100.00');
+INSERT INTO `workload` VALUES ('4', '佳内2015001', '4', '100.00', '100.00');
 
 -- ----------------------------
 -- Table structure for yhjlhxmbkcontract
