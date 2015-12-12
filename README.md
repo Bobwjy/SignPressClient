@@ -5,6 +5,16 @@ git reset --hard
 git clean -xdf 
 
 
+git remote add gatieme git@github.com:gatieme/SignPressServer.git
+git fetch gatieme
+git merge gatieme/master
+
+这样就能给你的当前本地的项目变成和原作者的主项目一样。 然后你按正常的流程进行修改并提交到你的项目就好了。
+
+
+git commit -am '更新到原作者的主分支的进度'
+git push origin
+
 解决此工作簿包含其他数据源链接
 至少3种办法可以取消更新与不更新。
 第一种办法：“编辑”-“链接”-“启动提示”-“不显示该警告，同时也不更新自动链接”
