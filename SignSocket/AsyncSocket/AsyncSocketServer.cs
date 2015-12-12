@@ -1088,6 +1088,21 @@ namespace SignPressServer.SignSocket.AsyncSocket
                         RaiseQuerySignDetailContractRequest(state);
                         break;
 
+                    /// <summary>
+                    /// ==处理工作量信息==
+                    /// </summary>
+                    case  "INSERT_WORKLOAD_REQUEST" :
+                        RaiseInsertWorkloadRequest(state);
+                        break;
+                    case "DELETE_WORKLOAD_REQUEST" :
+                        RaiseDeleteWorkloadRequest(state);
+                        break;
+                    case "MODIFY_WORKLOAD_REQUEST" :
+                        RaiseModifyWorkloadRequest(state);
+                        break;
+                    case "QUERY_WORKLOAD_REQUEST" :
+                        RaiseModifyWorkloadRequest(state);
+                        break;
 
                     /// <summary>
                     /// ==新增统计功能==
@@ -1115,7 +1130,8 @@ namespace SignPressServer.SignSocket.AsyncSocket
                     case "QUERY_CONTRACT_WORKLOAD_REQUEST":
                         RaiseQueryContractWorkloadRequest(state);
                         break;
-                     
+                    
+
 
                 }
                 //this.Close(state);
@@ -3186,7 +3202,7 @@ namespace SignPressServer.SignSocket.AsyncSocket
                 this.Log.Write(new LogMessage(state.ClientIp + "工作量" + workloadId + "删除成功", LogMessageType.Success));
 
                 //DELETE_DEPARTMENT_RESPONSE = "DELETE_DEPARTMENT_SUCCESS";               //  用户登录成功信号   
-                response = ServerResponse.DELETE_EMPLOYEE_SUCCESS;
+                response = ServerResponse.DELETE_WORKLOAD_SUCCESS;
             }
             else
             {
@@ -3194,14 +3210,67 @@ namespace SignPressServer.SignSocket.AsyncSocket
                 this.Log.Write(new LogMessage(state.ClientIp + "工作量" + workloadId + "删除失败", LogMessageType.Error));
 
                 //DELETE_DEPARTMENT_RESPONSE = "DELETE_DEPARTMENT_FAILED";                //  用户登录失败信号
-                response = ServerResponse.DELETE_EMPLOYEE_FAILED;
+                response = ServerResponse.DELETE_WORKLOAD_FAILED;
             }
             //  删除员工的响应信息只包含头信息
             AsyncSocketMessage socketMessage = new AsyncSocketMessage(response);
             this.Send(state.ClientSocket, Encoding.UTF8.GetBytes(socketMessage.Package));
         }
         #endregion
-        
+
+
+        #region  查询会签单编号为contractId的工作量集合
+        /// <summary>
+        /// 查询会签单编号为contractId的工作量集合
+        /// 客户端发送的信息QUERY_WORKLOAD_REQUEST + [String workloadId]
+        /// 服务器返回的数据   QUERY_WORKLOAD_SUCCESS  /  QUERY_WORKLOAD_FAILED
+        /// </summary>
+        /// <param name="state"></param>
+        private void RaiseQueryWorkloadRequest(AsyncSocketState state)
+        {
+
+            Console.WriteLine("接收到来自{0}的待删除工作量信息{1}", state.ClientIp, state.SocketMessage.Message);
+            this.Log.Write(new LogMessage("接收到来自" + state.ClientIp + "的待删除工作量信息" + state.SocketMessage.Message, LogMessageType.Information));
+
+            ServerResponse response = new ServerResponse();
+
+            // json数据解包
+            String contractId = JsonConvert.DeserializeObject<String>(state.SocketMessage.Message);
+
+            //  首先判断当前员工是否存在提交的会签字单子
+            List<ContractWorkload> workloads = DALContractWorkload.QureyContractWorkLoad(contractId);
+
+            if (workloads != null)
+            {
+                Console.WriteLine("工作量{0}查询成功", contractId);
+                this.Log.Write(new LogMessage(state.ClientIp + "工作量" + contractId + "查询成功", LogMessageType.Success));
+
+                //DELETE_DEPARTMENT_RESPONSE = "DELETE_DEPARTMENT_SUCCESS";               //  用户登录成功信号   
+                response = ServerResponse.QUERY_WORKLOAD_SUCCESS;
+            }
+            else
+            {
+                Console.WriteLine("工作量{0}查询失败", contractId);
+                this.Log.Write(new LogMessage(state.ClientIp + "工作量" + contractId + "查询失败", LogMessageType.Error));
+
+                //DELETE_DEPARTMENT_RESPONSE = "DELETE_DEPARTMENT_FAILED";                //  用户登录失败信号
+                response = ServerResponse.QUERY_WORKLOAD_FAILED;
+            }
+            if (response.Equals(ServerResponse.QUERY_WORKLOAD_SUCCESS))
+            {
+                //  插入员工的响应信息只包含头信息
+                AsyncSocketMessage socketMessage = new AsyncSocketMessage(response, workloads);
+                this.Send(state.ClientSocket, Encoding.UTF8.GetBytes(socketMessage.Package));
+            }
+            else
+            {
+                //  插入员工的响应信息只包含头信息
+                AsyncSocketMessage socketMessage = new AsyncSocketMessage(response);
+                this.Send(state.ClientSocket, Encoding.UTF8.GetBytes(socketMessage.Package));
+            }
+        }
+        #endregion
+
         #endregion
 
         #endregion

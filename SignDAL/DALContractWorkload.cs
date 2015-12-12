@@ -306,6 +306,9 @@ namespace SignPressServer.SignDAL
         }
         #endregion
 
+
+     
+
         #region 统计工作量的信息[Search数据填写SDepartmentShortCall + ItemId]
         private static String   QUERY_SDEPARTMENT_ITEM_YEAR_WORKLOAD_STR = @"SELECT `contractid`, `itemid`, `work`, `expense` FROM `workload` WHERE `contractid` like @SDepartmentYear AND `itemid` = @ItemId";
         ///  SELECT w.contractid, w.itemid, i.item, w.work, w.expense FROM `workload` w, `item` i WHERE w.itemid = i.id AND `contractid` like "申%" AND `itemid` = 1

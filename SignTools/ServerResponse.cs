@@ -212,5 +212,7 @@ namespace SignPressServer.SignTools
         MODIFY_WORKLOAD_SUCCESS,                ///  修改工作量信息
         MODIFY_WORKLOAD_FAILED,                ///  修改工作量信息
                                                ///  
+        QUERY_WORKLOAD_SUCCESS,                ///  修改工作量信息
+        QUERY_WORKLOAD_FAILED,                ///  修改工作量信息
     }
 }
