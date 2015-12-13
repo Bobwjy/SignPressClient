@@ -8,11 +8,30 @@
 *.gch
 *.pch
 
+<<<<<<< HEAD
 
+=======
+# Compiled Dynamic libraries
+#*.so
+#*.dylib
+>>>>>>> gatieme/master
 
 # Fortran module files
 *.mod
 
+<<<<<<< HEAD
 
 #Log file
 *.log
+=======
+# Compiled Static libraries
+*.lai
+*.la
+
+#Log
+*.log
+*.doc
+*.docx
+*.xls
+*.xlsx
+>>>>>>> gatieme/master

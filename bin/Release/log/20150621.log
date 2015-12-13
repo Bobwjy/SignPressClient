@@ -1,0 +1,1728 @@
+﻿2015/6/21 9:59:58	Information	正在与10.0.62.182 : 2374进行数据传输...
+2015/6/21 9:59:58	Information	接收了60个数据单元
+2015/6/21 9:59:58	Information	接收到的数据 LOGIN_REQUEST;43;{"Username":"wujiayi","Password":"wujiayi"}, 大小60
+2015/6/21 9:59:58	Information	接收到来自10.0.62.182:2374的登录信息{"Username":"wujiayi","Password":"wujiayi"}
+2015/6/21 10:00:02	Success	USERNAME : wujiayi, PASSWORD : wujiayi用户名密码均正确，可以登录
+2015/6/21 10:00:02	Information	获取到一个来自10.0.62.182 : 2377的连接...
+2015/6/21 10:00:06	Information	正在与10.0.62.182 : 2377进行数据传输...
+2015/6/21 10:00:06	Information	接收了25个数据单元
+2015/6/21 10:00:06	Information	接收到的数据 QUERY_DEPARTMENT_REQUEST;, 大小25
+2015/6/21 10:00:06	Success	10.0.62.182:2377部门信息查询成功
+2015/6/21 10:00:07	Information	正在与10.0.62.182 : 2377进行数据传输...
+2015/6/21 10:00:07	Information	接收了26个数据单元
+2015/6/21 10:00:07	Information	接收到的数据 QUERY_EMPLOYEE_REQUEST;1;0, 大小26
+2015/6/21 10:00:07	Information	10.0.62.182:2377待查询的员工的编号 = 0
+2015/6/21 10:00:07	Information	10.0.62.182:2377查询到的部门编号为0的所有员工
+2015/6/21 10:00:07	Success	10.0.62.182:2377部门0的员工信息查询成功
+2015/6/21 10:00:07	Information	正在与10.0.62.182 : 2377进行数据传输...
+2015/6/21 10:00:07	Information	接收了32个数据单元
+2015/6/21 10:00:07	Information	接收到的数据 QUERY_CONTRACT_TEMPLATE_REQUEST;, 大小32
+2015/6/21 10:00:07	Information	接收到来自10.0.62.182:2377查询会签单模版信息0
+2015/6/21 10:00:07	Information	10.0.62.182:2377查询到的了所有的会签单
+2015/6/21 10:00:07	Success	10.0.62.182:2377会签单模版信息信息查询成功
+2015/6/21 10:00:07	Information	正在与10.0.62.182 : 2374进行数据传输...
+2015/6/21 10:00:07	Exception	System.Net.Sockets.SocketException (0x80004005): 远程主机强迫关闭了一个现有的连接。
+   在 System.Net.Sockets.Socket.EndReceive(IAsyncResult asyncResult)
+   在 SignPressServer.SignSocket.AsyncSocket.AsyncSocketServer.HandleDataReceived(IAsyncResult ar) 位置 g:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressServer\SignSocket\AsyncSocket\AsyncSocketServer.cs:行号 410
+2015/6/21 10:00:36	Information	正在与10.0.62.182 : 2377进行数据传输...
+2015/6/21 10:00:36	Information	接收了1677个数据单元
+2015/6/21 10:00:36	Information	接收到的数据 INSERT_CONTRACT_TEMPLATE_REQUEST;1639;{"CreateDate":null,"TempId":0,"Name":"uu","ColumnCount":5,"ColumnNames":["erew","w","tr","t","t"],"SignCount":8,"SignDatas":[{"SignInfo":"t","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":2},{"SignInfo":"t","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"t","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"t","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"t","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":3},{"SignInfo":"t","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"t","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":2},{"SignInfo":"tt","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":3}]}, 大小1677
+2015/6/21 10:00:36	Information	接收到来自10.0.62.182:2377待插入会签单模版{"CreateDate":null,"TempId":0,"Name":"uu","ColumnCount":5,"ColumnNames":["erew","w","tr","t","t"],"SignCount":8,"SignDatas":[{"SignInfo":"t","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":2},{"SignInfo":"t","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"t","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"t","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"t","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":3},{"SignInfo":"t","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"t","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":2},{"SignInfo":"tt","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":3}]}
+2015/6/21 10:00:36	Success	会签单模版uu插入成功
+2015/6/21 10:00:47	Information	正在与10.0.62.182 : 2377进行数据传输...
+2015/6/21 10:00:47	Information	接收了32个数据单元
+2015/6/21 10:00:47	Information	接收到的数据 QUERY_CONTRACT_TEMPLATE_REQUEST;, 大小32
+2015/6/21 10:00:47	Information	接收到来自10.0.62.182:2377查询会签单模版信息{"CreateDate":null,"TempId":0,"Name":"uu","ColumnCount":5,"ColumnNames":["erew","w","tr","t","t"],"SignCount":8,"SignDatas":[{"SignInfo":"t","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":2},{"SignInfo":"t","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"t","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"t","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"t","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":3},{"SignInfo":"t","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"t","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":2},{"SignInfo":"tt","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":3}]}
+2015/6/21 10:00:47	Information	10.0.62.182:2377查询到的了所有的会签单
+2015/6/21 10:00:47	Success	10.0.62.182:2377会签单模版信息信息查询成功
+2015/6/21 10:00:50	Information	正在与10.0.62.182 : 2377进行数据传输...
+2015/6/21 10:00:50	Information	接收了33个数据单元
+2015/6/21 10:00:50	Information	接收到的数据 GET_CONTRACT_TEMPLATE_REQUEST;1;2, 大小33
+2015/6/21 10:00:50	Information	接收到来自10.0.62.182:2377待获取会签单模版编号2
+2015/6/21 10:00:50	Success	10.0.62.182:2377获取会签单模版2成功
+2015/6/21 10:01:04	Information	正在与10.0.62.182 : 2377进行数据传输...
+2015/6/21 10:01:04	Information	接收了36个数据单元
+2015/6/21 10:01:04	Information	接收到的数据 DELETE_CONTRACT_TEMPLATE_REQUEST;1;2, 大小36
+2015/6/21 10:01:04	Information	接收到来自10.0.62.182:2377待插入会签单模版编号2
+2015/6/21 10:01:04	Success	10.0.62.182:2377会签单模版2删除成功
+2015/6/21 10:01:05	Information	正在与10.0.62.182 : 2377进行数据传输...
+2015/6/21 10:01:05	Information	接收了32个数据单元
+2015/6/21 10:01:05	Information	接收到的数据 QUERY_CONTRACT_TEMPLATE_REQUEST;, 大小32
+2015/6/21 10:01:05	Information	接收到来自10.0.62.182:2377查询会签单模版信息2
+2015/6/21 10:01:05	Information	10.0.62.182:2377查询到的了所有的会签单
+2015/6/21 10:01:05	Success	10.0.62.182:2377会签单模版信息信息查询成功
+2015/6/21 10:20:59	Information	正在与10.0.62.182 : 2377进行数据传输...
+2015/6/21 10:20:59	Exception	System.Net.Sockets.SocketException (0x80004005): 远程主机强迫关闭了一个现有的连接。
+   在 System.Net.Sockets.Socket.EndReceive(IAsyncResult asyncResult)
+   在 SignPressServer.SignSocket.AsyncSocket.AsyncSocketServer.HandleDataReceived(IAsyncResult ar) 位置 g:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressServer\SignSocket\AsyncSocket\AsyncSocketServer.cs:行号 410
+2015/6/21 10:21:11	Information	获取到一个来自10.0.62.182 : 2884的连接...
+2015/6/21 10:21:11	Information	正在与10.0.62.182 : 2884进行数据传输...
+2015/6/21 10:21:11	Information	接收了60个数据单元
+2015/6/21 10:21:11	Information	接收到的数据 LOGIN_REQUEST;43;{"Username":"wujiayi","Password":"wujiayi"}, 大小60
+2015/6/21 10:21:11	Information	接收到来自10.0.62.182:2884的登录信息{"Username":"wujiayi","Password":"wujiayi"}
+2015/6/21 10:21:12	Success	USERNAME : wujiayi, PASSWORD : wujiayi用户名密码均正确，可以登录
+2015/6/21 10:21:12	Information	获取到一个来自10.0.62.182 : 2887的连接...
+2015/6/21 10:21:18	Information	正在与10.0.62.182 : 2887进行数据传输...
+2015/6/21 10:21:18	Information	接收了25个数据单元
+2015/6/21 10:21:18	Information	接收到的数据 QUERY_DEPARTMENT_REQUEST;, 大小25
+2015/6/21 10:21:18	Success	10.0.62.182:2887部门信息查询成功
+2015/6/21 10:21:18	Information	正在与10.0.62.182 : 2887进行数据传输...
+2015/6/21 10:21:18	Information	接收了26个数据单元
+2015/6/21 10:21:18	Information	接收到的数据 QUERY_EMPLOYEE_REQUEST;1;0, 大小26
+2015/6/21 10:21:18	Information	10.0.62.182:2887待查询的员工的编号 = 0
+2015/6/21 10:21:18	Information	10.0.62.182:2887查询到的部门编号为0的所有员工
+2015/6/21 10:21:18	Success	10.0.62.182:2887部门0的员工信息查询成功
+2015/6/21 10:21:18	Information	正在与10.0.62.182 : 2887进行数据传输...
+2015/6/21 10:21:18	Information	接收了32个数据单元
+2015/6/21 10:21:18	Information	接收到的数据 QUERY_CONTRACT_TEMPLATE_REQUEST;, 大小32
+2015/6/21 10:21:18	Information	接收到来自10.0.62.182:2887查询会签单模版信息0
+2015/6/21 10:21:18	Information	10.0.62.182:2887查询到的了所有的会签单
+2015/6/21 10:21:18	Success	10.0.62.182:2887会签单模版信息信息查询成功
+2015/6/21 10:21:48	Information	正在与10.0.62.182 : 2887进行数据传输...
+2015/6/21 10:21:48	Information	接收了1692个数据单元
+2015/6/21 10:21:49	Information	接收到的数据 INSERT_CONTRACT_TEMPLATE_REQUEST;1654;{"CreateDate":null,"TempId":0,"Name":"wef","ColumnCount":5,"ColumnNames":["wet","wet","wtwetwetetwe","e","w"],"SignCount":8,"SignDatas":[{"SignInfo":"wttet","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":2},{"SignInfo":"g","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"g","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"g","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"g","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"f","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"f","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":2},{"SignInfo":"f","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":3}]}, 大小1692
+2015/6/21 10:21:49	Information	接收到来自10.0.62.182:2887待插入会签单模版{"CreateDate":null,"TempId":0,"Name":"wef","ColumnCount":5,"ColumnNames":["wet","wet","wtwetwetetwe","e","w"],"SignCount":8,"SignDatas":[{"SignInfo":"wttet","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":2},{"SignInfo":"g","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"g","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"g","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"g","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"f","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"f","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":2},{"SignInfo":"f","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":3}]}
+2015/6/21 10:21:49	Success	会签单模版wef插入成功
+2015/6/21 10:21:51	Information	正在与10.0.62.182 : 2887进行数据传输...
+2015/6/21 10:21:51	Information	接收了32个数据单元
+2015/6/21 10:21:51	Information	接收到的数据 QUERY_CONTRACT_TEMPLATE_REQUEST;, 大小32
+2015/6/21 10:21:51	Information	接收到来自10.0.62.182:2887查询会签单模版信息{"CreateDate":null,"TempId":0,"Name":"wef","ColumnCount":5,"ColumnNames":["wet","wet","wtwetwetetwe","e","w"],"SignCount":8,"SignDatas":[{"SignInfo":"wttet","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":2},{"SignInfo":"g","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"g","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"g","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"g","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"f","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"f","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":2},{"SignInfo":"f","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":3}]}
+2015/6/21 10:21:51	Information	10.0.62.182:2887查询到的了所有的会签单
+2015/6/21 10:21:51	Success	10.0.62.182:2887会签单模版信息信息查询成功
+2015/6/21 10:21:54	Information	正在与10.0.62.182 : 2887进行数据传输...
+2015/6/21 10:21:54	Information	接收了33个数据单元
+2015/6/21 10:21:54	Information	接收到的数据 GET_CONTRACT_TEMPLATE_REQUEST;1;3, 大小33
+2015/6/21 10:21:54	Information	接收到来自10.0.62.182:2887待获取会签单模版编号3
+2015/6/21 10:21:54	Success	10.0.62.182:2887获取会签单模版3成功
+2015/6/21 10:22:02	Information	正在与10.0.62.182 : 2887进行数据传输...
+2015/6/21 10:22:02	Information	接收了1692个数据单元
+2015/6/21 10:22:02	Information	接收到的数据 MODIFY_CONTRACT_TEMPLATE_REQUEST;1654;{"CreateDate":null,"TempId":3,"Name":"wef","ColumnCount":5,"ColumnNames":["wet","wet","wtwetwetetwe","e","w"],"SignCount":8,"SignDatas":[{"SignInfo":"wttet","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"g","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"g","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"g","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"g","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"f","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"f","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":2},{"SignInfo":"f","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":3}]}, 大小1692
+2015/6/21 10:22:02	Information	接收到来自10.0.62.182:2887待插入会签单模版信息{"CreateDate":null,"TempId":3,"Name":"wef","ColumnCount":5,"ColumnNames":["wet","wet","wtwetwetetwe","e","w"],"SignCount":8,"SignDatas":[{"SignInfo":"wttet","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"g","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"g","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"g","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"g","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"f","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"f","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":2},{"SignInfo":"f","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":3}]}
+2015/6/21 10:26:10	Information	正在与10.0.62.182 : 2948进行数据传输...
+2015/6/21 10:26:10	Information	接收了60个数据单元
+2015/6/21 10:26:10	Information	接收到的数据 LOGIN_REQUEST;43;{"Username":"wujiayi","Password":"wujiayi"}, 大小60
+2015/6/21 10:26:10	Information	接收到来自10.0.62.182:2948的登录信息{"Username":"wujiayi","Password":"wujiayi"}
+2015/6/21 10:26:14	Success	USERNAME : wujiayi, PASSWORD : wujiayi用户名密码均正确，可以登录
+2015/6/21 10:26:14	Information	获取到一个来自10.0.62.182 : 2951的连接...
+2015/6/21 10:26:19	Information	正在与10.0.62.182 : 2951进行数据传输...
+2015/6/21 10:26:19	Information	接收了25个数据单元
+2015/6/21 10:26:19	Information	接收到的数据 QUERY_DEPARTMENT_REQUEST;, 大小25
+2015/6/21 10:26:19	Success	10.0.62.182:2951部门信息查询成功
+2015/6/21 10:26:19	Information	正在与10.0.62.182 : 2951进行数据传输...
+2015/6/21 10:26:19	Information	接收了26个数据单元
+2015/6/21 10:26:19	Information	接收到的数据 QUERY_EMPLOYEE_REQUEST;1;0, 大小26
+2015/6/21 10:26:19	Information	10.0.62.182:2951待查询的员工的编号 = 0
+2015/6/21 10:26:19	Information	10.0.62.182:2951查询到的部门编号为0的所有员工
+2015/6/21 10:26:19	Success	10.0.62.182:2951部门0的员工信息查询成功
+2015/6/21 10:26:20	Information	正在与10.0.62.182 : 2951进行数据传输...
+2015/6/21 10:26:20	Information	接收了32个数据单元
+2015/6/21 10:26:20	Information	接收到的数据 QUERY_CONTRACT_TEMPLATE_REQUEST;, 大小32
+2015/6/21 10:26:20	Information	接收到来自10.0.62.182:2951查询会签单模版信息0
+2015/6/21 10:26:20	Information	10.0.62.182:2951查询到的了所有的会签单
+2015/6/21 10:26:20	Success	10.0.62.182:2951会签单模版信息信息查询成功
+2015/6/21 10:26:30	Information	正在与10.0.62.182 : 2948进行数据传输...
+2015/6/21 10:26:30	Information	正在与10.0.62.182 : 2951进行数据传输...
+2015/6/21 10:26:30	Exception	System.Net.Sockets.SocketException (0x80004005): 远程主机强迫关闭了一个现有的连接。
+   在 System.Net.Sockets.Socket.EndReceive(IAsyncResult asyncResult)
+   在 SignPressServer.SignSocket.AsyncSocket.AsyncSocketServer.HandleDataReceived(IAsyncResult ar) 位置 g:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressServer\SignSocket\AsyncSocket\AsyncSocketServer.cs:行号 410
+2015/6/21 10:26:30	Exception	System.Net.Sockets.SocketException (0x80004005): 远程主机强迫关闭了一个现有的连接。
+   在 System.Net.Sockets.Socket.EndReceive(IAsyncResult asyncResult)
+   在 SignPressServer.SignSocket.AsyncSocket.AsyncSocketServer.HandleDataReceived(IAsyncResult ar) 位置 g:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressServer\SignSocket\AsyncSocket\AsyncSocketServer.cs:行号 410
+2015/6/21 10:26:47	Information	获取到一个来自10.0.62.182 : 2960的连接...
+2015/6/21 10:26:47	Information	正在与10.0.62.182 : 2960进行数据传输...
+2015/6/21 10:26:47	Information	接收了60个数据单元
+2015/6/21 10:26:47	Information	接收到的数据 LOGIN_REQUEST;43;{"Username":"wujiayi","Password":"wujiayi"}, 大小60
+2015/6/21 10:26:47	Information	接收到来自10.0.62.182:2960的登录信息{"Username":"wujiayi","Password":"wujiayi"}
+2015/6/21 10:26:47	Success	USERNAME : wujiayi, PASSWORD : wujiayi用户名密码均正确，可以登录
+2015/6/21 10:26:47	Information	获取到一个来自10.0.62.182 : 2963的连接...
+2015/6/21 10:26:52	Information	正在与10.0.62.182 : 2963进行数据传输...
+2015/6/21 10:26:52	Information	接收了25个数据单元
+2015/6/21 10:26:52	Information	接收到的数据 QUERY_DEPARTMENT_REQUEST;, 大小25
+2015/6/21 10:26:52	Success	10.0.62.182:2963部门信息查询成功
+2015/6/21 10:26:52	Information	正在与10.0.62.182 : 2963进行数据传输...
+2015/6/21 10:26:52	Information	接收了26个数据单元
+2015/6/21 10:26:52	Information	接收到的数据 QUERY_EMPLOYEE_REQUEST;1;0, 大小26
+2015/6/21 10:26:52	Information	10.0.62.182:2963待查询的员工的编号 = 0
+2015/6/21 10:26:52	Information	10.0.62.182:2963查询到的部门编号为0的所有员工
+2015/6/21 10:26:52	Success	10.0.62.182:2963部门0的员工信息查询成功
+2015/6/21 10:26:52	Information	正在与10.0.62.182 : 2963进行数据传输...
+2015/6/21 10:26:52	Information	接收了32个数据单元
+2015/6/21 10:26:52	Information	接收到的数据 QUERY_CONTRACT_TEMPLATE_REQUEST;, 大小32
+2015/6/21 10:26:52	Information	接收到来自10.0.62.182:2963查询会签单模版信息0
+2015/6/21 10:26:52	Information	10.0.62.182:2963查询到的了所有的会签单
+2015/6/21 10:26:52	Success	10.0.62.182:2963会签单模版信息信息查询成功
+2015/6/21 10:26:56	Information	正在与10.0.62.182 : 2960进行数据传输...
+2015/6/21 10:26:56	Exception	System.Net.Sockets.SocketException (0x80004005): 远程主机强迫关闭了一个现有的连接。
+   在 System.Net.Sockets.Socket.EndReceive(IAsyncResult asyncResult)
+   在 SignPressServer.SignSocket.AsyncSocket.AsyncSocketServer.HandleDataReceived(IAsyncResult ar) 位置 g:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressServer\SignSocket\AsyncSocket\AsyncSocketServer.cs:行号 410
+2015/6/21 10:26:59	Information	正在与10.0.62.182 : 2963进行数据传输...
+2015/6/21 10:26:59	Information	接收了33个数据单元
+2015/6/21 10:26:59	Information	接收到的数据 GET_CONTRACT_TEMPLATE_REQUEST;1;3, 大小33
+2015/6/21 10:26:59	Information	接收到来自10.0.62.182:2963待获取会签单模版编号3
+2015/6/21 10:26:59	Success	10.0.62.182:2963获取会签单模版3成功
+2015/6/21 10:27:06	Information	正在与10.0.62.182 : 2963进行数据传输...
+2015/6/21 10:27:06	Information	接收了1692个数据单元
+2015/6/21 10:27:06	Information	接收到的数据 MODIFY_CONTRACT_TEMPLATE_REQUEST;1654;{"CreateDate":null,"TempId":3,"Name":"wef","ColumnCount":5,"ColumnNames":["wet","wet","wtwetwetetwe","e","w"],"SignCount":8,"SignDatas":[{"SignInfo":"wttet","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"g","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"g","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"g","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"g","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"f","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"f","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":2},{"SignInfo":"f","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":3}]}, 大小1692
+2015/6/21 10:27:06	Information	接收到来自10.0.62.182:2963待插入会签单模版信息{"CreateDate":null,"TempId":3,"Name":"wef","ColumnCount":5,"ColumnNames":["wet","wet","wtwetwetetwe","e","w"],"SignCount":8,"SignDatas":[{"SignInfo":"wttet","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"g","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"g","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"g","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"g","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"f","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"f","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":2},{"SignInfo":"f","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":3}]}
+2015/6/21 10:32:47	Information	正在与10.0.62.182 : 3348进行数据传输...
+2015/6/21 10:32:47	Information	接收了60个数据单元
+2015/6/21 10:32:47	Information	接收到的数据 LOGIN_REQUEST;43;{"Username":"wujiayi","Password":"wujiayi"}, 大小60
+2015/6/21 10:32:47	Information	接收到来自10.0.62.182:3348的登录信息{"Username":"wujiayi","Password":"wujiayi"}
+2015/6/21 10:32:51	Success	USERNAME : wujiayi, PASSWORD : wujiayi用户名密码均正确，可以登录
+2015/6/21 10:32:52	Information	获取到一个来自10.0.62.182 : 3355的连接...
+2015/6/21 10:32:55	Information	正在与10.0.62.182 : 3355进行数据传输...
+2015/6/21 10:32:55	Information	接收了25个数据单元
+2015/6/21 10:32:55	Information	接收到的数据 QUERY_DEPARTMENT_REQUEST;, 大小25
+2015/6/21 10:32:55	Success	10.0.62.182:3355部门信息查询成功
+2015/6/21 10:32:55	Information	正在与10.0.62.182 : 3355进行数据传输...
+2015/6/21 10:32:55	Information	接收了26个数据单元
+2015/6/21 10:32:55	Information	接收到的数据 QUERY_EMPLOYEE_REQUEST;1;0, 大小26
+2015/6/21 10:32:55	Information	10.0.62.182:3355待查询的员工的编号 = 0
+2015/6/21 10:32:55	Information	10.0.62.182:3355查询到的部门编号为0的所有员工
+2015/6/21 10:32:55	Success	10.0.62.182:3355部门0的员工信息查询成功
+2015/6/21 10:32:55	Information	正在与10.0.62.182 : 3355进行数据传输...
+2015/6/21 10:32:55	Information	接收了32个数据单元
+2015/6/21 10:32:55	Information	接收到的数据 QUERY_CONTRACT_TEMPLATE_REQUEST;, 大小32
+2015/6/21 10:32:55	Information	接收到来自10.0.62.182:3355查询会签单模版信息0
+2015/6/21 10:32:55	Information	10.0.62.182:3355查询到的了所有的会签单
+2015/6/21 10:32:55	Success	10.0.62.182:3355会签单模版信息信息查询成功
+2015/6/21 10:33:06	Information	正在与10.0.62.182 : 3355进行数据传输...
+2015/6/21 10:33:06	Information	接收了33个数据单元
+2015/6/21 10:33:06	Information	接收到的数据 GET_CONTRACT_TEMPLATE_REQUEST;1;3, 大小33
+2015/6/21 10:33:06	Information	接收到来自10.0.62.182:3355待获取会签单模版编号3
+2015/6/21 10:33:06	Success	10.0.62.182:3355获取会签单模版3成功
+2015/6/21 10:33:06	Information	正在与10.0.62.182 : 3348进行数据传输...
+2015/6/21 10:33:06	Exception	System.Net.Sockets.SocketException (0x80004005): 远程主机强迫关闭了一个现有的连接。
+   在 System.Net.Sockets.Socket.EndReceive(IAsyncResult asyncResult)
+   在 SignPressServer.SignSocket.AsyncSocket.AsyncSocketServer.HandleDataReceived(IAsyncResult ar) 位置 g:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressServer\SignSocket\AsyncSocket\AsyncSocketServer.cs:行号 410
+2015/6/21 10:33:14	Information	正在与10.0.62.182 : 3355进行数据传输...
+2015/6/21 10:33:14	Information	接收了1692个数据单元
+2015/6/21 10:33:14	Information	接收到的数据 MODIFY_CONTRACT_TEMPLATE_REQUEST;1654;{"CreateDate":null,"TempId":3,"Name":"wef","ColumnCount":5,"ColumnNames":["wet","wet","wtwetwetetwe","e","w"],"SignCount":8,"SignDatas":[{"SignInfo":"wttet","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"g","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"g","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"g","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"g","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"f","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"f","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":2},{"SignInfo":"f","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":3}]}, 大小1692
+2015/6/21 10:33:14	Information	接收到来自10.0.62.182:3355待插入会签单模版信息{"CreateDate":null,"TempId":3,"Name":"wef","ColumnCount":5,"ColumnNames":["wet","wet","wtwetwetetwe","e","w"],"SignCount":8,"SignDatas":[{"SignInfo":"wttet","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"g","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"g","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"g","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"g","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"f","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"f","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":2},{"SignInfo":"f","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":3}]}
+2015/6/21 10:34:04	Information	正在与10.0.62.182 : 3385进行数据传输...
+2015/6/21 10:34:04	Information	接收了60个数据单元
+2015/6/21 10:34:04	Information	接收到的数据 LOGIN_REQUEST;43;{"Username":"wujiayi","Password":"wujiayi"}, 大小60
+2015/6/21 10:34:04	Information	接收到来自10.0.62.182:3385的登录信息{"Username":"wujiayi","Password":"wujiayi"}
+2015/6/21 10:34:08	Success	USERNAME : wujiayi, PASSWORD : wujiayi用户名密码均正确，可以登录
+2015/6/21 10:34:08	Information	获取到一个来自10.0.62.182 : 3391的连接...
+2015/6/21 10:34:11	Information	正在与10.0.62.182 : 3391进行数据传输...
+2015/6/21 10:34:11	Information	接收了25个数据单元
+2015/6/21 10:34:11	Information	接收到的数据 QUERY_DEPARTMENT_REQUEST;, 大小25
+2015/6/21 10:34:11	Success	10.0.62.182:3391部门信息查询成功
+2015/6/21 10:34:11	Information	正在与10.0.62.182 : 3391进行数据传输...
+2015/6/21 10:34:11	Information	接收了26个数据单元
+2015/6/21 10:34:11	Information	接收到的数据 QUERY_EMPLOYEE_REQUEST;1;0, 大小26
+2015/6/21 10:34:11	Information	10.0.62.182:3391待查询的员工的编号 = 0
+2015/6/21 10:34:11	Information	10.0.62.182:3391查询到的部门编号为0的所有员工
+2015/6/21 10:34:11	Success	10.0.62.182:3391部门0的员工信息查询成功
+2015/6/21 10:34:11	Information	正在与10.0.62.182 : 3391进行数据传输...
+2015/6/21 10:34:11	Information	接收了32个数据单元
+2015/6/21 10:34:11	Information	接收到的数据 QUERY_CONTRACT_TEMPLATE_REQUEST;, 大小32
+2015/6/21 10:34:11	Information	接收到来自10.0.62.182:3391查询会签单模版信息0
+2015/6/21 10:34:11	Information	10.0.62.182:3391查询到的了所有的会签单
+2015/6/21 10:34:11	Success	10.0.62.182:3391会签单模版信息信息查询成功
+2015/6/21 10:34:14	Information	正在与10.0.62.182 : 3391进行数据传输...
+2015/6/21 10:34:14	Information	接收了33个数据单元
+2015/6/21 10:34:14	Information	接收到的数据 GET_CONTRACT_TEMPLATE_REQUEST;1;3, 大小33
+2015/6/21 10:34:14	Information	接收到来自10.0.62.182:3391待获取会签单模版编号3
+2015/6/21 10:34:14	Success	10.0.62.182:3391获取会签单模版3成功
+2015/6/21 10:34:21	Information	正在与10.0.62.182 : 3391进行数据传输...
+2015/6/21 10:34:21	Information	接收了1692个数据单元
+2015/6/21 10:34:21	Information	接收到的数据 MODIFY_CONTRACT_TEMPLATE_REQUEST;1654;{"CreateDate":null,"TempId":3,"Name":"wef","ColumnCount":5,"ColumnNames":["wet","wet","wtwetwetetwe","e","w"],"SignCount":8,"SignDatas":[{"SignInfo":"wttet","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"g","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"g","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"g","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"g","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"f","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"f","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":2},{"SignInfo":"f","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":3}]}, 大小1692
+2015/6/21 10:34:21	Information	接收到来自10.0.62.182:3391待插入会签单模版信息{"CreateDate":null,"TempId":3,"Name":"wef","ColumnCount":5,"ColumnNames":["wet","wet","wtwetwetetwe","e","w"],"SignCount":8,"SignDatas":[{"SignInfo":"wttet","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"g","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"g","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"g","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"g","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"f","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"f","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":2},{"SignInfo":"f","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":3}]}
+2015/6/21 10:36:13	Information	正在与10.0.62.182 : 3449进行数据传输...
+2015/6/21 10:36:13	Information	接收了60个数据单元
+2015/6/21 10:36:13	Information	接收到的数据 LOGIN_REQUEST;43;{"Username":"wujiayi","Password":"wujiayi"}, 大小60
+2015/6/21 10:36:13	Information	接收到来自10.0.62.182:3449的登录信息{"Username":"wujiayi","Password":"wujiayi"}
+2015/6/21 10:36:16	Success	USERNAME : wujiayi, PASSWORD : wujiayi用户名密码均正确，可以登录
+2015/6/21 10:36:17	Information	获取到一个来自10.0.62.182 : 3453的连接...
+2015/6/21 10:36:19	Information	正在与10.0.62.182 : 3453进行数据传输...
+2015/6/21 10:36:19	Information	接收了25个数据单元
+2015/6/21 10:36:19	Information	接收到的数据 QUERY_DEPARTMENT_REQUEST;, 大小25
+2015/6/21 10:36:19	Success	10.0.62.182:3453部门信息查询成功
+2015/6/21 10:36:19	Information	正在与10.0.62.182 : 3453进行数据传输...
+2015/6/21 10:36:19	Information	接收了26个数据单元
+2015/6/21 10:36:19	Information	接收到的数据 QUERY_EMPLOYEE_REQUEST;1;0, 大小26
+2015/6/21 10:36:19	Information	10.0.62.182:3453待查询的员工的编号 = 0
+2015/6/21 10:36:20	Information	10.0.62.182:3453查询到的部门编号为0的所有员工
+2015/6/21 10:36:20	Success	10.0.62.182:3453部门0的员工信息查询成功
+2015/6/21 10:36:20	Information	正在与10.0.62.182 : 3453进行数据传输...
+2015/6/21 10:36:20	Information	接收了32个数据单元
+2015/6/21 10:36:20	Information	接收到的数据 QUERY_CONTRACT_TEMPLATE_REQUEST;, 大小32
+2015/6/21 10:36:20	Information	接收到来自10.0.62.182:3453查询会签单模版信息0
+2015/6/21 10:36:20	Information	10.0.62.182:3453查询到的了所有的会签单
+2015/6/21 10:36:20	Success	10.0.62.182:3453会签单模版信息信息查询成功
+2015/6/21 10:36:22	Information	正在与10.0.62.182 : 3453进行数据传输...
+2015/6/21 10:36:22	Information	接收了33个数据单元
+2015/6/21 10:36:22	Information	接收到的数据 GET_CONTRACT_TEMPLATE_REQUEST;1;3, 大小33
+2015/6/21 10:36:23	Information	接收到来自10.0.62.182:3453待获取会签单模版编号3
+2015/6/21 10:36:23	Success	10.0.62.182:3453获取会签单模版3成功
+2015/6/21 10:36:23	Information	正在与10.0.62.182 : 3449进行数据传输...
+2015/6/21 10:36:23	Exception	System.Net.Sockets.SocketException (0x80004005): 远程主机强迫关闭了一个现有的连接。
+   在 System.Net.Sockets.Socket.EndReceive(IAsyncResult asyncResult)
+   在 SignPressServer.SignSocket.AsyncSocket.AsyncSocketServer.HandleDataReceived(IAsyncResult ar) 位置 g:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressServer\SignSocket\AsyncSocket\AsyncSocketServer.cs:行号 410
+2015/6/21 10:36:26	Information	正在与10.0.62.182 : 3453进行数据传输...
+2015/6/21 10:36:26	Information	接收了1692个数据单元
+2015/6/21 10:36:26	Information	接收到的数据 MODIFY_CONTRACT_TEMPLATE_REQUEST;1654;{"CreateDate":null,"TempId":3,"Name":"wef","ColumnCount":5,"ColumnNames":["wet","wet","wtwetwetetwe","e","w"],"SignCount":8,"SignDatas":[{"SignInfo":"wttet","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"g","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"g","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"g","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"g","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"f","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"f","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":2},{"SignInfo":"f","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":3}]}, 大小1692
+2015/6/21 10:36:26	Information	接收到来自10.0.62.182:3453待插入会签单模版信息{"CreateDate":null,"TempId":3,"Name":"wef","ColumnCount":5,"ColumnNames":["wet","wet","wtwetwetetwe","e","w"],"SignCount":8,"SignDatas":[{"SignInfo":"wttet","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"g","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"g","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"g","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"g","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"f","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"f","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":2},{"SignInfo":"f","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":3}]}
+2015/6/21 10:39:36	Information	正在与10.0.62.182 : 3656进行数据传输...
+2015/6/21 10:39:36	Information	接收了60个数据单元
+2015/6/21 10:39:36	Information	接收到的数据 LOGIN_REQUEST;43;{"Username":"wujiayi","Password":"wujiayi"}, 大小60
+2015/6/21 10:39:36	Information	接收到来自10.0.62.182:3656的登录信息{"Username":"wujiayi","Password":"wujiayi"}
+2015/6/21 10:39:39	Success	USERNAME : wujiayi, PASSWORD : wujiayi用户名密码均正确，可以登录
+2015/6/21 10:39:40	Information	获取到一个来自10.0.62.182 : 3722的连接...
+2015/6/21 10:39:47	Information	正在与10.0.62.182 : 3722进行数据传输...
+2015/6/21 10:39:47	Information	接收了25个数据单元
+2015/6/21 10:39:47	Information	接收到的数据 QUERY_DEPARTMENT_REQUEST;, 大小25
+2015/6/21 10:39:47	Success	10.0.62.182:3722部门信息查询成功
+2015/6/21 10:39:47	Information	正在与10.0.62.182 : 3722进行数据传输...
+2015/6/21 10:39:47	Information	接收了26个数据单元
+2015/6/21 10:39:47	Information	接收到的数据 QUERY_EMPLOYEE_REQUEST;1;0, 大小26
+2015/6/21 10:39:47	Information	10.0.62.182:3722待查询的员工的编号 = 0
+2015/6/21 10:39:47	Information	10.0.62.182:3722查询到的部门编号为0的所有员工
+2015/6/21 10:39:47	Success	10.0.62.182:3722部门0的员工信息查询成功
+2015/6/21 10:39:47	Information	正在与10.0.62.182 : 3722进行数据传输...
+2015/6/21 10:39:47	Information	接收了32个数据单元
+2015/6/21 10:39:47	Information	接收到的数据 QUERY_CONTRACT_TEMPLATE_REQUEST;, 大小32
+2015/6/21 10:39:47	Information	接收到来自10.0.62.182:3722查询会签单模版信息0
+2015/6/21 10:39:47	Information	10.0.62.182:3722查询到的了所有的会签单
+2015/6/21 10:39:47	Success	10.0.62.182:3722会签单模版信息信息查询成功
+2015/6/21 10:39:49	Information	正在与10.0.62.182 : 3722进行数据传输...
+2015/6/21 10:39:49	Information	接收了33个数据单元
+2015/6/21 10:39:49	Information	接收到的数据 GET_CONTRACT_TEMPLATE_REQUEST;1;3, 大小33
+2015/6/21 10:39:49	Information	接收到来自10.0.62.182:3722待获取会签单模版编号3
+2015/6/21 10:39:49	Success	10.0.62.182:3722获取会签单模版3成功
+2015/6/21 10:39:50	Information	正在与10.0.62.182 : 3656进行数据传输...
+2015/6/21 10:39:50	Exception	System.Net.Sockets.SocketException (0x80004005): 远程主机强迫关闭了一个现有的连接。
+   在 System.Net.Sockets.Socket.EndReceive(IAsyncResult asyncResult)
+   在 SignPressServer.SignSocket.AsyncSocket.AsyncSocketServer.HandleDataReceived(IAsyncResult ar) 位置 g:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressServer\SignSocket\AsyncSocket\AsyncSocketServer.cs:行号 410
+2015/6/21 10:39:54	Information	正在与10.0.62.182 : 3722进行数据传输...
+2015/6/21 10:39:54	Information	接收了1692个数据单元
+2015/6/21 10:39:54	Information	接收到的数据 MODIFY_CONTRACT_TEMPLATE_REQUEST;1654;{"CreateDate":null,"TempId":3,"Name":"wef","ColumnCount":5,"ColumnNames":["wet","wet","wtwetwetetwe","e","w"],"SignCount":8,"SignDatas":[{"SignInfo":"wttet","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"g","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"g","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"g","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"g","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"f","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"f","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":2},{"SignInfo":"f","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":3}]}, 大小1692
+2015/6/21 10:39:54	Information	接收到来自10.0.62.182:3722待插入会签单模版信息{"CreateDate":null,"TempId":3,"Name":"wef","ColumnCount":5,"ColumnNames":["wet","wet","wtwetwetetwe","e","w"],"SignCount":8,"SignDatas":[{"SignInfo":"wttet","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"g","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"g","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"g","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"g","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"f","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"f","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":2},{"SignInfo":"f","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":3}]}
+2015/6/21 10:42:12	Information	正在与10.0.62.182 : 3830进行数据传输...
+2015/6/21 10:42:12	Information	接收了60个数据单元
+2015/6/21 10:42:12	Information	接收到的数据 LOGIN_REQUEST;43;{"Username":"wujiayi","Password":"wujiayi"}, 大小60
+2015/6/21 10:42:12	Information	接收到来自10.0.62.182:3830的登录信息{"Username":"wujiayi","Password":"wujiayi"}
+2015/6/21 10:42:16	Success	USERNAME : wujiayi, PASSWORD : wujiayi用户名密码均正确，可以登录
+2015/6/21 10:42:16	Information	获取到一个来自10.0.62.182 : 3833的连接...
+2015/6/21 10:42:20	Information	正在与10.0.62.182 : 3833进行数据传输...
+2015/6/21 10:42:20	Information	接收了25个数据单元
+2015/6/21 10:42:21	Information	接收到的数据 QUERY_DEPARTMENT_REQUEST;, 大小25
+2015/6/21 10:42:21	Success	10.0.62.182:3833部门信息查询成功
+2015/6/21 10:42:21	Information	正在与10.0.62.182 : 3833进行数据传输...
+2015/6/21 10:42:21	Information	接收了26个数据单元
+2015/6/21 10:42:21	Information	接收到的数据 QUERY_EMPLOYEE_REQUEST;1;0, 大小26
+2015/6/21 10:42:21	Information	10.0.62.182:3833待查询的员工的编号 = 0
+2015/6/21 10:42:21	Information	10.0.62.182:3833查询到的部门编号为0的所有员工
+2015/6/21 10:42:21	Success	10.0.62.182:3833部门0的员工信息查询成功
+2015/6/21 10:42:21	Information	正在与10.0.62.182 : 3833进行数据传输...
+2015/6/21 10:42:21	Information	接收了32个数据单元
+2015/6/21 10:42:21	Information	接收到的数据 QUERY_CONTRACT_TEMPLATE_REQUEST;, 大小32
+2015/6/21 10:42:21	Information	接收到来自10.0.62.182:3833查询会签单模版信息0
+2015/6/21 10:42:21	Information	10.0.62.182:3833查询到的了所有的会签单
+2015/6/21 10:42:21	Success	10.0.62.182:3833会签单模版信息信息查询成功
+2015/6/21 10:42:23	Information	正在与10.0.62.182 : 3833进行数据传输...
+2015/6/21 10:42:23	Information	接收了33个数据单元
+2015/6/21 10:42:23	Information	接收到的数据 GET_CONTRACT_TEMPLATE_REQUEST;1;3, 大小33
+2015/6/21 10:42:23	Information	接收到来自10.0.62.182:3833待获取会签单模版编号3
+2015/6/21 10:42:23	Success	10.0.62.182:3833获取会签单模版3成功
+2015/6/21 10:42:23	Information	正在与10.0.62.182 : 3830进行数据传输...
+2015/6/21 10:42:23	Exception	System.Net.Sockets.SocketException (0x80004005): 远程主机强迫关闭了一个现有的连接。
+   在 System.Net.Sockets.Socket.EndReceive(IAsyncResult asyncResult)
+   在 SignPressServer.SignSocket.AsyncSocket.AsyncSocketServer.HandleDataReceived(IAsyncResult ar) 位置 g:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressServer\SignSocket\AsyncSocket\AsyncSocketServer.cs:行号 410
+2015/6/21 10:42:28	Information	正在与10.0.62.182 : 3833进行数据传输...
+2015/6/21 10:42:28	Information	接收了1692个数据单元
+2015/6/21 10:42:28	Information	接收到的数据 MODIFY_CONTRACT_TEMPLATE_REQUEST;1654;{"CreateDate":null,"TempId":3,"Name":"wef","ColumnCount":5,"ColumnNames":["wet","wet","wtwetwetetwe","e","w"],"SignCount":8,"SignDatas":[{"SignInfo":"wttet","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"g","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"g","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"g","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"g","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"f","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"f","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":2},{"SignInfo":"f","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":3}]}, 大小1692
+2015/6/21 10:42:28	Information	接收到来自10.0.62.182:3833待插入会签单模版信息{"CreateDate":null,"TempId":3,"Name":"wef","ColumnCount":5,"ColumnNames":["wet","wet","wtwetwetetwe","e","w"],"SignCount":8,"SignDatas":[{"SignInfo":"wttet","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"g","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"g","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"g","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"g","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"f","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"f","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":2},{"SignInfo":"f","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":3}]}
+2015/6/21 10:48:30	Information	正在与10.0.62.182 : 4109进行数据传输...
+2015/6/21 10:48:30	Information	接收了60个数据单元
+2015/6/21 10:48:30	Information	接收到的数据 LOGIN_REQUEST;43;{"Username":"wujiayi","Password":"wujiayi"}, 大小60
+2015/6/21 10:48:30	Information	接收到来自10.0.62.182:4109的登录信息{"Username":"wujiayi","Password":"wujiayi"}
+2015/6/21 10:48:34	Success	USERNAME : wujiayi, PASSWORD : wujiayi用户名密码均正确，可以登录
+2015/6/21 10:48:34	Information	获取到一个来自10.0.62.182 : 4117的连接...
+2015/6/21 10:48:38	Information	正在与10.0.62.182 : 4117进行数据传输...
+2015/6/21 10:48:38	Information	接收了25个数据单元
+2015/6/21 10:48:38	Information	接收到的数据 QUERY_DEPARTMENT_REQUEST;, 大小25
+2015/6/21 10:48:38	Success	10.0.62.182:4117部门信息查询成功
+2015/6/21 10:48:38	Information	正在与10.0.62.182 : 4117进行数据传输...
+2015/6/21 10:48:38	Information	接收了26个数据单元
+2015/6/21 10:48:38	Information	接收到的数据 QUERY_EMPLOYEE_REQUEST;1;0, 大小26
+2015/6/21 10:48:38	Information	10.0.62.182:4117待查询的员工的编号 = 0
+2015/6/21 10:48:38	Information	10.0.62.182:4117查询到的部门编号为0的所有员工
+2015/6/21 10:48:38	Success	10.0.62.182:4117部门0的员工信息查询成功
+2015/6/21 10:48:38	Information	正在与10.0.62.182 : 4117进行数据传输...
+2015/6/21 10:48:38	Information	接收了32个数据单元
+2015/6/21 10:48:38	Information	接收到的数据 QUERY_CONTRACT_TEMPLATE_REQUEST;, 大小32
+2015/6/21 10:48:38	Information	接收到来自10.0.62.182:4117查询会签单模版信息0
+2015/6/21 10:48:38	Information	10.0.62.182:4117查询到的了所有的会签单
+2015/6/21 10:48:38	Success	10.0.62.182:4117会签单模版信息信息查询成功
+2015/6/21 10:48:42	Information	正在与10.0.62.182 : 4117进行数据传输...
+2015/6/21 10:48:42	Information	接收了33个数据单元
+2015/6/21 10:48:42	Information	接收到的数据 GET_CONTRACT_TEMPLATE_REQUEST;1;3, 大小33
+2015/6/21 10:48:42	Information	接收到来自10.0.62.182:4117待获取会签单模版编号3
+2015/6/21 10:48:42	Success	10.0.62.182:4117获取会签单模版3成功
+2015/6/21 10:48:49	Information	正在与10.0.62.182 : 4117进行数据传输...
+2015/6/21 10:48:49	Information	接收了1692个数据单元
+2015/6/21 10:48:49	Information	接收到的数据 MODIFY_CONTRACT_TEMPLATE_REQUEST;1654;{"CreateDate":null,"TempId":3,"Name":"wef","ColumnCount":5,"ColumnNames":["wet","wet","wtwetwetetwe","e","w"],"SignCount":8,"SignDatas":[{"SignInfo":"wttet","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"g","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"g","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"g","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"g","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"f","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"f","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":2},{"SignInfo":"f","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":3}]}, 大小1692
+2015/6/21 10:48:49	Information	接收到来自10.0.62.182:4117待插入会签单模版信息{"CreateDate":null,"TempId":3,"Name":"wef","ColumnCount":5,"ColumnNames":["wet","wet","wtwetwetetwe","e","w"],"SignCount":8,"SignDatas":[{"SignInfo":"wttet","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"g","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"g","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"g","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"g","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"f","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"f","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":2},{"SignInfo":"f","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":3}]}
+2015/6/21 10:50:10	Information	正在与10.0.62.182 : 4269进行数据传输...
+2015/6/21 10:50:10	Information	接收了60个数据单元
+2015/6/21 10:50:10	Information	接收到的数据 LOGIN_REQUEST;43;{"Username":"wujiayi","Password":"wujiayi"}, 大小60
+2015/6/21 10:50:10	Information	接收到来自10.0.62.182:4269的登录信息{"Username":"wujiayi","Password":"wujiayi"}
+2015/6/21 10:50:13	Success	USERNAME : wujiayi, PASSWORD : wujiayi用户名密码均正确，可以登录
+2015/6/21 10:50:14	Information	获取到一个来自10.0.62.182 : 4272的连接...
+2015/6/21 10:50:17	Information	正在与10.0.62.182 : 4272进行数据传输...
+2015/6/21 10:50:17	Information	接收了25个数据单元
+2015/6/21 10:50:17	Information	接收到的数据 QUERY_DEPARTMENT_REQUEST;, 大小25
+2015/6/21 10:50:17	Success	10.0.62.182:4272部门信息查询成功
+2015/6/21 10:50:17	Information	正在与10.0.62.182 : 4272进行数据传输...
+2015/6/21 10:50:17	Information	接收了26个数据单元
+2015/6/21 10:50:17	Information	接收到的数据 QUERY_EMPLOYEE_REQUEST;1;0, 大小26
+2015/6/21 10:50:17	Information	10.0.62.182:4272待查询的员工的编号 = 0
+2015/6/21 10:50:17	Information	10.0.62.182:4272查询到的部门编号为0的所有员工
+2015/6/21 10:50:17	Success	10.0.62.182:4272部门0的员工信息查询成功
+2015/6/21 10:50:17	Information	正在与10.0.62.182 : 4272进行数据传输...
+2015/6/21 10:50:17	Information	接收了32个数据单元
+2015/6/21 10:50:17	Information	接收到的数据 QUERY_CONTRACT_TEMPLATE_REQUEST;, 大小32
+2015/6/21 10:50:17	Information	接收到来自10.0.62.182:4272查询会签单模版信息0
+2015/6/21 10:50:17	Information	10.0.62.182:4272查询到的了所有的会签单
+2015/6/21 10:50:17	Success	10.0.62.182:4272会签单模版信息信息查询成功
+2015/6/21 10:50:21	Information	正在与10.0.62.182 : 4272进行数据传输...
+2015/6/21 10:50:21	Information	接收了33个数据单元
+2015/6/21 10:50:21	Information	接收到的数据 GET_CONTRACT_TEMPLATE_REQUEST;1;3, 大小33
+2015/6/21 10:50:21	Information	接收到来自10.0.62.182:4272待获取会签单模版编号3
+2015/6/21 10:50:21	Success	10.0.62.182:4272获取会签单模版3成功
+2015/6/21 10:50:31	Information	正在与10.0.62.182 : 4272进行数据传输...
+2015/6/21 10:50:31	Information	接收了1691个数据单元
+2015/6/21 10:50:31	Information	接收到的数据 MODIFY_CONTRACT_TEMPLATE_REQUEST;1653;{"CreateDate":null,"TempId":3,"Name":"we","ColumnCount":5,"ColumnNames":["wet","wet","wtwetwetetwe","e","w"],"SignCount":8,"SignDatas":[{"SignInfo":"wttet","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"g","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"g","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"g","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"g","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"f","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"f","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":2},{"SignInfo":"f","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":3}]}, 大小1691
+2015/6/21 10:50:31	Information	接收到来自10.0.62.182:4272待插入会签单模版信息{"CreateDate":null,"TempId":3,"Name":"we","ColumnCount":5,"ColumnNames":["wet","wet","wtwetwetetwe","e","w"],"SignCount":8,"SignDatas":[{"SignInfo":"wttet","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"g","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"g","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"g","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"g","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"f","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"f","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":2},{"SignInfo":"f","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":3}]}
+2015/6/21 10:50:31	Success	10.0.62.182:4272会签单模版3, we修改成功
+2015/6/21 10:51:34	Information	正在与10.0.62.182 : 4304进行数据传输...
+2015/6/21 10:51:34	Information	接收了60个数据单元
+2015/6/21 10:51:34	Information	接收到的数据 LOGIN_REQUEST;43;{"Username":"wujiayi","Password":"wujiayi"}, 大小60
+2015/6/21 10:51:34	Information	接收到来自10.0.62.182:4304的登录信息{"Username":"wujiayi","Password":"wujiayi"}
+2015/6/21 10:51:38	Success	USERNAME : wujiayi, PASSWORD : wujiayi用户名密码均正确，可以登录
+2015/6/21 10:51:38	Information	获取到一个来自10.0.62.182 : 4307的连接...
+2015/6/21 10:51:42	Information	正在与10.0.62.182 : 4307进行数据传输...
+2015/6/21 10:51:42	Information	接收了25个数据单元
+2015/6/21 10:51:42	Information	接收到的数据 QUERY_DEPARTMENT_REQUEST;, 大小25
+2015/6/21 10:51:42	Success	10.0.62.182:4307部门信息查询成功
+2015/6/21 10:51:42	Information	正在与10.0.62.182 : 4307进行数据传输...
+2015/6/21 10:51:42	Information	接收了26个数据单元
+2015/6/21 10:51:42	Information	接收到的数据 QUERY_EMPLOYEE_REQUEST;1;0, 大小26
+2015/6/21 10:51:42	Information	10.0.62.182:4307待查询的员工的编号 = 0
+2015/6/21 10:51:42	Information	10.0.62.182:4307查询到的部门编号为0的所有员工
+2015/6/21 10:51:42	Success	10.0.62.182:4307部门0的员工信息查询成功
+2015/6/21 10:51:43	Information	正在与10.0.62.182 : 4307进行数据传输...
+2015/6/21 10:51:43	Information	接收了32个数据单元
+2015/6/21 10:51:43	Information	接收到的数据 QUERY_CONTRACT_TEMPLATE_REQUEST;, 大小32
+2015/6/21 10:51:43	Information	接收到来自10.0.62.182:4307查询会签单模版信息0
+2015/6/21 10:51:43	Information	10.0.62.182:4307查询到的了所有的会签单
+2015/6/21 10:51:43	Success	10.0.62.182:4307会签单模版信息信息查询成功
+2015/6/21 10:51:45	Information	正在与10.0.62.182 : 4307进行数据传输...
+2015/6/21 10:51:45	Information	接收了33个数据单元
+2015/6/21 10:51:45	Information	接收到的数据 GET_CONTRACT_TEMPLATE_REQUEST;1;3, 大小33
+2015/6/21 10:51:45	Information	接收到来自10.0.62.182:4307待获取会签单模版编号3
+2015/6/21 10:51:45	Success	10.0.62.182:4307获取会签单模版3成功
+2015/6/21 10:51:45	Information	正在与10.0.62.182 : 4304进行数据传输...
+2015/6/21 10:51:45	Exception	System.Net.Sockets.SocketException (0x80004005): 远程主机强迫关闭了一个现有的连接。
+   在 System.Net.Sockets.Socket.EndReceive(IAsyncResult asyncResult)
+   在 SignPressServer.SignSocket.AsyncSocket.AsyncSocketServer.HandleDataReceived(IAsyncResult ar) 位置 g:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressServer\SignSocket\AsyncSocket\AsyncSocketServer.cs:行号 410
+2015/6/21 10:51:51	Information	正在与10.0.62.182 : 4307进行数据传输...
+2015/6/21 10:51:51	Information	接收了1691个数据单元
+2015/6/21 10:51:51	Information	接收到的数据 MODIFY_CONTRACT_TEMPLATE_REQUEST;1653;{"CreateDate":null,"TempId":3,"Name":"we","ColumnCount":5,"ColumnNames":["wet","wet","wtwetwetetwe","e","w"],"SignCount":8,"SignDatas":[{"SignInfo":"wttet","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":2},{"SignInfo":"g","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"g","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"g","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"g","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"f","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"f","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":2},{"SignInfo":"f","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":3}]}, 大小1691
+2015/6/21 10:51:51	Information	接收到来自10.0.62.182:4307待插入会签单模版信息{"CreateDate":null,"TempId":3,"Name":"we","ColumnCount":5,"ColumnNames":["wet","wet","wtwetwetetwe","e","w"],"SignCount":8,"SignDatas":[{"SignInfo":"wttet","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":2},{"SignInfo":"g","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"g","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"g","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"g","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"f","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"f","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":2},{"SignInfo":"f","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":3}]}
+2015/6/21 10:51:51	Success	10.0.62.182:4307会签单模版3, we修改成功
+2015/6/21 10:51:55	Information	正在与10.0.62.182 : 4307进行数据传输...
+2015/6/21 10:51:55	Information	接收了32个数据单元
+2015/6/21 10:51:55	Information	接收到的数据 QUERY_CONTRACT_TEMPLATE_REQUEST;, 大小32
+2015/6/21 10:51:55	Information	接收到来自10.0.62.182:4307查询会签单模版信息{"CreateDate":null,"TempId":3,"Name":"we","ColumnCount":5,"ColumnNames":["wet","wet","wtwetwetetwe","e","w"],"SignCount":8,"SignDatas":[{"SignInfo":"wttet","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":2},{"SignInfo":"g","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"g","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"g","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"g","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"f","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"f","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":2},{"SignInfo":"f","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":3}]}
+2015/6/21 10:51:55	Information	10.0.62.182:4307查询到的了所有的会签单
+2015/6/21 10:51:55	Success	10.0.62.182:4307会签单模版信息信息查询成功
+2015/6/21 10:51:58	Information	正在与10.0.62.182 : 4307进行数据传输...
+2015/6/21 10:51:58	Information	接收了33个数据单元
+2015/6/21 10:51:58	Information	接收到的数据 GET_CONTRACT_TEMPLATE_REQUEST;1;3, 大小33
+2015/6/21 10:51:58	Information	接收到来自10.0.62.182:4307待获取会签单模版编号3
+2015/6/21 10:51:58	Success	10.0.62.182:4307获取会签单模版3成功
+2015/6/21 10:52:15	Information	正在与10.0.62.182 : 4307进行数据传输...
+2015/6/21 10:52:15	Information	接收了1691个数据单元
+2015/6/21 10:52:15	Information	接收到的数据 MODIFY_CONTRACT_TEMPLATE_REQUEST;1653;{"CreateDate":null,"TempId":3,"Name":"we","ColumnCount":5,"ColumnNames":["wet","wet","wtwetwetetwe","e","w"],"SignCount":8,"SignDatas":[{"SignInfo":"wttet","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":6},{"SignInfo":"g","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"g","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"g","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"g","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"f","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"f","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":2},{"SignInfo":"f","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":3}]}, 大小1691
+2015/6/21 10:52:15	Information	接收到来自10.0.62.182:4307待插入会签单模版信息{"CreateDate":null,"TempId":3,"Name":"we","ColumnCount":5,"ColumnNames":["wet","wet","wtwetwetetwe","e","w"],"SignCount":8,"SignDatas":[{"SignInfo":"wttet","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":6},{"SignInfo":"g","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"g","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"g","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"g","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"f","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"f","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":2},{"SignInfo":"f","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":3}]}
+2015/6/21 10:52:15	Success	10.0.62.182:4307会签单模版3, we修改成功
+2015/6/21 10:52:17	Information	正在与10.0.62.182 : 4307进行数据传输...
+2015/6/21 10:52:17	Information	接收了32个数据单元
+2015/6/21 10:52:17	Information	接收到的数据 QUERY_CONTRACT_TEMPLATE_REQUEST;, 大小32
+2015/6/21 10:52:17	Information	接收到来自10.0.62.182:4307查询会签单模版信息{"CreateDate":null,"TempId":3,"Name":"we","ColumnCount":5,"ColumnNames":["wet","wet","wtwetwetetwe","e","w"],"SignCount":8,"SignDatas":[{"SignInfo":"wttet","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":6},{"SignInfo":"g","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"g","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"g","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"g","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"f","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"f","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":2},{"SignInfo":"f","SignEmployee":{"Id":1,"Name":"","Position":null,"Department":{"Id":1,"Name":""},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":3}]}
+2015/6/21 10:52:17	Information	10.0.62.182:4307查询到的了所有的会签单
+2015/6/21 10:52:17	Success	10.0.62.182:4307会签单模版信息信息查询成功
+2015/6/21 10:52:21	Information	正在与10.0.62.182 : 4307进行数据传输...
+2015/6/21 10:52:21	Information	接收了33个数据单元
+2015/6/21 10:52:21	Information	接收到的数据 GET_CONTRACT_TEMPLATE_REQUEST;1;3, 大小33
+2015/6/21 10:52:21	Information	接收到来自10.0.62.182:4307待获取会签单模版编号3
+2015/6/21 10:52:21	Success	10.0.62.182:4307获取会签单模版3成功
+2015/6/21 10:52:31	Information	正在与10.0.62.182 : 4307进行数据传输...
+2015/6/21 10:52:31	Information	接收了33个数据单元
+2015/6/21 10:52:31	Information	接收到的数据 GET_CONTRACT_TEMPLATE_REQUEST;1;3, 大小33
+2015/6/21 10:52:31	Information	接收到来自10.0.62.182:4307待获取会签单模版编号3
+2015/6/21 10:52:31	Success	10.0.62.182:4307获取会签单模版3成功
+2015/6/21 10:52:34	Information	正在与10.0.62.182 : 4307进行数据传输...
+2015/6/21 10:52:34	Information	接收了32个数据单元
+2015/6/21 10:52:34	Information	接收到的数据 QUERY_CONTRACT_TEMPLATE_REQUEST;, 大小32
+2015/6/21 10:52:35	Information	接收到来自10.0.62.182:4307查询会签单模版信息3
+2015/6/21 10:52:35	Information	10.0.62.182:4307查询到的了所有的会签单
+2015/6/21 10:52:35	Success	10.0.62.182:4307会签单模版信息信息查询成功
+2015/6/21 10:52:37	Information	正在与10.0.62.182 : 4307进行数据传输...
+2015/6/21 10:52:37	Information	接收了33个数据单元
+2015/6/21 10:52:37	Information	接收到的数据 GET_CONTRACT_TEMPLATE_REQUEST;1;1, 大小33
+2015/6/21 10:52:37	Information	接收到来自10.0.62.182:4307待获取会签单模版编号1
+2015/6/21 10:52:37	Success	10.0.62.182:4307获取会签单模版1成功
+2015/6/21 10:52:51	Information	正在与10.0.62.182 : 4307进行数据传输...
+2015/6/21 10:52:51	Information	接收了36个数据单元
+2015/6/21 10:52:51	Information	接收到的数据 DELETE_CONTRACT_TEMPLATE_REQUEST;1;3, 大小36
+2015/6/21 10:52:51	Information	接收到来自10.0.62.182:4307待插入会签单模版编号3
+2015/6/21 10:52:51	Success	10.0.62.182:4307会签单模版3删除成功
+2015/6/21 10:52:52	Information	正在与10.0.62.182 : 4307进行数据传输...
+2015/6/21 10:52:52	Information	接收了32个数据单元
+2015/6/21 10:52:52	Information	接收到的数据 QUERY_CONTRACT_TEMPLATE_REQUEST;, 大小32
+2015/6/21 10:52:52	Information	接收到来自10.0.62.182:4307查询会签单模版信息3
+2015/6/21 10:52:52	Information	10.0.62.182:4307查询到的了所有的会签单
+2015/6/21 10:52:52	Success	10.0.62.182:4307会签单模版信息信息查询成功
+2015/6/21 10:53:32	Information	正在与10.0.62.182 : 4307进行数据传输...
+2015/6/21 10:53:32	Exception	System.Net.Sockets.SocketException (0x80004005): 远程主机强迫关闭了一个现有的连接。
+   在 System.Net.Sockets.Socket.EndReceive(IAsyncResult asyncResult)
+   在 SignPressServer.SignSocket.AsyncSocket.AsyncSocketServer.HandleDataReceived(IAsyncResult ar) 位置 g:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressServer\SignSocket\AsyncSocket\AsyncSocketServer.cs:行号 410
+2015/6/21 10:55:45	Information	获取到一个来自10.0.62.182 : 4379的连接...
+2015/6/21 10:55:45	Information	正在与10.0.62.182 : 4379进行数据传输...
+2015/6/21 10:55:45	Information	接收了60个数据单元
+2015/6/21 10:55:45	Information	接收到的数据 LOGIN_REQUEST;43;{"Username":"wujiayi","Password":"wujiayi"}, 大小60
+2015/6/21 10:55:45	Information	接收到来自10.0.62.182:4379的登录信息{"Username":"wujiayi","Password":"wujiayi"}
+2015/6/21 10:55:45	Success	USERNAME : wujiayi, PASSWORD : wujiayi用户名密码均正确，可以登录
+2015/6/21 10:55:45	Information	获取到一个来自10.0.62.182 : 4380的连接...
+2015/6/21 10:55:49	Information	正在与10.0.62.182 : 4380进行数据传输...
+2015/6/21 10:55:49	Information	接收了25个数据单元
+2015/6/21 10:55:49	Information	接收到的数据 QUERY_DEPARTMENT_REQUEST;, 大小25
+2015/6/21 10:55:49	Success	10.0.62.182:4380部门信息查询成功
+2015/6/21 10:55:49	Information	正在与10.0.62.182 : 4380进行数据传输...
+2015/6/21 10:55:49	Information	接收了26个数据单元
+2015/6/21 10:55:49	Information	接收到的数据 QUERY_EMPLOYEE_REQUEST;1;0, 大小26
+2015/6/21 10:55:49	Information	10.0.62.182:4380待查询的员工的编号 = 0
+2015/6/21 10:55:49	Information	10.0.62.182:4380查询到的部门编号为0的所有员工
+2015/6/21 10:55:49	Success	10.0.62.182:4380部门0的员工信息查询成功
+2015/6/21 10:55:49	Information	正在与10.0.62.182 : 4380进行数据传输...
+2015/6/21 10:55:49	Information	接收了32个数据单元
+2015/6/21 10:55:49	Information	接收到的数据 QUERY_CONTRACT_TEMPLATE_REQUEST;, 大小32
+2015/6/21 10:55:49	Information	接收到来自10.0.62.182:4380查询会签单模版信息0
+2015/6/21 10:55:49	Information	10.0.62.182:4380查询到的了所有的会签单
+2015/6/21 10:55:49	Success	10.0.62.182:4380会签单模版信息信息查询成功
+2015/6/21 10:56:36	Information	正在与10.0.62.182 : 4379进行数据传输...
+2015/6/21 10:56:36	Exception	System.Net.Sockets.SocketException (0x80004005): 远程主机强迫关闭了一个现有的连接。
+   在 System.Net.Sockets.Socket.EndReceive(IAsyncResult asyncResult)
+   在 SignPressServer.SignSocket.AsyncSocket.AsyncSocketServer.HandleDataReceived(IAsyncResult ar) 位置 g:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressServer\SignSocket\AsyncSocket\AsyncSocketServer.cs:行号 410
+2015/6/21 10:56:41	Information	正在与10.0.62.182 : 4380进行数据传输...
+2015/6/21 10:56:41	Exception	System.Net.Sockets.SocketException (0x80004005): 远程主机强迫关闭了一个现有的连接。
+   在 System.Net.Sockets.Socket.EndReceive(IAsyncResult asyncResult)
+   在 SignPressServer.SignSocket.AsyncSocket.AsyncSocketServer.HandleDataReceived(IAsyncResult ar) 位置 g:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressServer\SignSocket\AsyncSocket\AsyncSocketServer.cs:行号 410
+2015/6/21 10:56:51	Information	获取到一个来自10.0.62.182 : 4389的连接...
+2015/6/21 10:56:51	Information	正在与10.0.62.182 : 4389进行数据传输...
+2015/6/21 10:56:51	Information	接收了60个数据单元
+2015/6/21 10:56:51	Information	接收到的数据 LOGIN_REQUEST;43;{"Username":"wujiayi","Password":"wujiayi"}, 大小60
+2015/6/21 10:56:51	Information	接收到来自10.0.62.182:4389的登录信息{"Username":"wujiayi","Password":"wujiayi"}
+2015/6/21 10:56:51	Success	USERNAME : wujiayi, PASSWORD : wujiayi用户名密码均正确，可以登录
+2015/6/21 10:56:51	Information	获取到一个来自10.0.62.182 : 4392的连接...
+2015/6/21 10:56:54	Information	正在与10.0.62.182 : 4392进行数据传输...
+2015/6/21 10:56:54	Information	接收了25个数据单元
+2015/6/21 10:56:54	Information	接收到的数据 QUERY_DEPARTMENT_REQUEST;, 大小25
+2015/6/21 10:56:54	Success	10.0.62.182:4392部门信息查询成功
+2015/6/21 10:56:54	Information	正在与10.0.62.182 : 4392进行数据传输...
+2015/6/21 10:56:54	Information	接收了26个数据单元
+2015/6/21 10:56:54	Information	接收到的数据 QUERY_EMPLOYEE_REQUEST;1;0, 大小26
+2015/6/21 10:56:54	Information	10.0.62.182:4392待查询的员工的编号 = 0
+2015/6/21 10:56:54	Information	10.0.62.182:4392查询到的部门编号为0的所有员工
+2015/6/21 10:56:54	Success	10.0.62.182:4392部门0的员工信息查询成功
+2015/6/21 10:56:54	Information	正在与10.0.62.182 : 4392进行数据传输...
+2015/6/21 10:56:54	Information	接收了32个数据单元
+2015/6/21 10:56:54	Information	接收到的数据 QUERY_CONTRACT_TEMPLATE_REQUEST;, 大小32
+2015/6/21 10:56:54	Information	接收到来自10.0.62.182:4392查询会签单模版信息0
+2015/6/21 10:56:54	Information	10.0.62.182:4392查询到的了所有的会签单
+2015/6/21 10:56:54	Success	10.0.62.182:4392会签单模版信息信息查询成功
+2015/6/21 10:57:16	Information	正在与10.0.62.182 : 4392进行数据传输...
+2015/6/21 10:57:16	Information	正在与10.0.62.182 : 4389进行数据传输...
+2015/6/21 10:57:16	Exception	System.Net.Sockets.SocketException (0x80004005): 远程主机强迫关闭了一个现有的连接。
+   在 System.Net.Sockets.Socket.EndReceive(IAsyncResult asyncResult)
+   在 SignPressServer.SignSocket.AsyncSocket.AsyncSocketServer.HandleDataReceived(IAsyncResult ar) 位置 g:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressServer\SignSocket\AsyncSocket\AsyncSocketServer.cs:行号 410
+2015/6/21 10:57:16	Exception	System.Net.Sockets.SocketException (0x80004005): 远程主机强迫关闭了一个现有的连接。
+   在 System.Net.Sockets.Socket.EndReceive(IAsyncResult asyncResult)
+   在 SignPressServer.SignSocket.AsyncSocket.AsyncSocketServer.HandleDataReceived(IAsyncResult ar) 位置 g:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressServer\SignSocket\AsyncSocket\AsyncSocketServer.cs:行号 410
+2015/6/21 10:59:40	Information	获取到一个来自10.0.62.182 : 4494的连接...
+2015/6/21 10:59:40	Information	正在与10.0.62.182 : 4494进行数据传输...
+2015/6/21 10:59:40	Information	接收了60个数据单元
+2015/6/21 10:59:40	Information	接收到的数据 LOGIN_REQUEST;43;{"Username":"wujiayi","Password":"wujiayi"}, 大小60
+2015/6/21 10:59:40	Information	接收到来自10.0.62.182:4494的登录信息{"Username":"wujiayi","Password":"wujiayi"}
+2015/6/21 10:59:40	Success	USERNAME : wujiayi, PASSWORD : wujiayi用户名密码均正确，可以登录
+2015/6/21 10:59:40	Information	获取到一个来自10.0.62.182 : 4496的连接...
+2015/6/21 10:59:42	Information	正在与10.0.62.182 : 4496进行数据传输...
+2015/6/21 10:59:42	Information	接收了25个数据单元
+2015/6/21 10:59:42	Information	接收到的数据 QUERY_DEPARTMENT_REQUEST;, 大小25
+2015/6/21 10:59:42	Success	10.0.62.182:4496部门信息查询成功
+2015/6/21 10:59:42	Information	正在与10.0.62.182 : 4496进行数据传输...
+2015/6/21 10:59:42	Information	接收了26个数据单元
+2015/6/21 10:59:42	Information	接收到的数据 QUERY_EMPLOYEE_REQUEST;1;0, 大小26
+2015/6/21 10:59:42	Information	10.0.62.182:4496待查询的员工的编号 = 0
+2015/6/21 10:59:43	Information	10.0.62.182:4496查询到的部门编号为0的所有员工
+2015/6/21 10:59:43	Success	10.0.62.182:4496部门0的员工信息查询成功
+2015/6/21 10:59:43	Information	正在与10.0.62.182 : 4496进行数据传输...
+2015/6/21 10:59:43	Information	接收了32个数据单元
+2015/6/21 10:59:43	Information	接收到的数据 QUERY_CONTRACT_TEMPLATE_REQUEST;, 大小32
+2015/6/21 10:59:43	Information	接收到来自10.0.62.182:4496查询会签单模版信息0
+2015/6/21 10:59:43	Information	10.0.62.182:4496查询到的了所有的会签单
+2015/6/21 10:59:43	Success	10.0.62.182:4496会签单模版信息信息查询成功
+2015/6/21 10:59:52	Information	正在与10.0.62.182 : 4494进行数据传输...
+2015/6/21 10:59:52	Exception	System.Net.Sockets.SocketException (0x80004005): 远程主机强迫关闭了一个现有的连接。
+   在 System.Net.Sockets.Socket.EndReceive(IAsyncResult asyncResult)
+   在 SignPressServer.SignSocket.AsyncSocket.AsyncSocketServer.HandleDataReceived(IAsyncResult ar) 位置 g:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressServer\SignSocket\AsyncSocket\AsyncSocketServer.cs:行号 410
+2015/6/21 12:18:04	Information	正在与10.0.62.182 : 46735进行数据传输...
+2015/6/21 12:18:04	Information	接收了60个数据单元
+2015/6/21 12:18:04	Information	接收到的数据 LOGIN_REQUEST;43;{"Username":"shixiao","Password":"shixiao"}, 大小60
+2015/6/21 12:18:04	Information	接收到来自10.0.62.182:46735的登录信息{"Username":"shixiao","Password":"shixiao"}
+2015/6/21 12:18:08	Success	USERNAME : shixiao, PASSWORD : shixiao用户名密码均正确，可以登录
+2015/6/21 12:18:08	Information	获取到一个来自10.0.62.182 : 46738的连接...
+2015/6/21 12:18:11	Information	正在与10.0.62.182 : 46738进行数据传输...
+2015/6/21 12:18:11	Information	接收了32个数据单元
+2015/6/21 12:18:11	Information	接收到的数据 QUERY_CONTRACT_TEMPLATE_REQUEST;, 大小32
+2015/6/21 12:18:11	Information	接收到来自10.0.62.182:46738查询会签单模版信息
+2015/6/21 12:18:11	Information	10.0.62.182:46738查询到的了所有的会签单
+2015/6/21 12:18:11	Success	10.0.62.182:46738会签单模版信息信息查询成功
+2015/6/21 12:18:11	Information	正在与10.0.62.182 : 46738进行数据传输...
+2015/6/21 12:18:11	Information	接收了33个数据单元
+2015/6/21 12:18:11	Information	接收到的数据 GET_CONTRACT_TEMPLATE_REQUEST;1;1, 大小33
+2015/6/21 12:18:11	Information	接收到来自10.0.62.182:46738待获取会签单模版编号1
+2015/6/21 12:18:11	Success	10.0.62.182:46738获取会签单模版1成功
+2015/6/21 12:18:14	Information	正在与10.0.62.182 : 46738进行数据传输...
+2015/6/21 12:18:14	Information	接收了33个数据单元
+2015/6/21 12:18:14	Information	接收到的数据 GET_CONTRACT_TEMPLATE_REQUEST;1;1, 大小33
+2015/6/21 12:18:14	Information	接收到来自10.0.62.182:46738待获取会签单模版编号1
+2015/6/21 12:18:14	Success	10.0.62.182:46738获取会签单模版1成功
+2015/6/21 12:19:51	Information	正在与10.0.62.182 : 46738进行数据传输...
+2015/6/21 12:19:51	Information	接收了32个数据单元
+2015/6/21 12:19:51	Information	接收到的数据 QUERY_CONTRACT_TEMPLATE_REQUEST;, 大小32
+2015/6/21 12:19:51	Information	接收到来自10.0.62.182:46738查询会签单模版信息1
+2015/6/21 12:19:51	Information	10.0.62.182:46738查询到的了所有的会签单
+2015/6/21 12:19:51	Success	10.0.62.182:46738会签单模版信息信息查询成功
+2015/6/21 12:19:51	Information	正在与10.0.62.182 : 46738进行数据传输...
+2015/6/21 12:19:51	Information	接收了33个数据单元
+2015/6/21 12:19:51	Information	接收到的数据 GET_CONTRACT_TEMPLATE_REQUEST;1;1, 大小33
+2015/6/21 12:19:51	Information	接收到来自10.0.62.182:46738待获取会签单模版编号1
+2015/6/21 12:19:51	Success	10.0.62.182:46738获取会签单模版1成功
+2015/6/21 12:19:52	Information	正在与10.0.62.182 : 46735进行数据传输...
+2015/6/21 12:19:52	Exception	System.Net.Sockets.SocketException (0x80004005): 远程主机强迫关闭了一个现有的连接。
+   在 System.Net.Sockets.Socket.EndReceive(IAsyncResult asyncResult)
+   在 SignPressServer.SignSocket.AsyncSocket.AsyncSocketServer.HandleDataReceived(IAsyncResult ar) 位置 g:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressServer\SignSocket\AsyncSocket\AsyncSocketServer.cs:行号 410
+2015/6/21 12:19:53	Information	正在与10.0.62.182 : 46738进行数据传输...
+2015/6/21 12:19:53	Information	接收了32个数据单元
+2015/6/21 12:19:53	Information	接收到的数据 QUERY_CONTRACT_TEMPLATE_REQUEST;, 大小32
+2015/6/21 12:19:53	Information	接收到来自10.0.62.182:46738查询会签单模版信息1
+2015/6/21 12:19:53	Information	10.0.62.182:46738查询到的了所有的会签单
+2015/6/21 12:19:53	Success	10.0.62.182:46738会签单模版信息信息查询成功
+2015/6/21 12:19:53	Information	正在与10.0.62.182 : 46738进行数据传输...
+2015/6/21 12:19:53	Information	接收了33个数据单元
+2015/6/21 12:19:53	Information	接收到的数据 GET_CONTRACT_TEMPLATE_REQUEST;1;1, 大小33
+2015/6/21 12:19:53	Information	接收到来自10.0.62.182:46738待获取会签单模版编号1
+2015/6/21 12:19:53	Success	10.0.62.182:46738获取会签单模版1成功
+2015/6/21 12:20:00	Information	正在与10.0.62.182 : 46738进行数据传输...
+2015/6/21 12:20:00	Exception	System.Net.Sockets.SocketException (0x80004005): 远程主机强迫关闭了一个现有的连接。
+   在 System.Net.Sockets.Socket.EndReceive(IAsyncResult asyncResult)
+   在 SignPressServer.SignSocket.AsyncSocket.AsyncSocketServer.HandleDataReceived(IAsyncResult ar) 位置 g:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressServer\SignSocket\AsyncSocket\AsyncSocketServer.cs:行号 410
+2015/6/21 12:29:53	Information	正在与10.0.62.182 : 46889进行数据传输...
+2015/6/21 12:29:53	Information	接收了60个数据单元
+2015/6/21 12:29:53	Information	接收到的数据 LOGIN_REQUEST;43;{"Username":"shixiao","Password":"shixiao"}, 大小60
+2015/6/21 12:29:53	Information	接收到来自10.0.62.182:46889的登录信息{"Username":"shixiao","Password":"shixiao"}
+2015/6/21 12:29:57	Success	USERNAME : shixiao, PASSWORD : shixiao用户名密码均正确，可以登录
+2015/6/21 12:29:58	Information	获取到一个来自10.0.62.182 : 46892的连接...
+2015/6/21 12:30:00	Information	正在与10.0.62.182 : 46892进行数据传输...
+2015/6/21 12:30:00	Information	接收了32个数据单元
+2015/6/21 12:30:01	Information	接收到的数据 QUERY_CONTRACT_TEMPLATE_REQUEST;, 大小32
+2015/6/21 12:30:01	Information	接收到来自10.0.62.182:46892查询会签单模版信息
+2015/6/21 12:30:01	Information	10.0.62.182:46892查询到的了所有的会签单
+2015/6/21 12:30:01	Success	10.0.62.182:46892会签单模版信息信息查询成功
+2015/6/21 12:30:01	Information	正在与10.0.62.182 : 46892进行数据传输...
+2015/6/21 12:30:01	Information	接收了33个数据单元
+2015/6/21 12:30:01	Information	接收到的数据 GET_CONTRACT_TEMPLATE_REQUEST;1;1, 大小33
+2015/6/21 12:30:01	Information	接收到来自10.0.62.182:46892待获取会签单模版编号1
+2015/6/21 12:30:01	Success	10.0.62.182:46892获取会签单模版1成功
+2015/6/21 12:30:05	Information	正在与10.0.62.182 : 46892进行数据传输...
+2015/6/21 12:30:05	Information	接收了32个数据单元
+2015/6/21 12:30:05	Information	接收到的数据 QUERY_CONTRACT_TEMPLATE_REQUEST;, 大小32
+2015/6/21 12:30:05	Information	接收到来自10.0.62.182:46892查询会签单模版信息1
+2015/6/21 12:30:05	Information	10.0.62.182:46892查询到的了所有的会签单
+2015/6/21 12:30:05	Success	10.0.62.182:46892会签单模版信息信息查询成功
+2015/6/21 12:30:05	Information	正在与10.0.62.182 : 46892进行数据传输...
+2015/6/21 12:30:05	Information	接收了33个数据单元
+2015/6/21 12:30:05	Information	接收到的数据 GET_CONTRACT_TEMPLATE_REQUEST;1;1, 大小33
+2015/6/21 12:30:05	Information	接收到来自10.0.62.182:46892待获取会签单模版编号1
+2015/6/21 12:30:05	Success	10.0.62.182:46892获取会签单模版1成功
+2015/6/21 12:30:06	Information	正在与10.0.62.182 : 46892进行数据传输...
+2015/6/21 12:30:06	Information	接收了32个数据单元
+2015/6/21 12:30:06	Information	接收到的数据 QUERY_CONTRACT_TEMPLATE_REQUEST;, 大小32
+2015/6/21 12:30:06	Information	接收到来自10.0.62.182:46892查询会签单模版信息1
+2015/6/21 12:30:06	Information	10.0.62.182:46892查询到的了所有的会签单
+2015/6/21 12:30:06	Success	10.0.62.182:46892会签单模版信息信息查询成功
+2015/6/21 12:30:06	Information	正在与10.0.62.182 : 46892进行数据传输...
+2015/6/21 12:30:06	Information	接收了33个数据单元
+2015/6/21 12:30:06	Information	接收到的数据 GET_CONTRACT_TEMPLATE_REQUEST;1;1, 大小33
+2015/6/21 12:30:06	Information	接收到来自10.0.62.182:46892待获取会签单模版编号1
+2015/6/21 12:30:06	Success	10.0.62.182:46892获取会签单模版1成功
+2015/6/21 12:30:07	Information	正在与10.0.62.182 : 46892进行数据传输...
+2015/6/21 12:30:07	Information	接收了32个数据单元
+2015/6/21 12:30:07	Information	接收到的数据 QUERY_CONTRACT_TEMPLATE_REQUEST;, 大小32
+2015/6/21 12:30:07	Information	接收到来自10.0.62.182:46892查询会签单模版信息1
+2015/6/21 12:30:07	Information	10.0.62.182:46892查询到的了所有的会签单
+2015/6/21 12:30:07	Success	10.0.62.182:46892会签单模版信息信息查询成功
+2015/6/21 12:30:07	Information	正在与10.0.62.182 : 46892进行数据传输...
+2015/6/21 12:30:07	Information	接收了33个数据单元
+2015/6/21 12:30:07	Information	接收到的数据 GET_CONTRACT_TEMPLATE_REQUEST;1;1, 大小33
+2015/6/21 12:30:07	Information	接收到来自10.0.62.182:46892待获取会签单模版编号1
+2015/6/21 12:30:07	Success	10.0.62.182:46892获取会签单模版1成功
+2015/6/21 12:30:07	Information	正在与10.0.62.182 : 46889进行数据传输...
+2015/6/21 12:30:07	Exception	System.Net.Sockets.SocketException (0x80004005): 远程主机强迫关闭了一个现有的连接。
+   在 System.Net.Sockets.Socket.EndReceive(IAsyncResult asyncResult)
+   在 SignPressServer.SignSocket.AsyncSocket.AsyncSocketServer.HandleDataReceived(IAsyncResult ar) 位置 g:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressServer\SignSocket\AsyncSocket\AsyncSocketServer.cs:行号 410
+2015/6/21 12:30:12	Information	正在与10.0.62.182 : 46892进行数据传输...
+2015/6/21 12:30:12	Information	接收了33个数据单元
+2015/6/21 12:30:12	Information	接收到的数据 GET_CONTRACT_TEMPLATE_REQUEST;1;1, 大小33
+2015/6/21 12:30:12	Information	接收到来自10.0.62.182:46892待获取会签单模版编号1
+2015/6/21 12:30:12	Success	10.0.62.182:46892获取会签单模版1成功
+2015/6/21 12:30:22	Information	正在与10.0.62.182 : 46892进行数据传输...
+2015/6/21 12:30:22	Exception	System.Net.Sockets.SocketException (0x80004005): 远程主机强迫关闭了一个现有的连接。
+   在 System.Net.Sockets.Socket.EndReceive(IAsyncResult asyncResult)
+   在 SignPressServer.SignSocket.AsyncSocket.AsyncSocketServer.HandleDataReceived(IAsyncResult ar) 位置 g:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressServer\SignSocket\AsyncSocket\AsyncSocketServer.cs:行号 410
+2015/6/21 12:30:47	Information	获取到一个来自10.0.62.182 : 46903的连接...
+2015/6/21 12:30:47	Information	获取到一个来自10.0.62.182 : 46904的连接...
+2015/6/21 12:30:48	Information	正在与10.0.62.182 : 46904进行数据传输...
+2015/6/21 12:30:48	Information	正在与10.0.62.182 : 46903进行数据传输...
+2015/6/21 12:30:48	Information	接收了60个数据单元
+2015/6/21 12:30:48	Information	接收到的数据 LOGIN_REQUEST;43;{"Username":"shixiao","Password":"shixiao"}, 大小60
+2015/6/21 12:30:48	Information	接收了60个数据单元
+2015/6/21 12:30:48	Information	接收到的数据 LOGIN_REQUEST;43;{"Username":"shixiao","Password":"shixiao"}, 大小60
+2015/6/21 12:30:48	Information	接收到来自10.0.62.182:46904的登录信息{"Username":"shixiao","Password":"shixiao"}
+2015/6/21 12:30:48	Information	接收到来自10.0.62.182:46903的登录信息{"Username":"shixiao","Password":"shixiao"}
+2015/6/21 12:30:48	Success	USERNAME : shixiao, PASSWORD : shixiao用户名密码均正确，可以登录
+2015/6/21 12:30:48	Success	USERNAME : shixiao, PASSWORD : shixiao用户名密码均正确，可以登录
+2015/6/21 12:30:48	Information	获取到一个来自10.0.62.182 : 46909的连接...
+2015/6/21 12:30:50	Information	正在与10.0.62.182 : 46909进行数据传输...
+2015/6/21 12:30:50	Information	接收了32个数据单元
+2015/6/21 12:30:50	Information	接收到的数据 QUERY_CONTRACT_TEMPLATE_REQUEST;, 大小32
+2015/6/21 12:30:50	Information	接收到来自10.0.62.182:46909查询会签单模版信息
+2015/6/21 12:30:50	Information	10.0.62.182:46909查询到的了所有的会签单
+2015/6/21 12:30:50	Success	10.0.62.182:46909会签单模版信息信息查询成功
+2015/6/21 12:30:50	Information	正在与10.0.62.182 : 46909进行数据传输...
+2015/6/21 12:30:50	Information	接收了33个数据单元
+2015/6/21 12:30:50	Information	接收到的数据 GET_CONTRACT_TEMPLATE_REQUEST;1;1, 大小33
+2015/6/21 12:30:50	Information	接收到来自10.0.62.182:46909待获取会签单模版编号1
+2015/6/21 12:30:50	Success	10.0.62.182:46909获取会签单模版1成功
+2015/6/21 12:30:53	Information	正在与10.0.62.182 : 46909进行数据传输...
+2015/6/21 12:30:53	Information	接收了33个数据单元
+2015/6/21 12:30:53	Information	接收到的数据 GET_CONTRACT_TEMPLATE_REQUEST;1;1, 大小33
+2015/6/21 12:30:53	Information	接收到来自10.0.62.182:46909待获取会签单模版编号1
+2015/6/21 12:30:53	Success	10.0.62.182:46909获取会签单模版1成功
+2015/6/21 12:31:43	Information	正在与10.0.62.182 : 46903进行数据传输...
+2015/6/21 12:31:43	Information	正在与10.0.62.182 : 46904进行数据传输...
+2015/6/21 12:31:43	Information	正在与10.0.62.182 : 46909进行数据传输...
+2015/6/21 12:31:43	Exception	System.Net.Sockets.SocketException (0x80004005): 远程主机强迫关闭了一个现有的连接。
+   在 System.Net.Sockets.Socket.EndReceive(IAsyncResult asyncResult)
+   在 SignPressServer.SignSocket.AsyncSocket.AsyncSocketServer.HandleDataReceived(IAsyncResult ar) 位置 g:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressServer\SignSocket\AsyncSocket\AsyncSocketServer.cs:行号 410
+2015/6/21 12:31:43	Exception	System.Net.Sockets.SocketException (0x80004005): 远程主机强迫关闭了一个现有的连接。
+   在 System.Net.Sockets.Socket.EndReceive(IAsyncResult asyncResult)
+   在 SignPressServer.SignSocket.AsyncSocket.AsyncSocketServer.HandleDataReceived(IAsyncResult ar) 位置 g:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressServer\SignSocket\AsyncSocket\AsyncSocketServer.cs:行号 410
+2015/6/21 12:31:43	Exception	System.Net.Sockets.SocketException (0x80004005): 远程主机强迫关闭了一个现有的连接。
+   在 System.Net.Sockets.Socket.EndReceive(IAsyncResult asyncResult)
+   在 SignPressServer.SignSocket.AsyncSocket.AsyncSocketServer.HandleDataReceived(IAsyncResult ar) 位置 g:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressServer\SignSocket\AsyncSocket\AsyncSocketServer.cs:行号 410
+2015/6/21 12:32:12	Information	获取到一个来自10.0.62.182 : 46949的连接...
+2015/6/21 12:32:12	Information	正在与10.0.62.182 : 46949进行数据传输...
+2015/6/21 12:32:12	Information	接收了60个数据单元
+2015/6/21 12:32:12	Information	接收到的数据 LOGIN_REQUEST;43;{"Username":"shixiao","Password":"shixiao"}, 大小60
+2015/6/21 12:32:12	Information	接收到来自10.0.62.182:46949的登录信息{"Username":"shixiao","Password":"shixiao"}
+2015/6/21 12:32:12	Success	USERNAME : shixiao, PASSWORD : shixiao用户名密码均正确，可以登录
+2015/6/21 12:32:12	Information	获取到一个来自10.0.62.182 : 46950的连接...
+2015/6/21 12:32:18	Information	正在与10.0.62.182 : 46950进行数据传输...
+2015/6/21 12:32:18	Information	接收了32个数据单元
+2015/6/21 12:32:18	Information	接收到的数据 QUERY_CONTRACT_TEMPLATE_REQUEST;, 大小32
+2015/6/21 12:32:18	Information	接收到来自10.0.62.182:46950查询会签单模版信息
+2015/6/21 12:32:18	Information	10.0.62.182:46950查询到的了所有的会签单
+2015/6/21 12:32:18	Success	10.0.62.182:46950会签单模版信息信息查询成功
+2015/6/21 12:32:21	Information	正在与10.0.62.182 : 46950进行数据传输...
+2015/6/21 12:32:21	Information	接收了33个数据单元
+2015/6/21 12:32:21	Information	接收到的数据 GET_CONTRACT_TEMPLATE_REQUEST;1;1, 大小33
+2015/6/21 12:32:21	Information	接收到来自10.0.62.182:46950待获取会签单模版编号1
+2015/6/21 12:32:21	Success	10.0.62.182:46950获取会签单模版1成功
+2015/6/21 12:32:24	Information	正在与10.0.62.182 : 46950进行数据传输...
+2015/6/21 12:32:24	Information	接收了33个数据单元
+2015/6/21 12:32:24	Information	接收到的数据 GET_CONTRACT_TEMPLATE_REQUEST;1;1, 大小33
+2015/6/21 12:32:24	Information	接收到来自10.0.62.182:46950待获取会签单模版编号1
+2015/6/21 12:32:24	Success	10.0.62.182:46950获取会签单模版1成功
+2015/6/21 12:33:23	Information	正在与10.0.62.182 : 46949进行数据传输...
+2015/6/21 12:33:23	Information	正在与10.0.62.182 : 46950进行数据传输...
+2015/6/21 12:34:28	Information	正在与10.0.62.182 : 47052进行数据传输...
+2015/6/21 12:34:28	Information	接收了60个数据单元
+2015/6/21 12:34:28	Information	接收到的数据 LOGIN_REQUEST;43;{"Username":"shixiao","Password":"shixiao"}, 大小60
+2015/6/21 12:34:28	Information	接收到来自10.0.62.182:47052的登录信息{"Username":"shixiao","Password":"shixiao"}
+2015/6/21 12:34:32	Success	USERNAME : shixiao, PASSWORD : shixiao用户名密码均正确，可以登录
+2015/6/21 12:34:32	Information	获取到一个来自10.0.62.182 : 47055的连接...
+2015/6/21 12:34:35	Information	正在与10.0.62.182 : 47055进行数据传输...
+2015/6/21 12:34:35	Information	接收了32个数据单元
+2015/6/21 12:34:35	Information	接收到的数据 QUERY_CONTRACT_TEMPLATE_REQUEST;, 大小32
+2015/6/21 12:34:35	Information	接收到来自10.0.62.182:47055查询会签单模版信息
+2015/6/21 12:34:35	Information	10.0.62.182:47055查询到的了所有的会签单
+2015/6/21 12:34:35	Success	10.0.62.182:47055会签单模版信息信息查询成功
+2015/6/21 12:34:35	Information	正在与10.0.62.182 : 47055进行数据传输...
+2015/6/21 12:34:35	Information	接收了33个数据单元
+2015/6/21 12:34:35	Information	接收到的数据 GET_CONTRACT_TEMPLATE_REQUEST;1;1, 大小33
+2015/6/21 12:34:35	Information	接收到来自10.0.62.182:47055待获取会签单模版编号1
+2015/6/21 12:34:35	Success	10.0.62.182:47055获取会签单模版1成功
+2015/6/21 12:34:39	Information	正在与10.0.62.182 : 47055进行数据传输...
+2015/6/21 12:34:39	Information	接收了33个数据单元
+2015/6/21 12:34:39	Information	接收到的数据 GET_CONTRACT_TEMPLATE_REQUEST;1;1, 大小33
+2015/6/21 12:34:39	Information	接收到来自10.0.62.182:47055待获取会签单模版编号1
+2015/6/21 12:34:39	Success	10.0.62.182:47055获取会签单模版1成功
+2015/6/21 12:35:10	Information	正在与10.0.62.182 : 47055进行数据传输...
+2015/6/21 12:35:10	Information	接收了2508个数据单元
+2015/6/21 12:35:10	Information	接收到的数据 INSERT_HDJCONTRACT_REQUEST;2108;{"Name":"养护及例会项目拨款会签审批单 ","SubmitDate":null,"ConTemp":{"CreateDate":"2015-6-20 12:47:53","TempId":1,"Name":"养护及例会项目拨款会签审批单模版 ","ColumnCount":5,"ColumnNames":["工程名称","项目名称","主要项目及工程量","本次申请资金额度（元）","累计申请资金额度（元）"],"SignCount":8,"SignDatas":[{"SignInfo":"申请单位项目负责人","SignEmployee":{"Id":1,"Name":"成坚","Position":null,"Department":{"Id":1,"Name":"申请科"},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"申请单位负责人","SignEmployee":{"Id":2,"Name":"石啸","Position":null,"Department":{"Id":1,"Name":"申请科"},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"养护主管部门项目负责人","SignEmployee":{"Id":3,"Name":"张立平","Position":null,"Department":{"Id":2,"Name":"养护科"},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"养护主管部门负责人","SignEmployee":{"Id":4,"Name":"许伟","Position":null,"Department":{"Id":2,"Name":"养护科"},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"计划科负责人","SignEmployee":{"Id":5,"Name":"赵强","Position":null,"Department":{"Id":3,"Name":"计划科"},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"财务科负责人","SignEmployee":{"Id":6,"Name":"李景龙","Position":null,"Department":{"Id":4,"Name":"财务科"},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"主 管 局 长","SignEmployee":{"Id":8,"Name":"吴佳怡","Position":null,"Department":{"Id":5,"Name":"行政科"},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":2},{"SignInfo":"局      长","SignEmployee":{"Id":7,"Name":"王盼盼","Position":null,"Department":{"Id":5,"Name":"行政科"},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":3}]},"Id":null,"ColumnDatas":["星巴克","阿里巴巴","收购百度","1000","1000"],"SginRemark":null,"SubmitEmployee":{"Id":2,"Name":"石啸","Position":"主管","Department":{"Id":1,"Name":"申请科"},"CanSubmit":1,"CanSign":1,"IsAdmin":0,"User":{"Username":"shixiao","Password":"shixiao"}}}, 大小2140
+2015/6/21 12:35:10	Information	接收到来自10.0.62.182:47055待插入会签单信息{"Name":"养护及例会项目拨款会签审批单 ","SubmitDate":null,"ConTemp":{"CreateDate":"2015-6-20 12:47:53","TempId":1,"Name":"养护及例会项目拨款会签审批单模版 ","ColumnCount":5,"ColumnNames":["工程名称","项目名称","主要项目及工程量","本次申请资金额度（元）","累计申请资金额度（元）"],"SignCount":8,"SignDatas":[{"SignInfo":"申请单位项目负责人","SignEmployee":{"Id":1,"Name":"成坚","Position":null,"Department":{"Id":1,"Name":"申请科"},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"申请单位负责人","SignEmployee":{"Id":2,"Name":"石啸","Position":null,"Department":{"Id":1,"Name":"申请科"},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"养护主管部门项目负责人","SignEmployee":{"Id":3,"Name":"张立平","Position":null,"Department":{"Id":2,"Name":"养护科"},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"养护主管部门负责人","SignEmployee":{"Id":4,"Name":"许伟","Position":null,"Department":{"Id":2,"Name":"养护科"},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"计划科负责人","SignEmployee":{"Id":5,"Name":"赵强","Position":null,"Department":{"Id":3,"Name":"计划科"},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"财务科负责人","SignEmployee":{"Id":6,"Name":"李景龙","Position":null,"Department":{"Id":4,"Name":"财务科"},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":1},{"SignInfo":"主 管 局 长","SignEmployee":{"Id":8,"Name":"吴佳怡","Position":null,"Department":{"Id":5,"Name":"行政科"},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":2},{"SignInfo":"局      长","SignEmployee":{"Id":7,"Name":"王盼盼","Position":null,"Department":{"Id":5,"Name":"行政科"},"CanSubmit":0,"CanSign":0,"IsAdmin":0,"User":null},"SignPosX":0,"SignPosY":0,"SignLevel":3}]},"Id":null,"ColumnDatas":["星巴克","阿里巴巴","收购百度","1000","1000"],"SginRemark":null,"SubmitEmployee":{"Id":2,"Name":"石啸","Position":"主管","Department":{"Id":1,"Name":"申请科"},"CanSubmit":1,"CanSign":1,"IsAdmin":0,"User":{"Username":"shixiao","Password":"shixiao"}}}
+2015/6/21 12:39:22	Information	正在与10.0.62.182 : 47177进行数据传输...
+2015/6/21 12:39:22	Information	接收了60个数据单元
+2015/6/21 12:39:22	Information	接收到的数据 LOGIN_REQUEST;43;{"Username":"shixiao","Password":"shixiao"}, 大小60
+2015/6/21 12:39:22	Information	接收到来自10.0.62.182:47177的登录信息{"Username":"shixiao","Password":"shixiao"}
+2015/6/21 12:39:25	Success	USERNAME : shixiao, PASSWORD : shixiao用户名密码均正确，可以登录
+2015/6/21 12:39:26	Information	获取到一个来自10.0.62.182 : 47181的连接...
+2015/6/21 12:39:29	Information	正在与10.0.62.182 : 47181进行数据传输...
+2015/6/21 12:39:29	Information	接收了32个数据单元
+2015/6/21 12:39:29	Information	接收到的数据 QUERY_CONTRACT_TEMPLATE_REQUEST;, 大小32
+2015/6/21 12:39:29	Information	接收到来自10.0.62.182:47181查询会签单模版信息
+2015/6/21 12:39:29	Information	10.0.62.182:47181查询到的了所有的会签单
+2015/6/21 12:39:29	Success	10.0.62.182:47181会签单模版信息信息查询成功
+2015/6/21 12:39:29	Information	正在与10.0.62.182 : 47181进行数据传输...
+2015/6/21 12:39:29	Information	接收了33个数据单元
+2015/6/21 12:39:29	Information	接收到的数据 GET_CONTRACT_TEMPLATE_REQUEST;1;1, 大小33
+2015/6/21 12:39:29	Information	接收到来自10.0.62.182:47181待获取会签单模版编号1
+2015/6/21 12:39:29	Success	10.0.62.182:47181获取会签单模版1成功
+2015/6/21 12:39:32	Information	正在与10.0.62.182 : 47181进行数据传输...
+2015/6/21 12:39:32	Information	接收了33个数据单元
+2015/6/21 12:39:32	Information	接收到的数据 GET_CONTRACT_TEMPLATE_REQUEST;1;1, 大小33
+2015/6/21 12:39:32	Information	接收到来自10.0.62.182:47181待获取会签单模版编号1
+2015/6/21 12:39:32	Success	10.0.62.182:47181获取会签单模版1成功
+2015/6/21 12:40:01	Information	正在与10.0.62.182 : 47181进行数据传输...
+2015/6/21 12:40:01	Information	接收了514个数据单元
+2015/6/21 12:40:01	Information	接收到的数据 INSERT_HDJCONTRACT_REQUEST;419;{"Name":"养护及例会项目拨款会签审批单 ","SubmitDate":null,"ConTemp":{"CreateDate":null,"TempId":1,"Name":null,"ColumnCount":5,"ColumnNames":null,"SignCount":8,"SignDatas":null},"Id":null,"ColumnDatas":["星巴克","阿里巴巴","收购百度","1000","2000"],"SginRemark":null,"SubmitEmployee":{"Id":2,"Name":"石啸","Position":"主管","Department":{"Id":1,"Name":"申请科"},"CanSubmit":1,"CanSign":1,"IsAdmin":0,"User":{"Username":"shixiao","Password":"shixiao"}}}, 大小450
+2015/6/21 12:40:02	Information	接收到来自10.0.62.182:47181待插入会签单信息{"Name":"养护及例会项目拨款会签审批单 ","SubmitDate":null,"ConTemp":{"CreateDate":null,"TempId":1,"Name":null,"ColumnCount":5,"ColumnNames":null,"SignCount":8,"SignDatas":null},"Id":null,"ColumnDatas":["星巴克","阿里巴巴","收购百度","1000","2000"],"SginRemark":null,"SubmitEmployee":{"Id":2,"Name":"石啸","Position":"主管","Department":{"Id":1,"Name":"申请科"},"CanSubmit":1,"CanSign":1,"IsAdmin":0,"User":{"Username":"shixiao","Password":"shixiao"}}}
+2015/6/21 12:42:18	Information	正在与10.0.62.182 : 47220进行数据传输...
+2015/6/21 12:42:18	Information	接收了60个数据单元
+2015/6/21 12:42:18	Information	接收到的数据 LOGIN_REQUEST;43;{"Username":"shixiao","Password":"shixiao"}, 大小60
+2015/6/21 12:42:18	Information	接收到来自10.0.62.182:47220的登录信息{"Username":"shixiao","Password":"shixiao"}
+2015/6/21 12:42:22	Success	USERNAME : shixiao, PASSWORD : shixiao用户名密码均正确，可以登录
+2015/6/21 12:42:22	Information	获取到一个来自10.0.62.182 : 47223的连接...
+2015/6/21 12:42:26	Information	正在与10.0.62.182 : 47223进行数据传输...
+2015/6/21 12:42:26	Information	接收了32个数据单元
+2015/6/21 12:42:26	Information	接收到的数据 QUERY_CONTRACT_TEMPLATE_REQUEST;, 大小32
+2015/6/21 12:42:26	Information	接收到来自10.0.62.182:47223查询会签单模版信息
+2015/6/21 12:42:26	Information	10.0.62.182:47223查询到的了所有的会签单
+2015/6/21 12:42:26	Success	10.0.62.182:47223会签单模版信息信息查询成功
+2015/6/21 12:42:27	Information	正在与10.0.62.182 : 47223进行数据传输...
+2015/6/21 12:42:27	Information	接收了33个数据单元
+2015/6/21 12:42:27	Information	接收到的数据 GET_CONTRACT_TEMPLATE_REQUEST;1;1, 大小33
+2015/6/21 12:42:27	Information	接收到来自10.0.62.182:47223待获取会签单模版编号1
+2015/6/21 12:42:27	Success	10.0.62.182:47223获取会签单模版1成功
+2015/6/21 12:42:30	Information	正在与10.0.62.182 : 47223进行数据传输...
+2015/6/21 12:42:30	Information	接收了33个数据单元
+2015/6/21 12:42:30	Information	接收到的数据 GET_CONTRACT_TEMPLATE_REQUEST;1;1, 大小33
+2015/6/21 12:42:30	Information	接收到来自10.0.62.182:47223待获取会签单模版编号1
+2015/6/21 12:42:30	Success	10.0.62.182:47223获取会签单模版1成功
+2015/6/21 12:43:07	Information	正在与10.0.62.182 : 47223进行数据传输...
+2015/6/21 12:43:07	Information	接收了517个数据单元
+2015/6/21 12:43:07	Information	接收到的数据 INSERT_HDJCONTRACT_REQUEST;420;{"Name":"养护及例会项目拨款会签审批单 ","SubmitDate":null,"ConTemp":{"CreateDate":null,"TempId":1,"Name":null,"ColumnCount":5,"ColumnNames":null,"SignCount":8,"SignDatas":null},"Id":null,"ColumnDatas":["航道局","百度收购案","收购百度","1000","1000"],"SginRemark":null,"SubmitEmployee":{"Id":2,"Name":"石啸","Position":"主管","Department":{"Id":1,"Name":"申请科"},"CanSubmit":1,"CanSign":1,"IsAdmin":0,"User":{"Username":"shixiao","Password":"shixiao"}}}, 大小451
+2015/6/21 12:43:07	Information	接收到来自10.0.62.182:47223待插入会签单信息{"Name":"养护及例会项目拨款会签审批单 ","SubmitDate":null,"ConTemp":{"CreateDate":null,"TempId":1,"Name":null,"ColumnCount":5,"ColumnNames":null,"SignCount":8,"SignDatas":null},"Id":null,"ColumnDatas":["航道局","百度收购案","收购百度","1000","1000"],"SginRemark":null,"SubmitEmployee":{"Id":2,"Name":"石啸","Position":"主管","Department":{"Id":1,"Name":"申请科"},"CanSubmit":1,"CanSign":1,"IsAdmin":0,"User":{"Username":"shixiao","Password":"shixiao"}}}
+2015/6/21 12:44:53	Information	正在与10.0.62.182 : 47401进行数据传输...
+2015/6/21 12:44:53	Information	接收了60个数据单元
+2015/6/21 12:44:53	Information	接收到的数据 LOGIN_REQUEST;43;{"Username":"shixiao","Password":"shixiao"}, 大小60
+2015/6/21 12:44:53	Information	接收到来自10.0.62.182:47401的登录信息{"Username":"shixiao","Password":"shixiao"}
+2015/6/21 12:44:57	Success	USERNAME : shixiao, PASSWORD : shixiao用户名密码均正确，可以登录
+2015/6/21 12:44:57	Information	获取到一个来自10.0.62.182 : 47404的连接...
+2015/6/21 12:44:59	Information	正在与10.0.62.182 : 47404进行数据传输...
+2015/6/21 12:44:59	Information	接收了32个数据单元
+2015/6/21 12:44:59	Information	接收到的数据 QUERY_CONTRACT_TEMPLATE_REQUEST;, 大小32
+2015/6/21 12:44:59	Information	接收到来自10.0.62.182:47404查询会签单模版信息
+2015/6/21 12:44:59	Information	10.0.62.182:47404查询到的了所有的会签单
+2015/6/21 12:44:59	Success	10.0.62.182:47404会签单模版信息信息查询成功
+2015/6/21 12:45:00	Information	正在与10.0.62.182 : 47404进行数据传输...
+2015/6/21 12:45:00	Information	接收了33个数据单元
+2015/6/21 12:45:00	Information	接收到的数据 GET_CONTRACT_TEMPLATE_REQUEST;1;1, 大小33
+2015/6/21 12:45:00	Information	接收到来自10.0.62.182:47404待获取会签单模版编号1
+2015/6/21 12:45:00	Success	10.0.62.182:47404获取会签单模版1成功
+2015/6/21 12:45:02	Information	正在与10.0.62.182 : 47404进行数据传输...
+2015/6/21 12:45:02	Information	接收了33个数据单元
+2015/6/21 12:45:02	Information	接收到的数据 GET_CONTRACT_TEMPLATE_REQUEST;1;1, 大小33
+2015/6/21 12:45:02	Information	接收到来自10.0.62.182:47404待获取会签单模版编号1
+2015/6/21 12:45:02	Success	10.0.62.182:47404获取会签单模版1成功
+2015/6/21 12:45:30	Information	正在与10.0.62.182 : 47404进行数据传输...
+2015/6/21 12:45:30	Information	接收了517个数据单元
+2015/6/21 12:45:30	Information	接收到的数据 INSERT_HDJCONTRACT_REQUEST;420;{"Name":"养护及例会项目拨款会签审批单 ","SubmitDate":null,"ConTemp":{"CreateDate":null,"TempId":1,"Name":null,"ColumnCount":5,"ColumnNames":null,"SignCount":8,"SignDatas":null},"Id":null,"ColumnDatas":["航道局","百度收购案","收购百度","1000","2000"],"SginRemark":null,"SubmitEmployee":{"Id":2,"Name":"石啸","Position":"主管","Department":{"Id":1,"Name":"申请科"},"CanSubmit":1,"CanSign":1,"IsAdmin":0,"User":{"Username":"shixiao","Password":"shixiao"}}}, 大小451
+2015/6/21 12:45:30	Information	接收到来自10.0.62.182:47404待插入会签单信息{"Name":"养护及例会项目拨款会签审批单 ","SubmitDate":null,"ConTemp":{"CreateDate":null,"TempId":1,"Name":null,"ColumnCount":5,"ColumnNames":null,"SignCount":8,"SignDatas":null},"Id":null,"ColumnDatas":["航道局","百度收购案","收购百度","1000","2000"],"SginRemark":null,"SubmitEmployee":{"Id":2,"Name":"石啸","Position":"主管","Department":{"Id":1,"Name":"申请科"},"CanSubmit":1,"CanSign":1,"IsAdmin":0,"User":{"Username":"shixiao","Password":"shixiao"}}}
+2015/6/21 12:46:28	Information	正在与10.0.62.182 : 47428进行数据传输...
+2015/6/21 12:46:28	Information	接收了60个数据单元
+2015/6/21 12:46:28	Information	接收到的数据 LOGIN_REQUEST;43;{"Username":"shixiao","Password":"shixiao"}, 大小60
+2015/6/21 12:46:28	Information	接收到来自10.0.62.182:47428的登录信息{"Username":"shixiao","Password":"shixiao"}
+2015/6/21 12:46:31	Success	USERNAME : shixiao, PASSWORD : shixiao用户名密码均正确，可以登录
+2015/6/21 12:46:32	Information	获取到一个来自10.0.62.182 : 47431的连接...
+2015/6/21 12:46:34	Information	正在与10.0.62.182 : 47431进行数据传输...
+2015/6/21 12:46:34	Information	接收了32个数据单元
+2015/6/21 12:46:34	Information	接收到的数据 QUERY_CONTRACT_TEMPLATE_REQUEST;, 大小32
+2015/6/21 12:46:34	Information	接收到来自10.0.62.182:47431查询会签单模版信息
+2015/6/21 12:46:35	Information	10.0.62.182:47431查询到的了所有的会签单
+2015/6/21 12:46:35	Success	10.0.62.182:47431会签单模版信息信息查询成功
+2015/6/21 12:46:35	Information	正在与10.0.62.182 : 47431进行数据传输...
+2015/6/21 12:46:35	Information	接收了33个数据单元
+2015/6/21 12:46:35	Information	接收到的数据 GET_CONTRACT_TEMPLATE_REQUEST;1;1, 大小33
+2015/6/21 12:46:35	Information	接收到来自10.0.62.182:47431待获取会签单模版编号1
+2015/6/21 12:46:35	Success	10.0.62.182:47431获取会签单模版1成功
+2015/6/21 12:46:37	Information	正在与10.0.62.182 : 47431进行数据传输...
+2015/6/21 12:46:37	Information	接收了33个数据单元
+2015/6/21 12:46:37	Information	接收到的数据 GET_CONTRACT_TEMPLATE_REQUEST;1;1, 大小33
+2015/6/21 12:46:37	Information	接收到来自10.0.62.182:47431待获取会签单模版编号1
+2015/6/21 12:46:37	Success	10.0.62.182:47431获取会签单模版1成功
+2015/6/21 12:47:13	Information	正在与10.0.62.182 : 47431进行数据传输...
+2015/6/21 12:47:13	Information	接收了517个数据单元
+2015/6/21 12:47:13	Information	接收到的数据 INSERT_HDJCONTRACT_REQUEST;420;{"Name":"养护及例会项目拨款会签审批单 ","SubmitDate":null,"ConTemp":{"CreateDate":null,"TempId":1,"Name":null,"ColumnCount":5,"ColumnNames":null,"SignCount":8,"SignDatas":null},"Id":null,"ColumnDatas":["航道局","百度收购案","收购百度","1000","2000"],"SginRemark":null,"SubmitEmployee":{"Id":2,"Name":"石啸","Position":"主管","Department":{"Id":1,"Name":"申请科"},"CanSubmit":1,"CanSign":1,"IsAdmin":0,"User":{"Username":"shixiao","Password":"shixiao"}}}, 大小451
+2015/6/21 12:47:13	Information	接收到来自10.0.62.182:47431待插入会签单信息{"Name":"养护及例会项目拨款会签审批单 ","SubmitDate":null,"ConTemp":{"CreateDate":null,"TempId":1,"Name":null,"ColumnCount":5,"ColumnNames":null,"SignCount":8,"SignDatas":null},"Id":null,"ColumnDatas":["航道局","百度收购案","收购百度","1000","2000"],"SginRemark":null,"SubmitEmployee":{"Id":2,"Name":"石啸","Position":"主管","Department":{"Id":1,"Name":"申请科"},"CanSubmit":1,"CanSign":1,"IsAdmin":0,"User":{"Username":"shixiao","Password":"shixiao"}}}
+2015/6/21 12:47:13	Success	会签单20150621124713插入成功
+2015/6/21 12:49:49	Information	正在与10.0.62.182 : 47508进行数据传输...
+2015/6/21 12:49:49	Information	接收了60个数据单元
+2015/6/21 12:49:49	Information	接收到的数据 LOGIN_REQUEST;43;{"Username":"shixiao","Password":"shixiao"}, 大小60
+2015/6/21 12:49:49	Information	接收到来自10.0.62.182:47508的登录信息{"Username":"shixiao","Password":"shixiao"}
+2015/6/21 12:49:53	Success	USERNAME : shixiao, PASSWORD : shixiao用户名密码均正确，可以登录
+2015/6/21 12:49:54	Information	获取到一个来自10.0.62.182 : 47510的连接...
+2015/6/21 12:50:05	Information	正在与10.0.62.182 : 47510进行数据传输...
+2015/6/21 12:50:05	Information	接收了32个数据单元
+2015/6/21 12:50:05	Information	接收到的数据 QUERY_CONTRACT_TEMPLATE_REQUEST;, 大小32
+2015/6/21 12:50:05	Information	接收到来自10.0.62.182:47510查询会签单模版信息
+2015/6/21 12:50:05	Information	10.0.62.182:47510查询到的了所有的会签单
+2015/6/21 12:50:05	Success	10.0.62.182:47510会签单模版信息信息查询成功
+2015/6/21 12:50:05	Information	正在与10.0.62.182 : 47510进行数据传输...
+2015/6/21 12:50:05	Information	接收了33个数据单元
+2015/6/21 12:50:05	Information	接收到的数据 GET_CONTRACT_TEMPLATE_REQUEST;1;1, 大小33
+2015/6/21 12:50:05	Information	接收到来自10.0.62.182:47510待获取会签单模版编号1
+2015/6/21 12:50:05	Success	10.0.62.182:47510获取会签单模版1成功
+2015/6/21 12:50:08	Information	正在与10.0.62.182 : 47510进行数据传输...
+2015/6/21 12:50:08	Information	接收了33个数据单元
+2015/6/21 12:50:08	Information	接收到的数据 GET_CONTRACT_TEMPLATE_REQUEST;1;1, 大小33
+2015/6/21 12:50:08	Information	接收到来自10.0.62.182:47510待获取会签单模版编号1
+2015/6/21 12:50:08	Success	10.0.62.182:47510获取会签单模版1成功
+2015/6/21 12:50:40	Information	正在与10.0.62.182 : 47510进行数据传输...
+2015/6/21 12:50:40	Information	接收了515个数据单元
+2015/6/21 12:50:40	Information	接收到的数据 INSERT_HDJCONTRACT_REQUEST;418;{"Name":"养护及例会项目拨款会签审批单 ","SubmitDate":null,"ConTemp":{"CreateDate":null,"TempId":1,"Name":null,"ColumnCount":5,"ColumnNames":null,"SignCount":8,"SignDatas":null},"Id":null,"ColumnDatas":["航道局","腾讯收购案","收购腾讯","200","200"],"SginRemark":null,"SubmitEmployee":{"Id":2,"Name":"石啸","Position":"主管","Department":{"Id":1,"Name":"申请科"},"CanSubmit":1,"CanSign":1,"IsAdmin":0,"User":{"Username":"shixiao","Password":"shixiao"}}}, 大小449
+2015/6/21 12:50:41	Information	接收到来自10.0.62.182:47510待插入会签单信息{"Name":"养护及例会项目拨款会签审批单 ","SubmitDate":null,"ConTemp":{"CreateDate":null,"TempId":1,"Name":null,"ColumnCount":5,"ColumnNames":null,"SignCount":8,"SignDatas":null},"Id":null,"ColumnDatas":["航道局","腾讯收购案","收购腾讯","200","200"],"SginRemark":null,"SubmitEmployee":{"Id":2,"Name":"石啸","Position":"主管","Department":{"Id":1,"Name":"申请科"},"CanSubmit":1,"CanSign":1,"IsAdmin":0,"User":{"Username":"shixiao","Password":"shixiao"}}}
+2015/6/21 12:50:41	Success	会签单20150621125041插入成功
+2015/6/21 12:52:06	Information	正在与10.0.62.182 : 47510进行数据传输...
+2015/6/21 12:52:06	Information	正在与10.0.62.182 : 47508进行数据传输...
+2015/6/21 13:18:01	Information	正在与10.0.62.182 : 23614进行数据传输...
+2015/6/21 13:18:01	Information	接收了60个数据单元
+2015/6/21 13:18:01	Information	接收到的数据 LOGIN_REQUEST;43;{"Username":"shixiao","Password":"shixiao"}, 大小60
+2015/6/21 13:18:01	Information	接收到来自10.0.62.182:23614的登录信息{"Username":"shixiao","Password":"shixiao"}
+2015/6/21 13:18:05	Success	USERNAME : shixiao, PASSWORD : shixiao用户名密码均正确，可以登录
+2015/6/21 13:18:06	Information	获取到一个来自10.0.62.182 : 23617的连接...
+2015/6/21 13:18:12	Information	正在与10.0.62.182 : 23617进行数据传输...
+2015/6/21 13:18:12	Information	接收了32个数据单元
+2015/6/21 13:18:12	Information	接收到的数据 QUERY_CONTRACT_TEMPLATE_REQUEST;, 大小32
+2015/6/21 13:18:12	Information	接收到来自10.0.62.182:23617查询会签单模版信息
+2015/6/21 13:18:12	Information	10.0.62.182:23617查询到的了所有的会签单
+2015/6/21 13:18:12	Success	10.0.62.182:23617会签单模版信息信息查询成功
+2015/6/21 13:18:12	Information	正在与10.0.62.182 : 23617进行数据传输...
+2015/6/21 13:18:12	Information	接收了33个数据单元
+2015/6/21 13:18:12	Information	接收到的数据 GET_CONTRACT_TEMPLATE_REQUEST;1;1, 大小33
+2015/6/21 13:18:12	Information	接收到来自10.0.62.182:23617待获取会签单模版编号1
+2015/6/21 13:18:12	Success	10.0.62.182:23617获取会签单模版1成功
+2015/6/21 13:18:23	Information	正在与10.0.62.182 : 23617进行数据传输...
+2015/6/21 13:18:23	Information	接收了32个数据单元
+2015/6/21 13:18:23	Information	接收到的数据 QUERY_CONTRACT_TEMPLATE_REQUEST;, 大小32
+2015/6/21 13:18:23	Information	接收到来自10.0.62.182:23617查询会签单模版信息1
+2015/6/21 13:18:23	Information	10.0.62.182:23617查询到的了所有的会签单
+2015/6/21 13:18:23	Success	10.0.62.182:23617会签单模版信息信息查询成功
+2015/6/21 13:18:23	Information	正在与10.0.62.182 : 23617进行数据传输...
+2015/6/21 13:18:23	Information	接收了33个数据单元
+2015/6/21 13:18:23	Information	接收到的数据 GET_CONTRACT_TEMPLATE_REQUEST;1;1, 大小33
+2015/6/21 13:18:23	Information	接收到来自10.0.62.182:23617待获取会签单模版编号1
+2015/6/21 13:18:23	Success	10.0.62.182:23617获取会签单模版1成功
+2015/6/21 13:18:25	Information	正在与10.0.62.182 : 23617进行数据传输...
+2015/6/21 13:18:25	Information	接收了33个数据单元
+2015/6/21 13:18:25	Information	接收到的数据 GET_CONTRACT_TEMPLATE_REQUEST;1;1, 大小33
+2015/6/21 13:18:25	Information	接收到来自10.0.62.182:23617待获取会签单模版编号1
+2015/6/21 13:18:25	Success	10.0.62.182:23617获取会签单模版1成功
+2015/6/21 13:18:37	Information	正在与10.0.62.182 : 23617进行数据传输...
+2015/6/21 13:18:37	Information	接收了493个数据单元
+2015/6/21 13:18:37	Information	接收到的数据 INSERT_HDJCONTRACT_REQUEST;420;{"Name":"养护及例会项目拨款会签审批单 ","SubmitDate":null,"ConTemp":{"CreateDate":null,"TempId":1,"Name":null,"ColumnCount":5,"ColumnNames":null,"SignCount":8,"SignDatas":null},"Id":null,"ColumnDatas":["dfrfrg","sdgf","dsg","dsgf","sdg"],"SginRemark":null,"SubmitEmployee":{"Id":2,"Name":"石啸","Position":"主管","Department":{"Id":1,"Name":"申请科"},"CanSubmit":1,"CanSign":1,"IsAdmin":0,"User":{"Username":"shixiao","Password":"shixiao"}}}, 大小451
+2015/6/21 13:18:37	Information	接收到来自10.0.62.182:23617待插入会签单信息{"Name":"养护及例会项目拨款会签审批单 ","SubmitDate":null,"ConTemp":{"CreateDate":null,"TempId":1,"Name":null,"ColumnCount":5,"ColumnNames":null,"SignCount":8,"SignDatas":null},"Id":null,"ColumnDatas":["dfrfrg","sdgf","dsg","dsgf","sdg"],"SginRemark":null,"SubmitEmployee":{"Id":2,"Name":"石啸","Position":"主管","Department":{"Id":1,"Name":"申请科"},"CanSubmit":1,"CanSign":1,"IsAdmin":0,"User":{"Username":"shixiao","Password":"shixiao"}}}
+2015/6/21 13:18:37	Success	会签单20150621131837插入成功
+2015/6/21 13:18:37	Information	正在与10.0.62.182 : 23614进行数据传输...
+2015/6/21 13:18:37	Exception	System.Net.Sockets.SocketException (0x80004005): 远程主机强迫关闭了一个现有的连接。
+   在 System.Net.Sockets.Socket.EndReceive(IAsyncResult asyncResult)
+   在 SignPressServer.SignSocket.AsyncSocket.AsyncSocketServer.HandleDataReceived(IAsyncResult ar) 位置 g:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressServer\SignSocket\AsyncSocket\AsyncSocketServer.cs:行号 410
+2015/6/21 13:18:40	Information	正在与10.0.62.182 : 23617进行数据传输...
+2015/6/21 13:18:40	Information	接收了32个数据单元
+2015/6/21 13:18:40	Information	接收到的数据 QUERY_CONTRACT_TEMPLATE_REQUEST;, 大小32
+2015/6/21 13:18:40	Information	接收到来自10.0.62.182:23617查询会签单模版信息{"Name":"养护及例会项目拨款会签审批单 ","SubmitDate":null,"ConTemp":{"CreateDate":null,"TempId":1,"Name":null,"ColumnCount":5,"ColumnNames":null,"SignCount":8,"SignDatas":null},"Id":null,"ColumnDatas":["dfrfrg","sdgf","dsg","dsgf","sdg"],"SginRemark":null,"SubmitEmployee":{"Id":2,"Name":"石啸","Position":"主管","Department":{"Id":1,"Name":"申请科"},"CanSubmit":1,"CanSign":1,"IsAdmin":0,"User":{"Username":"shixiao","Password":"shixiao"}}}
+2015/6/21 13:18:40	Information	10.0.62.182:23617查询到的了所有的会签单
+2015/6/21 13:18:40	Success	10.0.62.182:23617会签单模版信息信息查询成功
+2015/6/21 13:18:40	Information	正在与10.0.62.182 : 23617进行数据传输...
+2015/6/21 13:18:40	Information	接收了33个数据单元
+2015/6/21 13:18:40	Information	接收到的数据 GET_CONTRACT_TEMPLATE_REQUEST;1;1, 大小33
+2015/6/21 13:18:40	Information	接收到来自10.0.62.182:23617待获取会签单模版编号1
+2015/6/21 13:18:40	Success	10.0.62.182:23617获取会签单模版1成功
+2015/6/21 13:22:27	Information	正在与10.0.62.182 : 23617进行数据传输...
+2015/6/21 13:22:27	Exception	System.Net.Sockets.SocketException (0x80004005): 远程主机强迫关闭了一个现有的连接。
+   在 System.Net.Sockets.Socket.EndReceive(IAsyncResult asyncResult)
+   在 SignPressServer.SignSocket.AsyncSocket.AsyncSocketServer.HandleDataReceived(IAsyncResult ar) 位置 g:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressServer\SignSocket\AsyncSocket\AsyncSocketServer.cs:行号 410
+2015/6/21 13:23:04	Information	获取到一个来自10.0.62.182 : 23686的连接...
+2015/6/21 13:23:04	Information	正在与10.0.62.182 : 23686进行数据传输...
+2015/6/21 13:23:04	Information	接收了60个数据单元
+2015/6/21 13:23:04	Information	接收到的数据 LOGIN_REQUEST;43;{"Username":"shixiao","Password":"shixiao"}, 大小60
+2015/6/21 13:23:04	Information	接收到来自10.0.62.182:23686的登录信息{"Username":"shixiao","Password":"shixiao"}
+2015/6/21 13:23:04	Success	USERNAME : shixiao, PASSWORD : shixiao用户名密码均正确，可以登录
+2015/6/21 13:23:04	Information	获取到一个来自10.0.62.182 : 23689的连接...
+2015/6/21 13:23:09	Information	正在与10.0.62.182 : 23689进行数据传输...
+2015/6/21 13:23:09	Information	接收了32个数据单元
+2015/6/21 13:23:09	Information	接收到的数据 QUERY_CONTRACT_TEMPLATE_REQUEST;, 大小32
+2015/6/21 13:23:09	Information	接收到来自10.0.62.182:23689查询会签单模版信息
+2015/6/21 13:23:09	Information	10.0.62.182:23689查询到的了所有的会签单
+2015/6/21 13:23:09	Success	10.0.62.182:23689会签单模版信息信息查询成功
+2015/6/21 13:23:09	Information	正在与10.0.62.182 : 23689进行数据传输...
+2015/6/21 13:23:10	Information	接收了33个数据单元
+2015/6/21 13:23:10	Information	接收到的数据 GET_CONTRACT_TEMPLATE_REQUEST;1;1, 大小33
+2015/6/21 13:23:10	Information	接收到来自10.0.62.182:23689待获取会签单模版编号1
+2015/6/21 13:23:10	Success	10.0.62.182:23689获取会签单模版1成功
+2015/6/21 13:23:17	Information	正在与10.0.62.182 : 23689进行数据传输...
+2015/6/21 13:23:17	Information	接收了33个数据单元
+2015/6/21 13:23:17	Information	接收到的数据 GET_CONTRACT_TEMPLATE_REQUEST;1;1, 大小33
+2015/6/21 13:23:17	Information	接收到来自10.0.62.182:23689待获取会签单模版编号1
+2015/6/21 13:23:17	Success	10.0.62.182:23689获取会签单模版1成功
+2015/6/21 13:23:28	Information	正在与10.0.62.182 : 23689进行数据传输...
+2015/6/21 13:23:28	Information	接收了489个数据单元
+2015/6/21 13:23:28	Information	接收到的数据 INSERT_HDJCONTRACT_REQUEST;416;{"Name":"养护及例会项目拨款会签审批单 ","SubmitDate":null,"ConTemp":{"CreateDate":null,"TempId":1,"Name":null,"ColumnCount":5,"ColumnNames":null,"SignCount":8,"SignDatas":null},"Id":null,"ColumnDatas":["g`w","ewf","ewf","fwedf","fw"],"SginRemark":null,"SubmitEmployee":{"Id":2,"Name":"石啸","Position":"主管","Department":{"Id":1,"Name":"申请科"},"CanSubmit":1,"CanSign":1,"IsAdmin":0,"User":{"Username":"shixiao","Password":"shixiao"}}}, 大小447
+2015/6/21 13:23:28	Information	接收到来自10.0.62.182:23689待插入会签单信息{"Name":"养护及例会项目拨款会签审批单 ","SubmitDate":null,"ConTemp":{"CreateDate":null,"TempId":1,"Name":null,"ColumnCount":5,"ColumnNames":null,"SignCount":8,"SignDatas":null},"Id":null,"ColumnDatas":["g`w","ewf","ewf","fwedf","fw"],"SginRemark":null,"SubmitEmployee":{"Id":2,"Name":"石啸","Position":"主管","Department":{"Id":1,"Name":"申请科"},"CanSubmit":1,"CanSign":1,"IsAdmin":0,"User":{"Username":"shixiao","Password":"shixiao"}}}
+2015/6/21 13:23:28	Success	会签单20150621132328插入成功
+2015/6/21 13:23:28	Information	正在与10.0.62.182 : 23686进行数据传输...
+2015/6/21 13:23:28	Exception	System.Net.Sockets.SocketException (0x80004005): 远程主机强迫关闭了一个现有的连接。
+   在 System.Net.Sockets.Socket.EndReceive(IAsyncResult asyncResult)
+   在 SignPressServer.SignSocket.AsyncSocket.AsyncSocketServer.HandleDataReceived(IAsyncResult ar) 位置 g:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressServer\SignSocket\AsyncSocket\AsyncSocketServer.cs:行号 410
+2015/6/21 14:33:30	Information	正在与10.0.62.182 : 23689进行数据传输...
+2015/6/21 14:33:30	Exception	System.Net.Sockets.SocketException (0x80004005): 远程主机强迫关闭了一个现有的连接。
+   在 System.Net.Sockets.Socket.EndReceive(IAsyncResult asyncResult)
+   在 SignPressServer.SignSocket.AsyncSocket.AsyncSocketServer.HandleDataReceived(IAsyncResult ar) 位置 g:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressServer\SignSocket\AsyncSocket\AsyncSocketServer.cs:行号 410
+2015/6/21 15:21:20	Information	正在与10.0.62.182 : 48277进行数据传输...
+2015/6/21 15:21:20	Information	接收了60个数据单元
+2015/6/21 15:21:20	Information	接收到的数据 LOGIN_REQUEST;43;{"Username":"wujiayi","Password":"wujiayi"}, 大小60
+2015/6/21 15:21:20	Information	接收到来自10.0.62.182:48277的登录信息{"Username":"wujiayi","Password":"wujiayi"}
+2015/6/21 15:21:25	Success	USERNAME : wujiayi, PASSWORD : wujiayi用户名密码均正确，可以登录
+2015/6/21 15:21:26	Information	获取到一个来自10.0.62.182 : 48281的连接...
+2015/6/21 15:21:35	Information	正在与10.0.62.182 : 48281进行数据传输...
+2015/6/21 15:21:35	Information	接收了25个数据单元
+2015/6/21 15:21:35	Information	接收到的数据 QUERY_DEPARTMENT_REQUEST;, 大小25
+2015/6/21 15:21:35	Success	10.0.62.182:48281部门信息查询成功
+2015/6/21 15:21:35	Information	正在与10.0.62.182 : 48281进行数据传输...
+2015/6/21 15:21:35	Information	接收了26个数据单元
+2015/6/21 15:21:35	Information	接收到的数据 QUERY_EMPLOYEE_REQUEST;1;0, 大小26
+2015/6/21 15:21:35	Information	10.0.62.182:48281待查询的员工的编号 = 0
+2015/6/21 15:21:35	Information	10.0.62.182:48281查询到的部门编号为0的所有员工
+2015/6/21 15:21:35	Success	10.0.62.182:48281部门0的员工信息查询成功
+2015/6/21 15:21:35	Information	正在与10.0.62.182 : 48281进行数据传输...
+2015/6/21 15:21:35	Information	接收了32个数据单元
+2015/6/21 15:21:35	Information	接收到的数据 QUERY_CONTRACT_TEMPLATE_REQUEST;, 大小32
+2015/6/21 15:21:35	Information	接收到来自10.0.62.182:48281查询会签单模版信息0
+2015/6/21 15:21:35	Information	10.0.62.182:48281查询到的了所有的会签单
+2015/6/21 15:21:35	Success	10.0.62.182:48281会签单模版信息信息查询成功
+2015/6/21 15:21:50	Information	正在与10.0.62.182 : 48277进行数据传输...
+2015/6/21 15:21:50	Exception	System.Net.Sockets.SocketException (0x80004005): 远程主机强迫关闭了一个现有的连接。
+   在 System.Net.Sockets.Socket.EndReceive(IAsyncResult asyncResult)
+   在 SignPressServer.SignSocket.AsyncSocket.AsyncSocketServer.HandleDataReceived(IAsyncResult ar) 位置 g:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressServer\SignSocket\AsyncSocket\AsyncSocketServer.cs:行号 410
+2015/6/21 15:22:06	Information	正在与10.0.62.182 : 48281进行数据传输...
+2015/6/21 15:22:06	Information	接收了33个数据单元
+2015/6/21 15:22:06	Information	接收到的数据 GET_CONTRACT_TEMPLATE_REQUEST;1;1, 大小33
+2015/6/21 15:22:06	Information	接收到来自10.0.62.182:48281待获取会签单模版编号1
+2015/6/21 15:22:06	Success	10.0.62.182:48281获取会签单模版1成功
+2015/6/21 15:22:34	Information	正在与10.0.62.182 : 48281进行数据传输...
+2015/6/21 15:22:34	Exception	System.Net.Sockets.SocketException (0x80004005): 远程主机强迫关闭了一个现有的连接。
+   在 System.Net.Sockets.Socket.EndReceive(IAsyncResult asyncResult)
+   在 SignPressServer.SignSocket.AsyncSocket.AsyncSocketServer.HandleDataReceived(IAsyncResult ar) 位置 g:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressServer\SignSocket\AsyncSocket\AsyncSocketServer.cs:行号 410
+2015/6/21 15:24:36	Information	获取到一个来自10.0.62.182 : 48423的连接...
+2015/6/21 15:24:36	Information	正在与10.0.62.182 : 48423进行数据传输...
+2015/6/21 15:24:36	Information	接收了60个数据单元
+2015/6/21 15:24:36	Information	接收到的数据 LOGIN_REQUEST;43;{"Username":"shixiao","Password":"shixiao"}, 大小60
+2015/6/21 15:24:36	Information	接收到来自10.0.62.182:48423的登录信息{"Username":"shixiao","Password":"shixiao"}
+2015/6/21 15:24:36	Success	USERNAME : shixiao, PASSWORD : shixiao用户名密码均正确，可以登录
+2015/6/21 15:24:37	Information	获取到一个来自10.0.62.182 : 48426的连接...
+2015/6/21 15:24:40	Information	正在与10.0.62.182 : 48426进行数据传输...
+2015/6/21 15:24:40	Information	接收了32个数据单元
+2015/6/21 15:24:40	Information	接收到的数据 QUERY_CONTRACT_TEMPLATE_REQUEST;, 大小32
+2015/6/21 15:24:40	Information	接收到来自10.0.62.182:48426查询会签单模版信息
+2015/6/21 15:24:40	Information	10.0.62.182:48426查询到的了所有的会签单
+2015/6/21 15:24:40	Success	10.0.62.182:48426会签单模版信息信息查询成功
+2015/6/21 15:24:40	Information	正在与10.0.62.182 : 48426进行数据传输...
+2015/6/21 15:24:40	Information	接收了33个数据单元
+2015/6/21 15:24:40	Information	接收到的数据 GET_CONTRACT_TEMPLATE_REQUEST;1;1, 大小33
+2015/6/21 15:24:40	Information	接收到来自10.0.62.182:48426待获取会签单模版编号1
+2015/6/21 15:24:40	Success	10.0.62.182:48426获取会签单模版1成功
+2015/6/21 15:24:40	Information	正在与10.0.62.182 : 48426进行数据传输...
+2015/6/21 15:24:40	Information	接收了24个数据单元
+2015/6/21 15:24:40	Information	接收到的数据 QUERY_SIGN_PEND_REQUEST;, 大小24
+2015/6/21 15:25:41	Information	正在与10.0.62.182 : 48423进行数据传输...
+2015/6/21 15:25:41	Information	正在与10.0.62.182 : 48426进行数据传输...
+2015/6/21 15:25:41	Exception	System.Net.Sockets.SocketException (0x80004005): 远程主机强迫关闭了一个现有的连接。
+   在 System.Net.Sockets.Socket.EndReceive(IAsyncResult asyncResult)
+   在 SignPressServer.SignSocket.AsyncSocket.AsyncSocketServer.HandleDataReceived(IAsyncResult ar) 位置 g:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressServer\SignSocket\AsyncSocket\AsyncSocketServer.cs:行号 410
+2015/6/21 15:25:41	Exception	System.Net.Sockets.SocketException (0x80004005): 远程主机强迫关闭了一个现有的连接。
+   在 System.Net.Sockets.Socket.EndReceive(IAsyncResult asyncResult)
+   在 SignPressServer.SignSocket.AsyncSocket.AsyncSocketServer.HandleDataReceived(IAsyncResult ar) 位置 g:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressServer\SignSocket\AsyncSocket\AsyncSocketServer.cs:行号 410
+2015/6/21 15:47:48	Information	正在与10.0.62.182 : 48769进行数据传输...
+2015/6/21 15:47:48	Information	接收了60个数据单元
+2015/6/21 15:47:48	Information	接收到的数据 LOGIN_REQUEST;43;{"Username":"shixiao","Password":"shixiao"}, 大小60
+2015/6/21 15:47:48	Information	接收到来自10.0.62.182:48769的登录信息{"Username":"shixiao","Password":"shixiao"}
+2015/6/21 15:47:52	Success	USERNAME : shixiao, PASSWORD : shixiao用户名密码均正确，可以登录
+2015/6/21 15:47:52	Information	获取到一个来自10.0.62.182 : 48772的连接...
+2015/6/21 15:47:55	Information	正在与10.0.62.182 : 48772进行数据传输...
+2015/6/21 15:47:55	Information	接收了32个数据单元
+2015/6/21 15:47:55	Information	接收到的数据 QUERY_CONTRACT_TEMPLATE_REQUEST;, 大小32
+2015/6/21 15:47:55	Information	接收到来自10.0.62.182:48772查询会签单模版信息
+2015/6/21 15:47:55	Information	10.0.62.182:48772查询到的了所有的会签单
+2015/6/21 15:47:55	Success	10.0.62.182:48772会签单模版信息信息查询成功
+2015/6/21 15:47:55	Information	正在与10.0.62.182 : 48772进行数据传输...
+2015/6/21 15:47:55	Information	接收了33个数据单元
+2015/6/21 15:47:55	Information	接收到的数据 GET_CONTRACT_TEMPLATE_REQUEST;1;1, 大小33
+2015/6/21 15:47:55	Information	接收到来自10.0.62.182:48772待获取会签单模版编号1
+2015/6/21 15:47:55	Success	10.0.62.182:48772获取会签单模版1成功
+2015/6/21 15:47:56	Information	正在与10.0.62.182 : 48772进行数据传输...
+2015/6/21 15:47:56	Information	接收了27个数据单元
+2015/6/21 15:47:56	Information	接收到的数据 QUERY_SIGN_PEND_REQUEST;1;2, 大小27
+2015/6/21 15:47:56	Information	接收到来自10.0.62.182:48772查询正在审核中的会签单模版信息2
+2015/6/21 15:47:56	Information	10.0.62.182:48772查询到的了所有正在审核中的会签单
+2015/6/21 15:47:56	Success	10.0.62.182:48772会签单模版信息信息查询成功
+2015/6/21 15:47:56	Information	正在与10.0.62.182 : 48772进行数据传输...
+2015/6/21 15:47:56	Information	接收了28个数据单元
+2015/6/21 15:47:56	Information	接收到的数据 QUERY_SIGN_AGREE_REQUEST;1;2, 大小28
+2015/6/21 15:47:56	Information	接收到来自10.0.62.182:48772查询正在审核中的会签单模版信息2
+2015/6/21 15:47:56	Information	10.0.62.182:48772查询到的了所有正在审核中的会签单
+2015/6/21 15:47:56	Success	10.0.62.182:48772会签单模版信息信息查询成功
+2015/6/21 15:47:56	Information	正在与10.0.62.182 : 48772进行数据传输...
+2015/6/21 15:47:56	Information	接收了29个数据单元
+2015/6/21 15:47:56	Information	接收到的数据 QUERY_SIGN_REFUSE_REQUEST;1;2, 大小29
+2015/6/21 15:47:56	Information	接收到来自10.0.62.182:48772查询正在审核中的会签单模版信息2
+2015/6/21 15:47:56	Information	10.0.62.182:48772查询到的了所有正在审核中的会签单
+2015/6/21 15:47:56	Success	10.0.62.182:48772会签单模版信息信息查询成功
+2015/6/21 15:47:59	Information	正在与10.0.62.182 : 48772进行数据传输...
+2015/6/21 15:47:59	Information	接收了32个数据单元
+2015/6/21 15:47:59	Information	接收到的数据 QUERY_CONTRACT_TEMPLATE_REQUEST;, 大小32
+2015/6/21 15:47:59	Information	接收到来自10.0.62.182:48772查询会签单模版信息2
+2015/6/21 15:47:59	Information	10.0.62.182:48772查询到的了所有的会签单
+2015/6/21 15:47:59	Success	10.0.62.182:48772会签单模版信息信息查询成功
+2015/6/21 15:47:59	Information	正在与10.0.62.182 : 48772进行数据传输...
+2015/6/21 15:47:59	Information	接收了33个数据单元
+2015/6/21 15:47:59	Information	接收到的数据 GET_CONTRACT_TEMPLATE_REQUEST;1;1, 大小33
+2015/6/21 15:47:59	Information	接收到来自10.0.62.182:48772待获取会签单模版编号1
+2015/6/21 15:47:59	Success	10.0.62.182:48772获取会签单模版1成功
+2015/6/21 15:47:59	Information	正在与10.0.62.182 : 48772进行数据传输...
+2015/6/21 15:47:59	Information	接收了27个数据单元
+2015/6/21 15:47:59	Information	接收到的数据 QUERY_SIGN_PEND_REQUEST;1;2, 大小27
+2015/6/21 15:47:59	Information	接收到来自10.0.62.182:48772查询正在审核中的会签单模版信息2
+2015/6/21 15:47:59	Information	10.0.62.182:48772查询到的了所有正在审核中的会签单
+2015/6/21 15:47:59	Success	10.0.62.182:48772会签单模版信息信息查询成功
+2015/6/21 15:47:59	Information	正在与10.0.62.182 : 48772进行数据传输...
+2015/6/21 15:47:59	Information	接收了28个数据单元
+2015/6/21 15:47:59	Information	接收到的数据 QUERY_SIGN_AGREE_REQUEST;1;2, 大小28
+2015/6/21 15:47:59	Information	接收到来自10.0.62.182:48772查询正在审核中的会签单模版信息2
+2015/6/21 15:47:59	Information	10.0.62.182:48772查询到的了所有正在审核中的会签单
+2015/6/21 15:47:59	Success	10.0.62.182:48772会签单模版信息信息查询成功
+2015/6/21 15:47:59	Information	正在与10.0.62.182 : 48772进行数据传输...
+2015/6/21 15:47:59	Information	接收了29个数据单元
+2015/6/21 15:47:59	Information	接收到的数据 QUERY_SIGN_REFUSE_REQUEST;1;2, 大小29
+2015/6/21 15:47:59	Information	接收到来自10.0.62.182:48772查询正在审核中的会签单模版信息2
+2015/6/21 15:47:59	Information	10.0.62.182:48772查询到的了所有正在审核中的会签单
+2015/6/21 15:47:59	Success	10.0.62.182:48772会签单模版信息信息查询成功
+2015/6/21 15:47:59	Information	正在与10.0.62.182 : 48769进行数据传输...
+2015/6/21 15:47:59	Exception	System.Net.Sockets.SocketException (0x80004005): 远程主机强迫关闭了一个现有的连接。
+   在 System.Net.Sockets.Socket.EndReceive(IAsyncResult asyncResult)
+   在 SignPressServer.SignSocket.AsyncSocket.AsyncSocketServer.HandleDataReceived(IAsyncResult ar) 位置 g:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressServer\SignSocket\AsyncSocket\AsyncSocketServer.cs:行号 410
+2015/6/21 15:48:16	Information	正在与10.0.62.182 : 48772进行数据传输...
+2015/6/21 15:48:16	Exception	System.Net.Sockets.SocketException (0x80004005): 远程主机强迫关闭了一个现有的连接。
+   在 System.Net.Sockets.Socket.EndReceive(IAsyncResult asyncResult)
+   在 SignPressServer.SignSocket.AsyncSocket.AsyncSocketServer.HandleDataReceived(IAsyncResult ar) 位置 g:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressServer\SignSocket\AsyncSocket\AsyncSocketServer.cs:行号 410
+2015/6/21 15:51:29	Information	获取到一个来自10.0.62.182 : 48806的连接...
+2015/6/21 15:51:29	Information	正在与10.0.62.182 : 48806进行数据传输...
+2015/6/21 15:51:29	Information	接收了60个数据单元
+2015/6/21 15:51:29	Information	接收到的数据 LOGIN_REQUEST;43;{"Username":"shixiao","Password":"shixiao"}, 大小60
+2015/6/21 15:51:29	Information	接收到来自10.0.62.182:48806的登录信息{"Username":"shixiao","Password":"shixiao"}
+2015/6/21 15:51:29	Success	USERNAME : shixiao, PASSWORD : shixiao用户名密码均正确，可以登录
+2015/6/21 15:51:29	Information	获取到一个来自10.0.62.182 : 48809的连接...
+2015/6/21 15:51:33	Information	正在与10.0.62.182 : 48809进行数据传输...
+2015/6/21 15:51:33	Information	接收了32个数据单元
+2015/6/21 15:51:33	Information	接收到的数据 QUERY_CONTRACT_TEMPLATE_REQUEST;, 大小32
+2015/6/21 15:51:33	Information	接收到来自10.0.62.182:48809查询会签单模版信息
+2015/6/21 15:51:33	Information	10.0.62.182:48809查询到的了所有的会签单
+2015/6/21 15:51:33	Success	10.0.62.182:48809会签单模版信息信息查询成功
+2015/6/21 15:51:33	Information	正在与10.0.62.182 : 48809进行数据传输...
+2015/6/21 15:51:33	Information	接收了33个数据单元
+2015/6/21 15:51:33	Information	接收到的数据 GET_CONTRACT_TEMPLATE_REQUEST;1;1, 大小33
+2015/6/21 15:51:33	Information	接收到来自10.0.62.182:48809待获取会签单模版编号1
+2015/6/21 15:51:33	Success	10.0.62.182:48809获取会签单模版1成功
+2015/6/21 15:51:33	Information	正在与10.0.62.182 : 48809进行数据传输...
+2015/6/21 15:51:33	Information	接收了27个数据单元
+2015/6/21 15:51:33	Information	接收到的数据 QUERY_SIGN_PEND_REQUEST;1;2, 大小27
+2015/6/21 15:51:33	Information	接收到来自10.0.62.182:48809查询正在审核中的会签单模版信息2
+2015/6/21 15:51:33	Information	10.0.62.182:48809查询到的了所有正在审核中的会签单
+2015/6/21 15:51:33	Success	10.0.62.182:48809会签单模版信息信息查询成功
+2015/6/21 15:51:33	Information	正在与10.0.62.182 : 48809进行数据传输...
+2015/6/21 15:51:33	Information	接收了28个数据单元
+2015/6/21 15:51:33	Information	接收到的数据 QUERY_SIGN_AGREE_REQUEST;1;2, 大小28
+2015/6/21 15:51:33	Information	接收到来自10.0.62.182:48809查询正在审核中的会签单模版信息2
+2015/6/21 15:51:33	Information	10.0.62.182:48809查询到的了所有正在审核中的会签单
+2015/6/21 15:51:33	Success	10.0.62.182:48809会签单模版信息信息查询成功
+2015/6/21 15:51:33	Information	正在与10.0.62.182 : 48809进行数据传输...
+2015/6/21 15:51:33	Information	接收了29个数据单元
+2015/6/21 15:51:33	Information	接收到的数据 QUERY_SIGN_REFUSE_REQUEST;1;2, 大小29
+2015/6/21 15:51:33	Information	接收到来自10.0.62.182:48809查询正在审核中的会签单模版信息2
+2015/6/21 15:51:33	Information	10.0.62.182:48809查询到的了所有正在审核中的会签单
+2015/6/21 15:51:33	Success	10.0.62.182:48809会签单模版信息信息查询成功
+2015/6/21 15:51:35	Information	正在与10.0.62.182 : 48809进行数据传输...
+2015/6/21 15:51:35	Information	接收了32个数据单元
+2015/6/21 15:51:35	Information	接收到的数据 QUERY_CONTRACT_TEMPLATE_REQUEST;, 大小32
+2015/6/21 15:51:35	Information	接收到来自10.0.62.182:48809查询会签单模版信息2
+2015/6/21 15:51:35	Information	10.0.62.182:48809查询到的了所有的会签单
+2015/6/21 15:51:35	Success	10.0.62.182:48809会签单模版信息信息查询成功
+2015/6/21 15:51:35	Information	正在与10.0.62.182 : 48809进行数据传输...
+2015/6/21 15:51:35	Information	接收了33个数据单元
+2015/6/21 15:51:35	Information	接收到的数据 GET_CONTRACT_TEMPLATE_REQUEST;1;1, 大小33
+2015/6/21 15:51:35	Information	接收到来自10.0.62.182:48809待获取会签单模版编号1
+2015/6/21 15:51:35	Success	10.0.62.182:48809获取会签单模版1成功
+2015/6/21 15:51:35	Information	正在与10.0.62.182 : 48809进行数据传输...
+2015/6/21 15:51:35	Information	接收了27个数据单元
+2015/6/21 15:51:35	Information	接收到的数据 QUERY_SIGN_PEND_REQUEST;1;2, 大小27
+2015/6/21 15:51:35	Information	接收到来自10.0.62.182:48809查询正在审核中的会签单模版信息2
+2015/6/21 15:51:35	Information	10.0.62.182:48809查询到的了所有正在审核中的会签单
+2015/6/21 15:51:35	Success	10.0.62.182:48809会签单模版信息信息查询成功
+2015/6/21 15:51:35	Information	正在与10.0.62.182 : 48809进行数据传输...
+2015/6/21 15:51:35	Information	接收了28个数据单元
+2015/6/21 15:51:35	Information	接收到的数据 QUERY_SIGN_AGREE_REQUEST;1;2, 大小28
+2015/6/21 15:51:35	Information	接收到来自10.0.62.182:48809查询正在审核中的会签单模版信息2
+2015/6/21 15:51:35	Information	10.0.62.182:48809查询到的了所有正在审核中的会签单
+2015/6/21 15:51:35	Success	10.0.62.182:48809会签单模版信息信息查询成功
+2015/6/21 15:51:35	Information	正在与10.0.62.182 : 48809进行数据传输...
+2015/6/21 15:51:35	Information	接收了29个数据单元
+2015/6/21 15:51:35	Information	接收到的数据 QUERY_SIGN_REFUSE_REQUEST;1;2, 大小29
+2015/6/21 15:51:35	Information	接收到来自10.0.62.182:48809查询正在审核中的会签单模版信息2
+2015/6/21 15:51:35	Information	10.0.62.182:48809查询到的了所有正在审核中的会签单
+2015/6/21 15:51:35	Success	10.0.62.182:48809会签单模版信息信息查询成功
+2015/6/21 15:51:35	Information	正在与10.0.62.182 : 48806进行数据传输...
+2015/6/21 15:51:36	Exception	System.Net.Sockets.SocketException (0x80004005): 远程主机强迫关闭了一个现有的连接。
+   在 System.Net.Sockets.Socket.EndReceive(IAsyncResult asyncResult)
+   在 SignPressServer.SignSocket.AsyncSocket.AsyncSocketServer.HandleDataReceived(IAsyncResult ar) 位置 g:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressServer\SignSocket\AsyncSocket\AsyncSocketServer.cs:行号 410
+2015/6/21 15:51:40	Information	正在与10.0.62.182 : 48809进行数据传输...
+2015/6/21 15:51:40	Exception	System.Net.Sockets.SocketException (0x80004005): 远程主机强迫关闭了一个现有的连接。
+   在 System.Net.Sockets.Socket.EndReceive(IAsyncResult asyncResult)
+   在 SignPressServer.SignSocket.AsyncSocket.AsyncSocketServer.HandleDataReceived(IAsyncResult ar) 位置 g:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressServer\SignSocket\AsyncSocket\AsyncSocketServer.cs:行号 410
+2015/6/21 15:53:14	Information	正在与10.0.62.182 : 48877进行数据传输...
+2015/6/21 15:53:14	Information	接收了60个数据单元
+2015/6/21 15:53:14	Information	接收到的数据 LOGIN_REQUEST;43;{"Username":"shixiao","Password":"shixiao"}, 大小60
+2015/6/21 15:53:15	Information	接收到来自10.0.62.182:48877的登录信息{"Username":"shixiao","Password":"shixiao"}
+2015/6/21 15:53:18	Success	USERNAME : shixiao, PASSWORD : shixiao用户名密码均正确，可以登录
+2015/6/21 15:53:18	Information	获取到一个来自10.0.62.182 : 48880的连接...
+2015/6/21 15:53:21	Information	正在与10.0.62.182 : 48880进行数据传输...
+2015/6/21 15:53:21	Information	接收了32个数据单元
+2015/6/21 15:53:21	Information	接收到的数据 QUERY_CONTRACT_TEMPLATE_REQUEST;, 大小32
+2015/6/21 15:53:21	Information	接收到来自10.0.62.182:48880查询会签单模版信息
+2015/6/21 15:53:21	Information	10.0.62.182:48880查询到的了所有的会签单
+2015/6/21 15:53:21	Success	10.0.62.182:48880会签单模版信息信息查询成功
+2015/6/21 15:53:21	Information	正在与10.0.62.182 : 48880进行数据传输...
+2015/6/21 15:53:21	Information	接收了33个数据单元
+2015/6/21 15:53:21	Information	接收到的数据 GET_CONTRACT_TEMPLATE_REQUEST;1;1, 大小33
+2015/6/21 15:53:22	Information	接收到来自10.0.62.182:48880待获取会签单模版编号1
+2015/6/21 15:53:22	Success	10.0.62.182:48880获取会签单模版1成功
+2015/6/21 15:53:22	Information	正在与10.0.62.182 : 48880进行数据传输...
+2015/6/21 15:53:22	Information	接收了27个数据单元
+2015/6/21 15:53:22	Information	接收到的数据 QUERY_SIGN_PEND_REQUEST;1;2, 大小27
+2015/6/21 15:53:22	Information	接收到来自10.0.62.182:48880查询正在审核中的会签单模版信息2
+2015/6/21 15:53:22	Information	10.0.62.182:48880查询到的了所有正在审核中的会签单
+2015/6/21 15:53:22	Success	10.0.62.182:48880会签单模版信息信息查询成功
+2015/6/21 15:53:22	Information	正在与10.0.62.182 : 48880进行数据传输...
+2015/6/21 15:53:22	Information	接收了28个数据单元
+2015/6/21 15:53:22	Information	接收到的数据 QUERY_SIGN_AGREE_REQUEST;1;2, 大小28
+2015/6/21 15:53:22	Information	接收到来自10.0.62.182:48880查询正在审核中的会签单模版信息2
+2015/6/21 15:53:22	Information	10.0.62.182:48880查询到的了所有正在审核中的会签单
+2015/6/21 15:53:22	Success	10.0.62.182:48880会签单模版信息信息查询成功
+2015/6/21 15:53:22	Information	正在与10.0.62.182 : 48880进行数据传输...
+2015/6/21 15:53:22	Information	接收了29个数据单元
+2015/6/21 15:53:22	Information	接收到的数据 QUERY_SIGN_REFUSE_REQUEST;1;2, 大小29
+2015/6/21 15:53:22	Information	接收到来自10.0.62.182:48880查询正在审核中的会签单模版信息2
+2015/6/21 15:53:22	Information	10.0.62.182:48880查询到的了所有正在审核中的会签单
+2015/6/21 15:53:22	Success	10.0.62.182:48880会签单模版信息信息查询成功
+2015/6/21 15:55:41	Information	正在与10.0.62.182 : 48922进行数据传输...
+2015/6/21 15:55:41	Information	接收了60个数据单元
+2015/6/21 15:55:41	Information	接收到的数据 LOGIN_REQUEST;43;{"Username":"shixiao","Password":"shixiao"}, 大小60
+2015/6/21 15:55:41	Information	接收到来自10.0.62.182:48922的登录信息{"Username":"shixiao","Password":"shixiao"}
+2015/6/21 15:55:44	Success	USERNAME : shixiao, PASSWORD : shixiao用户名密码均正确，可以登录
+2015/6/21 15:55:45	Information	获取到一个来自10.0.62.182 : 48926的连接...
+2015/6/21 15:55:47	Information	正在与10.0.62.182 : 48926进行数据传输...
+2015/6/21 15:55:47	Information	接收了32个数据单元
+2015/6/21 15:55:47	Information	接收到的数据 QUERY_CONTRACT_TEMPLATE_REQUEST;, 大小32
+2015/6/21 15:55:47	Information	接收到来自10.0.62.182:48926查询会签单模版信息
+2015/6/21 15:55:47	Information	10.0.62.182:48926查询到的了所有的会签单
+2015/6/21 15:55:47	Success	10.0.62.182:48926会签单模版信息信息查询成功
+2015/6/21 15:55:47	Information	正在与10.0.62.182 : 48926进行数据传输...
+2015/6/21 15:55:47	Information	接收了33个数据单元
+2015/6/21 15:55:47	Information	接收到的数据 GET_CONTRACT_TEMPLATE_REQUEST;1;1, 大小33
+2015/6/21 15:55:47	Information	接收到来自10.0.62.182:48926待获取会签单模版编号1
+2015/6/21 15:55:47	Success	10.0.62.182:48926获取会签单模版1成功
+2015/6/21 15:55:48	Information	正在与10.0.62.182 : 48926进行数据传输...
+2015/6/21 15:55:48	Information	接收了27个数据单元
+2015/6/21 15:55:48	Information	接收到的数据 QUERY_SIGN_PEND_REQUEST;1;2, 大小27
+2015/6/21 15:55:48	Information	接收到来自10.0.62.182:48926查询正在审核中的会签单模版信息2
+2015/6/21 15:55:48	Information	10.0.62.182:48926查询到的了所有正在审核中的会签单
+2015/6/21 15:55:48	Success	10.0.62.182:48926会签单模版信息信息查询成功
+2015/6/21 15:55:48	Information	正在与10.0.62.182 : 48926进行数据传输...
+2015/6/21 15:55:48	Information	接收了28个数据单元
+2015/6/21 15:55:48	Information	接收到的数据 QUERY_SIGN_AGREE_REQUEST;1;2, 大小28
+2015/6/21 15:55:48	Information	接收到来自10.0.62.182:48926查询正在审核中的会签单模版信息2
+2015/6/21 15:55:48	Information	10.0.62.182:48926查询到的了所有正在审核中的会签单
+2015/6/21 15:55:48	Success	10.0.62.182:48926会签单模版信息信息查询成功
+2015/6/21 15:55:48	Information	正在与10.0.62.182 : 48926进行数据传输...
+2015/6/21 15:55:48	Information	接收了29个数据单元
+2015/6/21 15:55:48	Information	接收到的数据 QUERY_SIGN_REFUSE_REQUEST;1;2, 大小29
+2015/6/21 15:55:48	Information	接收到来自10.0.62.182:48926查询正在审核中的会签单模版信息2
+2015/6/21 15:55:48	Information	10.0.62.182:48926查询到的了所有正在审核中的会签单
+2015/6/21 15:55:48	Success	10.0.62.182:48926会签单模版信息信息查询成功
+2015/6/21 15:56:02	Information	正在与10.0.62.182 : 48922进行数据传输...
+2015/6/21 15:56:02	Exception	System.Net.Sockets.SocketException (0x80004005): 远程主机强迫关闭了一个现有的连接。
+   在 System.Net.Sockets.Socket.EndReceive(IAsyncResult asyncResult)
+   在 SignPressServer.SignSocket.AsyncSocket.AsyncSocketServer.HandleDataReceived(IAsyncResult ar) 位置 g:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressServer\SignSocket\AsyncSocket\AsyncSocketServer.cs:行号 410
+2015/6/21 15:56:38	Information	正在与10.0.62.182 : 48926进行数据传输...
+2015/6/21 15:56:38	Exception	System.Net.Sockets.SocketException (0x80004005): 远程主机强迫关闭了一个现有的连接。
+   在 System.Net.Sockets.Socket.EndReceive(IAsyncResult asyncResult)
+   在 SignPressServer.SignSocket.AsyncSocket.AsyncSocketServer.HandleDataReceived(IAsyncResult ar) 位置 g:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressServer\SignSocket\AsyncSocket\AsyncSocketServer.cs:行号 410
+2015/6/21 16:07:55	Information	正在与10.0.62.182 : 49397进行数据传输...
+2015/6/21 16:07:55	Information	接收了60个数据单元
+2015/6/21 16:07:55	Information	接收到的数据 LOGIN_REQUEST;43;{"Username":"shixiao","Password":"shixiao"}, 大小60
+2015/6/21 16:07:55	Information	接收到来自10.0.62.182:49397的登录信息{"Username":"shixiao","Password":"shixiao"}
+2015/6/21 16:07:58	Success	USERNAME : shixiao, PASSWORD : shixiao用户名密码均正确，可以登录
+2015/6/21 16:07:59	Information	获取到一个来自10.0.62.182 : 49400的连接...
+2015/6/21 16:08:06	Information	正在与10.0.62.182 : 49400进行数据传输...
+2015/6/21 16:08:06	Information	接收了32个数据单元
+2015/6/21 16:08:06	Information	接收到的数据 QUERY_CONTRACT_TEMPLATE_REQUEST;, 大小32
+2015/6/21 16:08:06	Information	接收到来自10.0.62.182:49400查询会签单模版信息
+2015/6/21 16:08:06	Information	10.0.62.182:49400查询到的了所有的会签单
+2015/6/21 16:08:06	Success	10.0.62.182:49400会签单模版信息信息查询成功
+2015/6/21 16:08:06	Information	正在与10.0.62.182 : 49400进行数据传输...
+2015/6/21 16:08:06	Information	接收了33个数据单元
+2015/6/21 16:08:06	Information	接收到的数据 GET_CONTRACT_TEMPLATE_REQUEST;1;1, 大小33
+2015/6/21 16:08:06	Information	接收到来自10.0.62.182:49400待获取会签单模版编号1
+2015/6/21 16:08:06	Success	10.0.62.182:49400获取会签单模版1成功
+2015/6/21 16:08:06	Information	正在与10.0.62.182 : 49400进行数据传输...
+2015/6/21 16:08:06	Information	接收了27个数据单元
+2015/6/21 16:08:06	Information	接收到的数据 QUERY_SIGN_PEND_REQUEST;1;2, 大小27
+2015/6/21 16:08:06	Information	接收到来自10.0.62.182:49400查询正在审核中的会签单模版信息2
+2015/6/21 16:08:06	Information	10.0.62.182:49400查询到的了所有正在审核中的会签单
+2015/6/21 16:08:06	Success	10.0.62.182:49400会签单模版信息信息查询成功
+2015/6/21 16:08:06	Information	正在与10.0.62.182 : 49400进行数据传输...
+2015/6/21 16:08:06	Information	接收了28个数据单元
+2015/6/21 16:08:06	Information	接收到的数据 QUERY_SIGN_AGREE_REQUEST;1;2, 大小28
+2015/6/21 16:08:06	Information	接收到来自10.0.62.182:49400查询已通过审核的会签单模版信息2
+2015/6/21 16:08:06	Information	10.0.62.182:49400查询到的了所有已通过审核的会签单
+2015/6/21 16:08:06	Success	10.0.62.182:49400已通过审核会签单信息查询成功
+2015/6/21 16:08:06	Information	正在与10.0.62.182 : 49400进行数据传输...
+2015/6/21 16:08:06	Information	接收了29个数据单元
+2015/6/21 16:08:06	Information	接收到的数据 QUERY_SIGN_REFUSE_REQUEST;1;2, 大小29
+2015/6/21 16:08:06	Information	接收到来自10.0.62.182:49400查询被拒绝的会签单模版信息2
+2015/6/21 16:08:06	Information	10.0.62.182:49400查询到的了所有被拒绝的会签单
+2015/6/21 16:08:06	Success	10.0.62.182:49400被拒绝会签单信息查询成功
+2015/6/21 16:08:10	Information	正在与10.0.62.182 : 49397进行数据传输...
+2015/6/21 16:08:10	Exception	System.Net.Sockets.SocketException (0x80004005): 远程主机强迫关闭了一个现有的连接。
+   在 System.Net.Sockets.Socket.EndReceive(IAsyncResult asyncResult)
+   在 SignPressServer.SignSocket.AsyncSocket.AsyncSocketServer.HandleDataReceived(IAsyncResult ar) 位置 g:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressServer\SignSocket\AsyncSocket\AsyncSocketServer.cs:行号 410
+2015/6/21 16:10:58	Information	正在与10.0.62.182 : 49400进行数据传输...
+2015/6/21 16:10:58	Exception	System.Net.Sockets.SocketException (0x80004005): 远程主机强迫关闭了一个现有的连接。
+   在 System.Net.Sockets.Socket.EndReceive(IAsyncResult asyncResult)
+   在 SignPressServer.SignSocket.AsyncSocket.AsyncSocketServer.HandleDataReceived(IAsyncResult ar) 位置 g:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressServer\SignSocket\AsyncSocket\AsyncSocketServer.cs:行号 410
+2015/6/21 16:11:17	Information	获取到一个来自10.0.62.182 : 49452的连接...
+2015/6/21 16:11:17	Information	正在与10.0.62.182 : 49452进行数据传输...
+2015/6/21 16:11:17	Information	接收了60个数据单元
+2015/6/21 16:11:17	Information	接收到的数据 LOGIN_REQUEST;43;{"Username":"shixiao","Password":"shixiao"}, 大小60
+2015/6/21 16:11:17	Information	接收到来自10.0.62.182:49452的登录信息{"Username":"shixiao","Password":"shixiao"}
+2015/6/21 16:11:17	Success	USERNAME : shixiao, PASSWORD : shixiao用户名密码均正确，可以登录
+2015/6/21 16:11:17	Information	获取到一个来自10.0.62.182 : 49455的连接...
+2015/6/21 16:11:23	Information	正在与10.0.62.182 : 49455进行数据传输...
+2015/6/21 16:11:23	Information	接收了32个数据单元
+2015/6/21 16:11:23	Information	接收到的数据 QUERY_CONTRACT_TEMPLATE_REQUEST;, 大小32
+2015/6/21 16:11:23	Information	接收到来自10.0.62.182:49455查询会签单模版信息
+2015/6/21 16:11:23	Information	10.0.62.182:49455查询到的了所有的会签单
+2015/6/21 16:11:23	Success	10.0.62.182:49455会签单模版信息信息查询成功
+2015/6/21 16:11:23	Information	正在与10.0.62.182 : 49455进行数据传输...
+2015/6/21 16:11:23	Information	接收了33个数据单元
+2015/6/21 16:11:23	Information	接收到的数据 GET_CONTRACT_TEMPLATE_REQUEST;1;1, 大小33
+2015/6/21 16:11:23	Information	接收到来自10.0.62.182:49455待获取会签单模版编号1
+2015/6/21 16:11:23	Success	10.0.62.182:49455获取会签单模版1成功
+2015/6/21 16:11:23	Information	正在与10.0.62.182 : 49455进行数据传输...
+2015/6/21 16:11:23	Information	接收了27个数据单元
+2015/6/21 16:11:23	Information	接收到的数据 QUERY_SIGN_PEND_REQUEST;1;2, 大小27
+2015/6/21 16:11:23	Information	接收到来自10.0.62.182:49455查询正在审核中的会签单模版信息2
+2015/6/21 16:11:23	Information	10.0.62.182:49455查询到的了所有正在审核中的会签单
+2015/6/21 16:11:23	Success	10.0.62.182:49455会签单模版信息信息查询成功
+2015/6/21 16:11:23	Information	正在与10.0.62.182 : 49455进行数据传输...
+2015/6/21 16:11:23	Information	接收了28个数据单元
+2015/6/21 16:11:23	Information	接收到的数据 QUERY_SIGN_AGREE_REQUEST;1;2, 大小28
+2015/6/21 16:11:23	Information	接收到来自10.0.62.182:49455查询已通过审核的会签单模版信息2
+2015/6/21 16:11:23	Information	10.0.62.182:49455查询到的了所有已通过审核的会签单
+2015/6/21 16:11:23	Success	10.0.62.182:49455已通过审核会签单信息查询成功
+2015/6/21 16:11:23	Information	正在与10.0.62.182 : 49455进行数据传输...
+2015/6/21 16:11:23	Information	接收了29个数据单元
+2015/6/21 16:11:23	Information	接收到的数据 QUERY_SIGN_REFUSE_REQUEST;1;2, 大小29
+2015/6/21 16:11:23	Information	接收到来自10.0.62.182:49455查询被拒绝的会签单模版信息2
+2015/6/21 16:11:23	Information	10.0.62.182:49455查询到的了所有被拒绝的会签单
+2015/6/21 16:11:23	Success	10.0.62.182:49455被拒绝会签单信息查询成功
+2015/6/21 16:11:28	Information	正在与10.0.62.182 : 49452进行数据传输...
+2015/6/21 16:11:28	Exception	System.Net.Sockets.SocketException (0x80004005): 远程主机强迫关闭了一个现有的连接。
+   在 System.Net.Sockets.Socket.EndReceive(IAsyncResult asyncResult)
+   在 SignPressServer.SignSocket.AsyncSocket.AsyncSocketServer.HandleDataReceived(IAsyncResult ar) 位置 g:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressServer\SignSocket\AsyncSocket\AsyncSocketServer.cs:行号 410
+2015/6/21 17:07:37	Information	正在与10.0.62.182 : 49455进行数据传输...
+2015/6/21 17:07:37	Information	接收了32个数据单元
+2015/6/21 17:07:37	Information	接收到的数据 QUERY_CONTRACT_TEMPLATE_REQUEST;, 大小32
+2015/6/21 17:07:37	Information	接收到来自10.0.62.182:49455查询会签单模版信息2
+2015/6/21 17:07:38	Information	10.0.62.182:49455查询到的了所有的会签单
+2015/6/21 17:07:38	Success	10.0.62.182:49455会签单模版信息信息查询成功
+2015/6/21 17:07:38	Information	正在与10.0.62.182 : 49455进行数据传输...
+2015/6/21 17:07:38	Information	接收了33个数据单元
+2015/6/21 17:07:38	Information	接收到的数据 GET_CONTRACT_TEMPLATE_REQUEST;1;1, 大小33
+2015/6/21 17:07:38	Information	接收到来自10.0.62.182:49455待获取会签单模版编号1
+2015/6/21 17:07:38	Success	10.0.62.182:49455获取会签单模版1成功
+2015/6/21 17:07:38	Information	正在与10.0.62.182 : 49455进行数据传输...
+2015/6/21 17:07:38	Information	接收了27个数据单元
+2015/6/21 17:07:38	Information	接收到的数据 QUERY_SIGN_PEND_REQUEST;1;2, 大小27
+2015/6/21 17:07:38	Information	接收到来自10.0.62.182:49455查询正在审核中的会签单模版信息2
+2015/6/21 17:07:38	Information	10.0.62.182:49455查询到的了所有正在审核中的会签单
+2015/6/21 17:07:38	Success	10.0.62.182:49455会签单模版信息信息查询成功
+2015/6/21 17:07:38	Information	正在与10.0.62.182 : 49455进行数据传输...
+2015/6/21 17:07:38	Information	接收了28个数据单元
+2015/6/21 17:07:38	Information	接收到的数据 QUERY_SIGN_AGREE_REQUEST;1;2, 大小28
+2015/6/21 17:07:38	Information	接收到来自10.0.62.182:49455查询已通过审核的会签单模版信息2
+2015/6/21 17:07:38	Information	10.0.62.182:49455查询到的了所有已通过审核的会签单
+2015/6/21 17:07:38	Success	10.0.62.182:49455已通过审核会签单信息查询成功
+2015/6/21 17:07:38	Information	正在与10.0.62.182 : 49455进行数据传输...
+2015/6/21 17:07:38	Information	接收了29个数据单元
+2015/6/21 17:07:38	Information	接收到的数据 QUERY_SIGN_REFUSE_REQUEST;1;2, 大小29
+2015/6/21 17:07:38	Information	接收到来自10.0.62.182:49455查询被拒绝的会签单模版信息2
+2015/6/21 17:07:38	Information	10.0.62.182:49455查询到的了所有被拒绝的会签单
+2015/6/21 17:07:38	Success	10.0.62.182:49455被拒绝会签单信息查询成功
+2015/6/21 17:07:38	Information	正在与10.0.62.182 : 49455进行数据传输...
+2015/6/21 17:07:38	Information	接收了32个数据单元
+2015/6/21 17:07:38	Information	接收到的数据 QUERY_CONTRACT_TEMPLATE_REQUEST;, 大小32
+2015/6/21 17:07:38	Information	接收到来自10.0.62.182:49455查询会签单模版信息2
+2015/6/21 17:07:38	Information	10.0.62.182:49455查询到的了所有的会签单
+2015/6/21 17:07:38	Success	10.0.62.182:49455会签单模版信息信息查询成功
+2015/6/21 17:07:38	Information	正在与10.0.62.182 : 49455进行数据传输...
+2015/6/21 17:07:38	Information	接收了33个数据单元
+2015/6/21 17:07:38	Information	接收到的数据 GET_CONTRACT_TEMPLATE_REQUEST;1;1, 大小33
+2015/6/21 17:07:38	Information	接收到来自10.0.62.182:49455待获取会签单模版编号1
+2015/6/21 17:07:38	Success	10.0.62.182:49455获取会签单模版1成功
+2015/6/21 17:07:39	Information	正在与10.0.62.182 : 49455进行数据传输...
+2015/6/21 17:07:39	Information	接收了27个数据单元
+2015/6/21 17:07:39	Information	接收到的数据 QUERY_SIGN_PEND_REQUEST;1;2, 大小27
+2015/6/21 17:07:39	Information	接收到来自10.0.62.182:49455查询正在审核中的会签单模版信息2
+2015/6/21 17:07:39	Information	10.0.62.182:49455查询到的了所有正在审核中的会签单
+2015/6/21 17:07:39	Success	10.0.62.182:49455会签单模版信息信息查询成功
+2015/6/21 17:07:39	Information	正在与10.0.62.182 : 49455进行数据传输...
+2015/6/21 17:07:39	Information	接收了28个数据单元
+2015/6/21 17:07:39	Information	接收到的数据 QUERY_SIGN_AGREE_REQUEST;1;2, 大小28
+2015/6/21 17:07:39	Information	接收到来自10.0.62.182:49455查询已通过审核的会签单模版信息2
+2015/6/21 17:07:39	Information	10.0.62.182:49455查询到的了所有已通过审核的会签单
+2015/6/21 17:07:39	Success	10.0.62.182:49455已通过审核会签单信息查询成功
+2015/6/21 17:07:39	Information	正在与10.0.62.182 : 49455进行数据传输...
+2015/6/21 17:07:39	Information	接收了29个数据单元
+2015/6/21 17:07:39	Information	接收到的数据 QUERY_SIGN_REFUSE_REQUEST;1;2, 大小29
+2015/6/21 17:07:39	Information	接收到来自10.0.62.182:49455查询被拒绝的会签单模版信息2
+2015/6/21 17:07:39	Information	10.0.62.182:49455查询到的了所有被拒绝的会签单
+2015/6/21 17:07:39	Success	10.0.62.182:49455被拒绝会签单信息查询成功
+2015/6/21 17:07:41	Information	正在与10.0.62.182 : 49455进行数据传输...
+2015/6/21 17:07:41	Information	接收了32个数据单元
+2015/6/21 17:07:41	Information	接收到的数据 QUERY_CONTRACT_TEMPLATE_REQUEST;, 大小32
+2015/6/21 17:07:41	Information	接收到来自10.0.62.182:49455查询会签单模版信息2
+2015/6/21 17:07:41	Information	10.0.62.182:49455查询到的了所有的会签单
+2015/6/21 17:07:41	Success	10.0.62.182:49455会签单模版信息信息查询成功
+2015/6/21 17:07:41	Information	正在与10.0.62.182 : 49455进行数据传输...
+2015/6/21 17:07:41	Information	接收了33个数据单元
+2015/6/21 17:07:41	Information	接收到的数据 GET_CONTRACT_TEMPLATE_REQUEST;1;1, 大小33
+2015/6/21 17:07:41	Information	接收到来自10.0.62.182:49455待获取会签单模版编号1
+2015/6/21 17:07:41	Success	10.0.62.182:49455获取会签单模版1成功
+2015/6/21 17:07:41	Information	正在与10.0.62.182 : 49455进行数据传输...
+2015/6/21 17:07:41	Information	接收了27个数据单元
+2015/6/21 17:07:41	Information	接收到的数据 QUERY_SIGN_PEND_REQUEST;1;2, 大小27
+2015/6/21 17:07:41	Information	接收到来自10.0.62.182:49455查询正在审核中的会签单模版信息2
+2015/6/21 17:07:41	Information	10.0.62.182:49455查询到的了所有正在审核中的会签单
+2015/6/21 17:07:41	Success	10.0.62.182:49455会签单模版信息信息查询成功
+2015/6/21 17:07:41	Information	正在与10.0.62.182 : 49455进行数据传输...
+2015/6/21 17:07:41	Information	接收了28个数据单元
+2015/6/21 17:07:41	Information	接收到的数据 QUERY_SIGN_AGREE_REQUEST;1;2, 大小28
+2015/6/21 17:07:41	Information	接收到来自10.0.62.182:49455查询已通过审核的会签单模版信息2
+2015/6/21 17:07:41	Information	10.0.62.182:49455查询到的了所有已通过审核的会签单
+2015/6/21 17:07:41	Success	10.0.62.182:49455已通过审核会签单信息查询成功
+2015/6/21 17:07:41	Information	正在与10.0.62.182 : 49455进行数据传输...
+2015/6/21 17:07:41	Information	接收了29个数据单元
+2015/6/21 17:07:41	Information	接收到的数据 QUERY_SIGN_REFUSE_REQUEST;1;2, 大小29
+2015/6/21 17:07:41	Information	接收到来自10.0.62.182:49455查询被拒绝的会签单模版信息2
+2015/6/21 17:07:41	Information	10.0.62.182:49455查询到的了所有被拒绝的会签单
+2015/6/21 17:07:41	Success	10.0.62.182:49455被拒绝会签单信息查询成功
+2015/6/21 17:07:44	Information	正在与10.0.62.182 : 49455进行数据传输...
+2015/6/21 17:07:44	Information	接收了32个数据单元
+2015/6/21 17:07:44	Information	接收到的数据 QUERY_CONTRACT_TEMPLATE_REQUEST;, 大小32
+2015/6/21 17:07:44	Information	接收到来自10.0.62.182:49455查询会签单模版信息2
+2015/6/21 17:07:44	Information	10.0.62.182:49455查询到的了所有的会签单
+2015/6/21 17:07:44	Success	10.0.62.182:49455会签单模版信息信息查询成功
+2015/6/21 17:07:44	Information	正在与10.0.62.182 : 49455进行数据传输...
+2015/6/21 17:07:44	Information	接收了33个数据单元
+2015/6/21 17:07:44	Information	接收到的数据 GET_CONTRACT_TEMPLATE_REQUEST;1;1, 大小33
+2015/6/21 17:07:44	Information	接收到来自10.0.62.182:49455待获取会签单模版编号1
+2015/6/21 17:07:45	Success	10.0.62.182:49455获取会签单模版1成功
+2015/6/21 17:07:45	Information	正在与10.0.62.182 : 49455进行数据传输...
+2015/6/21 17:07:45	Information	接收了27个数据单元
+2015/6/21 17:07:45	Information	接收到的数据 QUERY_SIGN_PEND_REQUEST;1;2, 大小27
+2015/6/21 17:07:45	Information	接收到来自10.0.62.182:49455查询正在审核中的会签单模版信息2
+2015/6/21 17:07:45	Information	10.0.62.182:49455查询到的了所有正在审核中的会签单
+2015/6/21 17:07:45	Success	10.0.62.182:49455会签单模版信息信息查询成功
+2015/6/21 17:07:45	Information	正在与10.0.62.182 : 49455进行数据传输...
+2015/6/21 17:07:45	Information	接收了28个数据单元
+2015/6/21 17:07:45	Information	接收到的数据 QUERY_SIGN_AGREE_REQUEST;1;2, 大小28
+2015/6/21 17:07:45	Information	接收到来自10.0.62.182:49455查询已通过审核的会签单模版信息2
+2015/6/21 17:07:45	Information	10.0.62.182:49455查询到的了所有已通过审核的会签单
+2015/6/21 17:07:45	Success	10.0.62.182:49455已通过审核会签单信息查询成功
+2015/6/21 17:07:45	Information	正在与10.0.62.182 : 49455进行数据传输...
+2015/6/21 17:07:45	Information	接收了29个数据单元
+2015/6/21 17:07:45	Information	接收到的数据 QUERY_SIGN_REFUSE_REQUEST;1;2, 大小29
+2015/6/21 17:07:45	Information	接收到来自10.0.62.182:49455查询被拒绝的会签单模版信息2
+2015/6/21 17:07:45	Information	10.0.62.182:49455查询到的了所有被拒绝的会签单
+2015/6/21 17:07:45	Success	10.0.62.182:49455被拒绝会签单信息查询成功
+2015/6/21 17:07:47	Information	正在与10.0.62.182 : 49455进行数据传输...
+2015/6/21 17:07:47	Information	接收了32个数据单元
+2015/6/21 17:07:47	Information	接收到的数据 QUERY_CONTRACT_TEMPLATE_REQUEST;, 大小32
+2015/6/21 17:07:47	Information	接收到来自10.0.62.182:49455查询会签单模版信息2
+2015/6/21 17:07:47	Information	10.0.62.182:49455查询到的了所有的会签单
+2015/6/21 17:07:47	Success	10.0.62.182:49455会签单模版信息信息查询成功
+2015/6/21 17:07:47	Information	正在与10.0.62.182 : 49455进行数据传输...
+2015/6/21 17:07:47	Information	接收了33个数据单元
+2015/6/21 17:07:47	Information	接收到的数据 GET_CONTRACT_TEMPLATE_REQUEST;1;1, 大小33
+2015/6/21 17:07:47	Information	接收到来自10.0.62.182:49455待获取会签单模版编号1
+2015/6/21 17:07:47	Success	10.0.62.182:49455获取会签单模版1成功
+2015/6/21 17:07:47	Information	正在与10.0.62.182 : 49455进行数据传输...
+2015/6/21 17:07:47	Information	接收了27个数据单元
+2015/6/21 17:07:47	Information	接收到的数据 QUERY_SIGN_PEND_REQUEST;1;2, 大小27
+2015/6/21 17:07:47	Information	接收到来自10.0.62.182:49455查询正在审核中的会签单模版信息2
+2015/6/21 17:07:47	Information	10.0.62.182:49455查询到的了所有正在审核中的会签单
+2015/6/21 17:07:47	Success	10.0.62.182:49455会签单模版信息信息查询成功
+2015/6/21 17:07:47	Information	正在与10.0.62.182 : 49455进行数据传输...
+2015/6/21 17:07:47	Information	接收了28个数据单元
+2015/6/21 17:07:47	Information	接收到的数据 QUERY_SIGN_AGREE_REQUEST;1;2, 大小28
+2015/6/21 17:07:47	Information	接收到来自10.0.62.182:49455查询已通过审核的会签单模版信息2
+2015/6/21 17:07:47	Information	10.0.62.182:49455查询到的了所有已通过审核的会签单
+2015/6/21 17:07:47	Success	10.0.62.182:49455已通过审核会签单信息查询成功
+2015/6/21 17:07:47	Information	正在与10.0.62.182 : 49455进行数据传输...
+2015/6/21 17:07:47	Information	接收了29个数据单元
+2015/6/21 17:07:47	Information	接收到的数据 QUERY_SIGN_REFUSE_REQUEST;1;2, 大小29
+2015/6/21 17:07:47	Information	接收到来自10.0.62.182:49455查询被拒绝的会签单模版信息2
+2015/6/21 17:07:47	Information	10.0.62.182:49455查询到的了所有被拒绝的会签单
+2015/6/21 17:07:47	Success	10.0.62.182:49455被拒绝会签单信息查询成功
+2015/6/21 17:11:43	Information	正在与10.0.62.182 : 49455进行数据传输...
+2015/6/21 17:11:43	Exception	System.Net.Sockets.SocketException (0x80004005): 远程主机强迫关闭了一个现有的连接。
+   在 System.Net.Sockets.Socket.EndReceive(IAsyncResult asyncResult)
+   在 SignPressServer.SignSocket.AsyncSocket.AsyncSocketServer.HandleDataReceived(IAsyncResult ar) 位置 g:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressServer\SignSocket\AsyncSocket\AsyncSocketServer.cs:行号 410
+2015/6/21 18:25:38	Information	正在与10.0.62.182 : 43076进行数据传输...
+2015/6/21 18:25:38	Information	接收了60个数据单元
+2015/6/21 18:25:38	Information	接收到的数据 LOGIN_REQUEST;43;{"Username":"shixiao","Password":"shixiao"}, 大小60
+2015/6/21 18:25:39	Information	接收到来自10.0.62.182:43076的登录信息{"Username":"shixiao","Password":"shixiao"}
+2015/6/21 18:25:42	Success	USERNAME : shixiao, PASSWORD : shixiao用户名密码均正确，可以登录
+2015/6/21 18:25:43	Information	获取到一个来自10.0.62.182 : 43080的连接...
+2015/6/21 18:25:49	Information	正在与10.0.62.182 : 43080进行数据传输...
+2015/6/21 18:25:49	Information	接收了32个数据单元
+2015/6/21 18:25:49	Information	接收到的数据 QUERY_CONTRACT_TEMPLATE_REQUEST;, 大小32
+2015/6/21 18:25:49	Information	接收到来自10.0.62.182:43080查询会签单模版信息
+2015/6/21 18:25:49	Information	10.0.62.182:43080查询到的了所有的会签单
+2015/6/21 18:25:49	Success	10.0.62.182:43080会签单模版信息信息查询成功
+2015/6/21 18:25:49	Information	正在与10.0.62.182 : 43080进行数据传输...
+2015/6/21 18:25:49	Information	接收了33个数据单元
+2015/6/21 18:25:49	Information	接收到的数据 GET_CONTRACT_TEMPLATE_REQUEST;1;1, 大小33
+2015/6/21 18:25:49	Information	接收到来自10.0.62.182:43080待获取会签单模版编号1
+2015/6/21 18:25:49	Success	10.0.62.182:43080获取会签单模版1成功
+2015/6/21 18:25:49	Information	正在与10.0.62.182 : 43080进行数据传输...
+2015/6/21 18:25:49	Information	接收了27个数据单元
+2015/6/21 18:25:49	Information	接收到的数据 QUERY_SIGN_PEND_REQUEST;1;2, 大小27
+2015/6/21 18:25:49	Information	接收到来自10.0.62.182:43080查询正在审核中的会签单模版信息2
+2015/6/21 18:25:49	Information	10.0.62.182:43080查询到的了所有正在审核中的会签单
+2015/6/21 18:25:49	Success	10.0.62.182:43080会签单模版信息信息查询成功
+2015/6/21 18:25:49	Information	正在与10.0.62.182 : 43080进行数据传输...
+2015/6/21 18:25:49	Information	接收了28个数据单元
+2015/6/21 18:25:49	Information	接收到的数据 QUERY_SIGN_AGREE_REQUEST;1;2, 大小28
+2015/6/21 18:25:49	Information	接收到来自10.0.62.182:43080查询已通过审核的会签单模版信息2
+2015/6/21 18:25:49	Information	10.0.62.182:43080查询到的了所有已通过审核的会签单
+2015/6/21 18:25:49	Success	10.0.62.182:43080已通过审核会签单信息查询成功
+2015/6/21 18:25:49	Information	正在与10.0.62.182 : 43080进行数据传输...
+2015/6/21 18:25:49	Information	接收了29个数据单元
+2015/6/21 18:25:49	Information	接收到的数据 QUERY_SIGN_REFUSE_REQUEST;1;2, 大小29
+2015/6/21 18:25:49	Information	接收到来自10.0.62.182:43080查询被拒绝的会签单模版信息2
+2015/6/21 18:25:49	Information	10.0.62.182:43080查询到的了所有被拒绝的会签单
+2015/6/21 18:25:49	Success	10.0.62.182:43080被拒绝会签单信息查询成功
+2015/6/21 18:25:54	Information	正在与10.0.62.182 : 43080进行数据传输...
+2015/6/21 18:25:54	Information	接收了33个数据单元
+2015/6/21 18:25:54	Information	接收到的数据 GET_CONTRACT_TEMPLATE_REQUEST;1;1, 大小33
+2015/6/21 18:25:54	Information	接收到来自10.0.62.182:43080待获取会签单模版编号1
+2015/6/21 18:25:54	Success	10.0.62.182:43080获取会签单模版1成功
+2015/6/21 18:26:05	Information	正在与10.0.62.182 : 43080进行数据传输...
+2015/6/21 18:26:05	Information	接收了496个数据单元
+2015/6/21 18:26:05	Information	接收到的数据 INSERT_HDJCONTRACT_REQUEST;423;{"Name":"养护及例会项目拨款会签审批单 ","SubmitDate":null,"ConTemp":{"CreateDate":null,"TempId":1,"Name":null,"ColumnCount":5,"ColumnNames":null,"SignCount":8,"SignDatas":null},"Id":null,"ColumnDatas":["dsds","dsdsds","dsgff","sdasga","ga"],"SginRemark":null,"SubmitEmployee":{"Id":2,"Name":"石啸","Position":"主管","Department":{"Id":1,"Name":"申请科"},"CanSubmit":1,"CanSign":1,"IsAdmin":0,"User":{"Username":"shixiao","Password":"shixiao"}}}, 大小454
+2015/6/21 18:26:06	Information	接收到来自10.0.62.182:43080待插入会签单信息{"Name":"养护及例会项目拨款会签审批单 ","SubmitDate":null,"ConTemp":{"CreateDate":null,"TempId":1,"Name":null,"ColumnCount":5,"ColumnNames":null,"SignCount":8,"SignDatas":null},"Id":null,"ColumnDatas":["dsds","dsdsds","dsgff","sdasga","ga"],"SginRemark":null,"SubmitEmployee":{"Id":2,"Name":"石啸","Position":"主管","Department":{"Id":1,"Name":"申请科"},"CanSubmit":1,"CanSign":1,"IsAdmin":0,"User":{"Username":"shixiao","Password":"shixiao"}}}
+2015/6/21 18:26:06	Success	会签单20150621182606插入成功
+2015/6/21 22:35:08	Information	正在与10.0.208.205 : 51409进行数据传输...
+2015/6/21 22:35:08	Information	接收了60个数据单元
+2015/6/21 22:35:08	Information	接收到的数据 LOGIN_REQUEST;43;{"Username":"shixiao","Password":"shixiao"}, 大小60
+2015/6/21 22:35:08	Information	接收到来自10.0.208.205:51409的登录信息{"Username":"shixiao","Password":"shixiao"}
+2015/6/21 22:35:12	Success	USERNAME : shixiao, PASSWORD : shixiao用户名密码均正确，可以登录
+2015/6/21 22:35:12	Information	获取到一个来自10.0.208.205 : 51417的连接...
+2015/6/21 22:35:33	Information	正在与10.0.208.205 : 51409进行数据传输...
+2015/6/21 22:35:33	Information	正在与10.0.208.205 : 51417进行数据传输...
+2015/6/21 22:35:33	Exception	System.Net.Sockets.SocketException (0x80004005): 远程主机强迫关闭了一个现有的连接。
+   在 System.Net.Sockets.Socket.EndReceive(IAsyncResult asyncResult)
+   在 SignPressServer.SignSocket.AsyncSocket.AsyncSocketServer.HandleDataReceived(IAsyncResult ar) 位置 g:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressServer\SignSocket\AsyncSocket\AsyncSocketServer.cs:行号 410
+2015/6/21 22:35:33	Exception	System.Net.Sockets.SocketException (0x80004005): 远程主机强迫关闭了一个现有的连接。
+   在 System.Net.Sockets.Socket.EndReceive(IAsyncResult asyncResult)
+   在 SignPressServer.SignSocket.AsyncSocket.AsyncSocketServer.HandleDataReceived(IAsyncResult ar) 位置 g:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressServer\SignSocket\AsyncSocket\AsyncSocketServer.cs:行号 410
+2015/6/21 22:36:23	Information	获取到一个来自10.0.208.205 : 51471的连接...
+2015/6/21 22:36:23	Information	正在与10.0.208.205 : 51471进行数据传输...
+2015/6/21 22:36:23	Information	接收了60个数据单元
+2015/6/21 22:36:23	Information	接收到的数据 LOGIN_REQUEST;43;{"Username":"shixiao","Password":"shixiao"}, 大小60
+2015/6/21 22:36:23	Information	接收到来自10.0.208.205:51471的登录信息{"Username":"shixiao","Password":"shixiao"}
+2015/6/21 22:36:23	Success	USERNAME : shixiao, PASSWORD : shixiao用户名密码均正确，可以登录
+2015/6/21 22:36:23	Information	获取到一个来自10.0.208.205 : 51472的连接...
+2015/6/21 22:37:17	Information	正在与10.0.208.205 : 51472进行数据传输...
+2015/6/21 22:37:17	Information	接收了33个数据单元
+2015/6/21 22:37:17	Information	接收到的数据 QUERY_UNSIGN_CONTRACT_REQUEST;1;2, 大小33
+2015/6/21 22:37:54	Information	正在与10.0.208.205 : 51472进行数据传输...
+2015/6/21 22:37:54	Exception	System.Net.Sockets.SocketException (0x80004005): 远程主机强迫关闭了一个现有的连接。
+   在 System.Net.Sockets.Socket.EndReceive(IAsyncResult asyncResult)
+   在 SignPressServer.SignSocket.AsyncSocket.AsyncSocketServer.HandleDataReceived(IAsyncResult ar) 位置 g:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressServer\SignSocket\AsyncSocket\AsyncSocketServer.cs:行号 410
+2015/6/21 22:37:54	Information	正在与10.0.208.205 : 51471进行数据传输...
+2015/6/21 22:42:22	Information	正在与10.0.208.205 : 51767进行数据传输...
+2015/6/21 22:42:22	Information	接收了60个数据单元
+2015/6/21 22:42:22	Information	接收到的数据 LOGIN_REQUEST;43;{"Username":"shixiao","Password":"shixiao"}, 大小60
+2015/6/21 22:42:22	Information	接收到来自10.0.208.205:51767的登录信息{"Username":"shixiao","Password":"shixiao"}
+2015/6/21 22:42:26	Success	USERNAME : shixiao, PASSWORD : shixiao用户名密码均正确，可以登录
+2015/6/21 22:42:26	Information	获取到一个来自10.0.208.205 : 51774的连接...
+2015/6/21 22:43:08	Information	正在与10.0.208.205 : 51774进行数据传输...
+2015/6/21 22:43:08	Information	正在与10.0.208.205 : 51767进行数据传输...
+2015/6/21 22:43:08	Exception	System.Net.Sockets.SocketException (0x80004005): 远程主机强迫关闭了一个现有的连接。
+   在 System.Net.Sockets.Socket.EndReceive(IAsyncResult asyncResult)
+   在 SignPressServer.SignSocket.AsyncSocket.AsyncSocketServer.HandleDataReceived(IAsyncResult ar) 位置 g:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressServer\SignSocket\AsyncSocket\AsyncSocketServer.cs:行号 410
+2015/6/21 22:43:08	Exception	System.Net.Sockets.SocketException (0x80004005): 远程主机强迫关闭了一个现有的连接。
+   在 System.Net.Sockets.Socket.EndReceive(IAsyncResult asyncResult)
+   在 SignPressServer.SignSocket.AsyncSocket.AsyncSocketServer.HandleDataReceived(IAsyncResult ar) 位置 g:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressServer\SignSocket\AsyncSocket\AsyncSocketServer.cs:行号 410
+2015/6/21 22:43:37	Information	获取到一个来自10.0.208.205 : 51836的连接...
+2015/6/21 22:43:37	Information	正在与10.0.208.205 : 51836进行数据传输...
+2015/6/21 22:43:37	Information	接收了60个数据单元
+2015/6/21 22:43:37	Information	接收到的数据 LOGIN_REQUEST;43;{"Username":"shixiao","Password":"shixiao"}, 大小60
+2015/6/21 22:43:37	Information	接收到来自10.0.208.205:51836的登录信息{"Username":"shixiao","Password":"shixiao"}
+2015/6/21 22:43:38	Success	USERNAME : shixiao, PASSWORD : shixiao用户名密码均正确，可以登录
+2015/6/21 22:43:38	Information	获取到一个来自10.0.208.205 : 51839的连接...
+2015/6/21 22:44:37	Information	正在与10.0.208.205 : 51839进行数据传输...
+2015/6/21 22:44:37	Information	接收了33个数据单元
+2015/6/21 22:44:37	Information	接收到的数据 QUERY_UNSIGN_CONTRACT_REQUEST;1;2, 大小33
+2015/6/21 22:44:37	Information	接收到来自10.0.208.205:51839查询待签字的会签单模版信息2
+2015/6/21 22:44:37	Information	10.0.208.205:51839查询到的了所有被拒绝的会签单
+2015/6/21 22:44:37	Success	10.0.208.205:51839被拒绝会签单信息查询成功
+2015/6/21 22:47:36	Information	正在与10.0.208.205 : 52056进行数据传输...
+2015/6/21 22:47:36	Information	接收了60个数据单元
+2015/6/21 22:47:36	Information	接收到的数据 LOGIN_REQUEST;43;{"Username":"shixiao","Password":"shixiao"}, 大小60
+2015/6/21 22:47:36	Information	接收到来自10.0.208.205:52056的登录信息{"Username":"shixiao","Password":"shixiao"}
+2015/6/21 22:47:40	Success	USERNAME : shixiao, PASSWORD : shixiao用户名密码均正确，可以登录
+2015/6/21 22:47:40	Information	获取到一个来自10.0.208.205 : 52064的连接...
+2015/6/21 22:47:56	Information	正在与10.0.208.205 : 52064进行数据传输...
+2015/6/21 22:47:56	Information	接收了32个数据单元
+2015/6/21 22:47:56	Information	接收到的数据 QUERY_CONTRACT_TEMPLATE_REQUEST;, 大小32
+2015/6/21 22:47:56	Information	接收到来自10.0.208.205:52064查询会签单模版信息
+2015/6/21 22:47:56	Information	10.0.208.205:52064查询到的了所有的会签单
+2015/6/21 22:47:56	Success	10.0.208.205:52064会签单模版信息信息查询成功
+2015/6/21 22:47:56	Information	正在与10.0.208.205 : 52064进行数据传输...
+2015/6/21 22:47:56	Information	接收了33个数据单元
+2015/6/21 22:47:56	Information	接收到的数据 GET_CONTRACT_TEMPLATE_REQUEST;1;1, 大小33
+2015/6/21 22:47:56	Information	接收到来自10.0.208.205:52064待获取会签单模版编号1
+2015/6/21 22:47:56	Success	10.0.208.205:52064获取会签单模版1成功
+2015/6/21 22:47:56	Information	正在与10.0.208.205 : 52064进行数据传输...
+2015/6/21 22:47:56	Information	接收了27个数据单元
+2015/6/21 22:47:56	Information	接收到的数据 QUERY_SIGN_PEND_REQUEST;1;2, 大小27
+2015/6/21 22:47:56	Information	接收到来自10.0.208.205:52064查询正在审核中的会签单模版信息2
+2015/6/21 22:47:57	Information	10.0.208.205:52064查询到的了所有正在审核中的会签单
+2015/6/21 22:47:57	Success	10.0.208.205:52064会签单模版信息信息查询成功
+2015/6/21 22:47:57	Information	正在与10.0.208.205 : 52064进行数据传输...
+2015/6/21 22:47:57	Information	接收了28个数据单元
+2015/6/21 22:47:57	Information	接收到的数据 QUERY_SIGN_AGREE_REQUEST;1;2, 大小28
+2015/6/21 22:47:57	Information	接收到来自10.0.208.205:52064查询已通过审核的会签单模版信息2
+2015/6/21 22:47:57	Information	10.0.208.205:52064查询到的了所有已通过审核的会签单
+2015/6/21 22:47:57	Success	10.0.208.205:52064已通过审核会签单信息查询成功
+2015/6/21 22:47:57	Information	正在与10.0.208.205 : 52064进行数据传输...
+2015/6/21 22:47:57	Information	接收了29个数据单元
+2015/6/21 22:47:57	Information	接收到的数据 QUERY_SIGN_REFUSE_REQUEST;1;2, 大小29
+2015/6/21 22:47:57	Information	接收到来自10.0.208.205:52064查询被拒绝的会签单模版信息2
+2015/6/21 22:47:57	Information	10.0.208.205:52064查询到的了所有被拒绝的会签单
+2015/6/21 22:47:57	Success	10.0.208.205:52064被拒绝会签单信息查询成功
+2015/6/21 22:47:57	Information	正在与10.0.208.205 : 52056进行数据传输...
+2015/6/21 22:47:57	Exception	System.Net.Sockets.SocketException (0x80004005): 远程主机强迫关闭了一个现有的连接。
+   在 System.Net.Sockets.Socket.EndReceive(IAsyncResult asyncResult)
+   在 SignPressServer.SignSocket.AsyncSocket.AsyncSocketServer.HandleDataReceived(IAsyncResult ar) 位置 g:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressServer\SignSocket\AsyncSocket\AsyncSocketServer.cs:行号 410
+2015/6/21 22:48:01	Information	正在与10.0.208.205 : 52064进行数据传输...
+2015/6/21 22:48:01	Information	接收了33个数据单元
+2015/6/21 22:48:01	Information	接收到的数据 QUERY_UNSIGN_CONTRACT_REQUEST;1;2, 大小33
+2015/6/21 22:48:01	Information	接收到来自10.0.208.205:52064查询待签字的会签单模版信息2
+2015/6/21 22:48:01	Information	10.0.208.205:52064查询到的了所有查询待签字的的会签单
+2015/6/21 22:48:01	Success	10.0.208.205:52064查询待签字的会签单信息查询成功
+2015/6/21 22:48:17	Information	正在与10.0.208.205 : 52064进行数据传输...
+2015/6/21 22:48:17	Exception	System.Net.Sockets.SocketException (0x80004005): 远程主机强迫关闭了一个现有的连接。
+   在 System.Net.Sockets.Socket.EndReceive(IAsyncResult asyncResult)
+   在 SignPressServer.SignSocket.AsyncSocket.AsyncSocketServer.HandleDataReceived(IAsyncResult ar) 位置 g:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressServer\SignSocket\AsyncSocket\AsyncSocketServer.cs:行号 410
+2015/6/21 22:49:37	Information	获取到一个来自10.0.208.205 : 52186的连接...
+2015/6/21 22:49:40	Information	正在与10.0.208.205 : 52186进行数据传输...
+2015/6/21 22:49:40	Information	接收了60个数据单元
+2015/6/21 22:49:40	Information	接收到的数据 LOGIN_REQUEST;43;{"Username":"shixiao","Password":"shixiao"}, 大小60
+2015/6/21 22:49:40	Information	接收到来自10.0.208.205:52186的登录信息{"Username":"shixiao","Password":"shixiao"}
+2015/6/21 22:49:40	Success	USERNAME : shixiao, PASSWORD : shixiao用户名密码均正确，可以登录
+2015/6/21 22:49:54	Information	获取到一个来自10.0.208.205 : 52200的连接...
+2015/6/21 22:50:23	Information	正在与10.0.208.205 : 52200进行数据传输...
+2015/6/21 22:50:23	Information	接收了33个数据单元
+2015/6/21 22:50:23	Information	接收到的数据 QUERY_UNSIGN_CONTRACT_REQUEST;1;2, 大小33
+2015/6/21 22:50:23	Information	接收到来自10.0.208.205:52200查询待签字的会签单模版信息2
+2015/6/21 22:50:23	Information	10.0.208.205:52200查询到的了所有查询待签字的的会签单
+2015/6/21 22:50:23	Success	10.0.208.205:52200查询待签字的会签单信息查询成功
+2015/6/21 22:51:06	Information	正在与10.0.208.205 : 52200进行数据传输...
+2015/6/21 22:51:06	Exception	System.Net.Sockets.SocketException (0x80004005): 远程主机强迫关闭了一个现有的连接。
+   在 System.Net.Sockets.Socket.EndReceive(IAsyncResult asyncResult)
+   在 SignPressServer.SignSocket.AsyncSocket.AsyncSocketServer.HandleDataReceived(IAsyncResult ar) 位置 g:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressServer\SignSocket\AsyncSocket\AsyncSocketServer.cs:行号 410
+2015/6/21 22:51:06	Information	正在与10.0.208.205 : 52186进行数据传输...
+2015/6/21 22:51:06	Exception	System.Net.Sockets.SocketException (0x80004005): 远程主机强迫关闭了一个现有的连接。
+   在 System.Net.Sockets.Socket.EndReceive(IAsyncResult asyncResult)
+   在 SignPressServer.SignSocket.AsyncSocket.AsyncSocketServer.HandleDataReceived(IAsyncResult ar) 位置 g:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressServer\SignSocket\AsyncSocket\AsyncSocketServer.cs:行号 410
+2015/6/21 22:54:16	Information	获取到一个来自10.0.208.205 : 52336的连接...
+2015/6/21 22:54:17	Information	正在与10.0.208.205 : 52336进行数据传输...
+2015/6/21 22:54:17	Information	接收了60个数据单元
+2015/6/21 22:54:17	Information	接收到的数据 LOGIN_REQUEST;43;{"Username":"shixiao","Password":"shixiao"}, 大小60
+2015/6/21 22:54:17	Information	接收到来自10.0.208.205:52336的登录信息{"Username":"shixiao","Password":"shixiao"}
+2015/6/21 22:54:18	Success	USERNAME : shixiao, PASSWORD : shixiao用户名密码均正确，可以登录
+2015/6/21 22:54:18	Information	获取到一个来自10.0.208.205 : 52339的连接...
+2015/6/21 22:55:26	Information	正在与10.0.208.205 : 52339进行数据传输...
+2015/6/21 22:55:26	Information	接收了33个数据单元
+2015/6/21 22:55:26	Information	接收到的数据 QUERY_UNSIGN_CONTRACT_REQUEST;1;2, 大小33
+2015/6/21 22:55:26	Information	接收到来自10.0.208.205:52339查询待签字的会签单模版信息2
+2015/6/21 22:55:26	Information	10.0.208.205:52339查询到的了所有查询待签字的的会签单
+2015/6/21 22:55:26	Success	10.0.208.205:52339查询待签字的会签单信息查询成功
+2015/6/21 22:55:31	Information	正在与10.0.208.205 : 52336进行数据传输...
+2015/6/21 22:55:31	Information	正在与10.0.208.205 : 52339进行数据传输...
+2015/6/21 22:55:31	Exception	System.Net.Sockets.SocketException (0x80004005): 远程主机强迫关闭了一个现有的连接。
+   在 System.Net.Sockets.Socket.EndReceive(IAsyncResult asyncResult)
+   在 SignPressServer.SignSocket.AsyncSocket.AsyncSocketServer.HandleDataReceived(IAsyncResult ar) 位置 g:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressServer\SignSocket\AsyncSocket\AsyncSocketServer.cs:行号 410
+2015/6/21 22:55:31	Exception	System.Net.Sockets.SocketException (0x80004005): 远程主机强迫关闭了一个现有的连接。
+   在 System.Net.Sockets.Socket.EndReceive(IAsyncResult asyncResult)
+   在 SignPressServer.SignSocket.AsyncSocket.AsyncSocketServer.HandleDataReceived(IAsyncResult ar) 位置 g:\[B]CodeRuntimeLibrary\[E]GitHub\SignPressServer\SignSocket\AsyncSocket\AsyncSocketServer.cs:行号 410
